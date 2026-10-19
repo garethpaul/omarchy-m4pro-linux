@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-2.0-only OR MIT
 /*
- * J616s RAM-only inherited USB2 PHY admission.
+ * J614s/J616s RAM-only inherited USB2 PHY admission.
  *
  * The bootloader owns PHY power, clock, calibration and PIPE setup for the
  * entire experiment. This driver only verifies the device-mode state left by
@@ -8,6 +8,9 @@
  * with the exact post-init SIG readback captured on source-checked recovery
  * ea52da04a1fa0e7f648812de23ac5cd8f5000ab3 on 2026-10-09 at 14:52 UTC.
  * The difference from the initialization write has no inferred bit meaning.
+ * J614s USB1 was checked against the same SIG readback on 2026-10-19,
+ * through the exact board-4 m1n1 8e0cf28 proxy. Other J614s ports are not
+ * admitted by this experimental profile.
  * It performs no PHY/PIPE writes and cannot provide host, hotplug, suspend or
  * SuperSpeed support. Controller/DART retirement and watchdog recovery belong
  * to the caller; the inherited-handoff property does not perform a handoff.
@@ -46,15 +49,22 @@ static int apple_t6040_usb2_check(struct phy *phy)
 {
 	struct apple_t6040_usb2 *usb2 = phy_get_drvdata(phy);
 
-	if ((readl(usb2->usb2 + USB2PHY_USBCTL) & USB2PHY_USBCTL_MODE) !=
-	    USB2PHY_USBCTL_RUN ||
-	    readl(usb2->usb2 + USB2PHY_CTL) & USB2PHY_CTL_STOPPED ||
-	    readl(usb2->usb2 + USB2PHY_SIG) != USB2PHY_SIG_INHERITED ||
-	    readl(usb2->usb2 + USB2PHY_MISCTUNE) != USB2PHY_MISCTUNE_INHERITED ||
-	    (readl(usb2->pipe + PIPE_MUX_CTRL) & PIPE_MUX_CTRL_MASK) != PIPE_MUX_CTRL_DUMMY ||
-	    (readl(usb2->pipe + PIPE_AON_GEN) & PIPE_AON_GEN_MASK) != PIPE_AON_GEN_RESET_N ||
-	    readl(usb2->pipe + PIPE_NONSELECTED_OVERRIDE) != PIPE_NONSELECTED_INHERITED) {
-		dev_err(usb2->dev, "Inherited USB2 device state is unavailable\n");
+	u32 ctl = readl(usb2->usb2 + USB2PHY_USBCTL);
+	u32 stop = readl(usb2->usb2 + USB2PHY_CTL);
+	u32 sig = readl(usb2->usb2 + USB2PHY_SIG);
+	u32 tune = readl(usb2->usb2 + USB2PHY_MISCTUNE);
+	u32 mux = readl(usb2->pipe + PIPE_MUX_CTRL);
+	u32 aon = readl(usb2->pipe + PIPE_AON_GEN);
+	u32 override = readl(usb2->pipe + PIPE_NONSELECTED_OVERRIDE);
+
+	if ((ctl & USB2PHY_USBCTL_MODE) != USB2PHY_USBCTL_RUN ||
+	    stop & USB2PHY_CTL_STOPPED || sig != USB2PHY_SIG_INHERITED ||
+	    tune != USB2PHY_MISCTUNE_INHERITED ||
+	    (mux & PIPE_MUX_CTRL_MASK) != PIPE_MUX_CTRL_DUMMY ||
+	    (aon & PIPE_AON_GEN_MASK) != PIPE_AON_GEN_RESET_N ||
+	    override != PIPE_NONSELECTED_INHERITED) {
+		dev_err(usb2->dev, "Inherited USB2 state mismatch: ctl=%#x stop=%#x sig=%#x tune=%#x mux=%#x aon=%#x override=%#x\n",
+			ctl, stop, sig, tune, mux, aon, override);
 		return -EIO;
 	}
 
@@ -85,7 +95,8 @@ static int apple_t6040_usb2_probe(struct platform_device *pdev)
 	struct resource *res;
 	struct phy *phy;
 
-	if (!of_machine_is_compatible("apple,j616s") ||
+	if ((!of_machine_is_compatible("apple,j616s") &&
+	     !of_machine_is_compatible("apple,j614s")) ||
 	    !of_property_read_bool(dev->of_node, "apple,inherited-handoff"))
 		return -EOPNOTSUPP;
 
@@ -95,13 +106,17 @@ static int apple_t6040_usb2_probe(struct platform_device *pdev)
 	usb2->dev = dev;
 
 	res = platform_get_resource_byname(pdev, IORESOURCE_MEM, "usb2phy");
-	if (!res || resource_size(res) < USB2PHY_MISCTUNE + sizeof(u32))
+	if (!res || resource_size(res) < USB2PHY_MISCTUNE + sizeof(u32) ||
+	    (of_machine_is_compatible("apple,j614s") &&
+	     (res->start != 0x38aa90000ULL || resource_size(res) != 0x4000)))
 		return -EINVAL;
 	usb2->usb2 = devm_ioremap_resource(dev, res);
 	if (IS_ERR(usb2->usb2))
 		return PTR_ERR(usb2->usb2);
 	res = platform_get_resource_byname(pdev, IORESOURCE_MEM, "pipehandler");
-	if (!res || resource_size(res) < PIPE_NONSELECTED_OVERRIDE + sizeof(u32))
+	if (!res || resource_size(res) < PIPE_NONSELECTED_OVERRIDE + sizeof(u32) ||
+	    (of_machine_is_compatible("apple,j614s") &&
+	     (res->start != 0x38aa84000ULL || resource_size(res) != 0x4000)))
 		return -EINVAL;
 	usb2->pipe = devm_ioremap_resource(dev, res);
 	if (IS_ERR(usb2->pipe))
@@ -130,5 +145,5 @@ static struct platform_driver apple_t6040_usb2_driver = {
 };
 module_platform_driver(apple_t6040_usb2_driver);
 
-MODULE_DESCRIPTION("J616s RAM-only inherited USB2 PHY admission");
+MODULE_DESCRIPTION("J614s/J616s RAM-only inherited USB2 PHY admission");
 MODULE_LICENSE("Dual MIT/GPL");

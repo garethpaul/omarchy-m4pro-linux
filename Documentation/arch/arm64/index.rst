@@ -12,6 +12,7 @@ ARM64 Architecture
     apple-j813
     arm-acpi
     arm-cca
+    apple-j614s
     asymmetric-32bit
     booting
     cpu-feature-registers
