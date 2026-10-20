@@ -36,3 +36,11 @@ config DRM_ASAHI_DEBUG_ALLOCATOR
 
 	  Say N unless you are debugging firmware structures or porting to a
 	  new firmware version.
+
+config DRM_ASAHI_G16_BOOTSTRAP
+	tristate "J614s G16S RTKit bootstrap qualification"
+	depends on ARM64 && ARCH_APPLE && APPLE_RTKIT
+	help
+	  Experimental cold-start qualification for the measured J614s M4 Pro
+	  and 25G83 G16S B-silicon firmware. This creates no DRM render node.
+	  Power and firmware reservations must be supplied by the test loader.
