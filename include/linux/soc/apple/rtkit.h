@@ -31,6 +31,8 @@ struct apple_rtkit_shmem {
 	size_t size;
 	dma_addr_t iova;
 	bool is_mapped;
+	/* Streaming normal RAM only: synchronize before host reads, never iomem. */
+	bool needs_dma_sync;
 	void *private;
 };
 
@@ -104,6 +106,27 @@ struct apple_rtkit *apple_rtkit_init(struct device *dev, void *cookie,
  * Free an instance of apple_rtkit.
  */
 void apple_rtkit_free(struct apple_rtkit *rtk);
+
+/* Caller must first verify the device-specific inherited running/session state.
+ * System endpoints and unknown syslog geometry are marked BEFORE mailbox RX.
+ * No HELLO, EPMAP, application INIT or AP-power request is sent.
+ */
+struct apple_rtkit *apple_rtkit_init_adopted(struct device *dev, void *cookie,
+					 const char *mbox_name, int mbox_idx,
+					 const struct apple_rtkit_ops *ops);
+
+/* Failed firmware shutdown: detach/drain host callbacks but retain DMA-visible
+ * buffers and their allocation contexts until reboot. Caller must retain its
+ * independent buffers and prohibit reprobe; this is not successful quiescence.
+ */
+void apple_rtkit_free_retaining_buffers(struct apple_rtkit *rtk);
+
+/* Detach/drain RX without freeing metadata, DMA or mailbox ownership. The caller
+ * must serialize teardown and retain the object and every reader's context until
+ * platform reset. This is for an irrecoverably quarantined live coprocessor.
+ */
+void apple_rtkit_quiesce_retaining_state(struct apple_rtkit *rtk);
+
 
 /* Configure before starting the coprocessor. G16 requests its preallocated
  * crash buffer before the endpoint-map ACK and requires an explicit reply. */
