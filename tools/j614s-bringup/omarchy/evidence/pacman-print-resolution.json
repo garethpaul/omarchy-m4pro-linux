@@ -6,7 +6,7 @@
   "scope": "pacman metadata print resolution of non-protected requests against an immutable image baseline",
   "print_exit": 0,
   "metadata_resolution": "WORKS (print only)",
-  "requested_candidate_count": 166,
+  "requested_candidate_count": 167,
   "ignored_packages": [
     "alsa-firmware",
     "asahi-bless",
@@ -41,6 +41,7 @@
     "linux-apfs-rw-dkms",
     "linux-api-headers",
     "linux-asahi",
+    "linux-asahi-headers",
     "linux-atm",
     "linux-aurora",
     "linux-aurora-headers",
@@ -83,6 +84,7 @@
     "linux-rpi-16k-headers",
     "linux-rpi-headers",
     "linux-tools-meta",
+    "m1n1",
     "m1n1-aurora",
     "mesa",
     "mkinitcpio",
@@ -141,15 +143,10 @@
     "binary_sha256": "590759eddb4c0cac6c5ad66f0f9bc093e15529675c0aa909eea396af5b07459d",
     "version": ".--.                  Pacman v7.1.0 - libalpm v16.0.1"
   },
-  "request_review_sha256": "39ffcac50a55510c1ba9eba37ace87225ad862ff68dbbd9fc17790cc74a7e279",
-  "stdout_sha256": "ed0d91168fed986a1d40698fa6c7a2e21661247043b1f6027dad2c334a3f2e1b",
+  "request_review_sha256": "de49a2529bfdae45ca9634131b48f56aa7492c97c257345f58b6dc640e82b3e1",
+  "stdout_sha256": "7b28f3ed8847b3c5347d37d8aebd063dffd66749d0db773921214c2b0ee7f99f",
   "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-  "unresolved_original_requests": [
-    {
-      "requested": "vi",
-      "reason": "verified vim/vim-runtime do not contain usr/bin/vi; no proven native vi resolution"
-    }
-  ],
+  "unresolved_original_requests": [],
   "held_original_requests": [
     {
       "requested": "omarchy-mac",
@@ -320,7 +317,6 @@
     }
   ],
   "remaining_deployment_gates": [
-    "original requests unresolved",
     "boot/firmware requests held",
     "complete transaction package signatures and installed hooks unverified",
     "live target hardware, active experimental driver ABI and tested recovery unverified"
@@ -377,11 +373,11 @@
       "architecture": "aarch64"
     },
     {
-      "repository": "omarchy",
-      "name": "omarchy-chromium-bin",
-      "version": "148.0.7778.96-22",
-      "filename": "omarchy-chromium-bin-148.0.7778.96-22-aarch64.pkg.tar.zst",
-      "sha256": "d7f37bca8e1c4d230bd84ae7803b4785db345fd663ba0bebc99cc3333287921c",
+      "repository": "extra",
+      "name": "chromium",
+      "version": "153.0.8010.36-1",
+      "filename": "chromium-153.0.8010.36-1-aarch64.pkg.tar.xz",
+      "sha256": "9ce0132a90ab76641e79a8fc07207fde472daab51a1a2702e982f96a35dcf228",
       "architecture": "aarch64"
     },
     {
@@ -1001,14 +997,6 @@
       "architecture": "aarch64"
     },
     {
-      "repository": "omarchy",
-      "name": "omarchy-power-profiles-daemon",
-      "version": "0.30-3",
-      "filename": "omarchy-power-profiles-daemon-0.30-3-aarch64.pkg.tar.zst",
-      "sha256": "74d8d7b065e55989823a8fd5973734b88fdb4442aaae298f7b59612b91e877f6",
-      "architecture": "aarch64"
-    },
-    {
       "repository": "extra",
       "name": "python-poetry-core",
       "version": "2.5.0-1",
@@ -1122,14 +1110,6 @@
     },
     {
       "repository": "extra",
-      "name": "tealdeer",
-      "version": "1.9.0-1",
-      "filename": "tealdeer-1.9.0-1-aarch64.pkg.tar.xz",
-      "sha256": "531c06b05b19008a306bd7b60227625cb0687b1f93fa8b38e141d7cf8063b4bc",
-      "architecture": "aarch64"
-    },
-    {
-      "repository": "extra",
       "name": "tmux",
       "version": "3.8-1",
       "filename": "tmux-3.8-1-aarch64.pkg.tar.xz",
@@ -1190,6 +1170,30 @@
       "version": "0.27.1-1",
       "filename": "uwsm-0.27.1-1-any.pkg.tar.xz",
       "sha256": "bc736d4c76557e3b920e93d01710ebd84c546abfb136f82b72a25304eff571e6",
+      "architecture": "any"
+    },
+    {
+      "repository": "extra",
+      "name": "vim-runtime",
+      "version": "9.2.1178-1",
+      "filename": "vim-runtime-9.2.1178-1-aarch64.pkg.tar.xz",
+      "sha256": "340ee0b85995517e50832aea2e69224044ff77b384fc5c8e017959bcdcfc78f8",
+      "architecture": "aarch64"
+    },
+    {
+      "repository": "extra",
+      "name": "vim",
+      "version": "9.2.1178-1",
+      "filename": "vim-9.2.1178-1-aarch64.pkg.tar.xz",
+      "sha256": "e6dac872c70975d71550af934402f4e603bb0ebe444310440bc89f4e8c8e76c4",
+      "architecture": "aarch64"
+    },
+    {
+      "repository": "extra",
+      "name": "ex-vi-compat",
+      "version": "3-1",
+      "filename": "ex-vi-compat-3-1-any.pkg.tar.xz",
+      "sha256": "7d5d99f383a190485a868e61bf6522611f0148f805ab7d7f3cd55c17dc6ce8e5",
       "architecture": "any"
     },
     {
@@ -1257,7 +1261,7 @@
       "architecture": "aarch64"
     }
   ],
-  "transaction_package_count": 116,
+  "transaction_package_count": 117,
   "already_current_requests": [
     {
       "name": "alsa-utils",
@@ -1424,6 +1428,10 @@
       "version": "1.1.25-1"
     },
     {
+      "name": "power-profiles-daemon",
+      "version": "0.30-1"
+    },
+    {
       "name": "qrencode",
       "version": "4.1.1-4"
     },
@@ -1458,6 +1466,10 @@
     {
       "name": "tesseract-data-eng",
       "version": "2:4.1.0-5"
+    },
+    {
+      "name": "tldr",
+      "version": "3.4.4-1"
     },
     {
       "name": "tree-sitter-cli",
@@ -1530,6 +1542,8 @@
     "libwireplumber",
     "marisa",
     "opencc",
-    "papers"
+    "papers",
+    "vim",
+    "vim-runtime"
   ]
 }

@@ -1,0 +1,75 @@
+{
+  "schema": 1,
+  "status": "WORKS for host builds/tests; G16S runtime UNTESTED",
+  "mesa_repository": "https://github.com/GravityLinux/mesa",
+  "mesa_base_branch": "main",
+  "mesa_base_commit": "87ac51d411f0e58a9433567ec2666f457be89e1d",
+  "mesa_source_commit": "86c4942d3cd8f29890d333956cce8b53cc7dd771",
+  "matching_kernel_repository": "https://github.com/GravityLinux/linux",
+  "kernel_branch": "gravity-m4",
+  "kernel_commit": "4fc326f6c25ccceb7515e2635c22e01fde5d3bac",
+  "uapi_byte_identical": true,
+  "uapi_sha256": "eb9f39e87dfe448dc044f54ab2d11b7493bf1359faca8fb76ece5f3583469015",
+  "runtime_compute_model_guard_unchanged": true,
+  "runtime_device_initializer_unchanged": false,
+  "host_suites": [
+    {
+      "name": "asahi - mesa:agx_apple9_launcher_tests",
+      "result": "OK",
+      "exit": 0,
+      "test_cases_passed": 10
+    },
+    {
+      "name": "asahi - mesa:agx_apple9_geometry_tests",
+      "result": "OK",
+      "exit": 0,
+      "test_cases_passed": 5
+    },
+    {
+      "name": "asahi - mesa:agx_apple9_compute_fixture_tests",
+      "result": "OK",
+      "exit": 0,
+      "test_cases_passed": 3
+    },
+    {
+      "name": "asahi - mesa:agx_apple9_runtime_model_tests",
+      "result": "OK",
+      "exit": 0,
+      "test_cases_passed": 3
+    },
+    {
+      "name": "asahi - mesa:agx_tests",
+      "result": "OK",
+      "exit": 0,
+      "test_cases_passed": 366
+    }
+  ],
+  "total_gtest_cases_passed": 387,
+  "python_host_cases_passed": 6,
+  "artifact_repeat_generation_byte_identical": true,
+  "packages": {
+    "meson": "1.9.2",
+    "ninja": "1.13.0",
+    "Mako": "1.3.10",
+    "packaging": "25.0",
+    "PyYAML": "6.0.3",
+    "spirv_llvm_translator": {
+      "package": "spirv-llvm-translator-23.1.2-1-x86_64.pkg.tar.zst",
+      "sha256": "5851c9464da258d38b94b5210cf0f5ca43e855e8c63cf1ecf0c78a032fbd127c",
+      "installed_system_wide": false
+    }
+  },
+  "hardware_job_completed": false,
+  "shader_execution": "UNTESTED",
+  "runtime_device_gate": "Explicit model rejection added before allocation; original G16G/G17P assertions retained. NDEBUG unit tests reject G16S.",
+  "aarch64": "Cross-build PASS; all387 gtests PASS in QEMU user-mode; GPU execution UNTESTED",
+  "review_fix": {
+    "reproduced": [
+      "shader_body=resource+64 incorrectly accepted",
+      "shader_body=launch+64 incorrectly accepted"
+    ],
+    "source_before": "5e7444d2cbc93e972ad43e0a408ec3ec6752bddc",
+    "source_fix": "936937c0dfd6500305d89df2e1e88938b8ead714",
+    "result": "Explicit shader_size and complete shader/resource/launch span checks; all20 address cases and7 invalid-profile cases now pass."
+  }
+}

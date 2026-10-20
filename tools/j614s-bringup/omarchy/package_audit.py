@@ -50,9 +50,10 @@ def repository_records(path, diagnostics=None):
         yield row
 
 
-def repository_index(repositories):
+def repository_index(repositories, *, include_payload=False):
     index = {}
     provenance = []
+    candidates = []
     for repository, path in repositories:
         diagnostics = []
         provenance.append({"name": repository, "sha256": hashlib.sha256(path.read_bytes()).hexdigest(),
@@ -64,8 +65,15 @@ def repository_index(repositories):
             name = fields["NAME"][0]
             candidate = {"repository": repository, "name": name,
                          "version": fields["VERSION"][0], "architecture": arch}
-            for alias in [name, *[entry.split("=", 1)[0] for entry in fields.get("PROVIDES", [])]]:
-                index.setdefault(alias, candidate)
+            if include_payload:
+                candidate.update(filename=fields.get("FILENAME", [None])[0],
+                                 sha256=fields.get("SHA256SUM", [None])[0])
+            # libalpm searches exact package names before choosing a provider.
+            index.setdefault(name, candidate)
+            candidates.append((candidate, fields.get("PROVIDES", [])))
+    for candidate, provides in candidates:
+        for alias in [entry.split("=", 1)[0] for entry in provides]:
+            index.setdefault(alias, candidate)
     return index, provenance
 
 

@@ -1,0 +1,20 @@
+[
+  {
+    "attempt": 1,
+    "status": "REJECTED_BEFORE_COMPILATION",
+    "reason": "Base m4_gpu_defconfig has CONFIG_MODULES=n, so the requested DRM_ASAHI_M4=m normalized to y",
+    "observed": {
+      "CONFIG_MODULES": "n",
+      "CONFIG_DRM_ASAHI_M4": "y"
+    },
+    "next_change": "Explicitly enable CONFIG_MODULES for the compile-only module profile; no layout or compatibility guard changes"
+  },
+  {
+    "attempt": 2,
+    "status": "CRATE_COMPILED",
+    "binding_layout_assertions": "ENABLED",
+    "module_link": "UNTESTED at this checkpoint",
+    "hardware": "UNTESTED",
+    "warning_suppression_added": false
+  }
+]

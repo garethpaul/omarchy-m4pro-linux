@@ -1,0 +1,21 @@
+{
+  "status": "PASS_OFFLINE_SYNTHETIC_ONLY",
+  "tests": [
+    "source-shaped callback/ACK envelope only",
+    "changed D006 shape flagged, not falsely passed",
+    "missing callback identified precisely",
+    "short wire header",
+    "envelope length mismatch",
+    "channel overrun",
+    "orphan ACK",
+    "truncated input capture",
+    "truncated output capture",
+    "context/channel mismatch",
+    "overlapping nested packets",
+    "wrong exact firmware identity",
+    "version records do not override identity",
+    "incomplete capture remains partial"
+  ],
+  "count": 14,
+  "hardware_tested": false
+}

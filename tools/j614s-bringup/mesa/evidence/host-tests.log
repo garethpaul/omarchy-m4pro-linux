@@ -1,0 +1,11 @@
+test_actual_source_generated_fixture (test_fixture_validation.ArtifactValidationTests.test_actual_source_generated_fixture) ... ok
+test_rejects_corrupt_output_and_cdm (test_fixture_validation.ArtifactValidationTests.test_rejects_corrupt_output_and_cdm) ... ok
+test_rejects_unfounded_hardware_claim (test_fixture_validation.ArtifactValidationTests.test_rejects_unfounded_hardware_claim) ... ok
+test_measured_two_cluster_projection (test_geometry.GeometryTests.test_measured_two_cluster_projection) ... ok
+test_rejects_faulted_or_active_measurement (test_geometry.GeometryTests.test_rejects_faulted_or_active_measurement) ... ok
+test_rejects_other_id_geometry_masks (test_geometry.GeometryTests.test_rejects_other_id_geometry_masks) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.003s
+
+OK

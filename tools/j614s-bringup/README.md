@@ -7,6 +7,9 @@ default boot remain incomplete. Read PROGRESS.md before running any experiment.
 - cpu/: guarded12-core qualification, performance evidence and read-only power-layout decoding.
 - graphics/: exact-build G16S initialization capture decoders, bounded UAT reads and actual-driver crash regression. These do not construct or send INIT.
 - omarchy/: native renderer qualification, signed ARM package inspection and print-only dependency planning. No package installation or desktop changes.
+- mesa/: source-built first-compute fixture, architecture comparison and explicit unqualified-model rejection. No GPU submission.
+- packages/: pinned payload signature and boot-hook audit, including unavailable-pin evidence. No transaction execution.
+- integration/: immutable consolidated J614s source/config ledgers and patch replay evidence. NVMe adoption is separate unfinished work.
 - infra/: isolated kernel builds with tool/source/config/artifact integrity checks.
 - capture/: gated minimal Metal workload, validated on a separate M1 Pro builder; M4 capture remains untested.
 - qualification/: all-phase status matrix and selected captured hardware evidence.

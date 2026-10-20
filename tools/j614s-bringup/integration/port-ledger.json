@@ -1,0 +1,506 @@
+{
+  "schema": 1,
+  "status": "PARTIAL (compile-only source candidate; hardware UNTESTED)",
+  "gravity_base_commit": "b442be4b28f3720daff6c5f26fe8b1ab3aef28f1",
+  "aurora_baseline_commit": "f93a3416c60f26c68084134dc6c1d205becd5753",
+  "candidate_commit": "a5a5ba8f56c9ab9192bbe9d3e9ae006cdcca661f",
+  "source_commits": [
+    "c44269c508e7803cedf16b62056d27bc34060f95 arm64: port qualified M4 wait-state preservation to Gravity",
+    "dc28adf00c07843b3e6265d1c576dabbf34e574b platform/apple: port gated J614s peripheral diagnostics without T8132 aliases",
+    "c87d7552aa0d504e95f9fdb93296b2414dbddc33 drm/asahi: retain gated J614s transport diagnostic beside dormant Gravity GPU",
+    "a5a5ba8f56c9ab9192bbe9d3e9ae006cdcca661f rust: retain generated binding layout assertions for qualified builds"
+  ],
+  "config_sha256": "6c5aba7745d918c528300c5a395fcd7db0c2b718acda7d1467af2816a8d56516",
+  "files": [
+    {
+      "path": "arch/arm64/include/asm/apple-idle.h",
+      "gravity_base_sha256": null,
+      "aurora_f93_sha256": "fb7b1c8b6c4ce5e2054831987eb32fcaa8c3ab9444748ec7eeee9dbc25eb2501",
+      "candidate_sha256": "fb7b1c8b6c4ce5e2054831987eb32fcaa8c3ab9444748ec7eeee9dbc25eb2501",
+      "unchanged_from_gravity": false,
+      "identical_to_f93": true,
+      "changed_lines": {
+        "added": 8,
+        "removed": 0
+      }
+    },
+    {
+      "path": "arch/arm64/include/asm/cputype.h",
+      "gravity_base_sha256": "751dc2a650ebdf8437ab473b421493ecfd6cd75547d9eaa54a7d093cf81c0eb6",
+      "aurora_f93_sha256": "f1f494385fe2dc54d92b325feff40822f5030b9e4933144a8551cdc388c2c51a",
+      "candidate_sha256": "aeefbde07f3badf488f3c6753eb3a361625e2ed59db0652f9a7adf7c71248987",
+      "unchanged_from_gravity": false,
+      "identical_to_f93": false,
+      "changed_lines": {
+        "added": 7,
+        "removed": 0
+      }
+    },
+    {
+      "path": "arch/arm64/kernel/Makefile",
+      "gravity_base_sha256": "c9df69191de6b07f987dcfc6df14951275849f72efa6f5cf6769c56485613ade",
+      "aurora_f93_sha256": "83c84acd640d302cb5ab5a499b1583d0ef5cdcbbc66b7234cd82226107e1741a",
+      "candidate_sha256": "83c84acd640d302cb5ab5a499b1583d0ef5cdcbbc66b7234cd82226107e1741a",
+      "unchanged_from_gravity": false,
+      "identical_to_f93": true,
+      "changed_lines": {
+        "added": 2,
+        "removed": 0
+      }
+    },
+    {
+      "path": "arch/arm64/kernel/idle-apple.S",
+      "gravity_base_sha256": null,
+      "aurora_f93_sha256": "ae36d25beff91eecf643e7cbe5f9ce1112818461042213a1a8acd2ea618f019b",
+      "candidate_sha256": "ae36d25beff91eecf643e7cbe5f9ce1112818461042213a1a8acd2ea618f019b",
+      "unchanged_from_gravity": false,
+      "identical_to_f93": true,
+      "changed_lines": {
+        "added": 45,
+        "removed": 0
+      }
+    },
+    {
+      "path": "arch/arm64/kernel/idle.c",
+      "gravity_base_sha256": "c9ac8d3c236e0c7a5b4f3a1b0c179e26cda21622e4300b702b61908ddd25f3c0",
+      "aurora_f93_sha256": "d427fd7c5d734ee747a12b8cda1ef1a5f702c4abd1c779588322259350bea79c",
+      "candidate_sha256": "d427fd7c5d734ee747a12b8cda1ef1a5f702c4abd1c779588322259350bea79c",
+      "unchanged_from_gravity": false,
+      "identical_to_f93": true,
+      "changed_lines": {
+        "added": 46,
+        "removed": 2
+      }
+    },
+    {
+      "path": "arch/arm64/kernel/pi/idreg-override.c",
+      "gravity_base_sha256": "304251aede163cab648147a37ec4cb581253ad306a3d3fe8161c025225314061",
+      "aurora_f93_sha256": "21f9f0a84ee0a8ffb3540aa5d6bba9e19c225bb42507156b3a57bd66c1c42195",
+      "candidate_sha256": "4a6a71a924950c949598cef79f58267712a7d7e9b4b445f8fdb8faba82c5ca1f",
+      "unchanged_from_gravity": false,
+      "identical_to_f93": false,
+      "changed_lines": {
+        "added": 7,
+        "removed": 0
+      }
+    },
+    {
+      "path": "drivers/gpio/gpio-macsmc.c",
+      "gravity_base_sha256": "79b51ff34131c17a91d946bc8032af7c2156b60ccd1c4569609d023840d668ee",
+      "aurora_f93_sha256": "7f581053b62c061a3f75a8c0d34d13bd9ccdff6cdf10970efdd111424e2f2f1b",
+      "candidate_sha256": "7c7241e8a444ba37cf67e062085c7472c5815a07e3d94698dfac3898cc8af1e5",
+      "unchanged_from_gravity": false,
+      "identical_to_f93": false,
+      "changed_lines": {
+        "added": 52,
+        "removed": 0
+      }
+    },
+    {
+      "path": "drivers/gpu/drm/asahi/Kconfig",
+      "gravity_base_sha256": "d266f29834e5dab7504c75473cc40322c6937d0546874f5cddc876d049270e0a",
+      "aurora_f93_sha256": "7999cbdea950feb11e47a60eda8e549dc689c35282daba90c8536d7cbd90c691",
+      "candidate_sha256": "03b6f4dbe9c75b5dff7b436786420a4270381ea01a6f61e94b0a3cd7cdacfe14",
+      "unchanged_from_gravity": false,
+      "identical_to_f93": false,
+      "changed_lines": {
+        "added": 9,
+        "removed": 0
+      }
+    },
+    {
+      "path": "drivers/gpu/drm/asahi/Makefile",
+      "gravity_base_sha256": "ee49dd106391bae32d98d7847c205dc7fc79c786d16e250370509edbd1bf9d4f",
+      "aurora_f93_sha256": "d18ab9b2f55da3a0458759580a5e73b99a9457b6b64f026e12d46e8e3fc0e30a",
+      "candidate_sha256": "fda7c63df18514c6a4f965b54b4599fabf4b1d9d37096030eeaab3a623ce4435",
+      "unchanged_from_gravity": false,
+      "identical_to_f93": false,
+      "changed_lines": {
+        "added": 2,
+        "removed": 0
+      }
+    },
+    {
+      "path": "drivers/gpu/drm/asahi/g16-bootstrap.c",
+      "gravity_base_sha256": null,
+      "aurora_f93_sha256": "d41717fbfa02d1e1db8cba5e11060661f978b6d5122f5ce14586e798e9064878",
+      "candidate_sha256": "d41717fbfa02d1e1db8cba5e11060661f978b6d5122f5ce14586e798e9064878",
+      "unchanged_from_gravity": false,
+      "identical_to_f93": true,
+      "changed_lines": {
+        "added": 216,
+        "removed": 0
+      }
+    },
+    {
+      "path": "drivers/hid/dockchannel-hid/dockchannel-hid-protocol.h",
+      "gravity_base_sha256": null,
+      "aurora_f93_sha256": "afd67d2bd6f1e2f2a04e4cdb62f5be0581e06fe3a9dedd4d994a15c5422c1524",
+      "candidate_sha256": "afd67d2bd6f1e2f2a04e4cdb62f5be0581e06fe3a9dedd4d994a15c5422c1524",
+      "unchanged_from_gravity": false,
+      "identical_to_f93": true,
+      "changed_lines": {
+        "added": 55,
+        "removed": 0
+      }
+    },
+    {
+      "path": "drivers/hid/dockchannel-hid/dockchannel-hid.c",
+      "gravity_base_sha256": "591b3fa46d730cd732b87420a7f6c42eb834ac0c1d20f2b9b403d637c3aee6cd",
+      "aurora_f93_sha256": "11cf9849a65d330bfd77d81797633cb18f973ddde881c7decea829fda9d24906",
+      "candidate_sha256": "bd09c273fde7439180d4ae723935f0db1831d7d534e9e224584e8ca855190dd8",
+      "unchanged_from_gravity": false,
+      "identical_to_f93": false,
+      "changed_lines": {
+        "added": 126,
+        "removed": 5
+      }
+    },
+    {
+      "path": "drivers/nvme/host/apple.c",
+      "gravity_base_sha256": "4919e6d2556e1340191a18014b266ec6404b6541bad6bfeaed4cffe01b81bd76",
+      "aurora_f93_sha256": "32cfd7797be60250210f70783021eaf1a8fb9517c1c79fb3b4465ecb402f3dae",
+      "candidate_sha256": "526a57fd5c249f80cba1e7754be7c7b8ff11b7f5a088204f76a004e1d40b814b",
+      "unchanged_from_gravity": false,
+      "identical_to_f93": false,
+      "changed_lines": {
+        "added": 8,
+        "removed": 0
+      }
+    },
+    {
+      "path": "drivers/phy/apple/Kconfig",
+      "gravity_base_sha256": "99dae37e4af2d06626af9e41446292953d036bd3707d539b6f60891a45977c3f",
+      "aurora_f93_sha256": "addb2ccf6105afa35ee3767cc4daa6bf9c20c131d0dedeeba92592e017410212",
+      "candidate_sha256": "addb2ccf6105afa35ee3767cc4daa6bf9c20c131d0dedeeba92592e017410212",
+      "unchanged_from_gravity": false,
+      "identical_to_f93": true,
+      "changed_lines": {
+        "added": 18,
+        "removed": 0
+      }
+    },
+    {
+      "path": "drivers/phy/apple/Makefile",
+      "gravity_base_sha256": "e8a63be8b14b99b94a7c328bf7c24c691ae34743e1e743efa68d1f2e0c56b80e",
+      "aurora_f93_sha256": "ce1490b83eeac1c6ef76f1d7dc26e0625e0d5e74f4159dcb610a2a074b822742",
+      "candidate_sha256": "a244ee1d0035080c7b016bcce6eefb695a4b5bc3bbd22d6cb64dc93967581113",
+      "unchanged_from_gravity": false,
+      "identical_to_f93": false,
+      "changed_lines": {
+        "added": 3,
+        "removed": 0
+      }
+    },
+    {
+      "path": "drivers/phy/apple/usb2-j614s-host-diagnostic.c",
+      "gravity_base_sha256": null,
+      "aurora_f93_sha256": "9b9666b7dc1967e3568ff07d0698bf88e11942f36829d47995c34ef3d445cd81",
+      "candidate_sha256": "9b9666b7dc1967e3568ff07d0698bf88e11942f36829d47995c34ef3d445cd81",
+      "unchanged_from_gravity": false,
+      "identical_to_f93": true,
+      "changed_lines": {
+        "added": 105,
+        "removed": 0
+      }
+    },
+    {
+      "path": "drivers/phy/apple/usb2-t6040-inherited.c",
+      "gravity_base_sha256": null,
+      "aurora_f93_sha256": "3336440c840efab83eab479ab1e0665014bc26753b81e6e3a0f3317c617b5f03",
+      "candidate_sha256": "3336440c840efab83eab479ab1e0665014bc26753b81e6e3a0f3317c617b5f03",
+      "unchanged_from_gravity": false,
+      "identical_to_f93": true,
+      "changed_lines": {
+        "added": 149,
+        "removed": 0
+      }
+    },
+    {
+      "path": "drivers/power/supply/macsmc-power.c",
+      "gravity_base_sha256": "2be87df0c8253e93e035f09ae94da11954e00211b9c4d25465317fe5d1a6d2b8",
+      "aurora_f93_sha256": "6884d90afbb7b353370de270f0ed9c3ef1bbaf64aad27fa76245378429160b12",
+      "candidate_sha256": "9e94b2b354fae7fd22462dc9f9172057e452685a820386c9525b07ca0697537d",
+      "unchanged_from_gravity": false,
+      "identical_to_f93": false,
+      "changed_lines": {
+        "added": 27,
+        "removed": 11
+      }
+    },
+    {
+      "path": "drivers/soc/apple/rtkit.c",
+      "gravity_base_sha256": "4a3c96085d9157eab786cf5c40df9f96a9c64895d6e70f618eb7cd36cd11bba4",
+      "aurora_f93_sha256": "1fffe93cda36910162ff9fdc05046f27544b64c89f736e600c57fc367596bdfa",
+      "candidate_sha256": "05b47d29f3e066f250f103a8138e2cf64b55856e2a24dfa03b1a6b47e674927c",
+      "unchanged_from_gravity": false,
+      "identical_to_f93": false,
+      "changed_lines": {
+        "added": 6,
+        "removed": 0
+      }
+    },
+    {
+      "path": "include/linux/soc/apple/rtkit.h",
+      "gravity_base_sha256": "2324a53fc3bcc222005103b14d8c3f5ebe038ebf11196ef5e1c697472092849b",
+      "aurora_f93_sha256": "5aa6f899ed4e5a9cb2c76aff3264ab6a0c89953e51418013b52dfc76c3fc97ff",
+      "candidate_sha256": "2ed2cb69f7222c2a0fc324bfd1b1fe2afb890512e991a02471121412cd5b27fb",
+      "unchanged_from_gravity": false,
+      "identical_to_f93": false,
+      "changed_lines": {
+        "added": 3,
+        "removed": 0
+      }
+    },
+    {
+      "path": "rust/Makefile",
+      "gravity_base_sha256": "0dc1b2bb783b7788158e9f95cb2b53240ecef90f687e04b506aac6adda8309da",
+      "aurora_f93_sha256": "2b9cf984ff4b87a8bfc7f2c2c98ba357f3fc7fbd9bfab37437c820cb8489bfd2",
+      "candidate_sha256": "3bead1821d5b2b8f485aa591898675186f89df3ff733a5a97b4d563c2d837e68",
+      "unchanged_from_gravity": false,
+      "identical_to_f93": false,
+      "changed_lines": {
+        "added": 1,
+        "removed": 1
+      }
+    },
+    {
+      "path": "drivers/gpu/drm/apple/dcp.c",
+      "gravity_base_sha256": "dd6391dca62fb8bcdb8845f5aa7630370da0093f1446b6a011a47f054223779a",
+      "aurora_f93_sha256": "0cf96a4f719541f4235baacb40c543ede255614d92d197904fd8255b864661c0",
+      "candidate_sha256": "dd6391dca62fb8bcdb8845f5aa7630370da0093f1446b6a011a47f054223779a",
+      "unchanged_from_gravity": true,
+      "identical_to_f93": false,
+      "changed_lines": {
+        "added": 0,
+        "removed": 0
+      }
+    },
+    {
+      "path": "drivers/gpu/drm/apple/iomfb.c",
+      "gravity_base_sha256": "655332392f6f0f9622ef2151316e13ea872ef44609cd22d6711489a5c3ca0a70",
+      "aurora_f93_sha256": "89b87a3c2b748fcd8064e56cdf8feec9ea5336ad659d17a2fb89c3382014dc12",
+      "candidate_sha256": "655332392f6f0f9622ef2151316e13ea872ef44609cd22d6711489a5c3ca0a70",
+      "unchanged_from_gravity": true,
+      "identical_to_f93": false,
+      "changed_lines": {
+        "added": 0,
+        "removed": 0
+      }
+    },
+    {
+      "path": "drivers/watchdog/apple_wdt.c",
+      "gravity_base_sha256": "937beceb5183621e9241c3a9c1b7c63877b0d5f2da383759390593fd420a22ec",
+      "aurora_f93_sha256": "eb612e67087c479b3605293d2f268eede0fc2d311d041b082ee3c2e9011adf3a",
+      "candidate_sha256": "937beceb5183621e9241c3a9c1b7c63877b0d5f2da383759390593fd420a22ec",
+      "unchanged_from_gravity": true,
+      "identical_to_f93": false,
+      "changed_lines": {
+        "added": 0,
+        "removed": 0
+      }
+    },
+    {
+      "path": "drivers/power/reset/macsmc-reboot.c",
+      "gravity_base_sha256": "48b2149675960fb5bfe478a16ab82039abb14696167fe7f49d0f071efb4e9a17",
+      "aurora_f93_sha256": "48b2149675960fb5bfe478a16ab82039abb14696167fe7f49d0f071efb4e9a17",
+      "candidate_sha256": "48b2149675960fb5bfe478a16ab82039abb14696167fe7f49d0f071efb4e9a17",
+      "unchanged_from_gravity": true,
+      "identical_to_f93": true,
+      "changed_lines": {
+        "added": 0,
+        "removed": 0
+      }
+    },
+    {
+      "path": "drivers/gpu/drm/asahi/asahi_m4.rs",
+      "gravity_base_sha256": "83121b03dbdb164c793b4da092a39f7eeeacbddef22bfe2596f6abb0032307c4",
+      "aurora_f93_sha256": null,
+      "candidate_sha256": "83121b03dbdb164c793b4da092a39f7eeeacbddef22bfe2596f6abb0032307c4",
+      "unchanged_from_gravity": true,
+      "identical_to_f93": false,
+      "changed_lines": {
+        "added": 0,
+        "removed": 0
+      }
+    },
+    {
+      "path": "drivers/gpu/drm/asahi/g16.rs",
+      "gravity_base_sha256": "605f15066d3abb5e65da9fe9505e21d4e9e3725a342a7a8cd9fd61e3e1923677",
+      "aurora_f93_sha256": null,
+      "candidate_sha256": "605f15066d3abb5e65da9fe9505e21d4e9e3725a342a7a8cd9fd61e3e1923677",
+      "unchanged_from_gravity": true,
+      "identical_to_f93": false,
+      "changed_lines": {
+        "added": 0,
+        "removed": 0
+      }
+    },
+    {
+      "path": "drivers/gpu/drm/asahi/g16_platform.rs",
+      "gravity_base_sha256": "a051ce1add8bd67fb925637bffa578818b64601f115ee784f123123ef97de3e3",
+      "aurora_f93_sha256": null,
+      "candidate_sha256": "a051ce1add8bd67fb925637bffa578818b64601f115ee784f123123ef97de3e3",
+      "unchanged_from_gravity": true,
+      "identical_to_f93": false,
+      "changed_lines": {
+        "added": 0,
+        "removed": 0
+      }
+    },
+    {
+      "path": "drivers/gpu/drm/asahi/driver.rs",
+      "gravity_base_sha256": "7a81fbdbd582edff0d30346576d98d842a18977489300ac395928aab8b589a36",
+      "aurora_f93_sha256": "7688782c7c0502875b1df4290d6b49ad21d42c76d33c39449747e130e71eadcf",
+      "candidate_sha256": "7a81fbdbd582edff0d30346576d98d842a18977489300ac395928aab8b589a36",
+      "unchanged_from_gravity": true,
+      "identical_to_f93": false,
+      "changed_lines": {
+        "added": 0,
+        "removed": 0
+      }
+    },
+    {
+      "path": "arch/arm64/kernel/head.S",
+      "gravity_base_sha256": "db56887baf6cb87c24974609ffdb76ed5765a3756739c50a44384e384925977d",
+      "aurora_f93_sha256": "db56887baf6cb87c24974609ffdb76ed5765a3756739c50a44384e384925977d",
+      "candidate_sha256": "db56887baf6cb87c24974609ffdb76ed5765a3756739c50a44384e384925977d",
+      "unchanged_from_gravity": true,
+      "identical_to_f93": true,
+      "changed_lines": {
+        "added": 0,
+        "removed": 0
+      }
+    },
+    {
+      "path": "drivers/tty/serial/Kconfig",
+      "gravity_base_sha256": "6f6aa9ffcb48248852f5588b7cc5eedc5e62c9eed7e7797140b5f60c941e5416",
+      "aurora_f93_sha256": "5f538421a2e57bf12b6615b54c30878b7d2bf741dae809909804977a4c8f73a0",
+      "candidate_sha256": "6f6aa9ffcb48248852f5588b7cc5eedc5e62c9eed7e7797140b5f60c941e5416",
+      "unchanged_from_gravity": true,
+      "identical_to_f93": false,
+      "changed_lines": {
+        "added": 0,
+        "removed": 0
+      }
+    },
+    {
+      "path": "drivers/tty/serial/Makefile",
+      "gravity_base_sha256": "ba08d8cb5217781935fc51c168f6cb851849c679a3fe58b7745f8316fd449cb4",
+      "aurora_f93_sha256": "d171d1c96e19e3986228d9c4f4d5377b58c41e98664f33ce285cc8e7aabcb1d1",
+      "candidate_sha256": "ba08d8cb5217781935fc51c168f6cb851849c679a3fe58b7745f8316fd449cb4",
+      "unchanged_from_gravity": true,
+      "identical_to_f93": false,
+      "changed_lines": {
+        "added": 0,
+        "removed": 0
+      }
+    }
+  ],
+  "dts_changes": [],
+  "runtime_firmware_addresses_included": false,
+  "vendor_payloads_included": false,
+  "qualified_payload_modified": false,
+  "target_access": false,
+  "deployment_allowed": false,
+  "tree_ids": {
+    "arch/arm64/boot/dts/apple": {
+      "gravity_base": "78e9ae8d2b928f21d214bce73974410f9c86fdc0",
+      "candidate": "78e9ae8d2b928f21d214bce73974410f9c86fdc0"
+    },
+    "drivers/gpu/drm/apple": {
+      "gravity_base": "7c5155fd0767420f975866069975f680423afc46",
+      "candidate": "7c5155fd0767420f975866069975f680423afc46"
+    },
+    "drivers/watchdog": {
+      "gravity_base": "8b5f63233a4df20c419a159003743a0992492617",
+      "candidate": "8b5f63233a4df20c419a159003743a0992492617"
+    },
+    "drivers/power/reset": {
+      "gravity_base": "5bbe91b3ce7837045fc3b3110e8ebd38c22f0057",
+      "candidate": "5bbe91b3ce7837045fc3b3110e8ebd38c22f0057"
+    }
+  },
+  "components": [
+    {
+      "name": "CPU WFI/WFxT",
+      "origin": "1d78f77f80529c5323619a40b3280e82546ea841 and f93 saved-register assembly foundation",
+      "port_commit": "c44269c50",
+      "decision": "Gravity lacks the saved-register idle path. Add existing assembly/FP flush and post-bootargs WFxT override; retain Gravity Donan ECORE/PCORE constants.",
+      "prior_hardware": "WORKS in qualification/cpu-test51.json only; new source UNTESTED",
+      "candidate_hardware": "UNTESTED"
+    },
+    {
+      "name": "USB2 inherited device admission",
+      "origin": "89da66bffa21a4bdf7ca6628750b8c3cb746e0e5 / f93",
+      "port_commit": "dc28adf00",
+      "decision": "No Gravity equivalent. Copy read-only measured USB1 device-state admission, board/resource/property bounds unchanged; preserve general ATC/DPTX.",
+      "prior_hardware": "PARTIAL: prior USB1 gadget/proxy path; no broad Type-C support claim",
+      "candidate_hardware": "UNTESTED"
+    },
+    {
+      "name": "USB2 host diagnostic",
+      "origin": "867fae4ca94ba3b059e3c7065a3fc9c6accd256e",
+      "port_commit": "dc28adf00",
+      "decision": "Exact separate opt-in module retained. USB1 excluded; only measured USB0/USB2 host-role mask allowed, watchdog prerequisite.",
+      "prior_hardware": "UNTESTED for full role/hotplug qualification",
+      "candidate_hardware": "UNTESTED"
+    },
+    {
+      "name": "MTP and gp1c AFE reset",
+      "origin": "f93 power-method-2/firmware-reset ownership and archive867 diagnostics",
+      "port_commit": "dc28adf00",
+      "decision": "Preserve Gravity ring transport, admit only non-ring J614s power method2/reset path, gate board and pin28/key width. Keep newer ring unsupported on this board rather than add T8132 alias.",
+      "prior_hardware": "PARTIAL: qualification/STATUS.md reports pointer and keyboard observations; smoothness unqualified",
+      "candidate_hardware": "UNTESTED"
+    },
+    {
+      "name": "Battery telemetry",
+      "origin": "867fae4ca read_only control guard",
+      "port_commit": "dc28adf00",
+      "decision": "Port write guard and skip probe charging resets; force telemetry-only on J614s, preserving Gravity telemetry calculations and other-board default behavior.",
+      "prior_hardware": "WORKS within read-only qualification/battery-test42.txt scope",
+      "candidate_hardware": "UNTESTED"
+    },
+    {
+      "name": "NVMe / ANS",
+      "origin": "f93 apple-nvme inherited RTKit adoption compared with Gravity",
+      "port_commit": "dc28adf00",
+      "decision": "Do not copy newer full NVMe driver. First J614s alloc branch refuses before any allocation/power/MMIO/reset/RTKit; no fallback alias. Needs actual RTKit/adopted-endpoint, firmware-range/SART/DMA ownership port.",
+      "prior_hardware": "WORKS only for prior read-only qualification/storage-test52.txt / test56 zero-writes",
+      "candidate_hardware": "BLOCKED (inherited RTKit adoption missing; first checkpoint intentionally refuses)"
+    },
+    {
+      "name": "G16S transport bootstrap",
+      "origin": "4ff8816df8c4bc81b1652eca17fc8c0e9e1928cc plus f93/0fb65dbd66f9b91a43096ecbabd52b81f73bea5c crash latch",
+      "port_commit": "c87d7552a",
+      "decision": "Exact f93 driver unchanged; Gravity C RTKit transport reused, add missing read-only negotiated-version accessor. No DRM device or application INIT.",
+      "prior_hardware": "WORKS startup/quiesce in qualification/gpu-test56.json; crash race host regression separate",
+      "candidate_hardware": "UNTESTED"
+    },
+    {
+      "name": "Full GPU and DCP",
+      "origin": "Gravity b442be4b28f3720daff6c5f26fe8b1ab3aef28f1",
+      "port_commit": null,
+      "decision": "Existing full drivers unchanged and modular; no T6040 alias, firmware-body constants, new DT or activation. DCP modular direct-map export failure separately under review.",
+      "prior_hardware": "BLOCKED for T6040 native rendering/modesetting",
+      "candidate_hardware": "BLOCKED (T6040 handoff/firmware/INIT/job path unqualified)"
+    },
+    {
+      "name": "Reset/watchdog and early console",
+      "origin": "Gravity existing framework vs f93",
+      "port_commit": null,
+      "decision": "Reuse existing reset/watchdog source unchanged. No fixed-address early framebuffer code ported; head.S and serial build plumbing unchanged from Gravity. Normal early UART/firmware framebuffer handling retained.",
+      "prior_hardware": "PARTIAL/UNTESTED: independent recovery and reliable reboot remain prerequisites",
+      "candidate_hardware": "UNTESTED"
+    },
+    {
+      "name": "Rust binding validation",
+      "origin": "qualified corrected-bindgen build overlay",
+      "port_commit": "a5a5ba8f5",
+      "decision": "Remove upstream no-layout-tests as a committed source change; retain actual AArch64 generated size/alignment/offset assertions.",
+      "prior_hardware": "not a hardware claim",
+      "candidate_hardware": "UNTESTED"
+    }
+  ]
+}

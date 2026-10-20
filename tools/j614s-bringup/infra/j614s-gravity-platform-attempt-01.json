@@ -1,0 +1,120 @@
+{
+  "binding_layouts": {
+    "compiled_bindings_object_bytes": 249528,
+    "compiled_bindings_object_sha256": "fdc39ec6456600f02dbb4b99f531a752a9b3f388c8eef8787c7849fcde17bc69",
+    "const_layout_blocks": 3174,
+    "field_offset_checks": 16412,
+    "generated_bindings_sha256": "bcdf173207519674040e26876ebfe5040426e4cd830dddcda9a3d487ebfc8ad8",
+    "hardware_executed": false,
+    "layout_checks_disabled": false,
+    "status": "PASS",
+    "target": "aarch64-linux-gnu"
+  },
+  "compiler_exit": 2,
+  "config_normalization_diff_bytes": 0,
+  "config_sha256": "6c5aba7745d918c528300c5a395fcd7db0c2b718acda7d1467af2816a8d56516",
+  "error": "dockchannel-hid.c:278: of_node_put(iface->of_node) passes const struct device_node * to struct device_node *; -Werror,-Wincompatible-pointer-types-discards-qualifiers",
+  "failing_object": "drivers/hid/dockchannel-hid/dockchannel-hid.o",
+  "full_image_and_module_link": "UNTESTED: targeted object gate failed first",
+  "hardware": "UNTESTED",
+  "header": "include/linux/of.h:136",
+  "objects": [
+    {
+      "bytes": 3912,
+      "path": "arch/arm64/kernel/idle.o",
+      "sha256": "9d01b90c2548ad6d46fae40659f56faff32a81dc377426eb7b768dc6cf23c815"
+    },
+    {
+      "bytes": 584,
+      "path": "arch/arm64/kernel/idle-apple.o",
+      "sha256": "c3c5d7aefbc7b99355387512af38e919dc89b5ded76d9e501078c77d6d583ba3"
+    },
+    {
+      "bytes": 9504,
+      "path": "arch/arm64/kernel/pi/idreg-override.o",
+      "sha256": "006f00ade16f98936b3af79753482b7508950ac541ae7940a68b7f3b991562d9"
+    },
+    {
+      "bytes": 9656,
+      "path": "drivers/gpio/gpio-macsmc.o",
+      "sha256": "b6c1daa28bb8495ba266d507fe14f06ddeef309236cd57a9a4fa26bb1777b43a"
+    },
+    {
+      "bytes": 7488,
+      "path": "drivers/phy/apple/usb2-t6040-inherited.o",
+      "sha256": "a9fe2402f0a51c254b246fd5298d10ae8985ada67a23169965e2126f73b25ec6"
+    },
+    {
+      "bytes": 7184,
+      "path": "drivers/phy/apple/usb2-j614s-host-diagnostic.o",
+      "sha256": "1550e11bf934e65e15812c86163e4037ef0c2e9c25f6dd82627dc04326fd8351"
+    },
+    {
+      "bytes": 19440,
+      "path": "drivers/power/supply/macsmc-power.o",
+      "sha256": "0cfcf06fbda72f1badf5bb675e1488d4edb85d19878157c6ad4ba22e6eb5c963"
+    },
+    {
+      "bytes": 10776,
+      "path": "drivers/gpu/drm/asahi/g16-bootstrap.o",
+      "sha256": "ada3b574c6173dd18d243041cdfe95cbc074032fbec149d6edd4ea4191d04aa7"
+    },
+    {
+      "bytes": 33416,
+      "path": "drivers/nvme/host/apple.o",
+      "sha256": "21d41f3e2028d013dd8da55f5457773041e1b6e358fee8ed7b2ccb51f3d82e1e"
+    }
+  ],
+  "scope": "ELF64 AArch64 compilation only; ANS remains fail-closed for J614s, no peripheral/runtime support claim",
+  "source": {
+    "dirty_diff_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "head": "82b931a908746280edb4120fab78a3a060fc343e",
+    "untracked": {}
+  },
+  "source_observation": "Exact clean source state validated by qualifier before compilation; owner later advanced worktree to ccb0647c. Post-build source drift check was not reached because compilation failed. Next build uses separate pinned snapshot.",
+  "status": "PARTIAL (9 platform objects compiled; MTP blocked)",
+  "tools": {
+    "bc": {
+      "sha256": "7ae95c260622412ceba6eb9f45d68f616cdc091a1d71d6c0a08b5875bb2c31dd"
+    },
+    "bindgen": {
+      "sha256": "7fdf32940891781eb742fb4a69775a0b39de4a48d0a168dfb3f740fb547fceda"
+    },
+    "clang": {
+      "sha256": "6acc6d2f0fdbae93e4d3b622b7a0d42cd05b036146e14193d9df40d1c0977066"
+    },
+    "clang++": {
+      "sha256": "6acc6d2f0fdbae93e4d3b622b7a0d42cd05b036146e14193d9df40d1c0977066"
+    },
+    "ld.lld": {
+      "sha256": "a2aef2573bc0409403747456072c373523ebfea0d03a832520331a17e8ec65a5"
+    },
+    "llvm-ar": {
+      "sha256": "4a21fd61e18a1168dc449e1b5c495925c446775860d0d042b57dac1925e6f7ef"
+    },
+    "llvm-nm": {
+      "sha256": "943a52c986ca4d0e429b523efcf6b4bdd8c9bd90616f5781ede4ab32124f7227"
+    },
+    "llvm-objcopy": {
+      "sha256": "c03c694462c48b4f6f84d62dfff530cef3b539583dddf62681fb318e2f9ef151"
+    },
+    "llvm-objdump": {
+      "sha256": "5096b8e9b6937b7451891cb820f867e77bce1628fdd077ed95c55cb2145fb2eb"
+    },
+    "llvm-readelf": {
+      "sha256": "c1d5d7261aa2b25ba5ec4060dd873a6a9808d2912221f97aaf3478f00f3af743"
+    },
+    "llvm-strip": {
+      "sha256": "c03c694462c48b4f6f84d62dfff530cef3b539583dddf62681fb318e2f9ef151"
+    },
+    "make": {
+      "sha256": "9018663161af324a74326c035cfd05408cba13a26c1f6b801cf5f3195f2bee40"
+    },
+    "rustc": {
+      "sha256": "5eadaaf4fe086d76547b17dc3c1ba880d0082b93f7d8bc65612770da8e79fe8e"
+    },
+    "rustdoc": {
+      "sha256": "f22c571ca4f921e0ac7c2c466de30da574b9018690a3878167cb0ea72249ed7f"
+    }
+  }
+}

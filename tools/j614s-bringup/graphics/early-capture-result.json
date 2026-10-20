@@ -1,0 +1,24 @@
+{
+  "status": "COMPILED_AND_SYNTHETICALLY_REPLAYED",
+  "hardware_capture": "UNTESTED",
+  "xnu_trace": "UNTESTED",
+  "hardware_job": "UNTESTED",
+  "safe_to_publish_init": false,
+  "tests": {
+    "C_GCC": "PASS",
+    "C_Clang_ASan_fatal_UBSan": "PASS",
+    "python_synthetic_cases": 10,
+    "python_result": "PASS",
+    "source_installer_default": "NO_ATTACH",
+    "physical_access_performed": false
+  },
+  "source_sha256": {
+    "g16s_capture.h": "8147d92083e0212e569d8e096e22521cf01952f126f93ee1bbfd7b2cd6890003",
+    "g16s_capture_bridge.c": "969ec29858585ecd9f61305bd383d490f714138ac0d56fea4ef629811815ba43",
+    "g16s_early_capture.py": "f5c12ce934823b83339fc0329e52af27f3468b99ed6fbd25d5503a4612b7adc7",
+    "replay_early_capture.py": "875c76cf9d9845882d4832427492e01c46c3e514a053fc3f308a7f2471a194a0",
+    "capture_agx_j614s_early.py": "c9d712084b34a36044bfb9bd44b53de58aa0e4e3c5a1efd9f9bc666ece5f22fd",
+    "test_g16s_capture.c": "adaf433c92a45d72f415b8d2a0b408db626c5d4a557d388ef67d1bb35e4cac03",
+    "test_early_capture.py": "1e2dcfa4f3ac9b01b752037003ffe2fc1281144b5599de568012523862e82e1d"
+  }
+}

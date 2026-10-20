@@ -1,0 +1,30 @@
+{
+  "schema": 1,
+  "status": "UNTESTED on physical G16S",
+  "compiler_manifest": "compute-fixture/constant42.json",
+  "workgroups": [
+    1,
+    1,
+    1
+  ],
+  "local_size": [
+    256,
+    1,
+    1
+  ],
+  "ssbo_binding": 0,
+  "output_bytes": 1024,
+  "initial_u32": 2779096485,
+  "expected_u32": 42,
+  "u32_count": 256,
+  "byte_offset": "global_id.x * 4",
+  "other_resources": [],
+  "canaries": "Separate Linux BO/page or tracer validation; the Metal helper accesses only its owned1024-byte MTLBuffer. No surrounding-memory claim is fabricated.",
+  "acceptance": [
+    "real completed compute fence",
+    "all256 words changed from poison to42",
+    "independently owned BO/page canaries unchanged",
+    "no GPU/kernel fault",
+    "repeat after fresh qualified boot"
+  ]
+}

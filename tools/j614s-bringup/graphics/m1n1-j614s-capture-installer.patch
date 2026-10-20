@@ -1,0 +1,28 @@
+diff --git a/proxyclient/hv/capture_agx_j614s_early.py b/proxyclient/hv/capture_agx_j614s_early.py
+new file mode 100644
+--- /dev/null
++++ b/proxyclient/hv/capture_agx_j614s_early.py
+@@ -0,0 +1,23 @@
++# SPDX-License-Identifier: MIT
++"""Explicit capture installer for an approved J614s guest session.
++
++Adaptation point for published PUBLIC_neo_agx_bringup pre-init capture tools.
++Loading/executing this file only defines a function. It does not attach, boot,
++write firmware, send INIT, replay state or change a watchdog.
++"""
++import importlib.util
++from pathlib import Path
++
++
++def install_capture(hv, *, module_path, library_path, ram_ranges, output,
++                    approved_guest_session=False):
++    if not approved_guest_session:
++        raise ValueError("A separately approved guest session is required")
++    source = Path(module_path).resolve(strict=True)
++    spec = importlib.util.spec_from_file_location("j614s_capture_module", source)
++    if spec is None or spec.loader is None:
++        raise ValueError("Capture module could not be loaded")
++    module = importlib.util.module_from_spec(spec)
++    spec.loader.exec_module(module)
++    return module.attach(hv, ram_ranges=ram_ranges, library=library_path,
++                         output=output, approved_guest_session=True)

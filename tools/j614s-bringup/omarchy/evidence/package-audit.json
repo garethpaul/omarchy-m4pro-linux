@@ -281,9 +281,9 @@
             }
           ],
           "repository_candidate": {
-            "repository": "omarchy",
-            "name": "omarchy-chromium-bin",
-            "version": "148.0.7778.96-22",
+            "repository": "extra",
+            "name": "chromium",
+            "version": "153.0.8010.36-1",
             "architecture": "aarch64"
           }
         },
@@ -1829,9 +1829,9 @@
             }
           ],
           "repository_candidate": {
-            "repository": "omarchy",
-            "name": "omarchy-power-profiles-daemon",
-            "version": "0.30-3",
+            "repository": "extra",
+            "name": "power-profiles-daemon",
+            "version": "0.30-1",
             "architecture": "aarch64"
           }
         },
@@ -2237,9 +2237,9 @@
           ],
           "repository_candidate": {
             "repository": "extra",
-            "name": "tealdeer",
-            "version": "1.9.0-1",
-            "architecture": "aarch64"
+            "name": "tldr",
+            "version": "3.4.4-1",
+            "architecture": "any"
           }
         },
         {
@@ -2778,9 +2778,9 @@
             }
           ],
           "repository_candidate": {
-            "repository": "omarchy",
-            "name": "aurora-bless",
-            "version": "0.4.4.aurora2-1",
+            "repository": "asahi-alarm",
+            "name": "asahi-bless",
+            "version": "0.4.2-1",
             "architecture": "aarch64"
           }
         },
@@ -2853,9 +2853,9 @@
             }
           ],
           "repository_candidate": {
-            "repository": "omarchy",
-            "name": "alsa-ucm-conf-aurora",
-            "version": "10.aurora2-1",
+            "repository": "asahi-alarm",
+            "name": "alsa-ucm-conf-asahi",
+            "version": "10-1",
             "architecture": "any"
           }
         },
@@ -2939,8 +2939,8 @@
           ],
           "repository_candidate": {
             "repository": "omarchy",
-            "name": "aura",
-            "version": "0.1.0.r20261014-2",
+            "name": "m1n1-aurora",
+            "version": "1.6.1.aurora1-3",
             "architecture": "aarch64"
           }
         },
@@ -2955,9 +2955,9 @@
             }
           ],
           "repository_candidate": {
-            "repository": "omarchy",
-            "name": "mesa-aurora",
-            "version": "1:26.3.0_devel.20261017.af3d9c6fc84-2",
+            "repository": "extra",
+            "name": "mesa",
+            "version": "1:26.2.5-1",
             "architecture": "aarch64"
           }
         },
@@ -3244,9 +3244,9 @@
             }
           ],
           "repository_candidate": {
-            "repository": "omarchy",
-            "name": "omarchy-chromium-bin",
-            "version": "148.0.7778.96-22",
+            "repository": "extra",
+            "name": "chromium",
+            "version": "153.0.8010.36-1",
             "architecture": "aarch64"
           }
         },
@@ -4740,9 +4740,9 @@
             }
           ],
           "repository_candidate": {
-            "repository": "omarchy",
-            "name": "omarchy-power-profiles-daemon",
-            "version": "0.30-3",
+            "repository": "extra",
+            "name": "power-profiles-daemon",
+            "version": "0.30-1",
             "architecture": "aarch64"
           }
         },
@@ -5064,9 +5064,9 @@
           ],
           "repository_candidate": {
             "repository": "extra",
-            "name": "tealdeer",
-            "version": "1.9.0-1",
-            "architecture": "aarch64"
+            "name": "tldr",
+            "version": "3.4.4-1",
+            "architecture": "any"
           }
         },
         {

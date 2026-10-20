@@ -1,0 +1,22 @@
+{
+  "scope": "Copies of actual newly compiled artifacts; qualified originals unchanged",
+  "source_image_sha256": "f7be0d5a6ceb07a43e47a1e41a2fe66e33b2a584c54bab30e479a5dd1b15f96c",
+  "status": "PASS",
+  "tests": [
+    {
+      "reason": "Artifact checksum mismatch: Image",
+      "status": "PASS (rejected)",
+      "test": "tampered actual Image"
+    },
+    {
+      "reason": "Artifact config does not match build contract",
+      "status": "PASS (rejected)",
+      "test": "changed actual config with refreshed artifact hashes"
+    },
+    {
+      "reason": "Module release does not match Image: modules/drivers/gpu/drm/asahi/asahi_m4.ko",
+      "status": "PASS (rejected)",
+      "test": "mixed module release with refreshed artifact hash"
+    }
+  ]
+}

@@ -28,7 +28,13 @@ not a duplicate model. It verifies bit-identical legacy root/main output and
 passes the new envelope output through the existing C decoders. The pointer
 fixture is synthetic; both inspector outputs explicitly reject a hardware
 qualification or permission to publish INIT. `gravity-port-result.json` records
-source hashes and results. Full kernel-module build qualification is separate.
+source hashes and results. The complete `asahi_m4` AArch64 crate also compiled in the isolated build lane;
+`gravity-crate-result.json` records the object and all layout checks. Its source
+snapshot removes the upstream `--no-layout-tests` flag, retaining 3,170 layout
+blocks and 16,284 field-offset checks with qualified bindgen. The three unused
+candidate-method warnings correctly reflect that runtime callers remain closed;
+no warning suppression was added to that kernel build. Module linking, firmware
+execution and target boot remain UNTESTED.
 
 ```sh
 make -C graphics all test

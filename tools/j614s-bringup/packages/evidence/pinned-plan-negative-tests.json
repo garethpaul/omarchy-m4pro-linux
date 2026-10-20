@@ -1,0 +1,35 @@
+{
+  "schema": 1,
+  "status": "WORKS",
+  "source_commit": "4941c67dbab65ec9bd903c337863c10a51741542",
+  "checks": [
+    {
+      "case": "control",
+      "accepted": true,
+      "selected_count": 117,
+      "failure": null,
+      "network_or_install_actions": []
+    },
+    {
+      "case": "protected selection",
+      "accepted": false,
+      "selected_count": null,
+      "failure": "protected boot/system/graphics selection: linux-aurora",
+      "network_or_install_actions": []
+    },
+    {
+      "case": "wrong architecture",
+      "accepted": false,
+      "selected_count": null,
+      "failure": "architecture rejected",
+      "network_or_install_actions": []
+    },
+    {
+      "case": "wrong payload digest",
+      "accepted": false,
+      "selected_count": null,
+      "failure": "plan/DB identity mismatch: sha256",
+      "network_or_install_actions": []
+    }
+  ]
+}

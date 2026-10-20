@@ -141,3 +141,8 @@ qualify a firmware graph or permit application INIT.
 Gravity driver, the corrected same-build G16G/G16S comparison, and the first
 compute-job acceptance target. The original serializer mismatch remains a
 reproduced fact; it is not an end-to-end failure claim for all published stacks.
+
+[EARLY-CAPTURE.md](EARLY-CAPTURE.md) provides the capture-only adaptation and
+offline replay for the earliest native INIT and first Gravity-kick candidate.
+It remains untested on the physical target and performs no boot or firmware
+initialization by default.

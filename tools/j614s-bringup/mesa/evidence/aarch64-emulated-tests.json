@@ -1,0 +1,49 @@
+{
+  "status": "WORKS for emulated target userspace tests",
+  "qemu_version": "11.1.2",
+  "qemu_package_sha256": "e2a0e8a6c65768c9f9b0e47ccf701b4dca03f9f97cda093dc1c0ddf4b23a67c4",
+  "qemu_binary_sha256": "66bdc286fd30970a1c3d2029b460605a3dc843ed6b397f4cd9825f9c19551507",
+  "hardware_gpu_execution": "UNTESTED",
+  "suites": [
+    {
+      "binary": "agx_tests",
+      "elf_machine": "AArch64",
+      "sha256": "9bc5dc347a9ba9de1e115d7de28e7ad94a5b63c65eb04e1a62549866ab3068ab",
+      "execution": "QEMU user-mode on x86_64; not physical M4",
+      "exit": 0,
+      "test_cases_passed": 366
+    },
+    {
+      "binary": "agx_apple9_launcher_tests",
+      "elf_machine": "AArch64",
+      "sha256": "b923460f237230f71a6ef703b3990124ad2b10019d2a0a67c39f241624bf9f8c",
+      "execution": "QEMU user-mode on x86_64; not physical M4",
+      "exit": 0,
+      "test_cases_passed": 10
+    },
+    {
+      "binary": "agx_apple9_geometry_tests",
+      "elf_machine": "AArch64",
+      "sha256": "56ef3e6c9325eae7bcfc6d8faab4bda5f3df60a2383ca526d3a1ad3718e42a25",
+      "execution": "QEMU user-mode on x86_64; not physical M4",
+      "exit": 0,
+      "test_cases_passed": 5
+    },
+    {
+      "binary": "agx_apple9_compute_fixture_tests",
+      "elf_machine": "AArch64",
+      "sha256": "188c67c1b025d823bfb6f203cd8d3de9af6e2e1e65785bd5a86e98c07cfe4593",
+      "execution": "QEMU user-mode on x86_64; not physical M4",
+      "exit": 0,
+      "test_cases_passed": 3
+    },
+    {
+      "binary": "agx_apple9_runtime_model_tests",
+      "elf_machine": "AArch64",
+      "sha256": "6c0874a439dba3ac921061ae2f5bdb4bf55e964e5bcb6147d747ef8593f9800c",
+      "execution": "QEMU user-mode on x86_64; not physical M4",
+      "exit": 0,
+      "test_cases_passed": 3
+    }
+  ]
+}

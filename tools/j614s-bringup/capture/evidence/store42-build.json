@@ -1,0 +1,18 @@
+{
+  "builder_model": "MacBookPro18,3",
+  "builder_architecture": "arm64",
+  "macos_version": "26.5.2",
+  "sdk_version": "26.5",
+  "compiler_version": "Apple clang version 21.0.0 (clang-2100.1.1.101)",
+  "source_sha256": "ad8771fdf05213a1db94a7982329088531783da63533726d5914e8bf33da98b8",
+  "binary_sha256": "a7ac6e4b38630f7d6cadfc3b5a4ef2587362a1280101ae5101321cd9798db2f6",
+  "codesign_verify_exit": 0,
+  "mach_o_build": "build/compute-trigger:\nLoad command 11\n      cmd LC_BUILD_VERSION\n  cmdsize 32\n platform MACOS\n    minos 13.0\n      sdk 26.5\n   ntools 1\n     tool LD\n  version 1267.0",
+  "schema": 1,
+  "status": "WORKS (store42/XOR builder compile/link only)",
+  "compiler_command": "xcrun --sdk macosx clang -arch arm64 -mmacosx-version-min=13.0 -std=c11 -O2 -Wall -Wextra -Werror -fobjc-arc -fblocks -framework Metal -framework Foundation compute_trigger.m -o build/compute-trigger",
+  "codesign_verify_command": "codesign --verify --strict build/compute-trigger",
+  "target_execution": "UNTESTED",
+  "target_access": false,
+  "installation": false
+}

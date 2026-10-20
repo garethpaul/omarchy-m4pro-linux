@@ -1,0 +1,74 @@
+{
+  "status": "WORKS for AArch64 cross-build; physical-target runtime UNTESTED",
+  "compiler": "clang23.1.3 target aarch64-unknown-linux-gnu",
+  "linker": "LLD21.1.2",
+  "sysroot": "existing saved ALARM sysroot; never accessed target",
+  "sysroot_fingerprints": {
+    "usr/include/stdio.h": "7b9d4ea5a3d988998113785f389c635428dbfd25f503197d81688ec9ef0149fa",
+    "usr/lib/libc.so.6": "6ab264fb4e8df9942b0fb75b48fcd5c30b2f081d8dfaa6c25d7be1d3fce5b2ab",
+    "usr/lib/ld-linux-aarch64.so.1": "b1f2738bdb51e6419d7062f96c8a44bd68853698dc5ac624fa6ca9f9b03d456d"
+  },
+  "elf_artifacts": [
+    {
+      "artifact": "src/asahi/compiler/agx_apple9_tiny_tool",
+      "sha256": "852713c9404759eaedafe94c73618636eb4b80e73bfae1f99940835ac7d092bc",
+      "ELF_machine": "AArch64"
+    },
+    {
+      "artifact": "src/gallium/drivers/asahi/agx_apple9_compute_fixture_tool",
+      "sha256": "9eeb258a3362e4e4a9cfe2c3334d08c090ab772d45e40a97abf0b965eaa16c04",
+      "ELF_machine": "AArch64"
+    },
+    {
+      "artifact": "src/asahi/lib/libasahi_lib.a.p/agx_device.c.o",
+      "sha256": "b62aac2e82150fb279f0d8d5a7766930b0e81378c415b74e326321e17b281675",
+      "ELF_machine": "AArch64"
+    }
+  ],
+  "fixture_comparison": [
+    {
+      "component": "shader.bin",
+      "x86_64_and_aarch64_byte_identical": true,
+      "sha256": "4f522bac5ffca27e17fed15eabe1507291f1f73fc925f94f17a279f1196fc276"
+    },
+    {
+      "component": "entries.bin",
+      "x86_64_and_aarch64_byte_identical": true,
+      "sha256": "9f54a1b013e3f7bc1c1456659de2ef3712510a84f9d18530d586ef6263325585"
+    },
+    {
+      "component": "resources.bin",
+      "x86_64_and_aarch64_byte_identical": true,
+      "sha256": "ba07c160207739b99cab515f94bbee9eb22bf8db2c5d7d8928e5b963f342ddf8"
+    },
+    {
+      "component": "launch.bin",
+      "x86_64_and_aarch64_byte_identical": true,
+      "sha256": "60d1e0ff1bf8e22f1a8e2b8ad9b80cfe9ad635c5e38012f6ae55053a8ac03cf5"
+    },
+    {
+      "component": "cdm.bin",
+      "x86_64_and_aarch64_byte_identical": true,
+      "sha256": "74f205496cf7e3e1bdecadccd9356b72c6d12c5f890c6a1690de7bacf093ccda"
+    },
+    {
+      "component": "expected.bin",
+      "x86_64_and_aarch64_byte_identical": true,
+      "sha256": "68d5f87429043315cd7574f57eebbd3a16f2ab69ea58eb6c75b531035f311ed3"
+    },
+    {
+      "component": "json",
+      "x86_64_and_aarch64_byte_identical": true,
+      "sha256": "17ccfa307e8f9c0f644841432f21d44357054b35c79c1e8996965c2d55504fee"
+    }
+  ],
+  "native_codegen": "Existing x86_64 mesa_clc,vtn_bindgen2,asahi_clc; no targetLLVM dependency required",
+  "configuration": {
+    "mesa-clc": "system",
+    "precomp-compiler": "system",
+    "llvm": "disabled in target build; AGX native compiler remains enabled"
+  },
+  "hardware_gpu_execution": "UNTESTED",
+  "mesa_source_commit": "86c4942d3cd8f29890d333956cce8b53cc7dd771",
+  "emulated_test_cases_passed": 387
+}

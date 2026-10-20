@@ -1,0 +1,24 @@
+Running main() from ../src/gtest/src/gtest_main.cc
+Note: Google Test filter = Apple9ComputeFixture.RejectsWrongApertureOrAlignment
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from Apple9ComputeFixture
+[ RUN      ] Apple9ComputeFixture.RejectsWrongApertureOrAlignment
+../src/gallium/drivers/asahi/test/test-apple9-compute-fixture.cpp:110: Failure
+Value of: agx_apple9_build_compute_fixture(&out, &a, &p)
+  Actual: true
+Expected: false
+../src/gallium/drivers/asahi/test/test-apple9-compute-fixture.cpp:110: Failure
+Value of: agx_apple9_build_compute_fixture(&out, &a, &p)
+  Actual: true
+Expected: false
+[  FAILED  ] Apple9ComputeFixture.RejectsWrongApertureOrAlignment (0 ms)
+[----------] 1 test from Apple9ComputeFixture (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 0 tests.
+[  FAILED  ] 1 test, listed below:
+[  FAILED  ] Apple9ComputeFixture.RejectsWrongApertureOrAlignment
+
+ 1 FAILED TEST

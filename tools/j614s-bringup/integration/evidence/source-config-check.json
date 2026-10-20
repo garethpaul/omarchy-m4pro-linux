@@ -1,0 +1,11 @@
+{
+  "status": "WORKS (source/config invariants only)",
+  "source_commit": "a5a5ba8f56c9ab9192bbe9d3e9ae006cdcca661f",
+  "config_sha256": "6c5aba7745d918c528300c5a395fcd7db0c2b718acda7d1467af2816a8d56516",
+  "hardware": "UNTESTED",
+  "storage": "BLOCKED (inherited RTKit adoption not ported in this checkpoint)",
+  "gpu_rendering": "BLOCKED (no qualified T6040 application INIT/job path)",
+  "native_display": "BLOCKED (T6040 handoff/firmware unqualified)",
+  "deployment_allowed": false,
+  "target_access": false
+}

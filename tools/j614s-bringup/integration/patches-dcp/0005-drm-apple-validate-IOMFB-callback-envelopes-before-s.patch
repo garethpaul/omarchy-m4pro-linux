@@ -1,0 +1,186 @@
+From 53ceaf8bacb113c470f89a40f87c4bb5c6b9b9fd Mon Sep 17 00:00:00 2001
+From: gareth jones <gareth@garethpaul.com>
+Date: Mon, 19 Oct 2026 22:27:55 -0700
+Subject: [PATCH 5/7] drm/apple: validate IOMFB callback envelopes before
+ shared-buffer access
+
+---
+ drivers/gpu/drm/apple/iomfb-packet.h          | 42 ++++++++++++++
+ drivers/gpu/drm/apple/iomfb.c                 | 56 ++++++++++++++-----
+ drivers/gpu/drm/apple/iomfb_internal.h        |  2 +-
+ .../selftests/drivers/apple-dcp/Makefile      |  2 +-
+ .../drivers/apple-dcp/iomfb-packet.c          | 26 +++++++++
+ 5 files changed, 112 insertions(+), 16 deletions(-)
+ create mode 100644 drivers/gpu/drm/apple/iomfb-packet.h
+ create mode 100644 tools/testing/selftests/drivers/apple-dcp/iomfb-packet.c
+
+diff --git a/drivers/gpu/drm/apple/iomfb-packet.h b/drivers/gpu/drm/apple/iomfb-packet.h
+new file mode 100644
+index 000000000..111f29318
+--- /dev/null
++++ b/drivers/gpu/drm/apple/iomfb-packet.h
+@@ -0,0 +1,42 @@
++/* SPDX-License-Identifier: GPL-2.0-only OR MIT */
++#ifndef __APPLE_IOMFB_PACKET_H__
++#define __APPLE_IOMFB_PACKET_H__
++
++#include <linux/types.h>
++
++/* Each IOMFB context has a separate 32 KiB window in the shared buffer. */
++#define IOMFB_CHANNEL_SIZE 0x8000U
++#define IOMFB_PACKET_HEADER_SIZE 12U
++#define IOMFB_PACKET_ALIGNMENT 0x40U
++
++/* Check before reading the shared header. Include the aligned end because it
++ * becomes the starting offset of a nested call. Subtractions avoid overflow.
++ */
++static inline bool iomfb_packet_bounds_valid(u32 offset, u32 length)
++{
++	u32 available;
++
++	if (offset > IOMFB_CHANNEL_SIZE || length < IOMFB_PACKET_HEADER_SIZE)
++		return false;
++
++	available = IOMFB_CHANNEL_SIZE - offset;
++	if (length > available)
++		return false;
++
++	return ((length + IOMFB_PACKET_ALIGNMENT - 1) &
++		~(IOMFB_PACKET_ALIGNMENT - 1)) <= available;
++}
++
++/* The wire length includes the header, input and reserved output bytes.
++ * This validates the envelope, not the callback-specific structure sizes.
++ */
++static inline bool iomfb_packet_lengths_valid(u32 length, u32 in_len, u32 out_len)
++{
++	if (length < IOMFB_PACKET_HEADER_SIZE ||
++	    in_len > length - IOMFB_PACKET_HEADER_SIZE)
++		return false;
++
++	return out_len == length - IOMFB_PACKET_HEADER_SIZE - in_len;
++}
++
++#endif
+diff --git a/drivers/gpu/drm/apple/iomfb.c b/drivers/gpu/drm/apple/iomfb.c
+index a90b4d5b6..0e5d2309e 100644
+--- a/drivers/gpu/drm/apple/iomfb.c
++++ b/drivers/gpu/drm/apple/iomfb.c
+@@ -29,0 +30 @@
++#include "iomfb-packet.h"
+@@ -32,0 +34,3 @@
++static_assert(sizeof(struct dcp_packet_header) == IOMFB_PACKET_HEADER_SIZE);
++static_assert(DCP_PACKET_ALIGNMENT == IOMFB_PACKET_ALIGNMENT);
++
+@@ -201 +205 @@ void dcp_push(struct apple_dcp *dcp, bool oob, const struct dcp_method_entry *ca
+-int dcp_parse_tag(char tag[4])
++int dcp_parse_tag(const char tag[4])
+@@ -267 +271,2 @@ static void dcpep_handle_cb(struct apple_dcp *dcp, enum dcp_context_id context,
+-			    void *data, u32 length, u16 offset)
++			    void *data, const struct dcp_packet_header *hdr,
++			    u32 length, u16 offset)
+@@ -270 +274,0 @@ static void dcpep_handle_cb(struct apple_dcp *dcp, enum dcp_context_id context,
+-	struct dcp_packet_header *hdr = data;
+@@ -275,0 +280,5 @@ static void dcpep_handle_cb(struct apple_dcp *dcp, enum dcp_context_id context,
++	if (!ch || ch->depth >= DCP_MAX_CALL_DEPTH) {
++		dev_warn(dev, "callback call stack exhausted on context %u\n", context);
++		return;
++	}
++
+@@ -299,2 +308 @@ static void dcpep_handle_cb(struct apple_dcp *dcp, enum dcp_context_id context,
+-static void dcpep_handle_ack(struct apple_dcp *dcp, enum dcp_context_id context,
+-			     void *data, u32 length)
++static void dcpep_handle_ack(struct apple_dcp *dcp, enum dcp_context_id context)
+@@ -302 +309,0 @@ static void dcpep_handle_ack(struct apple_dcp *dcp, enum dcp_context_id context,
+-	struct dcp_packet_header *header = data;
+@@ -304 +311 @@ static void dcpep_handle_ack(struct apple_dcp *dcp, enum dcp_context_id context,
+-	void *cookie;
++	void *cookie, *output;
+@@ -307,2 +314,2 @@ static void dcpep_handle_ack(struct apple_dcp *dcp, enum dcp_context_id context,
+-	if (!ch) {
+-		dev_warn(dcp->dev, "ignoring ack on context %X\n", context);
++	if (!ch || !ch->depth) {
++		dev_warn(dcp->dev, "ignoring unsolicited ack on context %X\n", context);
+@@ -311,0 +319,2 @@ static void dcpep_handle_ack(struct apple_dcp *dcp, enum dcp_context_id context,
++	/* Firmware output must be visible before the completion reads it. */
++	dma_rmb();
+@@ -315,0 +325 @@ static void dcpep_handle_ack(struct apple_dcp *dcp, enum dcp_context_id context,
++	output = ch->output[ch->depth];
+@@ -321 +331 @@ static void dcpep_handle_ack(struct apple_dcp *dcp, enum dcp_context_id context,
+-		cb(dcp, data + sizeof(*header) + header->in_len, cookie);
++		cb(dcp, output, cookie);
+@@ -329,0 +340 @@ static void dcpep_got_msg(struct apple_dcp *dcp, u64 message)
++	struct dcp_packet_header header;
+@@ -342,0 +354,12 @@ static void dcpep_got_msg(struct apple_dcp *dcp, u64 message)
++	/* ACKs carry no packet. The outstanding host call owns its output pointer. */
++	if (FIELD_GET(IOMFB_MSG_ACK, message)) {
++		dcpep_handle_ack(dcp, ctx_id);
++		return;
++	}
++
++	if (!iomfb_packet_bounds_valid(offset, length)) {
++		dev_warn(dcp->dev, "invalid callback range context %u offset %u length %u\n",
++			 ctx_id, offset, length);
++		return;
++	}
++
+@@ -348,4 +371,9 @@ static void dcpep_got_msg(struct apple_dcp *dcp, u64 message)
+-	if (FIELD_GET(IOMFB_MSG_ACK, message))
+-		dcpep_handle_ack(dcp, ctx_id, data, length);
+-	else
+-		dcpep_handle_cb(dcp, ctx_id, data, length, offset);
++	/* Keep validated lengths local; do not reread mutable shared fields. */
++	memcpy(&header, data, sizeof(header));
++	if (!iomfb_packet_lengths_valid(length, header.in_len, header.out_len)) {
++		dev_warn(dcp->dev, "invalid callback envelope context %u length %u in %u out %u\n",
++			 ctx_id, length, header.in_len, header.out_len);
++		return;
++	}
++
++	dcpep_handle_cb(dcp, ctx_id, data, &header, length, offset);
+diff --git a/drivers/gpu/drm/apple/iomfb_internal.h b/drivers/gpu/drm/apple/iomfb_internal.h
+index 75e9d7b0e..f1ffca96a 100644
+--- a/drivers/gpu/drm/apple/iomfb_internal.h
++++ b/drivers/gpu/drm/apple/iomfb_internal.h
+@@ -108 +108 @@ void dcp_push(struct apple_dcp *dcp, bool oob, const struct dcp_method_entry *ca
+-int dcp_parse_tag(char tag[4]);
++int dcp_parse_tag(const char tag[4]);
+diff --git a/tools/testing/selftests/drivers/apple-dcp/Makefile b/tools/testing/selftests/drivers/apple-dcp/Makefile
+index 6e4abdb56..54c94bd20 100644
+--- a/tools/testing/selftests/drivers/apple-dcp/Makefile
++++ b/tools/testing/selftests/drivers/apple-dcp/Makefile
+@@ -3 +3 @@ CFLAGS += -Wall -Wextra -O2 -I../../../../../drivers/gpu/drm/apple
+-TEST_GEN_PROGS := afk-fragment
++TEST_GEN_PROGS := afk-fragment iomfb-packet
+diff --git a/tools/testing/selftests/drivers/apple-dcp/iomfb-packet.c b/tools/testing/selftests/drivers/apple-dcp/iomfb-packet.c
+new file mode 100644
+index 000000000..d17393b4a
+--- /dev/null
++++ b/tools/testing/selftests/drivers/apple-dcp/iomfb-packet.c
+@@ -0,0 +1,26 @@
++// SPDX-License-Identifier: GPL-2.0-only OR MIT
++#include <assert.h>
++#include <stdbool.h>
++#include <stdint.h>
++#include <stdio.h>
++typedef uint32_t u32;
++#include "iomfb-packet.h"
++
++int main(void)
++{
++	assert(iomfb_packet_bounds_valid(0, 12));
++	assert(iomfb_packet_bounds_valid(0x7fc0, 64));
++	assert(!iomfb_packet_bounds_valid(0, 11));
++	assert(!iomfb_packet_bounds_valid(0x8000, 12));
++	assert(!iomfb_packet_bounds_valid(0x7fc0, 65));
++	assert(!iomfb_packet_bounds_valid(UINT32_MAX, 12));
++	assert(!iomfb_packet_bounds_valid(0, UINT32_MAX));
++	assert(iomfb_packet_lengths_valid(12, 0, 0));
++	assert(iomfb_packet_lengths_valid(64, 4, 48));
++	assert(!iomfb_packet_lengths_valid(12, 0, 0x8000));
++	assert(!iomfb_packet_lengths_valid(12, UINT32_MAX, 1));
++	assert(!iomfb_packet_lengths_valid(11, 0, 0));
++	assert(!iomfb_packet_lengths_valid(16, 0, 0));
++	puts("IOMFB callback envelope boundaries passed");
++	return 0;
++}

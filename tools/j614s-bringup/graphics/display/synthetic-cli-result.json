@@ -1,0 +1,28 @@
+{
+  "scope": "Offline transcript envelope/source-contract comparison only",
+  "status": "WORKS_OFFLINE_SUBSET_ONLY",
+  "hardware_tested": false,
+  "safe_to_enable_t6040_dcp": false,
+  "capture_provenance": "Caller-supplied provenance; actual loaded firmware and capture coherence require independent qualification",
+  "packets": 2,
+  "incomplete_calls": 0,
+  "first_unsupported_contract": null,
+  "unsupported_contracts": [],
+  "calls": [
+    {
+      "line": 1,
+      "tag": "D006",
+      "input": 84,
+      "output": 80,
+      "channel": "CB",
+      "envelope": "VALID",
+      "complete": true,
+      "offset": 0,
+      "aligned_end": 192,
+      "source_contract": "MATCH"
+    }
+  ],
+  "source_commit": "8e27e3edbf57903da4d62ab52f3b77df23801772",
+  "source_header_sha256": "d054447de8897e4493ef2b5957b6b48197589ff478937080a7317f3b7f35da75",
+  "transcript_sha256": "faa2e58f19f9c00c2edf660142fac23d4f26d2dc85ea8abe255fb7d19bc4aacf"
+}

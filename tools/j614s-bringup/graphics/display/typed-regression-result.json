@@ -1,0 +1,33 @@
+{
+  "scope": "Actual D006 handler/types/TRAMPOLINE_INOUT and actual receive functions, host Linux boundaries",
+  "baseline_commit": "8e27e3edbf57903da4d62ab52f3b77df23801772",
+  "hardware_tested": false,
+  "runs": [
+    {
+      "name": "baseline",
+      "source_sha256": "01e6b976c4e5594b8204fad9955db35a7dbc9f63e5bbe737d30bc94c08d48558",
+      "typed_handler_sha256": "92ee7db7534c13bb10ddc42eca280eb4a41592dd7a68a3fb0d5b8f64129f5a6b",
+      "output": [
+        "REPRODUCED: actual D006 handler/trampoline consumes undeclared input and writes80 bytes beyond declared output"
+      ],
+      "compile_exit": 0,
+      "run_exit": 0,
+      "fixed_invariant_failure": {
+        "exit": 1,
+        "message": "FAIL: typed short input must reject before memset, depth change or dispatch"
+      }
+    },
+    {
+      "name": "candidate",
+      "source_sha256": "2c2c73352e22ae59366696aaabc1cb1577ff6e9715a5aed73c9154d5cd2c5e76",
+      "typed_handler_sha256": "6fac52fc5693703e0459049f55189f6593e47a273f00515cf6ebd00309dc716c",
+      "output": [
+        "PASS: typed short input/output rejected before mutation; complete D006, opaque suffix and legacy table path preserved"
+      ],
+      "compile_exit": 0,
+      "run_exit": 0,
+      "fixed_invariant_failure": null
+    }
+  ],
+  "candidate_commit": "8c93f2c2576b4d53d11c064f8cbd5a45095fa71d"
+}

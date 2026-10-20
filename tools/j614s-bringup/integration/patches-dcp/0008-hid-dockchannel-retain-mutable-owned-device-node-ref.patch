@@ -1,0 +1,17 @@
+From ccb0647c779ec32f2549708ee3b57510700aaabb Mon Sep 17 00:00:00 2001
+From: gareth jones <gareth@garethpaul.com>
+Date: Mon, 19 Oct 2026 22:43:18 -0700
+Subject: [PATCH] hid: dockchannel: retain mutable owned device-node references
+
+of_get_child_by_name returns an owned node reference. Match its type to of_node_put on invalid J614s power-method cleanup; strict OF stub builds exposed the const mismatch. No cast or warning suppression.
+---
+ drivers/hid/dockchannel-hid/dockchannel-hid.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/hid/dockchannel-hid/dockchannel-hid.c b/drivers/hid/dockchannel-hid/dockchannel-hid.c
+index bf6ac4e1f..54d677911 100644
+--- a/drivers/hid/dockchannel-hid/dockchannel-hid.c
++++ b/drivers/hid/dockchannel-hid/dockchannel-hid.c
+@@ -161 +161 @@ struct dchid_iface {
+-	const struct device_node *of_node;
++	struct device_node *of_node;

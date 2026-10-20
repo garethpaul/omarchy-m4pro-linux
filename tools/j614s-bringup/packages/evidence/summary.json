@@ -1,0 +1,132 @@
+{
+  "schema": 1,
+  "status": "PARTIAL",
+  "source_commit": "4941c67dbab65ec9bd903c337863c10a51741542",
+  "print_only_transaction_count": 117,
+  "payloads_qualified": 115,
+  "previous_editors_reverified": 4,
+  "remaining_113_qualified": 111,
+  "failed_exact_pins": [
+    {
+      "name": "marisa",
+      "version": "0.3.1-1",
+      "architecture": "aarch64",
+      "filename": "marisa-0.3.1-1-aarch64.pkg.tar.xz",
+      "sha256": "924114506e48e6a0730aaa3a76d11de710c6032ea3472d19204efa03e414e25f",
+      "expected_bytes": 99028,
+      "url": "https://arm-mirror.omarchy.org/aarch64/extra/marisa-0.3.1-1-aarch64.pkg.tar.xz",
+      "failure": "HTTPError: HTTP Error 404: Not Found"
+    },
+    {
+      "name": "graphicsmagick",
+      "version": "1.3.49-2",
+      "architecture": "aarch64",
+      "filename": "graphicsmagick-1.3.49-2-aarch64.pkg.tar.xz",
+      "sha256": "2600143a997b7b4f23e5bd6892042a58d0bf6bf37d9d066dd812aa4548362d3c",
+      "expected_bytes": 2473436,
+      "url": "https://arm-mirror.omarchy.org/aarch64/extra/graphicsmagick-1.3.49-2-aarch64.pkg.tar.xz",
+      "failure": "HTTPError: HTTP Error 404: Not Found"
+    }
+  ],
+  "signer_counts": {
+    "68B3537F39A313B3E574D06777193F152BDBE6A6": 80,
+    "40DFB630FF42BCFFB047046CF0134EE680CAC571": 35
+  },
+  "retained_image": {
+    "sha256": "f6ceb11ef79914eaa10cc07637c929a99afe5982d216d8b89905c86e863b2491",
+    "bytes": 14344519680,
+    "root": 256,
+    "extracted_entries": 105
+  },
+  "static_inspection": {
+    "baseline_hooks": 60,
+    "effective_baseline_hooks": 59,
+    "package_install_scripts": 16,
+    "packaged_hooks": 5
+  },
+  "execution_ready": false,
+  "deployable": false,
+  "actions": [],
+  "boot_artifact_effects": [
+    {
+      "effective_hook": "etc/pacman.d/hooks/90-mkinitcpio-install.hook",
+      "hook_sha256": "97ae91e1309dd2e70458abc757233837e3919011f450cb69a7e8a8c8ec4c72c1",
+      "exec": [
+        "/usr/share/libalpm/scripts/limine-mkinitcpio-install"
+      ],
+      "effect": "boot_artifact_generation",
+      "incoming_matches": [
+        {
+          "package": "plymouth",
+          "operation": "Upgrade",
+          "type": "Path",
+          "matching_values": [
+            "usr/lib/initcpio/hooks",
+            "usr/lib/initcpio/hooks/plymouth",
+            "usr/lib/initcpio/install",
+            "usr/lib/initcpio/install/plymouth",
+            "usr/lib/initcpio/install/plymouth-shutdown"
+          ]
+        }
+      ],
+      "execution": "UNTESTED; static retained-image evidence only"
+    },
+    {
+      "effective_hook": "usr/share/libalpm/hooks/91-omarchy-mac-boot-initramfs.hook",
+      "hook_sha256": "564fe04b434e425d332e34b0d90391b2bd2c3be37b4afb112222a73ac785f825",
+      "exec": [
+        "/usr/share/libalpm/scripts/mkinitcpio install"
+      ],
+      "effect": "boot_artifact_generation",
+      "incoming_matches": [
+        {
+          "package": "plymouth",
+          "operation": "Upgrade",
+          "type": "Path",
+          "matching_values": [
+            "usr/lib/initcpio/install/plymouth",
+            "usr/lib/initcpio/install/plymouth-shutdown"
+          ]
+        }
+      ],
+      "execution": "UNTESTED; static retained-image evidence only"
+    }
+  ],
+  "claims": [
+    {
+      "status": "WORKS",
+      "claim": "Exact pinned plan, repository SHA and payload SHA/size/architecture/PGP verification for 115 packages",
+      "evidence": "transaction-audit.json"
+    },
+    {
+      "status": "BLOCKED",
+      "claim": "Two exact primary payload pins return HTTP404; alternate official mirror fails TLS hostname validation",
+      "evidence": "official-mirror-checks.json"
+    },
+    {
+      "status": "WORKS",
+      "claim": "Actual good PGP control accepted; byte-mutated payload and missing public key rejected",
+      "evidence": "real-signature-negative-tests.json"
+    },
+    {
+      "status": "WORKS",
+      "claim": "Actual pinned117 plan accepted for audit only; protected linux-aurora selection, wrong arch and changed SHA rejected",
+      "evidence": "pinned-plan-negative-tests.json"
+    },
+    {
+      "status": "WORKS",
+      "claim": "Incoming Plymouth paths match two effective retained-image initramfs-generating hooks despite safe package name",
+      "evidence": "transaction-audit.json#/boot_effects"
+    },
+    {
+      "status": "UNTESTED",
+      "claim": "Target installation, hook/script execution, live hook state, boot artifacts, rollback and resulting desktop",
+      "evidence": "No target access, installation or script/hook execution in this lane"
+    }
+  ],
+  "next": [
+    "Root reviews unchanged117 selection and boot_effects; do not disable hooks or silently remove Plymouth to obtain a pass.",
+    "Recover the same two exact SHA/version payloads from an authenticated source, or explicitly review a distinct future plan while preserving these failures.",
+    "Qualify transaction boot effects and independent recovery on real target before any install; protected boot selections remain rejected."
+  ]
+}

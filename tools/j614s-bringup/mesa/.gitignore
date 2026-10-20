@@ -1,0 +1,10 @@
+.venv/
+packages/
+qemu-prefix/
+toolchain-prefix/
+__pycache__/
+evidence/*.log
+!evidence/host-tests.log
+evidence/compute-fixture/*.bin
+*.local.ini
+evidence/aarch64-fixture/

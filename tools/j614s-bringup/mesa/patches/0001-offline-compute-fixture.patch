@@ -1,0 +1,518 @@
+diff --git a/src/asahi/compiler/test/test-apple9.cpp b/src/asahi/compiler/test/test-apple9.cpp
+index 8ae9b4d58d2..60effd02544 100644
+--- a/src/asahi/compiler/test/test-apple9.cpp
++++ b/src/asahi/compiler/test/test-apple9.cpp
+@@ -9108,2 +9108,2 @@ TEST(Apple9Compiler, PrivateArraysUseNativeScratchInAllStages)
+-                  .io_semantics = {.location = stage == MESA_SHADER_VERTEX
+-                     ? VARYING_SLOT_POS : FRAG_RESULT_DATA0, .num_slots = 1});
++                  .io_semantics = {.location = static_cast<unsigned>(stage == MESA_SHADER_VERTEX
++                     ? VARYING_SLOT_POS : FRAG_RESULT_DATA0), .num_slots = 1});
+diff --git a/src/asahi/lib/agx_apple9_layout.h b/src/asahi/lib/agx_apple9_layout.h
+index 095c7946bb4..6c75aecb8d1 100644
+--- a/src/asahi/lib/agx_apple9_layout.h
++++ b/src/asahi/lib/agx_apple9_layout.h
+@@ -4,0 +5,11 @@
++#include <stdbool.h>
++
++/* A runtime model gate must survive NDEBUG; host compiler/packet tests do
++ * not qualify other variants with the same instruction-set generation. */
++static inline bool
++agx_apple9_runtime_model_supported(unsigned generation, unsigned variant)
++{
++   return (generation == 16 && variant == 'G') ||
++          (generation == 17 && variant == 'P');
++}
++
+diff --git a/src/asahi/lib/agx_device.c b/src/asahi/lib/agx_device.c
+index c9728441a9c..3e6350dae40 100644
+--- a/src/asahi/lib/agx_device.c
++++ b/src/asahi/lib/agx_device.c
+@@ -561,0 +562,7 @@ agx_open_device(void *memctx, struct agx_device *dev)
++   if ((dev->params.gpu_generation == 16 || dev->params.gpu_generation == 17) &&
++       !agx_apple9_runtime_model_supported(dev->params.gpu_generation,
++                                           dev->params.gpu_variant)) {
++      fprintf(stderr, "Unsupported Apple9 runtime model G%u%c\n",
++              dev->params.gpu_generation, dev->params.gpu_variant);
++      return false;
++   }
+diff --git a/src/gallium/drivers/asahi/README.apple9-compute-fixture.md b/src/gallium/drivers/asahi/README.apple9-compute-fixture.md
+new file mode 100644
+index 00000000000..2fa92549c20
+--- /dev/null
++++ b/src/gallium/drivers/asahi/README.apple9-compute-fixture.md
+@@ -0,0 +1,36 @@
++# Offline Apple9 first-compute fixture
++
++`agx_apple9_compute_fixture_tool --offline-template OUTPUT_PREFIX` compiles a
++new NIR shader that writes 42 to each of 256 output words. It writes the shader,
++entry image, resource record, launch program, direct CDM stream, reference output
++and exact compiler-profile JSON. It opens no render node and issues no ioctl.
++The virtual addresses in the JSON are unallocated template addresses.
++
++Build the tool and `agx_apple9_compute_fixture_tests` with `build-tests=true` on
++Linux. The normal Apple9 compiler, launcher and geometry tests remain applicable.
++The tool and tests link only reachable pure encoder sections from the same
++`agx_apple9.c` used by the runtime. The runtime device/model compatibility checks
++remain in force. In particular, this does not add G16S runtime support.
++
++The template builder calls the existing source encoders for the entry branch,
++launch, resource geometry and CDM record; it includes no recorded shader or
++firmware state. It supports one direct SSBO store profile with local size
++256x1x1 and no shared memory, preamble, scratch, atomics or samplers. Unsupported
++profiles fail without modifying the destination. The first entry occupies the
++ordinary 0x340 header plus one 0xc0 block. The CDM file includes the eight-byte
++terminator; the UAPI bound mirrors `agx_flush_compute` and includes its first
++four bytes.
++
++`agx_apple9_build_compute_fixture` takes explicit addresses and the complete
++shader byte length so a caller can
++rebuild the immutable records after allocating real VM mappings. A caller must
++validate the complete mappings, shader length, permissions, ownership, fences,
++CPU/GPU cache synchronization and output/page canaries before submission through
++the ordinary unchanged Asahi UAPI. Building a template does not qualify any of
++those runtime requirements. The 1-TiB USC placement follows this branch's G16
++path and remains untested on G16S.
++
++First hardware acceptance is a completed ordinary compute fence, exactly 256
++words equal to 42, unchanged surrounding canaries, no GPU faults or arbitrary
++page writes, and a repeat after a fresh qualified boot. No such G16S result is
++claimed by the tool or its host unit tests.
+diff --git a/src/gallium/drivers/asahi/agx_apple9.c b/src/gallium/drivers/asahi/agx_apple9.c
+index bd4d668ad01..cbace6e6d30 100644
+--- a/src/gallium/drivers/asahi/agx_apple9.c
++++ b/src/gallium/drivers/asahi/agx_apple9.c
+@@ -362,2 +362,2 @@ static bool apple9_build_body_entry(uint8_t *out, uint64_t entry,
+-void
+-agx_apple9_initialize_entries(struct agx_device *dev)
++static void
++apple9_initialize_entry_header(uint8_t *header)
+@@ -365 +364,0 @@ agx_apple9_initialize_entries(struct agx_device *dev)
+-   uint8_t *header = dev->apple9_entry_map;
+@@ -371,0 +371,6 @@ agx_apple9_initialize_entries(struct agx_device *dev)
++}
++
++void
++agx_apple9_initialize_entries(struct agx_device *dev)
++{
++   apple9_initialize_entry_header(dev->apple9_entry_map);
+@@ -781,0 +787,78 @@ apple9_build_body_entry(uint8_t *out, uint64_t entry, uint64_t body)
++static bool
++apple9_fixture_spans_overlap(uint64_t a, uint64_t a_size,
++                             uint64_t b, uint64_t b_size)
++{
++   return a < b + b_size && b < a + a_size;
++}
++
++/* Offline first-job template, using the same entry/launch/CDM encoders as
++ * the runtime. This neither selects a GPU profile nor submits any work. */
++bool
++agx_apple9_build_compute_fixture(
++   struct agx_apple9_compute_fixture *out,
++   const struct agx_apple9_compute_fixture_addresses *addresses,
++   const struct agx_apple9_compute_profile *profile)
++{
++   if (!out || !addresses || !profile ||
++       profile->abi != AGX_APPLE9_COMPUTE_ABI_DIRECT_BUFFERS ||
++       profile->resource_binding_count != 1 || profile->resource_binding[0] != 0 ||
++       profile->resource_kind[0] != AGX_APPLE9_COMPUTE_RESOURCE_SSBO ||
++       profile->resource_read_mask != 0 || profile->resource_write_mask != 1 ||
++       profile->variable_local_size || profile->local_size[0] != 256 ||
++       profile->local_size[1] != 1 || profile->local_size[2] != 1 ||
++       profile->preamble_size || profile->scratch_size ||
++       profile->required_threadgroup_memory_bytes || profile->atomic_frame_size ||
++       addresses->usc_base != (UINT64_C(1) << 40) ||
++       addresses->shader_body < addresses->usc_base + sizeof(out->entries) ||
++       addresses->shader_body - addresses->usc_base >= UINT64_C(0x100000000) ||
++       !addresses->shader_size ||
++       addresses->shader_size > addresses->usc_base + UINT64_C(0x100000000) - addresses->shader_body ||
++       (addresses->shader_body & 63) || (addresses->resource & 63) ||
++       (addresses->launch & 63) || (addresses->output & 3) ||
++       addresses->resource < addresses->usc_base + sizeof(out->entries) ||
++       addresses->resource > addresses->usc_base + UINT64_C(0x100000000) - sizeof(out->resources) ||
++       addresses->launch < addresses->usc_base + sizeof(out->entries) ||
++       addresses->launch > addresses->usc_base + UINT64_C(0x100000000) - sizeof(out->launch) ||
++       (addresses->resource < addresses->launch + sizeof(out->launch) &&
++        addresses->launch < addresses->resource + sizeof(out->resources)) ||
++       apple9_fixture_spans_overlap(addresses->shader_body, addresses->shader_size,
++                                    addresses->resource, sizeof(out->resources)) ||
++       apple9_fixture_spans_overlap(addresses->shader_body, addresses->shader_size,
++                                    addresses->launch, sizeof(out->launch)) ||
++       !addresses->output || addresses->output > (UINT64_C(1) << 42) - 1024 ||
++       (addresses->output < addresses->usc_base + UINT64_C(0x100000000) &&
++        addresses->usc_base < addresses->output + 1024))
++      return false;
++
++   _Alignas(8) struct agx_apple9_compute_fixture image = {0};
++   apple9_initialize_entry_header(image.entries);
++   const unsigned block = AGX_APPLE9_ENTRY_HEADER_SIZE;
++   const unsigned entry = block + AGX_APPLE9_ENTRY_CODE_OFFSET;
++   apple9_put_u32(image.entries + block, AGX_APPLE9_ENTRY_BLOCK_SIZE);
++   apple9_build_sentinel_constant_program(image.entries + block + 0x40, 30);
++   if (!apple9_build_body_entry(image.entries + entry,
++                                addresses->usc_base + entry,
++                                addresses->shader_body))
++      return false;
++
++   const struct agx_apple9_compute_geometry geometry = {
++      .mode = AGX_APPLE9_COMPUTE_GEOMETRY_DIRECT,
++      .threads = {256, 1, 1}, .local = {256, 1, 1},
++   };
++   if (!agx_apple9_build_compute_geometry_fields(
++          image.resources, sizeof(image.resources), addresses->resource,
++          &geometry))
++      return false;
++   apple9_put_u64(image.resources + 8, addresses->output);
++   if (!apple9_build_compute_launch(image.launch, addresses->usc_base,
++                                    addresses->launch, addresses->resource,
++                                    entry, profile, 0) ||
++       !agx_apple9_emit_direct_dispatch(image.cdm, addresses->launch,
++                                       geometry.threads, geometry.local, profile))
++      return false;
++   agx_pack(image.cdm + AGX_APPLE9_COMPUTE_CDM_RECORD_SIZE,
++            CDM_STREAM_TERMINATE, _) ;
++   *out = image;
++   return true;
++}
++
+diff --git a/src/gallium/drivers/asahi/agx_apple9.h b/src/gallium/drivers/asahi/agx_apple9.h
+index 0853e5120a7..cef4094085f 100644
+--- a/src/gallium/drivers/asahi/agx_apple9.h
++++ b/src/gallium/drivers/asahi/agx_apple9.h
+@@ -150,0 +151,18 @@ bool agx_apple9_prepare_draw(struct agx_device *dev, struct agx_pool *usc_pool,
++/* Offline source-built first compute job. Addresses must be relocated to
++ * actual VM mappings before submission; building does not enable any device. */
++struct agx_apple9_compute_fixture_addresses {
++   uint64_t usc_base, shader_body, resource, launch, output;
++   /* Complete uploaded shader extent, not an inferred alignment unit. */
++   uint32_t shader_size;
++};
++struct agx_apple9_compute_fixture {
++   uint8_t entries[0x400];
++   uint8_t resources[0x100];
++   uint8_t launch[0x400];
++   uint8_t cdm[AGX_APPLE9_COMPUTE_CDM_RECORD_SIZE + 8];
++};
++bool agx_apple9_build_compute_fixture(
++   struct agx_apple9_compute_fixture *out,
++   const struct agx_apple9_compute_fixture_addresses *addresses,
++   const struct agx_apple9_compute_profile *profile);
++
+diff --git a/src/gallium/drivers/asahi/meson.build b/src/gallium/drivers/asahi/meson.build
+index fc387065f7f..86fb62e0475 100644
+--- a/src/gallium/drivers/asahi/meson.build
++++ b/src/gallium/drivers/asahi/meson.build
+@@ -60,0 +61,47 @@ endif
++
++# Offline minimal-compute artifact builder. Function sections keep this tool's
++# link limited to pure encoders; runtime device initialization is never called.
++if with_tests and host_machine.system() == 'linux'
++  executable(
++    'agx_apple9_compute_fixture_tool',
++    files('test/apple9-compute-fixture.c', 'agx_apple9.c',
++          'agx_apple9_launch.c', 'agx_apple9_geometry.c'),
++    include_directories : [inc_src, inc_include, inc_asahi, inc_gallium,
++                           inc_gallium_aux, inc_virtio_gpu, inc_virtio_vdrm],
++    c_args : ['-ffunction-sections', '-fdata-sections', '-Wno-c2x-extensions'],
++    link_args : ['-Wl,--gc-sections'],
++    dependencies : [idep_nir, idep_mesautil, idep_agx_pack, idep_libagx],
++    link_with : [libasahi_compiler],
++    install : false,
++  )
++endif
++if with_tests and host_machine.system() == 'linux'
++  test(
++    'agx_apple9_compute_fixture_tests',
++    executable(
++      'agx_apple9_compute_fixture_tests',
++      files('test/test-apple9-compute-fixture.cpp', 'agx_apple9.c',
++            'agx_apple9_launch.c', 'agx_apple9_geometry.c'),
++      include_directories : [inc_src, inc_include, inc_asahi, inc_gallium,
++                             inc_gallium_aux, inc_virtio_gpu, inc_virtio_vdrm],
++      c_args : ['-ffunction-sections', '-fdata-sections', '-Wno-c2x-extensions'],
++      link_args : ['-Wl,--gc-sections'],
++      dependencies : [idep_gtest, idep_nir, idep_mesautil, idep_agx_pack, idep_libagx],
++      link_with : [libasahi_compiler],
++    ),
++    suite : ['asahi'], protocol : 'gtest',
++  )
++endif
++if with_tests
++  test(
++    'agx_apple9_runtime_model_tests',
++    executable(
++      'agx_apple9_runtime_model_tests',
++      files('test/test-apple9-model.cpp'),
++      include_directories : [inc_src],
++      cpp_args : ['-DNDEBUG'],
++      dependencies : [idep_gtest],
++    ),
++    suite : ['asahi'], protocol : 'gtest',
++  )
++endif
+diff --git a/src/gallium/drivers/asahi/test/apple9-compute-fixture.c b/src/gallium/drivers/asahi/test/apple9-compute-fixture.c
+new file mode 100644
+index 00000000000..5c2e59db82b
+--- /dev/null
++++ b/src/gallium/drivers/asahi/test/apple9-compute-fixture.c
+@@ -0,0 +1,104 @@
++/* Copyright 2026 Asahi Linux Contributors
++ * SPDX-License-Identifier: MIT
++ * Offline first-job fixture: no render node, ioctl, firmware or trace replay.
++ */
++#include "agx_apple9.h"
++#include "asahi/compiler/agx_compile_apple9.h"
++#include "compiler/nir/nir_builder.h"
++#include <stdio.h>
++#include <stdlib.h>
++#include <string.h>
++
++static bool
++write_part(const char *prefix, const char *suffix, const void *data, size_t size)
++{
++   char path[4096];
++   int length = snprintf(path, sizeof(path), "%s.%s", prefix, suffix);
++   if (length < 0 || length >= sizeof(path))
++      return false;
++   FILE *file = fopen(path, "wb");
++   if (!file)
++      return false;
++   bool ok = fwrite(data, size, 1, file) == 1;
++   return fclose(file) == 0 && ok;
++}
++
++int
++main(int argc, char **argv)
++{
++   if (argc != 3 || strcmp(argv[1], "--offline-template")) {
++      fprintf(stderr, "usage: %s --offline-template OUTPUT_PREFIX\n", argv[0]);
++      return EXIT_FAILURE;
++   }
++   nir_builder b = nir_builder_init_simple_shader(
++      MESA_SHADER_COMPUTE, &agx_nir_options, "apple9_first_compute_constant42");
++   b.shader->info.workgroup_size[0] = 256;
++   b.shader->info.workgroup_size[1] = b.shader->info.workgroup_size[2] = 1;
++   b.shader->info.num_ssbos = 1;
++   nir_def *gid = nir_channel(&b, nir_load_global_invocation_id(&b, 32), 0);
++   nir_store_ssbo(&b, nir_imm_int(&b, 42), nir_imm_int(&b, 0),
++                  nir_imul_imm(&b, gid, 4), .align_mul = 4);
++   struct agx_shader_part shader = {0};
++   struct agx_apple9_compute_profile profile = {0};
++   const char *reason = NULL;
++   if (!agx_compile_apple9_tiny(b.shader, &shader, &profile, &reason)) {
++      fprintf(stderr, "compile failed: %s\n", reason);
++      ralloc_free(b.shader);
++      return EXIT_FAILURE;
++   }
++   const struct agx_apple9_compute_fixture_addresses addresses = {
++      .usc_base = UINT64_C(0x10000000000),
++      .shader_body = UINT64_C(0x10000010000),
++      .resource = UINT64_C(0x10000020000),
++      .launch = UINT64_C(0x10000020400),
++      .output = UINT64_C(0x1100010000),
++      .shader_size = shader.info.binary_size,
++   };
++   struct agx_apple9_compute_fixture fixture;
++   bool ok = agx_apple9_build_compute_fixture(&fixture, &addresses, &profile);
++   uint32_t expected[256];
++   for (unsigned i = 0; i < 256; ++i)
++      expected[i] = 42;
++   ok = ok && write_part(argv[2], "shader.bin", shader.binary, shader.info.binary_size) &&
++        write_part(argv[2], "entries.bin", fixture.entries, sizeof(fixture.entries)) &&
++        write_part(argv[2], "resources.bin", fixture.resources, sizeof(fixture.resources)) &&
++        write_part(argv[2], "launch.bin", fixture.launch, sizeof(fixture.launch)) &&
++        write_part(argv[2], "cdm.bin", fixture.cdm, sizeof(fixture.cdm)) &&
++        write_part(argv[2], "expected.bin", expected, sizeof(expected));
++   char json[4096];
++   int length = snprintf(json, sizeof(json),
++      "{\n  \"schema\":1,\n  \"offline_template\":true,\n"
++      "  \"hardware_execution\":\"UNTESTED\",\n"
++      "  \"virtual_addresses_are_allocated\":false,\n"
++      "  \"shader_binary_size\":%u,\n"
++      "  \"profile\":{\"abi\":%u,\"resource_binding_count\":%u,"
++      "\"resource_binding\":[%u],\"resource_kind\":[%u],"
++      "\"resource_read_mask\":%u,\"resource_write_mask\":%u,"
++      "\"writes_global\":%s,\"variable_local_size\":%s,\"local_size\":[%u,%u,%u],"
++      "\"required_threadgroup_memory_bytes\":%u,\"scratch_size\":%u,"
++      "\"preamble_offset\":%u,\"preamble_size\":%u,"
++      "\"atomic_frame_size\":%u,\"publication_count\":%u},\n"
++      "  \"addresses\":{\"usc_base\":\"0x10000000000\","
++      "\"shader_body\":\"0x10000010000\",\"resource\":\"0x10000020000\","
++      "\"launch\":\"0x10000020400\",\"output\":\"0x1100010000\","
++      "\"cdm\":\"0x1100000000\"},\n"
++      "  \"cmd_compute\":{\"cdm_ctrl_stream_base\":\"0x1100000000\","
++      "\"cdm_ctrl_stream_end\":\"0x1100000030\",\"flags\":0,\"sampler_count\":0,"
++      "\"sampler_heap\":0,\"helper_binary\":0,\"helper_cfg\":0,\"helper_data\":0},\n"
++      "  \"expected_output\":{\"u32_count\":256,\"value\":42},\n"
++      "  \"warning\":\"No G16S runtime validation. Relocate/map every buffer and qualify kernel firmware/job path before submission.\"\n}\n",
++      shader.info.binary_size, profile.abi, profile.resource_binding_count,
++      profile.resource_binding[0], profile.resource_kind[0],
++      profile.resource_read_mask, profile.resource_write_mask,
++      profile.writes_global ? "true" : "false", profile.variable_local_size ? "true" : "false",
++      profile.local_size[0], profile.local_size[1], profile.local_size[2],
++      profile.required_threadgroup_memory_bytes, profile.scratch_size,
++      profile.preamble_offset, profile.preamble_size, profile.atomic_frame_size,
++      profile.publication_count);
++   ok = ok && length > 0 && length < sizeof(json) && write_part(argv[2], "json", json, length);
++   free(shader.binary);
++   ralloc_free(b.shader);
++   if (!ok)
++      fprintf(stderr, "fixture generation failed; no hardware work was submitted\n");
++   return ok ? EXIT_SUCCESS : EXIT_FAILURE;
++}
+diff --git a/src/gallium/drivers/asahi/test/test-apple9-compute-fixture.cpp b/src/gallium/drivers/asahi/test/test-apple9-compute-fixture.cpp
+new file mode 100644
+index 00000000000..b7e7465a946
+--- /dev/null
++++ b/src/gallium/drivers/asahi/test/test-apple9-compute-fixture.cpp
+@@ -0,0 +1,116 @@
++/* Copyright 2026 Asahi Linux Contributors
++ * SPDX-License-Identifier: MIT
++ */
++#include "agx_apple9.h"
++#include "asahi/genxml/agx_pack.h"
++#include <gtest/gtest.h>
++#include <cstring>
++
++static agx_apple9_compute_profile
++profile()
++{
++   agx_apple9_compute_profile p = {};
++   p.abi = AGX_APPLE9_COMPUTE_ABI_DIRECT_BUFFERS;
++   p.resource_binding_count = 1;
++   p.resource_write_mask = 1;
++   p.local_size[0] = 256;
++   p.local_size[1] = p.local_size[2] = 1;
++   return p;
++}
++
++static agx_apple9_compute_fixture_addresses
++addresses()
++{
++   return {UINT64_C(0x10000000000), UINT64_C(0x10000010000),
++           UINT64_C(0x10000020000), UINT64_C(0x10000020400),
++           UINT64_C(0x1100010000), 42};
++}
++
++static uint32_t
++u32(const uint8_t *p)
++{
++   uint32_t v;
++   memcpy(&v, p, sizeof(v));
++   return v;
++}
++
++static uint64_t
++u64(const uint8_t *p)
++{
++   uint64_t v;
++   memcpy(&v, p, sizeof(v));
++   return v;
++}
++
++TEST(Apple9ComputeFixture, PublishesOneSourceBuiltDirectJob)
++{
++   agx_apple9_compute_fixture out = {};
++   auto a = addresses();
++   auto p = profile();
++   ASSERT_TRUE(agx_apple9_build_compute_fixture(&out, &a, &p));
++   EXPECT_EQ(u32(out.entries), 0x340u);
++   EXPECT_EQ(u32(out.entries + 0x340), 0xc0u);
++   EXPECT_EQ(u64(out.resources), a.resource + 0xc0);
++   EXPECT_EQ(u64(out.resources + 8), a.output);
++   EXPECT_EQ(u32(out.resources + 0xc0), 1u);
++   EXPECT_EQ(u32(out.resources + 0xc4), 1u);
++   EXPECT_EQ(u32(out.resources + 0xc8), 1u);
++   EXPECT_EQ(u32(out.cdm + 0x10), 256u);
++   EXPECT_EQ(u32(out.cdm + 0x14), 1u);
++   EXPECT_EQ(u32(out.cdm + 0x18), 1u);
++   EXPECT_EQ(u32(out.cdm + 0x1c), 256u);
++   EXPECT_EQ(u32(out.cdm + 0x20), 1u);
++   EXPECT_EQ(u32(out.cdm + 0x24), 1u);
++   EXPECT_EQ(u32(out.cdm + 0x2c) >> 29, AGX_CDM_BLOCK_TYPE_STREAM_TERMINATE);
++   EXPECT_EQ(u32(out.cdm + 0x30), 0u);
++}
++
++TEST(Apple9ComputeFixture, RejectsUnsupportedProfileWithoutPublishing)
++{
++   auto a = addresses();
++   for (unsigned test = 0; test < 7; ++test) {
++      auto p = profile();
++      if (test == 0) p.preamble_size = 16;
++      if (test == 1) p.scratch_size = 16;
++      if (test == 2) p.resource_binding_count = 2;
++      if (test == 3) p.resource_kind[0] = AGX_APPLE9_COMPUTE_RESOURCE_UBO;
++      if (test == 4) p.local_size[0] = 128;
++      if (test == 5) p.required_threadgroup_memory_bytes = 16;
++      if (test == 6) p.resource_write_mask = 0;
++      agx_apple9_compute_fixture out, original;
++      memset(&out, 0xa5, sizeof(out));
++      original = out;
++      EXPECT_FALSE(agx_apple9_build_compute_fixture(&out, &a, &p));
++      EXPECT_EQ(memcmp(&out, &original, sizeof(out)), 0);
++   }
++}
++
++TEST(Apple9ComputeFixture, RejectsWrongApertureOrAlignment)
++{
++   auto p = profile();
++   for (unsigned test = 0; test < 20; ++test) {
++      auto a = addresses();
++      if (test == 0) a.usc_base = 0;
++      if (test == 1) a.shader_body++;
++      if (test == 2) a.resource++;
++      if (test == 3) a.launch++;
++      if (test == 4) a.output++;
++      if (test == 5) a.shader_body = a.usc_base;
++      if (test == 6) a.shader_body = a.usc_base + UINT64_C(0x100000000);
++      if (test == 7) a.output = 0;
++      if (test == 8) a.resource = 0;
++      if (test == 9) a.launch = a.usc_base + UINT64_C(0x100000000);
++      if (test == 10) a.launch = a.resource;
++      if (test == 11) a.output = UINT64_MAX & ~3ull;
++      if (test == 12) a.output = a.usc_base;
++      if (test == 13) a.launch = a.resource + 64;
++      if (test == 14) a.shader_body = a.resource + 64;
++      if (test == 15) a.shader_body = a.launch + 64;
++      if (test == 16) a.shader_size = 0;
++      if (test == 17) { a.shader_body = a.resource - 64; a.shader_size = 128; }
++      if (test == 18) { a.shader_body = a.launch - 64; a.shader_size = 128; }
++      if (test == 19) { a.shader_body = a.usc_base + UINT64_C(0x100000000) - 64; a.shader_size = 128; }
++      agx_apple9_compute_fixture out;
++      EXPECT_FALSE(agx_apple9_build_compute_fixture(&out, &a, &p));
++   }
++}
+diff --git a/src/gallium/drivers/asahi/test/test-apple9-model.cpp b/src/gallium/drivers/asahi/test/test-apple9-model.cpp
+new file mode 100644
+index 00000000000..dc18c2847c7
+--- /dev/null
++++ b/src/gallium/drivers/asahi/test/test-apple9-model.cpp
+@@ -0,0 +1,29 @@
++/* Copyright 2026 Asahi Linux Contributors
++ * SPDX-License-Identifier: MIT
++ */
++#include "asahi/lib/agx_apple9_layout.h"
++#include <gtest/gtest.h>
++
++#ifndef NDEBUG
++#error This test must exercise the runtime gate with assertions compiled out.
++#endif
++
++TEST(Apple9RuntimeModel, QualifiedModelsRemainAvailable)
++{
++   EXPECT_TRUE(agx_apple9_runtime_model_supported(16, 'G'));
++   EXPECT_TRUE(agx_apple9_runtime_model_supported(17, 'P'));
++}
++
++TEST(Apple9RuntimeModel, G16SRemainsRejectedWithoutAssertions)
++{
++   for (unsigned variant : {'S', 'C', 'D', 'P'})
++      EXPECT_FALSE(agx_apple9_runtime_model_supported(16, variant));
++   for (unsigned variant : {'G', 'S', 'C', 'D'})
++      EXPECT_FALSE(agx_apple9_runtime_model_supported(17, variant));
++}
++
++TEST(Apple9RuntimeModel, DoesNotQualifyOtherGenerations)
++{
++   EXPECT_FALSE(agx_apple9_runtime_model_supported(15, 'G'));
++   EXPECT_FALSE(agx_apple9_runtime_model_supported(18, 'G'));
++}

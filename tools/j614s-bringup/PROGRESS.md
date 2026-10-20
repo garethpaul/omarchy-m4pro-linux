@@ -121,3 +121,118 @@ Fresh webcam and cached proxy metadata still show Running proxy, USB63 and zero
 exceptions. No unattended boot, watchdog change or protected-volume action was
 performed. qualification/STATUS.md supersedes stale one-core and missing-battery
 claims in the initial audit.
+
+## Exact next safe engineering actions
+
+- Gravity full Image/module link is running after the strict complete crate
+  passed. Pinned current source db9f2f8f retains a separate layout-enabling build
+  overlay; no runtime profile was enabled.
+- Mesa offline compute fixture compiled384 host gtests. Root review found two
+  accepted shader/record overlaps; actual failing gtests reproduced them and an
+  explicit shader-size/range fix is being qualified. AArch64 tool/compiler
+  builds and a release-build explicit model guard are in progress.
+- Signed vi provider ex-vi-compat was found and actually invoked in an isolated
+  namespace; the package lane is finalizing exact-name precedence and provider
+  proof before revising the earlier unresolved-vi result.
+- Early T6040 capture adapter is integrated and tested offline. Root additionally
+  passed its identity guards against the real captured ADT using fake tracer
+  registration and zero physical reads. Overlap consistency does not establish
+  an atomic graph against other CPUs/firmware. Native capture remains UNTESTED.
+- Display lane is now investigating the changed T6040 DCP interface and a narrow
+  justified source change or exact capture decoder. No compatible-only alias,
+  DCP reset or target operation is authorized by that lane.
+
+Published tooling branch tip2769eca7d6fd9eaf15873f0c78168db4b2ade8ec includes
+reviewed source/evidence; newer integrated work will follow after review.
+The clean source and historical test56 archive are also pushed separately.
+Local outputs/m4-overnight-enablement contains matching Image+15 modules, exact
+config and checksums; it is explicitly not an installable boot bundle.
+
+## Package and link failure updates
+
+The vi gap is resolved through the signed official ex-vi-compat payload and
+actual unchanged-script execution, not an invented alias. Exact-package names
+now take precedence over virtual providers, confirmed against pacman. Latest
+print-only solve:167 ARM-compatible requests, four held boot/firmware requests,
+zero unresolved,117 transaction packages,66 already-current. Four signed
+editor/provider payloads verified;113 selected signatures/hooks still unverified.
+All38 package/preflight tests pass; no installation occurred.
+
+The full Gravity crate compile passed with all3170 layout blocks/16284 offset
+checks. Full linking then exposed RUST_APPLE_RTKIT=y with APPLE_MAILBOX=m, leaving
+built-in rtkit.o mailbox symbols unresolved. Build lane is fixing the real
+Kconfig dependency and retaining before/after evidence; linking is not yet a pass.
+
+## Latest compile/source milestones
+
+Gravity source b442be4b28f3720daff6c5f26fe8b1ab3aef28f1 plus recorded layout
+overlay builds complete Image and seven modules, including asahi_m4. Image
+f7be0d5a6ceb07a43e47a1e41a2fe66e33b2a584c54bab30e479a5dd1b15f96c;
+all artifact/config/vermagic/path checks pass. This is compile-only, not the
+J614s boot candidate. Source draft PRs are kernel#2(envelopes), kernel#3(RTKit
+mailbox dependency) and Gravity Mesa#1(offline fixture/release model guard).
+
+Mesa source86c4942d3cd passes387 host and AArch64 QEMU gtests plus six Python
+cases; generated shader and all job artifacts match across architectures. Root
+regenerated the fixture in the integrated tree and passed its six tests.
+G16S production runtime stays rejected even with NDEBUG; no GPU job ran on Mac.
+
+Metal store42 source458429a matches256-word/local256/poison/42 fixture and
+passed separate M1 Pro builder readbacks and27 transcript tests. Original XOR
+evidence is unchanged. M4/native first-capture/BO canaries remain UNTESTED.
+
+DCP source8e27e3e adds structural bounds;8c93f2c adds minimum typed extents.
+Root reproduced the actual D006 typed bug before the latter and passed both
+typed and original envelope/ACK regressions plus14 offline decoder cases.
+All Apple DRM translation units compile AArch64. Full modular linking exposed
+private direct-map helper references in existing scanout fallback. A separate
+no-map-only module fix is authorized, preserving built-in behavior and requiring
+real reserved-pool/DART prerequisites; no exports or fake mappings permitted.
+
+Package audit found selected Plymouth file paths match installed initramfs
+regeneration hooks despite protected package-name filtering. No hooks/install
+have run. Two exact pinned archives returned404; remaining large archive is
+being verified. Keep the original117-row plan and failures, not substitutions.
+
+Consolidated Gravity/J614s source work is underway in a separate branch. It
+ports tested CPU/input/USB/battery/bootstrap changes narrowly. NVMe must remain
+refused before side effects until inherited RTKit adoption exists; old hardware
+storage pass does not qualify this new source. A separate adoption port follows.
+
+Physical target remains proxy63; no boot/reset/watchdog or protected action
+performed after the manual restart. Original4ff dirty-source fingerprint and qualified reference Image/config
+remain unchanged. Clean f93 itself is build-qualified, not hardware-qualified.
+
+
+## Integrated DCP link and pinned-payload audit
+
+Restricted DCP source124fd0633bb8932bbf68845ecbe8a5ffc53dfb43 builds a complete
+Image and ten modules including appledrm/asahi_m4, with the exact configuration
+that failed the earlier modpost. Image897617e90867c28572b6fe42061ed64abf5c0b5fa08f303a6f429318612014e5;
+layout3170/16284, embedded config/module/path audits pass. No arch-helper
+exports or checks bypassed. Live J614s no-map/DART handoff remains BLOCKED.
+
+Consolidated ccb0647c779ec32f2549708ee3b57510700aaabb fixes the actual MTP
+owned device-node type error without a cast or disabled warning. All ten
+platform objects passed and full Image/modules build is running in its own
+snapshot. Its source/config invariant suite passed12 tests in the integrated
+workspace. NVMe stays refused before hardware operations; a separate actual
+inherited-state/RTKit adoption port is in development.
+
+Pinned117-package audit verified115 payloads with exact size/SHA/architecture
+and retained-image PGP anchors. Both missing old versions returned404 across
+GeoIP and all12 official mirrors (26/26 requests). Their newer release numbers
+are documented, not silently substituted. A separate current-metadata proposal
+is now being prepared while the original plan and failures remain immutable.
+Twenty integrated package tests pass. Plymouth paths match two installed
+initramfs-generating hooks; no hooks/install were executed and transaction
+execution_ready/deployable remain false.
+
+No target boot, watchdog change, firmware operation, disk write or protected
+change was made. Remote recovery still needs independent verification before
+the next physical boot-sensitive experiment.
+
+Post-link source review identified a real remaining no-map ownership gap:
+foreign PRIME imports bypass the custom dumb-buffer pool path and can reach
+scanout through dma_addr. A separate import-boundary fix/regression is underway;
+124fd's link pass does not qualify module loading or all buffer ownership.

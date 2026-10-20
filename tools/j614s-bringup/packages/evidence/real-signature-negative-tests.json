@@ -1,0 +1,43 @@
+{
+  "schema": 1,
+  "package": "avahi",
+  "payload_sha256": "ef808937dd227d0edca14cd59b6618270f9b7fbedff529eb1df5b89799db2da8",
+  "checks": [
+    {
+      "case": "control",
+      "exit": 0,
+      "accepted": true,
+      "failure": null,
+      "gpg_status": [
+        "[GNUPG:] NEWSIG",
+        "[GNUPG:] KEY_CONSIDERED 68B3537F39A313B3E574D06777193F152BDBE6A6 0",
+        "[GNUPG:] SIG_ID wcQ+/NEXj6NNqJELjY/zGuvZdUM 2026-10-18 1792306104",
+        "[GNUPG:] GOODSIG 77193F152BDBE6A6 Arch Linux ARM Build System <builder@archlinuxarm.org>",
+        "[GNUPG:] VALIDSIG 68B3537F39A313B3E574D06777193F152BDBE6A6 2026-10-18 1792306104 0 4 0 1 10 00 68B3537F39A313B3E574D06777193F152BDBE6A6"
+      ]
+    },
+    {
+      "case": "mutated payload",
+      "exit": 1,
+      "accepted": false,
+      "failure": "PGP verification rejected: BADSIG",
+      "gpg_status": [
+        "[GNUPG:] NEWSIG",
+        "[GNUPG:] KEY_CONSIDERED 68B3537F39A313B3E574D06777193F152BDBE6A6 0",
+        "[GNUPG:] BADSIG 77193F152BDBE6A6 Arch Linux ARM Build System <builder@archlinuxarm.org>"
+      ]
+    },
+    {
+      "case": "missing public key",
+      "exit": 2,
+      "accepted": false,
+      "failure": "PGP verification rejected: ERRSIG,NO_PUBKEY",
+      "gpg_status": [
+        "[GNUPG:] NEWSIG",
+        "[GNUPG:] ERRSIG 77193F152BDBE6A6 1 10 00 1792306104 9 68B3537F39A313B3E574D06777193F152BDBE6A6",
+        "[GNUPG:] NO_PUBKEY 77193F152BDBE6A6"
+      ]
+    }
+  ],
+  "status": "WORKS"
+}

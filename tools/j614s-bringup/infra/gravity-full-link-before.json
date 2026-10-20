@@ -1,0 +1,30 @@
+{
+  "compile_exit": 2,
+  "config_sha256": "453403b1f46c1be37222c295e4db3eecc0227b49eb35d6a5a9da41cfb791ae19",
+  "configuration": {
+    "CONFIG_APPLE_MAILBOX": "m",
+    "CONFIG_APPLE_RTKIT": "y",
+    "CONFIG_DRM_ASAHI_M4": "m",
+    "CONFIG_RUST_APPLE_RTKIT": "y"
+  },
+  "failing_stage": "vmlinux link",
+  "fix_commit": "b442be4b28f3720daff6c5f26fe8b1ab3aef28f1",
+  "hardware": "UNTESTED",
+  "module_link": "PASS: asahi_m4.ko linked before vmlinux failure",
+  "root_cause": "RUST_APPLE_RTKIT bool selected APPLE_RTKIT=y but lacked APPLE_MAILBOX selection, leaving built-in RTKit dependent on a module.",
+  "scope": "Full Image and modules after strict crate compilation; hardware untested",
+  "source": {
+    "dirty_diff_sha256": "288be4fd575133525ed896cb5855cb1e9a3827cce126ce38ef486a5bf8278e36",
+    "head": "db9f2f8f00986e3ef03fddbdaad55a861e793123",
+    "untracked": {}
+  },
+  "status": "FAILED",
+  "undefined_symbols": [
+    "apple_mbox_send",
+    "apple_mbox_poll",
+    "apple_mbox_get_byname",
+    "apple_mbox_get",
+    "apple_mbox_start",
+    "apple_mbox_stop"
+  ]
+}

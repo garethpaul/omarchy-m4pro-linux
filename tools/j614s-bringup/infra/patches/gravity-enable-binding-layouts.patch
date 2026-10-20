@@ -1,0 +1,7 @@
+diff --git i/rust/Makefile w/rust/Makefile
+index bec9726f2..6d964251e 100644
+--- i/rust/Makefile
++++ w/rust/Makefile
+@@ -450 +450 @@ quiet_cmd_bindgen = BINDGEN $@
+-		--use-core --with-derive-default --ctypes-prefix ffi --no-layout-tests \
++		--use-core --with-derive-default --ctypes-prefix ffi \

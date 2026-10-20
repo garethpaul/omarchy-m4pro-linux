@@ -1,0 +1,13 @@
+{
+  "status": "PASS_OFFLINE_GUARDS_ON_REAL_CAPTURED_ADT",
+  "hardware_execution": false,
+  "target_connection": false,
+  "ram_allowlist": "synthetic; no live permission",
+  "adt_sha256": "6062d596dcc71879b8e1917885700a3ef45eafe2bca6cf7281281b55e5a9d172",
+  "model": "Mac16,8",
+  "board_id": 4,
+  "boot_firmware": "mBoot-18000.161.10",
+  "fake_tracer_registrations": 1,
+  "physical_reads": 0,
+  "output_directory_created": false
+}

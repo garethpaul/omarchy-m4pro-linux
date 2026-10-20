@@ -1,16 +1,15 @@
-import copy
 import json
 from pathlib import Path
 import unittest
 
-from verify_transcript import FIRST, INPUT, verify
+from verify_transcript import FIRST, INPUT, POISON, STORE42, verify
 
 
 EVIDENCE = Path(__file__).parent / "evidence/builder-validation"
 
 
-def load(name):
-    return [json.loads(line) for line in (EVIDENCE / (name + ".jsonl")).read_text().splitlines()]
+def load(name, directory=EVIDENCE):
+    return [json.loads(line) for line in (directory / (name + ".jsonl")).read_text().splitlines()]
 
 
 class TranscriptTests(unittest.TestCase):
@@ -89,6 +88,106 @@ class TranscriptTests(unittest.TestCase):
         self.assertIn("WAIT_COMMIT", events)
         self.assertNotIn("BEFORE_COMMIT", events)
         self.assertNotIn("COMMAND_COMPLETED", events)
+
+
+STORE_EVIDENCE = Path(__file__).parent / "evidence/store42-builder"
+
+
+class Store42TranscriptTests(unittest.TestCase):
+    def fixture(self, second=False):
+        return load("store42-two-jobs" if second else "store42-one-job", STORE_EVIDENCE)
+
+    def test_actual_builder_checks_all_256_literal_values(self):
+        rows = self.fixture()
+        result = verify(rows, workload="store42-256")
+        self.assertEqual(result["words_per_submission"], 256)
+        self.assertEqual(result["m4_pro_hardware"], "UNTESTED")
+        values = next(row["words"] for row in rows if row["event"] == "READBACK")
+        self.assertEqual(len(values), 256)
+        self.assertTrue(all(int(value, 16) == 42 for value in values))
+        self.assertEqual(next(row["input"] for row in rows if row["event"] == "BUFFER_READY"), POISON)
+
+    def test_second_store_keeps_literal_42_rather_than_restoring_poison(self):
+        rows = self.fixture(True)
+        self.assertEqual(verify(rows, 2, "store42-256")["submissions"], 2)
+        self.assertEqual([row["words"] for row in rows if row["event"] == "READBACK"], [STORE42, STORE42])
+
+    def test_store_requires_explicit_contract_selection(self):
+        with self.assertRaises(ValueError): verify(self.fixture())
+        with self.assertRaises(ValueError): verify(load("one-job"), workload="store42-256")
+
+    def test_any_wrong_word_or_truncated_output_is_rejected(self):
+        for index in (0, 127, 255):
+            rows = self.fixture()
+            next(row for row in rows if row["event"] == "READBACK")["words"][index] = "a5a5a5a5"
+            with self.subTest(index=index):
+                with self.assertRaises(ValueError): verify(rows, workload="store42-256")
+        rows = self.fixture()
+        next(row for row in rows if row["event"] == "READBACK")["words"].pop()
+        with self.assertRaises(ValueError): verify(rows, workload="store42-256")
+
+    def test_self_consistent_wrong_expected_and_readback_cannot_pass(self):
+        rows = self.fixture()
+        rows[0]["expected_first_output"] = ["0000002b"] * 256
+        next(row for row in rows if row["event"] == "READBACK")["words"] = ["0000002b"] * 256
+        with self.assertRaises(ValueError): verify(rows, workload="store42-256")
+
+    def test_input_must_be_all_poison_including_last_word(self):
+        rows = self.fixture()
+        next(row for row in rows if row["event"] == "BUFFER_READY")["input"][255] = "0000002a"
+        with self.assertRaises(ValueError): verify(rows, workload="store42-256")
+
+    def test_exact_buffer_geometry_and_dispatch_are_required(self):
+        for key, value in (("words", 255), ("buffer_bytes", 4096), ("store_value", 43),
+                           ("initial_word_hex", "00000000"), ("threadgroups", [2, 1, 1]),
+                           ("threads_per_threadgroup", [128, 1, 1]), ("grid", [512, 1, 1]),
+                           ("dispatch_api", "dispatchThreads")):
+            rows = self.fixture()
+            rows[0][key] = value
+            with self.subTest(field=key):
+                with self.assertRaises(ValueError): verify(rows, workload="store42-256")
+
+    def test_unsupported_pipeline_maximum_is_rejected(self):
+        for value in (255, None, True, "1024"):
+            rows = self.fixture()
+            next(row for row in rows if row["event"] == "PIPELINE_READY")["max_threads_per_threadgroup"] = value
+            with self.subTest(maximum=value):
+                with self.assertRaises(ValueError): verify(rows, workload="store42-256")
+
+    def test_start_and_commit_cannot_be_claimed_without_exact_tokens(self):
+        for gate in ("WAIT_START", "WAIT_COMMIT"):
+            rows = self.fixture()
+            next(row for row in rows if row["event"] == "GATE_ACCEPTED" and row["gate"] == gate)["accepted_stdin"] = "NO"
+            with self.subTest(gate=gate):
+                with self.assertRaises(ValueError): verify(rows, workload="store42-256")
+
+    def test_second_store_requires_its_own_gates(self):
+        for gate in ("WAIT_SECOND", "WAIT_COMMIT"):
+            rows = self.fixture(True)
+            next(row for row in rows if row["event"] == "GATE_ACCEPTED" and row["gate"] == gate and row["submission"] == 1)["submission"] = 0
+            with self.subTest(gate=gate):
+                with self.assertRaises(ValueError): verify(rows, 2, "store42-256")
+
+    def test_incomplete_command_or_false_pass_cannot_succeed(self):
+        for event, key, value in (("COMMAND_COMPLETED", "status", 5), ("READBACK", "pass", False),
+                                  ("DONE", "verified_words_per_submission", 255)):
+            rows = self.fixture()
+            next(row for row in rows if row["event"] == event)[key] = value
+            with self.subTest(event=event):
+                with self.assertRaises(ValueError): verify(rows, workload="store42-256")
+
+    def test_actual_builder_store_refusals_have_no_causal_submission(self):
+        for name in ("store42-wrong-model", "store42-refused-start", "store42-eof-start"):
+            with self.subTest(name=name):
+                self.assertNotIn("BEFORE_DEVICE", [row["event"] for row in load(name, STORE_EVIDENCE)])
+        events = [row["event"] for row in load("store42-refused-commit", STORE_EVIDENCE)]
+        self.assertIn("WAIT_COMMIT", events)
+        self.assertNotIn("BEFORE_COMMIT", events)
+        self.assertNotIn("COMMAND_COMPLETED", events)
+
+    def test_updated_binary_preserves_xor_contract(self):
+        self.assertEqual(verify(load("one-job", STORE_EVIDENCE))["words_per_submission"], 16)
+        self.assertEqual(verify(load("two-jobs", STORE_EVIDENCE), 2)["words_per_submission"], 16)
 
 
 if __name__ == "__main__":

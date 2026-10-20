@@ -35,11 +35,11 @@ semantics still require validation before driver reuse.
 | 1: PCIe | BLOCKED: no qualified controller enumeration in captured Linux baseline | T6040 power/reset/PHY/controller DT; apple-pcie framework reusable after node comparison. |
 | 1: USB data / debug | WORKS for direct USB proxy and prior Linux gadget; [proxy identity](proxy-current.json) | USB2 inherited-state diagnostic path; this does not qualify SuperSpeed, PD or arbitrary ports. |
 | 1: USB-C role / serial | PARTIAL: proxy/debug available; full Type-C host/device role UNTESTED | ATC PHY/role/PD integration missing; reuse DWC3 core, validate T6040 PHY sequences. |
-| 2: internal display / Hyprland | PARTIAL: test52 stock desktop through inherited framebuffer; [sample](desktop-test52.json) | Native apple-dcp modesetting,120Hz/notch modes and DCP firmware ABI unqualified. RTKit/DART transport reusable, display profile is new work. |
+| 2: internal display / Hyprland | PARTIAL: test52 stock desktop through inherited framebuffer; [sample](desktop-test52.json) | Native apple-dcp modesetting,120Hz/notch modes and DCP firmware ABI unqualified. [Receive-envelope/typed source fixes](../graphics/display/README.md) pass actual-source host regressions and AArch64 composite compilation; full Image and ten modules now link with a validated-no-map-pool-only modular path; [after-proof](../infra/gravity-dcp-restricted-kernel-after.json). Live J614s pool/DART handoff is still unverified; the post-link audit also found foreign PRIME imports bypass pool allocation, so a separate ownership fix is required before loading. |
 | 2: brightness / ALS | BLOCKED: no qualified DCP brightness or AOP ALS path | DCP/AOP service and model integration; existing frameworks candidate only. |
 | 2: GPU transport | WORKS for startup/quiesce only: protocol12, RUN clear; [dmesg](gpu-test56-dmesg.txt), [test56](gpu-test56.json) | Application INIT, full body/power graph and job submission still missing. This is not DRM acceleration. |
-| 2: GPU ABI port | PARTIAL: actual Gravity source serializer compiled/replayed; [evidence](../graphics/gravity-port-result.json) | Current envelope implemented; coherent T6040 body/power/handshake capture required. Legacy output retained byte-for-byte. M3 data cannot be copied. |
-| 2: OpenGL / Vulkan / compute | BLOCKED: no qualified AGX render node or completed M4 Pro GPU job | Matching Gravity kernel/Mesa compute path selected. Exact G16S configuration and INIT/first-kick capture needed before shader readback. Earlier Vulkan smoke crashed before a GPU job. |
+| 2: GPU ABI port | PARTIAL: actual Gravity source serializer compiled/replayed; [evidence](../graphics/gravity-port-result.json) | Current envelope implemented; complete Gravity Image/GPU module now link after the mailbox dependency fix. Coherent T6040 body/power/handshake capture still required. Legacy output retained byte-for-byte. M3 data cannot be copied. |
+| 2: OpenGL / Vulkan / compute | BLOCKED: no qualified AGX render node or completed M4 Pro GPU job | Matching Gravity kernel/Mesa path selected. [387 host and AArch64-QEMU tests](../mesa/README.md) pass; generated artifacts match. Physical G16S configuration and INIT/first-kick capture still required. Earlier Vulkan smoke crashed before a GPU job. |
 | 2: external DP / HDMI | BLOCKED: captured KVM external display has no usable Linux signal | DCP-ext, ATC/DP crossbar and model routing; M3 transport framework candidate, no connector qualification. |
 | 2: AVD / PipeWire capture | UNTESTED | AVD firmware/DT/DART and compositor capture path not qualified. |
 | 3: keyboard / trackpad | PARTIAL: MTP keyboard physical input observed earlier; trackpad reports and pointer motion observed, user reported jumpiness | M2/M3 DockChannel-HID/magicmouse reused after reset/packet checks. Post-SMP physical smoothness, full Fn layout, backlight, gestures/palm rejection UNTESTED. |
@@ -55,7 +55,7 @@ semantics still require validation before driver reuse.
 | 5: Bluetooth | BLOCKED: no qualified HCI device/pairing | PCIe and exact device/firmware qualification first; hci_bcm4377 family is a reuse candidate, not a pass. |
 | 6: MCA / ADMAC / speakers | BLOCKED: no qualified PCM/protected speaker path | Split T6040 ADMAC/SIO/audio routing and model DSP limits; speakersafetyd must protect speakers before playback. Existing M2/M3 framework candidate. |
 | 6: headphones / mic / ISP | UNTESTED | ADT cs42l84 jack, AOP mic and ISP require device/firmware/model integration; no output/capture pass. Host observation webcam is unrelated to Mac ISP. |
-| 7: ARM packages | PARTIAL:986-package image audit, signed native editor tests and116-package print-only resolution; [package plan](../omarchy/evidence/arm-package-plan.json) | vi unresolved; boot requests held; remaining payload signatures/hooks/live ABI not qualified. No full system upgrade run. |
+| 7: ARM packages | PARTIAL:986-package image audit, signed native editor/provider tests and117-package print-only resolution; [package plan](../omarchy/evidence/arm-package-plan.json) | All167 ARM-compatible requests resolved; four boot/firmware requests held. [115/117 pinned payloads](../packages/evidence/summary.json) pass size/SHA/architecture/retained-key PGP verification; two exact archives return404 across all12 official mirrors plus GeoIP. Incoming Plymouth files match two initramfs-generation hooks; execution and live ABI remain unqualified. Signed ex-vi-compat provides vi and passed real isolated invocation. No full system upgrade run. |
 | 7: shell / keys / notch / battery | PARTIAL: stock Hyprland/Quickshell/Foot test52 | Native brightness/volume providers, notch modes and final model profile depend on hardware qualification. No cosmetic workaround substitutes for acceleration. |
 | 7: updates / persistence | BLOCKED: desired default boot not installed or qualified | Versioned kernel/DT/initramfs/firmware package, U-Boot cold boots and rollback; protected boot changes require separate authority. |
 | 7: FEX / muvm / LUKS / snapshots | UNTESTED on the desired persistent installation | Device-mapper/encrypted initramfs, snapshot rollback and compatibility workload tests still required. No destructive conversion performed. |
@@ -77,20 +77,35 @@ comparison failed due to Rust absolute paths and remains recorded.
 
 [Crash-state draft PR](https://github.com/garethpaul/omarchy-m4pro-linux/pull/1)
 is host-regression-tested and AArch64-object-compiled, not hardware-qualified.
-Gravity envelope source is also build/replay-only. Original qualified payloads,
+Gravity envelope source is also build/replay-only. The complete Gravity Image
+and GPU module now link with the [RTKit dependency fix](https://github.com/garethpaul/omarchy-m4pro-linux/pull/3),
+retaining all 3,170 layout blocks and 16,284 offset checks. The prior failed
+link remains recorded. This is a separate compile-only profile, not a bootable
+J614s installation. The restricted DCP profile also links a complete Image and ten modules, including appledrm and asahi_m4, under the exact configuration that previously failed modpost. The no-map-pool path removes unsupported modular arch-helper references; built-in behavior and all layout checks remain. This does not qualify any native display.
+
+Consolidated source ccb0647c779ec32f2549708ee3b57510700aaabb includes the CPU/peripheral/bootstrap ports and dormant GPU/DCP modules. Its MTP node-reference ownership correction resolves the strict compile failure without a cast or warning suppression. Platform objects passed; the full build is pending. NVMe remains explicitly refused before hardware side effects until the inherited RTKit/firmware-memory adoption path is ported. Prior storage evidence does not qualify this new source.
+
+Original qualified payloads,
 macOS/Recovery/1TR and storage layout remain unchanged by this checkpoint.
 
 The [minimal Metal capture trigger](../capture/README.md) compiled on a separate
 M1 Pro builder and verified its one/two-job readbacks. It has not run on this
-M4 Pro. Its source/build protocol and14 corruption tests are retained separately.
+M4 Pro. Its optional store42 mode matches the Mesa fixture: 256 words, local256,
+initial poison and exact42 output. The updated tool passed builder readbacks
+and 27 transcript tests; original XOR evidence is retained separately.
 
 ## Next executable work, by dependency
 
-1. Finish real Gravity module build with layout assertions enabled. The clean
-   candidate rebuild comparison passed; publish reviewed experimental branches.
-2. Prepare T6040-gated early APP INIT/first-kick observation using the published
-   capture stack and a minimal source-built compute job. Body/power values need
-   coherent evidence, not T8132 constants.
+1. Build the consolidated J614s Gravity candidate with the tested CPU/input
+   paths and dormant GPU/DCP modules. New-candidate NVMe must stay closed until
+   inherited RTKit adoption is ported; old f93 storage evidence does not transfer.
+   Finish the consolidated full build and actual NVMe inherited-state port. DCP
+   modular linking now passes, while native pool/DART handoff remains unqualified.
+   The historical package audit is115/117 with two unavailable pins and proven
+   static boot-hook matches; a separate current-metadata proposal is in progress.
+2. The T6040-gated early observation adapter, native Metal trigger and matching
+   source-built compute fixture are ready for a later approved session. Body,
+   power and DCP RPC values need coherent capture, not T8132 constants.
 3. Independently verify a recovery method in a supervised window before another
    boot-sensitive test. Manual restart is currently the only proven fallback;
    the KVM Fingerbot belongs to another machine and must never be used.

@@ -138,3 +138,57 @@ compute-kick shared state. The helper exposes stage boundaries and its own
 known data; the hypervisor tracer must capture/validate those firmware objects.
 Record initialization and first-kick state before trying replay. No later GUI
 capture or builder success substitutes for that target evidence.
+
+## Added fixture: one 256-thread group storing 42
+
+`--fixture-store42` selects the compute fixture shared with the Mesa lane.
+The default XOR workload and its original evidence above are retained.
+The helper owns exactly **256 uint32 words / 1024 bytes**, initializes all
+words to `0xa5a5a5a5`, and binds that one buffer at index 0. It dispatches
+exactly one direct threadgroup `(1,1,1)` with local size `(256,1,1)`; invocation
+`global_id.x` stores unsigned `42` at byte offset `global_id.x * 4`.
+No fallback changes that geometry: a pipeline limited below 256 local threads
+fails before buffer allocation or submission. The shader requests no other
+resources or threadgroup memory. The compiler/driver's internal resources are
+outside this public-API claim, and the Metal and Mesa binaries are not asserted
+to be identical.
+
+Readback must contain the literal `0000002a` **256 times**, independently of
+both the transcript's expected vector and its success boolean. With `--second`,
+the separately gated second job again stores 42; it does not restore the poison
+pattern. The helper accesses only its owned buffer. Surrounding BO/page canary
+checks remain **UNTESTED**, for the Linux/tracer validation lane.
+
+| Added validation | Status | Evidence |
+| --- | --- | --- |
+| Strict ARM64 build, macOS 13.0 deployment target, ad hoc signature verification | WORKS on M1 Pro builder | `evidence/store42-build.json` |
+| Store42 one-job and separately gated two-job readback, all 256 words | WORKS on M1 Pro builder | `evidence/store42-builder/store42-{one-job,two-jobs}.jsonl` |
+| Store42 model/gate refusal and unchanged XOR workload regression | WORKS on M1 Pro builder | `evidence/store42-builder/result.json` |
+| Corrupted last/middle word, 255-word truncation, false expected vector, poison, geometry, pipeline cap and causal gate rejection | WORKS as 27 host tests including the original 14 | `evidence/store42-unit-tests.txt` |
+| M4 execution, first-global-job capture, firmware replay, Linux GPU acceleration, surrounding BO canaries | UNTESTED | Builder validation does not establish these features |
+
+The added build has source SHA256
+`ad8771fdf05213a1db94a7982329088531783da63533726d5914e8bf33da98b8`
+and binary SHA256
+`a7ac6e4b38630f7d6cadfc3b5a4ef2587362a1280101ae5101321cd9798db2f6`.
+`evidence/build.json` and `evidence/builder-validation/` continue to describe
+the historical XOR-only build; they have not been replaced. The current ignored
+`build/compute-trigger` is the added two-workload build. Source and controlled
+validation transcripts are committed; the binary remains an ignored artifact.
+The added validation submitted three store42 jobs and three XOR jobs on the M1
+Pro development Mac, with no target access or persistent installation.
+
+On that development Mac only, reproduce both modes into a new directory:
+
+```sh
+python3 validate_builder.py --binary build/compute-trigger \
+  --output NEW_EVIDENCE_DIRECTORY --include-store42
+python3 verify_transcript.py \
+  evidence/store42-builder/store42-one-job.jsonl --workload store42-256
+```
+
+A future explicitly approved target session can select this fixture with
+`./compute-trigger --run --fixture-store42`. The exact same START/COMMIT gates,
+RAM-staging preference, early-tracer requirements, macOS cache/log side effects
+and recovery prerequisites above apply. No target staging, XNU boot or capture
+was performed for this addition.

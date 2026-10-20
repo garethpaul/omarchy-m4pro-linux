@@ -1,0 +1,31 @@
+{
+  "status": "WORKS for offline artifact consistency",
+  "hardware_execution": "UNTESTED",
+  "components": {
+    "shader.bin": {
+      "bytes": 42,
+      "sha256": "4f522bac5ffca27e17fed15eabe1507291f1f73fc925f94f17a279f1196fc276"
+    },
+    "entries.bin": {
+      "bytes": 1024,
+      "sha256": "9f54a1b013e3f7bc1c1456659de2ef3712510a84f9d18530d586ef6263325585"
+    },
+    "resources.bin": {
+      "bytes": 256,
+      "sha256": "ba07c160207739b99cab515f94bbee9eb22bf8db2c5d7d8928e5b963f342ddf8"
+    },
+    "launch.bin": {
+      "bytes": 1024,
+      "sha256": "60d1e0ff1bf8e22f1a8e2b8ad9b80cfe9ad635c5e38012f6ae55053a8ac03cf5"
+    },
+    "cdm.bin": {
+      "bytes": 52,
+      "sha256": "74f205496cf7e3e1bdecadccd9356b72c6d12c5f890c6a1690de7bacf093ccda"
+    },
+    "expected.bin": {
+      "bytes": 1024,
+      "sha256": "68d5f87429043315cd7574f57eebbd3a16f2ab69ea58eb6c75b531035f311ed3"
+    }
+  },
+  "expected_runtime_acceptance": "Compare all256 u32 words to42 plus untouched BO/page canaries and successful completion fence; no such hardware result exists yet."
+}

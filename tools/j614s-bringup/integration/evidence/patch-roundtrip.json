@@ -1,0 +1,11 @@
+{
+  "status": "WORKS (source patch replay only)",
+  "gravity_base_commit": "b442be4b28f3720daff6c5f26fe8b1ab3aef28f1",
+  "candidate_commit": "a5a5ba8f56c9ab9192bbe9d3e9ae006cdcca661f",
+  "patches": 4,
+  "verified_files": 32,
+  "git_apply_check_exit": 0,
+  "application_flag": "--unidiff-zero",
+  "hardware": "UNTESTED",
+  "target_access": false
+}

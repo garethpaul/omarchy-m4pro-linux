@@ -1,0 +1,270 @@
+{
+  "schema": 1,
+  "status": "WORKS (builder validation only)",
+  "builder_model": "MacBookPro18,3",
+  "builder_architecture": "arm64",
+  "binary_sha256": "a7ac6e4b38630f7d6cadfc3b5a4ef2587362a1280101ae5101321cd9798db2f6",
+  "cases": [
+    {
+      "name": "dry-run",
+      "exit": 0,
+      "events": [
+        "PLAN"
+      ]
+    },
+    {
+      "name": "wrong-model",
+      "exit": 78,
+      "events": [
+        "PLAN",
+        "ERROR"
+      ]
+    },
+    {
+      "name": "refused-start",
+      "exit": 65,
+      "events": [
+        "PLAN",
+        "WAIT_START",
+        "ERROR"
+      ]
+    },
+    {
+      "name": "eof-start",
+      "exit": 65,
+      "events": [
+        "PLAN",
+        "WAIT_START",
+        "ERROR"
+      ]
+    },
+    {
+      "name": "refused-commit",
+      "exit": 65,
+      "events": [
+        "PLAN",
+        "WAIT_START",
+        "GATE_ACCEPTED",
+        "BEFORE_DEVICE",
+        "DEVICE_READY",
+        "BEFORE_LIBRARY",
+        "BEFORE_PIPELINE",
+        "PIPELINE_READY",
+        "BEFORE_BUFFER",
+        "BUFFER_READY",
+        "BEFORE_QUEUE",
+        "BEFORE_ENCODING",
+        "WAIT_COMMIT",
+        "ERROR"
+      ]
+    },
+    {
+      "name": "one-job",
+      "exit": 0,
+      "events": [
+        "PLAN",
+        "WAIT_START",
+        "GATE_ACCEPTED",
+        "BEFORE_DEVICE",
+        "DEVICE_READY",
+        "BEFORE_LIBRARY",
+        "BEFORE_PIPELINE",
+        "PIPELINE_READY",
+        "BEFORE_BUFFER",
+        "BUFFER_READY",
+        "BEFORE_QUEUE",
+        "BEFORE_ENCODING",
+        "WAIT_COMMIT",
+        "GATE_ACCEPTED",
+        "BEFORE_COMMIT",
+        "COMMAND_COMPLETED",
+        "READBACK",
+        "DONE"
+      ]
+    },
+    {
+      "name": "two-jobs",
+      "exit": 0,
+      "events": [
+        "PLAN",
+        "WAIT_START",
+        "GATE_ACCEPTED",
+        "BEFORE_DEVICE",
+        "DEVICE_READY",
+        "BEFORE_LIBRARY",
+        "BEFORE_PIPELINE",
+        "PIPELINE_READY",
+        "BEFORE_BUFFER",
+        "BUFFER_READY",
+        "BEFORE_QUEUE",
+        "BEFORE_ENCODING",
+        "WAIT_COMMIT",
+        "GATE_ACCEPTED",
+        "BEFORE_COMMIT",
+        "COMMAND_COMPLETED",
+        "READBACK",
+        "WAIT_SECOND",
+        "GATE_ACCEPTED",
+        "BEFORE_ENCODING",
+        "WAIT_COMMIT",
+        "GATE_ACCEPTED",
+        "BEFORE_COMMIT",
+        "COMMAND_COMPLETED",
+        "READBACK",
+        "DONE"
+      ]
+    },
+    {
+      "name": "store42-dry-run",
+      "exit": 0,
+      "events": [
+        "PLAN"
+      ]
+    },
+    {
+      "name": "store42-wrong-model",
+      "exit": 78,
+      "events": [
+        "PLAN",
+        "ERROR"
+      ]
+    },
+    {
+      "name": "store42-refused-start",
+      "exit": 65,
+      "events": [
+        "PLAN",
+        "WAIT_START",
+        "ERROR"
+      ]
+    },
+    {
+      "name": "store42-eof-start",
+      "exit": 65,
+      "events": [
+        "PLAN",
+        "WAIT_START",
+        "ERROR"
+      ]
+    },
+    {
+      "name": "store42-refused-commit",
+      "exit": 65,
+      "events": [
+        "PLAN",
+        "WAIT_START",
+        "GATE_ACCEPTED",
+        "BEFORE_DEVICE",
+        "DEVICE_READY",
+        "BEFORE_LIBRARY",
+        "BEFORE_PIPELINE",
+        "PIPELINE_READY",
+        "BEFORE_BUFFER",
+        "BUFFER_READY",
+        "BEFORE_QUEUE",
+        "BEFORE_ENCODING",
+        "WAIT_COMMIT",
+        "ERROR"
+      ]
+    },
+    {
+      "name": "store42-one-job",
+      "exit": 0,
+      "events": [
+        "PLAN",
+        "WAIT_START",
+        "GATE_ACCEPTED",
+        "BEFORE_DEVICE",
+        "DEVICE_READY",
+        "BEFORE_LIBRARY",
+        "BEFORE_PIPELINE",
+        "PIPELINE_READY",
+        "BEFORE_BUFFER",
+        "BUFFER_READY",
+        "BEFORE_QUEUE",
+        "BEFORE_ENCODING",
+        "WAIT_COMMIT",
+        "GATE_ACCEPTED",
+        "BEFORE_COMMIT",
+        "COMMAND_COMPLETED",
+        "READBACK",
+        "DONE"
+      ]
+    },
+    {
+      "name": "store42-two-jobs",
+      "exit": 0,
+      "events": [
+        "PLAN",
+        "WAIT_START",
+        "GATE_ACCEPTED",
+        "BEFORE_DEVICE",
+        "DEVICE_READY",
+        "BEFORE_LIBRARY",
+        "BEFORE_PIPELINE",
+        "PIPELINE_READY",
+        "BEFORE_BUFFER",
+        "BUFFER_READY",
+        "BEFORE_QUEUE",
+        "BEFORE_ENCODING",
+        "WAIT_COMMIT",
+        "GATE_ACCEPTED",
+        "BEFORE_COMMIT",
+        "COMMAND_COMPLETED",
+        "READBACK",
+        "WAIT_SECOND",
+        "GATE_ACCEPTED",
+        "BEFORE_ENCODING",
+        "WAIT_COMMIT",
+        "GATE_ACCEPTED",
+        "BEFORE_COMMIT",
+        "COMMAND_COMPLETED",
+        "READBACK",
+        "DONE"
+      ]
+    }
+  ],
+  "one_job": {
+    "status": "WORKS",
+    "scope": "this transcript's Metal workload/readback only",
+    "submissions": 1,
+    "words_per_submission": 16,
+    "workload": "xor16",
+    "earliest_global_firmware_job": "UNTESTED",
+    "m4_pro_hardware": "UNTESTED"
+  },
+  "two_jobs": {
+    "status": "WORKS",
+    "scope": "this transcript's Metal workload/readback only",
+    "submissions": 2,
+    "words_per_submission": 16,
+    "workload": "xor16",
+    "earliest_global_firmware_job": "UNTESTED",
+    "m4_pro_hardware": "UNTESTED"
+  },
+  "m4_pro_execution": "UNTESTED",
+  "first_global_firmware_job": "UNTESTED",
+  "target_access": false,
+  "persistent_installation": false,
+  "store42_fixture": {
+    "one_job": {
+      "status": "WORKS",
+      "scope": "this transcript's Metal workload/readback only",
+      "submissions": 1,
+      "words_per_submission": 256,
+      "workload": "store42-256",
+      "earliest_global_firmware_job": "UNTESTED",
+      "m4_pro_hardware": "UNTESTED"
+    },
+    "two_jobs": {
+      "status": "WORKS",
+      "scope": "this transcript's Metal workload/readback only",
+      "submissions": 2,
+      "words_per_submission": 256,
+      "workload": "store42-256",
+      "earliest_global_firmware_job": "UNTESTED",
+      "m4_pro_hardware": "UNTESTED"
+    },
+    "surrounding_bo_canaries": "UNTESTED; outside the owned Metal buffer"
+  }
+}

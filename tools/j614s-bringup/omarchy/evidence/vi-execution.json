@@ -1,0 +1,113 @@
+{
+  "schema": 1,
+  "status": "WORKS (isolated invocation only)",
+  "scope": "unmodified signed /usr/bin/vi script with QEMU-dispatched signed ARM Vim in a user/mount/network namespace",
+  "provider_name": "ex-vi-compat",
+  "provider_version": "3-1",
+  "provider_package_sha256": "7d5d99f383a190485a868e61bf6522611f0148f805ab7d7f3cd55c17dc6ce8e5",
+  "wrapper_sha256": "1cda199eb23f3fbdd24c889d7f41fa376a412a044b37702535ccba968a91bbd2",
+  "native_vim_package_sha256": "e6dac872c70975d71550af934402f4e603bb0ebe444310440bc89f4e8c8e76c4",
+  "native_vim_sha256": "89f67f72e5dae7f87be488894ea8f07fc89fd29a962b33696fcd542b06d0415d",
+  "emulator_sha256": "66bdc286fd30970a1c3d2029b460605a3dc843ed6b397f4cd9825f9c19551507",
+  "signer_fingerprint": "68B3537F39A313B3E574D06777193F152BDBE6A6",
+  "vi_invocation_pass": true,
+  "compatibility_mode": 1,
+  "file_roundtrip_pass": true,
+  "exrc_pass": true,
+  "exinit_precedence_pass": true,
+  "edit_save_pass": true,
+  "cases": [
+    {
+      "case": "version",
+      "exit": 0,
+      "backend_arguments": [
+        "-C",
+        "-u",
+        "NONE",
+        "--version"
+      ],
+      "stdout": [
+        "VIM - Vi IMproved 9.2 (2026 Feb 14, compiled Oct 12 2026 23:20:38)",
+        "Included patches: 1-1178",
+        "Compiled by Arch Linux",
+        "Huge version without GUI.  Features included (+) or not (-):"
+      ]
+    },
+    {
+      "case": "compatible-roundtrip",
+      "exit": 0,
+      "backend_arguments": [
+        "-C",
+        "-u",
+        "NONE",
+        "-i",
+        "NONE",
+        "-n",
+        "-es",
+        "-c",
+        "call writefile([\"vi-roundtrip\", string(&compatible)], \"/work/roundtrip.txt\")",
+        "-c",
+        "qa!"
+      ],
+      "stdout": []
+    },
+    {
+      "case": "home-exrc",
+      "exit": 0,
+      "backend_arguments": [
+        "-C",
+        "-u",
+        "/work/home/.exrc",
+        "-i",
+        "NONE",
+        "-n",
+        "-es",
+        "-c",
+        "call writefile([string(g:vi_probe)], \"/work/exrc.txt\")",
+        "-c",
+        "qa!"
+      ],
+      "stdout": []
+    },
+    {
+      "case": "exinit-precedence",
+      "exit": 0,
+      "backend_arguments": [
+        "-C",
+        "-u",
+        "/work/tmp/tmp.4KMununFEd",
+        "-i",
+        "NONE",
+        "-n",
+        "-es",
+        "-c",
+        "call writefile([string(g:vi_probe)], \"/work/exinit.txt\")",
+        "-c",
+        "qa!"
+      ],
+      "stdout": []
+    },
+    {
+      "case": "edit-save",
+      "exit": 0,
+      "backend_arguments": [
+        "-C",
+        "-u",
+        "NONE",
+        "-i",
+        "NONE",
+        "-n",
+        "-es",
+        "/work/edit.txt",
+        "-c",
+        "%s/before/after/",
+        "-c",
+        "wq"
+      ],
+      "stdout": []
+    }
+  ],
+  "host_installation": false,
+  "target_access": false,
+  "target_native_execution": "UNTESTED"
+}

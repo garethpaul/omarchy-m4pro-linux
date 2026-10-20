@@ -1,0 +1,25 @@
+test_bad_expired_missing_revoked_rejected (test_audit.AuditTests.test_bad_expired_missing_revoked_rejected) ... ok
+test_baseline_override_and_null_mask (test_audit.AuditTests.test_baseline_override_and_null_mask) ... ok
+test_each_signer_uses_own_anchor (test_audit.AuditTests.test_each_signer_uses_own_anchor) ... ok
+test_exact_db_payload_architecture_and_repository_pins (test_audit.AuditTests.test_exact_db_payload_architecture_and_repository_pins) ... ok
+test_hook_is_data_and_boot_sensitive (test_audit.AuditTests.test_hook_is_data_and_boot_sensitive) ... ok
+test_hook_package_path_and_negation (test_audit.AuditTests.test_hook_package_path_and_negation) ... ok
+test_image_manifest_rejects_wrong_image (test_audit.AuditTests.test_image_manifest_rejects_wrong_image) ... ok
+test_missing_trust_not_invented (test_audit.AuditTests.test_missing_trust_not_invented) ... ok
+test_name_safe_package_still_triggers_boot_effect_guard (test_audit.AuditTests.test_name_safe_package_still_triggers_boot_effect_guard) ... ok
+test_non_deployable_guard (test_audit.AuditTests.test_non_deployable_guard) ... ok
+test_nonzero_with_validsig_rejected (test_audit.AuditTests.test_nonzero_with_validsig_rejected) ... ok
+test_protected_plan_rejected_before_download (test_audit.AuditTests.test_protected_plan_rejected_before_download) ... ok
+test_signed_identity_and_install_data (test_audit.AuditTests.test_signed_identity_and_install_data) ... ok
+test_size_or_digest_mismatch_rejected (test_audit.AuditTests.test_size_or_digest_mismatch_rejected) ... ok
+test_snapshot_manifest_does_not_hash_itself_or_follow_links (test_audit.AuditTests.test_snapshot_manifest_does_not_hash_itself_or_follow_links) ... ok
+test_snapshot_unmanifested_hook_rejected (test_audit.AuditTests.test_snapshot_unmanifested_hook_rejected) ... ok
+test_symlink_metadata_and_traversal_rejected (test_audit.AuditTests.test_symlink_metadata_and_traversal_rejected) ... ok
+test_official_domain_list_rejects_unreviewed_or_duplicate (test_mirrors.MirrorTests.test_official_domain_list_rejects_unreviewed_or_duplicate) ... ok
+test_page_parser_records_version_without_substitution (test_mirrors.MirrorTests.test_page_parser_records_version_without_substitution) ... ok
+test_real_http_404_and_wrong_bytes_never_reach_signature_qualification (test_mirrors.MirrorTests.test_real_http_404_and_wrong_bytes_never_reach_signature_qualification) ... ok
+
+----------------------------------------------------------------------
+Ran 20 tests in 0.518s
+
+OK

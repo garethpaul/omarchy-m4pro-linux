@@ -1,0 +1,211 @@
+{
+  "binding_layouts": {
+    "compiled_bindings_object_bytes": 936,
+    "compiled_bindings_object_sha256": "bbfd5e39e855b5e82c4a66c6b9c6f448f479d425e4c1ec275dfdcf9f52f0a4e7",
+    "const_layout_blocks": 3170,
+    "field_offset_checks": 16284,
+    "generated_bindings_sha256": "9b3b82e388d81037635133d1c0a6794b0c5f411f214c90895be60507addfcc8d",
+    "hardware_executed": false,
+    "layout_checks_disabled": false,
+    "status": "PASS",
+    "target": "aarch64-linux-gnu"
+  },
+  "config_sha256": "14dac9c605a482f174f49bc794c82a1bfc0ee64e3c0390387df8599b01764ddd",
+  "hardware": "UNTESTED",
+  "image": {
+    "bytes": 10594816,
+    "path": "Image",
+    "sha256": "f7be0d5a6ceb07a43e47a1e41a2fe66e33b2a584c54bab30e479a5dd1b15f96c"
+  },
+  "layout_overlay_sha256": "288be4fd575133525ed896cb5855cb1e9a3827cce126ce38ef486a5bf8278e36",
+  "module_link": "PASS",
+  "modules": [
+    {
+      "bytes": 228248,
+      "path": "modules/drivers/char/hw_random/arm_smccc_trng.ko",
+      "sha256": "7513dab4ddf7eb7b782bafb5d2276f9c80b25c49b2db119c9ba714bf43d2754a"
+    },
+    {
+      "bytes": 301984,
+      "path": "modules/drivers/char/hw_random/rng-core.ko",
+      "sha256": "a079b1330a2a64027ed8bdc2fb9e639714837957ad97c6bcb2cf7b7aa052e8e9"
+    },
+    {
+      "bytes": 6654896,
+      "path": "modules/drivers/gpu/drm/asahi/asahi_m4.ko",
+      "sha256": "ee3b08a50290f067904fbe010014b07030b44cf7aed6bf33d17777d777f7cbae"
+    },
+    {
+      "bytes": 601808,
+      "path": "modules/fs/efivarfs/efivarfs.ko",
+      "sha256": "2f062812d378f19696bbe63c6b1a9ad4b91e10eb8523859495d82ac0a41c956a"
+    },
+    {
+      "bytes": 580072,
+      "path": "modules/net/ipv4/ip_tunnel.ko",
+      "sha256": "89a532f3227c49f69d1b3501335b7752154f206e5a27ed8f54084ee5bbb0460a"
+    },
+    {
+      "bytes": 435328,
+      "path": "modules/net/ipv4/tunnel4.ko",
+      "sha256": "fc05861c7faeddd7283051414afda4075fbda705a105a6f19bd140cdfa2faf9c"
+    },
+    {
+      "bytes": 590512,
+      "path": "modules/net/ipv6/sit.ko",
+      "sha256": "ecee00486cd1837ac9dc03d60050724b9a30c702a91fad9f603cf81f508294aa"
+    }
+  ],
+  "object": {
+    "bytes": 6559472,
+    "path": "build/drivers/gpu/drm/asahi/asahi_m4.o",
+    "sha256": "18e432dbea4894e2c23e61b88abd81002d0c1d56aab37ec954135d6e43d424c9"
+  },
+  "path_audit": {
+    "artifacts": [
+      {
+        "path": "Image",
+        "private_prefix_matches": {
+          "build_directory": 0,
+          "home_directory": 0
+        }
+      },
+      {
+        "path": "modules/drivers/char/hw_random/arm_smccc_trng.ko",
+        "private_prefix_matches": {
+          "build_directory": 0,
+          "home_directory": 0
+        }
+      },
+      {
+        "path": "modules/drivers/char/hw_random/rng-core.ko",
+        "private_prefix_matches": {
+          "build_directory": 0,
+          "home_directory": 0
+        }
+      },
+      {
+        "path": "modules/drivers/gpu/drm/asahi/asahi_m4.ko",
+        "private_prefix_matches": {
+          "build_directory": 0,
+          "home_directory": 0
+        }
+      },
+      {
+        "path": "modules/fs/efivarfs/efivarfs.ko",
+        "private_prefix_matches": {
+          "build_directory": 0,
+          "home_directory": 0
+        }
+      },
+      {
+        "path": "modules/net/ipv4/ip_tunnel.ko",
+        "private_prefix_matches": {
+          "build_directory": 0,
+          "home_directory": 0
+        }
+      },
+      {
+        "path": "modules/net/ipv4/tunnel4.ko",
+        "private_prefix_matches": {
+          "build_directory": 0,
+          "home_directory": 0
+        }
+      },
+      {
+        "path": "modules/net/ipv6/sit.ko",
+        "private_prefix_matches": {
+          "build_directory": 0,
+          "home_directory": 0
+        }
+      }
+    ],
+    "scope": "Actual host home and build directory prefixes",
+    "status": "PASS"
+  },
+  "recipe": {
+    "build_host": "builder",
+    "build_timestamp": "Mon Oct 19 00:00:00 UTC 2026",
+    "build_user": "j614s",
+    "build_version": "1",
+    "c_path_remapping": {
+      "output": "build",
+      "source": "src"
+    },
+    "localversion_suffix": "+",
+    "rust_path_remapping": [
+      "source/",
+      "output/",
+      "rust-sysroot/"
+    ],
+    "rust_sysroot_replacement": "rust-toolchain/",
+    "version": 2
+  },
+  "release": "7.1.13-gravity-g16s-compile+-gb442be4b28f3-dirty",
+  "required_config": {
+    "CONFIG_APPLE_MAILBOX": "y",
+    "CONFIG_APPLE_RTKIT": "y",
+    "CONFIG_ARCH_APPLE": "y",
+    "CONFIG_ARM64": "y",
+    "CONFIG_ARM64_16K_PAGES": "y",
+    "CONFIG_CMDLINE": "\"\"",
+    "CONFIG_DRM": "y",
+    "CONFIG_DRM_ASAHI_M4": "m",
+    "CONFIG_LOCALVERSION": "\"-gravity-g16s-compile\"",
+    "CONFIG_MODULES": "y",
+    "CONFIG_NR_CPUS": "16",
+    "CONFIG_PM": "y",
+    "CONFIG_RUST": "y"
+  },
+  "scope": "Complete asahi_m4 AArch64 crate; no firmware execution, target boot, or GPU capability claim",
+  "source": {
+    "dirty_diff_sha256": "288be4fd575133525ed896cb5855cb1e9a3827cce126ce38ef486a5bf8278e36",
+    "head": "b442be4b28f3720daff6c5f26fe8b1ab3aef28f1",
+    "untracked": {}
+  },
+  "status": "KERNEL_AND_MODULES_COMPILED",
+  "tools": {
+    "bc": {
+      "sha256": "7ae95c260622412ceba6eb9f45d68f616cdc091a1d71d6c0a08b5875bb2c31dd"
+    },
+    "bindgen": {
+      "sha256": "7fdf32940891781eb742fb4a69775a0b39de4a48d0a168dfb3f740fb547fceda"
+    },
+    "clang": {
+      "sha256": "6acc6d2f0fdbae93e4d3b622b7a0d42cd05b036146e14193d9df40d1c0977066"
+    },
+    "clang++": {
+      "sha256": "6acc6d2f0fdbae93e4d3b622b7a0d42cd05b036146e14193d9df40d1c0977066"
+    },
+    "ld.lld": {
+      "sha256": "a2aef2573bc0409403747456072c373523ebfea0d03a832520331a17e8ec65a5"
+    },
+    "llvm-ar": {
+      "sha256": "4a21fd61e18a1168dc449e1b5c495925c446775860d0d042b57dac1925e6f7ef"
+    },
+    "llvm-nm": {
+      "sha256": "943a52c986ca4d0e429b523efcf6b4bdd8c9bd90616f5781ede4ab32124f7227"
+    },
+    "llvm-objcopy": {
+      "sha256": "c03c694462c48b4f6f84d62dfff530cef3b539583dddf62681fb318e2f9ef151"
+    },
+    "llvm-objdump": {
+      "sha256": "5096b8e9b6937b7451891cb820f867e77bce1628fdd077ed95c55cb2145fb2eb"
+    },
+    "llvm-readelf": {
+      "sha256": "c1d5d7261aa2b25ba5ec4060dd873a6a9808d2912221f97aaf3478f00f3af743"
+    },
+    "llvm-strip": {
+      "sha256": "c03c694462c48b4f6f84d62dfff530cef3b539583dddf62681fb318e2f9ef151"
+    },
+    "make": {
+      "sha256": "9018663161af324a74326c035cfd05408cba13a26c1f6b801cf5f3195f2bee40"
+    },
+    "rustc": {
+      "sha256": "5eadaaf4fe086d76547b17dc3c1ba880d0082b93f7d8bc65612770da8e79fe8e"
+    },
+    "rustdoc": {
+      "sha256": "f22c571ca4f921e0ac7c2c466de30da574b9018690a3878167cb0ea72249ed7f"
+    }
+  }
+}

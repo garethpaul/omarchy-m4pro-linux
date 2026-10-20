@@ -1,0 +1,658 @@
+From dc28adf00c07843b3e6265d1c576dabbf34e574b Mon Sep 17 00:00:00 2001
+From: gareth jones <gareth@garethpaul.com>
+Date: Mon, 19 Oct 2026 22:37:16 -0700
+Subject: [PATCH 2/4] platform/apple: port gated J614s peripheral diagnostics
+ without T8132 aliases
+
+Reuse measured inherited USB2, gp1c trackpad reset and method-2 firmware ownership from f93. Preserve Gravity's T8132 ring transport unchanged and refuse that alias on J614s. Force J614s battery telemetry read-only. Refuse J614s ANS probing before power/MMIO: Gravity lacks the separately tested Aurora inherited-RTKit adoption path, so its existing generic NVMe reset route is not qualified for this board. Compile-only candidate; no hardware claim.
+---
+ drivers/gpio/gpio-macsmc.c                    |  52 ++++++
+ .../dockchannel-hid-protocol.h                |  55 +++++++
+ drivers/hid/dockchannel-hid/dockchannel-hid.c | 131 ++++++++++++++-
+ drivers/nvme/host/apple.c                     |   8 +
+ drivers/phy/apple/Kconfig                     |  18 +++
+ drivers/phy/apple/Makefile                    |   3 +
+ .../phy/apple/usb2-j614s-host-diagnostic.c    | 105 ++++++++++++
+ drivers/phy/apple/usb2-t6040-inherited.c      | 149 ++++++++++++++++++
+ drivers/power/supply/macsmc-power.c           |  34 ++--
+ 9 files changed, 541 insertions(+), 14 deletions(-)
+ create mode 100644 drivers/hid/dockchannel-hid/dockchannel-hid-protocol.h
+ create mode 100644 drivers/phy/apple/usb2-j614s-host-diagnostic.c
+ create mode 100644 drivers/phy/apple/usb2-t6040-inherited.c
+
+diff --git a/drivers/gpio/gpio-macsmc.c b/drivers/gpio/gpio-macsmc.c
+index c3ca445a8..d1de91cbe 100644
+--- a/drivers/gpio/gpio-macsmc.c
++++ b/drivers/gpio/gpio-macsmc.c
+@@ -15,0 +16 @@
++#include <linux/of.h>
+@@ -18,0 +20,4 @@
++/* J614s ADT gp1c: command 0x10000, level in bit zero, GPIO 28 only. */
++#define MACSMC_J614S_AFE_RESET_GPIO 28
++#define MACSMC_J614S_AFE_RESET_CMD 0x10000
++
+@@ -78,0 +84,3 @@ struct macsmc_gpio {
++	bool j614s_afe_reset;
++	bool j614s_reset_known;
++	bool j614s_reset_level;
+@@ -150,0 +159,4 @@ static int macsmc_gpio_get_direction(struct gpio_chip *gc, unsigned int offset)
++	if (smcgp->j614s_afe_reset)
++		return offset == MACSMC_J614S_AFE_RESET_GPIO ?
++			GPIO_LINE_DIRECTION_OUT : -EINVAL;
++
+@@ -170,0 +183,6 @@ static int macsmc_gpio_get(struct gpio_chip *gc, unsigned int offset)
++	if (smcgp->j614s_afe_reset) {
++		if (offset != MACSMC_J614S_AFE_RESET_GPIO)
++			return -EINVAL;
++		return smcgp->j614s_reset_known ? smcgp->j614s_reset_level : -EAGAIN;
++	}
++
+@@ -192,0 +211,12 @@ static int macsmc_gpio_set(struct gpio_chip *gc, unsigned int offset, int value)
++	if (smcgp->j614s_afe_reset) {
++		if (offset != MACSMC_J614S_AFE_RESET_GPIO)
++			return -EINVAL;
++		ret = apple_smc_write_u32(smcgp->smc, key,
++					MACSMC_J614S_AFE_RESET_CMD | !!value);
++		if (ret < 0)
++			return ret;
++		smcgp->j614s_reset_level = !!value;
++		smcgp->j614s_reset_known = true;
++		return 0;
++	}
++
+@@ -208,0 +239,6 @@ static int macsmc_gpio_init_valid_mask(struct gpio_chip *gc,
++	if (smcgp->j614s_afe_reset) {
++		bitmap_zero(valid_mask, ngpios);
++		set_bit(MACSMC_J614S_AFE_RESET_GPIO, valid_mask);
++		return 0;
++	}
++
+@@ -255,0 +292,15 @@ static int macsmc_gpio_probe(struct platform_device *pdev)
++	if (device_is_compatible(&pdev->dev, "apple,j614s-trackpad-reset")) {
++		struct apple_smc_key_info info;
++
++		if (!of_machine_is_compatible("apple,j614s") ||
++		    smcgp->base_key != _SMC_KEY("gp\0\0"))
++			return -EINVAL;
++		ret = apple_smc_get_key_info(smc, SMC_KEY(gp1c), &info);
++		if (ret < 0)
++			return ret;
++		if (info.size != sizeof(u32))
++			return -EINVAL;
++		smcgp->j614s_afe_reset = true;
++		dev_info(&pdev->dev, "J614s gp1c reset: 4-byte ADT command, pin 28 only\n");
++	}
++
+@@ -294,0 +346 @@ static const struct of_device_id macsmc_gpio_of_table[] = {
++	{ .compatible = "apple,j614s-trackpad-reset", .data = &macsmc_gpio_low_data },
+diff --git a/drivers/hid/dockchannel-hid/dockchannel-hid-protocol.h b/drivers/hid/dockchannel-hid/dockchannel-hid-protocol.h
+new file mode 100644
+index 000000000..c73c91186
+--- /dev/null
++++ b/drivers/hid/dockchannel-hid/dockchannel-hid-protocol.h
+@@ -0,0 +1,55 @@
++/* SPDX-License-Identifier: GPL-2.0 OR MIT */
++/*
++ * Apple DockChannel HID transport: MTP interface power commands
++ */
++#ifndef _DOCKCHANNEL_HID_PROTOCOL_H
++#define _DOCKCHANNEL_HID_PROTOCOL_H
++
++#include <linux/string.h>
++#include <linux/types.h>
++
++/*
++ * Interface power commands go to the comm interface as SET_REPORT feature
++ * reports. Byte 0 is the command, byte 1 the power method, byte 2 the
++ * interface number and byte 3 the target power state.
++ *
++ * Power method 1 has nothing more. The coprocessor sequences the device
++ * itself and asks the host to pulse a reset line when it needs one.
++ *
++ * Power method 2 adds a has-changed flag in byte 4 and four bytes of
++ * padding. Each transition is announced with the flag clear, the host then
++ * drives the AFE reset line, and the transition is confirmed with the flag
++ * set. The J700 MTP firmware accepts only this nine-byte form.
++ */
++#define DCHID_CMD_RESET_INTERFACE	0x40
++
++#define DCHID_POWER_METHOD_1		1
++#define DCHID_POWER_METHOD_2		2
++
++#define DCHID_POWER_STATE_OFF		0
++#define DCHID_POWER_STATE_ON		2
++
++#define DCHID_PM1_CMD_SIZE		4
++#define DCHID_PM2_CMD_SIZE		9
++
++static inline void dchid_pm1_command(u8 iface, u8 state,
++				     u8 cmd[DCHID_PM1_CMD_SIZE])
++{
++	cmd[0] = DCHID_CMD_RESET_INTERFACE;
++	cmd[1] = DCHID_POWER_METHOD_1;
++	cmd[2] = iface;
++	cmd[3] = state;
++}
++
++static inline void dchid_pm2_command(u8 iface, u8 state, bool has_changed,
++				     u8 cmd[DCHID_PM2_CMD_SIZE])
++{
++	memset(cmd, 0, DCHID_PM2_CMD_SIZE);
++	cmd[0] = DCHID_CMD_RESET_INTERFACE;
++	cmd[1] = DCHID_POWER_METHOD_2;
++	cmd[2] = iface;
++	cmd[3] = state;
++	cmd[4] = has_changed;
++}
++
++#endif /* _DOCKCHANNEL_HID_PROTOCOL_H */
+diff --git a/drivers/hid/dockchannel-hid/dockchannel-hid.c b/drivers/hid/dockchannel-hid/dockchannel-hid.c
+index df0aee80e..bf6ac4e1f 100644
+--- a/drivers/hid/dockchannel-hid/dockchannel-hid.c
++++ b/drivers/hid/dockchannel-hid/dockchannel-hid.c
+@@ -23,0 +24 @@
++#include "dockchannel-hid-protocol.h"
+@@ -173,0 +175,3 @@ struct dchid_iface {
++	bool gpio_announced;
++	u32 power_method;
++	bool firmware_managed_reset;
+@@ -192,0 +197,2 @@ struct dockchannel_hid {
++	bool j614s;
++	struct gpio_desc *afe_reset;
+@@ -242,0 +249 @@ dchid_get_interface(struct dockchannel_hid *dchid, int index, const char *name)
++	iface->power_method = DCHID_POWER_METHOD_1;
+@@ -262,0 +270,14 @@ dchid_get_interface(struct dockchannel_hid *dchid, int index, const char *name)
++	if (dchid->j614s) {
++		of_property_read_u32(iface->of_node, "apple,power-method", &iface->power_method);
++		iface->firmware_managed_reset =
++			of_property_read_bool(iface->of_node, "apple,firmware-managed-reset");
++		if ((iface->power_method != DCHID_POWER_METHOD_1 &&
++		     iface->power_method != DCHID_POWER_METHOD_2) ||
++		    (iface->power_method == DCHID_POWER_METHOD_2 && strcmp(name, "multi-touch")) ||
++		    (iface->firmware_managed_reset && iface->power_method != DCHID_POWER_METHOD_2)) {
++			of_node_put(iface->of_node);
++			destroy_workqueue(iface->wq);
++			return NULL;
++		}
++	}
++
+@@ -404,0 +426,33 @@ static int dchid_reset_interface(struct dchid_iface *iface, int state)
++/*
++ * Power method 2: announce the transition, drive the AFE reset line to the
++ * new state and confirm the transition. The reset is asserted for a power-off
++ * and held for 50 ms, and released for a power-on.
++ */
++static int dchid_pm2_set_power(struct dchid_iface *iface, u8 state)
++{
++	struct dockchannel_hid *dchid = iface->dchid;
++	u8 msg[DCHID_PM2_CMD_SIZE];
++	int ret;
++
++	dchid_pm2_command(iface->index, state, false, msg);
++	ret = dchid_comm_cmd(dchid, msg, sizeof(msg));
++	if (ret < 0)
++		return ret;
++
++	if (iface->firmware_managed_reset) {
++		/* Firmware owns the reset; allow its power-on transition to settle. */
++		if (state == DCHID_POWER_STATE_ON)
++			fsleep(50 * USEC_PER_MSEC);
++	} else {
++		ret = gpiod_set_value_cansleep(dchid->afe_reset,
++					       state == DCHID_POWER_STATE_OFF);
++		if (ret < 0)
++			return ret;
++		if (state == DCHID_POWER_STATE_OFF)
++			fsleep(50 * USEC_PER_MSEC);
++	}
++
++	dchid_pm2_command(iface->index, state, true, msg);
++	return dchid_comm_cmd(dchid, msg, sizeof(msg));
++}
++
+@@ -490,0 +545,5 @@ static int dchid_get_firmware(struct dchid_iface *iface, void **firmware, size_t
++	if (fw->size < sizeof(*hdr)) {
++		ret = -EINVAL;
++		goto done;
++	}
++
+@@ -529,0 +589,8 @@ static int dchid_request_gpio(struct dchid_iface *iface)
++	if (iface->firmware_managed_reset)
++		return -EINVAL;
++	if (iface->dchid->j614s && iface->power_method == DCHID_POWER_METHOD_2 &&
++	    !strcmp(iface->gpio_name, "afe-reset")) {
++		iface->gpio = iface->dchid->afe_reset;
++		return iface->gpio ? 0 : -EINVAL;
++	}
++
+@@ -551,2 +618,2 @@ static int dchid_start_interface(struct dchid_iface *iface)
+-	void *fw;
+-	size_t size;
++	void *fw = NULL;
++	size_t size = 0;
+@@ -553,0 +621 @@ static int dchid_start_interface(struct dchid_iface *iface)
++	int step = 0;
+@@ -562,0 +631 @@ static int dchid_start_interface(struct dchid_iface *iface)
++	step = 1;
+@@ -567,0 +637 @@ static int dchid_start_interface(struct dchid_iface *iface)
++	step = 2;
+@@ -573 +643,3 @@ static int dchid_start_interface(struct dchid_iface *iface)
+-	if (!iface->dchid->use_ring && iface->gpio_id) {
++	if (!iface->dchid->use_ring && (iface->gpio_id ||
++	    (iface->dchid->j614s && iface->gpio_announced))) {
++		step = 3;
+@@ -583,0 +656 @@ static int dchid_start_interface(struct dchid_iface *iface)
++		step = 4;
+@@ -592,2 +665,12 @@ static int dchid_start_interface(struct dchid_iface *iface)
+-		dchid_reset_interface(iface, 0);
+-		dchid_reset_interface(iface, 2);
++		step = 5;
++		if (iface->dchid->j614s && iface->power_method == DCHID_POWER_METHOD_2) {
++			ret = dchid_pm2_set_power(iface, DCHID_POWER_STATE_OFF);
++			if (ret < 0)
++				goto err;
++			ret = dchid_pm2_set_power(iface, DCHID_POWER_STATE_ON);
++			if (ret < 0)
++				goto err;
++		} else {
++			dchid_reset_interface(iface, 0);
++			dchid_reset_interface(iface, 2);
++		}
+@@ -598,0 +682,3 @@ static int dchid_start_interface(struct dchid_iface *iface)
++	if (iface->dchid->j614s)
++		dev_err(iface->dchid->dev, "J614s interface %s start step %d failed: %d (fw=%zu)\n",
++			iface->name, step, ret, size);
+@@ -893,0 +980 @@ static void dchid_handle_init(struct dockchannel_hid *dchid, void *data, size_t
++			iface->gpio_announced = true;
+@@ -1262,0 +1350,3 @@ static int dockchannel_hid_probe(struct platform_device *pdev)
++	dchid->j614s = of_machine_is_compatible("apple,j614s");
++	if (dchid->j614s && dchid->use_ring)
++		return dev_err_probe(dev, -EOPNOTSUPP, "J614s T8132 ring alias is unqualified\n");
+@@ -1291,0 +1382,31 @@ static int dockchannel_hid_probe(struct platform_device *pdev)
++	if (dchid->j614s) {
++		/*
++		 * With power method 2 the host drives the multi-touch AFE reset line
++		 * during every power transition, so the line must be there before the
++		 * coprocessor announces the interface. Request it now, while a
++		 * -EPROBE_DEFER can still be honoured, and leave its level alone until
++		 * the first transition has been announced.
++		 */
++		child = of_get_child_by_name(dev->of_node, "multi-touch");
++		if (child) {
++			u32 power_method = DCHID_POWER_METHOD_1;
++			bool firmware_managed_reset;
++
++			of_property_read_u32(child, "apple,power-method", &power_method);
++			firmware_managed_reset =
++				of_property_read_bool(child, "apple,firmware-managed-reset");
++			of_node_put(child);
++			if (firmware_managed_reset &&
++			    (power_method != DCHID_POWER_METHOD_2 ||
++			     of_property_present(dev->of_node, "apple,afe-reset-gpios")))
++				return dev_err_probe(dev, -EINVAL, "Conflicting touch reset ownership\n");
++			if (power_method == DCHID_POWER_METHOD_2 && !firmware_managed_reset) {
++				dchid->afe_reset = devm_gpiod_get(dev, "apple,afe-reset",
++								  GPIOD_ASIS);
++				if (IS_ERR(dchid->afe_reset))
++					return dev_err_probe(dev, PTR_ERR(dchid->afe_reset),
++							     "Failed to request the AFE reset line\n");
++			}
++		}
++	}
++
+diff --git a/drivers/nvme/host/apple.c b/drivers/nvme/host/apple.c
+index 92ef5316e..32561641c 100644
+--- a/drivers/nvme/host/apple.c
++++ b/drivers/nvme/host/apple.c
+@@ -1523,0 +1524,8 @@ static struct apple_nvme *apple_nvme_alloc(struct platform_device *pdev)
++	/* Aurora's measured J614s diagnostic depends on inherited RTKit adoption.
++	 * Gravity lacks that state/endpoint ownership path. Do not reset ANS or
++	 * accept a generic/T8132 fallback on this board until it is ported.
++	 */
++	if (of_machine_is_compatible("apple,j614s"))
++		return ERR_PTR(dev_err_probe(dev, -EOPNOTSUPP,
++			"J614s ANS inherited RTKit adoption has not been ported\n"));
++
+diff --git a/drivers/phy/apple/Kconfig b/drivers/phy/apple/Kconfig
+index 8409b67f6..843993ebb 100644
+--- a/drivers/phy/apple/Kconfig
++++ b/drivers/phy/apple/Kconfig
+@@ -1,0 +2,10 @@
++config PHY_APPLE_T6040_USB2_INHERITED
++	tristate "J614s/J616s inherited USB2 PHY for RAM experiments"
++	depends on ARCH_APPLE && OF
++	select GENERIC_PHY
++	help
++	  Verify bootloader-initialized USB2 device mode on J614s/J616s without
++	  programming its PHY or PIPE. The caller must transfer controller/DART
++	  ownership and retain PHY clocks and a physical recovery watchdog.
++	  Host mode, hotplug, suspend and SuperSpeed are unsupported.
++
+@@ -23,0 +34,8 @@ config PHY_APPLE_DPTX
++
++config PHY_APPLE_J614S_USB2_HOST_DIAGNOSTIC
++ tristate "Private J614s inherited USB2 host diagnostic"
++ depends on ARCH_APPLE && OF
++ select GENERIC_PHY
++ help
++   Board-gated, watchdog-supervised experiment for USB0 or USB2 on J614s.
++   Not a supported hardware driver and not suitable for automatic loading.
+diff --git a/drivers/phy/apple/Makefile b/drivers/phy/apple/Makefile
+index b9e7bf3e4..3935e9474 100644
+--- a/drivers/phy/apple/Makefile
++++ b/drivers/phy/apple/Makefile
+@@ -7,0 +8,3 @@ phy-apple-dptx-y		+= dptx.o
++
++obj-$(CONFIG_PHY_APPLE_T6040_USB2_INHERITED) += usb2-t6040-inherited.o
++obj-$(CONFIG_PHY_APPLE_J614S_USB2_HOST_DIAGNOSTIC) += usb2-j614s-host-diagnostic.o
+diff --git a/drivers/phy/apple/usb2-j614s-host-diagnostic.c b/drivers/phy/apple/usb2-j614s-host-diagnostic.c
+new file mode 100644
+index 000000000..cf247926d
+--- /dev/null
++++ b/drivers/phy/apple/usb2-j614s-host-diagnostic.c
+@@ -0,0 +1,105 @@
++// SPDX-License-Identifier: GPL-2.0-only OR MIT
++/*
++ * Private J614s USB2 host experiment. This is not a general T6040 PHY driver.
++ * Requires a caller-owned watchdog and a reboot after a failed experiment.
++ * Only the host-role field used by Apple's upstream ATC USB2 set_mode path is
++ * written; inherited power, clocks, tuning and PIPE state are left in place.
++ * USB1, which carries the recovery/control channel, is never admitted here.
++ */
++#include <linux/io.h>
++#include <linux/module.h>
++#include <linux/of.h>
++#include <linux/phy/phy.h>
++#include <linux/platform_device.h>
++
++#define HOST_ROLE GENMASK(14, 12)
++struct j614s_host_phy { struct device *dev; void __iomem *phy; void __iomem *pipe; };
++
++static int j614s_host_check(struct phy *phy)
++{
++ struct j614s_host_phy *p = phy_get_drvdata(phy);
++ u32 ctl = readl(p->phy), stop = readl(p->phy + 4);
++ u32 sig = readl(p->phy + 8), tune = readl(p->phy + 0x1c);
++ u32 mux = readl(p->pipe + 0xc), aon = readl(p->pipe + 0x1c);
++ u32 override = readl(p->pipe + 0x20), base_sig = sig & ~HOST_ROLE;
++ if (ctl != 0x102 || stop || (base_sig != 0x01c0000f && base_sig != 0x01d0000f) ||
++     ((sig & HOST_ROLE) && (sig & HOST_ROLE) != HOST_ROLE) || tune != 0x008c0813 ||
++     mux != 0x22 || aon != 1 || override != 0x9332) {
++  dev_err(p->dev, "Host experiment refused: ctl=%#x stop=%#x sig=%#x tune=%#x mux=%#x aon=%#x override=%#x\n", ctl, stop, sig, tune, mux, aon, override);
++  return -EIO;
++ }
++ return 0;
++}
++
++static int j614s_host_mode(struct phy *phy, enum phy_mode mode, int submode)
++{
++ struct j614s_host_phy *p = phy_get_drvdata(phy);
++ u32 before, after;
++ int ret;
++ if (mode != PHY_MODE_USB_HOST || submode)
++  return -EOPNOTSUPP;
++ ret = j614s_host_check(phy);
++ if (ret)
++  return ret;
++ before = readl(p->phy + 8);
++ writel(before | HOST_ROLE, p->phy + 8);
++ after = readl(p->phy + 8);
++ dev_info(p->dev, "J614s USB2 host-role diagnostic: sig=%#x -> %#x\n", before, after);
++ return after == (before | HOST_ROLE) ? 0 : -EIO;
++}
++
++static const struct phy_ops j614s_host_ops = {
++ .owner = THIS_MODULE,
++ .init = j614s_host_check,
++ .power_on = j614s_host_check,
++ .set_mode = j614s_host_mode,
++};
++
++static int j614s_host_probe(struct platform_device *pdev)
++{
++ struct device *dev = &pdev->dev;
++ struct j614s_host_phy *p;
++ struct resource *r;
++ struct phy *phy;
++ struct phy_provider *provider;
++ resource_size_t phy_start;
++ if (!of_machine_is_compatible("apple,j614s") ||
++     !of_property_read_bool(dev->of_node, "apple,j614s-host-experiment"))
++  return -EOPNOTSUPP;
++ p = devm_kzalloc(dev, sizeof(*p), GFP_KERNEL);
++ if (!p)
++  return -ENOMEM;
++ p->dev = dev;
++ r = platform_get_resource_byname(pdev, IORESOURCE_MEM, "usb2phy");
++ if (!r || resource_size(r) != 0x4000 ||
++     (r->start != 0x382a90000ULL && r->start != 0x392a90000ULL))
++  return -EINVAL;
++ phy_start = r->start;
++ p->phy = devm_ioremap_resource(dev, r);
++ if (IS_ERR(p->phy))
++  return PTR_ERR(p->phy);
++ r = platform_get_resource_byname(pdev, IORESOURCE_MEM, "pipehandler");
++ if (!r || resource_size(r) != 0x4000 || r->start != phy_start - 0xc000)
++  return -EINVAL;
++ p->pipe = devm_ioremap_resource(dev, r);
++ if (IS_ERR(p->pipe))
++  return PTR_ERR(p->pipe);
++ phy = devm_phy_create(dev, NULL, &j614s_host_ops);
++ if (IS_ERR(phy))
++  return PTR_ERR(phy);
++ phy_set_drvdata(phy, p);
++ provider = devm_of_phy_provider_register(dev, of_phy_simple_xlate);
++ return PTR_ERR_OR_ZERO(provider);
++}
++
++static const struct of_device_id j614s_host_match[] = {
++ { .compatible = "apple,j614s-usb2-host-diagnostic" }, {}
++};
++MODULE_DEVICE_TABLE(of, j614s_host_match);
++static struct platform_driver j614s_host_driver = {
++ .probe = j614s_host_probe,
++ .driver = { .name = "j614s-usb2-host-diagnostic", .of_match_table = j614s_host_match },
++};
++module_platform_driver(j614s_host_driver);
++MODULE_DESCRIPTION("Private J614s inherited USB2 host experiment");
++MODULE_LICENSE("Dual MIT/GPL");
+diff --git a/drivers/phy/apple/usb2-t6040-inherited.c b/drivers/phy/apple/usb2-t6040-inherited.c
+new file mode 100644
+index 000000000..caa751d68
+--- /dev/null
++++ b/drivers/phy/apple/usb2-t6040-inherited.c
+@@ -0,0 +1,149 @@
++// SPDX-License-Identifier: GPL-2.0-only OR MIT
++/*
++ * J614s/J616s RAM-only inherited USB2 PHY admission.
++ *
++ * The bootloader owns PHY power, clock, calibration and PIPE setup for the
++ * entire experiment. This driver only verifies the device-mode state left by
++ * m1n1 usb_phy_bringup() at fd360ef69054e42724b975d7a4c61e0242b6b341,
++ * with the exact post-init SIG readback captured on source-checked recovery
++ * ea52da04a1fa0e7f648812de23ac5cd8f5000ab3 on 2026-10-09 at 14:52 UTC.
++ * The difference from the initialization write has no inferred bit meaning.
++ * J614s USB1 was checked against the same SIG readback on 2026-10-19,
++ * through the exact board-4 m1n1 8e0cf28 proxy. Other J614s ports are not
++ * admitted by this experimental profile.
++ * It performs no PHY/PIPE writes and cannot provide host, hotplug, suspend or
++ * SuperSpeed support. Controller/DART retirement and watchdog recovery belong
++ * to the caller; the inherited-handoff property does not perform a handoff.
++ */
++#include <linux/io.h>
++#include <linux/module.h>
++#include <linux/of.h>
++#include <linux/phy/phy.h>
++#include <linux/platform_device.h>
++
++#define USB2PHY_USBCTL		0x00
++#define USB2PHY_USBCTL_MODE	GENMASK(2, 0)
++#define USB2PHY_USBCTL_RUN	2
++#define USB2PHY_CTL		0x04
++#define USB2PHY_CTL_STOPPED	(BIT(0) | BIT(1) | BIT(3))
++#define USB2PHY_SIG		0x08
++#define USB2PHY_SIG_INHERITED	0x01c0000f
++#define USB2PHY_MISCTUNE		0x1c
++#define USB2PHY_MISCTUNE_INHERITED	0x008c0813
++#define PIPE_MUX_CTRL		0x0c
++#define PIPE_MUX_CTRL_MASK	GENMASK(5, 0)
++#define PIPE_MUX_CTRL_DUMMY	0x22
++#define PIPE_AON_GEN		0x1c
++#define PIPE_AON_GEN_MASK	(BIT(4) | BIT(0))
++#define PIPE_AON_GEN_RESET_N	BIT(0)
++#define PIPE_NONSELECTED_OVERRIDE	0x20
++#define PIPE_NONSELECTED_INHERITED	0x9332
++
++struct apple_t6040_usb2 {
++	struct device *dev;
++	void __iomem *usb2;
++	void __iomem *pipe;
++};
++
++static int apple_t6040_usb2_check(struct phy *phy)
++{
++	struct apple_t6040_usb2 *usb2 = phy_get_drvdata(phy);
++
++	u32 ctl = readl(usb2->usb2 + USB2PHY_USBCTL);
++	u32 stop = readl(usb2->usb2 + USB2PHY_CTL);
++	u32 sig = readl(usb2->usb2 + USB2PHY_SIG);
++	u32 tune = readl(usb2->usb2 + USB2PHY_MISCTUNE);
++	u32 mux = readl(usb2->pipe + PIPE_MUX_CTRL);
++	u32 aon = readl(usb2->pipe + PIPE_AON_GEN);
++	u32 override = readl(usb2->pipe + PIPE_NONSELECTED_OVERRIDE);
++
++	if ((ctl & USB2PHY_USBCTL_MODE) != USB2PHY_USBCTL_RUN ||
++	    stop & USB2PHY_CTL_STOPPED || sig != USB2PHY_SIG_INHERITED ||
++	    tune != USB2PHY_MISCTUNE_INHERITED ||
++	    (mux & PIPE_MUX_CTRL_MASK) != PIPE_MUX_CTRL_DUMMY ||
++	    (aon & PIPE_AON_GEN_MASK) != PIPE_AON_GEN_RESET_N ||
++	    override != PIPE_NONSELECTED_INHERITED) {
++		dev_err(usb2->dev, "Inherited USB2 state mismatch: ctl=%#x stop=%#x sig=%#x tune=%#x mux=%#x aon=%#x override=%#x\n",
++			ctl, stop, sig, tune, mux, aon, override);
++		return -EIO;
++	}
++
++	return 0;
++}
++
++static int apple_t6040_usb2_set_mode(struct phy *phy, enum phy_mode mode, int submode)
++{
++	/* No T6040 host-role mask or transition is inferred from T8132. */
++	if (mode != PHY_MODE_USB_DEVICE || submode)
++		return -EOPNOTSUPP;
++
++	return apple_t6040_usb2_check(phy);
++}
++
++static const struct phy_ops apple_t6040_usb2_ops = {
++	.owner = THIS_MODULE,
++	.init = apple_t6040_usb2_check,
++	.power_on = apple_t6040_usb2_check,
++	.set_mode = apple_t6040_usb2_set_mode,
++};
++
++static int apple_t6040_usb2_probe(struct platform_device *pdev)
++{
++	struct device *dev = &pdev->dev;
++	struct apple_t6040_usb2 *usb2;
++	struct phy_provider *provider;
++	struct resource *res;
++	struct phy *phy;
++
++	if ((!of_machine_is_compatible("apple,j616s") &&
++	     !of_machine_is_compatible("apple,j614s")) ||
++	    !of_property_read_bool(dev->of_node, "apple,inherited-handoff"))
++		return -EOPNOTSUPP;
++
++	usb2 = devm_kzalloc(dev, sizeof(*usb2), GFP_KERNEL);
++	if (!usb2)
++		return -ENOMEM;
++	usb2->dev = dev;
++
++	res = platform_get_resource_byname(pdev, IORESOURCE_MEM, "usb2phy");
++	if (!res || resource_size(res) < USB2PHY_MISCTUNE + sizeof(u32) ||
++	    (of_machine_is_compatible("apple,j614s") &&
++	     (res->start != 0x38aa90000ULL || resource_size(res) != 0x4000)))
++		return -EINVAL;
++	usb2->usb2 = devm_ioremap_resource(dev, res);
++	if (IS_ERR(usb2->usb2))
++		return PTR_ERR(usb2->usb2);
++	res = platform_get_resource_byname(pdev, IORESOURCE_MEM, "pipehandler");
++	if (!res || resource_size(res) < PIPE_NONSELECTED_OVERRIDE + sizeof(u32) ||
++	    (of_machine_is_compatible("apple,j614s") &&
++	     (res->start != 0x38aa84000ULL || resource_size(res) != 0x4000)))
++		return -EINVAL;
++	usb2->pipe = devm_ioremap_resource(dev, res);
++	if (IS_ERR(usb2->pipe))
++		return PTR_ERR(usb2->pipe);
++
++	phy = devm_phy_create(dev, NULL, &apple_t6040_usb2_ops);
++	if (IS_ERR(phy))
++		return PTR_ERR(phy);
++	phy_set_drvdata(phy, usb2);
++	provider = devm_of_phy_provider_register(dev, of_phy_simple_xlate);
++	return PTR_ERR_OR_ZERO(provider);
++}
++
++static const struct of_device_id apple_t6040_usb2_match[] = {
++	{ .compatible = "apple,t6040-usb2-inherited" },
++	{}
++};
++MODULE_DEVICE_TABLE(of, apple_t6040_usb2_match);
++
++static struct platform_driver apple_t6040_usb2_driver = {
++	.probe = apple_t6040_usb2_probe,
++	.driver = {
++		.name = "apple-t6040-usb2-inherited",
++		.of_match_table = apple_t6040_usb2_match,
++	},
++};
++module_platform_driver(apple_t6040_usb2_driver);
++
++MODULE_DESCRIPTION("J614s/J616s RAM-only inherited USB2 PHY admission");
++MODULE_LICENSE("Dual MIT/GPL");
+diff --git a/drivers/power/supply/macsmc-power.c b/drivers/power/supply/macsmc-power.c
+index e1135e089..4d6ee6c6f 100644
+--- a/drivers/power/supply/macsmc-power.c
++++ b/drivers/power/supply/macsmc-power.c
+@@ -68,0 +69,5 @@
++/* Telemetry-only bring-up; J614s never changes charge policy here. */
++static bool read_only;
++module_param(read_only, bool, 0444);
++MODULE_PARM_DESC(read_only, "Expose telemetry without changing charge controls");
++
+@@ -605,0 +611,3 @@ static int macsmc_battery_set_property(struct power_supply *psy,
++	if (read_only)
++		return -EPERM;
++
+@@ -640,0 +649,3 @@ static int macsmc_battery_property_is_writeable(struct power_supply *psy,
++	if (read_only)
++		return false;
++
+@@ -828,0 +840,3 @@ static int macsmc_power_probe(struct platform_device *pdev)
++	if (of_machine_is_compatible("apple,j614s"))
++		read_only = true;
++
+@@ -928,5 +942,6 @@ static int macsmc_power_probe(struct platform_device *pdev)
+-		/* Reset "Optimised Battery Charging" flags to default state */
+-		if (power->has_chte)
+-			apple_smc_write_u32(smc, SMC_KEY(CHTE), 0);
+-		else if (power->has_ch0c)
+-			apple_smc_write_u8(smc, SMC_KEY(CH0C), 0);
++		if (!read_only) {
++			/* Reset "Optimised Battery Charging" flags to default state */
++			if (power->has_chte)
++				apple_smc_write_u32(smc, SMC_KEY(CHTE), 0);
++			else if (power->has_ch0c)
++				apple_smc_write_u8(smc, SMC_KEY(CH0C), 0);
+@@ -934,2 +949,2 @@ static int macsmc_power_probe(struct platform_device *pdev)
+-		if (power->has_ch0i)
+-			apple_smc_write_u8(smc, SMC_KEY(CH0I), 0);
++			if (power->has_ch0i)
++				apple_smc_write_u8(smc, SMC_KEY(CH0I), 0);
+@@ -937,2 +952,3 @@ static int macsmc_power_probe(struct platform_device *pdev)
+-		apple_smc_write_u8(smc, SMC_KEY(CH0K), 0);
+-		apple_smc_write_u8(smc, SMC_KEY(CH0B), 0);
++			apple_smc_write_u8(smc, SMC_KEY(CH0K), 0);
++			apple_smc_write_u8(smc, SMC_KEY(CH0B), 0);
++		}

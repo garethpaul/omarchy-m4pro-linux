@@ -1,0 +1,237 @@
+From f43b09c30c8a830faaf953bb47fc1681a3ef9da9 Mon Sep 17 00:00:00 2001
+From: gareth jones <gareth@garethpaul.com>
+Date: Mon, 19 Oct 2026 22:35:35 -0700
+Subject: [PATCH 6/7] drm/apple: validate typed callback extents for 26.6
+ firmware
+
+---
+ drivers/gpu/drm/apple/dcp-internal.h   |   1 +
+ drivers/gpu/drm/apple/iomfb.c          |  29 +++++-
+ drivers/gpu/drm/apple/iomfb.h          |   7 ++
+ drivers/gpu/drm/apple/iomfb_internal.h |  10 ++
+ drivers/gpu/drm/apple/iomfb_template.c |   8 ++
+ drivers/gpu/drm/apple/iomfb_v26_6.c    | 126 +++++++++++++------------
+ 6 files changed, 118 insertions(+), 63 deletions(-)
+
+diff --git a/drivers/gpu/drm/apple/dcp-internal.h b/drivers/gpu/drm/apple/dcp-internal.h
+index 26d5c3eb5..14508c8b7 100644
+--- a/drivers/gpu/drm/apple/dcp-internal.h
++++ b/drivers/gpu/drm/apple/dcp-internal.h
+@@ -181,0 +182 @@ struct apple_dcp {
++	const struct iomfb_cb_contract *cb_contracts;
+diff --git a/drivers/gpu/drm/apple/iomfb.c b/drivers/gpu/drm/apple/iomfb.c
+index 0e5d2309e..59f819cc3 100644
+--- a/drivers/gpu/drm/apple/iomfb.c
++++ b/drivers/gpu/drm/apple/iomfb.c
+@@ -276,0 +277 @@ static void dcpep_handle_cb(struct apple_dcp *dcp, enum dcp_context_id context,
++	iomfb_cb_handler handler = NULL;
+@@ -285 +286,22 @@ static void dcpep_handle_cb(struct apple_dcp *dcp, enum dcp_context_id context,
+-	if (tag < 0 || tag >= IOMFB_MAX_CB || !dcp->cb_handlers || !dcp->cb_handlers[tag]) {
++	if (tag >= 0 && tag < IOMFB_MAX_CB) {
++		if (dcp->cb_contracts) {
++			const struct iomfb_cb_contract *contract = &dcp->cb_contracts[tag];
++
++			handler = contract->handler;
++			/* Validate before clearing output, mutating depth, or dispatching.
++			 * Extra bytes may be opaque; these are minimum typed extents.
++			 */
++			if (handler && (hdr->in_len < contract->min_in ||
++					hdr->out_len < contract->min_out)) {
++				dev_warn(dev, "short callback D%03d in %u/%u out %u/%u\n",
++					 tag, hdr->in_len, contract->min_in,
++					 hdr->out_len, contract->min_out);
++				return;
++			}
++		} else if (dcp->cb_handlers) {
++			/* Preserve older firmware's existing dispatch path. */
++			handler = dcp->cb_handlers[tag];
++		}
++	}
++
++	if (!handler) {
+@@ -294,2 +316 @@ static void dcpep_handle_cb(struct apple_dcp *dcp, enum dcp_context_id context,
+-	// TODO: verify that in_len and out_len match our prototypes
+-	// for now just clear the out data to have at least consistent results
++	/* Zero the bounded output after any available typed contract checks. */
+@@ -303 +324 @@ static void dcpep_handle_cb(struct apple_dcp *dcp, enum dcp_context_id context,
+-	if (dcp->cb_handlers[tag](dcp, tag, out, in)) {
++	if (handler(dcp, tag, out, in)) {
+diff --git a/drivers/gpu/drm/apple/iomfb.h b/drivers/gpu/drm/apple/iomfb.h
+index c97a1ab89..a386796b2 100644
+--- a/drivers/gpu/drm/apple/iomfb.h
++++ b/drivers/gpu/drm/apple/iomfb.h
+@@ -182,0 +183,7 @@ typedef bool (*iomfb_cb_handler)(struct apple_dcp *, int, void *, void *);
++/* Minimum extents accessed by this handler, not a complete wire ABI schema. */
++struct iomfb_cb_contract {
++	iomfb_cb_handler handler;
++	u32 min_in;
++	u32 min_out;
++};
++
+diff --git a/drivers/gpu/drm/apple/iomfb_internal.h b/drivers/gpu/drm/apple/iomfb_internal.h
+index f1ffca96a..20b12316f 100644
+--- a/drivers/gpu/drm/apple/iomfb_internal.h
++++ b/drivers/gpu/drm/apple/iomfb_internal.h
+@@ -58,0 +59,6 @@ typedef void (*dcp_callback_t)(struct apple_dcp *, void *, void *);
++/* Keep access bounds next to the typed wrapper, so changing a C type also
++ * changes its callback contract. Zero input means opaque/unconsumed input.
++ */
++#define DCP_CB_SIZE(func, in_size, out_size) \
++	enum { func ## _in_size = (in_size), func ## _out_size = (out_size) }
++
+@@ -59,0 +66 @@ typedef void (*dcp_callback_t)(struct apple_dcp *, void *, void *);
++	DCP_CB_SIZE(func, 0, 0);                                              \
+@@ -67,0 +75 @@ typedef void (*dcp_callback_t)(struct apple_dcp *, void *, void *);
++	DCP_CB_SIZE(func, sizeof(T_in), 0);                                   \
+@@ -79,0 +88 @@ typedef void (*dcp_callback_t)(struct apple_dcp *, void *, void *);
++	DCP_CB_SIZE(func, sizeof(T_in), sizeof(T_out));                       \
+@@ -92,0 +102 @@ typedef void (*dcp_callback_t)(struct apple_dcp *, void *, void *);
++	DCP_CB_SIZE(func, 0, sizeof(T_out));                                  \
+diff --git a/drivers/gpu/drm/apple/iomfb_template.c b/drivers/gpu/drm/apple/iomfb_template.c
+index 14aa9bffb..fbfac45a9 100644
+--- a/drivers/gpu/drm/apple/iomfb_template.c
++++ b/drivers/gpu/drm/apple/iomfb_template.c
+@@ -766,0 +767,8 @@ static u8 dcpep_cb_prop_end(struct apple_dcp *dcp,
++/* Deferred callbacks have no typed wrapper. Their eventual completions write
++ * one success byte (boot_done and complete_*_service_matched). D100 only ACKs.
++ */
++DCP_CB_SIZE(iomfbep_cb_match_pmu_service, 0, 0);
++DCP_CB_SIZE(iomfbep_cb_match_pmu_service_2, 0, sizeof(u8));
++DCP_CB_SIZE(iomfbep_cb_match_backlight_service, 0, sizeof(u8));
++DCP_CB_SIZE(dcpep_cb_boot_1, 0, sizeof(u8));
++
+diff --git a/drivers/gpu/drm/apple/iomfb_v26_6.c b/drivers/gpu/drm/apple/iomfb_v26_6.c
+index 961754e08..a4cbba26c 100644
+--- a/drivers/gpu/drm/apple/iomfb_v26_6.c
++++ b/drivers/gpu/drm/apple/iomfb_v26_6.c
+@@ -105,18 +105,23 @@ static_assert(sizeof(struct dcp_dict_passthrough_resp_v26_6) == 0x1004);
+-static const iomfb_cb_handler cb_handlers[IOMFB_MAX_CB] = {
+-	[0] = trampoline_true,
+-	[1] = trampoline_true,
+-	[2] = trampoline_nop,
+-	[3] = trampoline_rt_bandwidth,
+-	[6] = trampoline_set_frame_sync_props,
+-	[100] = iomfbep_cb_match_pmu_service,
+-	[101] = trampoline_zero,
+-	[102] = trampoline_nop,
+-	[104] = trampoline_nop,
+-	[107] = trampoline_nop,
+-	[108] = trampoline_true,
+-	[109] = trampoline_true,
+-	[110] = trampoline_true,
+-	[111] = trampoline_true,
+-	[112] = trampoline_create_backlight_service,
+-	[113] = trampoline_true,
+-	[114] = trampoline_passthrough_dict_v26_6,
++DCP_CB_SIZE(trampoline_passthrough_dict_v26_6,
++	    sizeof(struct dcp_dict_passthrough_req_v26_6),
++	    sizeof(struct dcp_dict_passthrough_resp_v26_6));
++
++#define CB(tag, func) [tag] = { func, func ## _in_size, func ## _out_size }
++static const struct iomfb_cb_contract cb_contracts[IOMFB_MAX_CB] = {
++	CB(0, trampoline_true),
++	CB(1, trampoline_true),
++	CB(2, trampoline_nop),
++	CB(3, trampoline_rt_bandwidth),
++	CB(6, trampoline_set_frame_sync_props),
++	CB(100, iomfbep_cb_match_pmu_service),
++	CB(101, trampoline_zero),
++	CB(102, trampoline_nop),
++	CB(104, trampoline_nop),
++	CB(107, trampoline_nop),
++	CB(108, trampoline_true),
++	CB(109, trampoline_true),
++	CB(110, trampoline_true),
++	CB(111, trampoline_true),
++	CB(112, trampoline_create_backlight_service),
++	CB(113, trampoline_true),
++	CB(114, trampoline_passthrough_dict_v26_6),
+@@ -124,29 +129,29 @@ static const iomfb_cb_handler cb_handlers[IOMFB_MAX_CB] = {
+-	[115] = trampoline_get_tiling_state,
+-	[121] = dcpep_cb_boot_1,
+-	[122] = trampoline_false, /* native display sleep/wake query */
+-	[123] = trampoline_false,
+-	[125] = trampoline_read_edt_data,
+-	[127] = trampoline_prop_start,
+-	[128] = trampoline_prop_chunk,
+-	[129] = trampoline_prop_end,
+-	[134] = trampoline_zero,
+-	[201] = trampoline_map_piodma,
+-	[206] = iomfbep_cb_match_pmu_service_2,
+-	[207] = iomfbep_cb_match_backlight_service,
+-	[208] = trampoline_nop,
+-	[209] = trampoline_get_time,
+-	[300] = trampoline_pr_publish,
+-	[400] = trampoline_nop,
+-	[401] = trampoline_get_uint_prop,
+-	[406] = trampoline_nop, /* set_fx_prop: host property notification */
+-	[408] = trampoline_get_frequency,
+-	[411] = trampoline_map_reg,
+-	[413] = trampoline_true,
+-	[414] = trampoline_sr_set_property_int,
+-	[415] = trampoline_true,
+-	[451] = trampoline_allocate_buffer,
+-	[552] = trampoline_true,
+-	[561] = trampoline_true,
+-	[563] = trampoline_true,
+-	[565] = trampoline_true,
+-	[567] = trampoline_true,
++	CB(115, trampoline_get_tiling_state),
++	CB(121, dcpep_cb_boot_1),
++	CB(122, trampoline_false), /* native display sleep/wake query */
++	CB(123, trampoline_false),
++	CB(125, trampoline_read_edt_data),
++	CB(127, trampoline_prop_start),
++	CB(128, trampoline_prop_chunk),
++	CB(129, trampoline_prop_end),
++	CB(134, trampoline_zero),
++	CB(201, trampoline_map_piodma),
++	CB(206, iomfbep_cb_match_pmu_service_2),
++	CB(207, iomfbep_cb_match_backlight_service),
++	CB(208, trampoline_nop),
++	CB(209, trampoline_get_time),
++	CB(300, trampoline_pr_publish),
++	CB(400, trampoline_nop),
++	CB(401, trampoline_get_uint_prop),
++	CB(406, trampoline_nop), /* set_fx_prop: host property notification */
++	CB(408, trampoline_get_frequency),
++	CB(411, trampoline_map_reg),
++	CB(413, trampoline_true),
++	CB(414, trampoline_sr_set_property_int),
++	CB(415, trampoline_true),
++	CB(451, trampoline_allocate_buffer),
++	CB(552, trampoline_true),
++	CB(561, trampoline_true),
++	CB(563, trampoline_true),
++	CB(565, trampoline_true),
++	CB(567, trampoline_true),
+@@ -154,11 +159,11 @@ static const iomfb_cb_handler cb_handlers[IOMFB_MAX_CB] = {
+-	[572] = trampoline_zero,
+-	[575] = trampoline_hotplug,
+-	[576] = trampoline_nop,
+-	[581] = trampoline_nop,
+-	[582] = trampoline_true, /* create_default_fb_surface */
+-	[590] = trampoline_swap_complete,
+-	[592] = trampoline_swap_complete_intent_gated,
+-	[594] = trampoline_nop, /* native display re-enable notification: empty ACK */
+-	[595] = trampoline_nop,
+-	[598] = trampoline_nop,
+-	[599] = trampoline_nop,
++	CB(572, trampoline_zero),
++	CB(575, trampoline_hotplug),
++	CB(576, trampoline_nop),
++	CB(581, trampoline_nop),
++	CB(582, trampoline_true), /* create_default_fb_surface */
++	CB(590, trampoline_swap_complete),
++	CB(592, trampoline_swap_complete_intent_gated),
++	CB(594, trampoline_nop), /* native display re-enable notification: empty ACK */
++	CB(595, trampoline_nop),
++	CB(598, trampoline_nop),
++	CB(599, trampoline_nop),
+@@ -166,0 +172,2 @@ static const iomfb_cb_handler cb_handlers[IOMFB_MAX_CB] = {
++#undef CB
++
+@@ -169 +176,2 @@ void DCP_FW_NAME(iomfb_start)(struct apple_dcp *dcp)
+-	dcp->cb_handlers = cb_handlers;
++	dcp->cb_handlers = NULL;
++	dcp->cb_contracts = cb_contracts;

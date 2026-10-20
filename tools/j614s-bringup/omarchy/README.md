@@ -89,14 +89,16 @@ The immutable September OS image has **986 installed packages**, and all
 ARM64 or architecture-independent metadata, including Hyprland 0.56.2-3,
 Mesa 26.2.2-1, and quickshell-git 0.3.0.r20.g28771c7-2. This measures package
 presence, not working hardware. Image identity is recorded in
-`evidence/image-provenance.json`; only `/var/lib/pacman/local` was extracted
-with read-only `btrfs restore`, without mounting or changing the image.
+`evidence/image-provenance.json`; the package inventory was extracted from
+`/var/lib/pacman/local` with read-only `btrfs restore`, without mounting or
+changing the image. Public package keyrings were separately re-extracted for
+the signature verification below.
 
 Compared with current official source, the image lacks 18 of 162 base entries,
 `zram-generator` from the 2-entry ARM addition, and 4 of 7 Apple additions:
 `omarchy-mac`, `avd-fw`, `libva-v4l2_request-avd`, `wf-recorder`.
 These are source/image version differences. The captured official Apple ARM64
-edge repository metadata has native candidates for 17 of the 18 missing base
+edge repository metadata has ARM-compatible candidates for all 18 missing base
 entries and all five missing architecture/platform entries.
 
 Editor requests now have signed payload evidence:
@@ -104,7 +106,7 @@ Editor requests now have signed payload evidence:
 | Request | Captured ARM64 metadata | Integration action |
 | --- | --- | --- |
 | `nvim` | Native `neovim` 0.12.6-1 provides `nvim`, confirmed in both the split repository `depends` record and signed `.PKGINFO`; archive contains the native executable. | Review overlay requests canonical `neovim` with exact version/filename/SHA256 and matching signed payload proof. |
-| `vi` | No package/provider in any configured captured repository. Signed `vim` and `vim-runtime` contain no `usr/bin/vi` and no install script; Vim does not provide `vi`. | Keep explicitly unresolved. Similar editor functionality does not prove the requested executable exists. No silent omission or false transaction pass. |
+| `vi` | Official `extra/ex-vi-compat` 3-1 (`any`) owns executable `usr/bin/vi`, provides `vi`, and depends on Bash/native Vim. Signed wrapper and actual invocation were verified. | Resolve explicitly to `ex-vi-compat` only with matching signed ownership/provider and invocation evidence; Vim package presence alone still fails. |
 
 The earlier desc-only audit missed ALARM's separate `depends` archive member,
 where `PROVIDES` and dependencies are stored. The parser now merges both forms
@@ -113,14 +115,21 @@ repository gap. One unrelated `findnewest-0.3-4/depends` record has no identity
 record in the captured extra database: it is explicitly reported and excluded
 from candidate resolution. It cannot satisfy a package request.
 
-Both editor archives and `vim-runtime` matched repository sizes/SHA256 and
+Further provider inspection corrected the earlier unresolved-`vi` conclusion:
+`vim`/`vim-runtime` do lack that path, but the separate official
+`ex-vi-compat` package supplies it. The shared index also now searches exact
+package names before virtual providers, matching actual pacman print behavior;
+for example, `gvim` advertising `vim` cannot shadow the real `vim` package.
+Regression tests cover both repositories and the package-plan consumer.
+
+Both editor archives, `vim-runtime`, and `ex-vi-compat` matched repository sizes/SHA256 and
 verified with ALARM signer
 `68B3537F39A313B3E574D06777193F152BDBE6A6`. The public keyring was re-extracted
 from the verified image and matched the existing sysroot byte-for-byte
 (SHA256 `6ce771e853f04a38a5b533cb33e61f877b9b06b58b6db051eb8a15d737a2332f`).
 The keyring is armored; verification converts it into a binary keyring only
 inside disposable inspection storage. No host keyring was imported or changed.
-See `evidence/editor-verification.json`.
+See the extended `evidence/editor-verification-with-vi.json`.
 
 The verified native Vim and Neovim executables both passed `--version` and
 scratch-file write/read round trips under the already installed, hash-pinned
@@ -130,21 +139,40 @@ executable and uses an isolated home and loader prefix; no archive hooks run.
 This proves ARM userspace execution under emulation, **not** target hardware
 operation or a working `vi` command. See `evidence/editor-execution.json`.
 
+`exercise_vi_provider.py` then invoked the **unchanged signed `/usr/bin/vi`
+script** in an isolated user/mount/network namespace. Its hardcoded
+`/usr/bin/vim` was mapped only inside that namespace to a QEMU dispatch shim
+for the signed native ARM Vim binary. No host executable was installed or
+replaced. The wrapper's actual version invocation, `compatible=1`, file
+roundtrip, HOME `.exrc`, `EXINIT` precedence and edit/save all passed. It reads
+only the fixture files and exposed library roots, with writes confined to its
+own scratch bind. The official provider has no install script and explicitly
+declares `provides=vi`, `conflict=vi`, `replaces=vi`, and `depends=bash,vim`.
+Its archive SHA256 is
+`7d5d99f383a190485a868e61bf6522611f0148f805ab7d7f3cd55c17dc6ce8e5`.
+This validates the existing provider, without creating a replacement package
+or signing key. Target-native invocation remains untested. See
+`evidence/vi-execution.json`.
+
 ```sh
-python3 verify_editor_packages.py --database fresh-repositories/extra.db \
+python3 verify_editor_packages.py --include-vi-provider --database fresh-repositories/extra.db \
   --keyring EXTRACTED/usr/share/pacman/keyrings/archlinuxarm.gpg \
   --output editor-inspection
 python3 exercise_editor_payloads.py --payloads editor-inspection \
   --sysroot "$SYSROOT" --output editor-emulation
+python3 exercise_vi_provider.py --payloads editor-inspection \
+  --sysroot "$SYSROOT" --output vi-emulation
 ```
 
 `arm_package_plan.py` provides a clean request-resolution overlay without
-editing either upstream package list. Its captured plan has **166 exact native
-request candidates**, **4 held requests**, **1 unresolved request (`vi`)** and
+editing either upstream package list. Its captured plan has **167 exact
+ARM-compatible request candidates**, **4 held requests**, **0 unresolved requests** and
 **20 protected installed-image package pins**. Every candidate includes its
 repository, version, architecture, exact payload filename and SHA256. Unknown
 requests stay explicit failures; unverified or stale editor proof cannot
-resolve `nvim`. Tests cover protected provider aliases as well as direct names.
+resolve `nvim` or `vi`. Non-executable wrapper metadata, mismatched backend
+hashes, missing actual invocation evidence or failed compatibility checks
+cannot resolve `vi`. Tests cover protected provider aliases and exact names.
 
 Kernel/header, firmware, m1n1/aura, U-Boot, bootloader/hooks, system identity and
 graphics ABI packages are held. The current held source requests are
@@ -157,6 +185,7 @@ real isolated dependency/conflict/hook review before any deployment.
 ```sh
 python3 arm_package_plan.py --database EXTRACTED/var/lib/pacman/local \
   --editor-proof editor-inspection/inspection.json \
+  --vi-execution vi-emulation/vi-execution.json \
   --repository omarchy=fresh-repositories/omarchy.db \
   --repository asahi-alarm=fresh-repositories/asahi-alarm.db \
   --repository core=fresh-repositories/core.db \
@@ -182,9 +211,9 @@ non-routable repository URLs. It verifies repository hashes/order and every
 protected baseline pin before invoking pacman. It never refreshes databases,
 downloads packages, installs, runs hooks or requests a full upgrade.
 
-The actual resolver exited **0** and produced **116 exact transaction
-packages**, including **14 dependencies** beyond the requested candidate names;
-**64 direct requests** were already installed at their reviewed version. Every
+The actual resolver exited **0** and produced **117 exact transaction
+packages**, including **16 dependencies** beyond the requested candidate names;
+**66 direct requests** were already installed at their reviewed version. Every
 printed entry matched its repository/version/filename/SHA256. No protected
 package was selected. Unknown/mismatched entries or a protected dependency
 would reject the result. Changed repository or protected baseline metadata is
@@ -202,12 +231,12 @@ python3 resolve_package_review.py --review REQUEST_REVIEW.json \
 ```
 
 This improves dependency evidence for the **non-protected subset** only. The
-complete original request remains blocked: `vi` is unresolved and four
-boot/firmware requests were held, not silently installed or removed. Package
-payload signatures for the other 115 transaction packages, installed hooks,
-live target compatibility and recovery remain unverified. The three editor
-payloads were verified separately; only Neovim is in this proposed desktop
-transaction. The print result therefore keeps `deployable: false`, no actions
+complete original request remains blocked: four boot/firmware requests were
+held, not silently installed or removed. Package payload signatures for the
+other 113 transaction packages, installed hooks, live target compatibility
+and recovery remain unverified. The four editor/provider payloads were
+verified separately and are all in this proposed desktop transaction.
+The print result therefore keeps `deployable: false`, no actions
 and no install command. See `evidence/pacman-print-resolution.json`.
 
 Other image differences have concrete native paths: current `mise-bin` now has

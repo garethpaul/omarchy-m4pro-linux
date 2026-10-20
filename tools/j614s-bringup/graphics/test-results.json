@@ -51,6 +51,13 @@
       "result": "PASS_STATIC_ONLY",
       "evidence": "g16s-main-layout.json",
       "scope": "16 narrow consumer operand anchors and three G17 offset assertions; no whole-function proof"
+    },
+    {
+      "name": "Early mailbox capture and offline replay adapter",
+      "result": "PASS_SYNTHETIC",
+      "python_cases": 10,
+      "evidence": "early-capture-result.json",
+      "scope": "C collector sanitizer tests and fake HV/RAM/mailbox replay only; no target access"
     }
   ],
   "compilers": {
@@ -59,7 +66,7 @@
     "rustc": "rustc 1.91.1 (ed61e7d7e 2025-11-07)"
   },
   "source_sha256": {
-    "g16s_abi.h": "48e237084c1587d2655ad3f75fb2ed1786bfab638949188eefb09b8366365e8d",
+    "g16s_abi.h": "cdead6219ceccacbdd646077c0aa7cfd13e027d35dae8719aefcb11e2e03e377",
     "g16s_main.h": "9279c1858948e8f087cc66a1b4ee056f90264273f53f51800520a0a9924a7133",
     "test_g16s_abi.c": "1631b5a339c37f6fdaa8a4bb937e16bd3a355c674dd3f53004497d2c6cdeb9c4",
     "test_g16s_main.c": "377c438906a1a62df337d97a53d7844348048362f492f70df4266aedcd59382e",

@@ -1,0 +1,38 @@
+{
+  "status": "PARTIAL",
+  "runtime_enabled": false,
+  "shader_execution": "UNTESTED",
+  "measured": {
+    "id": "0xa031100",
+    "core_counts": "0x11020a",
+    "packed_core_mask": "0xf6fdb",
+    "cluster_masks": [
+      "0x3db",
+      "0x3db"
+    ],
+    "enabled_per_cluster": [
+      8,
+      8
+    ]
+  },
+  "expected_known_uapi_fields": {
+    "gpu_generation": 16,
+    "gpu_variant": 83,
+    "chip_id": 24640,
+    "num_dies": 1,
+    "num_clusters_total": 2,
+    "num_cores_per_cluster": 10,
+    "core_masks": [
+      987,
+      987
+    ]
+  },
+  "unknown_required_fields": [
+    "VM limits and kernel carveout",
+    "firmware/power state",
+    "fragment geometry",
+    "USC execution semantics on G16S"
+  ],
+  "warning": "Identity/geometry candidates only; do not alias G16S to G16G or open a full runtime profile.",
+  "source_sha256": "d7a9ba898e137cfdab9c1850759211016165342c8dddb57e8d5a091a65054aa8"
+}

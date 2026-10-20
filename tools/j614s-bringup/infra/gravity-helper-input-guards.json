@@ -1,0 +1,26 @@
+{
+  "scope": "Actual helper invocations; no kernel or driver compilation attempted in negative cases. Configuration tools may build.",
+  "status": "PASS",
+  "tests": [
+    {
+      "reason": "supplied config checksum mismatch",
+      "status": "PASS (rejected)",
+      "test": "changed reviewed config checksum"
+    },
+    {
+      "reason": "required compile profile missing CONFIG_LOCALVERSION",
+      "status": "PASS (rejected)",
+      "test": "wrong required LOCALVERSION with exact reviewed config"
+    },
+    {
+      "reason": "wrong candidate commit, untracked source, or jobs",
+      "status": "PASS (rejected)",
+      "test": "wrong source commit"
+    },
+    {
+      "reason": "Corrected bindgen binary checksum mismatch",
+      "status": "PASS (rejected)",
+      "test": "incorrect bindgen checksum"
+    }
+  ]
+}

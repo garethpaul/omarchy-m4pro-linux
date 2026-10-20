@@ -56,7 +56,8 @@
       "excluded_metadata_entries": []
     }
   ],
-  "editor_proof_sha256": "a4c8f1c6359cc909b1f9c4edcf24171b92f3c0d275e497d37ba845fa55e0bb79",
+  "editor_proof_sha256": "e41d963e85a72781ea8f2d057472801d7f2ce2a45365aab7dfe3f9b5a7033f6f",
+  "vi_execution_sha256": "5e93eac39088a58285e8f8e727f09f7e13b890b98058f2767a6cda73a0dc0d6d",
   "resolved_requests": [
     {
       "requested": "aether",
@@ -231,12 +232,12 @@
       "requested": "chromium",
       "resolved": "chromium",
       "candidate": {
-        "repository": "omarchy",
-        "name": "omarchy-chromium-bin",
-        "version": "148.0.7778.96-22",
+        "repository": "extra",
+        "name": "chromium",
+        "version": "153.0.8010.36-1",
         "architecture": "aarch64",
-        "filename": "omarchy-chromium-bin-148.0.7778.96-22-aarch64.pkg.tar.zst",
-        "sha256": "d7f37bca8e1c4d230bd84ae7803b4785db345fd663ba0bebc99cc3333287921c"
+        "filename": "chromium-153.0.8010.36-1-aarch64.pkg.tar.xz",
+        "sha256": "9ce0132a90ab76641e79a8fc07207fde472daab51a1a2702e982f96a35dcf228"
       },
       "resolution_evidence": "repository metadata"
     },
@@ -1479,12 +1480,12 @@
       "requested": "power-profiles-daemon",
       "resolved": "power-profiles-daemon",
       "candidate": {
-        "repository": "omarchy",
-        "name": "omarchy-power-profiles-daemon",
-        "version": "0.30-3",
+        "repository": "extra",
+        "name": "power-profiles-daemon",
+        "version": "0.30-1",
         "architecture": "aarch64",
-        "filename": "omarchy-power-profiles-daemon-0.30-3-aarch64.pkg.tar.zst",
-        "sha256": "74d8d7b065e55989823a8fd5973734b88fdb4442aaae298f7b59612b91e877f6"
+        "filename": "power-profiles-daemon-0.30-1-aarch64.pkg.tar.xz",
+        "sha256": "c1fe5080a573c73ed200217bbde3e11ba115568f810e260f004476929b3c7e64"
       },
       "resolution_evidence": "repository metadata"
     },
@@ -1805,11 +1806,11 @@
       "resolved": "tldr",
       "candidate": {
         "repository": "extra",
-        "name": "tealdeer",
-        "version": "1.9.0-1",
-        "architecture": "aarch64",
-        "filename": "tealdeer-1.9.0-1-aarch64.pkg.tar.xz",
-        "sha256": "531c06b05b19008a306bd7b60227625cb0687b1f93fa8b38e141d7cf8063b4bc"
+        "name": "tldr",
+        "version": "3.4.4-1",
+        "architecture": "any",
+        "filename": "tldr-3.4.4-1-any.pkg.tar.xz",
+        "sha256": "bc1015b843eaa3e750b585ca76e602796a630604ea2be2c2e38fdcb0b8a66748"
       },
       "resolution_evidence": "repository metadata"
     },
@@ -1968,6 +1969,19 @@
         "sha256": "bc736d4c76557e3b920e93d01710ebd84c546abfb136f82b72a25304eff571e6"
       },
       "resolution_evidence": "repository metadata"
+    },
+    {
+      "requested": "vi",
+      "resolved": "ex-vi-compat",
+      "candidate": {
+        "repository": "extra",
+        "name": "ex-vi-compat",
+        "version": "3-1",
+        "architecture": "any",
+        "filename": "ex-vi-compat-3-1-any.pkg.tar.xz",
+        "sha256": "7d5d99f383a190485a868e61bf6522611f0148f805ab7d7f3cd55c17dc6ce8e5"
+      },
+      "resolution_evidence": "signed ex-vi-compat owns executable usr/bin/vi, provides vi, depends on native vim; unchanged script passed isolated invocation/configuration/edit tests"
     },
     {
       "requested": "whois",
@@ -2217,12 +2231,7 @@
       "resolution_evidence": "repository metadata"
     }
   ],
-  "unresolved_requests": [
-    {
-      "requested": "vi",
-      "reason": "verified vim/vim-runtime do not contain usr/bin/vi; no proven native vi resolution"
-    }
-  ],
+  "unresolved_requests": [],
   "held_requests": [
     {
       "requested": "omarchy-mac",
@@ -2359,8 +2368,7 @@
   "blocked_reasons": [
     "dependency closure/conflicts/hooks and signatures for the complete transaction remain unverified",
     "live target baseline and exact experimental kernel/firmware artifacts are not established by this image plan",
-    "protected packages and their reverse dependencies cannot be modified by this plan",
-    "one or more requested packages remain unresolved"
+    "protected packages and their reverse dependencies cannot be modified by this plan"
   ],
   "unattended_reboot_authorized": false,
   "install_command": null,

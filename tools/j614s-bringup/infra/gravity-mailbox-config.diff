@@ -1,0 +1,5 @@
+--- gravity-g16s-compile.config
++++ gravity-mailbox-fixed-compile.config
+@@ -2168 +2168 @@
+-CONFIG_APPLE_MAILBOX=m
++CONFIG_APPLE_MAILBOX=y

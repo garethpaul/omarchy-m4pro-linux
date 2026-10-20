@@ -1,0 +1,33 @@
+{
+  "status": "WORKS (Kconfig normalization only)",
+  "config_sha256": "6c5aba7745d918c528300c5a395fcd7db0c2b718acda7d1467af2816a8d56516",
+  "required": {
+    "CONFIG_ARM64": "y",
+    "CONFIG_ARCH_APPLE": "y",
+    "CONFIG_SMP": "y",
+    "CONFIG_NR_CPUS": "16",
+    "CONFIG_ARM64_16K_PAGES": "y",
+    "CONFIG_RUST": "y",
+    "CONFIG_MODULES": "y",
+    "CONFIG_DRM": "y",
+    "CONFIG_DRM_ASAHI": "m",
+    "CONFIG_DRM_ASAHI_M4": "m",
+    "CONFIG_DRM_ASAHI_G16_BOOTSTRAP": "m",
+    "CONFIG_DRM_APPLE": "m",
+    "CONFIG_BACKLIGHT_CLASS_DEVICE": "y",
+    "CONFIG_APPLE_MAILBOX": "y",
+    "CONFIG_APPLE_RTKIT": "y",
+    "CONFIG_CMDLINE": "\"\"",
+    "CONFIG_LOCALVERSION": "\"-j614s-gravity-candidate\"",
+    "CONFIG_IKCONFIG": "y",
+    "CONFIG_IKCONFIG_PROC": "y",
+    "CONFIG_PHY_APPLE_T6040_USB2_INHERITED": "y",
+    "CONFIG_PHY_APPLE_J614S_USB2_HOST_DIAGNOSTIC": "m",
+    "CONFIG_NVME_APPLE": "m",
+    "CONFIG_HID_DOCKCHANNEL": "m",
+    "CONFIG_GPIO_MACSMC": "m",
+    "CONFIG_MACSMC_POWER": "m"
+  },
+  "hardware": "UNTESTED",
+  "source_commit": "a5a5ba8f56c9ab9192bbe9d3e9ae006cdcca661f"
+}

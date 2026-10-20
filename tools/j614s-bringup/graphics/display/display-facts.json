@@ -1,0 +1,524 @@
+{
+  "scope": "Offline measured ADT facts and firmware build identity only; shared release is not ABI qualification",
+  "comparison_sha256": "7ac76b2970719b7764cfed83bf2af07a5b47c0d3dd4ea5a42eb300951b457635",
+  "hardware_tested_by_this_tool": false,
+  "nodes": {
+    "/arm-io/disp0": {
+      "machine_m4": {
+        "compatible": "disp0,t604x",
+        "interrupts": [
+          1081,
+          1080,
+          1081,
+          1082,
+          1083,
+          1084,
+          1085,
+          1086,
+          1087,
+          1088,
+          1089,
+          1100
+        ],
+        "clock-gates": [
+          460,
+          460,
+          461,
+          462
+        ],
+        "power-gates": [
+          460,
+          460,
+          461,
+          462
+        ],
+        "registers": [
+          {
+            "bus": "0x200000000",
+            "size": "0x4000000",
+            "cpu": "0x400000000"
+          },
+          {
+            "bus": "0x202240000",
+            "size": "0x10000",
+            "cpu": "0x402240000"
+          },
+          {
+            "bus": "0x2023a8000",
+            "size": "0x4000",
+            "cpu": "0x4023a8000"
+          },
+          {
+            "bus": "0x202800000",
+            "size": "0x800000",
+            "cpu": "0x402800000"
+          },
+          {
+            "bus": "0x304800000",
+            "size": "0xbc000",
+            "cpu": "0x504800000"
+          }
+        ]
+      },
+      "static_m2": {
+        "compatible": "disp0,t8112",
+        "interrupts": [
+          544,
+          563,
+          547,
+          546,
+          545,
+          552,
+          542,
+          556,
+          551
+        ],
+        "clock-gates": [
+          401,
+          401,
+          402,
+          403
+        ],
+        "power-gates": [
+          401,
+          401,
+          402,
+          403
+        ],
+        "registers": [
+          {
+            "bus": "0x30000000",
+            "size": "0x61c000",
+            "cpu": "0x230000000"
+          },
+          {
+            "bus": "0x31320000",
+            "size": "0x4000",
+            "cpu": "0x231320000"
+          },
+          {
+            "bus": "0x31344000",
+            "size": "0x4000",
+            "cpu": "0x231344000"
+          },
+          {
+            "bus": "0x31800000",
+            "size": "0x800000",
+            "cpu": "0x231800000"
+          },
+          {
+            "bus": "0x3b3d0000",
+            "size": "0x4000",
+            "cpu": "0x23b3d0000"
+          },
+          {
+            "bus": "0x3b730000",
+            "size": "0x1000",
+            "cpu": "0x23b730000"
+          },
+          {
+            "bus": "0x3bc3c000",
+            "size": "0x1000",
+            "cpu": "0x23bc3c000"
+          }
+        ]
+      },
+      "static_m3": {
+        "compatible": "disp0,t8122",
+        "interrupts": [
+          548,
+          567,
+          551,
+          550,
+          549,
+          556,
+          546,
+          560,
+          555
+        ],
+        "clock-gates": [
+          401,
+          401,
+          402,
+          403
+        ],
+        "power-gates": [
+          401,
+          401,
+          402,
+          403
+        ],
+        "registers": [
+          {
+            "bus": "0x7c000000",
+            "size": "0x690000",
+            "cpu": "0x28c000000"
+          },
+          {
+            "bus": "0x7c800000",
+            "size": "0x690000",
+            "cpu": "0x28c800000"
+          },
+          {
+            "bus": "0x7d320000",
+            "size": "0x4000",
+            "cpu": "0x28d320000"
+          },
+          {
+            "bus": "0x7d344000",
+            "size": "0x4000",
+            "cpu": "0x28d344000"
+          },
+          {
+            "bus": "0x7e800000",
+            "size": "0x800000",
+            "cpu": "0x28e800000"
+          },
+          {
+            "bus": "0xc03d0000",
+            "size": "0x4000",
+            "cpu": "0x2d03d0000"
+          }
+        ]
+      },
+      "static_m4": {
+        "compatible": "disp0,t604x",
+        "interrupts": [
+          1081,
+          1080,
+          1081,
+          1082,
+          1083,
+          1084,
+          1085,
+          1086,
+          1087,
+          1088,
+          1089,
+          1100
+        ],
+        "clock-gates": [
+          460,
+          460,
+          461,
+          462
+        ],
+        "power-gates": [
+          460,
+          460,
+          461,
+          462
+        ],
+        "registers": [
+          {
+            "bus": "0x200000000",
+            "size": "0x4000000",
+            "cpu": "0x400000000"
+          },
+          {
+            "bus": "0x202240000",
+            "size": "0x10000",
+            "cpu": "0x402240000"
+          },
+          {
+            "bus": "0x2023a8000",
+            "size": "0x4000",
+            "cpu": "0x4023a8000"
+          },
+          {
+            "bus": "0x202800000",
+            "size": "0x800000",
+            "cpu": "0x402800000"
+          },
+          {
+            "bus": "0x304800000",
+            "size": "0xbc000",
+            "cpu": "0x504800000"
+          }
+        ]
+      }
+    },
+    "/arm-io/dcp": {
+      "machine_m4": {
+        "compatible": "iop,ascwrap-v6",
+        "interrupts": [
+          1144,
+          1143,
+          1146,
+          1145,
+          1148,
+          1147,
+          1150,
+          1149
+        ],
+        "clock-gates": [
+          430
+        ],
+        "power-gates": [
+          430
+        ],
+        "registers": [
+          {
+            "bus": "0x202e00000",
+            "size": "0x88000",
+            "cpu": "0x402e00000"
+          },
+          {
+            "bus": "0x202850000",
+            "size": "0x4000",
+            "cpu": "0x402850000"
+          }
+        ]
+      },
+      "static_m2": {
+        "compatible": "iop,ascwrap-v4",
+        "interrupts": [
+          536,
+          535,
+          538,
+          537
+        ],
+        "clock-gates": [
+          404
+        ],
+        "power-gates": [
+          404
+        ],
+        "registers": [
+          {
+            "bus": "0x31c00000",
+            "size": "0x6c000",
+            "cpu": "0x231c00000"
+          },
+          {
+            "bus": "0x31850000",
+            "size": "0x4000",
+            "cpu": "0x231850000"
+          }
+        ]
+      },
+      "static_m3": {
+        "compatible": "iop,ascwrap-v6",
+        "interrupts": [
+          538,
+          537,
+          540,
+          539
+        ],
+        "clock-gates": [
+          404
+        ],
+        "power-gates": [
+          404
+        ],
+        "registers": [
+          {
+            "bus": "0x7ec00000",
+            "size": "0x6c000",
+            "cpu": "0x28ec00000"
+          },
+          {
+            "bus": "0x7e850000",
+            "size": "0x4000",
+            "cpu": "0x28e850000"
+          }
+        ]
+      },
+      "static_m4": {
+        "compatible": "iop,ascwrap-v6",
+        "interrupts": [
+          1144,
+          1143,
+          1146,
+          1145,
+          1148,
+          1147,
+          1150,
+          1149
+        ],
+        "clock-gates": [
+          430
+        ],
+        "power-gates": [
+          430
+        ],
+        "registers": [
+          {
+            "bus": "0x202e00000",
+            "size": "0x88000",
+            "cpu": "0x402e00000"
+          },
+          {
+            "bus": "0x202850000",
+            "size": "0x4000",
+            "cpu": "0x402850000"
+          }
+        ]
+      }
+    },
+    "/arm-io/dart-dcp": {
+      "machine_m4": {
+        "compatible": "dart,t8110",
+        "interrupts": [
+          1090
+        ],
+        "registers": [
+          {
+            "bus": "0x202340000",
+            "size": "0x20000",
+            "cpu": "0x402340000"
+          },
+          {
+            "bus": "0x300578000",
+            "size": "0x4000",
+            "cpu": "0x500578000"
+          }
+        ]
+      },
+      "static_m2": {
+        "compatible": "dart,t8110",
+        "interrupts": [
+          553
+        ],
+        "registers": [
+          {
+            "bus": "0x3130c000",
+            "size": "0x4000",
+            "cpu": "0x23130c000"
+          }
+        ]
+      },
+      "static_m3": {
+        "compatible": "dart,t8110",
+        "interrupts": [
+          557
+        ],
+        "registers": [
+          {
+            "bus": "0x7d30c000",
+            "size": "0x4000",
+            "cpu": "0x28d30c000"
+          }
+        ]
+      },
+      "static_m4": {
+        "compatible": "dart,t8110",
+        "interrupts": [
+          1090
+        ],
+        "registers": [
+          {
+            "bus": "0x202340000",
+            "size": "0x20000",
+            "cpu": "0x402340000"
+          }
+        ]
+      }
+    },
+    "/arm-io/dart-disp0": {
+      "machine_m4": {
+        "compatible": "dart,t8110",
+        "interrupts": [
+          1090
+        ],
+        "registers": [
+          {
+            "bus": "0x202300000",
+            "size": "0xc000",
+            "cpu": "0x402300000"
+          },
+          {
+            "bus": "0x202314000",
+            "size": "0x4000",
+            "cpu": "0x402314000"
+          },
+          {
+            "bus": "0x300578000",
+            "size": "0x4000",
+            "cpu": "0x500578000"
+          }
+        ]
+      },
+      "static_m2": {
+        "compatible": "dart,t8110",
+        "interrupts": [
+          553
+        ],
+        "registers": [
+          {
+            "bus": "0x31304000",
+            "size": "0x4000",
+            "cpu": "0x231304000"
+          },
+          {
+            "bus": "0x31300000",
+            "size": "0x4000",
+            "cpu": "0x231300000"
+          }
+        ]
+      },
+      "static_m3": {
+        "compatible": "dart,t8110",
+        "interrupts": [
+          557
+        ],
+        "registers": [
+          {
+            "bus": "0x7d304000",
+            "size": "0x4000",
+            "cpu": "0x28d304000"
+          },
+          {
+            "bus": "0x7d300000",
+            "size": "0x4000",
+            "cpu": "0x28d300000"
+          }
+        ]
+      },
+      "static_m4": {
+        "compatible": "dart,t8110",
+        "interrupts": [
+          1090
+        ],
+        "registers": [
+          {
+            "bus": "0x202300000",
+            "size": "0xc000",
+            "cpu": "0x402300000"
+          },
+          {
+            "bus": "0x202314000",
+            "size": "0x4000",
+            "cpu": "0x402314000"
+          }
+        ]
+      }
+    }
+  },
+  "firmware_25G83": {
+    "j614sap": {
+      "payload_sha256": "bc99f51f7b117a2af77198c061e440c7cc8232f04799ab0a53979e55c03ed925",
+      "size": 10178560,
+      "build": "AppleDCP-1041.120.7~2715-t604xdcp.RELEASE",
+      "rtkit": "RTKit-3255.160.4.release"
+    },
+    "j613ap": {
+      "payload_sha256": "8ac2e61ddef3bb2844f51bd0d624becd3454deebd9b7e740903ed841265724b2",
+      "size": 10014720,
+      "build": "AppleDCP-1041.120.7~2715-t8122dcp.RELEASE",
+      "rtkit": "RTKit-3255.160.4.release"
+    },
+    "j413ap": {
+      "payload_sha256": "04b2820c92d322cb2544b1efd9f190f7a58e3637c8f35b8ae3f525282489429d",
+      "size": 10174464,
+      "build": "AppleDCP-1041.120.7~2715-ipad14dcp.RELEASE",
+      "rtkit": "RTKit-3255.160.4.release"
+    },
+    "j700ap": {
+      "payload_sha256": "392abf0c42733c5b35e877f72f2c0a3a610c1f89aa39c0ce8358092451d9a8af",
+      "size": 15417344,
+      "build": "AppleDCP-1041.120.7~2715-t8140dcp.RELEASE",
+      "rtkit": "RTKit-3255.160.4.release"
+    }
+  }
+}

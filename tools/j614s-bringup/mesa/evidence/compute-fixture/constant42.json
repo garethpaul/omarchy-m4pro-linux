@@ -1,0 +1,12 @@
+{
+  "schema":1,
+  "offline_template":true,
+  "hardware_execution":"UNTESTED",
+  "virtual_addresses_are_allocated":false,
+  "shader_binary_size":42,
+  "profile":{"abi":1,"resource_binding_count":1,"resource_binding":[0],"resource_kind":[0],"resource_read_mask":0,"resource_write_mask":1,"writes_global":false,"variable_local_size":false,"local_size":[256,1,1],"required_threadgroup_memory_bytes":0,"scratch_size":0,"preamble_offset":0,"preamble_size":0,"atomic_frame_size":0,"publication_count":0},
+  "addresses":{"usc_base":"0x10000000000","shader_body":"0x10000010000","resource":"0x10000020000","launch":"0x10000020400","output":"0x1100010000","cdm":"0x1100000000"},
+  "cmd_compute":{"cdm_ctrl_stream_base":"0x1100000000","cdm_ctrl_stream_end":"0x1100000030","flags":0,"sampler_count":0,"sampler_heap":0,"helper_binary":0,"helper_cfg":0,"helper_data":0},
+  "expected_output":{"u32_count":256,"value":42},
+  "warning":"No G16S runtime validation. Relocate/map every buffer and qualify kernel firmware/job path before submission."
+}

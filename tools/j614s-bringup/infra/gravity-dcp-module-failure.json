@@ -1,0 +1,60 @@
+{
+  "binding_layouts": {
+    "compiled_bindings_object_bytes": 936,
+    "compiled_bindings_object_sha256": "bbfd5e39e855b5e82c4a66c6b9c6f448f479d425e4c1ec275dfdcf9f52f0a4e7",
+    "const_layout_blocks": 3170,
+    "field_offset_checks": 16284,
+    "generated_bindings_sha256": "ad281e6e30bc3b5015e2bb14fd20e9c1d65ecdf376853483bc0d2bf229ccce0c",
+    "hardware_executed": false,
+    "layout_checks_disabled": false,
+    "status": "PASS",
+    "target": "aarch64-linux-gnu"
+  },
+  "builtin_alternative": "UNTESTED distinct build/profile; not a dormant module and not a hardware claim",
+  "compile_exit": 2,
+  "config_sha256": "e3125f84186c8f889229cf0c035dfbe179d702b21e583e46604478b9c4472296",
+  "failing_stage": "MODPOST Module.symvers",
+  "hardware": "UNTESTED",
+  "no_map_alternative": "Existing public DMA/reserved-memory path assumes bootloader-provided no-map pool and pre-mapped DART. Those live J614s preconditions are unverified by this lane.",
+  "object_compile": "PASS: actual IOMFB, version 12.3/13.3/26.6 TUs and complete appledrm composite",
+  "objects": [
+    {
+      "bytes": 286856,
+      "path": "drivers/gpu/drm/apple/iomfb.o",
+      "sha256": "76627f544696f36108e97b79fd63c9da0563a5f8b41aabeb61a48946d66e8358"
+    },
+    {
+      "bytes": 389776,
+      "path": "drivers/gpu/drm/apple/iomfb_v12_3.o",
+      "sha256": "10ce172b21e7a3f4d4f5e498a8cc6938e36e9111a4d6a8559fbfc01db92a6a95"
+    },
+    {
+      "bytes": 392856,
+      "path": "drivers/gpu/drm/apple/iomfb_v13_3.o",
+      "sha256": "082fde96b06cfcff2556f8b39228a88b2d94988eeaa28f4ad51d78cc0f66385f"
+    },
+    {
+      "bytes": 392872,
+      "path": "drivers/gpu/drm/apple/iomfb_v26_6.o",
+      "sha256": "b0a9b2c120452b9f329f116a22873a52f34373de502449b493ad682f7664fb0f"
+    },
+    {
+      "bytes": 3740744,
+      "path": "drivers/gpu/drm/apple/appledrm.o",
+      "sha256": "0d825dd1921f2d3c192e276e2184149b7e77abd4e9d67d05929acd2220a43b82"
+    }
+  ],
+  "root_cause": "Existing direct-map scanout fallback calls unexported ARM64 internals; no module interface exists for those operations. No symbols exported or modpost checks disabled.",
+  "source": {
+    "dirty_diff_sha256": "288be4fd575133525ed896cb5855cb1e9a3827cce126ce38ef486a5bf8278e36",
+    "head": "be6225839fe98158ce677d9424ce255aeedbb406",
+    "untracked": {}
+  },
+  "status": "BLOCKED (modular link)",
+  "undefined_symbols": [
+    "can_set_direct_map",
+    "dcache_clean_inval_poc",
+    "set_direct_map_invalid_noflush",
+    "set_direct_map_default_noflush"
+  ]
+}

@@ -1,0 +1,17 @@
+From a5a5ba8f56c9ab9192bbe9d3e9ae006cdcca661f Mon Sep 17 00:00:00 2001
+From: gareth jones <gareth@garethpaul.com>
+Date: Mon, 19 Oct 2026 22:37:16 -0700
+Subject: [PATCH 4/4] rust: retain generated binding layout assertions for
+ qualified builds
+
+---
+ rust/Makefile | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/rust/Makefile b/rust/Makefile
+index bec9726f2..6d964251e 100644
+--- a/rust/Makefile
++++ b/rust/Makefile
+@@ -450 +450 @@ quiet_cmd_bindgen = BINDGEN $@
+-		--use-core --with-derive-default --ctypes-prefix ffi --no-layout-tests \
++		--use-core --with-derive-default --ctypes-prefix ffi \

@@ -1,0 +1,32 @@
+test_actual_builder_checks_all_256_literal_values (test_transcript.Store42TranscriptTests.test_actual_builder_checks_all_256_literal_values) ... ok
+test_actual_builder_store_refusals_have_no_causal_submission (test_transcript.Store42TranscriptTests.test_actual_builder_store_refusals_have_no_causal_submission) ... ok
+test_any_wrong_word_or_truncated_output_is_rejected (test_transcript.Store42TranscriptTests.test_any_wrong_word_or_truncated_output_is_rejected) ... ok
+test_exact_buffer_geometry_and_dispatch_are_required (test_transcript.Store42TranscriptTests.test_exact_buffer_geometry_and_dispatch_are_required) ... ok
+test_incomplete_command_or_false_pass_cannot_succeed (test_transcript.Store42TranscriptTests.test_incomplete_command_or_false_pass_cannot_succeed) ... ok
+test_input_must_be_all_poison_including_last_word (test_transcript.Store42TranscriptTests.test_input_must_be_all_poison_including_last_word) ... ok
+test_second_store_keeps_literal_42_rather_than_restoring_poison (test_transcript.Store42TranscriptTests.test_second_store_keeps_literal_42_rather_than_restoring_poison) ... ok
+test_second_store_requires_its_own_gates (test_transcript.Store42TranscriptTests.test_second_store_requires_its_own_gates) ... ok
+test_self_consistent_wrong_expected_and_readback_cannot_pass (test_transcript.Store42TranscriptTests.test_self_consistent_wrong_expected_and_readback_cannot_pass) ... ok
+test_start_and_commit_cannot_be_claimed_without_exact_tokens (test_transcript.Store42TranscriptTests.test_start_and_commit_cannot_be_claimed_without_exact_tokens) ... ok
+test_store_requires_explicit_contract_selection (test_transcript.Store42TranscriptTests.test_store_requires_explicit_contract_selection) ... ok
+test_unsupported_pipeline_maximum_is_rejected (test_transcript.Store42TranscriptTests.test_unsupported_pipeline_maximum_is_rejected) ... ok
+test_updated_binary_preserves_xor_contract (test_transcript.Store42TranscriptTests.test_updated_binary_preserves_xor_contract) ... ok
+test_acceptance_without_exact_start_or_commit_token_is_rejected (test_transcript.TranscriptTests.test_acceptance_without_exact_start_or_commit_token_is_rejected) ... ok
+test_actual_builder_first_job (test_transcript.TranscriptTests.test_actual_builder_first_job) ... ok
+test_actual_builder_two_jobs_restore_input (test_transcript.TranscriptTests.test_actual_builder_two_jobs_restore_input) ... ok
+test_default_mode_cannot_admit_two_submissions (test_transcript.TranscriptTests.test_default_mode_cannot_admit_two_submissions) ... ok
+test_failed_command_status_is_rejected (test_transcript.TranscriptTests.test_failed_command_status_is_rejected) ... ok
+test_failed_readback_cannot_pass_with_correct_words (test_transcript.TranscriptTests.test_failed_readback_cannot_pass_with_correct_words) ... ok
+test_inconsistent_buffer_identity_is_rejected (test_transcript.TranscriptTests.test_inconsistent_buffer_identity_is_rejected) ... ok
+test_negative_builder_cases_never_reached_device_marker (test_transcript.TranscriptTests.test_negative_builder_cases_never_reached_device_marker) ... ok
+test_nonmonotonic_time_is_rejected (test_transcript.TranscriptTests.test_nonmonotonic_time_is_rejected) ... ok
+test_refused_commit_never_submitted_user_job (test_transcript.TranscriptTests.test_refused_commit_never_submitted_user_job) ... ok
+test_reordered_or_missing_markers_are_rejected (test_transcript.TranscriptTests.test_reordered_or_missing_markers_are_rejected) ... ok
+test_success_boolean_cannot_hide_wrong_output (test_transcript.TranscriptTests.test_success_boolean_cannot_hide_wrong_output) ... ok
+test_ungated_second_submission_is_rejected (test_transcript.TranscriptTests.test_ungated_second_submission_is_rejected) ... ok
+test_wrong_commit_gate_is_rejected (test_transcript.TranscriptTests.test_wrong_commit_gate_is_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 27 tests in 0.007s
+
+OK

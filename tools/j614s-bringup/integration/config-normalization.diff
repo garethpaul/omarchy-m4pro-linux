@@ -1,0 +1,82 @@
+--- requested-gravity-candidate
++++ normalized-gravity-candidate
+@@ -3 +3 @@
+-# Linux/arm64 7.1.12 Kernel Configuration
++# Linux/arm64 7.1.13 Kernel Configuration
+@@ -802,0 +803 @@
++CONFIG_VMAP_PFN=y
+@@ -1465 +1465,0 @@
+-# CONFIG_SERIAL_APPLE_DOCKCHANNEL is not set
+@@ -1934,0 +1935 @@
++CONFIG_DRM_GEM_DMA_HELPER=m
+@@ -1938,0 +1940,2 @@
++CONFIG_DRM_APPLE=m
++# CONFIG_DRM_APPLE_DEBUG is not set
+@@ -1947,0 +1951 @@
++CONFIG_DRM_ASAHI_M4=m
+@@ -1993,0 +1998 @@
++# CONFIG_DRM_WAVESHARE_BRIDGE is not set
+@@ -2012,0 +2018,2 @@
++# CONFIG_DRM_PANEL_LVDS is not set
++# CONFIG_DRM_PANEL_OLIMEX_LCD_OLINUXINO is not set
+@@ -2013,0 +2021,3 @@
++# CONFIG_DRM_PANEL_SAMSUNG_ATNA33XC20 is not set
++# CONFIG_DRM_PANEL_SAMSUNG_S6D7AA0 is not set
++# CONFIG_DRM_PANEL_SAMSUNG_S6E63M0 is not set
+@@ -2014,0 +2025,4 @@
++# CONFIG_DRM_PANEL_SAMSUNG_S6E8FC0 is not set
++# CONFIG_DRM_PANEL_SEIKO_43WVF1G is not set
++# CONFIG_DRM_PANEL_EDP is not set
++# CONFIG_DRM_PANEL_SIMPLE is not set
+@@ -2049,0 +2064 @@
++# CONFIG_FB_SSD1307 is not set
+@@ -2058,0 +2074,2 @@
++CONFIG_FB_DMAMEM_HELPERS=y
++CONFIG_FB_DMAMEM_HELPERS_DEFERRED=y
+@@ -2068,0 +2086,15 @@
++# CONFIG_BACKLIGHT_AW99706 is not set
++# CONFIG_BACKLIGHT_KTD253 is not set
++# CONFIG_BACKLIGHT_KTD2801 is not set
++# CONFIG_BACKLIGHT_KTZ8866 is not set
++# CONFIG_BACKLIGHT_APPLE_DWI is not set
++# CONFIG_BACKLIGHT_QCOM_WLED is not set
++# CONFIG_BACKLIGHT_ADP8860 is not set
++# CONFIG_BACKLIGHT_ADP8870 is not set
++# CONFIG_BACKLIGHT_LM3509 is not set
++# CONFIG_BACKLIGHT_LM3639 is not set
++# CONFIG_BACKLIGHT_GPIO is not set
++# CONFIG_BACKLIGHT_LV5207LP is not set
++# CONFIG_BACKLIGHT_BD6107 is not set
++# CONFIG_BACKLIGHT_ARCXCNN is not set
++# CONFIG_BACKLIGHT_LED is not set
+@@ -2070,0 +2103 @@
++CONFIG_VIDEOMODE_HELPERS=y
+@@ -2107 +2139,0 @@
+-# CONFIG_HID_APPLE_MTP_HAPTIC is not set
+@@ -2614 +2645,0 @@
+-# CONFIG_APPLE_MCC is not set
+@@ -2619,2 +2649,0 @@
+-CONFIG_APPLE_TUNABLE=y
+-CONFIG_RUST_APPLE_MAILBOX=y
+@@ -2622,0 +2652 @@
++# CONFIG_APPLE_SEP is not set
+@@ -2679 +2708,0 @@
+-CONFIG_APPLE_PMC=y
+@@ -2721 +2749,0 @@
+-CONFIG_RESET_APPLE_CIO=y
+@@ -2778,0 +2807 @@
++CONFIG_MULTIPLEXER=y
+@@ -2779,0 +2809,10 @@
++
++#
++# Multiplexer drivers
++#
++# CONFIG_MUX_ADG792A is not set
++# CONFIG_MUX_APPLE_DPXBAR is not set
++# CONFIG_MUX_GPIO is not set
++# CONFIG_MUX_MMIO is not set
++# end of Multiplexer drivers
++
+@@ -3388,2 +3426,0 @@
+-CONFIG_DRM_ASAHI_M4=m
+-CONFIG_DRM_APPLE=m

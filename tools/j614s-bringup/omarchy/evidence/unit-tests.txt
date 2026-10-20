@@ -2,6 +2,7 @@ python3 -m unittest discover -s . -v
 test_boot_requests_and_provider_aliases_are_held (test_package_plan.PackagePlanTests.test_boot_requests_and_provider_aliases_are_held) ... ok
 test_changed_protected_baseline_rejected_before_any_pacman_subprocess (test_package_plan.PackagePlanTests.test_changed_protected_baseline_rejected_before_any_pacman_subprocess) ... ok
 test_changed_repository_rejected_before_any_pacman_subprocess (test_package_plan.PackagePlanTests.test_changed_repository_rejected_before_any_pacman_subprocess) ... ok
+test_exact_package_wins_over_earlier_virtual_provider (test_package_plan.PackagePlanTests.test_exact_package_wins_over_earlier_virtual_provider) ... ok
 test_kernel_firmware_and_boot_names_are_protected (test_package_plan.PackagePlanTests.test_kernel_firmware_and_boot_names_are_protected) ... ok
 test_no_baseline_cannot_create_boot_pins (test_package_plan.PackagePlanTests.test_no_baseline_cannot_create_boot_pins) ... ok
 test_orphan_depends_is_explicitly_reported_and_cannot_resolve (test_package_plan.PackagePlanTests.test_orphan_depends_is_explicitly_reported_and_cannot_resolve) ... ok
@@ -13,6 +14,8 @@ test_split_depends_members_provide_repository_alias (test_package_plan.PackagePl
 test_stale_or_unsigned_editor_evidence_cannot_resolve_alias (test_package_plan.PackagePlanTests.test_stale_or_unsigned_editor_evidence_cannot_resolve_alias) ... ok
 test_tampered_payload_fails_digest_before_inspection (test_package_plan.PackagePlanTests.test_tampered_payload_fails_digest_before_inspection) ... ok
 test_unknown_and_foreign_requests_remain_explicit_failures (test_package_plan.PackagePlanTests.test_unknown_and_foreign_requests_remain_explicit_failures) ... ok
+test_verified_actual_vi_provider_resolves_to_owned_executable (test_package_plan.PackagePlanTests.test_verified_actual_vi_provider_resolves_to_owned_executable) ... ok
+test_vi_cannot_resolve_from_stale_unsigned_or_unexecuted_payload (test_package_plan.PackagePlanTests.test_vi_cannot_resolve_from_stale_unsigned_or_unexecuted_payload) ... ok
 test_vi_is_not_guessed_from_vim_presence (test_package_plan.PackagePlanTests.test_vi_is_not_guessed_from_vim_presence) ... ok
 test_arm_packages_virtual_providers_and_wrong_arch (test_preflight.PackageAuditTests.test_arm_packages_virtual_providers_and_wrong_arch) ... ok
 test_repository_order_and_architecture_are_preserved (test_preflight.PackageAuditTests.test_repository_order_and_architecture_are_preserved) ... ok
@@ -36,7 +39,7 @@ test_staging_never_overwrites_existing_directory (test_preflight.PreflightTests.
 test_wrong_twelve_cpu_ids_block (test_preflight.PreflightTests.test_wrong_twelve_cpu_ids_block) ... ok
 
 ----------------------------------------------------------------------
-Ran 35 tests in 0.075s
+Ran 38 tests in 0.095s
 
 OK
 No EGL pbuffer config on requested DRM node: 0x3000

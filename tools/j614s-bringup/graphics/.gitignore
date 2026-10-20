@@ -2,3 +2,5 @@
 /fuzz-corpus/
 
 /__pycache__/
+
+/display/__pycache__/

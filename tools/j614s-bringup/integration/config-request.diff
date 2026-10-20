@@ -1,0 +1,11 @@
+--- f93-qualified-config
++++ requested-gravity-candidate
+@@ -43 +43 @@
+-CONFIG_LOCALVERSION="-j614s-clean-candidate"
++CONFIG_LOCALVERSION="-j614s-gravity-candidate"
+@@ -2068 +2068 @@
+-# CONFIG_BACKLIGHT_CLASS_DEVICE is not set
++CONFIG_BACKLIGHT_CLASS_DEVICE=y
+@@ -3387,0 +3388,2 @@
++CONFIG_DRM_ASAHI_M4=m
++CONFIG_DRM_APPLE=m

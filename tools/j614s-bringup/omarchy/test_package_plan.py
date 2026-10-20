@@ -28,6 +28,7 @@ class PackagePlanTests(unittest.TestCase):
         self.repository = self.root / "extra.db"
         with tarfile.open(self.repository, "w:gz") as archive:
             for name, aliases, arch in (("neovim", [], "aarch64"),
+                                         ("ex-vi-compat", ["vi"], "any"),
                                          ("vim", [], "aarch64"),
                                          ("aura", ["indirect-boot-provider"], "aarch64"),
                                          ("desktop", [], "aarch64"),
@@ -66,6 +67,48 @@ class PackagePlanTests(unittest.TestCase):
         result = self.make_plan(["vi"])
         self.assertEqual(result["resolved_requests"], [])
         self.assertEqual(result["unresolved_requests"][0]["requested"], "vi")
+
+    def vi_proof(self):
+        proof = copy.deepcopy(self.proof)
+        for name, arch, path, digest in (("ex-vi-compat", "any", "usr/bin/vi", "d"),
+                                          ("vim", "aarch64", "usr/bin/vim", "c")):
+            proof["packages"][name] = {"signature_valid": True, "signer_fingerprint": SIGNER,
+                "version": "2-new", "sha256": "a" * 64,
+                "pkginfo": {"pkgname": [name], "pkgver": ["2-new"], "arch": [arch],
+                            "provides": ["vi"] if name == "ex-vi-compat" else [], "depend": ["bash", "vim"]},
+                "bin_entries": [{"path": path, "type": "0", "size": 10, "mode": 0o755, "sha256": digest * 64}]}
+        execution = {"schema": 1, "signer_fingerprint": SIGNER, "provider_name": "ex-vi-compat",
+            "provider_version": "2-new", "provider_package_sha256": "a" * 64, "wrapper_sha256": "d" * 64,
+            "native_vim_package_sha256": "a" * 64, "native_vim_sha256": "c" * 64,
+            "vi_invocation_pass": True, "compatibility_mode": 1, "file_roundtrip_pass": True,
+            "exrc_pass": True, "exinit_precedence_pass": True, "edit_save_pass": True}
+        return proof, execution
+
+    def test_verified_actual_vi_provider_resolves_to_owned_executable(self):
+        proof, execution = self.vi_proof()
+        source = self.root / "vi.packages"
+        source.write_text("vi\n")
+        result = plan([source], [("extra", self.repository)], self.database, proof, execution)
+        self.assertEqual(result["unresolved_requests"], [])
+        self.assertEqual(result["resolved_requests"][0]["resolved"], "ex-vi-compat")
+        self.assertFalse(result["deployable"])
+        self.assertEqual(result["actions"], [])
+
+    def test_vi_cannot_resolve_from_stale_unsigned_or_unexecuted_payload(self):
+        for mutation in ("unsigned", "mode", "stale-wrapper", "backend", "failed-invocation", "wrong-compatible"):
+            with self.subTest(mutation=mutation):
+                proof, execution = self.vi_proof()
+                if mutation == "unsigned": proof["packages"]["ex-vi-compat"]["signature_valid"] = False
+                elif mutation == "mode": proof["packages"]["ex-vi-compat"]["bin_entries"][0]["mode"] = 0o644
+                elif mutation == "stale-wrapper": execution["wrapper_sha256"] = "0" * 64
+                elif mutation == "backend": execution["native_vim_sha256"] = "0" * 64
+                elif mutation == "failed-invocation": execution["vi_invocation_pass"] = False
+                else: execution["compatibility_mode"] = 0
+                source = self.root / "vi.packages"
+                source.write_text("vi\n")
+                result = plan([source], [("extra", self.repository)], self.database, proof, execution)
+                self.assertEqual(result["resolved_requests"], [])
+                self.assertEqual(result["unresolved_requests"][0]["requested"], "vi")
 
     def test_unknown_and_foreign_requests_remain_explicit_failures(self):
         result = self.make_plan(["unknown", "foreign", "desktop"])
@@ -135,6 +178,20 @@ class PackagePlanTests(unittest.TestCase):
         self.assertEqual(records[0]["DEPENDS"], ["glibc"])
         index, _ = repository_index([("extra", path)])
         self.assertEqual(index["nvim"]["name"], "neovim")
+
+    def test_exact_package_wins_over_earlier_virtual_provider(self):
+        overlay = self.root / "overlay.db"
+        with tarfile.open(overlay, "w:gz") as archive:
+            payload = b"%NAME%\ngvim\n\n%VERSION%\n2\n\n%ARCH%\naarch64\n\n%PROVIDES%\nvim\n"
+            member = tarfile.TarInfo("gvim-2/desc")
+            member.size = len(payload)
+            archive.addfile(member, io.BytesIO(payload))
+        index, _ = repository_index([("overlay", overlay), ("extra", self.repository)])
+        self.assertEqual(index["vim"]["name"], "vim")
+        self.assertEqual(index["vim"]["repository"], "extra")
+        from arm_package_plan import index_repositories
+        detailed, _ = index_repositories([("overlay", overlay), ("extra", self.repository)])
+        self.assertEqual(detailed["vim"]["name"], "vim")
 
     def test_orphan_depends_is_explicitly_reported_and_cannot_resolve(self):
         path = self.root / "orphan.db"

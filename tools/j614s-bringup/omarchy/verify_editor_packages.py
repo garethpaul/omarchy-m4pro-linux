@@ -33,7 +33,7 @@ def verify_digest(data, expected):
     return actual
 
 
-def inspect(database, keyring, output):
+def inspect(database, keyring, output, names=NAMES, architectures=("aarch64",)):
     keyring_hash = verify_digest(keyring.read_bytes(), KEYRING_SHA256)
     output.mkdir(exist_ok=False)
     home = output / "gnupg"
@@ -44,9 +44,9 @@ def inspect(database, keyring, output):
     selected = {}
     diagnostics = []
     for fields in repository_records(database, diagnostics):
-        if fields.get("NAME", [None])[0] in NAMES:
+        if fields.get("NAME", [None])[0] in names:
             selected[fields["NAME"][0]] = fields
-    if set(selected) != set(NAMES):
+    if set(selected) != set(names):
         raise ValueError("required editor metadata missing")
     evidence = {"schema": 1, "database_sha256": hashlib.sha256(database.read_bytes()).hexdigest(),
                 "keyring_sha256": keyring_hash,
@@ -55,10 +55,10 @@ def inspect(database, keyring, output):
                 "excluded_repository_metadata": diagnostics,
                 "package_execution": "UNTESTED by this verifier; never invokes payloads or hooks",
                 "packages": {}}
-    for name in NAMES:
+    for name in names:
         fields = selected[name]
         filename = fields["FILENAME"][0]
-        if Path(filename).name != filename or fields.get("ARCH") != ["aarch64"]:
+        if Path(filename).name != filename or fields.get("ARCH", [None])[0] not in architectures:
             raise ValueError("unexpected package filename or architecture")
         url = "https://arm-mirror.omarchy.org/aarch64/extra/" + filename
         with urllib.request.urlopen(url, timeout=40) as response:
@@ -88,9 +88,9 @@ def inspect(database, keyring, output):
                     has_install_script = True
                 if member.name.startswith("usr/bin/"):
                     row = {"path": member.name, "linkname": member.linkname,
-                           "type": member.type.decode(), "size": member.size}
+                           "type": member.type.decode(), "size": member.size, "mode": member.mode}
                     # Extract only the exact executable, never directories, symlinks or hooks.
-                    if member.isfile() and member.name in ("usr/bin/vim", "usr/bin/nvim"):
+                    if member.isfile() and member.name in ("usr/bin/vim", "usr/bin/nvim", "usr/bin/vi"):
                         executable = output / name / member.name
                         executable.parent.mkdir(parents=True, exist_ok=True)
                         content = archive.extractfile(member).read()
@@ -98,12 +98,12 @@ def inspect(database, keyring, output):
                         executable.chmod(0o755)
                         row["sha256"] = hashlib.sha256(content).hexdigest()
                     entries.append(row)
-        if info is None or info.get("pkgname") != [name] or info.get("arch") != ["aarch64"]:
+        if info is None or info.get("pkgname") != [name] or info.get("arch") != fields.get("ARCH"):
             raise ValueError("signed package identity mismatch")
         if info.get("pkgver") != fields.get("VERSION"):
             raise ValueError("signed package version mismatch")
         evidence["packages"][name] = {"name": name, "version": info["pkgver"][0],
-                "architecture": "aarch64", "url": url, "sha256": digest, "bytes": len(data),
+                "architecture": info["arch"][0], "url": url, "sha256": digest, "bytes": len(data),
                 "signature_valid": True, "signer_fingerprint": SIGNER,
                 "retrieved_utc": datetime.datetime.now(datetime.timezone.utc).isoformat(),
                 "gpg_status": checked.stdout.splitlines(), "pkginfo": info,
@@ -116,8 +116,11 @@ def main():
     parser.add_argument("--database", type=Path, required=True)
     parser.add_argument("--keyring", type=Path, required=True)
     parser.add_argument("--output", type=Path, required=True, help="new disposable inspection folder")
+    parser.add_argument("--include-vi-provider", action="store_true", help="also inspect signed ex-vi-compat (architecture any)")
     args = parser.parse_args()
-    evidence = inspect(args.database, args.keyring, args.output)
+    evidence = inspect(args.database, args.keyring, args.output,
+                       (*NAMES, "ex-vi-compat") if args.include_vi_provider else NAMES,
+                       ("aarch64", "any") if args.include_vi_provider else ("aarch64",))
     (args.output / "inspection.json").write_text(json.dumps(evidence, indent=2) + "\n")
     print(json.dumps(evidence, indent=2))
 
