@@ -2355,12 +2355,15 @@ static bool apple_nvme_provider_matches(struct device_node *consumer,
 {
 	struct device_node *provider;
 	struct resource resource;
+	u32 cells;
 	bool valid;
 
 	provider = of_parse_phandle(consumer, property, 0);
 	if (!provider)
 		return false;
-	valid = of_device_is_compatible(provider, compatible) &&
+	valid = (strcmp(property, "mboxes") ||
+		 (!of_property_read_u32(provider, "#mbox-cells", &cells) && !cells)) &&
+		of_device_is_compatible(provider, compatible) &&
 		apple_nvme_unmanaged_power_path(provider) &&
 		!of_address_to_resource(provider, 0, &resource) &&
 		resource.start == start && resource_size(&resource) == size;
