@@ -803,7 +803,10 @@ static void apple_rtkit_detach_rx(struct apple_rtkit *rtk)
 static void apple_rtkit_stop_rx(struct apple_rtkit *rtk)
 {
 	apple_rtkit_detach_rx(rtk);
-	destroy_workqueue(rtk->wq);
+	if (rtk->wq) {
+		destroy_workqueue(rtk->wq);
+		rtk->wq = NULL;
+	}
 }
 
 static void apple_rtkit_release_rx(struct apple_rtkit *rtk)
@@ -1272,6 +1275,16 @@ void apple_rtkit_free(struct apple_rtkit *rtk)
 	kfree(rtk);
 }
 EXPORT_SYMBOL_GPL(apple_rtkit_free);
+
+void apple_rtkit_quiesce_retaining_state(struct apple_rtkit *rtk)
+{
+	/* The caller retains every reader's owner until platform reset. Keep
+	 * metadata, DMA buffers and the mailbox cookie reservation valid after
+	 * RX/work drain; an already-running status reader may still use rtk.
+	 */
+	apple_rtkit_stop_rx(rtk);
+}
+EXPORT_SYMBOL_GPL(apple_rtkit_quiesce_retaining_state);
 
 void apple_rtkit_free_retaining_buffers(struct apple_rtkit *rtk)
 {

@@ -195,6 +195,13 @@ struct apple_nvme_hw {
 	u32 max_queue_depth;
 };
 
+struct apple_nvme_mmio {
+	struct apple_nvme *owner;
+	resource_size_t start, size;
+	void __iomem *base;
+	bool reserved;
+};
+
 struct apple_nvme {
 	struct device *dev;
 	struct kref ref;
@@ -205,6 +212,7 @@ struct apple_nvme {
 	struct list_head quarantine_node;
 	resource_size_t controller_start;
 
+	struct apple_nvme_mmio retained_mmio[2];
 	void __iomem *mmio_coproc;
 	void __iomem *mmio_nvme;
 	const struct apple_nvme_hw *hw;
@@ -444,6 +452,9 @@ static int apple_nvme_sart_dma_setup(void *cookie,
 		return -ESHUTDOWN;
 	if (!bfr->size)
 		return -EINVAL;
+	if (READ_ONCE(anv->quarantined))
+		return -ESHUTDOWN;
+
 	if (bfr->iova) {
 		struct apple_nvme_rtkit_mapping *mapping;
 		dma_addr_t dma;
@@ -1196,9 +1207,12 @@ static void apple_nvme_disable_queue(struct apple_nvme_queue *q)
 static void apple_nvme_quarantine(struct apple_nvme *anv, int error)
 {
 	int i;
+	unsigned long flags;
 
-	/* Called under disable_lock after both dispatch queues are quiesced. */
+	/* Serialize publication with all CQ poll/completion MMIO. */
+	spin_lock_irqsave(&anv->lock, flags);
 	WRITE_ONCE(anv->quarantined, true);
+	spin_unlock_irqrestore(&anv->lock, flags);
 	/*
 	 * The retained requests keep blk-mq timeouts and completions pointing
 	 * into this module until reboot.
@@ -1402,7 +1416,8 @@ static enum blk_eh_timer_return apple_nvme_timeout(struct request *req)
 	 */
 	if (!apple_rtkit_is_crashed(anv->rtk) && !(csts & NVME_CSTS_CFS)) {
 		spin_lock_irqsave(&anv->lock, flags);
-		apple_nvme_handle_cq(q, false);
+		if (!READ_ONCE(anv->quarantined) && !READ_ONCE(anv->detached))
+			apple_nvme_handle_cq(q, false);
 		spin_unlock_irqrestore(&anv->lock, flags);
 		if (blk_mq_rq_state(req) != MQ_RQ_IN_FLIGHT) {
 			dev_warn(anv->dev,
@@ -1466,10 +1481,11 @@ static int apple_nvme_poll(struct blk_mq_hw_ctx *hctx,
 	bool found;
 	unsigned long flags;
 
-	if (READ_ONCE(anv->quarantined) || READ_ONCE(anv->detached))
-		return 0;
 	spin_lock_irqsave(&anv->lock, flags);
-	found = apple_nvme_poll_cq(q, iob);
+	if (READ_ONCE(anv->quarantined) || READ_ONCE(anv->detached))
+		found = false;
+	else
+		found = apple_nvme_poll_cq(q, iob);
 	spin_unlock_irqrestore(&anv->lock, flags);
 
 	return found;
@@ -2301,6 +2317,10 @@ static void apple_nvme_free_rtkit(void *data)
 
 	apple_nvme_set_reset_ready(anv, false);
 	guard(mutex)(&anv->disable_lock);
+	if (READ_ONCE(anv->quarantined)) {
+		apple_rtkit_quiesce_retaining_state(anv->rtk);
+		return;
+	}
 	if (anv->inherited_rtkit)
 		apple_rtkit_free_retaining_buffers(anv->rtk);
 	else
@@ -2417,6 +2437,47 @@ static bool apple_nvme_controller_quarantined(resource_size_t start)
 	return found;
 }
 
+static void apple_nvme_free_retained_mmio(void *data)
+{
+	struct apple_nvme_mmio *mapping = data;
+
+	if (READ_ONCE(mapping->owner->quarantined))
+		return;
+	if (mapping->base)
+		iounmap(mapping->base);
+	if (mapping->reserved)
+		release_mem_region(mapping->start, mapping->size);
+}
+
+static void __iomem *apple_nvme_map_retained_mmio(struct platform_device *pdev,
+						struct apple_nvme *anv,
+						unsigned int index, const char *name)
+{
+	struct resource *resource;
+	struct apple_nvme_mmio *mapping = &anv->retained_mmio[index];
+	int ret;
+
+	resource = platform_get_resource_byname(pdev, IORESOURCE_MEM, name);
+	if (!resource)
+		return ERR_PTR(-EINVAL);
+	mapping->owner = anv;
+	mapping->start = resource->start;
+	mapping->size = resource_size(resource);
+	ret = devm_add_action_or_reset(anv->dev, apple_nvme_free_retained_mmio, mapping);
+	if (ret)
+		return ERR_PTR(ret);
+	if (!request_mem_region(mapping->start, mapping->size, dev_name(anv->dev)))
+		return ERR_PTR(-EBUSY);
+	mapping->reserved = true;
+	if (resource->flags & IORESOURCE_MEM_NONPOSTED)
+		mapping->base = ioremap_np(mapping->start, mapping->size);
+	else
+		mapping->base = ioremap(mapping->start, mapping->size);
+	if (!mapping->base)
+		return ERR_PTR(-ENOMEM);
+	return mapping->base;
+}
+
 static struct apple_nvme *apple_nvme_alloc_owner(struct device *dev,
 					       resource_size_t controller_start)
 {
@@ -2488,12 +2549,18 @@ static struct apple_nvme *apple_nvme_alloc(struct platform_device *pdev)
 		goto put_dev;
 	}
 
-	anv->mmio_coproc = devm_platform_ioremap_resource_byname(pdev, "ans");
+	if (anv->hw->j614s_diagnostic)
+		anv->mmio_coproc = apple_nvme_map_retained_mmio(pdev, anv, 0, "ans");
+	else
+		anv->mmio_coproc = devm_platform_ioremap_resource_byname(pdev, "ans");
 	if (IS_ERR(anv->mmio_coproc)) {
 		ret = PTR_ERR(anv->mmio_coproc);
 		goto put_dev;
 	}
-	anv->mmio_nvme = devm_platform_ioremap_resource_byname(pdev, "nvme");
+	if (anv->hw->j614s_diagnostic)
+		anv->mmio_nvme = apple_nvme_map_retained_mmio(pdev, anv, 1, "nvme");
+	else
+		anv->mmio_nvme = devm_platform_ioremap_resource_byname(pdev, "nvme");
 	if (IS_ERR(anv->mmio_nvme)) {
 		ret = PTR_ERR(anv->mmio_nvme);
 		goto put_dev;

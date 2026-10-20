@@ -121,6 +121,12 @@ struct apple_rtkit *apple_rtkit_init_adopted(struct device *dev, void *cookie,
  */
 void apple_rtkit_free_retaining_buffers(struct apple_rtkit *rtk);
 
+/* Detach/drain RX without freeing metadata, DMA or mailbox ownership. The caller
+ * must serialize teardown and retain the object and every reader's context until
+ * platform reset. This is for an irrecoverably quarantined live coprocessor.
+ */
+void apple_rtkit_quiesce_retaining_state(struct apple_rtkit *rtk);
+
 
 /* Configure before starting the coprocessor. G16 requests its preallocated
  * crash buffer before the endpoint-map ACK and requires an explicit reply. */
