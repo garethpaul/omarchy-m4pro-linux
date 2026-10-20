@@ -54,11 +54,13 @@
 #define DRIVER_DESC     "Apple display controller DRM driver"
 
 #define MAX_COPROCESSORS 3
+#define DART_PAGE_SIZE 16384
 
 struct apple_drm_private {
 	struct drm_device drm;
 	struct resource scanout_pool;
 	bool scanout_pool_attached;
+	u64 scanout_iova_base;
 };
 
 struct apple_drm_gem_object {
@@ -70,6 +72,7 @@ struct apple_drm_gem_object {
 
 static void apple_drm_gem_restore_direct_map(struct apple_drm_gem_object *obj)
 {
+#if IS_BUILTIN(CONFIG_DRM_APPLE)
 	struct scatterlist *sg;
 	unsigned int i;
 
@@ -90,6 +93,10 @@ static void apple_drm_gem_restore_direct_map(struct apple_drm_gem_object *obj)
 	sg_free_table(obj->scanout_sgt);
 	kfree(obj->scanout_sgt);
 	obj->scanout_sgt = NULL;
+#else
+	/* Modules only use bootloader-provided no-map pools. */
+	(void)obj;
+#endif
 }
 
 static void apple_drm_gem_free(struct drm_gem_object *gem_obj)
@@ -174,6 +181,7 @@ apple_drm_gem_create_object(struct drm_device *drm, size_t size)
 
 static int apple_drm_gem_remove_direct_map(struct drm_gem_dma_object *dma_obj)
 {
+#if IS_BUILTIN(CONFIG_DRM_APPLE)
 	struct apple_drm_gem_object *obj =
 		container_of(dma_obj, struct apple_drm_gem_object, dma);
 	struct scatterlist *sg;
@@ -215,6 +223,10 @@ static int apple_drm_gem_remove_direct_map(struct drm_gem_dma_object *dma_obj)
 err_restore:
 	apple_drm_gem_restore_direct_map(obj);
 	return ret;
+#else
+	/* Direct-map manipulation is an internal ARM64 interface. */
+	return -EOPNOTSUPP;
+#endif
 }
 
 static int apple_drm_gem_map_nomap_pool(struct drm_gem_dma_object *dma_obj)
@@ -227,7 +239,6 @@ static int apple_drm_gem_map_nomap_pool(struct drm_gem_dma_object *dma_obj)
 	dma_addr_t pool_dma = dma_obj->dma_addr;
 	phys_addr_t phys = dma_to_phys(dev, pool_dma);
 	dma_addr_t iova;
-	u64 iova_base;
 	resource_size_t size = dma_obj->base.size;
 
 	if (!apple->scanout_pool_attached ||
@@ -240,15 +251,10 @@ static int apple_drm_gem_map_nomap_pool(struct drm_gem_dma_object *dma_obj)
 			&phys, &size, &apple->scanout_pool);
 		return -ERANGE;
 	}
-
-	if (of_property_read_u64(dev->of_node, "apple,scanout-iova-base",
-				 &iova_base))
-		return -EINVAL;
-
 	/* m1n1 installs this entire mapping before Linux and leaves the locked
 	 * realtime DART hierarchy untouched. Selecting a buffer is therefore an
 	 * offset calculation, not a Linux page-table update. */
-	iova = iova_base + (phys - apple->scanout_pool.start);
+	iova = apple->scanout_iova_base + (phys - apple->scanout_pool.start);
 
 	obj->pool_dma_addr = pool_dma;
 	obj->pool_fixed_iova = true;
@@ -259,8 +265,6 @@ static int apple_drm_gem_map_nomap_pool(struct drm_gem_dma_object *dma_obj)
 }
 
 DEFINE_DRM_GEM_DMA_FOPS(apple_fops);
-
-#define DART_PAGE_SIZE 16384
 
 static struct drm_gem_dma_object *
 apple_drm_gem_create_scanout(struct drm_device *drm, size_t size)
@@ -759,12 +763,68 @@ static int apple_drm_init_dcp(struct device *dev)
 	return 0;
 }
 
+static int apple_drm_setup_scanout_pool(struct device *dev,
+					struct apple_drm_private *apple)
+{
+	resource_size_t size;
+	bool use_nomap_pool;
+	int ret;
+
+	use_nomap_pool = of_property_read_bool(dev->of_node,
+					       "apple,scanout-memory-is-nomap");
+	if (!use_nomap_pool) {
+		if (IS_MODULE(CONFIG_DRM_APPLE)) {
+			dev_err(dev, "modular DCP requires a bootloader no-map scanout pool\n");
+			return -EOPNOTSUPP;
+		}
+		return 0;
+	}
+
+	ret = apple_get_scanout_pool_resource(dev, &apple->scanout_pool);
+	if (ret)
+		return ret;
+
+	size = resource_size(&apple->scanout_pool);
+	if (apple->scanout_pool.end < apple->scanout_pool.start || !size ||
+	    !IS_ALIGNED(apple->scanout_pool.start, DART_PAGE_SIZE) ||
+	    !IS_ALIGNED(size, DART_PAGE_SIZE))
+		return -EINVAL;
+
+	ret = of_property_read_u64(dev->of_node, "apple,scanout-iova-base",
+				   &apple->scanout_iova_base);
+	if (ret)
+		return ret;
+	if (!IS_ALIGNED(apple->scanout_iova_base, DART_PAGE_SIZE) ||
+	    apple->scanout_iova_base > DMA_BIT_MASK(42) ||
+	    size - 1 > DMA_BIT_MASK(42) - apple->scanout_iova_base)
+		return -EINVAL;
+
+	ret = of_reserved_mem_device_init_by_name(dev, dev->of_node,
+						  "scanout-pool");
+	if (ret)
+		return ret;
+	apple->scanout_pool_attached = true;
+	dev_info(dev, "using no-map scanout pool %pr\n", &apple->scanout_pool);
+	return 0;
+}
+
+static int apple_drm_prepare_and_bind(struct device *dev,
+				      struct apple_drm_private *apple)
+{
+	int ret;
+
+	ret = apple_drm_setup_scanout_pool(dev, apple);
+	if (ret)
+		return ret;
+
+	return component_bind_all(dev, apple);
+}
+
 static int apple_drm_init(struct device *dev)
 {
 	struct apple_drm_private *apple;
 	struct resource fb_r;
 	resource_size_t fb_size;
-	bool use_nomap_pool;
 	int ret;
 
 	ret = dma_set_mask_and_coherent(dev, DMA_BIT_MASK(42));
@@ -781,27 +841,7 @@ static int apple_drm_init(struct device *dev)
 		return PTR_ERR(apple);
 
 	dev_set_drvdata(dev, apple);
-	use_nomap_pool = of_property_read_bool(dev->of_node,
-					       "apple,scanout-memory-is-nomap");
-	if (use_nomap_pool) {
-		ret = apple_get_scanout_pool_resource(dev, &apple->scanout_pool);
-		if (ret) {
-			dev_err(dev, "invalid scanout-pool reserved memory: %d\n", ret);
-			return ret;
-		}
-
-		ret = of_reserved_mem_device_init_by_name(dev, dev->of_node,
-							  "scanout-pool");
-		if (ret) {
-			dev_err(dev, "failed to attach scanout-pool: %d\n", ret);
-			return ret;
-		}
-		apple->scanout_pool_attached = true;
-		dev_info(dev, "using no-map scanout pool %pr\n",
-			 &apple->scanout_pool);
-	}
-
-	ret = component_bind_all(dev, apple);
+	ret = apple_drm_prepare_and_bind(dev, apple);
 	if (ret)
 		goto err_release_rmem;
 
