@@ -751,7 +751,7 @@ static void apple_rtkit_mark_system_running(struct apple_rtkit *rtk)
 		APPLE_RTKIT_EP_OSLOG,
 		APPLE_RTKIT_EP_TRACEKIT,
 	};
-	int i;
+	size_t i;
 
 	/*
 	 * The previous owner already completed HELLO and acknowledged this
