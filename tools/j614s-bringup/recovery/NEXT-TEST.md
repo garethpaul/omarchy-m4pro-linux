@@ -9,10 +9,10 @@ Inputs prepared and independently verified:
 
 | Component | Exact candidate | Evidence |
 | --- | --- | --- |
-| Resident object, preserved |8e0cf28, flat SHAfb31c765…f3afb | `resident-cpu-observation.json`; paired local ELF, live identity, zero exceptions |
+| Resident object, preserved |8e0cf28, flat SHAfb31c765…f3afb | `resident-cpu-observation-03.json`; paired local ELF, live identity, zero exceptions |
 | Unappended RAM loader | source6249e0ec; flat SHA2309dfbb…a0e00 | `../infra/native-loader/repro-after.json`; seven artifact pairs match |
 | Kernel/Image | source8f2f3d1; Image SHAf9d7b637…4604 | `../infra/gravity-combined-reproducibility.json`; Image+18 module pairs match |
-| Offline initrd | SHAd9fac843…b52f | `../integration/boot-probe/artifact-manifest.json`; two archives match,36 tests |
+| Offline initrd | SHA8fd6f861…d16be1 | `../integration/boot-probe/artifact-manifest.json`; two archives match,75 tests; root rebuild matches |
 
 These separate artifacts are **not yet a complete boot bundle**. Before any
 staging, the primary agent must bind a fresh DT and CPU-release table to the same
@@ -39,7 +39,10 @@ Once the operator confirms physical recovery availability, primary-only work is:
 4. Review the concrete RAM-only staging/vector plan and its carveout/size/CRC
    checks before executing. No disk, protected container, persistent entry,
    firmware flash or security policy change belongs to this test.
-5. Establish the new physical ACM channel before an explicit single-shot `probe`.
+5. Establish the new physical ACM channel and collect one fully framed `status`
+   response before considering the separately gated single-shot `probe`. The
+   host collector must match the exact physical port and gadget identity; the
+   current proxy correctly fails discovery before any tty open.
    Record CPU masks, watchdog state, module/admission logs and RO block counters.
    Strict ownership refusal is a PARTIAL/blocked result; do not weaken admission.
 6. If USB or the kernel fails, use the physically available operator. Do not infer

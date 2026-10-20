@@ -1,0 +1,13 @@
+{
+  "url": "https://api.github.com/repos/neovim/neovim/git/ref/tags/v0.12.6",
+  "object": {
+    "sha": "022946c802832f938398dfae34b3f277ca9509d4",
+    "type": "tag",
+    "url": "https://api.github.com/repos/neovim/neovim/git/tags/022946c802832f938398dfae34b3f277ca9509d4"
+  },
+  "annotated_tag_object": {
+    "sha": "779c36969e31080503be2dfccbcc3f999e289606",
+    "type": "commit",
+    "url": "https://api.github.com/repos/neovim/neovim/git/commits/779c36969e31080503be2dfccbcc3f999e289606"
+  }
+}

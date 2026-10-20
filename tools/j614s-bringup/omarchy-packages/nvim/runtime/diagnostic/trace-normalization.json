@@ -1,0 +1,6 @@
+{
+  "file": "attempt-03/guest-strace.txt",
+  "raw_sha256": "bf09b24d220292895faa7f18dcb61afae29310d44529cbebbfc23d3272976a5d",
+  "normalized_sha256": "ffc030f6a71f5ca00502512a1489eae66b51478a94cfc9a8f5ee708d8e4d0b68",
+  "operation": "strip line-end whitespace only; raw capture remains in prior immutable commit1271866"
+}

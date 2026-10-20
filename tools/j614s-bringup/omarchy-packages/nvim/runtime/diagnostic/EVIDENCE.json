@@ -1,0 +1,33 @@
+{
+  "status": "WORKS scoped: isolated ARM Neovim child dispatch resolved; full LazyVim/hardware UNTESTED",
+  "final_result": "attempt-06/result.json",
+  "files": {
+    "README.md": "b84d5cf1c210c97b19e5e1c5fed795b4ac08857f3b328c94680a67a049c484fc",
+    "attempt-01/guest-strace.txt": "9973b73208f1f350b83f63945c6f9f4edc092e3528440a56cbb6fdcf73a255ba",
+    "attempt-01/observations.json": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "attempt-01/result.json": "77eed3619687bdfb2c1c1c5af90e47208167c7420a56c92da781381ed102c0a1",
+    "attempt-02/guest-strace.txt": "1d1832c6d9b5f752b9dd819167c4b2752ee974546d8decd87017b02a3a80b0cb",
+    "attempt-02/observations.json": "e8f73ff8e1dabf9fe8f7d473302729604cb43bb9063838c525a1815d26e4bcb1",
+    "attempt-02/result.json": "dbbe77a3d812363d1f28d159e7cf05441c5685fa4564c448871243b002430aeb",
+    "attempt-03/guest-strace.txt": "ffc030f6a71f5ca00502512a1489eae66b51478a94cfc9a8f5ee708d8e4d0b68",
+    "attempt-03/observations.json": "b4b7b1baba27dcf285e669f79a4fffc2298e3f3ad1a3ec7c38a7aff5655df65b",
+    "attempt-03/result.json": "1bf9eaba684feb8e9239d8970774fd17cc24c6065a61faa70d25d57f81edcefa",
+    "attempt-04/guest-strace.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "attempt-04/observations.json": "c56eae797ed26e6734529778f216eb48e79293864535b183aebe145afe6bed37",
+    "attempt-04/result.json": "74e21d5c472dca8ceb5a434f1a88b5071d3b525dc11a5a06c5b4daa859b1d685",
+    "attempt-05/guest-strace.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "attempt-05/observations.json": "7400fd54d22f9b60a69588c271e2849ae57c1f0b8ec3afd134cfdef3b2bfb475",
+    "attempt-05/result.json": "de243b194e5311aaea5fd238933646e4e96b1f93b6c8a5ddbf517a26adae34b1",
+    "attempt-06/guest-strace.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "attempt-06/observations.json": "0acf1ebfc1879c07171ebb4001fe00b8b3b79ac7a34323410e0e1a40bf71b628",
+    "attempt-06/result.json": "ff1903c185f1f20f7d00703674e6e07bc23f0cc3b1cb526fa3e01cec04b4b691",
+    "primary-neovim-LICENSE.txt": "de23202ef9a51f5e654034190539739a4abece5505f2ce75e780791106707011",
+    "primary-neovim-relevant.c": "9123208a2136546aabe0bac7695b08006f1af36c95715ecd9e00635a463ed1d6",
+    "primary-provenance.json": "d63a4bb78ae1fdda0bebf70ddf2f15671b0d82858e6f58164b424a3b18af4f41",
+    "primary-tag.json": "51514e5f0a7ab607b910eed5cacc0cbf64c87543daf1b21a7a9b4834b58f2051",
+    "probe-nested.lua": "019011a1d8d0c71caf9b2d0d11294b01566443ba5802e30eb8dba8639036a325",
+    "probe.lua": "488ca3308eb9977be2597124078d02f82ad61bd3813b1e2fc5e5172d25953a5f",
+    "run_probe.py": "3c6155a7b98de7ee9b78699269188131628013245c3c68359b07d2757dabad65",
+    "trace-normalization.json": "5756a003eefd5e2f332607da80383bdd7620a8250068a3ddf89803badd92039d"
+  }
+}

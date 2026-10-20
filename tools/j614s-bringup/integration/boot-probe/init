@@ -12,12 +12,17 @@ STATE=REFUSED
 SERIAL_READY=0
 PROBE_STARTED=0
 . /lib/probe-state.sh
+. /lib/probe-frame.sh
 report() {
     printf 'J614S_PROBE: %s\n' "$*"
     printf 'J614S_PROBE: %s\n' "$*" >> /run/probe.log
 }
-# Responses are bounded and cancellable if the USB host disconnects.
-send_file() { timeout 3 cat "$1" >&3; }
+# Fully assemble each bounded frame in RAM before the single cancellable writer.
+# A timed-out partial write is rejected by the host, never retried here.
+send_file() {
+    make_frame "$REQUEST_ID" "$RESPONSE_COMMAND" "$1" /run/tx || return 1
+    timeout 3 cat /run/tx.frame >&3
+}
 reply() { printf '%s\n' "$*" > /run/reply; send_file /run/reply; }
 report 'EARLY_INIT; this init does not arm/feed watchdogs; recovery remains unverified'
 report 'No storage mounts, write workloads, network services or automatic reboot'
@@ -71,6 +76,7 @@ watchdog_snapshot() {
 }
 
 snapshot() {
+    snapshot_destination=${1:-/run/status}
     {
         printf 'STATE=%s PROBE_STARTED=%s\n' "$STATE" "$PROBE_STARTED"
         uname -a
@@ -91,7 +97,8 @@ snapshot() {
             printf 'stat='; cat "$p/stat"
         done
         printf '\nDMESG (includes admission/ownership refusal)\n'; dmesg
-    } > "${1:-/run/status}" 2>&1
+    } > "$snapshot_destination.next" 2>&1 &&
+    mv "$snapshot_destination.next" "$snapshot_destination"
 }
 
 # UEVENT_HELPER is disabled in the pinned kernel. Poll devtmpfs every 50ms,
@@ -131,7 +138,10 @@ probe() {
         report 'REFUSED: board/CPU/release/config/preloaded-device guard';
         reply 'REFUSED: guard failed; status and dmesg remain available'; return
     fi
-    snapshot /run/before.status
+    if ! snapshot /run/before.status; then
+        report 'REFUSED: baseline snapshot could not be published; no NVMe load'
+        reply 'REFUSED: baseline snapshot unavailable'; return
+    fi
     cat /run/before.status
     PROBE_STARTED=1
     ro_guard &
@@ -173,8 +183,11 @@ probe() {
         else
             report 'BLOCKED: module load failed; serial diagnostics retained'
         fi
-        snapshot /run/after.status
-        cat /run/after.status
+        if snapshot /run/after.status; then
+            cat /run/after.status
+        else
+            report 'BLOCKED: after-snapshot could not be published'
+        fi
         printf '%s\n' FINISHED > /run/probe-finished
     ) &
     reply 'Probe started asynchronously; use status, logs or dmesg; never retry/remove/reset'
@@ -221,19 +234,20 @@ while :; do
         exec 3<>/dev/ttyGS0
         stty -F /dev/ttyGS0 raw -echo || { sleep 1; continue; }
         SERIAL_READY=1
-        reply 'J614S physical diagnostic channel. Commands: help status before after logs dmesg probe'
+        report 'Physical ACM channel opened; awaiting nonce-correlated literal request'
     fi
-    if IFS= read -r -n 64 -t 2 command <&3; then
-        # Bound accepted commands; never eval or execute received text.
-        case "$command" in
+    if IFS= read -r -n 64 -t 2 request <&3; then
+        # Fixed protocol grammar; no eval, word splitting or arbitrary execution.
+        parse_request "$request" || { report 'REFUSED: request grammar/nonce/literal command'; continue; }
+        REQUEST_ID=$FRAME_REQUEST_ID; RESPONSE_COMMAND=$FRAME_COMMAND
+        case "$RESPONSE_COMMAND" in
             probe) probe ;;
-            status) snapshot; send_file /run/status ;;
+            status) if snapshot; then send_file /run/status; else reply 'REFUSED: fresh status unavailable'; fi ;;
             before) if [ -f /run/before.status ]; then send_file /run/before.status; else reply 'No probe baseline yet'; fi ;;
             after) if [ -f /run/after.status ]; then send_file /run/after.status; else reply 'No completion snapshot yet'; fi ;;
             logs) send_file /run/probe.log ;;
-            dmesg) dmesg > /run/dmesg; send_file /run/dmesg ;;
+            dmesg) if dmesg > /run/dmesg.next && mv /run/dmesg.next /run/dmesg; then send_file /run/dmesg; else reply 'REFUSED: fresh dmesg unavailable'; fi ;;
             help) reply 'help status before after logs dmesg probe (single-shot; enumeration only)' ;;
-            *) reply 'REFUSED: unknown command' ;;
         esac
     else
         # EOF can persist while UDC still says configured; avoid a busy loop.

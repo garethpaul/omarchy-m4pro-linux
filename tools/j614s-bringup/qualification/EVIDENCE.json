@@ -13,7 +13,7 @@
   "files": [
     {
       "file": "STATUS.md",
-      "sha256": "f2c53b375914d03dac6f34ece144941bc16aafdf00ec268c24ee8fd624b5cddf"
+      "sha256": "9555080098f522d1664542d4613486e3238cb6f79fd257552e0ab05ec71ab946"
     },
     {
       "file": "adt-node-comparison.json",
@@ -54,6 +54,14 @@
     {
       "file": "userspace-runtime-root.json",
       "sha256": "da3e4d08b2550be32c666800c49f87c26b6bad3880a1f01b7746a8291856211e"
+    },
+    {
+      "file": "userspace-child-runtime-root.json",
+      "sha256": "63e1273ca8f33748ce71f52ed34c3eda145a54bb8c3af38f13c0fda90a3bdad0"
+    },
+    {
+      "file": "userspace-conform-root.json",
+      "sha256": "316775569fa8bd5705f023632209e802cc08865b5fd731274d966522987374e8"
     }
   ]
 }

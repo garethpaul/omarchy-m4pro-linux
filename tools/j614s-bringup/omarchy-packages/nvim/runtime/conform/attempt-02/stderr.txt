@@ -1,0 +1,4 @@
+E5113: Lua chunk: /probe.lua:54: assertion failed!
+stack traceback:
+	[C]: in function 'assert'
+	/probe.lua:54: in main chunk

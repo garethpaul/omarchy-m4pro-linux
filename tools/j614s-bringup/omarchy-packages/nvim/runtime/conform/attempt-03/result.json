@@ -1,0 +1,27 @@
+{
+  "exit": 0,
+  "stdout": "",
+  "stderr_file": "stderr.txt",
+  "prior_root_proof_sha256": "000030a40d99f83c61afb0c94b665690ff68e1ad49879a541ef32fffe03f484f",
+  "probe_sha256": "f75c02a7c37f3e4eb705eb8c4fc98d44a82ee40e7d7bd8b68b99a62d6c45e7f0",
+  "runner_sha256": "e0c1a336aec671e82c2833d5f1f7b27ef27095e96b7237089ffbbdd391109c7e",
+  "qualification_sha256": "30ce53399b1029787133348e2c0074d4ac85a76d3c867dc744a71f3b2b2ade2c",
+  "archive_sha256": {
+    "neovim": "19d5b20499f038b51d32bd068c34a08238804f7253fa20002103a8d55627260d",
+    "omarchy-nvim": "b46d41973cacfcf2d8be371351336a3f689e2eb7b9bacdb7ca81939354cbcbc9"
+  },
+  "conform_git_commit": "016802de402556da54c36bd7359b441266b01cdd",
+  "unshare_all": true,
+  "capabilities_dropped": true,
+  "root_read_only": true,
+  "host_HOME_exposed": false,
+  "extracted_members_manifest": {
+    "file": "../extracted-members.jsonl",
+    "sha256": "859194afe184316184efb2f143c04cb2bc44b8f6f41b5590993d8c2a1c017c48",
+    "count": 2374
+  },
+  "curation": {
+    "raw_result_sha256": "797f6585c7bcf72d5ab4594fa4b829bff9fd03b2ce7868e32ea4c620a034e925",
+    "operation": "move unchanged extracted_members rows to shared JSONL; preserve all execution fields"
+  }
+}

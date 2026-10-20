@@ -3,7 +3,7 @@
 import argparse
 import gzip
 import hashlib
-import importlib.util
+import types
 import json
 from pathlib import Path, PurePosixPath
 import stat
@@ -12,10 +12,10 @@ import subprocess
 
 HERE = Path(__file__).resolve().parent
 PINS = json.loads((HERE / 'pins.json').read_text())
-APPLETS = set('sh mount sleep cat printf timeout uname tr grep gzip sha256sum ls wc mkdir ln stty blockdev insmod usleep mv dmesg kill'.split())
+APPLETS = set('sh mount sleep cat printf timeout uname tr grep gzip sha256sum ls wc mkdir ln stty blockdev insmod usleep mv dmesg kill head'.split())
 DIRS = ['bin', 'dev', 'proc', 'sys', 'sys/kernel', 'sys/kernel/config', 'run', 'etc', 'lib', 'lib/modules']
 REGULAR = {'init', 'bin/busybox', 'etc/expected-release', 'etc/expected-config-sha256',
-           'etc/probe-manifest.json', 'lib/probe-state.sh', 'lib/modules/nvme-core.ko', 'lib/modules/nvme-apple.ko'}
+           'etc/probe-manifest.json', 'lib/probe-state.sh', 'lib/probe-frame.sh', 'lib/modules/nvme-core.ko', 'lib/modules/nvme-apple.ko'}
 NODES = {'dev/console': (5, 1), 'dev/null': (1, 3)}
 
 
@@ -51,10 +51,12 @@ def validate_kernel(bundle, verifier):
     contract = json.loads(pinned_file(bundle / 'contract.json', PINS['contract_sha256']))
     require(contract['schema'] == 2 and contract['source']['head'] == PINS['source'], 'Unexpected source contract')
     require(contract['source']['untracked'] == {} and contract['source']['dirty_diff_sha256'] == sha(b''), 'Dirty source contract')
-    pinned_file(verifier, PINS['verifier_sha256'])
-    spec = importlib.util.spec_from_file_location('qualified_kernel_verifier', verifier)
-    module = importlib.util.module_from_spec(spec)
-    spec.loader.exec_module(module)
+    verifier_source = pinned_file(verifier, PINS['verifier_sha256'])
+    # Execute exactly the reviewed bytes, not timestamp-valid unverified pyc;
+    # do not create cache files beside the other lane's read-only helper.
+    module = types.ModuleType('qualified_kernel_verifier')
+    module.__file__ = str(verifier)
+    exec(compile(verifier_source, str(verifier), 'exec'), module.__dict__)
     module.verify(bundle)  # Every original artifact + ARMd16K + embedded config + ELF/vermagic.
     pinned_file(bundle / '.config', PINS['config_sha256'])
     pinned_file(bundle / 'Image', PINS['image_sha256'])
@@ -155,7 +157,7 @@ def build(bundle, verifier, busybox, emulator, output):
     result = subprocess.run([str(emulator), str(busybox), '--list'], check=True, capture_output=True, text=True)
     available = set(result.stdout.splitlines())
     require(APPLETS <= available, 'Missing required BusyBox applet(s): ' + ', '.join(sorted(APPLETS - available)))
-    for script in ['init', 'probe-state.sh']:
+    for script in ['init', 'probe-state.sh', 'probe-frame.sh']:
         subprocess.run([str(emulator), str(busybox), 'sh', '-n', str(HERE / script)], check=True)
     manifest = {'schema': 1, 'purpose': 'RAM-only manual NVMe enumeration probe', 'pins': PINS,
                 'hardware': 'UNTESTED', 'gadget_runtime': 'UNTESTED',
@@ -163,11 +165,14 @@ def build(bundle, verifier, busybox, emulator, output):
                            'Only physical USB diagnostics; no arbitrary shell or networking',
                            'RO polling interval 50ms; not atomic kernel RO-at-creation',
                            'No disk filesystem mounts or read/write workloads',
-                           'USB configured plus explicit probe command required before NVMe load']}
+                           'USB configured plus explicit probe command required before NVMe load',
+                           'Nonce-correlated framed byte evidence is not a hardware/recovery pass',
+                           'Runtime USB/framing/atomic snapshot publication UNTESTED']}
     entries = {name: entry(stat.S_IFDIR | 0o755) for name in DIRS}
     entries.update({name: entry(stat.S_IFCHR | 0o600, rdev=dev) for name, dev in NODES.items()})
     entries['init'] = entry(stat.S_IFREG | 0o755, (HERE / 'init').read_bytes())
-    entries['lib/probe-state.sh'] = entry(stat.S_IFREG | 0o644, (HERE / 'probe-state.sh').read_bytes())
+    for helper in ['probe-state.sh', 'probe-frame.sh']:
+        entries['lib/' + helper] = entry(stat.S_IFREG | 0o644, (HERE / helper).read_bytes())
     entries['bin/busybox'] = entry(stat.S_IFREG | 0o755, bb)
     for name in sorted(APPLETS):
         entries['bin/' + name] = entry(stat.S_IFLNK | 0o777, b'busybox')

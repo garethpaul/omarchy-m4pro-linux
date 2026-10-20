@@ -1,6 +1,6 @@
 {
-  "workspace_commit": "0fe44fc2d7a618f4e9680cd5b477ce3483a7667b",
-  "source_archive_sha256": "368e125c7f97fbf4bf2088d6825cd738ecbb4537f76590c994d66b23a6eee42d",
+  "workspace_commit": "cc0dc47aad37f4e223ce57a0ee6a48d2e9960c84",
+  "source_archive_sha256": "5a122940481a464a5d7dd074f3609f345c84181a7478890ada023eacf2aa3868",
   "status": "experimental tooling; no deployment or production qualification",
   "files": [
     {
@@ -9,7 +9,7 @@
     },
     {
       "file": "PROGRESS.md",
-      "sha256": "0a8fc27d89e787e8710bda2963cceb277f7c1cd549e47392a51e0e8c2b6ae52b"
+      "sha256": "f8f46692cab837902a2d836e35fcac12904eab471b674afe2cb6411ba075b9f5"
     },
     {
       "file": "capture/.gitignore",
@@ -857,31 +857,39 @@
     },
     {
       "file": "integration/boot-probe/README.md",
-      "sha256": "14a0253af777c2c51e3a1510fed8966d511cc09c3a3a981691aefc47c7b1ad77"
+      "sha256": "5e773922b7748d6db58f95a0e93e3db690083e473193539511d46f72acfb093a"
     },
     {
       "file": "integration/boot-probe/artifact-manifest.json",
-      "sha256": "2622bb2c852055725d7ee397709c6a4de3822094f8ed7a0d015ba8d252480a92"
+      "sha256": "b26d326c0448e03a18a2f73e7b2d5e5171276aff9c22f1a9a7ca5f94d8427d7d"
     },
     {
       "file": "integration/boot-probe/build_probe.py",
-      "sha256": "7663fb64081b4a3cc92bfb1c1071ce57e8d8f553d7efb0df5fc01e7b2f267997"
+      "sha256": "c5486d6eea39a7ec680396899969c2bb086f18bce21dc02031d338ea13343a1f"
     },
     {
       "file": "integration/boot-probe/busybox-provenance.json",
       "sha256": "c2b0a015d15512dc9cbc59baa3227fbff334a32460a1ae258d42f08ed7d9238b"
     },
     {
+      "file": "integration/boot-probe/collect_probe.py",
+      "sha256": "e01485e4842eb942e0a93d1217df95f913bf615aa8c1aa52ae278c745ea600d7"
+    },
+    {
       "file": "integration/boot-probe/evidence.json",
-      "sha256": "ae3e7baac7ac9464ae3ccea99be1ea381a345fccc311c331a03033d038a83f91"
+      "sha256": "866f2777191e2a87287438516aad80f3441652def3c8e77233a186b3f1e2e4c1"
     },
     {
       "file": "integration/boot-probe/init",
-      "sha256": "72759a846707a14e997f28c9aceef901942d85d303c75ca31e9a894e0666e232"
+      "sha256": "ae8f47151664b9b116ddb0f293a83bd2c2eec899afdad669ff32003a14d2c01d"
     },
     {
       "file": "integration/boot-probe/pins.json",
       "sha256": "98612d92cfbd2af5c4cac6c94741d49b6ea2ff31459053db1139af53423217e2"
+    },
+    {
+      "file": "integration/boot-probe/probe-frame.sh",
+      "sha256": "496a58c7caa9fcc316cfbbaf12fac62e6fcd8af92a52bdf60deab91201182900"
     },
     {
       "file": "integration/boot-probe/probe-state.sh",
@@ -893,7 +901,15 @@
     },
     {
       "file": "integration/boot-probe/test_probe.py",
-      "sha256": "09463d6bc084645ad800dcf3ce20841b5410c68a9e78e12ac6d4cedf4846e7f0"
+      "sha256": "ff57074e3717319bb0737393bb372aa6e96476aed4e469ab9ebd6ebc88b9ccf3"
+    },
+    {
+      "file": "integration/boot-probe/test_transport.py",
+      "sha256": "db1e272265b46b439d4d27f5e1100dc802d897eb55da9d8032f8832ec9ba6682"
+    },
+    {
+      "file": "integration/boot-probe/transport-contract.json",
+      "sha256": "93ced32dd2b3284f00f067ff9c8f0edd1ca61b664c7149dae2ba6dea6a4743c3"
     },
     {
       "file": "integration/boot-probe/verify_busybox_provenance.py",
@@ -1353,7 +1369,7 @@
     },
     {
       "file": "omarchy-packages/nvim/README.md",
-      "sha256": "de71c68209c593de300f4a4f3b77c30b57f78637c4f3def94b8e5c639540b09f"
+      "sha256": "04165f03f711bc1d266e3dd570f2e8d32f5532e47b0bda5b43da075b99caa79e"
     },
     {
       "file": "omarchy-packages/nvim/SOURCE.json",
@@ -1422,6 +1438,174 @@
     {
       "file": "omarchy-packages/nvim/runtime/child-dispatch-observation.json",
       "sha256": "4d217ea359be6874ab85477f0166e074305e9087c7a065d2aa4916e56777e991"
+    },
+    {
+      "file": "omarchy-packages/nvim/runtime/conform/EVIDENCE.json",
+      "sha256": "6a9950f3a6cc719d9379b94e6e3e4d93b0f155d3c4b3c167367df34a351564d4"
+    },
+    {
+      "file": "omarchy-packages/nvim/runtime/conform/README.md",
+      "sha256": "ae6e9c53a00c913192c556bca1acca39e9e079e796b9f48490059da28b822af3"
+    },
+    {
+      "file": "omarchy-packages/nvim/runtime/conform/attempt-02/conform.log",
+      "sha256": "1138f12cbe0d60b46fcea3a7a01664c8242d2825b4eef2411ea98d549c1bed6b"
+    },
+    {
+      "file": "omarchy-packages/nvim/runtime/conform/attempt-02/result.json",
+      "sha256": "8de8f72a340980f252c112f126f64c4846e255dbcfab1f9d9da00dabd8eaf616"
+    },
+    {
+      "file": "omarchy-packages/nvim/runtime/conform/attempt-02/stderr.txt",
+      "sha256": "3d1b4c855b7fab7fd70f9147c994bde79cf2aa59d333ee5305275e9c5212551f"
+    },
+    {
+      "file": "omarchy-packages/nvim/runtime/conform/attempt-03/conform.log",
+      "sha256": "678596a124501642f676932516b37222171cd2b6b22d3204ac2664436283a9ca"
+    },
+    {
+      "file": "omarchy-packages/nvim/runtime/conform/attempt-03/observations.json",
+      "sha256": "1177e8814e3894a53d17161dc7e9ab76c44da08a482048cfdb089ebf2ee761f6"
+    },
+    {
+      "file": "omarchy-packages/nvim/runtime/conform/attempt-03/result.json",
+      "sha256": "65441089c0974cae13a49a9accb534c7a0bc4d9cfb3358ebdd09ccf6f21db834"
+    },
+    {
+      "file": "omarchy-packages/nvim/runtime/conform/attempt-03/stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "omarchy-packages/nvim/runtime/conform/curate_result.py",
+      "sha256": "54535c77d7d1e2bb0255adba635570ec0665329ddb1cb6951347405a339e34fe"
+    },
+    {
+      "file": "omarchy-packages/nvim/runtime/conform/extracted-members.jsonl",
+      "sha256": "859194afe184316184efb2f143c04cb2bc44b8f6f41b5590993d8c2a1c017c48"
+    },
+    {
+      "file": "omarchy-packages/nvim/runtime/conform/preparation-failure-01.json",
+      "sha256": "d27d6c8dcb22d5c77d9e5c12f2a8d0b9ae5dec8e93deed5666344826dc38d0da"
+    },
+    {
+      "file": "omarchy-packages/nvim/runtime/conform/probe.lua",
+      "sha256": "f75c02a7c37f3e4eb705eb8c4fc98d44a82ee40e7d7bd8b68b99a62d6c45e7f0"
+    },
+    {
+      "file": "omarchy-packages/nvim/runtime/conform/run_conform.py",
+      "sha256": "e0c1a336aec671e82c2833d5f1f7b27ef27095e96b7237089ffbbdd391109c7e"
+    },
+    {
+      "file": "omarchy-packages/nvim/runtime/diagnostic/EVIDENCE.json",
+      "sha256": "afbf733926f46e95916bd5e8a33293108e9073f113e934f74ad9e3cbc8f28cda"
+    },
+    {
+      "file": "omarchy-packages/nvim/runtime/diagnostic/README.md",
+      "sha256": "b84d5cf1c210c97b19e5e1c5fed795b4ac08857f3b328c94680a67a049c484fc"
+    },
+    {
+      "file": "omarchy-packages/nvim/runtime/diagnostic/attempt-01/guest-strace.txt",
+      "sha256": "9973b73208f1f350b83f63945c6f9f4edc092e3528440a56cbb6fdcf73a255ba"
+    },
+    {
+      "file": "omarchy-packages/nvim/runtime/diagnostic/attempt-01/observations.json",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "omarchy-packages/nvim/runtime/diagnostic/attempt-01/result.json",
+      "sha256": "77eed3619687bdfb2c1c1c5af90e47208167c7420a56c92da781381ed102c0a1"
+    },
+    {
+      "file": "omarchy-packages/nvim/runtime/diagnostic/attempt-02/guest-strace.txt",
+      "sha256": "1d1832c6d9b5f752b9dd819167c4b2752ee974546d8decd87017b02a3a80b0cb"
+    },
+    {
+      "file": "omarchy-packages/nvim/runtime/diagnostic/attempt-02/observations.json",
+      "sha256": "e8f73ff8e1dabf9fe8f7d473302729604cb43bb9063838c525a1815d26e4bcb1"
+    },
+    {
+      "file": "omarchy-packages/nvim/runtime/diagnostic/attempt-02/result.json",
+      "sha256": "dbbe77a3d812363d1f28d159e7cf05441c5685fa4564c448871243b002430aeb"
+    },
+    {
+      "file": "omarchy-packages/nvim/runtime/diagnostic/attempt-03/guest-strace.txt",
+      "sha256": "ffc030f6a71f5ca00502512a1489eae66b51478a94cfc9a8f5ee708d8e4d0b68"
+    },
+    {
+      "file": "omarchy-packages/nvim/runtime/diagnostic/attempt-03/observations.json",
+      "sha256": "b4b7b1baba27dcf285e669f79a4fffc2298e3f3ad1a3ec7c38a7aff5655df65b"
+    },
+    {
+      "file": "omarchy-packages/nvim/runtime/diagnostic/attempt-03/result.json",
+      "sha256": "1bf9eaba684feb8e9239d8970774fd17cc24c6065a61faa70d25d57f81edcefa"
+    },
+    {
+      "file": "omarchy-packages/nvim/runtime/diagnostic/attempt-04/guest-strace.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "omarchy-packages/nvim/runtime/diagnostic/attempt-04/observations.json",
+      "sha256": "c56eae797ed26e6734529778f216eb48e79293864535b183aebe145afe6bed37"
+    },
+    {
+      "file": "omarchy-packages/nvim/runtime/diagnostic/attempt-04/result.json",
+      "sha256": "74e21d5c472dca8ceb5a434f1a88b5071d3b525dc11a5a06c5b4daa859b1d685"
+    },
+    {
+      "file": "omarchy-packages/nvim/runtime/diagnostic/attempt-05/guest-strace.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "omarchy-packages/nvim/runtime/diagnostic/attempt-05/observations.json",
+      "sha256": "7400fd54d22f9b60a69588c271e2849ae57c1f0b8ec3afd134cfdef3b2bfb475"
+    },
+    {
+      "file": "omarchy-packages/nvim/runtime/diagnostic/attempt-05/result.json",
+      "sha256": "de243b194e5311aaea5fd238933646e4e96b1f93b6c8a5ddbf517a26adae34b1"
+    },
+    {
+      "file": "omarchy-packages/nvim/runtime/diagnostic/attempt-06/guest-strace.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "omarchy-packages/nvim/runtime/diagnostic/attempt-06/observations.json",
+      "sha256": "0acf1ebfc1879c07171ebb4001fe00b8b3b79ac7a34323410e0e1a40bf71b628"
+    },
+    {
+      "file": "omarchy-packages/nvim/runtime/diagnostic/attempt-06/result.json",
+      "sha256": "ff1903c185f1f20f7d00703674e6e07bc23f0cc3b1cb526fa3e01cec04b4b691"
+    },
+    {
+      "file": "omarchy-packages/nvim/runtime/diagnostic/primary-neovim-LICENSE.txt",
+      "sha256": "de23202ef9a51f5e654034190539739a4abece5505f2ce75e780791106707011"
+    },
+    {
+      "file": "omarchy-packages/nvim/runtime/diagnostic/primary-neovim-relevant.c",
+      "sha256": "9123208a2136546aabe0bac7695b08006f1af36c95715ecd9e00635a463ed1d6"
+    },
+    {
+      "file": "omarchy-packages/nvim/runtime/diagnostic/primary-provenance.json",
+      "sha256": "d63a4bb78ae1fdda0bebf70ddf2f15671b0d82858e6f58164b424a3b18af4f41"
+    },
+    {
+      "file": "omarchy-packages/nvim/runtime/diagnostic/primary-tag.json",
+      "sha256": "51514e5f0a7ab607b910eed5cacc0cbf64c87543daf1b21a7a9b4834b58f2051"
+    },
+    {
+      "file": "omarchy-packages/nvim/runtime/diagnostic/probe-nested.lua",
+      "sha256": "019011a1d8d0c71caf9b2d0d11294b01566443ba5802e30eb8dba8639036a325"
+    },
+    {
+      "file": "omarchy-packages/nvim/runtime/diagnostic/probe.lua",
+      "sha256": "488ca3308eb9977be2597124078d02f82ad61bd3813b1e2fc5e5172d25953a5f"
+    },
+    {
+      "file": "omarchy-packages/nvim/runtime/diagnostic/run_probe.py",
+      "sha256": "3c6155a7b98de7ee9b78699269188131628013245c3c68359b07d2757dabad65"
+    },
+    {
+      "file": "omarchy-packages/nvim/runtime/diagnostic/trace-normalization.json",
+      "sha256": "5756a003eefd5e2f332607da80383bdd7620a8250068a3ddf89803badd92039d"
     },
     {
       "file": "omarchy-packages/nvim/runtime/exercise_native.py",
@@ -2057,11 +2241,11 @@
     },
     {
       "file": "qualification/EVIDENCE.json",
-      "sha256": "316ef522f58a734932bc2c5d7200eda9a5bfab1b40d73370b865a21ac4a18e48"
+      "sha256": "a987ed7e9c37c3249dacb1234f6076b85f40247eca5dbf47a66da857ea30c34b"
     },
     {
       "file": "qualification/STATUS.md",
-      "sha256": "f2c53b375914d03dac6f34ece144941bc16aafdf00ec268c24ee8fd624b5cddf"
+      "sha256": "9555080098f522d1664542d4613486e3238cb6f79fd257552e0ab05ec71ab946"
     },
     {
       "file": "qualification/adt-node-comparison.json",
@@ -2100,6 +2284,14 @@
       "sha256": "dce1ff075a999b7d56e527d36bfa2e19a1635c0927f433d2379483df34cb860b"
     },
     {
+      "file": "qualification/userspace-child-runtime-root.json",
+      "sha256": "63e1273ca8f33748ce71f52ed34c3eda145a54bb8c3af38f13c0fda90a3bdad0"
+    },
+    {
+      "file": "qualification/userspace-conform-root.json",
+      "sha256": "316775569fa8bd5705f023632209e802cc08865b5fd731274d966522987374e8"
+    },
+    {
       "file": "qualification/userspace-runtime-root.json",
       "sha256": "da3e4d08b2550be32c666800c49f87c26b6bad3880a1f01b7746a8291856211e"
     },
@@ -2109,11 +2301,23 @@
     },
     {
       "file": "recovery/NEXT-TEST.md",
-      "sha256": "9d512c0c887defa020ecf335966c478c8a812afa301a32a56e797fb02f95038e"
+      "sha256": "0ab80eb3d378f6b159b3c7de3a111343b9b3b455cffc0a384e676e2f2b812874"
     },
     {
       "file": "recovery/README.md",
       "sha256": "bbda7a47b6d77d35623663209f2c6af92f8601e280f18061a9667d77100ad427"
+    },
+    {
+      "file": "recovery/collector-proxy-rejection.json",
+      "sha256": "44f24984d97f791435307c2b8f443ab349684d7659f4d3bdcccde3255fb8a90d"
+    },
+    {
+      "file": "recovery/dt-input-geometry-03.json",
+      "sha256": "ff85f73e246f6e9464757b4a99d7a887a37d11ffe8635dade768c974ea8c4aa3"
+    },
+    {
+      "file": "recovery/dt-input-geometry-before.json",
+      "sha256": "501e1449019f95b05acebaa38fdc24a7118f830e15e18c1f14de3a34ee93344a"
     },
     {
       "file": "recovery/evidence/pmu-observation.json",
@@ -2129,7 +2333,15 @@
     },
     {
       "file": "recovery/read_resident_cpus.py",
-      "sha256": "d9ff054539bd7336b9787f2ea48cab329c92d91e9fea0a0c2f3694f960cace39"
+      "sha256": "fce3a31052563734305b5c475bce7d247cf0c716fb0d0f177b81acf1da3c55d7"
+    },
+    {
+      "file": "recovery/resident-cpu-observation-02.json",
+      "sha256": "9874a44e8204ad142b8cce09cbd36e52b738f985c32a1f4c6035792240574119"
+    },
+    {
+      "file": "recovery/resident-cpu-observation-03.json",
+      "sha256": "0faa039045bba188e634ff12008f4371a14c5db7b6c3b46d58cda6a0dc5ca6b8"
     },
     {
       "file": "recovery/resident-cpu-observation.json",
@@ -2145,7 +2357,7 @@
     },
     {
       "file": "recovery/test_resident_cpus.py",
-      "sha256": "52a99015830eac24f7136b2111e96e58d0fec5dc4033d7671177b60cc13b7b30"
+      "sha256": "64d501c87d66249da5a9227679d0fccc0dcabe8a6457176d64068f3ebb205aab"
     }
   ]
 }

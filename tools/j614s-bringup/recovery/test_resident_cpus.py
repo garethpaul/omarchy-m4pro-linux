@@ -3,7 +3,7 @@ import struct
 import ast
 from pathlib import Path
 import unittest
-from read_resident_cpus import CPU_IDS, decode_slots
+from read_resident_cpus import CPU_IDS, decode_slots, memory_geometry
 
 EXPECTED = {i: (i if i<4 else 0x10100+i-4 if i<8 else 0x10200+i-10) for i in CPU_IDS}
 
@@ -37,6 +37,13 @@ class ResidentCPUs(unittest.TestCase):
         for offset in (16,24,32,40,48):
             raw=fixture();struct.pack_into('<Q',raw,64*5+offset,1)
             self.assertFalse(decode_slots(raw,raw,EXPECTED)['secondary_slots_idle'])
+    def test_physical_and_usable_ram_are_distinct(self):
+        result=memory_geometry(0x10000000000,24<<30,0x10000000000,23<<30)
+        self.assertEqual(result['physical_ram_size'],24<<30)
+        self.assertEqual(result['ram_size'],23<<30)
+    def test_memory_geometry_rejects_mismatch_and_overflow(self):
+        for values in ((0,24,0,25),(0,0,0,1),(2**64-4,8,2**64-4,4),(0,24,-1,1),(0,24,0,0),(0,24,0,True)):
+            with self.subTest(values=values), self.assertRaises(ValueError):memory_geometry(*values)
     def test_direct_target_api_has_only_metadata_and_ram_reads(self):
         tree=ast.parse(Path(__file__).with_name('read_resident_cpus.py').read_text())
         calls={n.func.attr for n in ast.walk(tree) if isinstance(n,ast.Call)

@@ -1,0 +1,19 @@
+{
+  "status": "WORKS scoped: real Conform filetype selection and native formatter execution with explicit QEMU prefix; full LazyVim/hardware UNTESTED",
+  "final_result": "attempt-03/result.json",
+  "files": {
+    "README.md": "ae6e9c53a00c913192c556bca1acca39e9e079e796b9f48490059da28b822af3",
+    "attempt-02/conform.log": "1138f12cbe0d60b46fcea3a7a01664c8242d2825b4eef2411ea98d549c1bed6b",
+    "attempt-02/result.json": "8de8f72a340980f252c112f126f64c4846e255dbcfab1f9d9da00dabd8eaf616",
+    "attempt-02/stderr.txt": "3d1b4c855b7fab7fd70f9147c994bde79cf2aa59d333ee5305275e9c5212551f",
+    "attempt-03/conform.log": "678596a124501642f676932516b37222171cd2b6b22d3204ac2664436283a9ca",
+    "attempt-03/observations.json": "1177e8814e3894a53d17161dc7e9ab76c44da08a482048cfdb089ebf2ee761f6",
+    "attempt-03/result.json": "65441089c0974cae13a49a9accb534c7a0bc4d9cfb3358ebdd09ccf6f21db834",
+    "attempt-03/stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "curate_result.py": "54535c77d7d1e2bb0255adba635570ec0665329ddb1cb6951347405a339e34fe",
+    "extracted-members.jsonl": "859194afe184316184efb2f143c04cb2bc44b8f6f41b5590993d8c2a1c017c48",
+    "preparation-failure-01.json": "d27d6c8dcb22d5c77d9e5c12f2a8d0b9ae5dec8e93deed5666344826dc38d0da",
+    "probe.lua": "f75c02a7c37f3e4eb705eb8c4fc98d44a82ee40e7d7bd8b68b99a62d6c45e7f0",
+    "run_conform.py": "e0c1a336aec671e82c2833d5f1f7b27ef27095e96b7237089ffbbdd391109c7e"
+  }
+}

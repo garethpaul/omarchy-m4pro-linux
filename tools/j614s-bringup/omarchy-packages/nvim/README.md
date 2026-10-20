@@ -1,5 +1,17 @@
 # Architecture-independent Omarchy Neovim seed
 
+## Later isolated runtime qualification
+
+The packaging investigation below retains its original scope. Subsequent
+[actual ARM runtime checks](runtime/README.md), [Neovim subprocess diagnosis](runtime/diagnostic/README.md)
+and [real Conform integration](runtime/conform/README.md) now execute both signed
+ARM formatters inside a read-only isolated userspace environment. Root independently
+replayed automatic filetype selection, real subprocesses, buffer edits, idempotence
+and unavailable-command refusal. An explicit QEMU prefix is required by this x86
+test host. This supersedes the earlier runtime/command-lookup UNTESTED statements
+only for that scope. Full LazyVim/Mason, native target execution, unsigned source6
+package build/signing, existing-user migration and installation remain UNTESTED.
+
 **PARTIAL:** the packaging defect is reproduced and fixed at the actual `package()` seam. A new signed package, native formatter runtime, and Neovim integration remain **UNTESTED**. Nothing was installed, no existing account was changed, and the frozen 117-package plans are unchanged.
 
 The signed `omarchy-nvim-2026.9.21-5-any` archive contains exactly one ELF: an x86-64 `shfmt` binary under `/etc/skel/.local/share/nvim/mason/`, mode `0644`, plus its Mason symlink and installed receipt. See `archive-inspection.json` for archive and object hashes, ELF machine, permissions and receipt. This is a dormant new-account seed; it does not establish that an existing user executed the tool. The package-wide `chmod 644` also makes that binary non-executable.

@@ -1,0 +1,11 @@
+{
+  "status": "FAILED hypothesis retained",
+  "hypothesis": "Inherited framebuffer belongs inside bootargs usable RAM envelope",
+  "observed": {
+    "usable_ram_bytes": 25095569408,
+    "framebuffer_bytes": 23756544,
+    "framebuffer_offset_above_usable_end": 75399168
+  },
+  "cause": "Usable RAM and physical RAM differ; do not relax ownership or turn reserved framebuffer into ordinary RAM",
+  "target_changes": false
+}

@@ -1,0 +1,13 @@
+{
+  "exit": 0,
+  "stdout": "",
+  "stderr_file": "guest-strace.txt",
+  "prior_root_proof_sha256": "000030a40d99f83c61afb0c94b665690ff68e1ad49879a541ef32fffe03f484f",
+  "probe_sha256": "3feb5f06370624e4fb30cf6be0de51f840ca98ab96b4f175661533a4c55b57c4",
+  "runner_sha256": "3c6155a7b98de7ee9b78699269188131628013245c3c68359b07d2757dabad65",
+  "guest_strace_enabled": false,
+  "unshare_all": true,
+  "capabilities_dropped": true,
+  "root_read_only": true,
+  "host_HOME_exposed": false
+}

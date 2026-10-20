@@ -1,0 +1,27 @@
+[
+  {
+    "commit": "779c36969e31080503be2dfccbcc3f999e289606",
+    "url": "https://raw.githubusercontent.com/neovim/neovim/779c36969e31080503be2dfccbcc3f999e289606/src/nvim/os/fs.c",
+    "sha256": "187c78dcf283adfcaf5eaf6bcda4d7d57e64485782c02be696d9877bdc35c394",
+    "tag_bytes_identical": true,
+    "whole_file_included": false,
+    "included_excerpt": "primary-neovim-relevant.c",
+    "upstream_filename": "primary-neovim-fs.c"
+  },
+  {
+    "commit": "779c36969e31080503be2dfccbcc3f999e289606",
+    "url": "https://raw.githubusercontent.com/neovim/neovim/779c36969e31080503be2dfccbcc3f999e289606/src/nvim/path.c",
+    "sha256": "70095bbec408ecb7d5b4bbb5d5edb34d367ca6ba7fcd6c8acfea8cb025c9c4ff",
+    "tag_bytes_identical": true,
+    "whole_file_included": false,
+    "included_excerpt": "primary-neovim-relevant.c",
+    "upstream_filename": "primary-neovim-path.c"
+  },
+  {
+    "commit": "779c36969e31080503be2dfccbcc3f999e289606",
+    "url": "https://raw.githubusercontent.com/neovim/neovim/779c36969e31080503be2dfccbcc3f999e289606/LICENSE.txt",
+    "local_file": "primary-neovim-LICENSE.txt",
+    "sha256": "de23202ef9a51f5e654034190539739a4abece5505f2ce75e780791106707011",
+    "tag_bytes_identical": true
+  }
+]

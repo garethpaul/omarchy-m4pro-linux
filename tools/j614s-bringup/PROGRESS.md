@@ -566,3 +566,73 @@ consecutive goal-turn audit after this iteration's independent work completed;
 no completion or blocked goal status is inferred from earlier compacted turns.
 `recovery/NEXT-TEST.md` records exact prepared inputs and the supervised sequence.
 No aggregate work/time/token/turn limit is imposed.
+
+## Continued safe test-loop preparation
+
+Previous goal turn classified PROGRESS: source/build/package changes and actual
+readonly resident evidence changed the next test requirements. This continuation
+is preparing two missing reproducibility pieces without booting: a bounded,
+nonce-correlated physical-serial host collector with complete-frame evidence,
+and a versioned minimal DT template generator that refuses stale/unready CPU
+slots. Both workers are confirmed running, not inferred from old lock files.
+
+Observer revision d8043381 adds source/bootargs identity plus private boot-video,
+RAM envelope and resident bounds without adding target API calls. Eight controls
+pass; actual07:12:06UTC capture again showsUSB63,zero secondaryflags,WFEfalse,
+zero exceptions. ADT and slot digests match the previous observation. Private
+video/address fields are omitted from public observation02. These new inputs
+are for offline rejection tests; no current template or hardware permission
+is inferred. Current profile must fail before producing a boot template.
+
+## Physical versus usable RAM correction
+
+An actual geometry check rejected the hypothesis that the inherited framebuffer
+is inside bootargs usable RAM. Usable memory is25,095,569,408 bytes; the display
+begins75,399,168 bytes beyond that pool. Do not enlarge normal Linux RAM to make
+that check pass. Extended observer now reads resident ram_base/mem_size_actual
+and verifies them against bootargs physical size and aligned physical base.
+Actual07:14:18UTC observation03 establishes24GiB physical RAM and valid separate
+framebuffer resource geometry, outside usable pool/resident image. No mapping,
+cache, ownership or handoff success is inferred. Sourcefce3a310 and10 host tests
+pass; all target calls remain metadata queries/RAM reads. Failed hypothesis and
+corrected address-free checks are preserved in recovery/dt-input-geometry-*.json.
+The DT generator still must refuse current0secondary/WFEfalse capture.
+
+## Actual editor child execution resolved offline
+
+Integrated diagnostic source1271866/dda8bbc as8ab88a0/7f1def5. Root verifies all27
+source/evidence hashes and independently replays actual ARM64 Neovim under the
+same read-only isolated root. Both signed formatters launch as real subprocesses
+and exact output/idempotence plus the unchanged options callback pass. Neovim's
+root-level /qemu pathname lookup caused the prior failure; identical bytes at a
+nested absolute path pass without a permission/architecture bypass, binfmt or
+namespace change. Earlier causal traces/failures remain intact. Full Conform
+automatic selection is a separate running worker, not an inferred pass. No target
+code, watchdog, core or protected storage action occurred.
+
+## Complete physical-serial evidence transport prepared
+
+Integrated944f643 as03fe1f5: strict length/SHA256/nonce response framing over
+frozen RAM snapshots, atomic publication, exact physical-port/USB/ACM identity
+matching and private partial-byte retention. Root reruns all75 controls with
+actual pinned kernel/verifier/native BusyBox inputs, zero skips. A new root
+rebuild matches archive8fd6f861…d16be1 (1,098,565 bytes). Prior a3a012/d9fac
+archives remain unchanged. Controlled unverified-pyc execution is reproduced
+and fixed by compiling exact pinned verifier source bytes without cache lookup.
+Actual currentUSB63 proxy identity is rejected by discovery with no serial
+open/transmission, as recorded in recovery/collector-proxy-rejection.json. This
+is a negative identity test, not a working live Linux channel. No init or probe
+ran. Webcam07:25:45UTC still reads Running proxy; no reboot or target state
+change. New physical framing/guardian/USB and recovery remain UNTESTED.
+
+## Real Conform integration independently replayed
+
+Integratedd8b23ac as8db9eba. Root verifies13 source/evidence hashes, replays
+actual signed ARM Neovim + real signed-package Conform plugin under the strict
+read-only namespace, and matches all2,374 extracted member rows exactly.
+conform.format() receives no explicit formatter list: actual filetype selection,
+builtin argument handling, vim.system execution, buffer diff/edits, idempotent
+no-edit result and missing-command refusal pass. Only supported command/prefix
+overrides provide QEMU dispatch; plugin/runner checks are unchanged. Full
+LazyVim/Mason, native target dispatch and whole-transaction installation are
+UNTESTED. This is actual plugin execution, not mocked options-callback evidence.

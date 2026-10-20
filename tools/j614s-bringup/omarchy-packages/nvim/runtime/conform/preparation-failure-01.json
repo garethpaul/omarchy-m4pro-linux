@@ -1,0 +1,1 @@
+{"status":"PREPARATION FAILED BEFORE EXECUTION","root_cause":"Harness expected an older Neovim Lua module path vim/_system.lua. This signed Neovim0.12.6 archive supplies vim/_core/system.lua.","repair":"Assert the actual signed runtime module path; extracted bytes and all plugin sources remain unmodified.","packaged_payload_execution":false}

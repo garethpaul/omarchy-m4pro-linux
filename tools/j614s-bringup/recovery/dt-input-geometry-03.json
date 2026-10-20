@@ -1,0 +1,24 @@
+{
+  "status": "PARTIAL (address-free offline geometry validation)",
+  "capture_sha256": "eb07075cacddfbec1233d1f00f12804fb76f799002a00ac5454adbeed4129779",
+  "observer_sha256": "fce3a31052563734305b5c475bce7d247cf0c716fb0d0f177b81acf1da3c55d7",
+  "bootargs_sha256": "1a2b271f7cc02878edb0b4a919df814539d9567cdba86a196164becbbce3368e",
+  "adt_sha256": "ee5d2412e0cee64ad8861bcdc3cb2301e393041b746355c8fd3759062f3cf96a",
+  "usb_enumeration": "63",
+  "checks": {
+    "display_enabled": true,
+    "exact_6249_video_guard": true,
+    "video_entirely_in_physical_ram": true,
+    "video_outside_usable_pool": true,
+    "video_excludes_resident_image": true,
+    "release_slots_inside_resident": true,
+    "release_slots_match_64byte_stride": true
+  },
+  "physical_ram_bytes": 25769803776,
+  "usable_ram_bytes": 25095569408,
+  "handoff_ready": false,
+  "reason": "Current secondary flags0 and WFEfalse; a template must refuse this captured state",
+  "cache_attributes": "UNQUALIFIED; geometry alone is not cache/ownership proof",
+  "target_actions": [],
+  "hardware_handoff": "UNTESTED"
+}

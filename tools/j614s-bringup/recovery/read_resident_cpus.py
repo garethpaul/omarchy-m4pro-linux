@@ -39,6 +39,14 @@ def decode_slots(first, second, expected):
             'scope':'Resident software slots only; not a Linux online-core, physical liveness, atomic coherency or recovery test'}
 
 
+
+def memory_geometry(physical_base, physical_size, usable_base, usable_size):
+    require(all(type(n) is int and n>=0 for n in (physical_base,physical_size,usable_base,usable_size)), 'Invalid memory value')
+    require(physical_size>0 and usable_size>0 and physical_base+physical_size<1<<64, 'Invalid physical memory extent')
+    require(physical_base<=usable_base<usable_base+usable_size<=physical_base+physical_size, 'Usable RAM outside physical envelope')
+    return {'physical_ram_base':physical_base,'physical_ram_size':physical_size,
+            'ram_base':usable_base,'ram_size':usable_size}
+
 def main():
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--m1n1-source',type=Path,required=True)
@@ -64,7 +72,7 @@ def main():
         if len(words)==4:sizes[words[3]]=int(words[1],16)
     require(sizes['spin_table']>=14*SLOT_BYTES,'Qualified table extent too small')
     require(0<=symbols['spin_table']<symbols['spin_table']+14*SLOT_BYTES<=symbols['_end'],'Table outside local image')
-    for name in ('boot_cpu_idx','boot_cpu_mpidr','wfe_mode'):
+    for name in ('boot_cpu_idx','boot_cpu_mpidr','wfe_mode','ram_base','mem_size_actual'):
         require(0<=symbols[name]<symbols['_end']-8,'Metadata symbol outside image')
     sys.path.insert(0,str(source/'proxyclient'))
     from m1n1.proxy import UartInterface, M1N1Proxy
@@ -79,10 +87,15 @@ def main():
         interface.tty_enable=False;interface.nop();proxy=M1N1Proxy(interface)
         require(proxy.get_chipid()==0x6040 and proxy.get_exc_count()==0,'Wrong chip/exception state')
         address,revision=proxy.get_bootargs_rev();require(revision==3,'Unsupported boot arguments')
-        boot=BootArgs_r3.parse(interface.readmem(address,BootArgs_r3.sizeof()))
+        boot_bytes=interface.readmem(address,BootArgs_r3.sizeof())
+        boot=BootArgs_r3.parse(boot_bytes)
         ram_end=boot.phys_base+boot.mem_size
         require(boot.phys_base<ram_end<1<<64,'Invalid RAM envelope')
         base=proxy.get_base();require(boot.phys_base<=base<base+symbols['_end']<=ram_end,'Resident outside RAM')
+        physical_base=struct.unpack('<Q',interface.readmem(base+symbols['ram_base'],8))[0]
+        physical_size=struct.unpack('<Q',interface.readmem(base+symbols['mem_size_actual'],8))[0]
+        require(physical_base==boot.phys_base&~((1<<32)-1) and physical_size==boot.mem_size_actual,'Resident/boot physical RAM disagree')
+        geometry=memory_geometry(physical_base,physical_size,int(boot.phys_base),int(boot.mem_size))
         adt_address=boot.devtree-boot.virt_base+boot.phys_base
         require(0<boot.devtree_size<=1024*1024 and boot.phys_base<=adt_address<adt_address+boot.devtree_size<=ram_end,'Invalid live ADT extent')
         adt_bytes=interface.readmem(adt_address,boot.devtree_size)
@@ -102,12 +115,17 @@ def main():
         require(wfe in (b'\0',b'\1'),'Invalid resident WFE flag')
         require(proxy.get_exc_count()==0 and (usb/'devnum').read_text().strip()==enumeration,'Proxy session changed')
         result.update(status='WORKS (read-only resident observation)',captured_utc=datetime.now(timezone.utc).isoformat(),
-                      binary_sha256=BINARY_SHA,adt_sha256=sha(adt_bytes),slot_snapshot_sha256=sha(first),
+                      binary_sha256=BINARY_SHA,observer_sha256=sha(Path(__file__).read_bytes()),
+                      bootargs_sha256=sha(boot_bytes),adt_sha256=sha(adt_bytes),slot_snapshot_sha256=sha(first),
+                      model=adt.model,board_id=4,system_firmware_version=adt['/chosen'].system_firmware_version,
                       usb_enumeration=enumeration,boot_cpu=cpu,boot_mpidr=mpidr,resident_wfe_mode=bool(wfe[0]),
                       target_memory_written=False,code_executed_via_call=False,watchdog_action='unchanged',
                       cores_started=False,recovery_verified=False,exceptions=0)
         # ASLR-dependent addresses stay only in private evidence, not stdout.
-        result['private_session']={'resident_base':base,'table_address':table_address,
+        result['private_session']={'resident_base':base,'resident_end':base+symbols['_end'],
+                                  **geometry,
+                                  'boot_video':{name:int(boot.video[name])for name in ('base','display','stride','width','height','depth')},
+                                  'table_address':table_address,
                                   'release_addresses':{str(i):table_address+i*SLOT_BYTES+16 for i in CPU_IDS}}
         with open(args.output,'x',opener=lambda path,flags:os.open(path,flags,0o600))as output:
             output.write(json.dumps(result,indent=2)+'\n')

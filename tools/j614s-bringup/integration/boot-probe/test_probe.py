@@ -4,6 +4,8 @@
 Never executes init, mounts filesystems, or touches host device interfaces.
 """
 import gzip
+import importlib.util
+import marshal
 import os
 from pathlib import Path
 import shutil
@@ -228,6 +230,20 @@ class QualifiedInputTests(unittest.TestCase):
         v.write_text('raise RuntimeError("must never import this")')
         with self.assertRaises(ValueError):
             probe.validate_kernel(self.copy, v)
+
+    def test_pinned_verifier_source_ignores_unverified_cached_bytecode(self):
+        verifier = Path(self.tmp.name) / 'copied_verifier.py'
+        source = self.verifier.read_bytes(); verifier.write_bytes(source)
+        cached = Path(importlib.util.cache_from_source(str(verifier)))
+        cached.parent.mkdir()
+        # Controlled fixture only: timestamp-valid cache whose sole action raises.
+        poison = compile('raise RuntimeError("unverified cached verifier executed")', '<fixture-cache>', 'exec')
+        raw = importlib.util.MAGIC_NUMBER + struct.pack('<III', 0, int(verifier.stat().st_mtime), len(source)) + marshal.dumps(poison)
+        cached.write_bytes(raw)
+        modules = probe.validate_kernel(self.copy, verifier)
+        self.assertEqual(set(modules), {'nvme-core.ko', 'nvme-apple.ko'})
+        self.assertEqual(cached.read_bytes(), raw)
+        self.assertEqual(list(cached.parent.iterdir()), [cached])
 
     def test_existing_output_not_overwritten(self):
         out = Path(self.tmp.name) / 'output'; out.mkdir(); (out / 'precious').write_text('preserve')

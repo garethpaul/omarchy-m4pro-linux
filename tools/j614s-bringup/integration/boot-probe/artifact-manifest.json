@@ -8,8 +8,8 @@
     "bounded canonical newc archive with exact payload equality",
     "gzip round-trip"
   ],
-  "cpio_bytes": 2194740,
-  "cpio_sha256": "3ef184c68685e6e025820c58869342b5a07799afa988546e214260d0f65b9235",
+  "cpio_bytes": 2197896,
+  "cpio_sha256": "e8a070b9a6a4d6cb1ccbddb8cef003da14b5003b0ca85356f82f274555f016a4",
   "emulator_sha256": "66bdc286fd30970a1c3d2029b460605a3dc843ed6b397f4cd9825f9c19551507",
   "entries": {
     "bin": {
@@ -67,6 +67,15 @@
       "sha256": "9d75f0d7c398df565d7ac04c6819b62d6d8f9560f5eb4672596ecd8f7e96ae91"
     },
     "bin/gzip": {
+      "bytes": 7,
+      "mode": "0o120777",
+      "rdev": [
+        0,
+        0
+      ],
+      "sha256": "9d75f0d7c398df565d7ac04c6819b62d6d8f9560f5eb4672596ecd8f7e96ae91"
+    },
+    "bin/head": {
       "bytes": 7,
       "mode": "0o120777",
       "rdev": [
@@ -283,22 +292,22 @@
       "sha256": "abc88b2829b4b243b9ca3565f4bce6b0a532ca7cad8b4c2e9081a37a96a00e79"
     },
     "etc/probe-manifest.json": {
-      "bytes": 1391,
+      "bytes": 1532,
       "mode": "0o100644",
       "rdev": [
         0,
         0
       ],
-      "sha256": "70a90c26f0f19f01e9e392ade5ca339467e04accba0304eb33086449988eb06b"
+      "sha256": "69ee7380fad425d1ddc705ba5f25b963da3e06436c3119686741669c33a8624a"
     },
     "init": {
-      "bytes": 10901,
+      "bytes": 11763,
       "mode": "0o100755",
       "rdev": [
         0,
         0
       ],
-      "sha256": "72759a846707a14e997f28c9aceef901942d85d303c75ca31e9a894e0666e232"
+      "sha256": "ae8f47151664b9b116ddb0f293a83bd2c2eec899afdad669ff32003a14d2c01d"
     },
     "lib": {
       "bytes": 0,
@@ -335,6 +344,15 @@
         0
       ],
       "sha256": "b4cfc0d9e84e34cc12f89f85fd01a3fa02b7e34223455825799bf9bc72993a51"
+    },
+    "lib/probe-frame.sh": {
+      "bytes": 1896,
+      "mode": "0o100644",
+      "rdev": [
+        0,
+        0
+      ],
+      "sha256": "496a58c7caa9fcc316cfbbaf12fac62e6fcd8af92a52bdf60deab91201182900"
     },
     "lib/probe-state.sh": {
       "bytes": 509,
@@ -392,8 +410,8 @@
     }
   },
   "hardware": "UNTESTED",
-  "initrd_bytes": 1097496,
-  "initrd_sha256": "d9fac843a55e2ea5e7f955704b3e8f5bfe9f16c49e38c7bdb747a8ca7831b52f",
+  "initrd_bytes": 1098565,
+  "initrd_sha256": "8fd6f861c42e4585156ff747ef657fbdba04b8bc307d0f4a0c2c226b20d16be1",
   "kernel_image_sha256": "f9d7b637bc70fcab77b5806c43c39ae333e633fcc63fa6ccaa77cd22c91d4604",
   "kernel_source": "8f2f3d13600aacadd93d577855b7e212b8ae57ff",
   "schema": 1,

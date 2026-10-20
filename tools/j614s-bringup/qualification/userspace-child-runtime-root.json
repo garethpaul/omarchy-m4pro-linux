@@ -1,0 +1,229 @@
+{
+  "status": "WORKS within isolated actual ARM Neovim subprocess scope",
+  "hardware": "UNTESTED",
+  "source_evidence_commits": [
+    "1271866",
+    "dda8bbcff573c156d607ddb9738d8c8a36bafd5a"
+  ],
+  "replay": {
+    "exit": 0,
+    "stdout": "",
+    "stderr_file": "guest-strace.txt",
+    "prior_root_proof_sha256": "000030a40d99f83c61afb0c94b665690ff68e1ad49879a541ef32fffe03f484f",
+    "probe_sha256": "019011a1d8d0c71caf9b2d0d11294b01566443ba5802e30eb8dba8639036a325",
+    "runner_sha256": "3c6155a7b98de7ee9b78699269188131628013245c3c68359b07d2757dabad65",
+    "guest_strace_enabled": false,
+    "unshare_all": true,
+    "capabilities_dropped": true,
+    "root_read_only": true,
+    "host_HOME_exposed": false
+  },
+  "observations": {
+    "observations": {
+      "/qemu": {
+        "access": true,
+        "header_hex": "7f454c4602010103000000000000000003003e0001000000a0f00000000000004000000000000000d8ea6e000000000000000000400038000e00400022002100",
+        "exepath": "",
+        "executable": 0,
+        "stat": {
+          "type": "file",
+          "dev": 37,
+          "nlink": 1,
+          "gid": 0,
+          "rdev": 0,
+          "ino": 27893274,
+          "size": 7271256,
+          "blksize": 4096,
+          "blocks": 14208,
+          "atime": {
+            "nsec": 116514779,
+            "sec": 1792479540
+          },
+          "mtime": {
+            "nsec": 115428071,
+            "sec": 1792479540
+          },
+          "mode": 33261,
+          "birthtime": {
+            "nsec": 340454578,
+            "sec": 1792480975
+          },
+          "ctime": {
+            "nsec": 340501471,
+            "sec": 1792480975
+          },
+          "uid": 0,
+          "gen": 0,
+          "flags": 0
+        }
+      },
+      "/usr/bin/qemu-aarch64-static": {
+        "access": true,
+        "header_hex": "7f454c4602010103000000000000000003003e0001000000a0f00000000000004000000000000000d8ea6e000000000000000000400038000e00400022002100",
+        "exepath": "/usr/bin/qemu-aarch64-static",
+        "executable": 1,
+        "stat": {
+          "type": "file",
+          "dev": 37,
+          "nlink": 1,
+          "gid": 0,
+          "rdev": 0,
+          "ino": 27893275,
+          "size": 7271256,
+          "blksize": 4096,
+          "blocks": 14208,
+          "atime": {
+            "nsec": 345902141,
+            "sec": 1792480975
+          },
+          "mtime": {
+            "nsec": 340746012,
+            "sec": 1792480975
+          },
+          "mode": 33261,
+          "birthtime": {
+            "nsec": 340501471,
+            "sec": 1792480975
+          },
+          "ctime": {
+            "nsec": 340746012,
+            "sec": 1792480975
+          },
+          "uid": 0,
+          "gen": 0,
+          "flags": 0
+        }
+      },
+      "/usr/bin/shfmt": {
+        "access": true,
+        "header_hex": "7f454c460201010000000000000000000300b700010000000055050000000000400000000000000088e838000000000000000000400038000c00400025002400",
+        "exepath": "/usr/bin/shfmt",
+        "executable": 1,
+        "stat": {
+          "type": "file",
+          "dev": 37,
+          "nlink": 1,
+          "gid": 0,
+          "rdev": 0,
+          "ino": 27893248,
+          "size": 3731912,
+          "blksize": 4096,
+          "blocks": 7296,
+          "atime": {
+            "nsec": 7883090,
+            "sec": 1792479540
+          },
+          "mtime": {
+            "nsec": 830240744,
+            "sec": 1792479539
+          },
+          "mode": 33261,
+          "birthtime": {
+            "nsec": 338750518,
+            "sec": 1792480975
+          },
+          "ctime": {
+            "nsec": 338937852,
+            "sec": 1792480975
+          },
+          "uid": 0,
+          "gen": 0,
+          "flags": 0
+        }
+      },
+      "/usr/bin/stylua": {
+        "access": true,
+        "header_hex": "7f454c460201010000000000000000000300b7000100000040350700000000004000000000000000300d6a000000000000000000400038000c00400020001f00",
+        "exepath": "/usr/bin/stylua",
+        "executable": 1,
+        "stat": {
+          "type": "file",
+          "dev": 37,
+          "nlink": 1,
+          "gid": 0,
+          "rdev": 0,
+          "ino": 27893249,
+          "size": 6952240,
+          "blksize": 4096,
+          "blocks": 13584,
+          "atime": {
+            "nsec": 972883768,
+            "sec": 1792479539
+          },
+          "mtime": {
+            "nsec": 958329217,
+            "sec": 1792479539
+          },
+          "mode": 33261,
+          "birthtime": {
+            "nsec": 338937852,
+            "sec": 1792480975
+          },
+          "ctime": {
+            "nsec": 339097227,
+            "sec": 1792480975
+          },
+          "uid": 0,
+          "gen": 0,
+          "flags": 0
+        }
+      },
+      "/usr/bin/nvim": {
+        "access": true,
+        "header_hex": "7f454c460201010000000000000000000300b70001000000c011090000000000400000000000000018c754000000000000000000400038000b0040001d001c00",
+        "exepath": "/usr/bin/nvim",
+        "executable": 1,
+        "stat": {
+          "type": "file",
+          "dev": 37,
+          "nlink": 1,
+          "gid": 0,
+          "rdev": 0,
+          "ino": 27893247,
+          "size": 5557848,
+          "blksize": 4096,
+          "blocks": 10856,
+          "atime": {
+            "nsec": 17882897,
+            "sec": 1792479540
+          },
+          "mtime": {
+            "nsec": 747831241,
+            "sec": 1792479539
+          },
+          "mode": 33261,
+          "birthtime": {
+            "nsec": 338681159,
+            "sec": 1792480975
+          },
+          "ctime": {
+            "nsec": 338750518,
+            "sec": 1792480975
+          },
+          "uid": 0,
+          "gen": 0,
+          "flags": 0
+        }
+      }
+    },
+    "home_env_absent": true,
+    "subprocess": {
+      "shfmt": "if true; then echo \"arm64\"; fi\n",
+      "options_callback_pass": true,
+      "first_pass_and_idempotence": true,
+      "qemu_path": "/usr/bin/qemu-aarch64-static",
+      "stylua": "local x = { 1, 2 }\nreturn x\n"
+    }
+  },
+  "root_result_sha256": "ff1903c185f1f20f7d00703674e6e07bc23f0cc3b1cb526fa3e01cec04b4b691",
+  "root_observations_sha256": "82381512d773411f8229a7a13949676577f4d7670e7238fba0384a62f8f4b388",
+  "prior_failure_preserved": "../omarchy-packages/nvim/runtime/diagnostic/attempt-02/guest-strace.txt",
+  "limitations": [
+    "explicit nested QEMU prefix",
+    "full LazyVim, Mason and Conform untested",
+    "source package not rebuilt or installed",
+    "whole 151-package runtime untested",
+    "no target or performance qualification"
+  ],
+  "actions_on_target": []
+}

@@ -1,0 +1,693 @@
+2 brk(NULL) = 0x00007639b2392000
+2 uname(0x7639b0e7fa48) = 0
+2 faccessat(AT_FDCWD,"/etc/ld.so.preload",R_OK,0xb13bf000) = -1 errno=2 (No such file or directory)
+2 openat(AT_FDCWD,"/etc/ld.so.cache",O_RDONLY|O_CLOEXEC) = -1 errno=2 (No such file or directory)
+2 openat(AT_FDCWD,"/usr/lib/libluv.so.1",O_RDONLY|O_CLOEXEC) = 3
+2 read(3,0x7639b0e7eeb0,832) = 832
+2 fstat(3,0x00007639b0e7ed50) = 0
+2 mmap(NULL,8192,PROT_READ|PROT_WRITE,MAP_PRIVATE|MAP_ANONYMOUS,-1,0) = 0x00007639b239d000
+2 mmap(NULL,393352,PROT_NONE,MAP_PRIVATE|MAP_ANONYMOUS|MAP_DENYWRITE,-1,0) = 0x00007639b061e000
+2 mmap(0x00007639b0620000,327816,PROT_EXEC|PROT_READ,MAP_PRIVATE|MAP_DENYWRITE|MAP_FIXED,3,0) = 0x00007639b0620000
+2 munmap(0x00007639b061e000,8192) = 0
+2 munmap(0x00007639b0671000,53384) = 0
+2 mprotect(0x00007639b0656000,94208,PROT_NONE) = 0
+2 mmap(0x00007639b066d000,16384,PROT_READ|PROT_WRITE,MAP_PRIVATE|MAP_DENYWRITE|MAP_FIXED,3,0x3d000) = 0x00007639b066d000
+2 close(3) = 0
+2 openat(AT_FDCWD,"/usr/lib/lua/5.1/lpeg.so",O_RDONLY|O_CLOEXEC) = 3
+2 read(3,0x7639b0e7ee90,832) = 832
+2 fstat(3,0x00007639b0e7ed30) = 0
+2 mmap(NULL,197168,PROT_NONE,MAP_PRIVATE|MAP_ANONYMOUS|MAP_DENYWRITE,-1,0) = 0x00007639b05ef000
+2 mmap(0x00007639b05f0000,131632,PROT_EXEC|PROT_READ,MAP_PRIVATE|MAP_DENYWRITE|MAP_FIXED,3,0) = 0x00007639b05f0000
+2 munmap(0x00007639b05ef000,4096) = 0
+2 munmap(0x00007639b0611000,57904) = 0
+2 mprotect(0x00007639b05fe000,69632,PROT_NONE) = 0
+2 mmap(0x00007639b060f000,8192,PROT_READ|PROT_WRITE,MAP_PRIVATE|MAP_DENYWRITE|MAP_FIXED,3,0xf000) = 0x00007639b060f000
+2 close(3) = 0
+2 openat(AT_FDCWD,"/usr/lib/libtree-sitter.so.0.26",O_RDONLY|O_CLOEXEC) = 3
+2 read(3,0x7639b0e7ee70,832) = 832
+2 fstat(3,0x00007639b0e7ed10) = 0
+2 mmap(NULL,327728,PROT_NONE,MAP_PRIVATE|MAP_ANONYMOUS|MAP_DENYWRITE,-1,0) = 0x00007639b059f000
+2 mmap(0x00007639b05a0000,262192,PROT_EXEC|PROT_READ,MAP_PRIVATE|MAP_DENYWRITE|MAP_FIXED,3,0) = 0x00007639b05a0000
+2 munmap(0x00007639b059f000,4096) = 0
+2 munmap(0x00007639b05e1000,57392) = 0
+2 mprotect(0x00007639b05cd000,73728,PROT_NONE) = 0
+2 mmap(0x00007639b05df000,8192,PROT_READ|PROT_WRITE,MAP_PRIVATE|MAP_DENYWRITE|MAP_FIXED,3,0x2f000) = 0x00007639b05df000
+2 close(3) = 0
+2 openat(AT_FDCWD,"/usr/lib/libutf8proc.so.3",O_RDONLY|O_CLOEXEC) = 3
+2 read(3,0x7639b0e7ee50,832) = 832
+2 fstat(3,0x00007639b0e7ecf0) = 0
+2 mmap(NULL,524304,PROT_NONE,MAP_PRIVATE|MAP_ANONYMOUS|MAP_DENYWRITE,-1,0) = 0x00007639b051f000
+2 mmap(0x00007639b0520000,458768,PROT_EXEC|PROT_READ,MAP_PRIVATE|MAP_DENYWRITE|MAP_FIXED,3,0) = 0x00007639b0520000
+2 munmap(0x00007639b051f000,4096) = 0
+2 munmap(0x00007639b0591000,57360) = 0
+2 mprotect(0x00007639b0576000,102400,PROT_NONE) = 0
+2 mmap(0x00007639b058f000,8192,PROT_READ|PROT_WRITE,MAP_PRIVATE|MAP_DENYWRITE|MAP_FIXED,3,0x5f000) = 0x00007639b058f000
+2 close(3) = 0
+2 openat(AT_FDCWD,"/usr/lib/libunibilium.so.4",O_RDONLY|O_CLOEXEC) = 3
+2 read(3,0x7639b0e7ee30,832) = 832
+2 fstat(3,0x00007639b0e7ecd0) = 0
+2 mmap(NULL,196624,PROT_NONE,MAP_PRIVATE|MAP_ANONYMOUS|MAP_DENYWRITE,-1,0) = 0x00007639b04ef000
+2 mmap(0x00007639b04f0000,131088,PROT_EXEC|PROT_READ,MAP_PRIVATE|MAP_DENYWRITE|MAP_FIXED,3,0) = 0x00007639b04f0000
+2 munmap(0x00007639b04ef000,4096) = 0
+2 munmap(0x00007639b0511000,57360) = 0
+2 mprotect(0x00007639b0500000,53248,PROT_NONE) = 0
+2 mmap(0x00007639b050d000,16384,PROT_READ|PROT_WRITE,MAP_PRIVATE|MAP_DENYWRITE|MAP_FIXED,3,0x1d000) = 0x00007639b050d000
+2 close(3) = 0
+2 openat(AT_FDCWD,"/usr/lib/libluajit-5.1.so.2",O_RDONLY|O_CLOEXEC) = 3
+2 read(3,0x7639b0e7ee10,832) = 832
+2 fstat(3,0x00007639b0e7ecb0) = 0
+2 mmap(NULL,721160,PROT_NONE,MAP_PRIVATE|MAP_ANONYMOUS|MAP_DENYWRITE,-1,0) = 0x00007639b043f000
+2 mmap(0x00007639b0440000,655624,PROT_EXEC|PROT_READ,MAP_PRIVATE|MAP_DENYWRITE|MAP_FIXED,3,0) = 0x00007639b0440000
+2 munmap(0x00007639b043f000,4096) = 0
+2 munmap(0x00007639b04e1000,57608) = 0
+2 mprotect(0x00007639b04c8000,86016,PROT_NONE) = 0
+2 mmap(0x00007639b04dd000,16384,PROT_READ|PROT_WRITE,MAP_PRIVATE|MAP_DENYWRITE|MAP_FIXED,3,0x8d000) = 0x00007639b04dd000
+2 close(3) = 0
+2 openat(AT_FDCWD,"/usr/lib/libm.so.6",O_RDONLY|O_CLOEXEC) = 3
+2 read(3,0x7639b0e7edf0,832) = 832
+2 fstat(3,0x00007639b0e7ec90) = 0
+2 mmap(NULL,8192,PROT_READ|PROT_WRITE,MAP_PRIVATE|MAP_ANONYMOUS,-1,0) = 0x00007639b239b000
+2 mmap(NULL,917864,PROT_NONE,MAP_PRIVATE|MAP_ANONYMOUS|MAP_DENYWRITE,-1,0) = 0x00007639b035f000
+2 mmap(0x00007639b0360000,852328,PROT_EXEC|PROT_READ,MAP_PRIVATE|MAP_DENYWRITE|MAP_FIXED,3,0) = 0x00007639b0360000
+2 munmap(0x00007639b035f000,4096) = 0
+2 munmap(0x00007639b0431000,57704) = 0
+2 mprotect(0x00007639b041c000,77824,PROT_NONE) = 0
+2 mmap(0x00007639b042f000,8192,PROT_READ|PROT_WRITE,MAP_PRIVATE|MAP_DENYWRITE|MAP_FIXED,3,0xbf000) = 0x00007639b042f000
+2 close(3) = 0
+2 openat(AT_FDCWD,"/usr/lib/libuv.so.1",O_RDONLY|O_CLOEXEC) = 3
+2 read(3,0x7639b0e7edd0,832) = 832
+2 fstat(3,0x00007639b0e7ec70) = 0
+2 mmap(NULL,394816,PROT_NONE,MAP_PRIVATE|MAP_ANONYMOUS|MAP_DENYWRITE,-1,0) = 0x00007639b02ff000
+2 mmap(0x00007639b0300000,329280,PROT_EXEC|PROT_READ,MAP_PRIVATE|MAP_DENYWRITE|MAP_FIXED,3,0) = 0x00007639b0300000
+2 munmap(0x00007639b02ff000,4096) = 0
+2 munmap(0x00007639b0351000,58944) = 0
+2 mprotect(0x00007639b0335000,102400,PROT_NONE) = 0
+2 mmap(0x00007639b034e000,12288,PROT_READ|PROT_WRITE,MAP_PRIVATE|MAP_DENYWRITE|MAP_FIXED,3,0x3e000) = 0x00007639b034e000
+2 close(3) = 0
+2 openat(AT_FDCWD,"/usr/lib/libc.so.6",O_RDONLY|O_CLOEXEC) = 3
+2 read(3,0x7639b0e7edb0,832) = 832
+2 fstat(3,0x00007639b0e7ec50) = 0
+2 mmap(NULL,1936480,PROT_NONE,MAP_PRIVATE|MAP_ANONYMOUS|MAP_DENYWRITE,-1,0) = 0x00007639b0127000
+2 mmap(0x00007639b0130000,1870944,PROT_EXEC|PROT_READ,MAP_PRIVATE|MAP_DENYWRITE|MAP_FIXED,3,0) = 0x00007639b0130000
+2 munmap(0x00007639b0127000,36864) = 0
+2 munmap(0x00007639b02f9000,27744) = 0
+2 mprotect(0x00007639b02df000,57344,PROT_NONE) = 0
+2 mmap(0x00007639b02ed000,20480,PROT_READ|PROT_WRITE,MAP_PRIVATE|MAP_DENYWRITE|MAP_FIXED,3,0x1bd000) = 0x00007639b02ed000
+2 mmap(0x00007639b02f2000,27744,PROT_READ|PROT_WRITE,MAP_PRIVATE|MAP_ANONYMOUS|MAP_FIXED,-1,0) = 0x00007639b02f2000
+2 close(3) = 0
+2 openat(AT_FDCWD,"/usr/lib/libgcc_s.so.1",O_RDONLY|O_CLOEXEC) = 3
+2 read(3,0x7639b0e7ed70,832) = 832
+2 fstat(3,0x00007639b0e7ec10) = 0
+2 mmap(NULL,262608,PROT_NONE,MAP_PRIVATE|MAP_ANONYMOUS|MAP_DENYWRITE,-1,0) = 0x00007639b00ef000
+2 mmap(0x00007639b00f0000,197072,PROT_EXEC|PROT_READ,MAP_PRIVATE|MAP_DENYWRITE|MAP_FIXED,3,0) = 0x00007639b00f0000
+2 munmap(0x00007639b00ef000,4096) = 0
+2 munmap(0x00007639b0121000,57808) = 0
+2 mprotect(0x00007639b010f000,65536,PROT_NONE) = 0
+2 mmap(0x00007639b011f000,8192,PROT_READ|PROT_WRITE,MAP_PRIVATE|MAP_DENYWRITE|MAP_FIXED,3,0x1f000) = 0x00007639b011f000
+2 close(3) = 0
+2 mmap(NULL,8192,PROT_READ|PROT_WRITE,MAP_PRIVATE|MAP_ANONYMOUS,-1,0) = 0x00007639b2399000
+2 set_tid_address(0x7639b2399de8) = 2
+2 set_robust_list(0x7639b2399aa0,24) = -1 errno=38 (Function not implemented)
+2 rseq(0x7639b239a1c0,32,0,0xd428bc00) = -1 errno=38 (Function not implemented)
+2 mprotect(0x00007639b02ed000,12288,PROT_READ) = 0
+2 mprotect(0x00007639b011f000,4096,PROT_READ) = 0
+2 mprotect(0x00007639b034e000,8192,PROT_READ) = 0
+2 mprotect(0x00007639b042f000,4096,PROT_READ) = 0
+2 mprotect(0x00007639b04dd000,12288,PROT_READ) = 0
+2 mprotect(0x00007639b050d000,12288,PROT_READ) = 0
+2 mprotect(0x00007639b058f000,4096,PROT_READ) = 0
+2 mprotect(0x00007639b05df000,4096,PROT_READ) = 0
+2 mprotect(0x00007639b060f000,4096,PROT_READ) = 0
+2 mprotect(0x00007639b066d000,12288,PROT_READ) = 0
+2 mprotect(0x00007639b13a4000,114688,PROT_READ) = 0
+2 mprotect(0x00007639b238e000,8192,PROT_READ) = 0
+2 prlimit64(0,RLIMIT_STACK,NULL,0x00007639b0e7f8b8) = 0 ({rlim_cur=8388608,rlim_max=-1})
+2 getrandom(0x7639b02f6660,8,1) = 8
+2 brk(NULL) = 0x00007639b2392000
+2 brk(0x00007639b2400000) = 0x00007639b2392000
+2 mmap(NULL,1048576,PROT_READ|PROT_WRITE,MAP_PRIVATE|MAP_ANONYMOUS,-1,0) = 0x00007639a3f00000
+2 clock_getres(CLOCK_MONOTONIC_COARSE,0x00007639b0e7f678) = 0 ({tv_sec = 0,tv_nsec = 1000000})
+2 clock_gettime(CLOCK_MONOTONIC_COARSE,0x00007639b0e7f678) = 0 ({tv_sec = 313502,tv_nsec = 480017597})
+2 epoll_create1(524288) = 3
+2 openat(AT_FDCWD,"/proc/version_signature",O_RDONLY|O_CLOEXEC) = -1 errno=2 (No such file or directory)
+2 uname(0x7639b0e7f2d0) = 0
+2 Unknown syscall 425
+2 pipe2(0x7639b0e7f590,524288) = 0
+2 write(5,0x7639b0e7f5c7,1) = 1
+2 futex(0x00007639b0350578,FUTEX_PRIVATE_FLAG|FUTEX_WAKE,2147483647,NULL,0x00007639b0350578,0) = 0
+2 pipe2(0x7639b0e7f620,526336) = 0
+2 eventfd2(0,526336) = 8
+2 rt_sigprocmask(SIG_SETMASK,[],NULL,8) = 0
+2 rt_sigprocmask(SIG_SETMASK,[SIGHUP SIGINT SIGQUIT SIGILL SIGTRAP SIGIOT SIGBUS SIGFPE SIGKILL SIGUSR1 SIGSEGV SIGUSR2 SIGPIPE SIGALRM SIGTERM SIGSTKFLT SIGCHLD SIGCONT SIGSTOP SIGTSTP SIGTTIN SIGTTOU SIGURG SIGXCPU SIGXFSZ SIGVTALRM SIGPROF SIGWINCH SIGIO SIGPWR SIGSYS 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64],0x00007639b0e7f568,8) = 0 (oldset=[])
+2 read(4,0x7639b0e7f497,1) = 1
+2 rt_sigaction(SIGPIPE,0x00007639b0e7f338,NULL) = 0
+2 write(5,0x7639b0e7f517,1) = 1
+2 rt_sigprocmask(SIG_SETMASK,[],NULL,8) = 0
+2 rt_sigprocmask(SIG_SETMASK,[SIGHUP SIGINT SIGQUIT SIGILL SIGTRAP SIGIOT SIGBUS SIGFPE SIGKILL SIGUSR1 SIGSEGV SIGUSR2 SIGPIPE SIGALRM SIGTERM SIGSTKFLT SIGCHLD SIGCONT SIGSTOP SIGTSTP SIGTTIN SIGTTOU SIGURG SIGXCPU SIGXFSZ SIGVTALRM SIGPROF SIGWINCH SIGIO SIGPWR SIGSYS 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64],0x00007639b0e7f568,8) = 0 (oldset=[])
+2 read(4,0x7639b0e7f497,1) = 1
+2 rt_sigaction(SIGHUP,0x00007639b0e7f338,NULL) = 0
+2 write(5,0x7639b0e7f517,1) = 1
+2 rt_sigprocmask(SIG_SETMASK,[],NULL,8) = 0
+2 rt_sigprocmask(SIG_SETMASK,[SIGHUP SIGINT SIGQUIT SIGILL SIGTRAP SIGIOT SIGBUS SIGFPE SIGKILL SIGUSR1 SIGSEGV SIGUSR2 SIGPIPE SIGALRM SIGTERM SIGSTKFLT SIGCHLD SIGCONT SIGSTOP SIGTSTP SIGTTIN SIGTTOU SIGURG SIGXCPU SIGXFSZ SIGVTALRM SIGPROF SIGWINCH SIGIO SIGPWR SIGSYS 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64],0x00007639b0e7f568,8) = 0 (oldset=[])
+2 read(4,0x7639b0e7f497,1) = 1
+2 rt_sigaction(SIGINT,0x00007639b0e7f338,NULL) = 0
+2 write(5,0x7639b0e7f517,1) = 1
+2 rt_sigprocmask(SIG_SETMASK,[],NULL,8) = 0
+2 rt_sigprocmask(SIG_SETMASK,[SIGHUP SIGINT SIGQUIT SIGILL SIGTRAP SIGIOT SIGBUS SIGFPE SIGKILL SIGUSR1 SIGSEGV SIGUSR2 SIGPIPE SIGALRM SIGTERM SIGSTKFLT SIGCHLD SIGCONT SIGSTOP SIGTSTP SIGTTIN SIGTTOU SIGURG SIGXCPU SIGXFSZ SIGVTALRM SIGPROF SIGWINCH SIGIO SIGPWR SIGSYS 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64],0x00007639b0e7f568,8) = 0 (oldset=[])
+2 read(4,0x7639b0e7f497,1) = 1
+2 rt_sigaction(SIGQUIT,0x00007639b0e7f338,NULL) = 0
+2 write(5,0x7639b0e7f517,1) = 1
+2 rt_sigprocmask(SIG_SETMASK,[],NULL,8) = 0
+2 rt_sigprocmask(SIG_SETMASK,[SIGHUP SIGINT SIGQUIT SIGILL SIGTRAP SIGIOT SIGBUS SIGFPE SIGKILL SIGUSR1 SIGSEGV SIGUSR2 SIGPIPE SIGALRM SIGTERM SIGSTKFLT SIGCHLD SIGCONT SIGSTOP SIGTSTP SIGTTIN SIGTTOU SIGURG SIGXCPU SIGXFSZ SIGVTALRM SIGPROF SIGWINCH SIGIO SIGPWR SIGSYS 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64],0x00007639b0e7f568,8) = 0 (oldset=[])
+2 read(4,0x7639b0e7f497,1) = 1
+2 rt_sigaction(SIGTERM,0x00007639b0e7f338,NULL) = 0
+2 write(5,0x7639b0e7f517,1) = 1
+2 rt_sigprocmask(SIG_SETMASK,[],NULL,8) = 0
+2 rt_sigprocmask(SIG_SETMASK,[SIGHUP SIGINT SIGQUIT SIGILL SIGTRAP SIGIOT SIGBUS SIGFPE SIGKILL SIGUSR1 SIGSEGV SIGUSR2 SIGPIPE SIGALRM SIGTERM SIGSTKFLT SIGCHLD SIGCONT SIGSTOP SIGTSTP SIGTTIN SIGTTOU SIGURG SIGXCPU SIGXFSZ SIGVTALRM SIGPROF SIGWINCH SIGIO SIGPWR SIGSYS 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64],0x00007639b0e7f568,8) = 0 (oldset=[])
+2 read(4,0x7639b0e7f497,1) = 1
+2 rt_sigaction(SIGTSTP,0x00007639b0e7f338,NULL) = 0
+2 write(5,0x7639b0e7f517,1) = 1
+2 rt_sigprocmask(SIG_SETMASK,[],NULL,8) = 0
+2 rt_sigprocmask(SIG_SETMASK,[SIGHUP SIGINT SIGQUIT SIGILL SIGTRAP SIGIOT SIGBUS SIGFPE SIGKILL SIGUSR1 SIGSEGV SIGUSR2 SIGPIPE SIGALRM SIGTERM SIGSTKFLT SIGCHLD SIGCONT SIGSTOP SIGTSTP SIGTTIN SIGTTOU SIGURG SIGXCPU SIGXFSZ SIGVTALRM SIGPROF SIGWINCH SIGIO SIGPWR SIGSYS 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64],0x00007639b0e7f568,8) = 0 (oldset=[])
+2 read(4,0x7639b0e7f497,1) = 1
+2 rt_sigaction(SIGPWR,0x00007639b0e7f338,NULL) = 0
+2 write(5,0x7639b0e7f517,1) = 1
+2 rt_sigprocmask(SIG_SETMASK,[],NULL,8) = 0
+2 rt_sigprocmask(SIG_SETMASK,[SIGHUP SIGINT SIGQUIT SIGILL SIGTRAP SIGIOT SIGBUS SIGFPE SIGKILL SIGUSR1 SIGSEGV SIGUSR2 SIGPIPE SIGALRM SIGTERM SIGSTKFLT SIGCHLD SIGCONT SIGSTOP SIGTSTP SIGTTIN SIGTTOU SIGURG SIGXCPU SIGXFSZ SIGVTALRM SIGPROF SIGWINCH SIGIO SIGPWR SIGSYS 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64],0x00007639b0e7f568,8) = 0 (oldset=[])
+2 read(4,0x7639b0e7f497,1) = 1
+2 rt_sigaction(SIGUSR1,0x00007639b0e7f338,NULL) = 0
+2 write(5,0x7639b0e7f517,1) = 1
+2 rt_sigprocmask(SIG_SETMASK,[],NULL,8) = 0
+2 rt_sigprocmask(SIG_SETMASK,[SIGHUP SIGINT SIGQUIT SIGILL SIGTRAP SIGIOT SIGBUS SIGFPE SIGKILL SIGUSR1 SIGSEGV SIGUSR2 SIGPIPE SIGALRM SIGTERM SIGSTKFLT SIGCHLD SIGCONT SIGSTOP SIGTSTP SIGTTIN SIGTTOU SIGURG SIGXCPU SIGXFSZ SIGVTALRM SIGPROF SIGWINCH SIGIO SIGPWR SIGSYS 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64],0x00007639b0e7f598,8) = 0 (oldset=[])
+2 read(4,0x7639b0e7f4c7,1) = 1
+2 rt_sigaction(SIGWINCH,0x00007639b0e7f368,NULL) = 0
+2 write(5,0x7639b0e7f547,1) = 1
+2 rt_sigprocmask(SIG_SETMASK,[],NULL,8) = 0
+2 clock_gettime(CLOCK_REALTIME,0x00007639b0e7f6a8) = 0 ({tv_sec = 1792480585,tv_nsec = 366698113})
+2 readlinkat(AT_FDCWD,"/proc/self/exe",0x00007639b0e7e6c8,4095) = 13
+2 geteuid() = 0
+2 newfstatat(AT_FDCWD,"/etc/nsswitch.conf",0x00007639b0e7f230,0) = -1 errno=2 (No such file or directory)
+2 newfstatat(AT_FDCWD,"/",0x00007639b0e7f348,0) = 0
+2 openat(AT_FDCWD,"/etc/nsswitch.conf",O_RDONLY|O_CLOEXEC) = -1 errno=2 (No such file or directory)
+2 openat(AT_FDCWD,"/etc/passwd",O_RDONLY|O_CLOEXEC) = 9
+2 fstat(9,0x00007639b0e7f2c8) = 0
+2 lseek(9,0,SEEK_SET) = 0
+2 read(9,0x7639a3f0b760,4096) = 43
+2 close(9) = 0
+2 readlinkat(AT_FDCWD,"/work",0x00007639b0e7ef20,1023) = -1 errno=22 (Invalid argument)
+2 readlinkat(AT_FDCWD,"/work/home",0x00007639b0e7ef20,1023) = -1 errno=22 (Invalid argument)
+2 statx(-100,"/usr/share/nvim/runtime",AT_STATX_SYNC_AS_STAT,STATX_ALL,0x00007639b0e7dfb8) = -1 errno=2 (No such file or directory)
+2 statx(-100,"/usr/share/nvim/runtime",AT_STATX_SYNC_AS_STAT,STATX_ALL,0x00007639b0e7dfb8) = -1 errno=2 (No such file or directory)
+2 statx(-100,"/usr/lib/nvim",AT_STATX_SYNC_AS_STAT,STATX_ALL,0x00007639b0e7dfc8) = -1 errno=2 (No such file or directory)
+2 getuid() = 0
+2 statx(-100,"/work/nvim.log",AT_STATX_SYNC_AS_STAT,STATX_ALL,0x00007639b0e7f1d8) = -1 errno=2 (No such file or directory)
+2 openat(AT_FDCWD,"/work/nvim.log",O_WRONLY|O_APPEND|O_CREAT,0666) = 9
+2 lseek(9,0,SEEK_END) = 0
+2 close(9) = 0
+2 ioctl(0,TCGETS2,0x00007639b0e7f6d8) = -1 errno=25 (Inappropriate ioctl for device)
+2 fstat(0,0x00007639b0e7f698) = 0
+2 ioctl(1,TCGETS2,0x00007639b0e7f6d8) = -1 errno=25 (Inappropriate ioctl for device)
+2 fstat(1,0x00007639b0e7f698) = 0
+2 ioctl(2,TCGETS2,0x00007639b0e7f6d8) = -1 errno=25 (Inappropriate ioctl for device)
+2 fstat(2,0x00007639b0e7f698) = 0
+2 getrandom(0x7639b0e7f6b0,32,0) = 32
+2 mmap(NULL,131072,PROT_READ|PROT_WRITE,MAP_PRIVATE|MAP_ANONYMOUS,-1,0) = 0x00007639b2330000
+2 mmap(0x00007639b2350000,131072,PROT_READ|PROT_WRITE,MAP_PRIVATE|MAP_ANONYMOUS,-1,0) = 0x00007639b00d0000
+2 futex(0x00007639b0670080,FUTEX_PRIVATE_FLAG|FUTEX_WAKE,2147483647,NULL,0x00007639b0670080,0xb062d0a0) = 0
+2 mmap(0x00007639b00f0000,131072,PROT_READ|PROT_WRITE,MAP_PRIVATE|MAP_ANONYMOUS,-1,0) = 0x00007639b00b0000
+2 getuid() = 0
+2 newfstatat(AT_FDCWD,"/etc/nsswitch.conf",0x00007639b0e7eb80,0) = -1 errno=2 (No such file or directory)
+2 openat(AT_FDCWD,"/etc/passwd",O_RDONLY|O_CLOEXEC) = 9
+2 fstat(9,0x00007639b0e7ec18) = 0
+2 lseek(9,0,SEEK_SET) = 0
+2 read(9,0x7639a3f1ec30,4096) = 43
+2 close(9) = 0
+2 umask(077) = 18
+2 statx(-100,"$TMPDIR",AT_STATX_SYNC_AS_STAT,STATX_ALL,0x00007639b0e7ed28) = -1 errno=2 (No such file or directory)
+2 statx(-100,"/tmp",AT_STATX_SYNC_AS_STAT,STATX_ALL,0x00007639b0e7ed28) = 0
+2 mkdirat(AT_FDCWD,"/tmp/nvim.root",0700) = 0
+2 getuid() = 0
+2 statx(-100,"/tmp/nvim.root",AT_STATX_SYNC_AS_STAT,STATX_ALL,0x00007639b0e7ea68) = 0
+2 statx(-100,"/tmp/nvim.root",AT_SYMLINK_NOFOLLOW|AT_STATX_SYNC_AS_STAT,STATX_ALL,0x00007639b0e7ea68) = 0
+2 statx(-100,"/tmp/nvim.root",AT_STATX_SYNC_AS_STAT,STATX_ALL,0x00007639b0e7ed28) = 0
+2 statx(-100,"/tmp/nvim.root",AT_STATX_SYNC_AS_STAT,STATX_ALL,0x00007639b0e7ed28) = 0
+2 getrandom(0x7639b0e7edb0,8,1) = 8
+2 getrandom(0x7639b0e7edb0,8,1) = 8
+2 mkdirat(AT_FDCWD,"/tmp/nvim.root/4zDtvd",0700) = 0
+2 openat(AT_FDCWD,"/tmp/nvim.root/4zDtvd/",O_RDONLY|O_DIRECTORY|O_NONBLOCK|O_CLOEXEC) = 9
+2 fstat(9,0x00007639b0e7eef8) = 0
+2 flock(9,1,129990140169152,0,32832,129989935791216) = 0
+2 umask(022) = 63
+2 getpid() = 2
+2 openat(AT_FDCWD,"/dev/null",O_RDONLY|O_CLOEXEC) = 10
+2 socket(PF_UNIX,SOCK_STREAM|SOCK_CLOEXEC|SOCK_NONBLOCK,0) = 11
+2 bind(11,{sun_family=AF_UNIX,sun_path="/tmp/nvim.root/4zDtvd/nvim.2.0"},110) = 0
+2 listen(11,32) = 0
+2 mmap(0x00007639b00d0000,131072,PROT_READ|PROT_WRITE,MAP_PRIVATE|MAP_ANONYMOUS,-1,0) = 0x00007639b0090000
+2 getcwd(0x7639b0e7df90,1024) = 6
+2 readlinkat(AT_FDCWD,"/work/vim",0x00007639b0e7e7b0,1023) = -1 errno=2 (No such file or directory)
+2 getcwd(0x7639b0e7df18,4096) = 6
+2 getcwd(0x7639b0e7df90,1024) = 6
+2 readlinkat(AT_FDCWD,"/work/vim",0x00007639b0e7e7b0,1023) = -1 errno=2 (No such file or directory)
+2 getcwd(0x7639b0e7df18,4096) = 6
+2 getcwd(0x7639b0e7df90,1024) = 6
+2 readlinkat(AT_FDCWD,"/work/vim",0x00007639b0e7e7b0,1023) = -1 errno=2 (No such file or directory)
+2 getcwd(0x7639b0e7df18,4096) = 6
+2 getcwd(0x7639b0e7df90,1024) = 6
+2 readlinkat(AT_FDCWD,"/work/vim",0x00007639b0e7e7b0,1023) = -1 errno=2 (No such file or directory)
+2 getcwd(0x7639b0e7df18,4096) = 6
+2 getcwd(0x7639b0e7deb0,1024) = 6
+2 readlinkat(AT_FDCWD,"/work/vim",0x00007639b0e7e6d0,1023) = -1 errno=2 (No such file or directory)
+2 getcwd(0x7639b0e7de38,4096) = 6
+2 getcwd(0x7639b0e7deb0,1024) = 6
+2 readlinkat(AT_FDCWD,"/work/vim",0x00007639b0e7e6d0,1023) = -1 errno=2 (No such file or directory)
+2 getcwd(0x7639b0e7de38,4096) = 6
+2 getcwd(0x7639b0e7deb0,1024) = 6
+2 readlinkat(AT_FDCWD,"/work/vim",0x00007639b0e7e6d0,1023) = -1 errno=2 (No such file or directory)
+2 getcwd(0x7639b0e7de38,4096) = 6
+2 getcwd(0x7639b0e7deb0,1024) = 6
+2 readlinkat(AT_FDCWD,"/work/vim",0x00007639b0e7e6d0,1023) = -1 errno=2 (No such file or directory)
+2 getcwd(0x7639b0e7de38,4096) = 6
+2 getcwd(0x7639b0e7deb0,1024) = 6
+2 readlinkat(AT_FDCWD,"/work/vim",0x00007639b0e7e6d0,1023) = -1 errno=2 (No such file or directory)
+2 getcwd(0x7639b0e7de38,4096) = 6
+2 getcwd(0x7639b0e7deb0,1024) = 6
+2 readlinkat(AT_FDCWD,"/work/vim",0x00007639b0e7e6d0,1023) = -1 errno=2 (No such file or directory)
+2 getcwd(0x7639b0e7de38,4096) = 6
+2 getcwd(0x7639b0e7deb0,1024) = 6
+2 readlinkat(AT_FDCWD,"/work/vim",0x00007639b0e7e6d0,1023) = -1 errno=2 (No such file or directory)
+2 getcwd(0x7639b0e7de38,4096) = 6
+2 getcwd(0x7639b0e7deb0,1024) = 6
+2 readlinkat(AT_FDCWD,"/work/vim",0x00007639b0e7e6d0,1023) = -1 errno=2 (No such file or directory)
+2 getcwd(0x7639b0e7de38,4096) = 6
+2 getcwd(0x7639b0e7deb0,1024) = 6
+2 readlinkat(AT_FDCWD,"/work/vim",0x00007639b0e7e6d0,1023) = -1 errno=2 (No such file or directory)
+2 getcwd(0x7639b0e7de38,4096) = 6
+2 getcwd(0x7639b0e7deb0,1024) = 6
+2 readlinkat(AT_FDCWD,"/work/vim",0x00007639b0e7e6d0,1023) = -1 errno=2 (No such file or directory)
+2 getcwd(0x7639b0e7de38,4096) = 6
+2 getcwd(0x7639b0e7deb0,1024) = 6
+2 readlinkat(AT_FDCWD,"/work/vim",0x00007639b0e7e6d0,1023) = -1 errno=2 (No such file or directory)
+2 getcwd(0x7639b0e7de38,4096) = 6
+2 getcwd(0x7639b0e7deb0,1024) = 6
+2 readlinkat(AT_FDCWD,"/work/vim",0x00007639b0e7e6d0,1023) = -1 errno=2 (No such file or directory)
+2 getcwd(0x7639b0e7de38,4096) = 6
+2 getcwd(0x7639b0e7deb0,1024) = 6
+2 readlinkat(AT_FDCWD,"/work/vim",0x00007639b0e7e6d0,1023) = -1 errno=2 (No such file or directory)
+2 getcwd(0x7639b0e7de38,4096) = 6
+2 getcwd(0x7639b0e7deb0,1024) = 6
+2 readlinkat(AT_FDCWD,"/work/vim",0x00007639b0e7e6d0,1023) = -1 errno=2 (No such file or directory)
+2 getcwd(0x7639b0e7de38,4096) = 6
+2 getcwd(0x7639b0e7deb0,1024) = 6
+2 readlinkat(AT_FDCWD,"/work/vim",0x00007639b0e7e6d0,1023) = -1 errno=2 (No such file or directory)
+2 getcwd(0x7639b0e7de38,4096) = 6
+2 getcwd(0x7639b0e7deb0,1024) = 6
+2 readlinkat(AT_FDCWD,"/work/vim",0x00007639b0e7e6d0,1023) = -1 errno=2 (No such file or directory)
+2 getcwd(0x7639b0e7de38,4096) = 6
+2 mmap(0x00007639ae940000,65536,PROT_READ|PROT_WRITE,MAP_PRIVATE|MAP_ANONYMOUS,-1,0) = 0x00007639b0080000
+2 mprotect(0x00007639b0080000,65536,PROT_EXEC|PROT_READ) = 0
+2 getcwd(0x7639b0e7deb0,1024) = 6
+2 readlinkat(AT_FDCWD,"/work/vim",0x00007639b0e7e6d0,1023) = -1 errno=2 (No such file or directory)
+2 getcwd(0x7639b0e7de38,4096) = 6
+2 getcwd(0x7639b0e7deb0,1024) = 6
+2 readlinkat(AT_FDCWD,"/work/vim",0x00007639b0e7e6d0,1023) = -1 errno=2 (No such file or directory)
+2 getcwd(0x7639b0e7de38,4096) = 6
+2 getcwd(0x7639b0e7deb0,1024) = 6
+2 readlinkat(AT_FDCWD,"/work/vim",0x00007639b0e7e6d0,1023) = -1 errno=2 (No such file or directory)
+2 getcwd(0x7639b0e7de38,4096) = 6
+2 getcwd(0x7639b0e7deb0,1024) = 6
+2 readlinkat(AT_FDCWD,"/work/vim",0x00007639b0e7e6d0,1023) = -1 errno=2 (No such file or directory)
+2 getcwd(0x7639b0e7de38,4096) = 6
+2 getcwd(0x7639b0e7deb0,1024) = 6
+2 readlinkat(AT_FDCWD,"/work/vim",0x00007639b0e7e6d0,1023) = -1 errno=2 (No such file or directory)
+2 getcwd(0x7639b0e7de38,4096) = 6
+2 getcwd(0x7639b0e7deb0,1024) = 6
+2 readlinkat(AT_FDCWD,"/work/vim",0x00007639b0e7e6d0,1023) = -1 errno=2 (No such file or directory)
+2 getcwd(0x7639b0e7de38,4096) = 6
+2 mprotect(0x00007639b0080000,65536,PROT_READ|PROT_WRITE) = 0
+2 mprotect(0x00007639b0080000,65536,PROT_EXEC|PROT_READ) = 0
+2 getcwd(0x7639b0e7deb0,1024) = 6
+2 readlinkat(AT_FDCWD,"/work/vim",0x00007639b0e7e6d0,1023) = -1 errno=2 (No such file or directory)
+2 getcwd(0x7639b0e7de38,4096) = 6
+2 getcwd(0x7639b0e7deb0,1024) = 6
+2 readlinkat(AT_FDCWD,"/work/vim",0x00007639b0e7e6d0,1023) = -1 errno=2 (No such file or directory)
+2 getcwd(0x7639b0e7de38,4096) = 6
+2 mprotect(0x00007639b0080000,65536,PROT_READ|PROT_WRITE) = 0
+2 mprotect(0x00007639b0080000,65536,PROT_EXEC|PROT_READ) = 0
+2 getcwd(0x7639b0e7deb0,1024) = 6
+2 readlinkat(AT_FDCWD,"/work/vim",0x00007639b0e7e6d0,1023) = -1 errno=2 (No such file or directory)
+2 getcwd(0x7639b0e7de38,4096) = 6
+2 getcwd(0x7639b0e7deb0,1024) = 6
+2 readlinkat(AT_FDCWD,"/work/vim",0x00007639b0e7e6d0,1023) = -1 errno=2 (No such file or directory)
+2 getcwd(0x7639b0e7de38,4096) = 6
+2 getcwd(0x7639b0e7deb0,1024) = 6
+2 readlinkat(AT_FDCWD,"/work/vim",0x00007639b0e7e6d0,1023) = -1 errno=2 (No such file or directory)
+2 getcwd(0x7639b0e7de38,4096) = 6
+2 getcwd(0x7639b0e7deb0,1024) = 6
+2 readlinkat(AT_FDCWD,"/work/vim",0x00007639b0e7e6d0,1023) = -1 errno=2 (No such file or directory)
+2 getcwd(0x7639b0e7de38,4096) = 6
+2 getcwd(0x7639b0e7deb0,1024) = 6
+2 readlinkat(AT_FDCWD,"/work/vim",0x00007639b0e7e6d0,1023) = -1 errno=2 (No such file or directory)
+2 getcwd(0x7639b0e7de38,4096) = 6
+2 getcwd(0x7639b0e7deb0,1024) = 6
+2 readlinkat(AT_FDCWD,"/work/vim",0x00007639b0e7e6d0,1023) = -1 errno=2 (No such file or directory)
+2 getcwd(0x7639b0e7de38,4096) = 6
+2 mprotect(0x00007639b0080000,65536,PROT_READ|PROT_WRITE) = 0
+2 mprotect(0x00007639b0080000,65536,PROT_EXEC|PROT_READ) = 0
+2 getcwd(0x7639b0e7deb0,1024) = 6
+2 readlinkat(AT_FDCWD,"/work/vim",0x00007639b0e7e6d0,1023) = -1 errno=2 (No such file or directory)
+2 getcwd(0x7639b0e7de38,4096) = 6
+2 getcwd(0x7639b0e7deb0,1024) = 6
+2 readlinkat(AT_FDCWD,"/work/vim",0x00007639b0e7e6d0,1023) = -1 errno=2 (No such file or directory)
+2 getcwd(0x7639b0e7de38,4096) = 6
+2 getcwd(0x7639b0e7deb0,1024) = 6
+2 readlinkat(AT_FDCWD,"/work/vim",0x00007639b0e7e6d0,1023) = -1 errno=2 (No such file or directory)
+2 getcwd(0x7639b0e7de38,4096) = 6
+2 getcwd(0x7639b0e7deb0,1024) = 6
+2 readlinkat(AT_FDCWD,"/work/vim",0x00007639b0e7e6d0,1023) = -1 errno=2 (No such file or directory)
+2 getcwd(0x7639b0e7de38,4096) = 6
+2 getcwd(0x7639b0e7deb0,1024) = 6
+2 readlinkat(AT_FDCWD,"/work/vim",0x00007639b0e7e6d0,1023) = -1 errno=2 (No such file or directory)
+2 getcwd(0x7639b0e7de38,4096) = 6
+2 mprotect(0x00007639b0080000,65536,PROT_READ|PROT_WRITE) = 0
+2 mprotect(0x00007639b0080000,65536,PROT_EXEC|PROT_READ) = 0
+2 getcwd(0x7639b0e7deb0,1024) = 6
+2 readlinkat(AT_FDCWD,"/work/vim",0x00007639b0e7e6d0,1023) = -1 errno=2 (No such file or directory)
+2 getcwd(0x7639b0e7de38,4096) = 6
+2 mprotect(0x00007639b0080000,65536,PROT_READ|PROT_WRITE) = 0
+2 mprotect(0x00007639b0080000,65536,PROT_EXEC|PROT_READ) = 0
+2 getcwd(0x7639b0e7deb0,1024) = 6
+2 readlinkat(AT_FDCWD,"/work/vim",0x00007639b0e7e6d0,1023) = -1 errno=2 (No such file or directory)
+2 getcwd(0x7639b0e7de38,4096) = 6
+2 futex(0x00007639b01200b4,FUTEX_PRIVATE_FLAG|FUTEX_WAKE,2147483647,NULL,0x00007639b01200b4,0xb0104820) = 0
+2 getcwd(0x7639b0e7deb0,1024) = 6
+2 readlinkat(AT_FDCWD,"/work/vim",0x00007639b0e7e6d0,1023) = -1 errno=2 (No such file or directory)
+2 getcwd(0x7639b0e7de38,4096) = 6
+2 getcwd(0x7639b0e7deb0,1024) = 6
+2 readlinkat(AT_FDCWD,"/work/vim",0x00007639b0e7e6d0,1023) = -1 errno=2 (No such file or directory)
+2 getcwd(0x7639b0e7de38,4096) = 6
+2 getcwd(0x7639b0e7deb0,1024) = 6
+2 readlinkat(AT_FDCWD,"/work/vim",0x00007639b0e7e6d0,1023) = -1 errno=2 (No such file or directory)
+2 getcwd(0x7639b0e7de38,4096) = 6
+2 getcwd(0x7639b0e7deb0,1024) = 6
+2 readlinkat(AT_FDCWD,"/work/vim",0x00007639b0e7e6d0,1023) = -1 errno=2 (No such file or directory)
+2 getcwd(0x7639b0e7de38,4096) = 6
+2 getcwd(0x7639b0e7deb0,1024) = 6
+2 readlinkat(AT_FDCWD,"/work/vim",0x00007639b0e7e6d0,1023) = -1 errno=2 (No such file or directory)
+2 getcwd(0x7639b0e7de38,4096) = 6
+2 getcwd(0x7639b0e7deb0,1024) = 6
+2 readlinkat(AT_FDCWD,"/work/vim",0x00007639b0e7e6d0,1023) = -1 errno=2 (No such file or directory)
+2 getcwd(0x7639b0e7de38,4096) = 6
+2 getcwd(0x7639b0e7deb0,1024) = 6
+2 readlinkat(AT_FDCWD,"/work/vim",0x00007639b0e7e6d0,1023) = -1 errno=2 (No such file or directory)
+2 getcwd(0x7639b0e7de38,4096) = 6
+2 getcwd(0x7639b0e7deb0,1024) = 6
+2 readlinkat(AT_FDCWD,"/work/vim",0x00007639b0e7e6d0,1023) = -1 errno=2 (No such file or directory)
+2 getcwd(0x7639b0e7de38,4096) = 6
+2 mprotect(0x00007639b0080000,65536,PROT_READ|PROT_WRITE) = 0
+2 mprotect(0x00007639b0080000,65536,PROT_EXEC|PROT_READ) = 0
+2 getcwd(0x7639b0e7deb0,1024) = 6
+2 readlinkat(AT_FDCWD,"/work/vim",0x00007639b0e7e6d0,1023) = -1 errno=2 (No such file or directory)
+2 getcwd(0x7639b0e7de38,4096) = 6
+2 getcwd(0x7639b0e7deb0,1024) = 6
+2 readlinkat(AT_FDCWD,"/work/vim",0x00007639b0e7e6d0,1023) = -1 errno=2 (No such file or directory)
+2 getcwd(0x7639b0e7de38,4096) = 6
+2 getcwd(0x7639b0e7deb0,1024) = 6
+2 readlinkat(AT_FDCWD,"/work/vim",0x00007639b0e7e6d0,1023) = -1 errno=2 (No such file or directory)
+2 getcwd(0x7639b0e7de38,4096) = 6
+2 getcwd(0x7639b0e7deb0,1024) = 6
+2 readlinkat(AT_FDCWD,"/work/vim",0x00007639b0e7e6d0,1023) = -1 errno=2 (No such file or directory)
+2 getcwd(0x7639b0e7de38,4096) = 6
+2 getcwd(0x7639b0e7deb0,1024) = 6
+2 readlinkat(AT_FDCWD,"/work/vim",0x00007639b0e7e6d0,1023) = -1 errno=2 (No such file or directory)
+2 getcwd(0x7639b0e7de38,4096) = 6
+2 getcwd(0x7639b0e7deb0,1024) = 6
+2 readlinkat(AT_FDCWD,"/work/vim",0x00007639b0e7e6d0,1023) = -1 errno=2 (No such file or directory)
+2 getcwd(0x7639b0e7de38,4096) = 6
+2 mprotect(0x00007639b0080000,65536,PROT_READ|PROT_WRITE) = 0
+2 mprotect(0x00007639b0080000,65536,PROT_EXEC|PROT_READ) = 0
+2 getcwd(0x7639b0e7deb0,1024) = 6
+2 readlinkat(AT_FDCWD,"/work/vim",0x00007639b0e7e6d0,1023) = -1 errno=2 (No such file or directory)
+2 getcwd(0x7639b0e7de38,4096) = 6
+2 getcwd(0x7639b0e7deb0,1024) = 6
+2 readlinkat(AT_FDCWD,"/work/vim",0x00007639b0e7e6d0,1023) = -1 errno=2 (No such file or directory)
+2 getcwd(0x7639b0e7de38,4096) = 6
+2 getcwd(0x7639b0e7deb0,1024) = 6
+2 readlinkat(AT_FDCWD,"/work/vim",0x00007639b0e7e6d0,1023) = -1 errno=2 (No such file or directory)
+2 getcwd(0x7639b0e7de38,4096) = 6
+2 getcwd(0x7639b0e7deb0,1024) = 6
+2 readlinkat(AT_FDCWD,"/work/vim",0x00007639b0e7e6d0,1023) = -1 errno=2 (No such file or directory)
+2 getcwd(0x7639b0e7de38,4096) = 6
+2 getcwd(0x7639b0e7deb0,1024) = 6
+2 readlinkat(AT_FDCWD,"/work/vim",0x00007639b0e7e6d0,1023) = -1 errno=2 (No such file or directory)
+2 getcwd(0x7639b0e7de38,4096) = 6
+2 getcwd(0x7639b0e7deb0,1024) = 6
+2 readlinkat(AT_FDCWD,"/work/vim",0x00007639b0e7e6d0,1023) = -1 errno=2 (No such file or directory)
+2 getcwd(0x7639b0e7de38,4096) = 6
+2 getcwd(0x7639b0e7deb0,1024) = 6
+2 readlinkat(AT_FDCWD,"/work/vim",0x00007639b0e7e6d0,1023) = -1 errno=2 (No such file or directory)
+2 getcwd(0x7639b0e7de38,4096) = 6
+2 getcwd(0x7639b0e7deb0,1024) = 6
+2 readlinkat(AT_FDCWD,"/work/vim",0x00007639b0e7e6d0,1023) = -1 errno=2 (No such file or directory)
+2 getcwd(0x7639b0e7de38,4096) = 6
+2 getcwd(0x7639b0e7deb0,1024) = 6
+2 readlinkat(AT_FDCWD,"/work/vim",0x00007639b0e7e6d0,1023) = -1 errno=2 (No such file or directory)
+2 getcwd(0x7639b0e7de38,4096) = 6
+2 getcwd(0x7639b0e7deb0,1024) = 6
+2 readlinkat(AT_FDCWD,"/work/vim",0x00007639b0e7e6d0,1023) = -1 errno=2 (No such file or directory)
+2 getcwd(0x7639b0e7de38,4096) = 6
+2 getcwd(0x7639b0e7deb0,1024) = 6
+2 readlinkat(AT_FDCWD,"/work/vim",0x00007639b0e7e6d0,1023) = -1 errno=2 (No such file or directory)
+2 getcwd(0x7639b0e7de38,4096) = 6
+2 getcwd(0x7639b0e7deb0,1024) = 6
+2 readlinkat(AT_FDCWD,"/work/vim",0x00007639b0e7e6d0,1023) = -1 errno=2 (No such file or directory)
+2 getcwd(0x7639b0e7de38,4096) = 6
+2 getcwd(0x7639b0e7deb0,1024) = 6
+2 readlinkat(AT_FDCWD,"/work/vim",0x00007639b0e7e6d0,1023) = -1 errno=2 (No such file or directory)
+2 getcwd(0x7639b0e7de38,4096) = 6
+2 getcwd(0x7639b0e7deb0,1024) = 6
+2 readlinkat(AT_FDCWD,"/work/vim",0x00007639b0e7e6d0,1023) = -1 errno=2 (No such file or directory)
+2 getcwd(0x7639b0e7de38,4096) = 6
+2 getcwd(0x7639b0e7deb0,1024) = 6
+2 readlinkat(AT_FDCWD,"/work/vim",0x00007639b0e7e6d0,1023) = -1 errno=2 (No such file or directory)
+2 getcwd(0x7639b0e7de38,4096) = 6
+2 getcwd(0x7639b0e7deb0,1024) = 6
+2 readlinkat(AT_FDCWD,"/work/vim",0x00007639b0e7e6d0,1023) = -1 errno=2 (No such file or directory)
+2 getcwd(0x7639b0e7de38,4096) = 6
+2 getcwd(0x7639b0e7deb0,1024) = 6
+2 readlinkat(AT_FDCWD,"/work/vim",0x00007639b0e7e6d0,1023) = -1 errno=2 (No such file or directory)
+2 getcwd(0x7639b0e7de38,4096) = 6
+2 getcwd(0x7639b0e7deb0,1024) = 6
+2 readlinkat(AT_FDCWD,"/work/vim",0x00007639b0e7e6d0,1023) = -1 errno=2 (No such file or directory)
+2 getcwd(0x7639b0e7de38,4096) = 6
+2 getcwd(0x7639b0e7deb0,1024) = 6
+2 readlinkat(AT_FDCWD,"/work/vim",0x00007639b0e7e6d0,1023) = -1 errno=2 (No such file or directory)
+2 getcwd(0x7639b0e7de38,4096) = 6
+2 getcwd(0x7639b0e7deb0,1024) = 6
+2 readlinkat(AT_FDCWD,"/work/vim",0x00007639b0e7e6d0,1023) = -1 errno=2 (No such file or directory)
+2 getcwd(0x7639b0e7de38,4096) = 6
+2 getcwd(0x7639b0e7deb0,1024) = 6
+2 readlinkat(AT_FDCWD,"/work/vim",0x00007639b0e7e6d0,1023) = -1 errno=2 (No such file or directory)
+2 getcwd(0x7639b0e7de38,4096) = 6
+2 getcwd(0x7639b0e7deb0,1024) = 6
+2 readlinkat(AT_FDCWD,"/work/vim",0x00007639b0e7e6d0,1023) = -1 errno=2 (No such file or directory)
+2 getcwd(0x7639b0e7de38,4096) = 6
+2 getcwd(0x7639b0e7deb0,1024) = 6
+2 readlinkat(AT_FDCWD,"/work/vim",0x00007639b0e7e6d0,1023) = -1 errno=2 (No such file or directory)
+2 getcwd(0x7639b0e7de38,4096) = 6
+2 getcwd(0x7639b0e7deb0,1024) = 6
+2 readlinkat(AT_FDCWD,"/work/vim",0x00007639b0e7e6d0,1023) = -1 errno=2 (No such file or directory)
+2 getcwd(0x7639b0e7de38,4096) = 6
+2 getcwd(0x7639b0e7deb0,1024) = 6
+2 readlinkat(AT_FDCWD,"/work/vim",0x00007639b0e7e6d0,1023) = -1 errno=2 (No such file or directory)
+2 getcwd(0x7639b0e7de38,4096) = 6
+2 mprotect(0x00007639b0080000,65536,PROT_READ|PROT_WRITE) = 0
+2 mprotect(0x00007639b0080000,65536,PROT_EXEC|PROT_READ) = 0
+2 getcwd(0x7639b0e7deb0,1024) = 6
+2 readlinkat(AT_FDCWD,"/work/vim",0x00007639b0e7e6d0,1023) = -1 errno=2 (No such file or directory)
+2 getcwd(0x7639b0e7de38,4096) = 6
+2 getcwd(0x7639b0e7deb0,1024) = 6
+2 readlinkat(AT_FDCWD,"/work/vim",0x00007639b0e7e6d0,1023) = -1 errno=2 (No such file or directory)
+2 getcwd(0x7639b0e7de38,4096) = 6
+2 getcwd(0x7639b0e7deb0,1024) = 6
+2 readlinkat(AT_FDCWD,"/work/vim",0x00007639b0e7e6d0,1023) = -1 errno=2 (No such file or directory)
+2 getcwd(0x7639b0e7de38,4096) = 6
+2 getcwd(0x7639b0e7deb0,1024) = 6
+2 readlinkat(AT_FDCWD,"/work/vim",0x00007639b0e7e6d0,1023) = -1 errno=2 (No such file or directory)
+2 getcwd(0x7639b0e7de38,4096) = 6
+2 getcwd(0x7639b0e7deb0,1024) = 6
+2 readlinkat(AT_FDCWD,"/work/vim",0x00007639b0e7e6d0,1023) = -1 errno=2 (No such file or directory)
+2 getcwd(0x7639b0e7de38,4096) = 6
+2 getcwd(0x7639b0e7deb0,1024) = 6
+2 readlinkat(AT_FDCWD,"/work/vim",0x00007639b0e7e6d0,1023) = -1 errno=2 (No such file or directory)
+2 getcwd(0x7639b0e7de38,4096) = 6
+2 getcwd(0x7639b0e7deb0,1024) = 6
+2 readlinkat(AT_FDCWD,"/work/vim",0x00007639b0e7e6d0,1023) = -1 errno=2 (No such file or directory)
+2 getcwd(0x7639b0e7de38,4096) = 6
+2 getcwd(0x7639b0e7deb0,1024) = 6
+2 readlinkat(AT_FDCWD,"/work/vim",0x00007639b0e7e6d0,1023) = -1 errno=2 (No such file or directory)
+2 getcwd(0x7639b0e7de38,4096) = 6
+2 getcwd(0x7639b0e7df50,1024) = 6
+2 readlinkat(AT_FDCWD,"/work/vim",0x00007639b0e7e770,1023) = -1 errno=2 (No such file or directory)
+2 getcwd(0x7639b0e7ded8,4096) = 6
+2 getcwd(0x7639b0e7df50,1024) = 6
+2 readlinkat(AT_FDCWD,"/work/vim",0x00007639b0e7e770,1023) = -1 errno=2 (No such file or directory)
+2 getcwd(0x7639b0e7ded8,4096) = 6
+2 getcwd(0x7639b0e7df50,1024) = 6
+2 readlinkat(AT_FDCWD,"/work/vim",0x00007639b0e7e770,1023) = -1 errno=2 (No such file or directory)
+2 getcwd(0x7639b0e7ded8,4096) = 6
+2 getcwd(0x7639b0e7df50,1024) = 6
+2 readlinkat(AT_FDCWD,"/work/vim",0x00007639b0e7e770,1023) = -1 errno=2 (No such file or directory)
+2 getcwd(0x7639b0e7ded8,4096) = 6
+2 getcwd(0x7639b0e7df50,1024) = 6
+2 readlinkat(AT_FDCWD,"/work/vim",0x00007639b0e7e770,1023) = -1 errno=2 (No such file or directory)
+2 getcwd(0x7639b0e7ded8,4096) = 6
+2 getcwd(0x7639b0e7df50,1024) = 6
+2 readlinkat(AT_FDCWD,"/work/vim",0x00007639b0e7e770,1023) = -1 errno=2 (No such file or directory)
+2 getcwd(0x7639b0e7ded8,4096) = 6
+2 getcwd(0x7639b0e7df50,1024) = 6
+2 readlinkat(AT_FDCWD,"/work/vim",0x00007639b0e7e770,1023) = -1 errno=2 (No such file or directory)
+2 getcwd(0x7639b0e7ded8,4096) = 6
+2 getcwd(0x7639b0e7df50,1024) = 6
+2 readlinkat(AT_FDCWD,"/work/vim",0x00007639b0e7e770,1023) = -1 errno=2 (No such file or directory)
+2 getcwd(0x7639b0e7ded8,4096) = 6
+2 getcwd(0x7639b0e7df50,1024) = 6
+2 readlinkat(AT_FDCWD,"/work/vim",0x00007639b0e7e770,1023) = -1 errno=2 (No such file or directory)
+2 getcwd(0x7639b0e7ded8,4096) = 6
+2 statx(-100,"/usr/bin/rg",AT_STATX_SYNC_AS_STAT,STATX_ALL,0x00007639b0e7e738) = -1 errno=2 (No such file or directory)
+2 getuid() = 0
+2 newfstatat(AT_FDCWD,"/etc/nsswitch.conf",0x00007639b0e7f1a0,0) = -1 errno=2 (No such file or directory)
+2 openat(AT_FDCWD,"/etc/passwd",O_RDONLY|O_CLOEXEC) = 12
+2 fstat(12,0x00007639b0e7f238) = 0
+2 lseek(12,0,SEEK_SET) = 0
+2 read(12,0x7639a3f4dba0,4096) = 43
+2 close(12) = 0
+2 uname(0x7639b0e7f410) = 0
+2 getpid() = 2
+2 epoll_ctl(3,1,6,129990153184672,4294967277,3) = 0
+2 epoll_ctl(3,1,8,129990153184672,4294967277,3) = 0
+2 epoll_ctl(3,1,11,129990153184672,4294967277,3) = 0
+2 epoll_pwait(3,129990153188936,1024,0,0,8) = 0
+2 clock_gettime(CLOCK_MONOTONIC_COARSE,0x00007639b0e7a4a8) = 0 ({tv_sec = 313502,tv_nsec = 598015202})
+2 clock_gettime(CLOCK_MONOTONIC_COARSE,0x00007639b0e7f688) = 0 ({tv_sec = 313502,tv_nsec = 598015202})
+2 epoll_pwait(3,129990153188936,1024,0,0,8) = 0
+2 clock_gettime(CLOCK_MONOTONIC_COARSE,0x00007639b0e7a4a8) = 0 ({tv_sec = 313502,tv_nsec = 598015202})
+2 clock_gettime(CLOCK_MONOTONIC_COARSE,0x00007639b0e7f688) = 0 ({tv_sec = 313502,tv_nsec = 598015202})
+2 clock_gettime(CLOCK_REALTIME_COARSE,0x00007639b0e7f6c8) = 0 ({tv_sec = 1792480585,tv_nsec = 477999667})
+2 getcwd(0x7639b0e7e708,4096) = 6
+2 openat(AT_FDCWD,"/probe.lua",O_RDONLY) = 12
+2 fstat(12,0x00007639b0e7d0c8) = 0
+2 read(12,0x7639b0e7d520,8192) = 1004
+2 read(12,0x7639b0e7d90c,4096) = 0
+2 mmap(0x00007639b00b0000,131072,PROT_READ|PROT_WRITE,MAP_PRIVATE|MAP_ANONYMOUS,-1,0) = 0x00007639b0060000
+2 close(12) = 0
+2 statx(-100,"/qemu",AT_STATX_SYNC_AS_STAT,STATX_ALL,0x00007639b0e7f278) = 0
+2 faccessat(AT_FDCWD,"/qemu",X_OK,0x1) = 0
+2 openat(AT_FDCWD,"/qemu",O_RDONLY|O_CLOEXEC) = 12
+2 pread64(12,0x00007639a3f4fbf0,64,0) = 64
+2 close(12) = 0
+2 statx(-100,"/usr/bin//qemu",AT_STATX_SYNC_AS_STAT,STATX_ALL,0x00007639b0e7e8f8) = -1 errno=2 (No such file or directory)
+2 statx(-100,"/usr/bin//qemu",AT_STATX_SYNC_AS_STAT,STATX_ALL,0x00007639b0e7e8e8) = -1 errno=2 (No such file or directory)
+2 statx(-100,"/usr/bin/shfmt",AT_STATX_SYNC_AS_STAT,STATX_ALL,0x00007639b0e7f278) = 0
+2 faccessat(AT_FDCWD,"/usr/bin/shfmt",X_OK,0x1) = 0
+2 openat(AT_FDCWD,"/usr/bin/shfmt",O_RDONLY|O_CLOEXEC) = 12
+2 pread64(12,0x00007639a3f4fbf0,64,0) = 64
+2 close(12) = 0
+2 statx(-100,"/usr/bin/shfmt",AT_STATX_SYNC_AS_STAT,STATX_ALL,0x00007639b0e7e968) = 0
+2 faccessat(AT_FDCWD,"/usr/bin/shfmt",X_OK,0x1) = 0
+2 statx(-100,"/usr/bin/shfmt",AT_STATX_SYNC_AS_STAT,STATX_ALL,0x00007639b0e7e958) = 0
+2 faccessat(AT_FDCWD,"/usr/bin/shfmt",X_OK,0x1) = 0
+2 statx(-100,"/usr/bin/stylua",AT_STATX_SYNC_AS_STAT,STATX_ALL,0x00007639b0e7f278) = 0
+2 faccessat(AT_FDCWD,"/usr/bin/stylua",X_OK,0x1) = 0
+2 openat(AT_FDCWD,"/usr/bin/stylua",O_RDONLY|O_CLOEXEC) = 12
+2 pread64(12,0x00007639a3f4fbf0,64,0) = 64
+2 close(12) = 0
+2 statx(-100,"/usr/bin/stylua",AT_STATX_SYNC_AS_STAT,STATX_ALL,0x00007639b0e7e968) = 0
+2 faccessat(AT_FDCWD,"/usr/bin/stylua",X_OK,0x1) = 0
+2 statx(-100,"/usr/bin/stylua",AT_STATX_SYNC_AS_STAT,STATX_ALL,0x00007639b0e7e958) = 0
+2 faccessat(AT_FDCWD,"/usr/bin/stylua",X_OK,0x1) = 0
+2 statx(-100,"/usr/bin/nvim",AT_STATX_SYNC_AS_STAT,STATX_ALL,0x00007639b0e7f278) = 0
+2 faccessat(AT_FDCWD,"/usr/bin/nvim",X_OK,0x1) = 0
+2 openat(AT_FDCWD,"/usr/bin/nvim",O_RDONLY|O_CLOEXEC) = 12
+2 pread64(12,0x00007639a3f4fbf0,64,0) = 64
+2 close(12) = 0
+2 statx(-100,"/usr/bin/nvim",AT_STATX_SYNC_AS_STAT,STATX_ALL,0x00007639b0e7e968) = 0
+2 faccessat(AT_FDCWD,"/usr/bin/nvim",X_OK,0x1) = 0
+2 statx(-100,"/usr/bin/nvim",AT_STATX_SYNC_AS_STAT,STATX_ALL,0x00007639b0e7e958) = 0
+2 faccessat(AT_FDCWD,"/usr/bin/nvim",X_OK,0x1) = 0
+2 openat(AT_FDCWD,"/work/observations.json",O_WRONLY|O_CREAT|O_TRUNC,0666) = 12
+2 getuid() = 0
+2 fstat(12,0x00007639b0e7f348) = 0
+2 write(12,0x7639a3f50c90,2253) = 2253
+2 close(12) = 0
+2 epoll_pwait(3,129990153184136,1024,0,0,8) = 0
+2 clock_gettime(CLOCK_MONOTONIC_COARSE,0x00007639b0e791e8) = 0 ({tv_sec = 313502,tv_nsec = 612014918})
+2 clock_gettime(CLOCK_MONOTONIC_COARSE,0x00007639b0e7e3c8) = 0 ({tv_sec = 313502,tv_nsec = 612014918})
+2 unlinkat(AT_FDCWD,"/tmp/nvim.root/4zDtvd/nvim.2.0",0) = 0
+2 epoll_ctl(3,2,11,129990153200568,129990140229504,129989935754912) = 0
+2 close(11) = 0
+2 rt_sigprocmask(SIG_SETMASK,[SIGHUP SIGINT SIGQUIT SIGILL SIGTRAP SIGIOT SIGBUS SIGFPE SIGKILL SIGUSR1 SIGSEGV SIGUSR2 SIGPIPE SIGALRM SIGTERM SIGSTKFLT SIGCHLD SIGCONT SIGSTOP SIGTSTP SIGTTIN SIGTTOU SIGURG SIGXCPU SIGXFSZ SIGVTALRM SIGPROF SIGWINCH SIGIO SIGPWR SIGSYS 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64],0x00007639b0e7e2e0,8) = 0 (oldset=[])
+2 read(4,0x7639b0e7e227,1) = 1
+2 rt_sigaction(SIGPIPE,0x00007639b0e7e198,NULL) = 0
+2 write(5,0x7639b0e7e2a7,1) = 1
+2 rt_sigprocmask(SIG_SETMASK,[],NULL,8) = 0
+2 rt_sigprocmask(SIG_SETMASK,[SIGHUP SIGINT SIGQUIT SIGILL SIGTRAP SIGIOT SIGBUS SIGFPE SIGKILL SIGUSR1 SIGSEGV SIGUSR2 SIGPIPE SIGALRM SIGTERM SIGSTKFLT SIGCHLD SIGCONT SIGSTOP SIGTSTP SIGTTIN SIGTTOU SIGURG SIGXCPU SIGXFSZ SIGVTALRM SIGPROF SIGWINCH SIGIO SIGPWR SIGSYS 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64],0x00007639b0e7e2e0,8) = 0 (oldset=[])
+2 read(4,0x7639b0e7e227,1) = 1
+2 rt_sigaction(SIGHUP,0x00007639b0e7e198,NULL) = 0
+2 write(5,0x7639b0e7e2a7,1) = 1
+2 rt_sigprocmask(SIG_SETMASK,[],NULL,8) = 0
+2 rt_sigprocmask(SIG_SETMASK,[SIGHUP SIGINT SIGQUIT SIGILL SIGTRAP SIGIOT SIGBUS SIGFPE SIGKILL SIGUSR1 SIGSEGV SIGUSR2 SIGPIPE SIGALRM SIGTERM SIGSTKFLT SIGCHLD SIGCONT SIGSTOP SIGTSTP SIGTTIN SIGTTOU SIGURG SIGXCPU SIGXFSZ SIGVTALRM SIGPROF SIGWINCH SIGIO SIGPWR SIGSYS 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64],0x00007639b0e7e2e0,8) = 0 (oldset=[])
+2 read(4,0x7639b0e7e227,1) = 1
+2 rt_sigaction(SIGINT,0x00007639b0e7e198,NULL) = 0
+2 write(5,0x7639b0e7e2a7,1) = 1
+2 rt_sigprocmask(SIG_SETMASK,[],NULL,8) = 0
+2 rt_sigprocmask(SIG_SETMASK,[SIGHUP SIGINT SIGQUIT SIGILL SIGTRAP SIGIOT SIGBUS SIGFPE SIGKILL SIGUSR1 SIGSEGV SIGUSR2 SIGPIPE SIGALRM SIGTERM SIGSTKFLT SIGCHLD SIGCONT SIGSTOP SIGTSTP SIGTTIN SIGTTOU SIGURG SIGXCPU SIGXFSZ SIGVTALRM SIGPROF SIGWINCH SIGIO SIGPWR SIGSYS 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64],0x00007639b0e7e2e0,8) = 0 (oldset=[])
+2 read(4,0x7639b0e7e227,1) = 1
+2 rt_sigaction(SIGQUIT,0x00007639b0e7e198,NULL) = 0
+2 write(5,0x7639b0e7e2a7,1) = 1
+2 rt_sigprocmask(SIG_SETMASK,[],NULL,8) = 0
+2 rt_sigprocmask(SIG_SETMASK,[SIGHUP SIGINT SIGQUIT SIGILL SIGTRAP SIGIOT SIGBUS SIGFPE SIGKILL SIGUSR1 SIGSEGV SIGUSR2 SIGPIPE SIGALRM SIGTERM SIGSTKFLT SIGCHLD SIGCONT SIGSTOP SIGTSTP SIGTTIN SIGTTOU SIGURG SIGXCPU SIGXFSZ SIGVTALRM SIGPROF SIGWINCH SIGIO SIGPWR SIGSYS 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64],0x00007639b0e7e2e0,8) = 0 (oldset=[])
+2 read(4,0x7639b0e7e227,1) = 1
+2 rt_sigaction(SIGTERM,0x00007639b0e7e198,NULL) = 0
+2 write(5,0x7639b0e7e2a7,1) = 1
+2 rt_sigprocmask(SIG_SETMASK,[],NULL,8) = 0
+2 rt_sigprocmask(SIG_SETMASK,[SIGHUP SIGINT SIGQUIT SIGILL SIGTRAP SIGIOT SIGBUS SIGFPE SIGKILL SIGUSR1 SIGSEGV SIGUSR2 SIGPIPE SIGALRM SIGTERM SIGSTKFLT SIGCHLD SIGCONT SIGSTOP SIGTSTP SIGTTIN SIGTTOU SIGURG SIGXCPU SIGXFSZ SIGVTALRM SIGPROF SIGWINCH SIGIO SIGPWR SIGSYS 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64],0x00007639b0e7e2e0,8) = 0 (oldset=[])
+2 read(4,0x7639b0e7e227,1) = 1
+2 rt_sigaction(SIGTSTP,0x00007639b0e7e198,NULL) = 0
+2 write(5,0x7639b0e7e2a7,1) = 1
+2 rt_sigprocmask(SIG_SETMASK,[],NULL,8) = 0
+2 rt_sigprocmask(SIG_SETMASK,[SIGHUP SIGINT SIGQUIT SIGILL SIGTRAP SIGIOT SIGBUS SIGFPE SIGKILL SIGUSR1 SIGSEGV SIGUSR2 SIGPIPE SIGALRM SIGTERM SIGSTKFLT SIGCHLD SIGCONT SIGSTOP SIGTSTP SIGTTIN SIGTTOU SIGURG SIGXCPU SIGXFSZ SIGVTALRM SIGPROF SIGWINCH SIGIO SIGPWR SIGSYS 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64],0x00007639b0e7e2e0,8) = 0 (oldset=[])
+2 read(4,0x7639b0e7e227,1) = 1
+2 rt_sigaction(SIGPWR,0x00007639b0e7e198,NULL) = 0
+2 write(5,0x7639b0e7e2a7,1) = 1
+2 rt_sigprocmask(SIG_SETMASK,[],NULL,8) = 0
+2 rt_sigprocmask(SIG_SETMASK,[SIGHUP SIGINT SIGQUIT SIGILL SIGTRAP SIGIOT SIGBUS SIGFPE SIGKILL SIGUSR1 SIGSEGV SIGUSR2 SIGPIPE SIGALRM SIGTERM SIGSTKFLT SIGCHLD SIGCONT SIGSTOP SIGTSTP SIGTTIN SIGTTOU SIGURG SIGXCPU SIGXFSZ SIGVTALRM SIGPROF SIGWINCH SIGIO SIGPWR SIGSYS 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64],0x00007639b0e7e2e0,8) = 0 (oldset=[])
+2 read(4,0x7639b0e7e227,1) = 1
+2 rt_sigaction(SIGUSR1,0x00007639b0e7e198,NULL) = 0
+2 write(5,0x7639b0e7e2a7,1) = 1
+2 rt_sigprocmask(SIG_SETMASK,[],NULL,8) = 0
+2 rt_sigprocmask(SIG_SETMASK,[SIGHUP SIGINT SIGQUIT SIGILL SIGTRAP SIGIOT SIGBUS SIGFPE SIGKILL SIGUSR1 SIGSEGV SIGUSR2 SIGPIPE SIGALRM SIGTERM SIGSTKFLT SIGCHLD SIGCONT SIGSTOP SIGTSTP SIGTTIN SIGTTOU SIGURG SIGXCPU SIGXFSZ SIGVTALRM SIGPROF SIGWINCH SIGIO SIGPWR SIGSYS 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64],0x00007639b0e7e300,8) = 0 (oldset=[])
+2 read(4,0x7639b0e7e247,1) = 1
+2 rt_sigaction(SIGWINCH,0x00007639b0e7e1b8,NULL) = 0
+2 write(5,0x7639b0e7e2c7,1) = 1
+2 rt_sigprocmask(SIG_SETMASK,[],NULL,8) = 0
+2 clock_gettime(CLOCK_MONOTONIC,0x00007639b0e7e3f8) = 0 ({tv_sec = 313502,tv_nsec = 615813704})
+2 epoll_pwait(3,129990153184040,1024,0,0,8) = 0
+2 clock_gettime(CLOCK_MONOTONIC_COARSE,0x00007639b0e79188) = 0 ({tv_sec = 313502,tv_nsec = 614014877})
+2 clock_gettime(CLOCK_MONOTONIC_COARSE,0x00007639b0e7e368) = 0 ({tv_sec = 313502,tv_nsec = 615014857})
+2 close(6) = 0
+2 close(7) = 0
+2 close(8) = 0
+2 close(10) = 0
+2 close(3) = 0
+2 close(9) = 0
+2 statx(-100,"/tmp/nvim.root/4zDtvd",AT_SYMLINK_NOFOLLOW|AT_STATX_SYNC_AS_STAT,STATX_ALL,0x00007639b0e7df88) = 0
+2 openat(AT_FDCWD,"/tmp/nvim.root/4zDtvd",O_RDONLY|O_DIRECTORY|O_NONBLOCK|O_CLOEXEC) = 3
+2 fstat(3,0x00007639b0e7df88) = 0
+2 getdents64(3,0x7639a3f1fc70,32768) = 48
+2 getdents64(3,0x7639a3f1fc70,32768) = 0
+2 close(3) = 0
+2 unlinkat(AT_FDCWD,"/tmp/nvim.root/4zDtvd",AT_REMOVEDIR) = 0
+2 close(4) = 0
+2 close(5) = 0
+2 exit_group(0)

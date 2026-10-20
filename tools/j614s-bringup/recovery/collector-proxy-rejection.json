@@ -1,0 +1,13 @@
+{
+  "status": "WORKS within identity-negative-control scope",
+  "actual_identity": "1209:316d installed m1n1 proxy",
+  "usb_enumeration": 63,
+  "collector_sha256": "e01485e4842eb942e0a93d1217df95f913bf615aa8c1aa52ae278c745ea600d7",
+  "discovery_result": "REJECTED",
+  "error": "Expected exactly one matching physical ACM interface; found 0",
+  "serial_opened": false,
+  "bytes_transmitted": 0,
+  "target_actions": [],
+  "hardware_boot": "UNTESTED",
+  "recovery": "UNVERIFIED"
+}
