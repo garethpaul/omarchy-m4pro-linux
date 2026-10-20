@@ -1,5 +1,6 @@
 // SPDX-License-Identifier: GPL-2.0-only OR MIT
 /* J614s G16S bootstrap qualification. No render node or application INIT. */
+#include <linux/atomic.h>
 #include <linux/bitfield.h>
 #include <linux/device.h>
 #include <linux/io.h>
@@ -16,12 +17,18 @@
 #define CRASH_OFFSET 0xa0000
 #define CRASH_SIZE 0x8000
 
+enum j614s_gfx_state {
+	J614S_GFX_NOT_READY,
+	J614S_GFX_READY,
+	J614S_GFX_CRASHED,
+};
+
 struct j614s_gfx {
 	struct device *dev;
 	void __iomem *asc, *sgx, *data;
 	struct resource *data_res;
 	struct apple_rtkit *rtk;
-	bool ready;
+	atomic_t state;
 };
 
 static int j614s_gfx_shmem_setup(void *cookie, struct apple_rtkit_shmem *buf)
@@ -51,7 +58,7 @@ static void j614s_gfx_crashed(void *cookie, const void *log, size_t size)
 {
 	struct j614s_gfx *gfx = cookie;
 
-	WRITE_ONCE(gfx->ready, false);
+	atomic_set(&gfx->state, J614S_GFX_CRASHED);
 	dev_err(gfx->dev, "G16 firmware crashed; RTKit captured %#zx bytes\n", size);
 }
 
@@ -65,9 +72,17 @@ static ssize_t bootstrap_state_show(struct device *dev,
 				    struct device_attribute *attr, char *buf)
 {
 	struct j614s_gfx *gfx = dev_get_drvdata(dev);
+	int state = atomic_read(&gfx->state);
+	const char *name;
 
+	if (state == J614S_GFX_CRASHED || apple_rtkit_is_crashed(gfx->rtk))
+		name = "CRASHED";
+	else if (state == J614S_GFX_READY && apple_rtkit_is_running(gfx->rtk))
+		name = "RTKIT_READY";
+	else
+		name = "NOT_READY";
 	return sysfs_emit(buf, "%s protocol=%u rendering=unimplemented\n",
-		READ_ONCE(gfx->ready) ? "RTKIT_READY" : "NOT_READY",
+		name,
 		apple_rtkit_protocol_version(gfx->rtk));
 }
 static DEVICE_ATTR_RO(bootstrap_state);
@@ -78,7 +93,8 @@ static void j614s_gfx_stop(struct j614s_gfx *gfx)
 {
 	u32 value;
 
-	WRITE_ONCE(gfx->ready, false);
+	/* A later stop must not erase the latched crash diagnosis. */
+	atomic_cmpxchg(&gfx->state, J614S_GFX_READY, J614S_GFX_NOT_READY);
 	value = readl(gfx->asc + CPU_CONTROL);
 	writel(value & ~CPU_RUN, gfx->asc + CPU_CONTROL);
 	value = readl(gfx->asc + CPU_CONTROL);
@@ -105,6 +121,7 @@ static int j614s_gfx_probe(struct platform_device *pdev)
 	if (!gfx)
 		return -ENOMEM;
 	gfx->dev = dev;
+	atomic_set(&gfx->state, J614S_GFX_NOT_READY);
 	res = platform_get_resource_byname(pdev, IORESOURCE_MEM, "asc");
 	if (!res || res->start != 0x28a600000ULL || resource_size(res) != 0x4000)
 		return -EINVAL;
@@ -152,7 +169,15 @@ static int j614s_gfx_probe(struct platform_device *pdev)
 		j614s_gfx_stop(gfx);
 		return dev_err_probe(dev, ret ?: -EPROTONOSUPPORT, "G16 bootstrap failed\n");
 	}
-	WRITE_ONCE(gfx->ready, true);
+	/* The crash callback may run as wake completes. Publish readiness only
+	 * if it has not already latched a crash; later crashes remain terminal.
+	 */
+	if (!apple_rtkit_is_running(gfx->rtk) ||
+	    atomic_cmpxchg(&gfx->state, J614S_GFX_NOT_READY,
+			   J614S_GFX_READY) != J614S_GFX_NOT_READY) {
+		j614s_gfx_stop(gfx);
+		return dev_err_probe(dev, -EIO, "G16 firmware stopped during bootstrap\n");
+	}
 	dev_info(dev, "G16S B1 RTKit ready, protocol 12; 16 cores; application INIT not sent\n");
 	return 0;
 }
