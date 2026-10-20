@@ -27,8 +27,12 @@
 #include "dcp-internal.h"
 #include "iomfb.h"
 #include "iomfb_internal.h"
+#include "iomfb-packet.h"
 #include "parser.h"
 #include "trace.h"
+
+static_assert(sizeof(struct dcp_packet_header) == IOMFB_PACKET_HEADER_SIZE);
+static_assert(DCP_PACKET_ALIGNMENT == IOMFB_PACKET_ALIGNMENT);
 
 static int dcp_tx_offset(enum dcp_context_id id)
 {
@@ -198,7 +202,7 @@ void dcp_push(struct apple_dcp *dcp, bool oob, const struct dcp_method_entry *ca
 }
 
 /* Parse a callback tag "D123" into the ID 123. Returns -EINVAL on failure. */
-int dcp_parse_tag(char tag[4])
+int dcp_parse_tag(const char tag[4])
 {
 	u32 d[3];
 	int i;
@@ -264,16 +268,43 @@ void dcp_hotplug(struct work_struct *work)
 }
 
 static void dcpep_handle_cb(struct apple_dcp *dcp, enum dcp_context_id context,
-			    void *data, u32 length, u16 offset)
+			    void *data, const struct dcp_packet_header *hdr,
+			    u32 length, u16 offset)
 {
 	struct device *dev = dcp->dev;
-	struct dcp_packet_header *hdr = data;
 	void *in, *out;
 	int tag = dcp_parse_tag(hdr->tag);
+	iomfb_cb_handler handler = NULL;
 	struct dcp_channel *ch = dcp_get_channel(dcp, context);
 	u8 depth;
 
-	if (tag < 0 || tag >= IOMFB_MAX_CB || !dcp->cb_handlers || !dcp->cb_handlers[tag]) {
+	if (!ch || ch->depth >= DCP_MAX_CALL_DEPTH) {
+		dev_warn(dev, "callback call stack exhausted on context %u\n", context);
+		return;
+	}
+
+	if (tag >= 0 && tag < IOMFB_MAX_CB) {
+		if (dcp->cb_contracts) {
+			const struct iomfb_cb_contract *contract = &dcp->cb_contracts[tag];
+
+			handler = contract->handler;
+			/* Validate before clearing output, mutating depth, or dispatching.
+			 * Extra bytes may be opaque; these are minimum typed extents.
+			 */
+			if (handler && (hdr->in_len < contract->min_in ||
+					hdr->out_len < contract->min_out)) {
+				dev_warn(dev, "short callback D%03d in %u/%u out %u/%u\n",
+					 tag, hdr->in_len, contract->min_in,
+					 hdr->out_len, contract->min_out);
+				return;
+			}
+		} else if (dcp->cb_handlers) {
+			/* Preserve older firmware's existing dispatch path. */
+			handler = dcp->cb_handlers[tag];
+		}
+	}
+
+	if (!handler) {
 		dev_warn(dev, "received unknown callback %c%c%c%c\n",
 			 hdr->tag[3], hdr->tag[2], hdr->tag[1], hdr->tag[0]);
 		return;
@@ -282,8 +313,7 @@ static void dcpep_handle_cb(struct apple_dcp *dcp, enum dcp_context_id context,
 	in = data + sizeof(*hdr);
 	out = in + hdr->in_len;
 
-	// TODO: verify that in_len and out_len match our prototypes
-	// for now just clear the out data to have at least consistent results
+	/* Zero the bounded output after any available typed contract checks. */
 	if (hdr->out_len)
 		memset(out, 0, hdr->out_len);
 
@@ -291,34 +321,35 @@ static void dcpep_handle_cb(struct apple_dcp *dcp, enum dcp_context_id context,
 	ch->output[depth] = out;
 	ch->end[depth] = offset + ALIGN(length, DCP_PACKET_ALIGNMENT);
 
-	if (dcp->cb_handlers[tag](dcp, tag, out, in)) {
+	if (handler(dcp, tag, out, in)) {
 		dcp_ack(dcp, context);
 	}
 }
 
-static void dcpep_handle_ack(struct apple_dcp *dcp, enum dcp_context_id context,
-			     void *data, u32 length)
+static void dcpep_handle_ack(struct apple_dcp *dcp, enum dcp_context_id context)
 {
-	struct dcp_packet_header *header = data;
 	struct dcp_channel *ch = dcp_get_channel(dcp, context);
-	void *cookie;
+	void *cookie, *output;
 	dcp_callback_t cb;
 
-	if (!ch) {
-		dev_warn(dcp->dev, "ignoring ack on context %X\n", context);
+	if (!ch || !ch->depth) {
+		dev_warn(dcp->dev, "ignoring unsolicited ack on context %X\n", context);
 		return;
 	}
 
+	/* Firmware output must be visible before the completion reads it. */
+	dma_rmb();
 	dcp_pop_depth(&ch->depth);
 
 	cb = ch->callbacks[ch->depth];
 	cookie = ch->cookies[ch->depth];
+	output = ch->output[ch->depth];
 
 	ch->callbacks[ch->depth] = NULL;
 	ch->cookies[ch->depth] = NULL;
 
 	if (cb)
-		cb(dcp, data + sizeof(*header) + header->in_len, cookie);
+		cb(dcp, output, cookie);
 }
 
 static void dcpep_got_msg(struct apple_dcp *dcp, u64 message)
@@ -327,6 +358,7 @@ static void dcpep_got_msg(struct apple_dcp *dcp, u64 message)
 	u16 offset;
 	u32 length;
 	int channel_offset;
+	struct dcp_packet_header header;
 	void *data;
 
 	ctx_id = FIELD_GET(IOMFB_MSG_CONTEXT, message);
@@ -340,15 +372,32 @@ static void dcpep_got_msg(struct apple_dcp *dcp, u64 message)
 		return;
 	}
 
+	/* ACKs carry no packet. The outstanding host call owns its output pointer. */
+	if (FIELD_GET(IOMFB_MSG_ACK, message)) {
+		dcpep_handle_ack(dcp, ctx_id);
+		return;
+	}
+
+	if (!iomfb_packet_bounds_valid(offset, length)) {
+		dev_warn(dcp->dev, "invalid callback range context %u offset %u length %u\n",
+			 ctx_id, offset, length);
+		return;
+	}
+
 	data = dcp->shmem + channel_offset + offset;
 	/* Pair with firmware's mailbox notification before consuming the packet
 	 * from the retained WC mapping. */
 	dma_rmb();
 
-	if (FIELD_GET(IOMFB_MSG_ACK, message))
-		dcpep_handle_ack(dcp, ctx_id, data, length);
-	else
-		dcpep_handle_cb(dcp, ctx_id, data, length, offset);
+	/* Keep validated lengths local; do not reread mutable shared fields. */
+	memcpy(&header, data, sizeof(header));
+	if (!iomfb_packet_lengths_valid(length, header.in_len, header.out_len)) {
+		dev_warn(dcp->dev, "invalid callback envelope context %u length %u in %u out %u\n",
+			 ctx_id, length, header.in_len, header.out_len);
+		return;
+	}
+
+	dcpep_handle_cb(dcp, ctx_id, data, &header, length, offset);
 }
 
 int dcp_get_modes(struct drm_connector *connector)

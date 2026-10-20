@@ -764,6 +764,14 @@ static u8 dcpep_cb_prop_end(struct apple_dcp *dcp,
 	return resp;
 }
 
+/* Deferred callbacks have no typed wrapper. Their eventual completions write
+ * one success byte (boot_done and complete_*_service_matched). D100 only ACKs.
+ */
+DCP_CB_SIZE(iomfbep_cb_match_pmu_service, 0, 0);
+DCP_CB_SIZE(iomfbep_cb_match_pmu_service_2, 0, sizeof(u8));
+DCP_CB_SIZE(iomfbep_cb_match_backlight_service, 0, sizeof(u8));
+DCP_CB_SIZE(dcpep_cb_boot_1, 0, sizeof(u8));
+
 /* Boot sequence */
 static void boot_done(struct apple_dcp *dcp, void *out, void *cookie)
 {
