@@ -298,7 +298,8 @@ impl Bootstrap {
         let gpu_revision = (gpu_id >> 8) & 0xff;
         dev_info!(dev, "G16: GPU ID={:#010x} revision={:#04x}\n", gpu_id, gpu_revision);
         for offset in [0x1000104, 0x1000108] {
-            sgx_io.relaxed().write32(sgx_io.relaxed().read32(offset) | 1, offset);
+            let value = sgx_io.relaxed().try_read32(offset)?;
+            sgx_io.relaxed().try_write32(value | 1, offset)?;
         }
         sgx_io.relaxed().write32(6, 0xd06030);
         drop(sgx_guard);
