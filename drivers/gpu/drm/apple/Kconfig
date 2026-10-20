@@ -17,6 +17,10 @@ config DRM_APPLE
 	help
 	  Say Y if you have an Apple Silicon chipset.
 
+	  A module requires a bootloader-provided no-map scanout pool with
+	  a pre-mapped DART IOVA range. Other scanout allocations are rejected
+	  before binding the display components.
+
 config DRM_APPLE_AUDIO
 	bool "DisplayPort/HDMI Audio support"
 	default y
