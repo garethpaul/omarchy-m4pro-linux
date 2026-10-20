@@ -35,6 +35,12 @@ static void j614s_usb_trace(struct device *dev, const char *step, int value)
 		dev_info(dev, "J614S_USB: %s %d\n", step, value);
 }
 
+static void j614s_ep0_trace(struct dwc3 *dwc, const char *step, int value)
+{
+	if (dwc->gadget && dwc->gadget->state == USB_STATE_CONFIGURED)
+		j614s_usb_trace(dwc->dev, step, value);
+}
+
 static void __dwc3_ep0_do_control_status(struct dwc3 *dwc, struct dwc3_ep *dep);
 static void __dwc3_ep0_do_control_data(struct dwc3 *dwc,
 		struct dwc3_ep *dep, struct dwc3_request *req);
@@ -76,8 +82,10 @@ static int dwc3_ep0_start_trans(struct dwc3_ep *dep)
 	struct dwc3			*dwc;
 	int				ret;
 
-	if (dep->flags & DWC3_EP_TRANSFER_STARTED)
+	if (dep->flags & DWC3_EP_TRANSFER_STARTED) {
+		j614s_ep0_trace(dep->dwc, "start.skip", dep->number);
 		return 0;
+	}
 
 	dwc = dep->dwc;
 
@@ -86,6 +94,7 @@ static int dwc3_ep0_start_trans(struct dwc3_ep *dep)
 	params.param1 = lower_32_bits(dwc->ep0_trb_addr);
 
 	ret = dwc3_send_gadget_ep_cmd(dep, DWC3_DEPCMD_STARTTRANSFER, &params);
+	j614s_ep0_trace(dwc, "start.ret", ret);
 	if (ret < 0)
 		return ret;
 
@@ -871,6 +880,9 @@ static void dwc3_ep0_inspect_setup(struct dwc3 *dwc,
 		ret = dwc3_ep0_delegate_req(dwc, ctrl);
 	}
 
+	j614s_ep0_trace(dwc, "setup.ret", ret);
+	j614s_ep0_trace(dwc, "setup.next", dwc->ep0_next_event);
+
 	if (ret == USB_GADGET_DELAYED_STATUS)
 		dwc->delayed_status = true;
 
@@ -944,6 +956,8 @@ static void dwc3_ep0_complete_status(struct dwc3 *dwc,
 	struct dwc3_ep		*dep;
 	struct dwc3_trb		*trb;
 	u32			status;
+
+	j614s_ep0_trace(dwc, "status.complete", event->endpoint_number);
 
 	dep = dwc->eps[0];
 	trb = dwc->ep0_trb;
@@ -1106,7 +1120,9 @@ static void __dwc3_ep0_do_control_status(struct dwc3 *dwc, struct dwc3_ep *dep)
 {
 	int	ret;
 
+	j614s_ep0_trace(dwc, "status.enter", dep->number);
 	ret = dwc3_ep0_start_control_status(dep);
+	j614s_ep0_trace(dwc, "status.ret", ret);
 	if (ret)
 		dev_err(dwc->dev,
 			"ep0 status phase start transfer failed: %d\n", ret);
@@ -1162,6 +1178,10 @@ void dwc3_ep0_end_control_data(struct dwc3 *dwc, struct dwc3_ep *dep)
 static void dwc3_ep0_xfernotready(struct dwc3 *dwc,
 		const struct dwc3_event_depevt *event)
 {
+	j614s_ep0_trace(dwc, "notready.status", event->status);
+	j614s_ep0_trace(dwc, "notready.flags", dwc->ep0_next_event |
+			 (dwc->delayed_status << 8) | (dwc->setup_packet_pending << 9));
+
 	switch (event->status) {
 	case DEPEVT_STATUS_CONTROL_DATA:
 		if (!dwc->softconnect || !dwc->connected)
@@ -1226,6 +1246,9 @@ void dwc3_ep0_interrupt(struct dwc3 *dwc,
 	struct dwc3_ep	*dep = dwc->eps[event->endpoint_number];
 	u8		cmd;
 
+	j614s_ep0_trace(dwc, "irq.event", event->endpoint_event |
+			 (event->endpoint_number << 8) | (event->status << 16));
+
 	switch (event->endpoint_event) {
 	case DWC3_DEPEVT_XFERCOMPLETE:
 		dwc3_ep0_xfer_complete(dwc, event);
@@ -1251,4 +1274,6 @@ void dwc3_ep0_interrupt(struct dwc3 *dwc,
 		dev_err(dwc->dev, "unknown endpoint event %d\n", event->endpoint_event);
 		break;
 	}
+	j614s_ep0_trace(dwc, "irq.exit", dwc->ep0state |
+			 (dwc->ep0_next_event << 8));
 }
