@@ -1,0 +1,26 @@
+{
+  "status": "PARTIAL: source-only staging hazard identified; no target staging",
+  "generic_helper": {
+    "source_commit": "6249e0ecdb7677b6afa01989c23344962253e954",
+    "path": "proxyclient/tools/chainload.py",
+    "sha256": "e0761d173ee96728c6679a46a89c8754bc1393055bc6ed0ced77304225de91f9",
+    "destination": "resident u.base",
+    "mechanism": "copy stub writes flat candidate back over resident image before branch",
+    "compatible_with_preserved_resident_release_table": false
+  },
+  "historical_test52_helper": {
+    "sha256": "bbbb72f433ef4bbe918e1a458a73fe40eab5a24f4a37724f230aa01e0a309c55",
+    "mechanism": "separate PIC child span beyond resident end; vector child+0x800 with copied bootargs",
+    "safe_to_reuse_unchanged": false,
+    "reason": "includes PMU --reset, old artifact/session and watchdog actions"
+  },
+  "future_required_checks": [
+    "separate child/staging/bootargs spans exclude resident code, stacks and spin table",
+    "exact live ADT carveout and heap ownership checks",
+    "preserve paired resident release addresses and no secondary RVBAR overwrite",
+    "fresh readbacks and CRC/size/bootarg bounds",
+    "supervised physical recovery and concrete primary staging review"
+  ],
+  "hardware": "UNTESTED",
+  "target_actions": []
+}

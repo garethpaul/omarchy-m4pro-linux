@@ -13,7 +13,7 @@
   "files": [
     {
       "file": "STATUS.md",
-      "sha256": "9555080098f522d1664542d4613486e3238cb6f79fd257552e0ab05ec71ab946"
+      "sha256": "dc6fac91bf57072040eb3899bb24cd481421e903326e9e26b17a8af159b3757f"
     },
     {
       "file": "adt-node-comparison.json",
@@ -62,6 +62,22 @@
     {
       "file": "userspace-conform-root.json",
       "sha256": "316775569fa8bd5705f023632209e802cc08865b5fd731274d966522987374e8"
+    },
+    {
+      "file": "native-dt-root-tests.json",
+      "sha256": "409cfbb81b9700898eb45a86569c19356880d88c8050e168bcb6f658d9a03b1b"
+    },
+    {
+      "file": "native-bundle-root-tests.json",
+      "sha256": "99708206a3eee2f775ce5934abdf66701623fa16df7b7133d78cb96cedd7e967"
+    },
+    {
+      "file": "native-bundle-root-tests.txt",
+      "sha256": "ff79d332f09c8d389d393d9f2c78c8d70100c16035819ce7f9815fe499988571"
+    },
+    {
+      "file": "proxy-checkpoint-0745.json",
+      "sha256": "61d04e17235b75d2e8da4884a6dbade88ff97b1c761b49a00268fcb9059f3727"
     }
   ]
 }

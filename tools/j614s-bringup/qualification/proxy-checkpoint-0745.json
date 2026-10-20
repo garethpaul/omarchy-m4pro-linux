@@ -1,0 +1,19 @@
+{
+  "status": "PARTIAL: current proxy state observed; Linux not running",
+  "observation_utc": "2026-10-20T07:45:43Z",
+  "webcam_readout": "Running proxy...",
+  "jpeg_sha256": "a7f6382a53092c96a207c48c620e5dad8d103ae9ff56fc1902cdd3d604c8b7ae",
+  "jpeg_bytes": 107401,
+  "jpeg_published": false,
+  "camera_decoder_warning": "mjpeg overread8; returned JPEG visually inspected and screen text readable",
+  "usb_before_after": {
+    "vendor": "1209",
+    "product": "316d",
+    "product_string": "m1n1 uartproxy8e0cf28",
+    "enumeration": "63"
+  },
+  "fingerbot_used": false,
+  "target_actions": [],
+  "new_kernel_hardware_qualification": "UNTESTED",
+  "recovery": "UNVERIFIED"
+}

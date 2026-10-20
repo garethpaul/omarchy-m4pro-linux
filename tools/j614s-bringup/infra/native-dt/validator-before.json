@@ -1,0 +1,18 @@
+{
+  "controls": [
+    {
+      "before": "INCORRECTLY_ACCEPTED",
+      "case": "allowed_node_disabled",
+      "nodes_checked": 31
+    },
+    {
+      "before": "INCORRECTLY_ACCEPTED",
+      "case": "CPU_address_cells_changed",
+      "nodes_checked": 31
+    }
+  ],
+  "generator_before_sha256": "652621d46e28239acb5e5aecca17121b38e3f153e7237781a9ca430d14bb0e7c",
+  "hardware": "UNTESTED",
+  "status": "SEMANTIC_VALIDATOR_GAP_REPRODUCED",
+  "synthetic": true
+}

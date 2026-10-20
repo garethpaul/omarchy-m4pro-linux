@@ -1,0 +1,36 @@
+{
+  "Image_bytes": 14772232,
+  "Image_sha256": "f9d7b637bc70fcab77b5806c43c39ae333e633fcc63fa6ccaa77cd22c91d4604",
+  "config_sha256": "6c5aba7745d918c528300c5a395fcd7db0c2b718acda7d1467af2816a8d56516",
+  "crc32_source_sha256": "7f9b8a8149134e4b9c8ed36d2f0426eebd7264f4117d4648a971fe207cea2350",
+  "dt_generator_sha256": "f37e9cc51538abae0fffc407d768561456843055799e25ce9940c89afb8c7c5c",
+  "dt_profile_sha256": "4ad1e0c76532744bb9c424930c8fc0f1158c40389f26f03dc6e7e53ebc8448bc",
+  "elf_layout": {
+    "file_end_offset": 1310720,
+    "payload_offset": 3538944
+  },
+  "host_tools": {
+    "dtc": "79f7465d2df844e1544e76581494359e01329d76f0d42d621c0e5fd5c484684d",
+    "fdtget": "50ea32c25fe795efee29920f596a993f080cef6cb4cf69e4aa5e56ce6f21b453",
+    "git": "2912a2a32f408c9b8122e476251b32f4b35f4c3f0c15961686ae87ca456d384c",
+    "llvm-nm": "943a52c986ca4d0e429b523efcf6b4bdd8c9bd90616f5781ede4ab32124f7227",
+    "llvm-objcopy": "c03c694462c48b4f6f84d62dfff530cef3b539583dddf62681fb318e2f9ef151"
+  },
+  "initrd_bytes": 1098565,
+  "initrd_sha256": "8fd6f861c42e4585156ff747ef657fbdba04b8bc307d0f4a0c2c226b20d16be1",
+  "kernel_commit": "8f2f3d13600aacadd93d577855b7e212b8ae57ff",
+  "kernel_contract_sha256": "0fce64ecf0685564cfac0fb357633f6d5561d900d2320c7c557542ca4d616165",
+  "kernel_manifest_sha256": "a407b1454ceb2a1de13026a3041fee208fc27d8a145b7244ff640fc18022fb1a",
+  "kernel_verifier_sha256": "c84ae596247f9f08eff693d8234917fa0f90bea69659da20db2a5a047a6508eb",
+  "linker_source_sha256": "c38df89f8105789f79b4bd0f14e7ddce552458f1e402be36ca953854b92e7f5f",
+  "loader_bytes": 3538944,
+  "loader_commit": "6249e0ecdb7677b6afa01989c23344962253e954",
+  "loader_elf_bytes": 5969000,
+  "loader_elf_sha256": "0ea9ac6ddaf850260a3b26fe55763f2a30459afcf9d0d6e0b685cd1784765f84",
+  "loader_sha256": "2309dfbb368c5feadfc0ae70e0fbb11ac8e28132c815ab1c3eb63a66821a0e00",
+  "loader_source_sha256": "fc88b9e9da14593896220f5752c7a84896c2007b56f7bd8ba7d562beae4b4118",
+  "native_format_sha256": "01cd865464162c3c12e0537cd4e30e394c3644ce7ff3d4b88552fb2abbd48bd5",
+  "probe_manifest_sha256": "b26d326c0448e03a18a2f73e7b2d5e5171276aff9c22f1a9a7ca5f94d8427d7d",
+  "schema": 1,
+  "tinf_header_sha256": "30bc66f2a23341e01dbc7da6e3837927189f4f077446b139fcae2ab73f59def1"
+}

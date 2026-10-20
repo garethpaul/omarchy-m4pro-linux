@@ -1,0 +1,16 @@
+{
+  "status": "WORKS within offline file/format/refusal controls; hardware UNTESTED",
+  "source_evidence_commit": "da631b8d258293ac9273557dbde5baac3b0176ce",
+  "root_test_count": 30,
+  "root_skips": 0,
+  "root_test_log_sha256": "ff79d332f09c8d389d393d9f2c78c8d70100c16035819ce7f9815fe499988571",
+  "actual_component_identity": "paired reproduced loader ELF/flat, kernel Image and framed initrd reverified",
+  "actual_capture03": "unchanged; secondary/WFE refusal before DT/diagnostics/output",
+  "real_container_produced": false,
+  "positive_fixtures": "wholly synthetic, non-bootable format fixtures",
+  "native_C_crc": "host-only pinned algorithm matches Python on six vectors; whole native consumer untested",
+  "target_actions": [],
+  "staging_placement": "UNTESTED",
+  "recovery": "UNVERIFIED",
+  "boot_authority": false
+}

@@ -1,0 +1,15 @@
+{
+  "DT_or_output_directory_created": false,
+  "adt_sha256": "ee5d2412e0cee64ad8861bcdc3cb2301e393041b746355c8fd3759062f3cf96a",
+  "bootargs_sha256": "1a2b271f7cc02878edb0b4a919df814539d9567cdba86a196164becbbce3368e",
+  "capture_modified": false,
+  "capture_sha256": "eb07075cacddfbec1233d1f00f12804fb76f799002a00ac5454adbeed4129779",
+  "observer_sha256": "fce3a31052563734305b5c475bce7d247cf0c716fb0d0f177b81acf1da3c55d7",
+  "resident_wfe_mode": false,
+  "scope": "Frozen read-only input03; no live target status or recovery qualification",
+  "secondary_flags_set": 0,
+  "secondary_slots_idle": false,
+  "status": "BLOCKED (secondary slots not idle/WFE false)",
+  "target_actions": false,
+  "usb_session": "63"
+}

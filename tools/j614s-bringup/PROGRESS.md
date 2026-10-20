@@ -636,3 +636,58 @@ no-edit result and missing-command refusal pass. Only supported command/prefix
 overrides provide QEMU dispatch; plugin/runner checks are unchanged. Full
 LazyVim/Mason, native target dispatch and whole-transaction installation are
 UNTESTED. This is actual plugin execution, not mocked options-callback evidence.
+
+## Pinned DT generation and current-input refusal
+
+Integrated66557cd as52241f6. Root runs all65 controls using exact qualified
+source/artifacts and frozen private input03: PASS, original capture unchanged,
+actual input refuses before DT/output creation. Positive minimal and strictANS
+fixtures are independently constructed, synthetic and UNRELOCATED. Exact
+canonical re-render/compile equality closes reproduced semantic-only validator
+gaps; pinned source-byte execution closes reproduced helper-cache bypass. DTC
+warnings/errors stay fatal with diagnostics retained, not disabled. Current
+0secondary/WFEfalse observation is a prerequisite failure, not a regression of
+the prior12-core Linux result. No target access, core start, watchdog, staging
+or boot occurred. Separate offline bundle framing is the remaining active
+preparation lane; hardware qualification still needs supervised recovery.
+
+## Separate resident/child placement remains mandatory
+
+Read-only source audit confirms that the generic6249 proxyclient chainloader
+chooses resident u.base and its copy stub overwrites that image. It cannot be
+used with a DT that preserves the installed resident's release table. Historical
+test52 instead allocated a separate PIC child beyond resident end; its legacy
+helper is still unsafe to reuse unchanged because it includes PMU --reset and
+old artifact/session/watchdog operations. recovery/staging-source-hazard.json
+records both exact source hashes and required future live placement checks.
+The offline container builder provides no staging/placement qualification.
+No helper was executed and no target state changed.
+
+## Final offline native container preparation
+
+Integratedda631b8 as68a0b63. Root verifies five source hashes and independently
+runs all30 controls, no skips, with central DT/observer/probe proofs and actual
+qualified loader/ELF/Image/initrd inputs. Complete flat3538944 bytes and payload
+offset0x360000 are distinct from file_end0x140000; Image memory16121856 fits
+the exact32MiB copy offset. Six host-only pinned C checksum vectors match zlib.
+Current frozen capture03 API and assemble CLI refuse secondary/WFE admission
+before reading DT proof or creating diagnostics/container output. Captures and
+all older artifacts remain unchanged. Synthetic positive bytes never combine
+real candidate components or qualify a native consumer/placement/boot.
+The earlier model-capacity failure was resumed in the same worker/scope; no
+model change, target access or authority change occurred.
+
+This goal continuation is PROGRESS, not an external-gate-only turn: actual ARM
+Neovim/Conform execution, serial framing, pinned DT generation, CRC/container
+checks and resident-overwrite hazard documentation were completed and replayed.
+All safe preparation lanes are now frozen. The pending physical-recovery
+availability question remains unanswered. No next RAM boot is authorized while
+that supervised window is missing and remote recovery remains unverified.
+GPU/DCP XNU capture and protected persistence remain separate later scope.
+The goal is incomplete; this checkpoint does not claim ongoing unseen work.
+
+Final07:45:43UTC webcam readout still shows Running proxy; USB63/8e0cf28
+identity unchanged. The capture returned a minor MJPEG decoder warning; actual
+JPEG was viewed and text readable. Address-free observation/hash is retained
+in qualification/proxy-checkpoint-0745.json; raw screen stays private. No
+Fingerbot, reboot, core, PMU, timer, target code or protected write was used.

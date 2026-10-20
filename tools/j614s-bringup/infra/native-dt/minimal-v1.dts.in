@@ -1,0 +1,107 @@
+/dts-v1/;
+/* UNRELOCATED TEMPLATE. Native loader must patch memory, initrd and reservations. */
+/ {
+    model = "Apple J614s RAM diagnostic UNRELOCATED TEMPLATE";
+    compatible = "apple,j614s", "apple,t6040", "apple,arm-platform";
+    #address-cells = <2>;
+    #size-cells = <2>;
+    chosen {
+        #address-cells = <2>;
+        #size-cells = <2>;
+        ranges;
+        bootargs = "console=tty0 loglevel=7 nokaslr rdinit=/init panic=0 j614s_test_nonce=@NONCE@";
+        linux,initrd-start = <0 0>;
+        linux,initrd-end = <0 0>;
+        framebuffer@@VIDEO_BASE_HEX@ {
+            compatible = "simple-framebuffer";
+            reg = <@VIDEO_REG@>;
+            width = <@VIDEO_WIDTH@>;
+            height = <@VIDEO_HEIGHT@>;
+            stride = <@VIDEO_STRIDE@>;
+            format = "x2r10g10b10";
+            status = "okay";
+        };
+    };
+    cpus {
+        #address-cells = <2>;
+        #size-cells = <0>;
+@CPUS@
+    };
+    memory@0 { device_type = "memory"; reg = <0 0 1 0>; };
+    reserved-memory {
+        #address-cells = <2>;
+        #size-cells = <2>;
+        ranges;
+        retention-control@3fe00000 { reg = <0 0x3fe00000 0 0x4000>; no-map; };
+        ramoops@3ff00000 {
+            compatible = "ramoops";
+            reg = <0 0x3ff00000 0 0x100000>;
+            record-size = <0x20000>;
+            console-size = <0x80000>;
+            pmsg-size = <0>;
+            ftrace-size = <0>;
+        };
+    };
+    aic: interrupt-controller@502400000 {
+        compatible = "apple,t6040-aic3", "apple,t8122-aic3";
+        #interrupt-cells = <3>;
+        #address-cells = <0>;
+        interrupt-controller;
+        reg = <0x5 0x02400000 0 0x1cc000>, <0x5 0x02440000 0 4>;
+        reg-names = "core", "event";
+    };
+    usbphy: phy@38aa90000 {
+        compatible = "apple,t6040-usb2-inherited";
+        reg = <0x3 0x8aa90000 0 0x4000>, <0x3 0x8aa84000 0 0x4000>;
+        reg-names = "usb2phy", "pipehandler";
+        #phy-cells = <0>;
+        apple,inherited-handoff;
+    };
+    dart0: iommu@38af00000 {
+        compatible = "apple,t8110-dart";
+        reg = <0x3 0x8af00000 0 0xc000>;
+        interrupt-parent = <&aic>;
+        interrupts = <0 1655 4>;
+        #iommu-cells = <1>;
+        apple,dma-range = /bits/ 64 <0 0x100000000>;
+    };
+    dart1: iommu@38af80000 {
+        compatible = "apple,t8110-dart";
+        reg = <0x3 0x8af80000 0 0xc000>;
+        interrupt-parent = <&aic>;
+        interrupts = <0 1655 4>;
+        #iommu-cells = <1>;
+        apple,dma-range = /bits/ 64 <0 0x100000000>;
+    };
+    usb@38a280000 {
+        compatible = "snps,dwc3";
+        reg = <0x3 0x8a280000 0 0x11800>;
+        interrupt-parent = <&aic>;
+        interrupts = <0 1651 4>;
+        dr_mode = "peripheral";
+        maximum-speed = "high-speed";
+        snps,dis_u2_susphy_quirk;
+        snps,dis_enblslpm_quirk;
+        phys = <&usbphy>;
+        phy-names = "usb2-phy";
+        iommus = <&dart0 0>, <&dart1 1>;
+    };
+    wdt_clock: watchdog-clock {
+        compatible = "fixed-clock";
+        #clock-cells = <0>;
+        clock-frequency = <24000000>;
+    };
+    watchdog@50836c000 {
+        compatible = "apple,wdt";
+        reg = <0x5 0x0836c000 0 0x4000>;
+        clocks = <&wdt_clock>;
+        timeout-sec = <60>;
+    };
+    timer {
+        compatible = "arm,armv8-timer";
+        interrupt-parent = <&aic>;
+        interrupt-names = "phys", "virt", "hyp-phys", "hyp-virt";
+        interrupts = <1 2 4>, <1 3 4>, <1 0 4>, <1 1 4>;
+    };
+@STORAGE@
+};

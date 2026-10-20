@@ -1,6 +1,6 @@
 {
-  "workspace_commit": "cc0dc47aad37f4e223ce57a0ee6a48d2e9960c84",
-  "source_archive_sha256": "5a122940481a464a5d7dd074f3609f345c84181a7478890ada023eacf2aa3868",
+  "workspace_commit": "1f37176e3d7b98beacc9ffbd27ab239344b26f22",
+  "source_archive_sha256": "261aae2fb866fb6e0e9d139dfb229980942ac4f308fec9072f9feb5a9d4c19ca",
   "status": "experimental tooling; no deployment or production qualification",
   "files": [
     {
@@ -9,7 +9,7 @@
     },
     {
       "file": "PROGRESS.md",
-      "sha256": "f8f46692cab837902a2d836e35fcac12904eab471b674afe2cb6411ba075b9f5"
+      "sha256": "7eaccdd8cf54ce140d81744874087d690d505f13d14cbd66f58292483b842837"
     },
     {
       "file": "capture/.gitignore",
@@ -716,6 +716,58 @@
       "sha256": "7ad5ac16357b27f05a1bd2a12aedba229590dcad8d5e307575577b85942de237"
     },
     {
+      "file": "infra/native-dt/README.md",
+      "sha256": "0ed7c0c1769307b0f12cf0b02c99a387afe721c8b25bb07d2ab9920a75e21f75"
+    },
+    {
+      "file": "infra/native-dt/ans-v1.dts.in",
+      "sha256": "dd2118817ca320ced65f4cb40e2867cb309a6922d0c185e608d8cf5e01c14a80"
+    },
+    {
+      "file": "infra/native-dt/comparison-index.json",
+      "sha256": "c17cbc93b3c8f885f5dce3797a84cdc8d334d5c882dd99bc59cf81b1dbfc522f"
+    },
+    {
+      "file": "infra/native-dt/compiler-warning-control.txt",
+      "sha256": "824c69263ef373100fc4af60f1013c8f371bfd0ffa3819f09c0536ee258aa361"
+    },
+    {
+      "file": "infra/native-dt/current-input-refusal.json",
+      "sha256": "0f52e88f41bceaf2368a5604b321aacce3830300ad09577e52607189e26616be"
+    },
+    {
+      "file": "infra/native-dt/generate.py",
+      "sha256": "f37e9cc51538abae0fffc407d768561456843055799e25ce9940c89afb8c7c5c"
+    },
+    {
+      "file": "infra/native-dt/minimal-v1.dts.in",
+      "sha256": "0aeec7c281c678fa0713f1ffd6ba63cc0652ff25931dc3771773881bd8c403f7"
+    },
+    {
+      "file": "infra/native-dt/source-evidence.json",
+      "sha256": "23d0656cf79763ded4ee8a7a9c3be2ececae96df20e80464861ca448069798ed"
+    },
+    {
+      "file": "infra/native-dt/source-profile-v1.json",
+      "sha256": "4ad1e0c76532744bb9c424930c8fc0f1158c40389f26f03dc6e7e53ebc8448bc"
+    },
+    {
+      "file": "infra/native-dt/synthetic-capture.json",
+      "sha256": "1ddf88492aa6726a4f026dd2769063319bcfc4276c85627324e764266fd9fb38"
+    },
+    {
+      "file": "infra/native-dt/test-result.json",
+      "sha256": "409cfbb81b9700898eb45a86569c19356880d88c8050e168bcb6f658d9a03b1b"
+    },
+    {
+      "file": "infra/native-dt/test_generator.py",
+      "sha256": "e2608528077662179878d3c265775f195c8a296f5b4323337526dd7c5c25f045"
+    },
+    {
+      "file": "infra/native-dt/validator-before.json",
+      "sha256": "88cd6a6b0e9d3c13d4865ef20004718bd90926748c8b141014d3be9aebe5ff5d"
+    },
+    {
       "file": "infra/native-loader/README.md",
       "sha256": "e0fb7358636d8800bed49d03013a1c8bf17ad98f0d1da616327b70e62d15ace1"
     },
@@ -966,6 +1018,38 @@
     {
       "file": "integration/evidence/unit-tests.txt",
       "sha256": "ce786ece424b2323cd710c9ac729416744e3d7c63b4aa1b54070ae78e6458f89"
+    },
+    {
+      "file": "integration/native-bundle/.gitignore",
+      "sha256": "0090a854cd9b906751909c1f21e1454e3de0f601a7f300f05246ef49dca5a770"
+    },
+    {
+      "file": "integration/native-bundle/README.md",
+      "sha256": "88f63ff355a287334623a115f516a2d0ca1e498ea880d9dde1528357cfc6a127"
+    },
+    {
+      "file": "integration/native-bundle/bundle.py",
+      "sha256": "02a4e8be1f34206b8107ad9289de238dbd76cd7582aa2d87731740cda777028d"
+    },
+    {
+      "file": "integration/native-bundle/evidence.json",
+      "sha256": "8dd0d1cd88bd7512abf3933526bd294add7e3d2a41aa458ae16d50a48ae63375"
+    },
+    {
+      "file": "integration/native-bundle/native_format.py",
+      "sha256": "01cd865464162c3c12e0537cd4e30e394c3644ce7ff3d4b88552fb2abbd48bd5"
+    },
+    {
+      "file": "integration/native-bundle/pins.json",
+      "sha256": "a27b5252c6c9bab9d6ca9b833ec49bd1e26eccafac599e54417134155bfaa64f"
+    },
+    {
+      "file": "integration/native-bundle/test_bundle.py",
+      "sha256": "9896cd614026b81eafdb074afa0ffecec0893a8adefe61036237fe5a0167fc54"
+    },
+    {
+      "file": "integration/native-bundle/test_format.py",
+      "sha256": "85111eb2c1157619a106136c57eab7a674707b6a49144f6811911fad198265bf"
     },
     {
       "file": "integration/nvme/README.md",
@@ -2241,11 +2325,11 @@
     },
     {
       "file": "qualification/EVIDENCE.json",
-      "sha256": "a987ed7e9c37c3249dacb1234f6076b85f40247eca5dbf47a66da857ea30c34b"
+      "sha256": "6a919d789173a58b337f6e1d2081885bf2c3357d9036b1cafd7a6904d2b03c50"
     },
     {
       "file": "qualification/STATUS.md",
-      "sha256": "9555080098f522d1664542d4613486e3238cb6f79fd257552e0ab05ec71ab946"
+      "sha256": "dc6fac91bf57072040eb3899bb24cd481421e903326e9e26b17a8af159b3757f"
     },
     {
       "file": "qualification/adt-node-comparison.json",
@@ -2270,6 +2354,22 @@
     {
       "file": "qualification/gpu-test56.json",
       "sha256": "60de10591c48a5efd0b8ff315e44619ac5102df2caa2cab913aa87011744952c"
+    },
+    {
+      "file": "qualification/native-bundle-root-tests.json",
+      "sha256": "99708206a3eee2f775ce5934abdf66701623fa16df7b7133d78cb96cedd7e967"
+    },
+    {
+      "file": "qualification/native-bundle-root-tests.txt",
+      "sha256": "ff79d332f09c8d389d393d9f2c78c8d70100c16035819ce7f9815fe499988571"
+    },
+    {
+      "file": "qualification/native-dt-root-tests.json",
+      "sha256": "409cfbb81b9700898eb45a86569c19356880d88c8050e168bcb6f658d9a03b1b"
+    },
+    {
+      "file": "qualification/proxy-checkpoint-0745.json",
+      "sha256": "61d04e17235b75d2e8da4884a6dbade88ff97b1c761b49a00268fcb9059f3727"
     },
     {
       "file": "qualification/proxy-current.json",
@@ -2301,7 +2401,7 @@
     },
     {
       "file": "recovery/NEXT-TEST.md",
-      "sha256": "0ab80eb3d378f6b159b3c7de3a111343b9b3b455cffc0a384e676e2f2b812874"
+      "sha256": "d5b1b81e0f815454098608115c9a6fba871bc3ff1038875f18d2c53afb2dc460"
     },
     {
       "file": "recovery/README.md",
@@ -2346,6 +2446,10 @@
     {
       "file": "recovery/resident-cpu-observation.json",
       "sha256": "b4108e782d1160c0e5d6bac0decbfe9de68a5d47ddc0d3062ddb7ef65e22a184"
+    },
+    {
+      "file": "recovery/staging-source-hazard.json",
+      "sha256": "258a56dcba1b46e3536b57e1a0a30dff0fd425c076158052eaf176a267f4c020"
     },
     {
       "file": "recovery/test_observe.py",

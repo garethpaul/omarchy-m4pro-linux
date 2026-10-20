@@ -1,0 +1,21 @@
+    ans_mbox: mailbox@409608000 {
+        compatible = "apple,asc-mailbox-v4";
+        reg = <0x4 0x09608000 0 0x4000>;
+        interrupt-parent = <&aic>;
+        interrupts = <0 1530 4>, <0 1531 4>, <0 1532 4>, <0 1533 4>;
+        interrupt-names = "send-empty", "send-not-empty", "recv-empty", "recv-not-empty";
+        #mbox-cells = <0>;
+    };
+    ans_sart: iommu@40dc50000 {
+        compatible = "apple,t6000-sart";
+        reg = <0x4 0x0dc50000 0 0xc000>;
+    };
+    nvme@44dcc0000 {
+        compatible = "apple,j614s-nvme-diagnostic";
+        reg = <0x4 0x4dcc0000 0 0x30000>, <0x4 0x09600000 0 0x4000>;
+        reg-names = "nvme", "ans";
+        interrupt-parent = <&aic>;
+        interrupts = <0 2583 4>;
+        mboxes = <&ans_mbox>;
+        apple,sart = <&ans_sart>;
+    };

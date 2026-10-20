@@ -1,0 +1,1 @@
+<synthetic-fixture>/warning.dts:1.21-25: Warning (unit_address_vs_reg): /bad@0: node has a unit name, but no reg or ranges property

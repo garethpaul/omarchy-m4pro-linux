@@ -14,6 +14,15 @@ Inputs prepared and independently verified:
 | Kernel/Image | source8f2f3d1; Image SHAf9d7b637…4604 | `../infra/gravity-combined-reproducibility.json`; Image+18 module pairs match |
 | Offline initrd | SHA8fd6f861…d16be1 | `../integration/boot-probe/artifact-manifest.json`; two archives match,75 tests; root rebuild matches |
 
+The [versioned offline DT generator](../infra/native-dt/README.md) binds exact source, ELF, capture/ADT/bootargs and resource profiles. All65 root-replayed controls pass; frozen input03 correctly refuses before output. Its synthetic positive templates are **UNRELOCATED**, with memory/initrd/reservation placeholders that only the future loader patches. They are not current-session or runtime DTs.
+
+The [offline native container tool](../integration/native-bundle/README.md) now
+passes30 independent root-replayed file/format/refusal controls. It verifies the
+paired ELF payload offset, exact components and C-compatible CRCs, then delegates
+to the pinned DT checks. Current input03 refuses end to end before output; only
+synthetic codec fixtures are positive. It does not stage, preserve live resident
+memory, boot, or qualify recovery.
+
 These separate artifacts are **not yet a complete boot bundle**. Before any
 staging, the primary agent must bind a fresh DT and CPU-release table to the same
 live session and verify all appended sizes/CRCs/addresses. The current readonly
@@ -37,7 +46,12 @@ Once the operator confirms physical recovery availability, primary-only work is:
    object. Do not use the legacy chainloader's PMU `--reset` path. A nonzero PMU
    health byte must refuse; no health counter clear is authorized by this plan.
 4. Review the concrete RAM-only staging/vector plan and its carveout/size/CRC
-   checks before executing. No disk, protected container, persistent entry,
+   checks before executing. Preserve resident code/stacks/spin table in a separate
+   child allocation. The generic `proxyclient/tools/chainload.py` copies back to
+   resident `u.base` and is incompatible with preserving these release pointers;
+   see [source audit](staging-source-hazard.json). The historical separate PIC
+   test52 approach is a reference only: its unchanged helper clears PMU state
+   and cannot be reused. No disk, protected container, persistent entry,
    firmware flash or security policy change belongs to this test.
 5. Establish the new physical ACM channel and collect one fully framed `status`
    response before considering the separately gated single-shot `probe`. The

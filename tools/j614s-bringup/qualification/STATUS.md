@@ -25,7 +25,7 @@ semantics still require validation before driver reuse.
 | Phase / item | Status and measured scope | Missing piece / M3 or M2 reuse |
 | --- | --- | --- |
 | 0: m1n1 stage1 / RAM chainload | WORKS for existing test chain; [current cached metadata](proxy-current.json) has zero exceptions; tests51/56 reached Linux | Installed8e0cf28 object preserved. New source candidates are not automatically qualified. |
-| 0: ADT / board DTS | PARTIAL: runtime capture and448-node comparison complete; test56 generated DTS booted | Complete T6040 domain/clock/client graph missing. Runtime firmware addresses must be regenerated, never copied across boots. |
+| 0: ADT / board DTS | PARTIAL: runtime capture and448-node comparison complete; test56 generated DTS booted | Complete T6040 domain/clock/client graph missing. A [pinned minimal diagnostic template generator](../infra/native-dt/README.md) now passes65 root-replayed offline controls and refuses frozen input03 before output because its secondary/WFE state is unready. Positive DTs are explicitly synthetic/unrelocated; no current or final runtime FDT is qualified. Runtime firmware addresses must be regenerated, never copied across boots. |
 | 0: CPU / AIC | WORKS in test51: all12 online,12M atomics,12K SIMD sleeps,12 pinned checksums; [result](cpu-test51.json) | M3 AIC3/secondary framework reused with actual MPIDRs; M4 WFIT/WFxT register corruption fixed by automatic platform quirk. |
 | 0: PMGR / PMU / watchdog | PARTIAL: timer/interrupt/watchdog transport used; remote reset recently failed | Complete runtime PM and independent remote recovery missing; [candidate watchdog source/config audit](../infra/watchdog-handoff-source.json) is not recovery proof. M3 layouts cannot be substituted wholesale. |
 | 0: new RAM loader | PARTIAL: [separate source cleanup and build](../infra/native-loader/README.md); original source/binary preserved | Removes fixed-address debug writes and refuses nonzero PMU health before arming the existing watchdog. Actual-source host controls pass; target handoff/recovery UNTESTED. First repeat exposed directory-dependent artifacts; corrected recipe now reproduces all seven artifacts, including both full ELFs, in independent fresh builds; [proof](../infra/native-loader/repro-after.json). No new loader was booted. |
@@ -99,14 +99,17 @@ and 27 transcript tests; original XOR evidence is retained separately.
 
 1. Prepare a supervised boot of the immutable combined8f2 source. Image and all18
    modules already match across two independent fresh builds. The [minimal
-   offline probe](../integration/boot-probe/README.md) passes36 host tests but
-   has never run. Finish a separately preserved loader candidate without fixed
-   framebuffer debug writes or PMU counter clearing; then bind a freshly
-   validated session DT and exact kernel/initrd. Do not stage or boot it while
-   supervised availability is pending and remote recovery remains unverified.
-   Continue the separate signed dependency closure; the original117 package
-   proposal retains24 bounded ELF issue edges. The separate151 candidate closes
-   those edges but still needs native nvim packaging, runtime and boot-hook qualification.
+   offline probe](../integration/boot-probe/README.md) passes75 root-replayed tests
+   and an independent exact rebuild, but has never run. The separate loader
+   without fixed framebuffer debug writes or PMU health-counter clearing also
+   reproduces across two fresh builds. Bind a freshly initialized/observed CPU
+   session through the pinned DT generator and exact kernel/initrd. Its current
+   frozen input03 correctly refuses. Do not stage or boot while supervised
+   availability is pending and remote recovery remains unverified. The separate
+   signed151 candidate closes all24 new static edges from the original117 plan;
+   actual isolated ARM Neovim/Conform formatting now passes with an explicit
+   emulator prefix. Native source-package build/signing, full LazyVim/Mason,
+   whole-overlay runtime and boot-hook qualification remain separate.
 2. The T6040-gated early observation adapter, native Metal trigger and matching
    source-built compute fixture are ready for a later approved session. Body,
    power and DCP RPC values need coherent capture, not T8132 constants.

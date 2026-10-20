@@ -1,0 +1,110 @@
+{
+  "Image_sha256": "f9d7b637bc70fcab77b5806c43c39ae333e633fcc63fa6ccaa77cd22c91d4604",
+  "comparison_index_sha256": "c17cbc93b3c8f885f5dce3797a84cdc8d334d5c882dd99bc59cf81b1dbfc522f",
+  "config_sha256": "6c5aba7745d918c528300c5a395fcd7db0c2b718acda7d1467af2816a8d56516",
+  "cpus": [
+    [
+      0,
+      0,
+      "apple,sawtooth"
+    ],
+    [
+      1,
+      1,
+      "apple,sawtooth"
+    ],
+    [
+      2,
+      2,
+      "apple,sawtooth"
+    ],
+    [
+      3,
+      3,
+      "apple,sawtooth"
+    ],
+    [
+      4,
+      65792,
+      "apple,everest"
+    ],
+    [
+      5,
+      65793,
+      "apple,everest"
+    ],
+    [
+      6,
+      65794,
+      "apple,everest"
+    ],
+    [
+      7,
+      65795,
+      "apple,everest"
+    ],
+    [
+      10,
+      66048,
+      "apple,everest"
+    ],
+    [
+      11,
+      66049,
+      "apple,everest"
+    ],
+    [
+      12,
+      66050,
+      "apple,everest"
+    ],
+    [
+      13,
+      66051,
+      "apple,everest"
+    ]
+  ],
+  "kernel_commit": "8f2f3d13600aacadd93d577855b7e212b8ae57ff",
+  "kernel_files": {
+    "arch/arm64/kernel/cpufeature.c": "bed48464d12a55aada988819778b95b639322e5ee1bbda9743f6c61076b1df26",
+    "arch/arm64/kernel/smp_spin_table.c": "20071a155b1df92d8f8d55b17cbd0e149a05a5a685283f5d955bd78126697aeb",
+    "drivers/iommu/apple-dart.c": "c3cae72eacf30c5a0592bda4490a6f6e5e850aca7342b2a93f3a68e0cb37d4c5",
+    "drivers/irqchip/irq-apple-aic.c": "d52ff497371f81b94af730792c9ea9fb2bf24d99cf7df6e8985351dd331c2287",
+    "drivers/nvme/host/apple.c": "3837e270e802debf3364fb7b210df4ad058e8bbc429758950cd187d3ca5b9c13",
+    "drivers/phy/apple/usb2-t6040-inherited.c": "3336440c840efab83eab479ab1e0665014bc26753b81e6e3a0f3317c617b5f03",
+    "drivers/soc/apple/mailbox.c": "88748e94ddb069967303187d4152d57ccaf8bbb3dc304af14bffaf6c43221331",
+    "drivers/soc/apple/sart.c": "313203e3d99a41f7398ba1bebdb2fd9dcbeea723c1a82fd475d2654a9e94a9ae",
+    "drivers/usb/dwc3/core.c": "8a5f5f6abc50c2340d73ef72ec4b9f1c2fdc66be2ec32b85b26bd51a2cb32252",
+    "drivers/watchdog/apple_wdt.c": "937beceb5183621e9241c3a9c1b7c63877b0d5f2da383759390593fd420a22ec"
+  },
+  "loader_binary_sha256": "2309dfbb368c5feadfc0ae70e0fbb11ac8e28132c815ab1c3eb63a66821a0e00",
+  "loader_commit": "6249e0ecdb7677b6afa01989c23344962253e954",
+  "loader_source_sha256": "fc88b9e9da14593896220f5752c7a84896c2007b56f7bd8ba7d562beae4b4118",
+  "observer_sha256": "fce3a31052563734305b5c475bce7d247cf0c716fb0d0f177b81acf1da3c55d7",
+  "old_measured_topology_source_sha256": "55785b537b294a990a649b466ecc950632b61a4424e0cceb803dea9677395c16",
+  "profile": "j614s-unrelocated-ram-diagnostic-v1",
+  "python_helpers": {
+    "kernel_build.py": "c84ae596247f9f08eff693d8234917fa0f90bea69659da20db2a5a047a6508eb"
+  },
+  "reserved_nodes": [
+    "retention-control@3fe00000",
+    "ramoops@3ff00000"
+  ],
+  "resident_binary_sha256": "fb31c765c54b2c8108ac7598c8307f663b91fb25ef9cbeb88e75bafffc0f3afb",
+  "resident_elf_sha256": "4a32c15fbda69acc47175f1e6b514cfb7d5920916df7630dec216c29177fc28f",
+  "runtime_patch_contract": {
+    "fdt_offset": 41943040,
+    "initrd_offset": 33554432,
+    "memory_bytes": 4294967296,
+    "ramoops_offset_from_end": 1048576,
+    "ramoops_size": 1048576,
+    "retention_offset_from_end": 2097152,
+    "retention_size": 16384
+  },
+  "schema": 1,
+  "scope": "Versioned minimal source profile; no runtime ownership or hardware qualification",
+  "templates": {
+    "ans-v1.dts.in": "dd2118817ca320ced65f4cb40e2867cb309a6922d0c185e608d8cf5e01c14a80",
+    "minimal-v1.dts.in": "0aeec7c281c678fa0713f1ffd6ba63cc0652ff25931dc3771773881bd8c403f7"
+  }
+}

@@ -1,0 +1,844 @@
+{
+  "limit": "Property-name comparison does not establish register/firmware/ownership equivalence. Existing diagnostic source checks remain required.",
+  "rows": [
+    {
+      "path": "/cpus/cpu0",
+      "static_m2": {
+        "different_property_names": [
+          "cluster-core-id",
+          "compatible",
+          "cpm-impl-reg",
+          "die-cluster-id",
+          "die-id",
+          "function-cpu_idle",
+          "function-enable_core",
+          "function-error_handler",
+          "interrupt-parent",
+          "interrupts"
+        ],
+        "identical_properties": 16,
+        "present": true
+      },
+      "static_m3": {
+        "different_property_names": [
+          "AAPL,phandle",
+          "cluster-core-id",
+          "cpm-impl-reg",
+          "die-cluster-id",
+          "die-id",
+          "function-cpu_idle",
+          "function-enable_core",
+          "function-error_handler",
+          "interrupt-parent",
+          "interrupts"
+        ],
+        "identical_properties": 16,
+        "present": true
+      },
+      "static_m4": {
+        "different_property_names": [],
+        "identical_properties": 26,
+        "present": true
+      }
+    },
+    {
+      "path": "/cpus/cpu1",
+      "static_m2": {
+        "different_property_names": [
+          "cluster-core-id",
+          "compatible",
+          "cpm-impl-reg",
+          "die-cluster-id",
+          "die-id",
+          "function-cpu_idle",
+          "function-enable_core",
+          "function-error_handler",
+          "interrupt-parent",
+          "interrupts"
+        ],
+        "identical_properties": 16,
+        "present": true
+      },
+      "static_m3": {
+        "different_property_names": [
+          "AAPL,phandle",
+          "cluster-core-id",
+          "cpm-impl-reg",
+          "die-cluster-id",
+          "die-id",
+          "function-cpu_idle",
+          "function-enable_core",
+          "function-error_handler",
+          "interrupt-parent",
+          "interrupts"
+        ],
+        "identical_properties": 16,
+        "present": true
+      },
+      "static_m4": {
+        "different_property_names": [],
+        "identical_properties": 26,
+        "present": true
+      }
+    },
+    {
+      "path": "/cpus/cpu2",
+      "static_m2": {
+        "different_property_names": [
+          "cluster-core-id",
+          "compatible",
+          "cpm-impl-reg",
+          "die-cluster-id",
+          "die-id",
+          "function-cpu_idle",
+          "function-enable_core",
+          "function-error_handler",
+          "interrupt-parent",
+          "interrupts"
+        ],
+        "identical_properties": 16,
+        "present": true
+      },
+      "static_m3": {
+        "different_property_names": [
+          "AAPL,phandle",
+          "cluster-core-id",
+          "cpm-impl-reg",
+          "die-cluster-id",
+          "die-id",
+          "function-cpu_idle",
+          "function-enable_core",
+          "function-error_handler",
+          "interrupt-parent",
+          "interrupts"
+        ],
+        "identical_properties": 16,
+        "present": true
+      },
+      "static_m4": {
+        "different_property_names": [],
+        "identical_properties": 26,
+        "present": true
+      }
+    },
+    {
+      "path": "/cpus/cpu3",
+      "static_m2": {
+        "different_property_names": [
+          "cluster-core-id",
+          "compatible",
+          "cpm-impl-reg",
+          "die-cluster-id",
+          "die-id",
+          "function-cpu_idle",
+          "function-enable_core",
+          "function-error_handler",
+          "interrupt-parent",
+          "interrupts"
+        ],
+        "identical_properties": 16,
+        "present": true
+      },
+      "static_m3": {
+        "different_property_names": [
+          "AAPL,phandle",
+          "cluster-core-id",
+          "cpm-impl-reg",
+          "die-cluster-id",
+          "die-id",
+          "function-cpu_idle",
+          "function-enable_core",
+          "function-error_handler",
+          "interrupt-parent",
+          "interrupts"
+        ],
+        "identical_properties": 16,
+        "present": true
+      },
+      "static_m4": {
+        "different_property_names": [],
+        "identical_properties": 26,
+        "present": true
+      }
+    },
+    {
+      "path": "/cpus/cpu4",
+      "static_m2": {
+        "different_property_names": [
+          "bus-frequency",
+          "clock-frequency",
+          "cluster-core-id",
+          "cluster-power-down",
+          "compatible",
+          "cpm-impl-reg",
+          "die-cluster-id",
+          "die-id",
+          "fixed-frequency",
+          "function-cpu_idle",
+          "function-enable_core",
+          "function-error_handler",
+          "interrupt-parent",
+          "interrupts",
+          "memory-frequency",
+          "peripheral-frequency",
+          "state",
+          "timebase-frequency"
+        ],
+        "identical_properties": 15,
+        "present": true
+      },
+      "static_m3": {
+        "different_property_names": [
+          "AAPL,phandle",
+          "bus-frequency",
+          "clock-frequency",
+          "cluster-core-id",
+          "cluster-power-down",
+          "cpm-impl-reg",
+          "die-cluster-id",
+          "die-id",
+          "fixed-frequency",
+          "function-cpu_idle",
+          "function-enable_core",
+          "function-error_handler",
+          "interrupt-parent",
+          "interrupts",
+          "memory-frequency",
+          "peripheral-frequency",
+          "state",
+          "timebase-frequency"
+        ],
+        "identical_properties": 15,
+        "present": true
+      },
+      "static_m4": {
+        "different_property_names": [
+          "bus-frequency",
+          "clock-frequency",
+          "fixed-frequency",
+          "memory-frequency",
+          "peripheral-frequency",
+          "state",
+          "timebase-frequency"
+        ],
+        "identical_properties": 26,
+        "present": true
+      }
+    },
+    {
+      "path": "/cpus/cpu5",
+      "static_m2": {
+        "different_property_names": [
+          "cluster-core-id",
+          "cluster-power-down",
+          "compatible",
+          "cpm-impl-reg",
+          "die-cluster-id",
+          "die-id",
+          "function-cpu_idle",
+          "function-enable_core",
+          "function-error_handler",
+          "interrupt-parent",
+          "interrupts"
+        ],
+        "identical_properties": 16,
+        "present": true
+      },
+      "static_m3": {
+        "different_property_names": [
+          "AAPL,phandle",
+          "cluster-core-id",
+          "cluster-power-down",
+          "cpm-impl-reg",
+          "die-cluster-id",
+          "die-id",
+          "function-cpu_idle",
+          "function-enable_core",
+          "function-error_handler",
+          "interrupt-parent",
+          "interrupts"
+        ],
+        "identical_properties": 16,
+        "present": true
+      },
+      "static_m4": {
+        "different_property_names": [],
+        "identical_properties": 27,
+        "present": true
+      }
+    },
+    {
+      "path": "/cpus/cpu6",
+      "static_m2": {
+        "different_property_names": [
+          "cluster-core-id",
+          "cluster-power-down",
+          "compatible",
+          "cpm-impl-reg",
+          "die-cluster-id",
+          "die-id",
+          "function-cpu_idle",
+          "function-enable_core",
+          "function-error_handler",
+          "interrupt-parent",
+          "interrupts"
+        ],
+        "identical_properties": 16,
+        "present": true
+      },
+      "static_m3": {
+        "different_property_names": [
+          "AAPL,phandle",
+          "cluster-core-id",
+          "cluster-power-down",
+          "cpm-impl-reg",
+          "die-cluster-id",
+          "die-id",
+          "function-cpu_idle",
+          "function-enable_core",
+          "function-error_handler",
+          "interrupt-parent",
+          "interrupts"
+        ],
+        "identical_properties": 16,
+        "present": true
+      },
+      "static_m4": {
+        "different_property_names": [],
+        "identical_properties": 27,
+        "present": true
+      }
+    },
+    {
+      "path": "/cpus/cpu7",
+      "static_m2": {
+        "different_property_names": [
+          "cluster-core-id",
+          "cluster-power-down",
+          "compatible",
+          "cpm-impl-reg",
+          "die-cluster-id",
+          "die-id",
+          "function-cpu_idle",
+          "function-enable_core",
+          "function-error_handler",
+          "interrupt-parent",
+          "interrupts"
+        ],
+        "identical_properties": 16,
+        "present": true
+      },
+      "static_m3": {
+        "different_property_names": [
+          "AAPL,phandle",
+          "cluster-core-id",
+          "cluster-power-down",
+          "cpm-impl-reg",
+          "die-cluster-id",
+          "die-id",
+          "function-cpu_idle",
+          "function-enable_core",
+          "function-error_handler",
+          "interrupt-parent",
+          "interrupts"
+        ],
+        "identical_properties": 16,
+        "present": true
+      },
+      "static_m4": {
+        "different_property_names": [],
+        "identical_properties": 27,
+        "present": true
+      }
+    },
+    {
+      "path": "/cpus/cpu10",
+      "static_m2": {
+        "present": false
+      },
+      "static_m3": {
+        "present": false
+      },
+      "static_m4": {
+        "different_property_names": [],
+        "identical_properties": 27,
+        "present": true
+      }
+    },
+    {
+      "path": "/cpus/cpu11",
+      "static_m2": {
+        "present": false
+      },
+      "static_m3": {
+        "present": false
+      },
+      "static_m4": {
+        "different_property_names": [],
+        "identical_properties": 27,
+        "present": true
+      }
+    },
+    {
+      "path": "/cpus/cpu12",
+      "static_m2": {
+        "present": false
+      },
+      "static_m3": {
+        "present": false
+      },
+      "static_m4": {
+        "different_property_names": [],
+        "identical_properties": 27,
+        "present": true
+      }
+    },
+    {
+      "path": "/cpus/cpu13",
+      "static_m2": {
+        "present": false
+      },
+      "static_m3": {
+        "present": false
+      },
+      "static_m4": {
+        "different_property_names": [],
+        "identical_properties": 27,
+        "present": true
+      }
+    },
+    {
+      "path": "/arm-io/aic",
+      "static_m2": {
+        "different_property_names": [
+          "#main-cpus",
+          "AAPL,phandle",
+          "aic-ext-intr-cfg",
+          "aic-iack-offset",
+          "aicglbcfg-offset",
+          "cap0-offset",
+          "cap0_max_interrupt_umask",
+          "compatible",
+          "extint-baseaddress",
+          "extintrcfg-stride",
+          "hwintmon-stride",
+          "intmaskclear-stride",
+          "intmaskset-stride",
+          "max_irq_interrupt_umask",
+          "maxnumirq-offset",
+          "pubstampcfg0-offset",
+          "pubstampcfg0inttype-mask",
+          "pubstampdcfg0en-mask",
+          "pubstampdhi-offset",
+          "pubstamplo0-offset",
+          "pubstampstride-mask",
+          "reg",
+          "rev-offset"
+        ],
+        "identical_properties": 6,
+        "present": true
+      },
+      "static_m3": {
+        "different_property_names": [
+          "#main-cpus",
+          "AAPL,phandle",
+          "aic-ext-intr-cfg",
+          "aic-iack-offset",
+          "cap0_max_interrupt_umask",
+          "extintrcfg-stride",
+          "hwintmon-stride",
+          "intmaskclear-stride",
+          "intmaskset-stride",
+          "reg"
+        ],
+        "identical_properties": 19,
+        "present": true
+      },
+      "static_m4": {
+        "different_property_names": [
+          "aic-ext-intr-cfg",
+          "aic-iack-offset"
+        ],
+        "identical_properties": 27,
+        "present": true
+      }
+    },
+    {
+      "path": "/arm-io/aic-timebase",
+      "static_m2": {
+        "different_property_names": [
+          "AAPL,phandle",
+          "reg"
+        ],
+        "identical_properties": 2,
+        "present": true
+      },
+      "static_m3": {
+        "different_property_names": [
+          "AAPL,phandle",
+          "reg"
+        ],
+        "identical_properties": 2,
+        "present": true
+      },
+      "static_m4": {
+        "different_property_names": [],
+        "identical_properties": 4,
+        "present": true
+      }
+    },
+    {
+      "path": "/arm-io/wdt",
+      "static_m2": {
+        "different_property_names": [
+          "AAPL,phandle",
+          "awl-scratch-supported",
+          "function-panic_flush_helper",
+          "function-panic_halt_helper",
+          "function-panic_notify",
+          "interrupt-parent",
+          "interrupts",
+          "reconfig-wdog-support",
+          "reg",
+          "simple-reconfig-wdog-icc-time",
+          "simple-reconfig-wdog-support",
+          "trigger-ce",
+          "trigger-config"
+        ],
+        "identical_properties": 7,
+        "present": true
+      },
+      "static_m3": {
+        "different_property_names": [
+          "AAPL,phandle",
+          "awl-scratch-supported",
+          "compatible",
+          "function-panic_flush_helper",
+          "function-panic_halt_helper",
+          "function-panic_notify",
+          "interrupt-parent",
+          "interrupts",
+          "reconfig-wdog-support",
+          "reg",
+          "simple-reconfig-wdog-icc-time",
+          "simple-reconfig-wdog-support",
+          "trigger-ce",
+          "trigger-config"
+        ],
+        "identical_properties": 6,
+        "present": true
+      },
+      "static_m4": {
+        "different_property_names": [],
+        "identical_properties": 18,
+        "present": true
+      }
+    },
+    {
+      "path": "/arm-io/ans",
+      "static_m2": {
+        "different_property_names": [
+          "AAPL,phandle",
+          "afc-aiu-ans-dual-tunables",
+          "ccu-security-interrupt-tunables",
+          "clock-gates",
+          "clock-ids",
+          "command-accelerator-tunables",
+          "compatible",
+          "ignore-gating",
+          "interrupt-parent",
+          "interrupts",
+          "iommu-parent",
+          "msp-bfh-params",
+          "nvme-queue-entries",
+          "nvme-secure-bar",
+          "nvme-vdma-wa",
+          "power-gates",
+          "reg",
+          "storage-lane-common-tunables",
+          "tunable-table-bundle"
+        ],
+        "identical_properties": 8,
+        "present": true
+      },
+      "static_m3": {
+        "different_property_names": [
+          "AAPL,phandle",
+          "afc-aiu-ans-dual-tunables",
+          "ccu-security-interrupt-tunables",
+          "clock-gates",
+          "clock-ids",
+          "command-accelerator-tunables",
+          "ignore-gating",
+          "interrupt-parent",
+          "interrupts",
+          "iommu-parent",
+          "msp-bfh-params",
+          "nvme-queue-entries",
+          "nvme-secure-bar",
+          "nvme-vdma-wa",
+          "power-gates",
+          "reg",
+          "storage-lane-common-tunables",
+          "tunable-table-bundle"
+        ],
+        "identical_properties": 9,
+        "present": true
+      },
+      "static_m4": {
+        "different_property_names": [
+          "afc-aiu-ans-dual-tunables",
+          "ccu-security-interrupt-tunables",
+          "command-accelerator-tunables",
+          "storage-lane-common-tunables"
+        ],
+        "identical_properties": 22,
+        "present": true
+      }
+    },
+    {
+      "path": "/arm-io/sart-ans",
+      "static_m2": {
+        "different_property_names": [
+          "AAPL,phandle",
+          "power-canary-offset",
+          "reg"
+        ],
+        "identical_properties": 6,
+        "present": true
+      },
+      "static_m3": {
+        "different_property_names": [
+          "AAPL,phandle",
+          "power-canary-offset",
+          "reg"
+        ],
+        "identical_properties": 6,
+        "present": true
+      },
+      "static_m4": {
+        "different_property_names": [],
+        "identical_properties": 9,
+        "present": true
+      }
+    },
+    {
+      "path": "/arm-io/atc-phy1",
+      "static_m2": {
+        "different_property_names": [
+          "AAPL,phandle",
+          "acio-phy-cpu",
+          "clock-gates",
+          "compatible",
+          "function-dock_parent",
+          "reg",
+          "tunable_ATC0AXI2AF",
+          "tunable_ATC0AXI2AF_LIOA",
+          "tunable_ATC_COMMON_CFG",
+          "tunable_ATC_FABRIC",
+          "tunable_AUS40CMN_SHM",
+          "tunable_AUSPLL_CORE",
+          "tunable_CIO4PLL_CORE",
+          "tunable_LN0_RX_CFG_TX_OF_RXCLK",
+          "tunable_LN0_RX_EQ_CIO_DFLT",
+          "tunable_LN0_RX_TOP_CIO_DFLT",
+          "tunable_LN1_RX_CFG_TX_OF_RXCLK",
+          "tunable_LN1_RX_EQ_CIO_DFLT",
+          "tunable_LN1_RX_TOP_CIO_DFLT",
+          "tunable_UC_REGS_CIO_DFLT",
+          "tunable_USB2PHY_DEV",
+          "tunable_USB2PHY_DFLT",
+          "tunable_USB2PHY_HOST"
+        ],
+        "identical_properties": 7,
+        "present": true
+      },
+      "static_m3": {
+        "different_property_names": [
+          "AAPL,phandle",
+          "acio-phy-cpu",
+          "clock-gates",
+          "compatible",
+          "function-dock_parent",
+          "reg",
+          "tunable_ATC0AXI2AF",
+          "tunable_ATC0AXI2AF_LIOA",
+          "tunable_ATC_COMMON_CFG",
+          "tunable_ATC_FABRIC",
+          "tunable_AUS40CMN_SHM",
+          "tunable_AUSPLL_CORE",
+          "tunable_CIO4PLL_CORE",
+          "tunable_LN0_RX_CFG_TX_OF_RXCLK",
+          "tunable_LN0_RX_EQ_CIO_DFLT",
+          "tunable_LN0_RX_TOP_CIO_DFLT",
+          "tunable_LN1_RX_CFG_TX_OF_RXCLK",
+          "tunable_LN1_RX_EQ_CIO_DFLT",
+          "tunable_LN1_RX_TOP_CIO_DFLT",
+          "tunable_UC_REGS_CIO_DFLT",
+          "tunable_USB2PHY_DEV",
+          "tunable_USB2PHY_DFLT",
+          "tunable_USB2PHY_HOST"
+        ],
+        "identical_properties": 7,
+        "present": true
+      },
+      "static_m4": {
+        "different_property_names": [
+          "tunable_ATC0AXI2AF",
+          "tunable_ATC0AXI2AF_LIOA",
+          "tunable_ATC_COMMON_CFG",
+          "tunable_ATC_FABRIC",
+          "tunable_AUS40CMN_SHM",
+          "tunable_AUSPLL_CORE",
+          "tunable_CIO4PLL_CORE",
+          "tunable_LN0_RX_CFG_TX_OF_RXCLK",
+          "tunable_LN0_RX_EQ_CIO_DFLT",
+          "tunable_LN0_RX_TOP_CIO_DFLT",
+          "tunable_LN1_RX_CFG_TX_OF_RXCLK",
+          "tunable_LN1_RX_EQ_CIO_DFLT",
+          "tunable_LN1_RX_TOP_CIO_DFLT",
+          "tunable_UC_REGS_CIO_DFLT",
+          "tunable_USB2PHY_DEV",
+          "tunable_USB2PHY_DFLT",
+          "tunable_USB2PHY_HOST"
+        ],
+        "identical_properties": 13,
+        "present": true
+      }
+    },
+    {
+      "path": "/arm-io/dart-usb1",
+      "static_m2": {
+        "different_property_names": [
+          "AAPL,phandle",
+          "clock-gates",
+          "clock-protection-slice-index",
+          "dart-id",
+          "dart-tunables-instance-0",
+          "dart-tunables-instance-1",
+          "error-reflector",
+          "flush-by-dva",
+          "instance",
+          "interrupt-parent",
+          "interrupts",
+          "reg",
+          "vm-base"
+        ],
+        "identical_properties": 10,
+        "present": true
+      },
+      "static_m3": {
+        "different_property_names": [
+          "AAPL,phandle",
+          "clock-gates",
+          "clock-protection-slice-index",
+          "dart-id",
+          "dart-tunables-instance-0",
+          "dart-tunables-instance-1",
+          "error-reflector",
+          "instance",
+          "interrupt-parent",
+          "interrupts",
+          "reg"
+        ],
+        "identical_properties": 12,
+        "present": true
+      },
+      "static_m4": {
+        "different_property_names": [
+          "clock-protection-slice-index",
+          "dart-id",
+          "dart-tunables-instance-0",
+          "dart-tunables-instance-1",
+          "instance",
+          "reg"
+        ],
+        "identical_properties": 17,
+        "present": true
+      }
+    },
+    {
+      "path": "/arm-io/usb-drd1",
+      "static_m2": {
+        "different_property_names": [
+          "AAPL,phandle",
+          "acio-parent",
+          "atc-phy-parent",
+          "clock-gates",
+          "compatible",
+          "device-mac-address",
+          "function-dock_parent",
+          "host-mac-address",
+          "interrupt-parent",
+          "interrupts",
+          "iommu-parent",
+          "reg",
+          "tunable_AUSBC_DEBUG_DEFAULT",
+          "tunable_BULK_FABRIC_DEFAULT",
+          "tunable_DRD_USB31_CFG_HOST",
+          "tunable_DRD_USB31_DBG_DEFAULT",
+          "tunable_DRD_USB31_GBL_DEFAULT",
+          "tunable_DRD_USB31_GBL_HOST",
+          "tunable_LINK_REGS_DEFAULT",
+          "tunable_PIPE_HANDLER_DEFAULT",
+          "tunable_setting",
+          "usb-repeater"
+        ],
+        "identical_properties": 13,
+        "present": true
+      },
+      "static_m3": {
+        "different_property_names": [
+          "AAPL,phandle",
+          "acio-parent",
+          "atc-phy-parent",
+          "clock-gates",
+          "compatible",
+          "device-mac-address",
+          "function-dock_parent",
+          "host-mac-address",
+          "interrupt-parent",
+          "interrupts",
+          "iommu-parent",
+          "reg",
+          "tunable_AUSBC_DEBUG_DEFAULT",
+          "tunable_BULK_FABRIC_DEFAULT",
+          "tunable_DRD_USB31_CFG_HOST",
+          "tunable_DRD_USB31_DBG_DEFAULT",
+          "tunable_DRD_USB31_GBL_DEFAULT",
+          "tunable_DRD_USB31_GBL_HOST",
+          "tunable_LINK_REGS_DEFAULT",
+          "tunable_PIPE_HANDLER_DEFAULT",
+          "tunable_setting"
+        ],
+        "identical_properties": 14,
+        "present": true
+      },
+      "static_m4": {
+        "different_property_names": [
+          "device-mac-address",
+          "host-mac-address",
+          "tunable_AUSBC_DEBUG_DEFAULT",
+          "tunable_BULK_FABRIC_DEFAULT",
+          "tunable_DRD_USB31_CFG_HOST",
+          "tunable_DRD_USB31_DBG_DEFAULT",
+          "tunable_DRD_USB31_GBL_DEFAULT",
+          "tunable_DRD_USB31_GBL_HOST",
+          "tunable_LINK_REGS_DEFAULT",
+          "tunable_PIPE_HANDLER_DEFAULT"
+        ],
+        "identical_properties": 24,
+        "present": true
+      }
+    }
+  ],
+  "scope": "Captured runtime M4 source of truth; baseline M2/M3/M4 vendor static trees, same restore build; runtime-only fields are not an incompatibility claim",
+  "source_comparison_sha256": "7ed6a7fc4eb02150094b44ad6792e96910f7510a7ba435dd0b9e34a74be00de8",
+  "source_hashes": {
+    "machine_m4": "4398049027f63af9166934b9ec80c74fd9fb24e897143aa20b1884acb3698aec",
+    "static_m2": "2a0c26929ef8afbe7835816183f919a2bcfdc42a662429e67526f64babc9c88e",
+    "static_m3": "6430fdc6da49c64025d038d50fdcff3c57dfe2b1f3d37052c12f1dc27e988c2f",
+    "static_m4": "8be3570bd27cffb780492023382d4a5ea2398fdaf16b8ed1b215ff57f9475087"
+  },
+  "status": "PARTIAL"
+}

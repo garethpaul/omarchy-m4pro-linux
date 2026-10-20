@@ -1,0 +1,113 @@
+{
+  "actual_capture03": {
+    "capture_unchanged": true,
+    "container_created": false,
+    "diagnostics_created": false,
+    "evidence": "test_current03_refuses_before_dt_or_diagnostics and test_current03_cli_assemble_creates_no_bundle",
+    "reason": "SECONDARY_SLOTS_NOT_IDLE_WFE",
+    "refusal_before_dt_read": true,
+    "resident_wfe_mode": false,
+    "secondary_flags_set": 0,
+    "secondary_slots_idle": false,
+    "status": "BLOCKED"
+  },
+  "actual_components": {
+    "Image": {
+      "bytes": 14772232,
+      "memory_bytes": 16121856,
+      "sha256": "f9d7b637bc70fcab77b5806c43c39ae333e633fcc63fa6ccaa77cd22c91d4604",
+      "status": "BYTE_IDENTITY_VERIFIED"
+    },
+    "initrd": {
+      "bytes": 1098565,
+      "sha256": "8fd6f861c42e4585156ff747ef657fbdba04b8bc307d0f4a0c2c226b20d16be1",
+      "status": "BYTE_IDENTITY_VERIFIED"
+    },
+    "loader": {
+      "bytes": 3538944,
+      "elf_sha256": "0ea9ac6ddaf850260a3b26fe55763f2a30459afcf9d0d6e0b685cd1784765f84",
+      "file_end_offset": 1310720,
+      "flat_matches_elf": true,
+      "payload_offset": 3538944,
+      "sha256": "2309dfbb368c5feadfc0ae70e0fbb11ac8e28132c815ab1c3eb63a66821a0e00",
+      "status": "BYTE_IDENTITY_VERIFIED"
+    },
+    "scope": "Independent file/format identities only; no runtime handoff or deployment qualification"
+  },
+  "boot_permission": false,
+  "cache_regression": {
+    "baseline": "Controlled copied-folder timestamp-valid native_format cache executed before helper pin",
+    "baseline_result": "REPRODUCED",
+    "candidate": "Pinned pinset plus pinned source-byte compile ignores forged timestamp-valid helper cache",
+    "candidate_result": "PASS",
+    "preserved_private_stderr_sha256": "6d6165c4f22e6eb772130f93d97fc12d68dc85c5b9c8e50e65ccd72148c5c47f"
+  },
+  "deployment_authorized": false,
+  "format_origin": {
+    "consumer_lines": [
+      179,
+      207
+    ],
+    "header_lines": [
+      21,
+      24
+    ],
+    "linker_sha256": "c38df89f8105789f79b4bd0f14e7ddce552458f1e402be36ca953854b92e7f5f",
+    "linker_source": "m1n1.ld",
+    "native_source": "src/j614s_native.c",
+    "payload_capacity_line": 9,
+    "payload_symbol_line": 195,
+    "source_sha256": "fc88b9e9da14593896220f5752c7a84896c2007b56f7bd8ba7d562beae4b4118"
+  },
+  "hardware": "UNTESTED",
+  "native_crc_bridge": {
+    "header_sha256": "30bc66f2a23341e01dbc7da6e3837927189f4f077446b139fcae2ab73f59def1",
+    "host_compile_flags": [
+      "-shared",
+      "-fPIC",
+      "-O2",
+      "-Wall",
+      "-Wextra",
+      "-Werror"
+    ],
+    "result": "PASS",
+    "scope": "Pure checksum algorithm only; native C consumer and target execution UNTESTED",
+    "source_sha256": "7f9b8a8149134e4b9c8ed36d2f0426eebd7264f4117d4648a971fe207cea2350",
+    "vectors": 6
+  },
+  "not_performed": [
+    "target access",
+    "USB/sysfs/serial access",
+    "watchdog operation",
+    "reset/reboot",
+    "chainload or staging",
+    "DT generation from actual capture03",
+    "real candidate container assembly",
+    "modification of any existing kernel/loader/initrd/capture artifact"
+  ],
+  "pinned_dt_generator_commit": "66557cd604f36aa14860e3c25e1e68edbaebcae9",
+  "runtime_fdt": false,
+  "schema": 1,
+  "scope": "Offline local source/file/format verification only",
+  "source_sha256": {
+    "bundle.py": "02a4e8be1f34206b8107ad9289de238dbd76cd7582aa2d87731740cda777028d",
+    "native_format.py": "01cd865464162c3c12e0537cd4e30e394c3644ce7ff3d4b88552fb2abbd48bd5",
+    "pins.json": "a27b5252c6c9bab9d6ca9b833ec49bd1e26eccafac599e54417134155bfaa64f",
+    "test_bundle.py": "9896cd614026b81eafdb074afa0ffecec0893a8adefe61036237fe5a0167fc54",
+    "test_format.py": "85111eb2c1157619a106136c57eab7a674707b6a49144f6811911fad198265bf"
+  },
+  "staging_placement": "UNTESTED; no generic chainload helper imported/invoked; resident-preservation hazard is separate primary gate",
+  "synthetic_positives": {
+    "real_candidate_bytes_combined": false,
+    "scope": "Wholly fabricated non-bootable format bytes only; metadata-only report fixture is not DT validation"
+  },
+  "tests": {
+    "actual_input_controls": 5,
+    "command": "J614S_NATIVE_INPUTS=integration/native-bundle/.private/actual-inputs.json python3 -m unittest discover -s integration/native-bundle -p 'test_*.py' -v",
+    "count": 30,
+    "local_source_controls": 10,
+    "result": "PASS",
+    "skipped": 0,
+    "synthetic_format_controls": 15
+  }
+}

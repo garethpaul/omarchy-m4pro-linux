@@ -1,0 +1,310 @@
+{
+  "actual_capture_not_modified": true,
+  "checks": [
+    {
+      "case": "invented_12_cpu_fixture",
+      "status": "PASS",
+      "synthetic": true
+    },
+    {
+      "case": "old_USB_session",
+      "status": "REFUSED"
+    },
+    {
+      "case": "observer_hash",
+      "status": "REFUSED"
+    },
+    {
+      "case": "bootargs_pair_hash",
+      "status": "REFUSED"
+    },
+    {
+      "case": "ADT_pair_hash",
+      "status": "REFUSED"
+    },
+    {
+      "case": "resident_helper_hash",
+      "status": "REFUSED"
+    },
+    {
+      "case": "board_identity",
+      "status": "REFUSED"
+    },
+    {
+      "case": "firmware_identity",
+      "status": "REFUSED"
+    },
+    {
+      "case": "target_write_capture",
+      "status": "REFUSED"
+    },
+    {
+      "case": "exception_state",
+      "status": "REFUSED"
+    },
+    {
+      "case": "all_secondary_flags_zero",
+      "status": "REFUSED"
+    },
+    {
+      "case": "summary_idle_false",
+      "status": "REFUSED"
+    },
+    {
+      "case": "WFE_false",
+      "status": "REFUSED"
+    },
+    {
+      "case": "secondary_target_pending",
+      "status": "REFUSED"
+    },
+    {
+      "case": "secondary_arguments_pending",
+      "status": "REFUSED"
+    },
+    {
+      "case": "live_mpidr_changed",
+      "status": "REFUSED"
+    },
+    {
+      "case": "observed_mpidr_changed",
+      "status": "REFUSED"
+    },
+    {
+      "case": "duplicate_CPU_slot",
+      "status": "REFUSED"
+    },
+    {
+      "case": "missing_CPU_slot",
+      "status": "REFUSED"
+    },
+    {
+      "case": "bool_as_integer",
+      "status": "REFUSED"
+    },
+    {
+      "case": "RAM_extent_overflow",
+      "status": "REFUSED"
+    },
+    {
+      "case": "wrong_physical_size",
+      "status": "REFUSED"
+    },
+    {
+      "case": "usable_exceeds_physical",
+      "status": "REFUSED"
+    },
+    {
+      "case": "resident_outside_usable",
+      "status": "REFUSED"
+    },
+    {
+      "case": "table_outside_resident",
+      "status": "REFUSED"
+    },
+    {
+      "case": "missing_release_slot",
+      "status": "REFUSED"
+    },
+    {
+      "case": "old_other_slot_release_pointer",
+      "status": "REFUSED"
+    },
+    {
+      "case": "release_unaligned",
+      "status": "REFUSED"
+    },
+    {
+      "case": "wrong_depth",
+      "status": "REFUSED"
+    },
+    {
+      "case": "display_inactive",
+      "status": "REFUSED"
+    },
+    {
+      "case": "wrong_stride",
+      "status": "REFUSED"
+    },
+    {
+      "case": "wrong_width",
+      "status": "REFUSED"
+    },
+    {
+      "case": "foreign_framebuffer_address",
+      "status": "REFUSED"
+    },
+    {
+      "case": "framebuffer_exposed_as_usable",
+      "status": "REFUSED"
+    },
+    {
+      "case": "synthetic_label_missing",
+      "status": "REFUSED"
+    },
+    {
+      "WFE": false,
+      "capture_unchanged": true,
+      "case": "actual_session63_original_capture",
+      "hardware": "NOT_QUALIFIED",
+      "secondary_idle": false,
+      "status": "REFUSED_BEFORE_OUTPUT"
+    },
+    {
+      "case": "dtc_fdtget_synthetic_minimal",
+      "dtc_diagnostics_bytes": 0,
+      "nodes_checked": 28,
+      "status": "PASS",
+      "synthetic": true,
+      "warnings_disabled": false
+    },
+    {
+      "case": "dtc_fdtget_synthetic_ANS",
+      "dtc_diagnostics_bytes": 0,
+      "nodes_checked": 31,
+      "status": "PASS",
+      "synthetic": true,
+      "warnings_disabled": false
+    },
+    {
+      "case": "added_SMC_node",
+      "status": "REFUSED"
+    },
+    {
+      "case": "allowed_node_disabled",
+      "status": "REFUSED"
+    },
+    {
+      "case": "CPU_address_cells_changed",
+      "status": "REFUSED"
+    },
+    {
+      "case": "added_MTP_reservation",
+      "status": "REFUSED"
+    },
+    {
+      "case": "wrong_initrd_width",
+      "status": "REFUSED"
+    },
+    {
+      "case": "wrong_memory_discovery",
+      "status": "REFUSED"
+    },
+    {
+      "case": "extra_loader_reservation_property",
+      "status": "REFUSED"
+    },
+    {
+      "case": "runtime_memory_before_loader_patch",
+      "status": "REFUSED"
+    },
+    {
+      "case": "forbidden_one_CPU_flag",
+      "status": "REFUSED"
+    },
+    {
+      "case": "wrong_ANS_register",
+      "status": "REFUSED"
+    },
+    {
+      "case": "forbidden_ANS_power_control",
+      "status": "REFUSED"
+    },
+    {
+      "case": "wrong_USB_interrupt",
+      "status": "REFUSED"
+    },
+    {
+      "case": "GPU_compatible_on_allowed_node",
+      "status": "REFUSED"
+    },
+    {
+      "case": "wrong_DART_DMA_extent",
+      "status": "REFUSED"
+    },
+    {
+      "case": "wrong_framebuffer_stride",
+      "status": "REFUSED"
+    },
+    {
+      "case": "wrong_kernel_source",
+      "status": "REFUSED_BEFORE_DT"
+    },
+    {
+      "case": "wrong_loader_binary",
+      "status": "REFUSED_BEFORE_DT"
+    },
+    {
+      "case": "wrong_USB_CLI",
+      "status": "REFUSED_BEFORE_DT"
+    },
+    {
+      "case": "wrong_capture_hash",
+      "status": "REFUSED_BEFORE_DT"
+    },
+    {
+      "case": "existing_output",
+      "status": "REFUSED_BEFORE_DT"
+    },
+    {
+      "after": "HASHED_SOURCE_BYTES_EXECUTED_AND_MISSING_BUNDLE_REFUSED",
+      "before": "FORGED_CACHE_INCORRECTLY_BYPASSES_ARTIFACT_VERIFICATION",
+      "case": "timestamp_valid_forged_helper_pyc",
+      "external_helper_edited": false,
+      "source_sha256": "c84ae596247f9f08eff693d8234917fa0f90bea69659da20db2a5a047a6508eb"
+    },
+    {
+      "case": "wrong_Python_helper_source_hash",
+      "status": "REFUSED_BEFORE_EXECUTION"
+    },
+    {
+      "case": "duplicate_JSON_key",
+      "status": "REFUSED"
+    },
+    {
+      "case": "exact_reference_compiler_warning",
+      "render_injection": "synthetic host fault only",
+      "status": "REFUSED_AND_DIAGNOSTICS_RETAINED"
+    },
+    {
+      "case": "real_dtc_warning_control",
+      "diagnostic_bytes": 141,
+      "generator_policy": "Any compiler stderr refuses qualification; no -Wno flags",
+      "status": "DIAGNOSTIC_OBSERVED",
+      "warning_check": "unit_address_vs_reg"
+    },
+    {
+      "case": "actual_generator_compiler_warning_fault_control",
+      "compiler_exit_code": 0,
+      "render_injection": "synthetic host fault only",
+      "status": "REFUSED_AND_DIAGNOSTICS_RETAINED",
+      "warnings_disabled": false
+    },
+    {
+      "case": "actual_generator_compiler_syntax-error_fault_control",
+      "compiler_exit_code": 1,
+      "render_injection": "synthetic host fault only",
+      "status": "REFUSED_AND_DIAGNOSTICS_RETAINED",
+      "warnings_disabled": false
+    }
+  ],
+  "checks_count": 65,
+  "hardware": "UNTESTED",
+  "scope": "Offline input refusal, exact-source binding and actual dtc/fdtget/fdtput controls; no target operation or runtime FDT qualification",
+  "status": "PASS",
+  "synthetic_fixture_only_for_positive_generation": true,
+  "tools": {
+    "dtc": {
+      "sha256": "79f7465d2df844e1544e76581494359e01329d76f0d42d621c0e5fd5c484684d",
+      "version": "Version: DTC v1.8.1"
+    },
+    "fdtget": {
+      "sha256": "50ea32c25fe795efee29920f596a993f080cef6cb4cf69e4aa5e56ce6f21b453",
+      "version": "Version: DTC v1.8.1"
+    },
+    "fdtput": {
+      "sha256": "af1991de08dc68644bd2f38d4cf94c232500c042b56e05d8bcdc373a3293c571",
+      "version": "Version: DTC v1.8.1"
+    }
+  }
+}

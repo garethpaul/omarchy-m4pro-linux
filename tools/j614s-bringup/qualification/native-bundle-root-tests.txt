@@ -1,0 +1,35 @@
+test_changed_real_loader_pin_stops_before_tools (test_bundle.ActualInputControls.test_changed_real_loader_pin_stops_before_tools) ... ok
+test_current03_cli_assemble_creates_no_bundle (test_bundle.ActualInputControls.test_current03_cli_assemble_creates_no_bundle) ... ok
+test_current03_refuses_before_dt_or_diagnostics (test_bundle.ActualInputControls.test_current03_refuses_before_dt_or_diagnostics) ... ok
+test_pinned_actual_c_crc_matches_python_on_small_fixtures (test_bundle.ActualInputControls.test_pinned_actual_c_crc_matches_python_on_small_fixtures) ... ok
+test_real_components_verify_independently (test_bundle.ActualInputControls.test_real_components_verify_independently) ... ok
+test_destination_refuses_input_tree_and_existing_paths (test_bundle.LocalControls.test_destination_refuses_input_tree_and_existing_paths) ... ok
+test_exact_source_ignores_timestamp_valid_cache (test_bundle.LocalControls.test_exact_source_ignores_timestamp_valid_cache) ... ok
+test_format_helper_source_tamper_refused (test_bundle.LocalControls.test_format_helper_source_tamper_refused) ... ok
+test_future_report_rejects_synthetic_or_authorized_labels (test_bundle.LocalControls.test_future_report_rejects_synthetic_or_authorized_labels) ... ok
+test_hash_pin_refuses_changed_file (test_bundle.LocalControls.test_hash_pin_refuses_changed_file) ... ok
+test_native_format_timestamp_cache_ignored (test_bundle.LocalControls.test_native_format_timestamp_cache_ignored) ... ok
+test_read_bound_rejects_oversize (test_bundle.LocalControls.test_read_bound_rejects_oversize) ... ok
+test_reviewed_pinset_oversize_refused (test_bundle.LocalControls.test_reviewed_pinset_oversize_refused) ... ok
+test_reviewed_pinset_tamper_refused_before_helper (test_bundle.LocalControls.test_reviewed_pinset_tamper_refused_before_helper) ... ok
+test_wrong_source_pin_never_executes (test_bundle.LocalControls.test_wrong_source_pin_never_executes) ... ok
+test_all_truncated_prefixes_refused (test_format.NativeFormatTests.test_all_truncated_prefixes_refused) ... ok
+test_arm_magic_offset_memory_and_flags (test_format.NativeFormatTests.test_arm_magic_offset_memory_and_flags) ... ok
+test_body_mutation_refused (test_format.NativeFormatTests.test_body_mutation_refused) ... ok
+test_crc_standard_vector (test_format.NativeFormatTests.test_crc_standard_vector) ... ok
+test_declared_component_size_bounds (test_format.NativeFormatTests.test_declared_component_size_bounds) ... ok
+test_each_crc_mismatch_refused (test_format.NativeFormatTests.test_each_crc_mismatch_refused) ... ok
+test_each_pin_mismatch_refused (test_format.NativeFormatTests.test_each_pin_mismatch_refused) ... ok
+test_elf_offset_is_not_inferred_from_eof (test_format.NativeFormatTests.test_elf_offset_is_not_inferred_from_eof) ... ok
+test_fdt_envelope_only_not_generic_validation (test_format.NativeFormatTests.test_fdt_envelope_only_not_generic_validation) ... ok
+test_flat_padding_must_be_preserved (test_format.NativeFormatTests.test_flat_padding_must_be_preserved) ... ok
+test_header_at_file_end_instead_of_payload_refused (test_format.NativeFormatTests.test_header_at_file_end_instead_of_payload_refused) ... ok
+test_magic_version_reserved_rejected (test_format.NativeFormatTests.test_magic_version_reserved_rejected) ... ok
+test_missing_duplicate_and_invalid_symbol_refused (test_format.NativeFormatTests.test_missing_duplicate_and_invalid_symbol_refused) ... ok
+test_synthetic_roundtrip_only (test_format.NativeFormatTests.test_synthetic_roundtrip_only) ... ok
+test_trailing_byte_even_zero_refused (test_format.NativeFormatTests.test_trailing_byte_even_zero_refused) ... ok
+
+----------------------------------------------------------------------
+Ran 30 tests in 0.914s
+
+OK

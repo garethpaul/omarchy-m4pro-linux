@@ -1,0 +1,26 @@
+{
+  "artifact_verifier_source_sha256": "c84ae596247f9f08eff693d8234917fa0f90bea69659da20db2a5a047a6508eb",
+  "generator_sha256": "f37e9cc51538abae0fffc407d768561456843055799e25ce9940c89afb8c7c5c",
+  "kernel_commit": "8f2f3d13600aacadd93d577855b7e212b8ae57ff",
+  "kernel_resource_source_files": {
+    "arch/arm64/kernel/cpufeature.c": "bed48464d12a55aada988819778b95b639322e5ee1bbda9743f6c61076b1df26",
+    "arch/arm64/kernel/smp_spin_table.c": "20071a155b1df92d8f8d55b17cbd0e149a05a5a685283f5d955bd78126697aeb",
+    "drivers/iommu/apple-dart.c": "c3cae72eacf30c5a0592bda4490a6f6e5e850aca7342b2a93f3a68e0cb37d4c5",
+    "drivers/irqchip/irq-apple-aic.c": "d52ff497371f81b94af730792c9ea9fb2bf24d99cf7df6e8985351dd331c2287",
+    "drivers/nvme/host/apple.c": "3837e270e802debf3364fb7b210df4ad058e8bbc429758950cd187d3ca5b9c13",
+    "drivers/phy/apple/usb2-t6040-inherited.c": "3336440c840efab83eab479ab1e0665014bc26753b81e6e3a0f3317c617b5f03",
+    "drivers/soc/apple/mailbox.c": "88748e94ddb069967303187d4152d57ccaf8bbb3dc304af14bffaf6c43221331",
+    "drivers/soc/apple/sart.c": "313203e3d99a41f7398ba1bebdb2fd9dcbeea723c1a82fd475d2654a9e94a9ae",
+    "drivers/usb/dwc3/core.c": "8a5f5f6abc50c2340d73ef72ec4b9f1c2fdc66be2ec32b85b26bd51a2cb32252",
+    "drivers/watchdog/apple_wdt.c": "937beceb5183621e9241c3a9c1b7c63877b0d5f2da383759390593fd420a22ec"
+  },
+  "loader_commit": "6249e0ecdb7677b6afa01989c23344962253e954",
+  "loader_source_sha256": "fc88b9e9da14593896220f5752c7a84896c2007b56f7bd8ba7d562beae4b4118",
+  "observer_sha256": "fce3a31052563734305b5c475bce7d247cf0c716fb0d0f177b81acf1da3c55d7",
+  "original_measured_topology_source_sha256": "55785b537b294a990a649b466ecc950632b61a4424e0cceb803dea9677395c16",
+  "profile_sha256": "4ad1e0c76532744bb9c424930c8fc0f1158c40389f26f03dc6e7e53ebc8448bc",
+  "scope": "No current MMIO/firmware state observation beyond supplied private capture; historical M2/M3/live-ADT comparison does not establish current state",
+  "source_match_method": "Exact clean git commits plus pinned critical source bytes, reproduced loader SHA, strict kernel artifact verifier; no aliases/compatibility guards modified",
+  "status": "PARTIAL (source/config match; hardware untested)",
+  "test_source_sha256": "e2608528077662179878d3c265775f195c8a296f5b4323337526dd7c5c25f045"
+}
