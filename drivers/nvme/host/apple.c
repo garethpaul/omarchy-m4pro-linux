@@ -417,8 +417,8 @@ static bool apple_nvme_in_inherited_rtkit_range(struct apple_nvme *anv,
 	/*
 	 * A range property or a partial System RAM intersection does not prove
 	 * ownership. Every page must be reserved and present in the linear map.
-	 * Native m1n1 reserves the predecessor's inherited allocation prefix.
-	 * RAM excluded by a resident EL2 stage needs a separate cache contract.
+	 * A producer must prove reserved RAM and compatible WB cache ownership.
+	 * Excluded predecessor RAM needs a separately validated mapping contract.
 	 */
 	if (region_intersects(bfr->iova, bfr->size, IORESOURCE_SYSTEM_RAM,
 			      IORES_DESC_NONE) != REGION_INTERSECTS)
