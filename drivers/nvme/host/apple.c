@@ -452,8 +452,6 @@ static int apple_nvme_sart_dma_setup(void *cookie,
 		return -ESHUTDOWN;
 	if (!bfr->size)
 		return -EINVAL;
-	if (READ_ONCE(anv->quarantined))
-		return -ESHUTDOWN;
 
 	if (bfr->iova) {
 		struct apple_nvme_rtkit_mapping *mapping;
