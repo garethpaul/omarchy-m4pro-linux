@@ -1,0 +1,58 @@
+{
+  "schema": 1,
+  "status": "PARTIAL",
+  "current_frequency": "UNTESTED; no CPM snapshot captured",
+  "sources": {
+    "linux_cpufreq": {
+      "commit": "4ff8816df8c4bc81b1652eca17fc8c0e9e1928cc",
+      "source_path": "drivers/cpufreq/apple-soc-cpufreq.c",
+      "sha256": "059f2769028d6cc22ebf116c4c852504c4adb07efa73f29a16582ed295bc4fdb"
+    },
+    "m3_dts": {
+      "commit": "4ff8816df8c4bc81b1652eca17fc8c0e9e1928cc",
+      "source_path": "arch/arm64/boot/dts/apple/t8122.dtsi",
+      "sha256": "6ef3f83020e781181e3ac35bc4158a6cc617565a6005d6a21325c2b6d2a97a3b"
+    },
+    "m2_dts": {
+      "commit": "4ff8816df8c4bc81b1652eca17fc8c0e9e1928cc",
+      "source_path": "arch/arm64/boot/dts/apple/t8112.dtsi",
+      "sha256": "e21d6eeca0f97f671abd27c795255100961e23d90104bfdcaebc56b67c8e6df5"
+    },
+    "resident_t6040_cpufreq": {
+      "commit": "8e0cf288beec26defb196f23599ea2f6f1bd504e",
+      "source_path": "src/cpufreq_t6040.c",
+      "sha256": "522015c9c064ddd7a6a77a780c5488db23ca5c3e3515e091353b52ead93a5057"
+    },
+    "resident_cpufreq_dispatch": {
+      "commit": "8e0cf288beec26defb196f23599ea2f6f1bd504e",
+      "source_path": "src/cpufreq.c",
+      "sha256": "063a6b74ac24e838d6f64319d1e1b2c2a3ffe40aa7f661565633ac12450bfb08"
+    }
+  },
+  "qualified_kernel_config": {
+    "sha256": "cfcc148e0c79f934ef23086598eaf630524ca0e3cc61821e0b5398ab7ee26da6",
+    "exact_cpu_freq_line": "# CONFIG_CPU_FREQ is not set",
+    "exact_cpu_idle_line": "# CONFIG_CPU_IDLE is not set"
+  },
+  "resident_t6040_guard": {
+    "required_board_id": 6,
+    "required_compatible": "J616sAP",
+    "this_machine_board_id": 4,
+    "conclusion": "The inspected resident source refuses J614s before CPM access."
+  },
+  "driver_t8112_status": {
+    "offset": 80,
+    "current_shift": 5,
+    "current_mask": 992,
+    "target_mask": 31,
+    "t6040_reuse": "UNTESTED"
+  },
+  "driver_command": {
+    "offset": 32,
+    "busy_bit": 31,
+    "set_bit": 25,
+    "low5_mask": 31,
+    "t6040_semantics": "UNTESTED on J614s"
+  },
+  "timer_interpretation": "The saved 1000MHz arch_timer and 2000 BogoMIPS are not measurements of CPU clock."
+}

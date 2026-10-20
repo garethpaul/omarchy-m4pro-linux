@@ -1,0 +1,2008 @@
+{
+  "schema": 1,
+  "status": "PARTIAL",
+  "hardware_semantics": "UNTESTED",
+  "raw_adt_exported": false,
+  "comparison_limit": "M2/M3/M4 static trees are 25G76; live M4 is runtime. Static missing/populated tables do not establish an SoC difference.",
+  "layouts": {
+    "live_t6040": {
+      "source_sha256": "77cedfd555eb507e0cac4d28354d4bd7532d6e4d409328ae4d50ddd74a53fd23",
+      "model": [
+        "Mac16,8"
+      ],
+      "root_compatible": [
+        "J614sAP",
+        "Mac16,8",
+        "AppleARM"
+      ],
+      "board_id": 4,
+      "chip_id": 24640,
+      "pmgr_compatible": [
+        "pmgr1,t6041"
+      ],
+      "cpu_apertures": [
+        {
+          "reg_index": 6,
+          "bus": 283246592,
+          "physical": 8873181184,
+          "size": 8192
+        },
+        {
+          "reg_index": 15,
+          "bus": 300023808,
+          "physical": 8889958400,
+          "size": 8192
+        },
+        {
+          "reg_index": 26,
+          "bus": 316801024,
+          "physical": 8906735616,
+          "size": 8192
+        }
+      ],
+      "cpus": [
+        {
+          "cpu_id": 0,
+          "cluster_id": 0,
+          "reg": 0,
+          "compatible": [
+            "apple,sawtooth",
+            "ARM,v8"
+          ]
+        },
+        {
+          "cpu_id": 1,
+          "cluster_id": 0,
+          "reg": 1,
+          "compatible": [
+            "apple,sawtooth",
+            "ARM,v8"
+          ]
+        },
+        {
+          "cpu_id": 2,
+          "cluster_id": 0,
+          "reg": 2,
+          "compatible": [
+            "apple,sawtooth",
+            "ARM,v8"
+          ]
+        },
+        {
+          "cpu_id": 3,
+          "cluster_id": 0,
+          "reg": 3,
+          "compatible": [
+            "apple,sawtooth",
+            "ARM,v8"
+          ]
+        },
+        {
+          "cpu_id": 4,
+          "cluster_id": 1,
+          "reg": 256,
+          "compatible": [
+            "apple,everest",
+            "ARM,v8"
+          ]
+        },
+        {
+          "cpu_id": 5,
+          "cluster_id": 1,
+          "reg": 257,
+          "compatible": [
+            "apple,everest",
+            "ARM,v8"
+          ]
+        },
+        {
+          "cpu_id": 6,
+          "cluster_id": 1,
+          "reg": 258,
+          "compatible": [
+            "apple,everest",
+            "ARM,v8"
+          ]
+        },
+        {
+          "cpu_id": 7,
+          "cluster_id": 1,
+          "reg": 259,
+          "compatible": [
+            "apple,everest",
+            "ARM,v8"
+          ]
+        },
+        {
+          "cpu_id": 10,
+          "cluster_id": 2,
+          "reg": 512,
+          "compatible": [
+            "apple,everest",
+            "ARM,v8"
+          ]
+        },
+        {
+          "cpu_id": 11,
+          "cluster_id": 2,
+          "reg": 513,
+          "compatible": [
+            "apple,everest",
+            "ARM,v8"
+          ]
+        },
+        {
+          "cpu_id": 12,
+          "cluster_id": 2,
+          "reg": 514,
+          "compatible": [
+            "apple,everest",
+            "ARM,v8"
+          ]
+        },
+        {
+          "cpu_id": 13,
+          "cluster_id": 2,
+          "reg": 515,
+          "compatible": [
+            "apple,everest",
+            "ARM,v8"
+          ]
+        }
+      ],
+      "cpu_sram_tables": {
+        "voltage-states1-sram": [
+          {
+            "frequency_candidate_khz": 1020000,
+            "sram_value": 790
+          },
+          {
+            "frequency_candidate_khz": 1404000,
+            "sram_value": 800
+          },
+          {
+            "frequency_candidate_khz": 1788000,
+            "sram_value": 830
+          },
+          {
+            "frequency_candidate_khz": 2112000,
+            "sram_value": 860
+          },
+          {
+            "frequency_candidate_khz": 2352000,
+            "sram_value": 900
+          },
+          {
+            "frequency_candidate_khz": 2532000,
+            "sram_value": 940
+          },
+          {
+            "frequency_candidate_khz": 2592000,
+            "sram_value": 940
+          }
+        ],
+        "voltage-states5-sram": [
+          {
+            "frequency_candidate_khz": 1260000,
+            "sram_value": 790
+          },
+          {
+            "frequency_candidate_khz": 1512000,
+            "sram_value": 810
+          },
+          {
+            "frequency_candidate_khz": 1800000,
+            "sram_value": 835
+          },
+          {
+            "frequency_candidate_khz": 2088000,
+            "sram_value": 860
+          },
+          {
+            "frequency_candidate_khz": 2352000,
+            "sram_value": 885
+          },
+          {
+            "frequency_candidate_khz": 2616000,
+            "sram_value": 905
+          },
+          {
+            "frequency_candidate_khz": 2868000,
+            "sram_value": 920
+          },
+          {
+            "frequency_candidate_khz": 3096000,
+            "sram_value": 940
+          },
+          {
+            "frequency_candidate_khz": 3300000,
+            "sram_value": 960
+          },
+          {
+            "frequency_candidate_khz": 3468000,
+            "sram_value": 970
+          },
+          {
+            "frequency_candidate_khz": 3624000,
+            "sram_value": 1000
+          },
+          {
+            "frequency_candidate_khz": 3756000,
+            "sram_value": 1020
+          },
+          {
+            "frequency_candidate_khz": 3852000,
+            "sram_value": 1020
+          },
+          {
+            "frequency_candidate_khz": 3924000,
+            "sram_value": 1020
+          },
+          {
+            "frequency_candidate_khz": 3996000,
+            "sram_value": 1020
+          },
+          {
+            "frequency_candidate_khz": 4044000,
+            "sram_value": 1020
+          },
+          {
+            "frequency_candidate_khz": 4104000,
+            "sram_value": 1020
+          },
+          {
+            "frequency_candidate_khz": 4416000,
+            "sram_value": 1080
+          },
+          {
+            "frequency_candidate_khz": 4512000,
+            "sram_value": 1080
+          }
+        ],
+        "voltage-states13-sram": [
+          {
+            "frequency_candidate_khz": 1260000,
+            "sram_value": 790
+          },
+          {
+            "frequency_candidate_khz": 1512000,
+            "sram_value": 810
+          },
+          {
+            "frequency_candidate_khz": 1800000,
+            "sram_value": 835
+          },
+          {
+            "frequency_candidate_khz": 2088000,
+            "sram_value": 860
+          },
+          {
+            "frequency_candidate_khz": 2352000,
+            "sram_value": 885
+          },
+          {
+            "frequency_candidate_khz": 2616000,
+            "sram_value": 905
+          },
+          {
+            "frequency_candidate_khz": 2868000,
+            "sram_value": 920
+          },
+          {
+            "frequency_candidate_khz": 3096000,
+            "sram_value": 940
+          },
+          {
+            "frequency_candidate_khz": 3300000,
+            "sram_value": 960
+          },
+          {
+            "frequency_candidate_khz": 3468000,
+            "sram_value": 970
+          },
+          {
+            "frequency_candidate_khz": 3624000,
+            "sram_value": 1000
+          },
+          {
+            "frequency_candidate_khz": 3756000,
+            "sram_value": 1020
+          },
+          {
+            "frequency_candidate_khz": 3852000,
+            "sram_value": 1020
+          },
+          {
+            "frequency_candidate_khz": 3924000,
+            "sram_value": 1020
+          },
+          {
+            "frequency_candidate_khz": 3996000,
+            "sram_value": 1020
+          },
+          {
+            "frequency_candidate_khz": 4044000,
+            "sram_value": 1020
+          },
+          {
+            "frequency_candidate_khz": 4104000,
+            "sram_value": 1020
+          },
+          {
+            "frequency_candidate_khz": 4416000,
+            "sram_value": 1080
+          },
+          {
+            "frequency_candidate_khz": 4512000,
+            "sram_value": 1080
+          }
+        ]
+      },
+      "pmgr_structure": {
+        "perf-groups": {
+          "bytes": 756,
+          "sha256": "cfdb69f00d5830953afa74478013752136ac36b62375bdd669af9cf1b18c7524"
+        },
+        "perf-domains": {
+          "bytes": 252,
+          "sha256": "4d9bcd9814ae9f166c9db3b4755e88c16e0ed65b3cf39cb342cb00872f0a2010"
+        },
+        "clusters": {
+          "bytes": 12,
+          "sha256": "41e4a837e7cbeeca9332b95d0a5943ea901a2b553be71f0a1bf5fdd74b7773ae",
+          "u32": [
+            4,
+            262150,
+            655366
+          ]
+        },
+        "cluster-ctl-offset": {
+          "bytes": 4,
+          "sha256": "313588ae36b23498c072b8718f9a3614d9e52b444cdcea74ecd49c93044741b3",
+          "u32": [
+            131072
+          ]
+        },
+        "clpc": {
+          "bytes": 4,
+          "sha256": "9d9f290527a6be626a8f5985b26e19b237b44872b03631811df4416fc1713178",
+          "u32": [
+            3
+          ]
+        }
+      },
+      "related_nodes": {
+        "/arm-io/pmp": {
+          "present": true,
+          "compatible": [
+            "iop,ascwrap-v6"
+          ],
+          "registers": [
+            {
+              "physical": 21489516544,
+              "size": 557056
+            },
+            {
+              "physical": 21483552768,
+              "size": 16384
+            },
+            {
+              "physical": 21482176512,
+              "size": 917504
+            },
+            {
+              "physical": 21478834176,
+              "size": 8192
+            }
+          ]
+        },
+        "/arm-io/dart-pmp": {
+          "present": true,
+          "compatible": [
+            "dart,t8110"
+          ],
+          "registers": [
+            {
+              "physical": 21477982208,
+              "size": 49152
+            },
+            {
+              "physical": 21480570880,
+              "size": 16384
+            }
+          ]
+        }
+      }
+    },
+    "static_t8112": {
+      "source_sha256": "2a0c26929ef8afbe7835816183f919a2bcfdc42a662429e67526f64babc9c88e",
+      "model": [
+        "Mac14,2"
+      ],
+      "root_compatible": [
+        "J413AP",
+        "Mac14,2",
+        "AppleARM"
+      ],
+      "board_id": 0,
+      "chip_id": 0,
+      "pmgr_compatible": [
+        "pmgr1,t8112"
+      ],
+      "cpu_apertures": [
+        {
+          "reg_index": 5,
+          "bus": 283246592,
+          "physical": 8873181184,
+          "size": 8192
+        },
+        {
+          "reg_index": 14,
+          "bus": 300023808,
+          "physical": 8889958400,
+          "size": 8192
+        }
+      ],
+      "cpus": [
+        {
+          "cpu_id": 0,
+          "cluster_id": 0,
+          "reg": 0,
+          "compatible": [
+            "apple,blizzard",
+            "ARM,v8"
+          ]
+        },
+        {
+          "cpu_id": 1,
+          "cluster_id": 0,
+          "reg": 1,
+          "compatible": [
+            "apple,blizzard",
+            "ARM,v8"
+          ]
+        },
+        {
+          "cpu_id": 2,
+          "cluster_id": 0,
+          "reg": 2,
+          "compatible": [
+            "apple,blizzard",
+            "ARM,v8"
+          ]
+        },
+        {
+          "cpu_id": 3,
+          "cluster_id": 0,
+          "reg": 3,
+          "compatible": [
+            "apple,blizzard",
+            "ARM,v8"
+          ]
+        },
+        {
+          "cpu_id": 4,
+          "cluster_id": 1,
+          "reg": 256,
+          "compatible": [
+            "apple,avalanche",
+            "ARM,v8"
+          ]
+        },
+        {
+          "cpu_id": 5,
+          "cluster_id": 1,
+          "reg": 257,
+          "compatible": [
+            "apple,avalanche",
+            "ARM,v8"
+          ]
+        },
+        {
+          "cpu_id": 6,
+          "cluster_id": 1,
+          "reg": 258,
+          "compatible": [
+            "apple,avalanche",
+            "ARM,v8"
+          ]
+        },
+        {
+          "cpu_id": 7,
+          "cluster_id": 1,
+          "reg": 259,
+          "compatible": [
+            "apple,avalanche",
+            "ARM,v8"
+          ]
+        }
+      ],
+      "cpu_sram_tables": {},
+      "pmgr_structure": {
+        "perf-regs": {
+          "bytes": 64,
+          "sha256": "da2ecc1b61b87dbd910bc4e34c817866fd189ff8e6d3a46936a0269fc98f3c9d"
+        },
+        "perf-domains": {
+          "bytes": 168,
+          "sha256": "6fdfd6de11178192ede9ac4414d04e782bb8a79be5e0a91edbddd37454f4ea84"
+        },
+        "clusters": {
+          "bytes": 8,
+          "sha256": "267833806a8e9c01c5355ae70125042abfa3e90ca6708f00e944a4e6e5addd9f",
+          "u32": [
+            4,
+            4
+          ]
+        },
+        "cluster-ctl-offset": {
+          "bytes": 4,
+          "sha256": "c9c7e8c63836a93f6d8c04598b6503d2863a2df7b86366157178234175704dcc",
+          "u32": [
+            524288
+          ]
+        },
+        "clpc": {
+          "bytes": 4,
+          "sha256": "9d9f290527a6be626a8f5985b26e19b237b44872b03631811df4416fc1713178",
+          "u32": [
+            3
+          ]
+        }
+      },
+      "related_nodes": {
+        "/arm-io/pmp": {
+          "present": true,
+          "compatible": [
+            "iop,ascwrap-v4"
+          ],
+          "registers": [
+            {
+              "physical": 9592373248,
+              "size": 442368
+            },
+            {
+              "physical": 9588506624,
+              "size": 16384
+            },
+            {
+              "physical": 9585033216,
+              "size": 524288
+            },
+            {
+              "physical": 9583788032,
+              "size": 16384
+            }
+          ]
+        },
+        "/arm-io/dart-pmp": {
+          "present": true,
+          "compatible": [
+            "dart,t8110"
+          ],
+          "registers": [
+            {
+              "physical": 9582936064,
+              "size": 16384
+            },
+            {
+              "physical": 9582952448,
+              "size": 16384
+            }
+          ]
+        }
+      }
+    },
+    "static_t8122": {
+      "source_sha256": "6430fdc6da49c64025d038d50fdcff3c57dfe2b1f3d37052c12f1dc27e988c2f",
+      "model": [
+        "Mac15,12"
+      ],
+      "root_compatible": [
+        "J613AP",
+        "Mac15,12",
+        "AppleARM"
+      ],
+      "board_id": 0,
+      "chip_id": 0,
+      "pmgr_compatible": [
+        "pmgr1,t8122"
+      ],
+      "cpu_apertures": [
+        {
+          "reg_index": 5,
+          "bus": 14811136,
+          "physical": 8873181184,
+          "size": 8192
+        },
+        {
+          "reg_index": 14,
+          "bus": 31588352,
+          "physical": 8889958400,
+          "size": 8192
+        }
+      ],
+      "cpus": [
+        {
+          "cpu_id": 0,
+          "cluster_id": 0,
+          "reg": 0,
+          "compatible": [
+            "apple,sawtooth",
+            "ARM,v8"
+          ]
+        },
+        {
+          "cpu_id": 1,
+          "cluster_id": 0,
+          "reg": 1,
+          "compatible": [
+            "apple,sawtooth",
+            "ARM,v8"
+          ]
+        },
+        {
+          "cpu_id": 2,
+          "cluster_id": 0,
+          "reg": 2,
+          "compatible": [
+            "apple,sawtooth",
+            "ARM,v8"
+          ]
+        },
+        {
+          "cpu_id": 3,
+          "cluster_id": 0,
+          "reg": 3,
+          "compatible": [
+            "apple,sawtooth",
+            "ARM,v8"
+          ]
+        },
+        {
+          "cpu_id": 4,
+          "cluster_id": 1,
+          "reg": 256,
+          "compatible": [
+            "apple,everest",
+            "ARM,v8"
+          ]
+        },
+        {
+          "cpu_id": 5,
+          "cluster_id": 1,
+          "reg": 257,
+          "compatible": [
+            "apple,everest",
+            "ARM,v8"
+          ]
+        },
+        {
+          "cpu_id": 6,
+          "cluster_id": 1,
+          "reg": 258,
+          "compatible": [
+            "apple,everest",
+            "ARM,v8"
+          ]
+        },
+        {
+          "cpu_id": 7,
+          "cluster_id": 1,
+          "reg": 259,
+          "compatible": [
+            "apple,everest",
+            "ARM,v8"
+          ]
+        }
+      ],
+      "cpu_sram_tables": {},
+      "pmgr_structure": {
+        "perf-regs": {
+          "bytes": 96,
+          "sha256": "511356779785ac452795a0cab8825eb46ef63720f468f9f5cba5a0c32e6c1e5f"
+        },
+        "perf-domains": {
+          "bytes": 168,
+          "sha256": "6fdfd6de11178192ede9ac4414d04e782bb8a79be5e0a91edbddd37454f4ea84"
+        },
+        "clusters": {
+          "bytes": 8,
+          "sha256": "267833806a8e9c01c5355ae70125042abfa3e90ca6708f00e944a4e6e5addd9f",
+          "u32": [
+            4,
+            4
+          ]
+        },
+        "cluster-ctl-offset": {
+          "bytes": 4,
+          "sha256": "df3f619804a92fdb4057192dc43dd748ea778adc52bc498ce80524c014b81119",
+          "u32": [
+            0
+          ]
+        },
+        "clpc": {
+          "bytes": 4,
+          "sha256": "9d9f290527a6be626a8f5985b26e19b237b44872b03631811df4416fc1713178",
+          "u32": [
+            3
+          ]
+        }
+      },
+      "related_nodes": {
+        "/arm-io/pmp": {
+          "present": true,
+          "compatible": [
+            "iop,ascwrap-v6"
+          ],
+          "registers": [
+            {
+              "physical": 12092178432,
+              "size": 442368
+            },
+            {
+              "physical": 12088311808,
+              "size": 16384
+            },
+            {
+              "physical": 12084838400,
+              "size": 524288
+            },
+            {
+              "physical": 12083593216,
+              "size": 16384
+            }
+          ]
+        },
+        "/arm-io/dart-pmp": {
+          "present": true,
+          "compatible": [
+            "dart,t8110"
+          ],
+          "registers": [
+            {
+              "physical": 12082741248,
+              "size": 16384
+            }
+          ]
+        }
+      }
+    },
+    "static_t6040": {
+      "source_sha256": "8be3570bd27cffb780492023382d4a5ea2398fdaf16b8ed1b215ff57f9475087",
+      "model": [
+        "Mac16,8"
+      ],
+      "root_compatible": [
+        "J614sAP",
+        "Mac16,8",
+        "AppleARM"
+      ],
+      "board_id": 0,
+      "chip_id": 0,
+      "pmgr_compatible": [
+        "pmgr1,t6041"
+      ],
+      "cpu_apertures": [
+        {
+          "reg_index": 6,
+          "bus": 283246592,
+          "physical": 8873181184,
+          "size": 8192
+        },
+        {
+          "reg_index": 15,
+          "bus": 300023808,
+          "physical": 8889958400,
+          "size": 8192
+        },
+        {
+          "reg_index": 26,
+          "bus": 316801024,
+          "physical": 8906735616,
+          "size": 8192
+        }
+      ],
+      "cpus": [
+        {
+          "cpu_id": 0,
+          "cluster_id": 0,
+          "reg": 0,
+          "compatible": [
+            "apple,sawtooth",
+            "ARM,v8"
+          ]
+        },
+        {
+          "cpu_id": 1,
+          "cluster_id": 0,
+          "reg": 1,
+          "compatible": [
+            "apple,sawtooth",
+            "ARM,v8"
+          ]
+        },
+        {
+          "cpu_id": 2,
+          "cluster_id": 0,
+          "reg": 2,
+          "compatible": [
+            "apple,sawtooth",
+            "ARM,v8"
+          ]
+        },
+        {
+          "cpu_id": 3,
+          "cluster_id": 0,
+          "reg": 3,
+          "compatible": [
+            "apple,sawtooth",
+            "ARM,v8"
+          ]
+        },
+        {
+          "cpu_id": 4,
+          "cluster_id": 1,
+          "reg": 256,
+          "compatible": [
+            "apple,everest",
+            "ARM,v8"
+          ]
+        },
+        {
+          "cpu_id": 5,
+          "cluster_id": 1,
+          "reg": 257,
+          "compatible": [
+            "apple,everest",
+            "ARM,v8"
+          ]
+        },
+        {
+          "cpu_id": 6,
+          "cluster_id": 1,
+          "reg": 258,
+          "compatible": [
+            "apple,everest",
+            "ARM,v8"
+          ]
+        },
+        {
+          "cpu_id": 7,
+          "cluster_id": 1,
+          "reg": 259,
+          "compatible": [
+            "apple,everest",
+            "ARM,v8"
+          ]
+        },
+        {
+          "cpu_id": 8,
+          "cluster_id": 1,
+          "reg": 260,
+          "compatible": [
+            "apple,everest",
+            "ARM,v8"
+          ]
+        },
+        {
+          "cpu_id": 9,
+          "cluster_id": 1,
+          "reg": 261,
+          "compatible": [
+            "apple,everest",
+            "ARM,v8"
+          ]
+        },
+        {
+          "cpu_id": 10,
+          "cluster_id": 2,
+          "reg": 512,
+          "compatible": [
+            "apple,everest",
+            "ARM,v8"
+          ]
+        },
+        {
+          "cpu_id": 11,
+          "cluster_id": 2,
+          "reg": 513,
+          "compatible": [
+            "apple,everest",
+            "ARM,v8"
+          ]
+        },
+        {
+          "cpu_id": 12,
+          "cluster_id": 2,
+          "reg": 514,
+          "compatible": [
+            "apple,everest",
+            "ARM,v8"
+          ]
+        },
+        {
+          "cpu_id": 13,
+          "cluster_id": 2,
+          "reg": 515,
+          "compatible": [
+            "apple,everest",
+            "ARM,v8"
+          ]
+        },
+        {
+          "cpu_id": 14,
+          "cluster_id": 2,
+          "reg": 516,
+          "compatible": [
+            "apple,everest",
+            "ARM,v8"
+          ]
+        },
+        {
+          "cpu_id": 15,
+          "cluster_id": 2,
+          "reg": 517,
+          "compatible": [
+            "apple,everest",
+            "ARM,v8"
+          ]
+        }
+      ],
+      "cpu_sram_tables": {},
+      "pmgr_structure": {
+        "perf-groups": {
+          "bytes": 756,
+          "sha256": "cfdb69f00d5830953afa74478013752136ac36b62375bdd669af9cf1b18c7524"
+        },
+        "perf-domains": {
+          "bytes": 252,
+          "sha256": "4d9bcd9814ae9f166c9db3b4755e88c16e0ed65b3cf39cb342cb00872f0a2010"
+        },
+        "clusters": {
+          "bytes": 12,
+          "sha256": "41e4a837e7cbeeca9332b95d0a5943ea901a2b553be71f0a1bf5fdd74b7773ae",
+          "u32": [
+            4,
+            262150,
+            655366
+          ]
+        },
+        "cluster-ctl-offset": {
+          "bytes": 4,
+          "sha256": "313588ae36b23498c072b8718f9a3614d9e52b444cdcea74ecd49c93044741b3",
+          "u32": [
+            131072
+          ]
+        },
+        "clpc": {
+          "bytes": 4,
+          "sha256": "9d9f290527a6be626a8f5985b26e19b237b44872b03631811df4416fc1713178",
+          "u32": [
+            3
+          ]
+        }
+      },
+      "related_nodes": {
+        "/arm-io/pmp": {
+          "present": true,
+          "compatible": [
+            "iop,ascwrap-v6"
+          ],
+          "registers": [
+            {
+              "physical": 21489516544,
+              "size": 557056
+            },
+            {
+              "physical": 21483552768,
+              "size": 16384
+            },
+            {
+              "physical": 21482176512,
+              "size": 917504
+            },
+            {
+              "physical": 21478834176,
+              "size": 8192
+            }
+          ]
+        },
+        "/arm-io/dart-pmp": {
+          "present": true,
+          "compatible": [
+            "dart,t8110"
+          ],
+          "registers": [
+            {
+              "physical": 21477982208,
+              "size": 49152
+            }
+          ]
+        }
+      }
+    }
+  },
+  "node_diffs": {
+    "static_t8112": {
+      "/cpus/cpu0": {
+        "present": true,
+        "changed_properties": [
+          "cluster-core-id",
+          "compatible",
+          "cpm-impl-reg",
+          "die-cluster-id",
+          "die-id",
+          "function-cpu_idle",
+          "function-enable_core",
+          "function-error_handler",
+          "interrupt-parent",
+          "interrupts"
+        ]
+      },
+      "/cpus/cpu1": {
+        "present": true,
+        "changed_properties": [
+          "cluster-core-id",
+          "compatible",
+          "cpm-impl-reg",
+          "die-cluster-id",
+          "die-id",
+          "function-cpu_idle",
+          "function-enable_core",
+          "function-error_handler",
+          "interrupt-parent",
+          "interrupts"
+        ]
+      },
+      "/cpus/cpu2": {
+        "present": true,
+        "changed_properties": [
+          "cluster-core-id",
+          "compatible",
+          "cpm-impl-reg",
+          "die-cluster-id",
+          "die-id",
+          "function-cpu_idle",
+          "function-enable_core",
+          "function-error_handler",
+          "interrupt-parent",
+          "interrupts"
+        ]
+      },
+      "/cpus/cpu3": {
+        "present": true,
+        "changed_properties": [
+          "cluster-core-id",
+          "compatible",
+          "cpm-impl-reg",
+          "die-cluster-id",
+          "die-id",
+          "function-cpu_idle",
+          "function-enable_core",
+          "function-error_handler",
+          "interrupt-parent",
+          "interrupts"
+        ]
+      },
+      "/cpus/cpu4": {
+        "present": true,
+        "changed_properties": [
+          "bus-frequency",
+          "clock-frequency",
+          "cluster-core-id",
+          "cluster-power-down",
+          "compatible",
+          "cpm-impl-reg",
+          "die-cluster-id",
+          "die-id",
+          "fixed-frequency",
+          "function-cpu_idle",
+          "function-enable_core",
+          "function-error_handler",
+          "interrupt-parent",
+          "interrupts",
+          "memory-frequency",
+          "peripheral-frequency",
+          "state",
+          "timebase-frequency"
+        ]
+      },
+      "/cpus/cpu5": {
+        "present": true,
+        "changed_properties": [
+          "cluster-core-id",
+          "cluster-power-down",
+          "compatible",
+          "cpm-impl-reg",
+          "die-cluster-id",
+          "die-id",
+          "function-cpu_idle",
+          "function-enable_core",
+          "function-error_handler",
+          "interrupt-parent",
+          "interrupts"
+        ]
+      },
+      "/cpus/cpu6": {
+        "present": true,
+        "changed_properties": [
+          "cluster-core-id",
+          "cluster-power-down",
+          "compatible",
+          "cpm-impl-reg",
+          "die-cluster-id",
+          "die-id",
+          "function-cpu_idle",
+          "function-enable_core",
+          "function-error_handler",
+          "interrupt-parent",
+          "interrupts"
+        ]
+      },
+      "/cpus/cpu7": {
+        "present": true,
+        "changed_properties": [
+          "cluster-core-id",
+          "cluster-power-down",
+          "compatible",
+          "cpm-impl-reg",
+          "die-cluster-id",
+          "die-id",
+          "function-cpu_idle",
+          "function-enable_core",
+          "function-error_handler",
+          "interrupt-parent",
+          "interrupts"
+        ]
+      },
+      "/cpus/cpu10": {
+        "present": false,
+        "changed_properties": [
+          "AAPL,phandle",
+          "acc-impl-reg",
+          "cluster-core-id",
+          "cluster-id",
+          "cluster-power-down",
+          "cluster-type",
+          "compatible",
+          "coresight-reg",
+          "cpm-impl-reg",
+          "cpu-id",
+          "cpu-impl-reg",
+          "cpu-uttdbg-reg",
+          "device_type",
+          "die-cluster-id",
+          "die-id",
+          "function-cpu_idle",
+          "function-enable_core",
+          "function-error_handler",
+          "interrupt-parent",
+          "interrupts",
+          "l2-cache-id",
+          "l2-cache-size",
+          "name",
+          "no-aic-ipi-required",
+          "reg",
+          "reg-private",
+          "state"
+        ]
+      },
+      "/cpus/cpu11": {
+        "present": false,
+        "changed_properties": [
+          "AAPL,phandle",
+          "acc-impl-reg",
+          "cluster-core-id",
+          "cluster-id",
+          "cluster-power-down",
+          "cluster-type",
+          "compatible",
+          "coresight-reg",
+          "cpm-impl-reg",
+          "cpu-id",
+          "cpu-impl-reg",
+          "cpu-uttdbg-reg",
+          "device_type",
+          "die-cluster-id",
+          "die-id",
+          "function-cpu_idle",
+          "function-enable_core",
+          "function-error_handler",
+          "interrupt-parent",
+          "interrupts",
+          "l2-cache-id",
+          "l2-cache-size",
+          "name",
+          "no-aic-ipi-required",
+          "reg",
+          "reg-private",
+          "state"
+        ]
+      },
+      "/cpus/cpu12": {
+        "present": false,
+        "changed_properties": [
+          "AAPL,phandle",
+          "acc-impl-reg",
+          "cluster-core-id",
+          "cluster-id",
+          "cluster-power-down",
+          "cluster-type",
+          "compatible",
+          "coresight-reg",
+          "cpm-impl-reg",
+          "cpu-id",
+          "cpu-impl-reg",
+          "cpu-uttdbg-reg",
+          "device_type",
+          "die-cluster-id",
+          "die-id",
+          "function-cpu_idle",
+          "function-enable_core",
+          "function-error_handler",
+          "interrupt-parent",
+          "interrupts",
+          "l2-cache-id",
+          "l2-cache-size",
+          "name",
+          "no-aic-ipi-required",
+          "reg",
+          "reg-private",
+          "state"
+        ]
+      },
+      "/cpus/cpu13": {
+        "present": false,
+        "changed_properties": [
+          "AAPL,phandle",
+          "acc-impl-reg",
+          "cluster-core-id",
+          "cluster-id",
+          "cluster-power-down",
+          "cluster-type",
+          "compatible",
+          "coresight-reg",
+          "cpm-impl-reg",
+          "cpu-id",
+          "cpu-impl-reg",
+          "cpu-uttdbg-reg",
+          "device_type",
+          "die-cluster-id",
+          "die-id",
+          "function-cpu_idle",
+          "function-enable_core",
+          "function-error_handler",
+          "interrupt-parent",
+          "interrupts",
+          "l2-cache-id",
+          "l2-cache-size",
+          "name",
+          "no-aic-ipi-required",
+          "reg",
+          "reg-private",
+          "state"
+        ]
+      },
+      "/arm-io/pmgr": {
+        "present": true,
+        "changed_properties": [
+          "#bridges",
+          "AAPL,phandle",
+          "acc-cluster-power-gating",
+          "acc-harvesting",
+          "afr-tvm",
+          "ane-dpe",
+          "ap-voter-agent-idx",
+          "ap-wake-sources",
+          "apsc-snooze",
+          "ave-tvm",
+          "axi2af-axi-config",
+          "axi2af-hack",
+          "boost-agent",
+          "bridge-counter-configs",
+          "bridge-counter-version",
+          "bridge-counters",
+          "bridge-reg-index",
+          "bridge-settings-version",
+          "bwr-agent",
+          "check-energy-ver",
+          "check-ps-b4-sleep",
+          "clocks",
+          "clpc-voter-agent-idx",
+          "cluster-agent",
+          "cluster-ctl-offset",
+          "clusters",
+          "compatible",
+          "cpm-power-gating-hack",
+          "cpu-fixed-freq-pll-relock",
+          "cpu-tvm",
+          "device-bridges",
+          "device-check-ps-b4-sleep",
+          "devices",
+          "disp2-tvm",
+          "dvc-debug",
+          "dvd-factor",
+          "dvd-period-us",
+          "dvd-threshold-us",
+          "dvmr-agent",
+          "edt-property-ver",
+          "energy-counters",
+          "events",
+          "first-acc-dvfm-map-state",
+          "free-running-counter",
+          "function-mcc_ctrl",
+          "function-perf-boost",
+          "function-pmp_control",
+          "function-toggle_vdd_cio",
+          "gpu-pwc-win-size",
+          "hw-dpe-reg",
+          "interrupt-config",
+          "interrupt-parent",
+          "interrupts",
+          "llc-thrtl",
+          "misc-acg-offset",
+          "misc-cores-offset",
+          "mtr-polynom-fuse-agx",
+          "optional-bridge-mask",
+          "panic-debug-switch-pg-wa",
+          "panic-nub-pg-wa",
+          "perf-counters",
+          "perf-domains",
+          "perf-groups",
+          "perf-regs",
+          "pmc",
+          "pmc-ltr-ka",
+          "pmc-pmgr",
+          "pmp-voter-agent-idx",
+          "power-domains",
+          "ppt-thrtl",
+          "ps-groups",
+          "ps-regs",
+          "ptd-dvfs-ceil-range",
+          "pwrgateretention-workaround",
+          "reg",
+          "reset-noaccess-poll",
+          "sep-ps-timeout",
+          "snooze-counter",
+          "soc-cluster-power-gating",
+          "soc-clusters",
+          "voltage-states0",
+          "voltage-states1",
+          "voltage-states1-sram",
+          "voltage-states11",
+          "voltage-states13",
+          "voltage-states13-sram",
+          "voltage-states14",
+          "voltage-states14-sram",
+          "voltage-states2",
+          "voltage-states28",
+          "voltage-states29",
+          "voltage-states30",
+          "voltage-states31",
+          "voltage-states5",
+          "voltage-states5-sram",
+          "voltage-states8",
+          "voltage-states9",
+          "voltage-states9-sram",
+          "voter-agent",
+          "voter-rail-data",
+          "wake-perf-boost"
+        ]
+      },
+      "/arm-io/pmp": {
+        "present": true,
+        "changed_properties": [
+          "AAPL,phandle",
+          "clock-gates",
+          "compatible",
+          "interrupt-parent",
+          "interrupts",
+          "iommu-parent",
+          "pio-vm-base",
+          "pio-vm-size",
+          "power-gates",
+          "reg",
+          "segment-names",
+          "segment-ranges"
+        ]
+      },
+      "/arm-io/dart-pmp": {
+        "present": true,
+        "changed_properties": [
+          "AAPL,phandle",
+          "bypass-12",
+          "bypass-13",
+          "bypass-14",
+          "bypass-2",
+          "bypass-5",
+          "bypass-6",
+          "bypass-7",
+          "bypass-8",
+          "clock-gates",
+          "clock-protection-slice-index",
+          "dapf-instance-0",
+          "dart-id",
+          "dart-options",
+          "dart-tunables-instance-0",
+          "error-reflector",
+          "flush-by-dva",
+          "instance",
+          "interrupt-parent",
+          "interrupts",
+          "l2-tt-0",
+          "l2-tt-1",
+          "n-apfs-instance-0",
+          "power-gates",
+          "pt-region-0",
+          "pt-region-1",
+          "reg",
+          "sid",
+          "vm-base",
+          "vm-size"
+        ]
+      }
+    },
+    "static_t8122": {
+      "/cpus/cpu0": {
+        "present": true,
+        "changed_properties": [
+          "AAPL,phandle",
+          "cluster-core-id",
+          "cpm-impl-reg",
+          "die-cluster-id",
+          "die-id",
+          "function-cpu_idle",
+          "function-enable_core",
+          "function-error_handler",
+          "interrupt-parent",
+          "interrupts"
+        ]
+      },
+      "/cpus/cpu1": {
+        "present": true,
+        "changed_properties": [
+          "AAPL,phandle",
+          "cluster-core-id",
+          "cpm-impl-reg",
+          "die-cluster-id",
+          "die-id",
+          "function-cpu_idle",
+          "function-enable_core",
+          "function-error_handler",
+          "interrupt-parent",
+          "interrupts"
+        ]
+      },
+      "/cpus/cpu2": {
+        "present": true,
+        "changed_properties": [
+          "AAPL,phandle",
+          "cluster-core-id",
+          "cpm-impl-reg",
+          "die-cluster-id",
+          "die-id",
+          "function-cpu_idle",
+          "function-enable_core",
+          "function-error_handler",
+          "interrupt-parent",
+          "interrupts"
+        ]
+      },
+      "/cpus/cpu3": {
+        "present": true,
+        "changed_properties": [
+          "AAPL,phandle",
+          "cluster-core-id",
+          "cpm-impl-reg",
+          "die-cluster-id",
+          "die-id",
+          "function-cpu_idle",
+          "function-enable_core",
+          "function-error_handler",
+          "interrupt-parent",
+          "interrupts"
+        ]
+      },
+      "/cpus/cpu4": {
+        "present": true,
+        "changed_properties": [
+          "AAPL,phandle",
+          "bus-frequency",
+          "clock-frequency",
+          "cluster-core-id",
+          "cluster-power-down",
+          "cpm-impl-reg",
+          "die-cluster-id",
+          "die-id",
+          "fixed-frequency",
+          "function-cpu_idle",
+          "function-enable_core",
+          "function-error_handler",
+          "interrupt-parent",
+          "interrupts",
+          "memory-frequency",
+          "peripheral-frequency",
+          "state",
+          "timebase-frequency"
+        ]
+      },
+      "/cpus/cpu5": {
+        "present": true,
+        "changed_properties": [
+          "AAPL,phandle",
+          "cluster-core-id",
+          "cluster-power-down",
+          "cpm-impl-reg",
+          "die-cluster-id",
+          "die-id",
+          "function-cpu_idle",
+          "function-enable_core",
+          "function-error_handler",
+          "interrupt-parent",
+          "interrupts"
+        ]
+      },
+      "/cpus/cpu6": {
+        "present": true,
+        "changed_properties": [
+          "AAPL,phandle",
+          "cluster-core-id",
+          "cluster-power-down",
+          "cpm-impl-reg",
+          "die-cluster-id",
+          "die-id",
+          "function-cpu_idle",
+          "function-enable_core",
+          "function-error_handler",
+          "interrupt-parent",
+          "interrupts"
+        ]
+      },
+      "/cpus/cpu7": {
+        "present": true,
+        "changed_properties": [
+          "AAPL,phandle",
+          "cluster-core-id",
+          "cluster-power-down",
+          "cpm-impl-reg",
+          "die-cluster-id",
+          "die-id",
+          "function-cpu_idle",
+          "function-enable_core",
+          "function-error_handler",
+          "interrupt-parent",
+          "interrupts"
+        ]
+      },
+      "/cpus/cpu10": {
+        "present": false,
+        "changed_properties": [
+          "AAPL,phandle",
+          "acc-impl-reg",
+          "cluster-core-id",
+          "cluster-id",
+          "cluster-power-down",
+          "cluster-type",
+          "compatible",
+          "coresight-reg",
+          "cpm-impl-reg",
+          "cpu-id",
+          "cpu-impl-reg",
+          "cpu-uttdbg-reg",
+          "device_type",
+          "die-cluster-id",
+          "die-id",
+          "function-cpu_idle",
+          "function-enable_core",
+          "function-error_handler",
+          "interrupt-parent",
+          "interrupts",
+          "l2-cache-id",
+          "l2-cache-size",
+          "name",
+          "no-aic-ipi-required",
+          "reg",
+          "reg-private",
+          "state"
+        ]
+      },
+      "/cpus/cpu11": {
+        "present": false,
+        "changed_properties": [
+          "AAPL,phandle",
+          "acc-impl-reg",
+          "cluster-core-id",
+          "cluster-id",
+          "cluster-power-down",
+          "cluster-type",
+          "compatible",
+          "coresight-reg",
+          "cpm-impl-reg",
+          "cpu-id",
+          "cpu-impl-reg",
+          "cpu-uttdbg-reg",
+          "device_type",
+          "die-cluster-id",
+          "die-id",
+          "function-cpu_idle",
+          "function-enable_core",
+          "function-error_handler",
+          "interrupt-parent",
+          "interrupts",
+          "l2-cache-id",
+          "l2-cache-size",
+          "name",
+          "no-aic-ipi-required",
+          "reg",
+          "reg-private",
+          "state"
+        ]
+      },
+      "/cpus/cpu12": {
+        "present": false,
+        "changed_properties": [
+          "AAPL,phandle",
+          "acc-impl-reg",
+          "cluster-core-id",
+          "cluster-id",
+          "cluster-power-down",
+          "cluster-type",
+          "compatible",
+          "coresight-reg",
+          "cpm-impl-reg",
+          "cpu-id",
+          "cpu-impl-reg",
+          "cpu-uttdbg-reg",
+          "device_type",
+          "die-cluster-id",
+          "die-id",
+          "function-cpu_idle",
+          "function-enable_core",
+          "function-error_handler",
+          "interrupt-parent",
+          "interrupts",
+          "l2-cache-id",
+          "l2-cache-size",
+          "name",
+          "no-aic-ipi-required",
+          "reg",
+          "reg-private",
+          "state"
+        ]
+      },
+      "/cpus/cpu13": {
+        "present": false,
+        "changed_properties": [
+          "AAPL,phandle",
+          "acc-impl-reg",
+          "cluster-core-id",
+          "cluster-id",
+          "cluster-power-down",
+          "cluster-type",
+          "compatible",
+          "coresight-reg",
+          "cpm-impl-reg",
+          "cpu-id",
+          "cpu-impl-reg",
+          "cpu-uttdbg-reg",
+          "device_type",
+          "die-cluster-id",
+          "die-id",
+          "function-cpu_idle",
+          "function-enable_core",
+          "function-error_handler",
+          "interrupt-parent",
+          "interrupts",
+          "l2-cache-id",
+          "l2-cache-size",
+          "name",
+          "no-aic-ipi-required",
+          "reg",
+          "reg-private",
+          "state"
+        ]
+      },
+      "/arm-io/pmgr": {
+        "present": true,
+        "changed_properties": [
+          "#bridges",
+          "AAPL,phandle",
+          "acc-cluster-power-gating",
+          "afr-tvm",
+          "ane-dpe",
+          "ap-voter-agent-idx",
+          "ap-wake-sources",
+          "axi2af-hack",
+          "boost-agent",
+          "bridge-reg-index",
+          "bridge-settings-version",
+          "bwr-agent",
+          "check-energy-ver",
+          "check-ps-b4-sleep",
+          "clocks",
+          "clpc-voter-agent-idx",
+          "cluster-agent",
+          "cluster-ctl-offset",
+          "clusters",
+          "compatible",
+          "config-ret-mem-grp-mode",
+          "cpu-fixed-freq-pll-relock",
+          "cpu-tvm",
+          "device-bridges",
+          "device-check-ps-b4-sleep",
+          "devices",
+          "disp2-tvm",
+          "dvc-debug",
+          "dvd-factor",
+          "dvd-period-us",
+          "dvd-threshold-us",
+          "dvfm-cop-action",
+          "dvmr-agent",
+          "edt-property-ver",
+          "energy-counters",
+          "events",
+          "first-acc-dvfm-map-state",
+          "free-running-counter",
+          "function-mcc_ctrl",
+          "function-perf-boost",
+          "function-pmp_control",
+          "function-toggle_vdd_cio",
+          "gpu-pwc-win-size",
+          "hw-dpe-reg",
+          "interrupt-config",
+          "interrupt-parent",
+          "interrupts",
+          "llc-thrtl",
+          "misc-acg-offset",
+          "misc-cores-offset",
+          "mtr-polynom-fuse-agx",
+          "optional-bridge-mask",
+          "panic-debug-switch-pg-wa",
+          "panic-nub-pg-wa",
+          "perf-counter-version",
+          "perf-counters",
+          "perf-domains",
+          "perf-groups",
+          "perf-regs",
+          "pmc",
+          "pmc-ltr-ka",
+          "pmc-pmgr",
+          "pmp-voter-agent-idx",
+          "power-domains",
+          "ppt-thrtl",
+          "ps-groups",
+          "ps-regs",
+          "ptd-dvfs-ceil-range",
+          "pwrgate-regs",
+          "pwrgateretention-workaround",
+          "reg",
+          "reset-noaccess-poll",
+          "sep-ps-timeout",
+          "soc-cluster-power-gating",
+          "soc-clusters",
+          "voltage-states0",
+          "voltage-states1",
+          "voltage-states1-sram",
+          "voltage-states11",
+          "voltage-states13",
+          "voltage-states13-sram",
+          "voltage-states14",
+          "voltage-states14-sram",
+          "voltage-states2",
+          "voltage-states28",
+          "voltage-states29",
+          "voltage-states30",
+          "voltage-states31",
+          "voltage-states5",
+          "voltage-states5-sram",
+          "voltage-states8",
+          "voltage-states9",
+          "voltage-states9-sram",
+          "voter-agent",
+          "voter-rail-data"
+        ]
+      },
+      "/arm-io/pmp": {
+        "present": true,
+        "changed_properties": [
+          "AAPL,phandle",
+          "clock-gates",
+          "interrupt-parent",
+          "interrupts",
+          "iommu-parent",
+          "pio-vm-base",
+          "pio-vm-size",
+          "power-gates",
+          "reg",
+          "segment-names",
+          "segment-ranges"
+        ]
+      },
+      "/arm-io/dart-pmp": {
+        "present": true,
+        "changed_properties": [
+          "AAPL,phandle",
+          "apf-bypass-13",
+          "bypass-12",
+          "bypass-14",
+          "bypass-2",
+          "bypass-5",
+          "bypass-6",
+          "bypass-7",
+          "bypass-8",
+          "clock-gates",
+          "clock-protection-slice-index",
+          "dapf-instance-0",
+          "dart-id",
+          "dart-tunables-instance-0",
+          "error-reflector",
+          "instance",
+          "interrupt-parent",
+          "interrupts",
+          "l2-tt-0",
+          "l2-tt-1",
+          "power-gates",
+          "pt-region-0",
+          "pt-region-1",
+          "reg",
+          "sid"
+        ]
+      }
+    },
+    "static_t6040": {
+      "/cpus/cpu0": {
+        "present": true,
+        "changed_properties": []
+      },
+      "/cpus/cpu1": {
+        "present": true,
+        "changed_properties": []
+      },
+      "/cpus/cpu2": {
+        "present": true,
+        "changed_properties": []
+      },
+      "/cpus/cpu3": {
+        "present": true,
+        "changed_properties": []
+      },
+      "/cpus/cpu4": {
+        "present": true,
+        "changed_properties": [
+          "bus-frequency",
+          "clock-frequency",
+          "fixed-frequency",
+          "memory-frequency",
+          "peripheral-frequency",
+          "state",
+          "timebase-frequency"
+        ]
+      },
+      "/cpus/cpu5": {
+        "present": true,
+        "changed_properties": []
+      },
+      "/cpus/cpu6": {
+        "present": true,
+        "changed_properties": []
+      },
+      "/cpus/cpu7": {
+        "present": true,
+        "changed_properties": []
+      },
+      "/cpus/cpu10": {
+        "present": true,
+        "changed_properties": []
+      },
+      "/cpus/cpu11": {
+        "present": true,
+        "changed_properties": []
+      },
+      "/cpus/cpu12": {
+        "present": true,
+        "changed_properties": []
+      },
+      "/cpus/cpu13": {
+        "present": true,
+        "changed_properties": []
+      },
+      "/arm-io/pmgr": {
+        "present": true,
+        "changed_properties": [
+          "devices",
+          "mtr-polynom-fuse-agx",
+          "total-rails-leakage",
+          "voltage-states0",
+          "voltage-states1",
+          "voltage-states1-sram",
+          "voltage-states11",
+          "voltage-states13",
+          "voltage-states13-sram",
+          "voltage-states14",
+          "voltage-states14-sram",
+          "voltage-states2",
+          "voltage-states28",
+          "voltage-states29",
+          "voltage-states30",
+          "voltage-states31",
+          "voltage-states5",
+          "voltage-states5-sram",
+          "voltage-states8",
+          "voltage-states9",
+          "voltage-states9-sram"
+        ]
+      },
+      "/arm-io/pmp": {
+        "present": true,
+        "changed_properties": [
+          "segment-names",
+          "segment-ranges"
+        ]
+      },
+      "/arm-io/dart-pmp": {
+        "present": true,
+        "changed_properties": [
+          "clock-protection-slice-index",
+          "dapf-instance-0",
+          "dart-id",
+          "dart-tunables-instance-0",
+          "instance",
+          "l2-tt-0",
+          "l2-tt-1",
+          "pt-region-0",
+          "pt-region-1",
+          "reg"
+        ]
+      }
+    }
+  },
+  "next_probe": {
+    "status": "UNTESTED",
+    "mode": "READ_ONLY_CANDIDATE",
+    "warning": "Addresses are ADT-derived. J614s command semantics and access safety require primary qualification. Do not write or enable power.",
+    "identity": {
+      "chip_id": 24640,
+      "board_id": 4,
+      "model": "Mac16,8",
+      "source_adt_sha256": "77cedfd555eb507e0cac4d28354d4bd7532d6e4d409328ae4d50ddd74a53fd23"
+    },
+    "reads": [
+      {
+        "cluster": 0,
+        "physical": 8873181216,
+        "width_bits": 64,
+        "meaning": "candidate CPM command register; low5 state is unqualified"
+      },
+      {
+        "cluster": 1,
+        "physical": 8889958432,
+        "width_bits": 64,
+        "meaning": "candidate CPM command register; low5 state is unqualified"
+      },
+      {
+        "cluster": 2,
+        "physical": 8906735648,
+        "width_bits": 64,
+        "meaning": "candidate CPM command register; low5 state is unqualified"
+      }
+    ],
+    "exclude": [
+      "MMIO writes",
+      "power/clock enable",
+      "watchdog changes",
+      "DVFS transitions",
+      "M3 status/PLL assumptions"
+    ],
+    "before": [
+      "Exact idle resident proxy and live identity/ADT geometry recheck",
+      "Primary verifies existing watchdog/recovery condition; collector must not change it",
+      "Initial read only on CPU-cluster apertures already powered by firmware; do not power a block to read it"
+    ],
+    "capture": [
+      "Read all three registers twice, recording widths, monotonic timestamps and exception count",
+      "Stop on busy bit, inconsistent low5, exception or geometry change",
+      "Preserve raw register words. Decode candidate request state only; never label it measured MHz."
+    ]
+  }
+}

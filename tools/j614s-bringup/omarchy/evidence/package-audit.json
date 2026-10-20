@@ -1,0 +1,5619 @@
+{
+  "schema": 1,
+  "scope": "immutable OS image local package database; not live target",
+  "repository_availability": "metadata only; signatures and install transaction UNTESTED",
+  "repositories": [
+    {
+      "name": "omarchy",
+      "sha256": "021958f1f6c6297a6d92f773a0f2757f6ddfe9815c566187796715d34eae6949",
+      "excluded_metadata_entries": []
+    },
+    {
+      "name": "asahi-alarm",
+      "sha256": "090c55084cbc969bce3cdd925f25d5594f06e45b882e873b6791e2d3efc3c8e8",
+      "excluded_metadata_entries": []
+    },
+    {
+      "name": "core",
+      "sha256": "3397088cfa622e7a140f29b1f7a15f2f1c2689246a962c2551670d301ff5805c",
+      "excluded_metadata_entries": []
+    },
+    {
+      "name": "extra",
+      "sha256": "8f1f6fbcc3e397c8228de1d36f825ed445ef21483693d17e221741023beffff2",
+      "excluded_metadata_entries": [
+        {
+          "entry": "findnewest-0.3-4",
+          "reason": "missing desc identity; excluded from candidates"
+        }
+      ]
+    },
+    {
+      "name": "alarm",
+      "sha256": "101b41ca6e76b4ec43c2104ed285e094796855a8bae69ec6ccbf147bdb4ac56b",
+      "excluded_metadata_entries": []
+    },
+    {
+      "name": "aur",
+      "sha256": "263b04baaf9e27f6bc7840455a2bf65bf9b7f9cad0be5efce0ca3650eb634024",
+      "excluded_metadata_entries": []
+    }
+  ],
+  "dependency_transaction": "UNTESTED; installed names/provides only",
+  "installed_count": 986,
+  "local_descriptions_digest": "ea7d46687a571ef440395087108e5c942bc1bc075ef8c234a3e2df0f80325097",
+  "lists": [
+    {
+      "list": "omarchy-base.packages",
+      "sha256": "c92533f1836028d4f68b30cf86744a2fd90ad3fcd4e39ed0dd67f00d4d68336b",
+      "requested_count": 162,
+      "missing_count": 18,
+      "packages": [
+        {
+          "requested": "aether",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "aether",
+              "version": "4.29.9-1",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "omarchy",
+            "name": "aether",
+            "version": "4.32.0-2",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "alsa-utils",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "alsa-utils",
+              "version": "1.2.16-1",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "alsa-utils",
+            "version": "1.2.16-1",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "asdcontrol",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "asdcontrol",
+              "version": "1:0.6.0-1",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "omarchy",
+            "name": "asdcontrol",
+            "version": "1:0.6.0-2",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "avahi",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "avahi",
+              "version": "1:0.9rc5-1",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "avahi",
+            "version": "1:0.9rc5-2",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "base-devel",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "base-devel",
+              "version": "1-2",
+              "architecture": "any"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "core",
+            "name": "base-devel",
+            "version": "1-2",
+            "architecture": "any"
+          }
+        },
+        {
+          "requested": "bash-completion",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "bash-completion",
+              "version": "2.18.0-1",
+              "architecture": "any"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "bash-completion",
+            "version": "2.18.0-1",
+            "architecture": "any"
+          }
+        },
+        {
+          "requested": "bat",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "bat",
+              "version": "0.26.1-2",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "bat",
+            "version": "0.26.1-3",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "bluez",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "bluez",
+              "version": "5.87-2",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "bluez",
+            "version": "5.87-2",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "bluez-tools",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "bluez-tools",
+              "version": "0.2.0-6",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "bluez-tools",
+            "version": "0.2.0-6",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "bluez-utils",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "bluez-utils",
+              "version": "5.87-2",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "bluez-utils",
+            "version": "5.87-2",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "bolt",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "bolt",
+              "version": "0.9.11-3",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "bolt",
+            "version": "0.9.11-3",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "brightnessctl",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "brightnessctl",
+              "version": "0.5.1-3",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "brightnessctl",
+            "version": "0.5.1-3",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "btop",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "btop",
+              "version": "1.4.7-1",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "btop",
+            "version": "1.4.7-1",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "chromium",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "chromium",
+              "version": "152.0.7977.75-1",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "omarchy",
+            "name": "omarchy-chromium-bin",
+            "version": "148.0.7778.96-22",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "cliamp",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "cliamp",
+              "version": "2.2.0-1",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "omarchy",
+            "name": "cliamp",
+            "version": "2.3.0-3",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "cups",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "cups",
+              "version": "2:2.4.19-1",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "cups",
+            "version": "2:2.4.20-1",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "cups-filters",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "cups-filters",
+              "version": "2.0.1-2",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "cups-filters",
+            "version": "2.0.1-3",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "cups-pk-helper",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "cups-pk-helper",
+              "version": "0.2.7-2",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "cups-pk-helper",
+            "version": "0.2.7-2",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "ddcutil",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "ddcutil",
+              "version": "2.2.7-1",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "ddcutil",
+            "version": "3.0.2-1",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "disktree-bin",
+          "status": "missing_from_image",
+          "installed_as": [],
+          "repository_candidate": {
+            "repository": "omarchy",
+            "name": "disktree-bin",
+            "version": "0.11.0-3",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "docker",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "docker",
+              "version": "1:29.7.2-1",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "docker",
+            "version": "1:29.9.1-1",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "docker-buildx",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "docker-buildx",
+              "version": "0.37.0-1",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "docker-buildx",
+            "version": "0.38.0-1",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "docker-compose",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "docker-compose",
+              "version": "5.5.1-1",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "docker-compose",
+            "version": "5.6.0-1",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "dosfstools",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "dosfstools",
+              "version": "4.2-5",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "core",
+            "name": "dosfstools",
+            "version": "4.2-5",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "dotnet-runtime",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "dotnet-runtime",
+              "version": "10.0.11.sdk400-1",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "omarchy",
+            "name": "dotnet-runtime-bin",
+            "version": "10.0.402-1",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "evince",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "evince",
+              "version": "1:48.4-1",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "evince",
+            "version": "1:48.4-2",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "exfatprogs",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "exfatprogs",
+              "version": "1.4.3-1",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "exfatprogs",
+            "version": "1.4.3-1",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "expac",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "expac",
+              "version": "10-13",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "expac",
+            "version": "10-13",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "eza",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "eza",
+              "version": "0.23.5-2",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "eza",
+            "version": "0.23.5-2",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "fakeroot",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "fakeroot",
+              "version": "1:1.37.2-3",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "core",
+            "name": "fakeroot",
+            "version": "1:1.37.2-3",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "fastfetch",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "fastfetch",
+              "version": "2.68.1-1",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "fastfetch",
+            "version": "2.70.0-1",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "fcitx5",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "fcitx5",
+              "version": "5.1.22-1",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "fcitx5",
+            "version": "5.1.23-1",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "fcitx5-chewing",
+          "status": "missing_from_image",
+          "installed_as": [],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "fcitx5-chewing",
+            "version": "5.1.13-1",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "fcitx5-chinese-addons",
+          "status": "missing_from_image",
+          "installed_as": [],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "fcitx5-chinese-addons",
+            "version": "5.1.15-2",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "fcitx5-gtk",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "fcitx5-gtk",
+              "version": "5.1.7-1",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "fcitx5-gtk",
+            "version": "5.1.7-1",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "fcitx5-hangul",
+          "status": "missing_from_image",
+          "installed_as": [],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "fcitx5-hangul",
+            "version": "5.1.11-1",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "fcitx5-mozc",
+          "status": "missing_from_image",
+          "installed_as": [],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "fcitx5-mozc",
+            "version": "3.35.6354.2-1",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "fcitx5-qt",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "fcitx5-qt",
+              "version": "5.1.15-1",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "fcitx5-qt",
+            "version": "5.1.16-2",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "fcitx5-table-extra",
+          "status": "missing_from_image",
+          "installed_as": [],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "fcitx5-table-extra",
+            "version": "5.1.13-1",
+            "architecture": "any"
+          }
+        },
+        {
+          "requested": "fd",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "fd",
+              "version": "10.5.0-3",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "fd",
+            "version": "10.5.0-3",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "ffmpeg",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "ffmpeg",
+              "version": "2:9.0.1-4",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "ffmpeg",
+            "version": "2:9.0.2-2",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "ffmpegthumbnailer",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "ffmpegthumbnailer",
+              "version": "2.3.1-1",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "ffmpegthumbnailer",
+            "version": "2.3.1-1",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "fontconfig",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "fontconfig",
+              "version": "2:2.18.3-2",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "fontconfig",
+            "version": "2:2.18.3-2",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "foot",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "foot",
+              "version": "1.28.0-2",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "foot",
+            "version": "1.28.0-2",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "fzf",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "fzf",
+              "version": "0.74.3-1",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "fzf",
+            "version": "0.74.5-1",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "git",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "git",
+              "version": "2.55.0-1",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "git",
+            "version": "2.56.0-1",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "gliff",
+          "status": "missing_from_image",
+          "installed_as": [],
+          "repository_candidate": {
+            "repository": "omarchy",
+            "name": "gliff",
+            "version": "0.4.0-1",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "gnome-keyring",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "gnome-keyring",
+              "version": "1:50.0-1",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "gnome-keyring",
+            "version": "1:51.1-1",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "gnome-themes-extra",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "gnome-themes-extra",
+              "version": "1:3.28-1",
+              "architecture": "any"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "gnome-themes-extra",
+            "version": "1:3.28-1",
+            "architecture": "any"
+          }
+        },
+        {
+          "requested": "grim",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "grim",
+              "version": "1.5.0-2",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "grim",
+            "version": "1.5.0-2",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "gpu-screen-recorder",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "gpu-screen-recorder",
+              "version": "6.1.0-1",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "gpu-screen-recorder",
+            "version": "6.1.4-1",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "gum",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "gum",
+              "version": "2.0.0-1",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "gum",
+            "version": "2.0.2-1",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "gvfs-mtp",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "gvfs-mtp",
+              "version": "1.60.2-4",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "gvfs-mtp",
+            "version": "1.62.0-3",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "gvfs-nfs",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "gvfs-nfs",
+              "version": "1.60.2-4",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "gvfs-nfs",
+            "version": "1.62.0-3",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "gvfs-smb",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "gvfs-smb",
+              "version": "1.60.2-4",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "gvfs-smb",
+            "version": "1.62.0-3",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "herdr",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "herdr",
+              "version": "0.8.2-1",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "omarchy",
+            "name": "herdr",
+            "version": "0.9.1-2",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "hype",
+          "status": "missing_from_image",
+          "installed_as": [],
+          "repository_candidate": {
+            "repository": "omarchy",
+            "name": "hype",
+            "version": "0.6.0-1",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "hyprland",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "hyprland",
+              "version": "0.56.2-3",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "omarchy",
+            "name": "hyprland",
+            "version": "0.56.2-7",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "hyprland-guiutils",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "hyprland-guiutils",
+              "version": "0.2.2-2",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "hyprland-guiutils",
+            "version": "0.2.2-4",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "hyprland-preview-share-picker",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "hyprland-preview-share-picker",
+              "version": "0.2.1-1",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "omarchy",
+            "name": "hyprland-preview-share-picker",
+            "version": "0.2.1-3",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "hyprpicker",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "hyprpicker",
+              "version": "0.4.7-4",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "hyprpicker",
+            "version": "0.4.7-4",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "hyprsunset",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "hyprsunset",
+              "version": "0.4.0-3",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "hyprsunset",
+            "version": "0.4.0-3",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "imagemagick",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "imagemagick",
+              "version": "7.1.2.31-1",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "imagemagick",
+            "version": "7.1.2.34-1",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "imv",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "imv",
+              "version": "5.0.1-2",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "imv",
+            "version": "5.0.1-2",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "inetutils",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "inetutils",
+              "version": "2.8-1",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "core",
+            "name": "inetutils",
+            "version": "2.8-1",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "inotify-tools",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "inotify-tools",
+              "version": "4.25.9.0-1",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "inotify-tools",
+            "version": "4.26.270-1",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "inxi",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "inxi",
+              "version": "3.3.41.1-1",
+              "architecture": "any"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "inxi",
+            "version": "3.3.41.1-1",
+            "architecture": "any"
+          }
+        },
+        {
+          "requested": "networkmanager",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "networkmanager",
+              "version": "1.58.1-1",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "networkmanager",
+            "version": "1.58.1-2",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "jq",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "jq",
+              "version": "1.8.2-1",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "jq",
+            "version": "1.8.2-1",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "kernel-modules-hook",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "kernel-modules-hook",
+              "version": "0.1.7-3",
+              "architecture": "any"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "kernel-modules-hook",
+            "version": "0.1.7-3",
+            "architecture": "any"
+          }
+        },
+        {
+          "requested": "lazygit",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "lazygit",
+              "version": "0.65.0-1",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "lazygit",
+            "version": "0.66.2-1",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "less",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "less",
+              "version": "1:704-1",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "core",
+            "name": "less",
+            "version": "1:710-1",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "libsecret",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "libsecret",
+              "version": "0.21.7-1",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "core",
+            "name": "libsecret",
+            "version": "0.21.8.2-1",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "libvips",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "libvips",
+              "version": "8.18.6-1",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "libvips",
+            "version": "8.18.7-1",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "libyaml",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "libyaml",
+              "version": "0.2.5-3",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "libyaml",
+            "version": "0.2.5-3",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "libreoffice-fresh",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "libreoffice-fresh",
+              "version": "26.8.0-2",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "libreoffice-fresh",
+            "version": "26.8.1-1",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "localsend",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "localsend",
+              "version": "1.18.2-1",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "omarchy",
+            "name": "localsend",
+            "version": "1.18.2-1",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "lua51",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "lua51",
+              "version": "5.1.5-13",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "lua51",
+            "version": "5.1.5-13",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "luarocks",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "luarocks",
+              "version": "3.13.0-5",
+              "architecture": "any"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "luarocks",
+            "version": "3.13.0-5",
+            "architecture": "any"
+          }
+        },
+        {
+          "requested": "man-db",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "man-db",
+              "version": "2.13.1-2",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "core",
+            "name": "man-db",
+            "version": "2.13.1-2",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "mariadb-libs",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "mariadb-libs",
+              "version": "12.3.3-2",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "mariadb-libs",
+            "version": "13.0.2-2",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "mise-bin",
+          "status": "missing_from_image",
+          "installed_as": [],
+          "repository_candidate": {
+            "repository": "omarchy",
+            "name": "mise-bin",
+            "version": "2026.10.14-1",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "monologue",
+          "status": "missing_from_image",
+          "installed_as": [],
+          "repository_candidate": {
+            "repository": "omarchy",
+            "name": "monologue",
+            "version": "0.3.1-1",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "moonlight-qt",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "moonlight-qt",
+              "version": "6.1.0-7",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "moonlight-qt",
+            "version": "6.2.0-1",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "mpv",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "mpv",
+              "version": "1:0.41.0-6",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "mpv",
+            "version": "1:0.41.0-6",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "mpv-mpris",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "mpv-mpris",
+              "version": "1.2-2",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "mpv-mpris",
+            "version": "1.3-1",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "nautilus",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "nautilus",
+              "version": "50.3.1-1",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "nautilus",
+            "version": "51.1-1",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "nautilus-python",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "nautilus-python",
+              "version": "4.1.0-3",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "nautilus-python",
+            "version": "4.2.0-1",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "gnome-disk-utility",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "gnome-disk-utility",
+              "version": "46.1-3",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "gnome-disk-utility",
+            "version": "46.1-3",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "noto-fonts",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "noto-fonts",
+              "version": "1:2026.09.01-1",
+              "architecture": "any"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "noto-fonts",
+            "version": "1:2026.10.01-1",
+            "architecture": "any"
+          }
+        },
+        {
+          "requested": "noto-fonts-cjk",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "noto-fonts-cjk",
+              "version": "20240730-1",
+              "architecture": "any"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "noto-fonts-cjk",
+            "version": "20240730-1",
+            "architecture": "any"
+          }
+        },
+        {
+          "requested": "noto-fonts-emoji",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "noto-fonts-emoji",
+              "version": "1:2.051-1",
+              "architecture": "any"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "noto-fonts-emoji",
+            "version": "1:2.051-1",
+            "architecture": "any"
+          }
+        },
+        {
+          "requested": "nss-mdns",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "nss-mdns",
+              "version": "0.15.1-2",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "nss-mdns",
+            "version": "0.15.1-3",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "nvim",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "neovim",
+              "version": "0.12.5-1",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "neovim",
+            "version": "0.12.6-1",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "obsidian",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "obsidian",
+              "version": "1.13.7-1",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "omarchy",
+            "name": "obsidian",
+            "version": "1.14.4-2",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "omacalc",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "omacalc",
+              "version": "0.2.2-1",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "omarchy",
+            "name": "omacalc",
+            "version": "0.3.1-1",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "omacut",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "omacut",
+              "version": "0.2.0-1",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "omarchy",
+            "name": "omacut",
+            "version": "0.7.2-1",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "omawrite",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "omawrite",
+              "version": "0.3.0-1",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "omarchy",
+            "name": "omawrite",
+            "version": "0.7.2-1",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "omarchy-nvim",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "omarchy-nvim",
+              "version": "2026.8.1-3",
+              "architecture": "any"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "omarchy",
+            "name": "omarchy-nvim",
+            "version": "2026.9.21-5",
+            "architecture": "any"
+          }
+        },
+        {
+          "requested": "omarchy-hyprland-titlebars",
+          "status": "missing_from_image",
+          "installed_as": [],
+          "repository_candidate": {
+            "repository": "omarchy",
+            "name": "omarchy-hyprland-titlebars",
+            "version": "0.2.2-2",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "omasnap",
+          "status": "missing_from_image",
+          "installed_as": [],
+          "repository_candidate": {
+            "repository": "omarchy",
+            "name": "omasnap",
+            "version": "1.21.0-2",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "owe",
+          "status": "missing_from_image",
+          "installed_as": [],
+          "repository_candidate": {
+            "repository": "omarchy",
+            "name": "owe",
+            "version": "0.2.11-1",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "owe-lockfeed",
+          "status": "missing_from_image",
+          "installed_as": [],
+          "repository_candidate": {
+            "repository": "omarchy",
+            "name": "owe-lockfeed",
+            "version": "0.2.11-1",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "pacman-contrib",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "pacman-contrib",
+              "version": "1.13.1-1",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "pacman-contrib",
+            "version": "1.13.1-1",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "pamixer",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "pamixer",
+              "version": "1.6-3",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "pamixer",
+            "version": "1.6-3",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "pinta",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "pinta",
+              "version": "3.1.2-2",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "omarchy",
+            "name": "pinta",
+            "version": "3.1.2-1",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "plocate",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "plocate",
+              "version": "1.1.25-1",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "plocate",
+            "version": "1.1.25-1",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "plymouth",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "plymouth",
+              "version": "26.134.222-2",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "plymouth",
+            "version": "26.134.222-3",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "postgresql-libs",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "postgresql-libs",
+              "version": "18.6-1",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "postgresql-libs",
+            "version": "18.6-2",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "power-profiles-daemon",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "power-profiles-daemon",
+              "version": "0.30-1",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "omarchy",
+            "name": "omarchy-power-profiles-daemon",
+            "version": "0.30-3",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "python-gobject",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "python-gobject",
+              "version": "3.56.3-1",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "python-gobject",
+            "version": "3.58.1-1",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "python-poetry-core",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "python-poetry-core",
+              "version": "2.4.1-1",
+              "architecture": "any"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "python-poetry-core",
+            "version": "2.5.0-1",
+            "architecture": "any"
+          }
+        },
+        {
+          "requested": "qt6-base",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "qt6-base",
+              "version": "6.11.2-3",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "qt6-base",
+            "version": "6.12.0-3",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "qt6-declarative",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "qt6-declarative",
+              "version": "6.11.2-1",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "qt6-declarative",
+            "version": "6.12.0-1",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "qt6-multimedia",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "qt6-multimedia",
+              "version": "6.11.2-1",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "qt6-multimedia",
+            "version": "6.12.0-1",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "qt6-svg",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "qt6-svg",
+              "version": "6.11.2-1",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "qt6-svg",
+            "version": "6.12.0-1",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "qt6-wayland",
+          "status": "missing_from_image",
+          "installed_as": [],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "qt6-wayland",
+            "version": "6.12.0-1",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "ttfx",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "ttfx",
+              "version": "0.3.2-1",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "omarchy",
+            "name": "ttfx",
+            "version": "0.5.0-3",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "qemu-user-static-binfmt",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "qemu-user-static-binfmt",
+              "version": "10.0.11-1",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "omarchy",
+            "name": "qemu-user-static-binfmt",
+            "version": "1:1.11.1.2+ds.3-1",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "qrencode",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "qrencode",
+              "version": "4.1.1-4",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "qrencode",
+            "version": "4.1.1-4",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "qt6-imageformats",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "qt6-imageformats",
+              "version": "6.11.2-1",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "qt6-imageformats",
+            "version": "6.12.0-1",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "quickshell",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "quickshell-git",
+              "version": "0.3.0.r20.g28771c7-2",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "omarchy",
+            "name": "quickshell",
+            "version": "0.3.2.r7.g2b4501a-1",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "ripgrep",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "ripgrep",
+              "version": "15.2.0-1",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "ripgrep",
+            "version": "15.2.0-1",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "ruby",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "ruby",
+              "version": "3.4.10-1",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "ruby",
+            "version": "3.4.10-1",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "sddm",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "sddm",
+              "version": "0.21.0-7",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "sddm",
+            "version": "0.21.0-7",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "signed",
+          "status": "missing_from_image",
+          "installed_as": [],
+          "repository_candidate": {
+            "repository": "omarchy",
+            "name": "signed",
+            "version": "0.3.1-1",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "slurp",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "slurp",
+              "version": "1.5.0-2",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "slurp",
+            "version": "1.5.0-2",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "socat",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "socat",
+              "version": "1.8.1.3-1",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "socat",
+            "version": "1.8.1.3-1",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "starship",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "starship",
+              "version": "1.26.0-1",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "starship",
+            "version": "1.27.0-1",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "superwhisper-bin",
+          "status": "missing_from_image",
+          "installed_as": [],
+          "repository_candidate": {
+            "repository": "omarchy",
+            "name": "superwhisper-bin",
+            "version": "1.0.2-1",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "sushi",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "sushi",
+              "version": "50.0-1",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "sushi",
+            "version": "51.2-1",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "system-config-printer",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "system-config-printer",
+              "version": "1.5.18-7",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "system-config-printer",
+            "version": "1.5.18-7",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "tesseract",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "tesseract",
+              "version": "5.5.3-1",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "tesseract",
+            "version": "5.5.3-1",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "tesseract-data-eng",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "tesseract-data-eng",
+              "version": "2:4.1.0-5",
+              "architecture": "any"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "tesseract-data-eng",
+            "version": "2:4.1.0-5",
+            "architecture": "any"
+          }
+        },
+        {
+          "requested": "tldr",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "tldr",
+              "version": "3.4.4-1",
+              "architecture": "any"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "tealdeer",
+            "version": "1.9.0-1",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "tree-sitter-cli",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "tree-sitter-cli",
+              "version": "0.26.9-1",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "tree-sitter-cli",
+            "version": "0.26.9-1",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "tmux",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "tmux",
+              "version": "3.7_c-1",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "tmux",
+            "version": "3.8-1",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "tobi-try",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "tobi-try",
+              "version": "1.8.1-3",
+              "architecture": "any"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "omarchy",
+            "name": "tobi-try",
+            "version": "1.10.1-3",
+            "architecture": "any"
+          }
+        },
+        {
+          "requested": "ttf-ia-writer",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "ttf-ia-writer",
+              "version": "20181225-1",
+              "architecture": "any"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "omarchy",
+            "name": "ttf-ia-writer",
+            "version": "20261002.r63-3",
+            "architecture": "any"
+          }
+        },
+        {
+          "requested": "ttf-jetbrains-mono-nerd-basic",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "ttf-jetbrains-mono-nerd-basic",
+              "version": "3.4.0-1",
+              "architecture": "any"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "omarchy",
+            "name": "ttf-jetbrains-mono-nerd-basic",
+            "version": "3.5.1-2",
+            "architecture": "any"
+          }
+        },
+        {
+          "requested": "tzupdate",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "tzupdate",
+              "version": "3.1.0-1",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "omarchy",
+            "name": "tzupdate",
+            "version": "3.1.0-2",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "udiskie",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "udiskie",
+              "version": "2.7.0-2",
+              "architecture": "any"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "udiskie",
+            "version": "2.7.0-2",
+            "architecture": "any"
+          }
+        },
+        {
+          "requested": "ufw",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "ufw",
+              "version": "0.36.2-7",
+              "architecture": "any"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "ufw",
+            "version": "0.36.2-7",
+            "architecture": "any"
+          }
+        },
+        {
+          "requested": "ufw-docker",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "ufw-docker",
+              "version": "251123-1",
+              "architecture": "any"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "omarchy",
+            "name": "ufw-docker",
+            "version": "251123-2",
+            "architecture": "any"
+          }
+        },
+        {
+          "requested": "unzip",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "unzip",
+              "version": "6.0-23",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "unzip",
+            "version": "6.0-23",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "usage",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "usage",
+              "version": "5.1.0-1",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "usage",
+            "version": "6.12.1-1",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "uwsm",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "uwsm",
+              "version": "0.26.7-1",
+              "architecture": "any"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "uwsm",
+            "version": "0.27.1-1",
+            "architecture": "any"
+          }
+        },
+        {
+          "requested": "vi",
+          "status": "missing_from_image",
+          "installed_as": [],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "ex-vi-compat",
+            "version": "3-1",
+            "architecture": "any"
+          }
+        },
+        {
+          "requested": "whois",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "whois",
+              "version": "5.6.6-1",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "whois",
+            "version": "5.6.6-1",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "wireless-regdb",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "wireless-regdb",
+              "version": "2026.09.03-1",
+              "architecture": "any"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "core",
+            "name": "wireless-regdb",
+            "version": "2026.09.03-1",
+            "architecture": "any"
+          }
+        },
+        {
+          "requested": "wireplumber",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "wireplumber",
+              "version": "0.5.17-1",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "wireplumber",
+            "version": "0.5.18-1",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "wl-clipboard",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "wl-clipboard",
+              "version": "1:2.3.0-1",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "wl-clipboard",
+            "version": "1:2.3.0-1",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "wtype",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "wtype",
+              "version": "0.4-2",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "wtype",
+            "version": "0.4-2",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "woff2-font-awesome",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "woff2-font-awesome",
+              "version": "7.3.1-1",
+              "architecture": "any"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "woff2-font-awesome",
+            "version": "7.3.1-1",
+            "architecture": "any"
+          }
+        },
+        {
+          "requested": "xdg-desktop-portal-gtk",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "xdg-desktop-portal-gtk",
+              "version": "1.15.3-1",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "xdg-desktop-portal-gtk",
+            "version": "1.15.3-2",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "xdg-desktop-portal-hyprland",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "xdg-desktop-portal-hyprland",
+              "version": "1.4.1-2",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "xdg-desktop-portal-hyprland",
+            "version": "1.4.1-2",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "xdg-terminal-exec",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "xdg-terminal-exec",
+              "version": "0.14.3-1",
+              "architecture": "any"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "xdg-terminal-exec",
+            "version": "0.14.3-2",
+            "architecture": "any"
+          }
+        },
+        {
+          "requested": "yaru-icon-theme",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "yaru-icon-theme",
+              "version": "26.04.5.1ubuntu-1",
+              "architecture": "any"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "omarchy",
+            "name": "yaru-icon-theme",
+            "version": "26.10.3-3",
+            "architecture": "any"
+          }
+        },
+        {
+          "requested": "yay",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "yay",
+              "version": "13.0.1-1",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "omarchy",
+            "name": "yay",
+            "version": "13.0.1-1",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "yt-dlp",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "yt-dlp",
+              "version": "2025.12.08-2",
+              "architecture": "any"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "yt-dlp",
+            "version": "2025.12.08-2",
+            "architecture": "any"
+          }
+        },
+        {
+          "requested": "zbar",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "zbar",
+              "version": "0.23.93-7",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "zbar",
+            "version": "0.23.95-1",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "zoxide",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "zoxide",
+              "version": "0.10.0-1",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "zoxide",
+            "version": "0.10.0-1",
+            "architecture": "aarch64"
+          }
+        }
+      ]
+    },
+    {
+      "list": "omarchy-aarch64.packages",
+      "sha256": "19b28ebec7885ce94e55352a6eeb55a0e862f163afceeb5052b953f13fbe8f65",
+      "requested_count": 2,
+      "missing_count": 1,
+      "packages": [
+        {
+          "requested": "zram-generator",
+          "status": "missing_from_image",
+          "installed_as": [],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "zram-generator",
+            "version": "1.2.1-1",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "rtkit",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "rtkit",
+              "version": "0.14-1",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "rtkit",
+            "version": "0.14-2",
+            "architecture": "aarch64"
+          }
+        }
+      ]
+    },
+    {
+      "list": "omarchy-aarch64-apple.packages",
+      "sha256": "0b171083c475c1f3c666910b641bc7974d66fd75c85661cac030700b2054a116",
+      "requested_count": 7,
+      "missing_count": 4,
+      "packages": [
+        {
+          "requested": "omarchy-mac",
+          "status": "missing_from_image",
+          "installed_as": [],
+          "repository_candidate": {
+            "repository": "omarchy",
+            "name": "omarchy-mac",
+            "version": "0.1.4-1",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "omarchy-mac-boot",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "omarchy-mac-boot",
+              "version": "20260921-9",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "omarchy",
+            "name": "omarchy-mac-boot",
+            "version": "20261020-1",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "asahi-bless",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "asahi-bless",
+              "version": "0.4.2-1",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "omarchy",
+            "name": "aurora-bless",
+            "version": "0.4.4.aurora2-1",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "avd-fw",
+          "status": "missing_from_image",
+          "installed_as": [],
+          "repository_candidate": {
+            "repository": "omarchy",
+            "name": "avd-fw",
+            "version": "0.1-1",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "libva-v4l2_request-avd",
+          "status": "missing_from_image",
+          "installed_as": [],
+          "repository_candidate": {
+            "repository": "omarchy",
+            "name": "libva-v4l2_request-avd",
+            "version": "1.3.r11.r169.gc653eaa-1",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "widevine",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "widevine",
+              "version": "4.10.2891.0-1",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "asahi-alarm",
+            "name": "widevine",
+            "version": "4.10.2891.0-1",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "wf-recorder",
+          "status": "missing_from_image",
+          "installed_as": [],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "wf-recorder",
+            "version": "0.6.0-2",
+            "architecture": "aarch64"
+          }
+        }
+      ]
+    },
+    {
+      "list": "omarchy-base-asahi.packages",
+      "sha256": "bde42f19e545156fc6d656fc46a2d89925fa8fb61f447492dc971b7361221686",
+      "requested_count": 163,
+      "missing_count": 0,
+      "packages": [
+        {
+          "requested": "alsa-ucm-conf-asahi",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "alsa-ucm-conf-asahi",
+              "version": "10-1",
+              "architecture": "any"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "omarchy",
+            "name": "alsa-ucm-conf-aurora",
+            "version": "10.aurora2-1",
+            "architecture": "any"
+          }
+        },
+        {
+          "requested": "asahi-desktop-meta",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "asahi-desktop-meta",
+              "version": "4-10",
+              "architecture": "any"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "asahi-alarm",
+            "name": "asahi-desktop-meta",
+            "version": "4-10",
+            "architecture": "any"
+          }
+        },
+        {
+          "requested": "asahi-fwextract",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "asahi-fwextract",
+              "version": "0.8.4-1",
+              "architecture": "any"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "asahi-alarm",
+            "name": "asahi-fwextract",
+            "version": "0.9.2-1",
+            "architecture": "any"
+          }
+        },
+        {
+          "requested": "linux-aurora",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "linux-aurora",
+              "version": "7.1.12.aurora2-7",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "omarchy",
+            "name": "linux-aurora",
+            "version": "7.2.10.aurora1-2",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "linux-aurora-headers",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "linux-aurora-headers",
+              "version": "7.1.12.aurora2-7",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "omarchy",
+            "name": "linux-aurora-headers",
+            "version": "7.2.10.aurora1-2",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "m1n1-aurora",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "m1n1-aurora",
+              "version": "1.6.1.aurora1-2",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "omarchy",
+            "name": "aura",
+            "version": "0.1.0.r20261014-2",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "mesa",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "mesa",
+              "version": "1:26.2.2-1",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "omarchy",
+            "name": "mesa-aurora",
+            "version": "1:26.3.0_devel.20261017.af3d9c6fc84-2",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "mesa-demos",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "mesa-demos",
+              "version": "9.0.0-7",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "mesa-demos",
+            "version": "9.0.0-7",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "mesa-utils",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "mesa-utils",
+              "version": "9.0.0-7",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "mesa-utils",
+            "version": "9.0.0-7",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "fwupd",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "fwupd",
+              "version": "2.1.7-1",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "fwupd",
+            "version": "2.1.8-1",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "widevine",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "widevine",
+              "version": "4.10.2891.0-1",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "asahi-alarm",
+            "name": "widevine",
+            "version": "4.10.2891.0-1",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "aether",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "aether",
+              "version": "4.29.9-1",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "omarchy",
+            "name": "aether",
+            "version": "4.32.0-2",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "alsa-utils",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "alsa-utils",
+              "version": "1.2.16-1",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "alsa-utils",
+            "version": "1.2.16-1",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "asdcontrol",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "asdcontrol",
+              "version": "1:0.6.0-1",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "omarchy",
+            "name": "asdcontrol",
+            "version": "1:0.6.0-2",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "avahi",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "avahi",
+              "version": "1:0.9rc5-1",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "avahi",
+            "version": "1:0.9rc5-2",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "bash-completion",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "bash-completion",
+              "version": "2.18.0-1",
+              "architecture": "any"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "bash-completion",
+            "version": "2.18.0-1",
+            "architecture": "any"
+          }
+        },
+        {
+          "requested": "bat",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "bat",
+              "version": "0.26.1-2",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "bat",
+            "version": "0.26.1-3",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "bluez",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "bluez",
+              "version": "5.87-2",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "bluez",
+            "version": "5.87-2",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "bluez-tools",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "bluez-tools",
+              "version": "0.2.0-6",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "bluez-tools",
+            "version": "0.2.0-6",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "bluez-utils",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "bluez-utils",
+              "version": "5.87-2",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "bluez-utils",
+            "version": "5.87-2",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "bolt",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "bolt",
+              "version": "0.9.11-3",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "bolt",
+            "version": "0.9.11-3",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "brightnessctl",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "brightnessctl",
+              "version": "0.5.1-3",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "brightnessctl",
+            "version": "0.5.1-3",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "btop",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "btop",
+              "version": "1.4.7-1",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "btop",
+            "version": "1.4.7-1",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "chromium",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "chromium",
+              "version": "152.0.7977.75-1",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "omarchy",
+            "name": "omarchy-chromium-bin",
+            "version": "148.0.7778.96-22",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "clang",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "clang",
+              "version": "22.1.8-1",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "clang",
+            "version": "23.1.3-3",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "cliamp",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "cliamp",
+              "version": "2.2.0-1",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "omarchy",
+            "name": "cliamp",
+            "version": "2.3.0-3",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "cups",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "cups",
+              "version": "2:2.4.19-1",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "cups",
+            "version": "2:2.4.20-1",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "cups-filters",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "cups-filters",
+              "version": "2.0.1-2",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "cups-filters",
+            "version": "2.0.1-3",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "cups-pk-helper",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "cups-pk-helper",
+              "version": "0.2.7-2",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "cups-pk-helper",
+            "version": "0.2.7-2",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "ddcutil",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "ddcutil",
+              "version": "2.2.7-1",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "ddcutil",
+            "version": "3.0.2-1",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "docker",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "docker",
+              "version": "1:29.7.2-1",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "docker",
+            "version": "1:29.9.1-1",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "docker-buildx",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "docker-buildx",
+              "version": "0.37.0-1",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "docker-buildx",
+            "version": "0.38.0-1",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "docker-compose",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "docker-compose",
+              "version": "5.5.1-1",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "docker-compose",
+            "version": "5.6.0-1",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "dosfstools",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "dosfstools",
+              "version": "4.2-5",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "core",
+            "name": "dosfstools",
+            "version": "4.2-5",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "dotnet-runtime",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "dotnet-runtime",
+              "version": "10.0.11.sdk400-1",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "omarchy",
+            "name": "dotnet-runtime-bin",
+            "version": "10.0.402-1",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "dua-cli",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "dua-cli",
+              "version": "2.44.0-1",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "dua-cli",
+            "version": "2.46.0-1",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "evince",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "evince",
+              "version": "1:48.4-1",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "evince",
+            "version": "1:48.4-2",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "exfatprogs",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "exfatprogs",
+              "version": "1.4.3-1",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "exfatprogs",
+            "version": "1.4.3-1",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "expac",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "expac",
+              "version": "10-13",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "expac",
+            "version": "10-13",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "eza",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "eza",
+              "version": "0.23.5-2",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "eza",
+            "version": "0.23.5-2",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "fakeroot",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "fakeroot",
+              "version": "1:1.37.2-3",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "core",
+            "name": "fakeroot",
+            "version": "1:1.37.2-3",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "fastfetch",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "fastfetch",
+              "version": "2.68.1-1",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "fastfetch",
+            "version": "2.70.0-1",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "fcitx5",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "fcitx5",
+              "version": "5.1.22-1",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "fcitx5",
+            "version": "5.1.23-1",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "fcitx5-gtk",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "fcitx5-gtk",
+              "version": "5.1.7-1",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "fcitx5-gtk",
+            "version": "5.1.7-1",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "fcitx5-qt",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "fcitx5-qt",
+              "version": "5.1.15-1",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "fcitx5-qt",
+            "version": "5.1.16-2",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "fd",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "fd",
+              "version": "10.5.0-3",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "fd",
+            "version": "10.5.0-3",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "ffmpegthumbnailer",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "ffmpegthumbnailer",
+              "version": "2.3.1-1",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "ffmpegthumbnailer",
+            "version": "2.3.1-1",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "fontconfig",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "fontconfig",
+              "version": "2:2.18.3-2",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "fontconfig",
+            "version": "2:2.18.3-2",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "foot",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "foot",
+              "version": "1.28.0-2",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "foot",
+            "version": "1.28.0-2",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "fzf",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "fzf",
+              "version": "0.74.3-1",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "fzf",
+            "version": "0.74.5-1",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "git",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "git",
+              "version": "2.55.0-1",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "git",
+            "version": "2.56.0-1",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "gnome-disk-utility",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "gnome-disk-utility",
+              "version": "46.1-3",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "gnome-disk-utility",
+            "version": "46.1-3",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "gnome-keyring",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "gnome-keyring",
+              "version": "1:50.0-1",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "gnome-keyring",
+            "version": "1:51.1-1",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "gnome-themes-extra",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "gnome-themes-extra",
+              "version": "1:3.28-1",
+              "architecture": "any"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "gnome-themes-extra",
+            "version": "1:3.28-1",
+            "architecture": "any"
+          }
+        },
+        {
+          "requested": "gpu-screen-recorder",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "gpu-screen-recorder",
+              "version": "6.1.0-1",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "gpu-screen-recorder",
+            "version": "6.1.4-1",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "grim",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "grim",
+              "version": "1.5.0-2",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "grim",
+            "version": "1.5.0-2",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "gum",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "gum",
+              "version": "2.0.0-1",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "gum",
+            "version": "2.0.2-1",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "gvfs-mtp",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "gvfs-mtp",
+              "version": "1.60.2-4",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "gvfs-mtp",
+            "version": "1.62.0-3",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "gvfs-nfs",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "gvfs-nfs",
+              "version": "1.60.2-4",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "gvfs-nfs",
+            "version": "1.62.0-3",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "gvfs-smb",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "gvfs-smb",
+              "version": "1.60.2-4",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "gvfs-smb",
+            "version": "1.62.0-3",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "herdr",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "herdr",
+              "version": "0.8.2-1",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "omarchy",
+            "name": "herdr",
+            "version": "0.9.1-2",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "hyprland",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "hyprland",
+              "version": "0.56.2-3",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "omarchy",
+            "name": "hyprland",
+            "version": "0.56.2-7",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "hyprland-guiutils",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "hyprland-guiutils",
+              "version": "0.2.2-2",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "hyprland-guiutils",
+            "version": "0.2.2-4",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "hyprland-preview-share-picker",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "hyprland-preview-share-picker",
+              "version": "0.2.1-1",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "omarchy",
+            "name": "hyprland-preview-share-picker",
+            "version": "0.2.1-3",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "hyprpicker",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "hyprpicker",
+              "version": "0.4.7-4",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "hyprpicker",
+            "version": "0.4.7-4",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "hyprsunset",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "hyprsunset",
+              "version": "0.4.0-3",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "hyprsunset",
+            "version": "0.4.0-3",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "imagemagick",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "imagemagick",
+              "version": "7.1.2.31-1",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "imagemagick",
+            "version": "7.1.2.34-1",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "imv",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "imv",
+              "version": "5.0.1-2",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "imv",
+            "version": "5.0.1-2",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "inetutils",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "inetutils",
+              "version": "2.8-1",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "core",
+            "name": "inetutils",
+            "version": "2.8-1",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "inotify-tools",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "inotify-tools",
+              "version": "4.25.9.0-1",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "inotify-tools",
+            "version": "4.26.270-1",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "inxi",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "inxi",
+              "version": "3.3.41.1-1",
+              "architecture": "any"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "inxi",
+            "version": "3.3.41.1-1",
+            "architecture": "any"
+          }
+        },
+        {
+          "requested": "jq",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "jq",
+              "version": "1.8.2-1",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "jq",
+            "version": "1.8.2-1",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "kdenlive",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "kdenlive",
+              "version": "26.08.0-1",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "kdenlive",
+            "version": "26.08.2-2",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "kernel-modules-hook",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "kernel-modules-hook",
+              "version": "0.1.7-3",
+              "architecture": "any"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "kernel-modules-hook",
+            "version": "0.1.7-3",
+            "architecture": "any"
+          }
+        },
+        {
+          "requested": "lazydocker",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "lazydocker",
+              "version": "0.25.2-1",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "lazydocker",
+            "version": "0.25.2-1",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "lazygit",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "lazygit",
+              "version": "0.65.0-1",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "lazygit",
+            "version": "0.66.2-1",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "less",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "less",
+              "version": "1:704-1",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "core",
+            "name": "less",
+            "version": "1:710-1",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "libreoffice-fresh",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "libreoffice-fresh",
+              "version": "26.8.0-2",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "libreoffice-fresh",
+            "version": "26.8.1-1",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "libsecret",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "libsecret",
+              "version": "0.21.7-1",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "core",
+            "name": "libsecret",
+            "version": "0.21.8.2-1",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "libvips",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "libvips",
+              "version": "8.18.6-1",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "libvips",
+            "version": "8.18.7-1",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "libyaml",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "libyaml",
+              "version": "0.2.5-3",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "libyaml",
+            "version": "0.2.5-3",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "llvm",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "llvm",
+              "version": "22.1.8-2",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "llvm",
+            "version": "23.1.3-3",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "localsend",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "localsend",
+              "version": "1.18.2-1",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "omarchy",
+            "name": "localsend",
+            "version": "1.18.2-1",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "lua51",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "lua51",
+              "version": "5.1.5-13",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "lua51",
+            "version": "5.1.5-13",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "luarocks",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "luarocks",
+              "version": "3.13.0-5",
+              "architecture": "any"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "luarocks",
+            "version": "3.13.0-5",
+            "architecture": "any"
+          }
+        },
+        {
+          "requested": "man-db",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "man-db",
+              "version": "2.13.1-2",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "core",
+            "name": "man-db",
+            "version": "2.13.1-2",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "mariadb-libs",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "mariadb-libs",
+              "version": "12.3.3-2",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "mariadb-libs",
+            "version": "13.0.2-2",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "mise",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "mise",
+              "version": "2026.9.4-1",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "omarchy",
+            "name": "mise-bin",
+            "version": "2026.10.14-1",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "moonlight-qt",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "moonlight-qt",
+              "version": "6.1.0-7",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "moonlight-qt",
+            "version": "6.2.0-1",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "mpv",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "mpv",
+              "version": "1:0.41.0-6",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "mpv",
+            "version": "1:0.41.0-6",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "mpv-mpris",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "mpv-mpris",
+              "version": "1.2-2",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "mpv-mpris",
+            "version": "1.3-1",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "nautilus",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "nautilus",
+              "version": "50.3.1-1",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "nautilus",
+            "version": "51.1-1",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "nautilus-python",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "nautilus-python",
+              "version": "4.1.0-3",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "nautilus-python",
+            "version": "4.2.0-1",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "neovim",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "neovim",
+              "version": "0.12.5-1",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "neovim",
+            "version": "0.12.6-1",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "networkmanager",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "networkmanager",
+              "version": "1.58.1-1",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "networkmanager",
+            "version": "1.58.1-2",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "noto-fonts",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "noto-fonts",
+              "version": "1:2026.09.01-1",
+              "architecture": "any"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "noto-fonts",
+            "version": "1:2026.10.01-1",
+            "architecture": "any"
+          }
+        },
+        {
+          "requested": "noto-fonts-cjk",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "noto-fonts-cjk",
+              "version": "20240730-1",
+              "architecture": "any"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "noto-fonts-cjk",
+            "version": "20240730-1",
+            "architecture": "any"
+          }
+        },
+        {
+          "requested": "noto-fonts-emoji",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "noto-fonts-emoji",
+              "version": "1:2.051-1",
+              "architecture": "any"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "noto-fonts-emoji",
+            "version": "1:2.051-1",
+            "architecture": "any"
+          }
+        },
+        {
+          "requested": "nss-mdns",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "nss-mdns",
+              "version": "0.15.1-2",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "nss-mdns",
+            "version": "0.15.1-3",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "obs-studio",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "obs-studio",
+              "version": "32.2.2-1",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "omarchy",
+            "name": "obs-studio",
+            "version": "32.2.2-1",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "obsidian",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "obsidian",
+              "version": "1.13.7-1",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "omarchy",
+            "name": "obsidian",
+            "version": "1.14.4-2",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "omacalc",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "omacalc",
+              "version": "0.2.2-1",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "omarchy",
+            "name": "omacalc",
+            "version": "0.3.1-1",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "omacut",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "omacut",
+              "version": "0.2.0-1",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "omarchy",
+            "name": "omacut",
+            "version": "0.7.2-1",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "omarchy-nvim",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "omarchy-nvim",
+              "version": "2026.8.1-3",
+              "architecture": "any"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "omarchy",
+            "name": "omarchy-nvim",
+            "version": "2026.9.21-5",
+            "architecture": "any"
+          }
+        },
+        {
+          "requested": "omawrite",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "omawrite",
+              "version": "0.3.0-1",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "omarchy",
+            "name": "omawrite",
+            "version": "0.7.2-1",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "pacman-contrib",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "pacman-contrib",
+              "version": "1.13.1-1",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "pacman-contrib",
+            "version": "1.13.1-1",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "pamixer",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "pamixer",
+              "version": "1.6-3",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "pamixer",
+            "version": "1.6-3",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "pinta",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "pinta",
+              "version": "3.1.2-2",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "omarchy",
+            "name": "pinta",
+            "version": "3.1.2-1",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "plocate",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "plocate",
+              "version": "1.1.25-1",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "plocate",
+            "version": "1.1.25-1",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "plymouth",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "plymouth",
+              "version": "26.134.222-2",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "plymouth",
+            "version": "26.134.222-3",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "postgresql-libs",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "postgresql-libs",
+              "version": "18.6-1",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "postgresql-libs",
+            "version": "18.6-2",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "power-profiles-daemon",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "power-profiles-daemon",
+              "version": "0.30-1",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "omarchy",
+            "name": "omarchy-power-profiles-daemon",
+            "version": "0.30-3",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "python-gobject",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "python-gobject",
+              "version": "3.56.3-1",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "python-gobject",
+            "version": "3.58.1-1",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "python-poetry-core",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "python-poetry-core",
+              "version": "2.4.1-1",
+              "architecture": "any"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "python-poetry-core",
+            "version": "2.5.0-1",
+            "architecture": "any"
+          }
+        },
+        {
+          "requested": "qemu-user-static-binfmt",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "qemu-user-static-binfmt",
+              "version": "10.0.11-1",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "omarchy",
+            "name": "qemu-user-static-binfmt",
+            "version": "1:1.11.1.2+ds.3-1",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "qrencode",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "qrencode",
+              "version": "4.1.1-4",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "qrencode",
+            "version": "4.1.1-4",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "qt6-imageformats",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "qt6-imageformats",
+              "version": "6.11.2-1",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "qt6-imageformats",
+            "version": "6.12.0-1",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "quickshell-git",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "quickshell-git",
+              "version": "0.3.0.r20.g28771c7-2",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "omarchy",
+            "name": "quickshell-git",
+            "version": "0.3.2.r0.g4f508be-5",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "ripgrep",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "ripgrep",
+              "version": "15.2.0-1",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "ripgrep",
+            "version": "15.2.0-1",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "rtkit",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "rtkit",
+              "version": "0.14-1",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "rtkit",
+            "version": "0.14-2",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "ruby",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "ruby",
+              "version": "3.4.10-1",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "ruby",
+            "version": "3.4.10-1",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "sddm",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "sddm",
+              "version": "0.21.0-7",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "sddm",
+            "version": "0.21.0-7",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "slurp",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "slurp",
+              "version": "1.5.0-2",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "slurp",
+            "version": "1.5.0-2",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "socat",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "socat",
+              "version": "1.8.1.3-1",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "socat",
+            "version": "1.8.1.3-1",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "starship",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "starship",
+              "version": "1.26.0-1",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "starship",
+            "version": "1.27.0-1",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "sushi",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "sushi",
+              "version": "50.0-1",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "sushi",
+            "version": "51.2-1",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "system-config-printer",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "system-config-printer",
+              "version": "1.5.18-7",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "system-config-printer",
+            "version": "1.5.18-7",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "tensaku",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "tensaku",
+              "version": "0.26.6-1",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "omarchy",
+            "name": "tensaku",
+            "version": "0.29.0-2",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "tesseract",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "tesseract",
+              "version": "5.5.3-1",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "tesseract",
+            "version": "5.5.3-1",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "tesseract-data-eng",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "tesseract-data-eng",
+              "version": "2:4.1.0-5",
+              "architecture": "any"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "tesseract-data-eng",
+            "version": "2:4.1.0-5",
+            "architecture": "any"
+          }
+        },
+        {
+          "requested": "tldr",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "tldr",
+              "version": "3.4.4-1",
+              "architecture": "any"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "tealdeer",
+            "version": "1.9.0-1",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "tmux",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "tmux",
+              "version": "3.7_c-1",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "tmux",
+            "version": "3.8-1",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "tobi-try",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "tobi-try",
+              "version": "1.8.1-3",
+              "architecture": "any"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "omarchy",
+            "name": "tobi-try",
+            "version": "1.10.1-3",
+            "architecture": "any"
+          }
+        },
+        {
+          "requested": "tree-sitter-cli",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "tree-sitter-cli",
+              "version": "0.26.9-1",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "tree-sitter-cli",
+            "version": "0.26.9-1",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "ttf-ia-writer",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "ttf-ia-writer",
+              "version": "20181225-1",
+              "architecture": "any"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "omarchy",
+            "name": "ttf-ia-writer",
+            "version": "20261002.r63-3",
+            "architecture": "any"
+          }
+        },
+        {
+          "requested": "ttf-jetbrains-mono-nerd-basic",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "ttf-jetbrains-mono-nerd-basic",
+              "version": "3.4.0-1",
+              "architecture": "any"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "omarchy",
+            "name": "ttf-jetbrains-mono-nerd-basic",
+            "version": "3.5.1-2",
+            "architecture": "any"
+          }
+        },
+        {
+          "requested": "ttfx",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "ttfx",
+              "version": "0.3.2-1",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "omarchy",
+            "name": "ttfx",
+            "version": "0.5.0-3",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "tzupdate",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "tzupdate",
+              "version": "3.1.0-1",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "omarchy",
+            "name": "tzupdate",
+            "version": "3.1.0-2",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "udiskie",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "udiskie",
+              "version": "2.7.0-2",
+              "architecture": "any"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "udiskie",
+            "version": "2.7.0-2",
+            "architecture": "any"
+          }
+        },
+        {
+          "requested": "ufw",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "ufw",
+              "version": "0.36.2-7",
+              "architecture": "any"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "ufw",
+            "version": "0.36.2-7",
+            "architecture": "any"
+          }
+        },
+        {
+          "requested": "ufw-docker",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "ufw-docker",
+              "version": "251123-1",
+              "architecture": "any"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "omarchy",
+            "name": "ufw-docker",
+            "version": "251123-2",
+            "architecture": "any"
+          }
+        },
+        {
+          "requested": "unzip",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "unzip",
+              "version": "6.0-23",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "unzip",
+            "version": "6.0-23",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "usage",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "usage",
+              "version": "5.1.0-1",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "usage",
+            "version": "6.12.1-1",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "uwsm",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "uwsm",
+              "version": "0.26.7-1",
+              "architecture": "any"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "uwsm",
+            "version": "0.27.1-1",
+            "architecture": "any"
+          }
+        },
+        {
+          "requested": "whois",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "whois",
+              "version": "5.6.6-1",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "whois",
+            "version": "5.6.6-1",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "wireless-regdb",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "wireless-regdb",
+              "version": "2026.09.03-1",
+              "architecture": "any"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "core",
+            "name": "wireless-regdb",
+            "version": "2026.09.03-1",
+            "architecture": "any"
+          }
+        },
+        {
+          "requested": "wireplumber",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "wireplumber",
+              "version": "0.5.17-1",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "wireplumber",
+            "version": "0.5.18-1",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "wl-clipboard",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "wl-clipboard",
+              "version": "1:2.3.0-1",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "wl-clipboard",
+            "version": "1:2.3.0-1",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "woff2-font-awesome",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "woff2-font-awesome",
+              "version": "7.3.1-1",
+              "architecture": "any"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "woff2-font-awesome",
+            "version": "7.3.1-1",
+            "architecture": "any"
+          }
+        },
+        {
+          "requested": "wtype",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "wtype",
+              "version": "0.4-2",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "wtype",
+            "version": "0.4-2",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "xdg-desktop-portal-gtk",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "xdg-desktop-portal-gtk",
+              "version": "1.15.3-1",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "xdg-desktop-portal-gtk",
+            "version": "1.15.3-2",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "xdg-desktop-portal-hyprland",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "xdg-desktop-portal-hyprland",
+              "version": "1.4.1-2",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "xdg-desktop-portal-hyprland",
+            "version": "1.4.1-2",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "xdg-terminal-exec",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "xdg-terminal-exec",
+              "version": "0.14.3-1",
+              "architecture": "any"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "xdg-terminal-exec",
+            "version": "0.14.3-2",
+            "architecture": "any"
+          }
+        },
+        {
+          "requested": "xournalpp",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "xournalpp",
+              "version": "1.3.7-1",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "xournalpp",
+            "version": "1.3.8-1",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "yaru-icon-theme",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "yaru-icon-theme",
+              "version": "26.04.5.1ubuntu-1",
+              "architecture": "any"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "omarchy",
+            "name": "yaru-icon-theme",
+            "version": "26.10.3-3",
+            "architecture": "any"
+          }
+        },
+        {
+          "requested": "yay",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "yay",
+              "version": "13.0.1-1",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "omarchy",
+            "name": "yay",
+            "version": "13.0.1-1",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "yt-dlp",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "yt-dlp",
+              "version": "2025.12.08-2",
+              "architecture": "any"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "yt-dlp",
+            "version": "2025.12.08-2",
+            "architecture": "any"
+          }
+        },
+        {
+          "requested": "zbar",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "zbar",
+              "version": "0.23.93-7",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "zbar",
+            "version": "0.23.95-1",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "zoxide",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "zoxide",
+              "version": "0.10.0-1",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "zoxide",
+            "version": "0.10.0-1",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "limine",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "limine",
+              "version": "12.8.0-1",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "extra",
+            "name": "limine",
+            "version": "12.9.3-1",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "limine-mkinitcpio-hook",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "limine-mkinitcpio-hook",
+              "version": "1.36.0-3",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "omarchy",
+            "name": "limine-mkinitcpio-hook",
+            "version": "1.40.0-2",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "limine-snapper-sync",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "limine-snapper-sync",
+              "version": "1.30.1-1",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "omarchy",
+            "name": "limine-snapper-sync",
+            "version": "1.32.1-2",
+            "architecture": "aarch64"
+          }
+        },
+        {
+          "requested": "uboot-asahi",
+          "status": "installed",
+          "installed_as": [
+            {
+              "name": "uboot-asahi",
+              "version": "2026.07.asahi2-3",
+              "architecture": "aarch64"
+            }
+          ],
+          "repository_candidate": {
+            "repository": "omarchy",
+            "name": "uboot-asahi",
+            "version": "2026.07.asahi2-4",
+            "architecture": "aarch64"
+          }
+        }
+      ]
+    }
+  ]
+}

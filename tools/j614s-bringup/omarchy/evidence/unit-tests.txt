@@ -1,0 +1,42 @@
+python3 -m unittest discover -s . -v
+test_boot_requests_and_provider_aliases_are_held (test_package_plan.PackagePlanTests.test_boot_requests_and_provider_aliases_are_held) ... ok
+test_changed_protected_baseline_rejected_before_any_pacman_subprocess (test_package_plan.PackagePlanTests.test_changed_protected_baseline_rejected_before_any_pacman_subprocess) ... ok
+test_changed_repository_rejected_before_any_pacman_subprocess (test_package_plan.PackagePlanTests.test_changed_repository_rejected_before_any_pacman_subprocess) ... ok
+test_kernel_firmware_and_boot_names_are_protected (test_package_plan.PackagePlanTests.test_kernel_firmware_and_boot_names_are_protected) ... ok
+test_no_baseline_cannot_create_boot_pins (test_package_plan.PackagePlanTests.test_no_baseline_cannot_create_boot_pins) ... ok
+test_orphan_depends_is_explicitly_reported_and_cannot_resolve (test_package_plan.PackagePlanTests.test_orphan_depends_is_explicitly_reported_and_cannot_resolve) ... ok
+test_resolved_payload_must_match_exact_metadata (test_package_plan.PackagePlanTests.test_resolved_payload_must_match_exact_metadata) ... ok
+test_resolved_protected_dependency_is_rejected (test_package_plan.PackagePlanTests.test_resolved_protected_dependency_is_rejected) ... ok
+test_signed_nvim_overlay_pins_canonical_neovim (test_package_plan.PackagePlanTests.test_signed_nvim_overlay_pins_canonical_neovim) ... ok
+test_signed_pkginfo_preserves_multiple_providers_and_dependencies (test_package_plan.PackagePlanTests.test_signed_pkginfo_preserves_multiple_providers_and_dependencies) ... ok
+test_split_depends_members_provide_repository_alias (test_package_plan.PackagePlanTests.test_split_depends_members_provide_repository_alias) ... ok
+test_stale_or_unsigned_editor_evidence_cannot_resolve_alias (test_package_plan.PackagePlanTests.test_stale_or_unsigned_editor_evidence_cannot_resolve_alias) ... ok
+test_tampered_payload_fails_digest_before_inspection (test_package_plan.PackagePlanTests.test_tampered_payload_fails_digest_before_inspection) ... ok
+test_unknown_and_foreign_requests_remain_explicit_failures (test_package_plan.PackagePlanTests.test_unknown_and_foreign_requests_remain_explicit_failures) ... ok
+test_vi_is_not_guessed_from_vim_presence (test_package_plan.PackagePlanTests.test_vi_is_not_guessed_from_vim_presence) ... ok
+test_arm_packages_virtual_providers_and_wrong_arch (test_preflight.PackageAuditTests.test_arm_packages_virtual_providers_and_wrong_arch) ... ok
+test_repository_order_and_architecture_are_preserved (test_preflight.PackageAuditTests.test_repository_order_and_architecture_are_preserved) ... ok
+test_ambiguous_multiple_qualified_nodes_block (test_preflight.PreflightTests.test_ambiguous_multiple_qualified_nodes_block) ... ok
+test_fake_render_nodes_are_rejected (test_preflight.PreflightTests.test_fake_render_nodes_are_rejected) ... ok
+test_mismatched_model_and_soc (test_preflight.PreflightTests.test_mismatched_model_and_soc) ... ok
+test_no_transport_only_success (test_preflight.PreflightTests.test_no_transport_only_success) ... ok
+test_non_native_architecture (test_preflight.PreflightTests.test_non_native_architecture) ... ok
+test_noncontiguous_cpu_set (test_preflight.PreflightTests.test_noncontiguous_cpu_set) ... ok
+test_probe_must_be_bound_to_actual_node_and_succeed (test_preflight.PreflightTests.test_probe_must_be_bound_to_actual_node_and_succeed) ... ok
+test_probe_not_started_before_identity_and_environment_guards (test_preflight.PreflightTests.test_probe_not_started_before_identity_and_environment_guards) ... ok
+test_probe_not_started_for_inappropriate_node (test_preflight.PreflightTests.test_probe_not_started_for_inappropriate_node) ... ok
+test_prospective_supported_snapshot (test_preflight.PreflightTests.test_prospective_supported_snapshot) ... ok
+test_qualified_metadata_allows_bound_probe (test_preflight.PreflightTests.test_qualified_metadata_allows_bound_probe) ... ok
+test_rejected_stage_creates_nothing (test_preflight.PreflightTests.test_rejected_stage_creates_nothing) ... ok
+test_replayed_snapshot_cannot_stage (test_preflight.PreflightTests.test_replayed_snapshot_cannot_stage) ... ok
+test_single_core_or_missing_secondary_blocks (test_preflight.PreflightTests.test_single_core_or_missing_secondary_blocks) ... ok
+test_software_overrides_block_even_real_device (test_preflight.PreflightTests.test_software_overrides_block_even_real_device) ... ok
+test_software_renderer_does_not_pass_with_asahi_node (test_preflight.PreflightTests.test_software_renderer_does_not_pass_with_asahi_node) ... ok
+test_staging_never_overwrites_existing_directory (test_preflight.PreflightTests.test_staging_never_overwrites_existing_directory) ... ok
+test_wrong_twelve_cpu_ids_block (test_preflight.PreflightTests.test_wrong_twelve_cpu_ids_block) ... ok
+
+----------------------------------------------------------------------
+Ran 35 tests in 0.075s
+
+OK
+No EGL pbuffer config on requested DRM node: 0x3000

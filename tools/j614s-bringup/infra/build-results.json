@@ -1,0 +1,128 @@
+{
+  "status": "COMPILED",
+  "hardware": "UNTESTED",
+  "kernel_release": "7.1.12-j614s-gpu-bringup+",
+  "Image": {
+    "sha256": "99e11db2d5eb4a0b59a7f46cbac35213b66ab55d490895a169a232de3d5d9fce",
+    "bytes": 14772232
+  },
+  "config_sha256": "cfcc148e0c79f934ef23086598eaf630524ca0e3cc61821e0b5398ab7ee26da6",
+  "embedded_config_sha256": "cfcc148e0c79f934ef23086598eaf630524ca0e3cc61821e0b5398ab7ee26da6",
+  "modules": [
+    {
+      "path": "modules/drivers/gpio/gpio-macsmc.ko",
+      "sha256": "14d2945b2377e2c151dd667a634cd63c54718c4cfdf0a966b0355adda7d51309",
+      "bytes": 13496,
+      "vermagic": "7.1.12-j614s-gpu-bringup+ SMP preempt aarch64"
+    },
+    {
+      "path": "modules/drivers/gpio/gpio-shared-proxy.ko",
+      "sha256": "14c917efbf241f26f73e0914f3f254dee1a2cc544ef95fdad6079d7cf016a23f",
+      "bytes": 9864,
+      "vermagic": "7.1.12-j614s-gpu-bringup+ SMP preempt aarch64"
+    },
+    {
+      "path": "modules/drivers/gpu/drm/asahi/asahi.ko",
+      "sha256": "47f9bb79a065ef11204c2546057c26af9377b3f29fe763766b7477347e28092d",
+      "bytes": 5104272,
+      "vermagic": "7.1.12-j614s-gpu-bringup+ SMP preempt aarch64"
+    },
+    {
+      "path": "modules/drivers/gpu/drm/asahi/g16-bootstrap.ko",
+      "sha256": "f42d9534970a02e8ac9115659c82eeb5c70d92befe56973455a2f850f42ffd12",
+      "bytes": 12488,
+      "vermagic": "7.1.12-j614s-gpu-bringup+ SMP preempt aarch64"
+    },
+    {
+      "path": "modules/drivers/hid/dockchannel-hid/dockchannel-hid.ko",
+      "sha256": "ea9ebc90854a9a01c582ba5b5635c69688db18e0edf7d532b83f58e3671eba21",
+      "bytes": 28880,
+      "vermagic": "7.1.12-j614s-gpu-bringup+ SMP preempt aarch64"
+    },
+    {
+      "path": "modules/drivers/hid/hid-apple.ko",
+      "sha256": "ea8cefbc95e40beb9f8659cc41d35f69bb9160528f8bd8572c3a5af7e671625e",
+      "bytes": 37312,
+      "vermagic": "7.1.12-j614s-gpu-bringup+ SMP preempt aarch64"
+    },
+    {
+      "path": "modules/drivers/hid/hid-magicmouse.ko",
+      "sha256": "65081bc5d79557673ed3215ec22ce9609a9a751ff9ba80e68689f20f89e64996",
+      "bytes": 35984,
+      "vermagic": "7.1.12-j614s-gpu-bringup+ SMP preempt aarch64"
+    },
+    {
+      "path": "modules/drivers/mfd/macsmc.ko",
+      "sha256": "f016b30718e7d442d001bbd223b71ce3eef52007eee261a32436faf8767cd24c",
+      "bytes": 20752,
+      "vermagic": "7.1.12-j614s-gpu-bringup+ SMP preempt aarch64"
+    },
+    {
+      "path": "modules/drivers/mfd/mfd-core.ko",
+      "sha256": "20e32e9593ff241b2477b876c77d7bb6f39289f7e0db06f206b830fbab042d95",
+      "bytes": 11688,
+      "vermagic": "7.1.12-j614s-gpu-bringup+ SMP preempt aarch64"
+    },
+    {
+      "path": "modules/drivers/nvme/host/nvme-apple.ko",
+      "sha256": "03c4943e6ab06b8392d6d4b2f9552648b5304caf5dd4bb2fd4aff68caa1a610d",
+      "bytes": 51208,
+      "vermagic": "7.1.12-j614s-gpu-bringup+ SMP preempt aarch64"
+    },
+    {
+      "path": "modules/drivers/nvme/host/nvme-core.ko",
+      "sha256": "d1201c7f81bc07d5004362dea02643c1d175f7f81730adb31206324aa5557d21",
+      "bytes": 139800,
+      "vermagic": "7.1.12-j614s-gpu-bringup+ SMP preempt aarch64"
+    },
+    {
+      "path": "modules/drivers/phy/apple/usb2-j614s-host-diagnostic.ko",
+      "sha256": "0991e79f7540cd9fb696412364a749af4ce287970e948c060c7f0edbca1af952",
+      "bytes": 9760,
+      "vermagic": "7.1.12-j614s-gpu-bringup+ SMP preempt aarch64"
+    },
+    {
+      "path": "modules/drivers/power/supply/macsmc-power.ko",
+      "sha256": "28de9885cc2ec14c4cc61a0fdf75cd78a586a0d673b50ddbb8715284cc099afc",
+      "bytes": 22200,
+      "vermagic": "7.1.12-j614s-gpu-bringup+ SMP preempt aarch64"
+    },
+    {
+      "path": "modules/drivers/soc/apple/apple-dockchannel.ko",
+      "sha256": "84cb2e27bbdc9fca563d2c8d59604bb21929021fdd3c32c633080e57d7fdb6da",
+      "bytes": 16120,
+      "vermagic": "7.1.12-j614s-gpu-bringup+ SMP preempt aarch64"
+    },
+    {
+      "path": "modules/drivers/soc/apple/apple-rtkit-helper.ko",
+      "sha256": "101709bd21a51fbc3259c56120de424e93d1d0cac9759eaf3f7f23aadb249a99",
+      "bytes": 9080,
+      "vermagic": "7.1.12-j614s-gpu-bringup+ SMP preempt aarch64"
+    }
+  ],
+  "artifact_integrity_tests": [
+    {
+      "test": "full-built-artifact-positive",
+      "exit": 0,
+      "output": "PASS: artifact integrity (not a hardware qualification)",
+      "expected_exit": 0
+    },
+    {
+      "test": "actual-Image-same-length-corruption",
+      "exit": 1,
+      "output": "FAIL: Artifact checksum mismatch: Image",
+      "expected_exit": 1
+    },
+    {
+      "test": "actual-module-corruption",
+      "exit": 1,
+      "output": "FAIL: Artifact checksum mismatch: modules/drivers/gpio/gpio-macsmc.ko",
+      "expected_exit": 1
+    }
+  ],
+  "source_contract_sha256": "97bbcb074a08bd72253d5ffa56ec411e26079c06936946bb2afdbd7339fea416",
+  "bit_reproducibility": "FAILED in recipe 1: run-specific Rust paths change Image and Asahi module; see reproducibility-before.json",
+  "warning": "Three nonfatal rustfmt-not-found messages; unconditional layout checks retained and compiled",
+  "original_reference_image_retained_sha256": "a114bb3a927918b54c25ed31b3ea102b9ac08d404fdd793a1f75d99845259883",
+  "second_Image_sha256": "2eec5baa7c4aab61b10e13d1574515ed0669ad478bb41dec2428353748f28e81"
+}

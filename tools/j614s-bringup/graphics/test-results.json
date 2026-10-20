@@ -1,0 +1,73 @@
+{
+  "status": "WORKS_OFFLINE",
+  "hardware_tested": false,
+  "tests": [
+    {
+      "name": "GCC envelope and synthetic UAT",
+      "command": "make -C graphics all test",
+      "result": "PASS"
+    },
+    {
+      "name": "Clang AddressSanitizer and fatal UndefinedBehaviorSanitizer",
+      "command": "UBSAN_OPTIONS=halt_on_error=1 make -C graphics test CC=clang BUILD=build-clang CFLAGS='-O1 -g -fsanitize=address,undefined -fno-omit-frame-pointer'",
+      "result": "PASS",
+      "note": "An intermediate test fixture pointer-expression UBSan fault was corrected before this passing run; validation was retained."
+    },
+    {
+      "name": "Seeded libFuzzer with ASan/UBSan",
+      "result": "PASS",
+      "executions": 8008333,
+      "elapsed_seconds": 11,
+      "note": "Synthetic valid root seed; malformed root/message/walker struct mutations; no crash or sanitizer finding.",
+      "scope": "Original root/message/UAT decoder; new MainConfig helpers are covered by the separate sanitizer replay, not this prior fuzz run."
+    },
+    {
+      "name": "Actual compiled Gravity root serialization",
+      "result": "EXPECTED_REJECTION",
+      "evidence": "gravity-root-result.json"
+    },
+    {
+      "name": "Known MainConfig and first hardware-data capture",
+      "result": "PASS",
+      "coverage": [
+        "null/overflow/short-header request rejection",
+        "known pointer offset checks",
+        "exact first16-byte virtual read",
+        "cross-page retranslation",
+        "missing second page denied before data read",
+        "GCC warnings-as-errors",
+        "Clang ASan/fatal UBSan"
+      ]
+    },
+    {
+      "name": "Actual compiled Gravity MainConfig",
+      "result": "EXPECTED_REJECTION",
+      "evidence": "gravity-main-result.json",
+      "first_bad_pointer_offset": "0x2f0",
+      "geometry_source": "synthetic current-format root, not an accepted upstream root"
+    },
+    {
+      "name": "Exact G16S consumer and G17 source comparison",
+      "result": "PASS_STATIC_ONLY",
+      "evidence": "g16s-main-layout.json",
+      "scope": "16 narrow consumer operand anchors and three G17 offset assertions; no whole-function proof"
+    }
+  ],
+  "compilers": {
+    "cc": "cc (GCC) 16.2.1 20260810",
+    "clang": "clang version 23.1.3",
+    "rustc": "rustc 1.91.1 (ed61e7d7e 2025-11-07)"
+  },
+  "source_sha256": {
+    "g16s_abi.h": "48e237084c1587d2655ad3f75fb2ed1786bfab638949188eefb09b8366365e8d",
+    "g16s_main.h": "9279c1858948e8f087cc66a1b4ee056f90264273f53f51800520a0a9924a7133",
+    "test_g16s_abi.c": "1631b5a339c37f6fdaa8a4bb937e16bd3a355c674dd3f53004497d2c6cdeb9c4",
+    "test_g16s_main.c": "377c438906a1a62df337d97a53d7844348048362f492f70df4266aedcd59382e",
+    "test-fixture.h": "1f0af235c6f3002fc0a0e50c8207f66c52161e719c20b2b2426f91ad265109cf",
+    "fuzz_g16s_abi.c": "09143919f11ff282667acd05371cdae835f3350e2ab28a9629fff60823b4597f",
+    "g16s-inspect.c": "27bafa3c9200780d8a8e0f969914ef3f221dcd9f48056ca8fb8b012ce94503ea",
+    "g16s-main-inspect.c": "517fd5a8a10bb708f461062c8f263872e46c21aee9234f3a3b6db638961f650b",
+    "check-gravity-root.py": "cd83ffa58707ec6cd3c9799d85bdc31bd7d013c957ff91a2ea2c43c2f32a5d42",
+    "verify-g16s-layout.py": "f339c2b0bafd9f989fe65f3526b483eebdc4781737bd7b56d173116c0c6531ea"
+  }
+}

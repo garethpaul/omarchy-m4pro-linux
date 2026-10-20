@@ -1,0 +1,15 @@
+{
+  "status": "PASS",
+  "rustc": "1.91.1",
+  "plain_objects_equal": false,
+  "mapped_objects_equal": true,
+  "remap_path_scope_probe_exit": 1,
+  "scope_error_first_line": "error: Unrecognized option: 'remap-path-scope'. Did you mean `-Z remap-path-scope`?",
+  "digests": {
+    "first_plain": "76b57868e4eaade438a36dc32eafec33ad7abfb2fcb9e550b11fcc9c7e7faef4",
+    "first_mapped": "c3a889a4baa3ae5f521a097f82bb397ce01360ae2ed600b8262c9726e1ce83c7",
+    "second_plain": "e59d34cbfea6dd77cc1e17499b3d19ab43065f121912c962ffd706a9285f3ebe",
+    "second_mapped": "c3a889a4baa3ae5f521a097f82bb397ce01360ae2ed600b8262c9726e1ce83c7"
+  },
+  "hardware_executed": false
+}

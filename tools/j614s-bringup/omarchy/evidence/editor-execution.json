@@ -1,0 +1,39 @@
+{
+  "schema": 1,
+  "scope": "ARM userspace emulation on build host; not target hardware",
+  "emulator": {
+    "package": "qemu-user-static 11.1.2-1",
+    "binary_sha256": "66bdc286fd30970a1c3d2029b460605a3dc843ed6b397f4cd9825f9c19551507",
+    "package_file_check": "45 total files, 0 altered files"
+  },
+  "results": {
+    "vim": {
+      "binary_sha256": "89f67f72e5dae7f87be488894ea8f07fc89fd29a962b33696fcd542b06d0415d",
+      "version_exit": 0,
+      "version_output": [
+        "VIM - Vi IMproved 9.2 (2026 Feb 14, compiled Oct 12 2026 23:20:38)",
+        "Included patches: 1-1178",
+        "Compiled by Arch Linux",
+        "Huge version without GUI.  Features included (+) or not (-):"
+      ],
+      "roundtrip_exit": 0,
+      "roundtrip_pass": true,
+      "command": "qemu-aarch64-static -L ISOLATED_PREFIX VERIFIED_BINARY -u NONE -i NONE -n -es -c call_writefile_owned_scratch -c qa!",
+      "usr_bin_vi_available": false
+    },
+    "neovim": {
+      "binary_sha256": "d56f2e783ba9734dcba3184f134378ed5c2d3b7787c4862fef90d75d47cfbee3",
+      "version_exit": 0,
+      "version_output": [
+        "NVIM v0.12.6",
+        "Build type: RelWithDebInfo",
+        "LuaJIT 2.1.1788856981",
+        "Run \"nvim -V1 -v\" for more info"
+      ],
+      "roundtrip_exit": 0,
+      "roundtrip_pass": true,
+      "command": "qemu-aarch64-static -L ISOLATED_PREFIX VERIFIED_BINARY -u NONE -i NONE -n -es -c call_writefile_owned_scratch -c qa!",
+      "usr_bin_vi_available": false
+    }
+  }
+}

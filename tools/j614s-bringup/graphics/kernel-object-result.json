@@ -1,0 +1,74 @@
+{
+  "config_changed": true,
+  "full_kernel": "UNTESTED",
+  "hardware": "UNTESTED",
+  "input_config_sha256": "cfcc148e0c79f934ef23086598eaf630524ca0e3cc61821e0b5398ab7ee26da6",
+  "normalized_config": {
+    "required": {
+      "CONFIG_ARM64": "y",
+      "CONFIG_DRM_ASAHI": "m",
+      "CONFIG_DRM_ASAHI_G16_BOOTSTRAP": "m",
+      "CONFIG_LOCALVERSION": "\"-j614s-gpu-bringup\"",
+      "CONFIG_NR_CPUS": "16",
+      "CONFIG_RUST": "y"
+    },
+    "sha256": "f4d6effdbf4ff40738d35507a354c6bcee02387d196677349e722f24c79a0365"
+  },
+  "object": {
+    "bytes": 10784,
+    "path": "build/drivers/gpu/drm/asahi/g16-bootstrap.o",
+    "sha256": "58b47b63d0a247a03182a63af14fb9c203d7f1de0fd3d696c1700474cb1b13e0"
+  },
+  "scope": "C compiler qualification only; no linking, deployment, firmware execution, or reboot",
+  "source": {
+    "dirty_diff_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "head": "0fb65dbd66f9b91a43096ecbabd52b81f73bea5c",
+    "untracked": {}
+  },
+  "source_file_sha256": "d41717fbfa02d1e1db8cba5e11060661f978b6d5122f5ce14586e798e9064878",
+  "status": "OBJECT_COMPILED",
+  "tools": {
+    "bc": {
+      "sha256": "7ae95c260622412ceba6eb9f45d68f616cdc091a1d71d6c0a08b5875bb2c31dd"
+    },
+    "bindgen": {
+      "sha256": "7fdf32940891781eb742fb4a69775a0b39de4a48d0a168dfb3f740fb547fceda"
+    },
+    "clang": {
+      "sha256": "6acc6d2f0fdbae93e4d3b622b7a0d42cd05b036146e14193d9df40d1c0977066"
+    },
+    "clang++": {
+      "sha256": "6acc6d2f0fdbae93e4d3b622b7a0d42cd05b036146e14193d9df40d1c0977066"
+    },
+    "ld.lld": {
+      "sha256": "a2aef2573bc0409403747456072c373523ebfea0d03a832520331a17e8ec65a5"
+    },
+    "llvm-ar": {
+      "sha256": "4a21fd61e18a1168dc449e1b5c495925c446775860d0d042b57dac1925e6f7ef"
+    },
+    "llvm-nm": {
+      "sha256": "943a52c986ca4d0e429b523efcf6b4bdd8c9bd90616f5781ede4ab32124f7227"
+    },
+    "llvm-objcopy": {
+      "sha256": "c03c694462c48b4f6f84d62dfff530cef3b539583dddf62681fb318e2f9ef151"
+    },
+    "llvm-objdump": {
+      "sha256": "5096b8e9b6937b7451891cb820f867e77bce1628fdd077ed95c55cb2145fb2eb"
+    },
+    "llvm-readelf": {
+      "sha256": "c1d5d7261aa2b25ba5ec4060dd873a6a9808d2912221f97aaf3478f00f3af743"
+    },
+    "llvm-strip": {
+      "sha256": "c03c694462c48b4f6f84d62dfff530cef3b539583dddf62681fb318e2f9ef151"
+    },
+    "make": {
+      "sha256": "9018663161af324a74326c035cfd05408cba13a26c1f6b801cf5f3195f2bee40"
+    },
+    "rustc": {
+      "sha256": "5eadaaf4fe086d76547b17dc3c1ba880d0082b93f7d8bc65612770da8e79fe8e"
+    },
+    "rustdoc": {
+      "sha256": "f22c571ca4f921e0ac7c2c466de30da574b9018690a3878167cb0ea72249ed7f"
+    }
+  }
+}

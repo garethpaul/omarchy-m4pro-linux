@@ -1,0 +1,15 @@
+test_actual_saved_projection (test_power.PowerTests.test_actual_saved_projection) ... ok
+test_address_span_guards (test_power.PowerTests.test_address_span_guards) ... ok
+test_bad_frequency_geometry (test_power.PowerTests.test_bad_frequency_geometry) ... ok
+test_bad_geometry (test_power.PowerTests.test_bad_geometry) ... ok
+test_parser_truncation_and_nonzero_padding (test_power.PowerTests.test_parser_truncation_and_nonzero_padding) ... ok
+test_reader_seam_exact_six_reads (test_power.PowerTests.test_reader_seam_exact_six_reads) ... ok
+test_reader_stops_after_exception (test_power.PowerTests.test_reader_stops_after_exception) ... ok
+test_snapshot_negative_cases (test_power.PowerTests.test_snapshot_negative_cases) ... ok
+test_synthetic_snapshot_keeps_uncertainty (test_power.PowerTests.test_synthetic_snapshot_keeps_uncertainty) ... ok
+test_wrong_board_or_missing_table (test_power.PowerTests.test_wrong_board_or_missing_table) ... ok
+
+----------------------------------------------------------------------
+Ran 10 tests in 0.005s
+
+OK

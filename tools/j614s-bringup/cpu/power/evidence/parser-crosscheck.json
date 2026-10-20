@@ -1,0 +1,30 @@
+{
+  "schema": 1,
+  "hardware_execution": "UNTESTED",
+  "parsers": [
+    {
+      "source_sha256": "77cedfd555eb507e0cac4d28354d4bd7532d6e4d409328ae4d50ddd74a53fd23",
+      "node_count": 448,
+      "status": "WORKS for offline parser equivalence",
+      "raw_payload_exported": false
+    },
+    {
+      "source_sha256": "2a0c26929ef8afbe7835816183f919a2bcfdc42a662429e67526f64babc9c88e",
+      "node_count": 362,
+      "status": "WORKS for offline parser equivalence",
+      "raw_payload_exported": false
+    },
+    {
+      "source_sha256": "6430fdc6da49c64025d038d50fdcff3c57dfe2b1f3d37052c12f1dc27e988c2f",
+      "node_count": 414,
+      "status": "WORKS for offline parser equivalence",
+      "raw_payload_exported": false
+    },
+    {
+      "source_sha256": "8be3570bd27cffb780492023382d4a5ea2398fdaf16b8ed1b215ff57f9475087",
+      "node_count": 546,
+      "status": "WORKS for offline parser equivalence",
+      "raw_payload_exported": false
+    }
+  ]
+}

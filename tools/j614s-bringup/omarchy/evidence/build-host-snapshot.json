@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "architecture": "x86_64",
+  "compatible": [
+    ""
+  ],
+  "model": "",
+  "kernel": "7.2.5-3-omarchy",
+  "online_cpus": "0-19",
+  "present_cpus": "0-19",
+  "render_environment": {},
+  "render_devices": [
+    {
+      "node": "/dev/dri/renderD128",
+      "driver": "nvidia",
+      "character_device": true
+    }
+  ]
+}

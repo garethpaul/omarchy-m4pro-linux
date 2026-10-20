@@ -1,0 +1,44 @@
+{
+  "omarchy": {
+    "url": "https://pkgs.omarchy.org/edge/aarch64/omarchy.db",
+    "retrieved_utc": "2026-10-20T04:57:33.294462+00:00",
+    "sha256": "021958f1f6c6297a6d92f773a0f2757f6ddfe9815c566187796715d34eae6949",
+    "bytes": 49750,
+    "status": "retrieved"
+  },
+  "asahi-alarm": {
+    "url": "https://github.com/asahi-alarm/asahi-alarm/releases/download/aarch64/asahi-alarm.db",
+    "retrieved_utc": "2026-10-20T04:57:33.476113+00:00",
+    "sha256": "090c55084cbc969bce3cdd925f25d5594f06e45b882e873b6791e2d3efc3c8e8",
+    "bytes": 8308,
+    "status": "retrieved"
+  },
+  "core": {
+    "url": "https://arm-mirror.omarchy.org/aarch64/core/core.db",
+    "retrieved_utc": "2026-10-20T04:57:33.466425+00:00",
+    "sha256": "3397088cfa622e7a140f29b1f7a15f2f1c2689246a962c2551670d301ff5805c",
+    "bytes": 256699,
+    "status": "retrieved"
+  },
+  "extra": {
+    "url": "https://arm-mirror.omarchy.org/aarch64/extra/extra.db",
+    "retrieved_utc": "2026-10-20T04:57:33.555261+00:00",
+    "sha256": "8f1f6fbcc3e397c8228de1d36f825ed445ef21483693d17e221741023beffff2",
+    "bytes": 10614001,
+    "status": "retrieved"
+  },
+  "alarm": {
+    "url": "https://arm-mirror.omarchy.org/aarch64/alarm/alarm.db",
+    "retrieved_utc": "2026-10-20T04:57:33.426395+00:00",
+    "sha256": "101b41ca6e76b4ec43c2104ed285e094796855a8bae69ec6ccbf147bdb4ac56b",
+    "bytes": 62203,
+    "status": "retrieved"
+  },
+  "aur": {
+    "url": "https://arm-mirror.omarchy.org/aarch64/aur/aur.db",
+    "retrieved_utc": "2026-10-20T04:57:33.426726+00:00",
+    "sha256": "263b04baaf9e27f6bc7840455a2bf65bf9b7f9cad0be5efce0ca3650eb634024",
+    "bytes": 10556,
+    "status": "retrieved"
+  }
+}

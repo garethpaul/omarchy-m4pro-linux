@@ -1,0 +1,26 @@
+[
+  {
+    "test": "actual-source-tools-config",
+    "exit": 0,
+    "output": "PASS: source, config, and critical tools match",
+    "expected_exit": 0
+  },
+  {
+    "test": "wrong-bindgen-binary",
+    "exit": 1,
+    "output": "FAIL: Corrected bindgen binary checksum mismatch",
+    "expected_exit": 1
+  },
+  {
+    "test": "config-checksum-drift",
+    "exit": 1,
+    "output": "FAIL: Build contract mismatch: config",
+    "expected_exit": 1
+  },
+  {
+    "test": "wrong-linker-binary",
+    "exit": 1,
+    "output": "FAIL: Build contract mismatch: tools",
+    "expected_exit": 1
+  }
+]

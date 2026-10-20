@@ -1,0 +1,11 @@
+{
+  "compiled_bindings_object_bytes": 251368,
+  "compiled_bindings_object_sha256": "2dcadd6e83aa888f32b096bcacd3cd772c82fab2700d294e79c26123ede432d8",
+  "const_layout_blocks": 3191,
+  "field_offset_checks": 16546,
+  "generated_bindings_sha256": "1e222740f88fd9ed17c1bb0b74c2c29487ed0a1217542ec5add9926b65e35f82",
+  "hardware_executed": false,
+  "layout_checks_disabled": false,
+  "status": "PASS",
+  "target": "aarch64-linux-gnu"
+}

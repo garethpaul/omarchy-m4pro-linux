@@ -1,0 +1,14 @@
+{
+  "render_probe": {
+    "sha256": "47dcd5d55f5554b1806b63a53fbf672e820006ff56baa2209a1a7fd3b8a97bbe",
+    "file": "ELF 64-bit LSB pie executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, BuildID[sha1]=c30ed323cda5a75da69561798459ba4a5db80c10, for GNU/Linux 4.4.0, not stripped",
+    "hardware_execution": "UNTESTED"
+  },
+  "render_probe-aarch64": {
+    "sha256": "34d2170cd241ea405da5e131ce2a62bf4ca6dece80bb6d1bcb5faecac153308a",
+    "file": "ELF 64-bit LSB pie executable, ARM aarch64, version 1 (SYSV), dynamically linked, interpreter /lib/ld-linux-aarch64.so.1, for GNU/Linux 3.7.0, BuildID[sha1]=97543d0d9e223bceb13d9847f9772c099beb0012, not stripped",
+    "hardware_execution": "UNTESTED"
+  },
+  "native_compile": "cc -O2 -std=c11 -Wall -Wextra -Werror render_probe.c -o evidence/render_probe $(pkg-config --cflags --libs egl glesv2)",
+  "arm64_compile": "clang --target=aarch64-linux-gnu --sysroot=$SYSROOT --ld-path=$LD_LLD -std=c11 -Wall -Wextra -Werror render_probe.c -lEGL -lGLESv2 -o evidence/render_probe-aarch64"
+}

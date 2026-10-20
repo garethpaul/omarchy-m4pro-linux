@@ -1,0 +1,30 @@
+{
+  "status": "WORKS for host validation only",
+  "target_execution": "UNTESTED",
+  "host_unit_tests": 10,
+  "cross_compiler": "clang version 23.1.3",
+  "binaries": {
+    "coherency": {
+      "sha256": "cc2ec4174d8016064f1a1ec2ec216c339b795b6e4b0bb7f4b4f7136b73e9abf8",
+      "format": "static ELF64 little-endian AArch64"
+    },
+    "simd-context": {
+      "sha256": "f31a81ef09d2072abea9de24725c972b6a5d1ee056944ee7e117c3c45ecd88b1",
+      "format": "static ELF64 little-endian AArch64"
+    }
+  },
+  "preserved_source_and_saved_evidence": {
+    "src/coherency-start.S": "9bf38890a32004525ab5b3de1650b3f12e97cfd15624edd9c9f447b9683f140c",
+    "src/coherency.c": "231b579d0fd4417f0ba02f224bf2767b8935a89bd72d97b6c8dd516658f78faa",
+    "src/simd-context.c": "63dc39d0bfc41d4247f45708484255869d4dbb084dc1a22a9f55bdf2403e2a46",
+    "src/simd-sleep.S": "e86256adbc03f4fab2f917620ecfe99adcb04dc1e237208d32e24157ebdfafe5",
+    "tests/fixtures/coherency-test51.txt": "db0347ed8f1731479434cde22704e241e738e3dd93fe7dd690947ffd7df3b94b",
+    "tests/fixtures/simd-test51.txt": "9e131bb8f130d1543840ca6e79ca4a89f78f31342f71cf28807b4b3aeb2c738a"
+  },
+  "persistent_output_refusal": {
+    "status": "WORKS",
+    "error": "evidence directory must be on tmpfs; use /run or /dev/shm",
+    "directory_created": false
+  },
+  "qemu_runtime": "UNTESTED; qemu-aarch64 executable unavailable"
+}

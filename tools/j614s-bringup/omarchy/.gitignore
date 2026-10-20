@@ -1,0 +1,5 @@
+__pycache__/
+evidence/package-root/
+evidence/repositories/*.db
+evidence/render_probe*
+evidence/editor-payloads/

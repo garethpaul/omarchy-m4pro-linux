@@ -1,0 +1,38 @@
+{
+  "status": "PASS",
+  "clang_target": "x86_64-unknown-linux-gnu",
+  "rust_target": "x86_64-unknown-linux-gnu",
+  "hardware_executed": false,
+  "cases": [
+    {
+      "fixture": "aligned-empty.h",
+      "compile_exit": 0,
+      "expected": "layout compile success",
+      "generated_sha256": "7f6c9d60e90507883a0af3afcb0ac001c24fcc049f6b4a79d4f2f97dbfd0bdc6"
+    },
+    {
+      "fixture": "aligned-empty.hpp",
+      "compile_exit": 0,
+      "expected": "layout compile success",
+      "generated_sha256": "0e0fa51b30c65dcc285361da9e54727084b4281597b7e8ce89a09eca75e648a8"
+    },
+    {
+      "fixture": "anonymous-members.h",
+      "compile_exit": 0,
+      "expected": "layout compile success",
+      "generated_sha256": "3ff9fb643a03066401cca7cfb83ee7be63973b2ed951fbf67a6a4ad884940c9a"
+    },
+    {
+      "fixture": "tag-only.h",
+      "compile_exit": 0,
+      "expected": "layout compile success",
+      "generated_sha256": "d3b1e58ca4964e29115768c9c3415fd1dc4e8cd4073dc13cf82321fcfa8a56bc"
+    },
+    {
+      "fixture": "bitfields.h",
+      "compile_exit": 0,
+      "expected": "layout compile success",
+      "generated_sha256": "2b38f61772369c91cdfd09c59d780fc03df42ec04463666ad4ee8895c1aab2f9"
+    }
+  ]
+}

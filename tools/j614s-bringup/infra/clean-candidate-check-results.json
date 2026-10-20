@@ -1,0 +1,32 @@
+[
+  {
+    "test": "actual-clean-source-tools-config-recipe",
+    "exit": 0,
+    "expected_exit": 0,
+    "output": "PASS: source, config, and critical tools match"
+  },
+  {
+    "test": "wrong-bindgen",
+    "exit": 1,
+    "expected_exit": 1,
+    "output": "FAIL: Corrected bindgen binary checksum mismatch"
+  },
+  {
+    "test": "wrong-linker",
+    "exit": 1,
+    "expected_exit": 1,
+    "output": "FAIL: Build contract mismatch: tools"
+  },
+  {
+    "test": "changed-config",
+    "exit": 1,
+    "expected_exit": 1,
+    "output": "FAIL: Build contract mismatch: config"
+  },
+  {
+    "test": "legacy-recipe-contract",
+    "exit": 1,
+    "expected_exit": 1,
+    "output": "FAIL: Build contract mismatch: schema"
+  }
+]

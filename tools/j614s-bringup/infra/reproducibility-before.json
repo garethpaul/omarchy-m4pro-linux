@@ -1,0 +1,18 @@
+{
+  "compared_artifacts": 16,
+  "differences": [
+    {
+      "first_sha256": "99e11db2d5eb4a0b59a7f46cbac35213b66ab55d490895a169a232de3d5d9fce",
+      "path": "Image",
+      "second_sha256": "2eec5baa7c4aab61b10e13d1574515ed0669ad478bb41dec2428353748f28e81"
+    },
+    {
+      "first_sha256": "47f9bb79a065ef11204c2546057c26af9377b3f29fe763766b7477347e28092d",
+      "path": "modules/drivers/gpu/drm/asahi/asahi.ko",
+      "second_sha256": "03b914aa43f70ee7c77f158b877105a49efdb9ca3d070d60bb2cba977d22e051"
+    }
+  ],
+  "hardware": "UNTESTED",
+  "scope": "Image and every matching module; logs and build directory paths excluded",
+  "status": "DIFFERENT"
+}

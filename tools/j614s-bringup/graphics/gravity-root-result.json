@@ -1,0 +1,26 @@
+{
+  "status": "WORKS_OFFLINE",
+  "hardware_tested": false,
+  "source": "https://github.com/GravityLinux/linux",
+  "source_commit": "4fc326f6c25ccceb7515e2635c22e01fde5d3bac",
+  "source_files_sha256": {
+    "g16_fw.rs": "507ef7a73541124ce249b21a1b26dafb245d069407acf5e2b81486c972527b20",
+    "g16_queue.rs": "167219617c4bae06f1ac8f3be9761b80eba66b8a5176de121601456a7975bcfd"
+  },
+  "compiled_encoder_root_size": 200,
+  "compiled_encoder_interface": [
+    "0x04b8",
+    "0x8392",
+    "0xc357",
+    "0x0c89"
+  ],
+  "exact_25G83_g16s_required_interface": [
+    "0x04c0",
+    "0x0396",
+    "0xa322",
+    "0x0c8a"
+  ],
+  "validator_exit_status": 1,
+  "validator_result": "G16S root rejected: error=4",
+  "conclusion": "Gravity root cannot be sent to the exact-build J614s firmware unchanged; changing version alone does not qualify its graph."
+}

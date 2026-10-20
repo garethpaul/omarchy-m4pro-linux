@@ -1,0 +1,47 @@
+{
+  "status": "VERIFIED_STATIC_ANCHORS",
+  "hardware_tested": false,
+  "scope": "Narrow read offsets only; not a complete control-flow proof or initialization graph qualification",
+  "disassembly_sha256": "13a07c31bdd7b2ec1b27a131bd21b7c5764e69f65e5fbf8d1eabc0f261457c40",
+  "g17_source_sha256": "0efeedf2b8d507894a02777349fac2573740b98a54460d87bca2d252a39c262c",
+  "consumer_anchor_count": 16,
+  "g16s_consumer": {
+    "main_config_stored_at": "0xfffffc000018e4c0",
+    "first_body_chain": {
+      "root_pointer_offset": "0x18",
+      "main_pointer_offset": "0x0",
+      "body_offset": "0xe90",
+      "bytes": 16,
+      "consumer_pc": "0xfffffc000002f318"
+    },
+    "control_channel": {
+      "entry": 12,
+      "state_offsets": [
+        "0x1a0",
+        "0x1a8",
+        "0x1b0"
+      ],
+      "ring_offset": "0x1b8",
+      "counter_access_bytes": 4
+    },
+    "log_enable": "0x250",
+    "view_base": "0x254",
+    "descriptor_pointers": [
+      "0x2e0",
+      "0x2f0"
+    ],
+    "power_pointer": "0x471"
+  },
+  "g17_static_assertions_match": [
+    "log_enable",
+    "view_va",
+    "power_config_va"
+  ],
+  "unknowns": [
+    "T6040 hardware-data contents and extents",
+    "power/clocks/voltage tables",
+    "remaining opaque main fields",
+    "PPL/UAT publication and application handshake",
+    "work-ring registration and completion protocol"
+  ]
+}

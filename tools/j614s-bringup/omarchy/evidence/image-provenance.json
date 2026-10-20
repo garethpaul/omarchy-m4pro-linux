@@ -1,0 +1,17 @@
+{
+  "artifact": {
+    "sourceURL": "https://downloads.aicodelabs.com.au/releases/os-v4.0.4-mac.1.20260924-rc/omarchy-2026.09.23-aarch64-apple-silicon-mac-rc-os-package.zip",
+    "fileName": "omarchy-2026.09.23-aarch64-apple-silicon-mac-rc-os-package.zip",
+    "sizeBytes": 3875382788
+  },
+  "sha256": "0920b622f67295c6a3fa7a73ba942fa6b170b4f9504a173054c2f69683909aa4",
+  "catalog_signature_verified": true,
+  "source_commit": "72f1906722fd042a54f1e1973610f62dd019531f",
+  "root_image": {
+    "size": 14344519680,
+    "sha256": "f6ceb11ef79914eaa10cc07637c929a99afe5982d216d8b89905c86e863b2491",
+    "zip_crc_verified": true
+  },
+  "extraction": "btrfs restore -r 256 --path-regex ^/(|var(|/lib(|/pacman(|/local(|/.*)))))$ root.img package-root",
+  "scope": "read-only extraction of existing OS image; not live installed target metadata"
+}

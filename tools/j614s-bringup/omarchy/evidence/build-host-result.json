@@ -1,0 +1,14 @@
+{
+  "status": "BLOCKED",
+  "scope": "native renderer preflight only; compositor, display and boot remain unqualified",
+  "ready_to_stage": false,
+  "reasons": [
+    "requires native aarch64",
+    "requires both apple,j614s and apple,t6040 root compatibles",
+    "requires present and online CPU sets exactly 0-11",
+    "requires one asahi render node with bound M4 Pro EGL pixel readback"
+  ],
+  "qualified_render_node": null,
+  "persistent_installation": "UNTESTED",
+  "compositor_acceleration": "UNTESTED"
+}

@@ -1,0 +1,11 @@
+{
+  "pmu_error_count_byte": 0,
+  "pmu_register_written": false,
+  "watchdog_action": "unchanged",
+  "response_verified": true,
+  "exceptions": 0,
+  "status_before": "0x1000100",
+  "status_after": "0x1000100",
+  "irq_before": "0x1",
+  "irq_after": "0x1"
+}

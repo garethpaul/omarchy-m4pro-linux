@@ -1,0 +1,335 @@
+{
+  "schema": 1,
+  "database_sha256": "8f1f6fbcc3e397c8228de1d36f825ed445ef21483693d17e221741023beffff2",
+  "keyring_sha256": "6ce771e853f04a38a5b533cb33e61f877b9b06b58b6db051eb8a15d737a2332f",
+  "keyring_origin": "re-extracted from verified September OS image; see image-provenance.json",
+  "signer_fingerprint": "68B3537F39A313B3E574D06777193F152BDBE6A6",
+  "excluded_repository_metadata": [
+    {
+      "entry": "findnewest-0.3-4",
+      "reason": "missing desc identity; excluded from candidates"
+    }
+  ],
+  "package_execution": "UNTESTED by this verifier; never invokes payloads or hooks",
+  "packages": {
+    "neovim": {
+      "name": "neovim",
+      "version": "0.12.6-1",
+      "architecture": "aarch64",
+      "url": "https://arm-mirror.omarchy.org/aarch64/extra/neovim-0.12.6-1-aarch64.pkg.tar.xz",
+      "sha256": "19d5b20499f038b51d32bd068c34a08238804f7253fa20002103a8d55627260d",
+      "bytes": 7052968,
+      "signature_valid": true,
+      "signer_fingerprint": "68B3537F39A313B3E574D06777193F152BDBE6A6",
+      "retrieved_utc": "2026-10-20T05:07:51.199308+00:00",
+      "gpg_status": [
+        "[GNUPG:] NEWSIG",
+        "[GNUPG:] KEY_CONSIDERED 68B3537F39A313B3E574D06777193F152BDBE6A6 0",
+        "[GNUPG:] SIG_ID jliB2QFvhKr0qb1efnwrVRV/XDE 2026-10-10 1791593928",
+        "[GNUPG:] GOODSIG 77193F152BDBE6A6 Arch Linux ARM Build System <builder@archlinuxarm.org>",
+        "[GNUPG:] VALIDSIG 68B3537F39A313B3E574D06777193F152BDBE6A6 2026-10-10 1791593928 0 4 0 1 10 00 68B3537F39A313B3E574D06777193F152BDBE6A6"
+      ],
+      "pkginfo": {
+        "pkgname": [
+          "neovim"
+        ],
+        "pkgbase": [
+          "neovim"
+        ],
+        "xdata": [
+          "pkgtype=pkg"
+        ],
+        "pkgver": [
+          "0.12.6-1"
+        ],
+        "pkgdesc": [
+          "Fork of Vim aiming to improve user experience, plugins, and GUIs"
+        ],
+        "url": [
+          "https://neovim.io"
+        ],
+        "builddate": [
+          "1791593735"
+        ],
+        "packager": [
+          "Arch Linux ARM Build System <builder+seattle@archlinuxarm.org>"
+        ],
+        "size": [
+          "31970690"
+        ],
+        "arch": [
+          "aarch64"
+        ],
+        "license": [
+          "Apache-2.0",
+          "LicenseRef-vim"
+        ],
+        "provides": [
+          "nvim",
+          "vim-plugin-runtime"
+        ],
+        "backup": [
+          "etc/xdg/nvim/sysinit.vim"
+        ],
+        "depend": [
+          "glibc",
+          "libgcc",
+          "libluv",
+          "libtree-sitter.so=0.26-64",
+          "libunibilium.so=4-64",
+          "libutf8proc",
+          "libuv",
+          "libvterm>=0.3.3",
+          "lua51-lpeg",
+          "luajit",
+          "msgpack-c",
+          "tree-sitter",
+          "tree-sitter-c",
+          "tree-sitter-lua",
+          "tree-sitter-markdown",
+          "tree-sitter-query",
+          "tree-sitter-vim",
+          "tree-sitter-vimdoc",
+          "unibilium"
+        ],
+        "optdepend": [
+          "python-pynvim: for Python plugin support (see :help python)",
+          "xclip: for clipboard support on X11 (or xsel) (see :help clipboard)",
+          "xsel: for clipboard support on X11 (or xclip) (see :help clipboard)",
+          "wl-clipboard: for clipboard support on wayland (see :help clipboard)"
+        ],
+        "makedepend": [
+          "cmake",
+          "git",
+          "ninja",
+          "lua51-mpack"
+        ]
+      },
+      "has_install_script": false,
+      "bin_entries": [
+        {
+          "path": "usr/bin/nvim",
+          "linkname": "",
+          "type": "0",
+          "size": 5557848,
+          "sha256": "d56f2e783ba9734dcba3184f134378ed5c2d3b7787c4862fef90d75d47cfbee3"
+        }
+      ]
+    },
+    "vim": {
+      "name": "vim",
+      "version": "9.2.1178-1",
+      "architecture": "aarch64",
+      "url": "https://arm-mirror.omarchy.org/aarch64/extra/vim-9.2.1178-1-aarch64.pkg.tar.xz",
+      "sha256": "e6dac872c70975d71550af934402f4e603bb0ebe444310440bc89f4e8c8e76c4",
+      "bytes": 2084600,
+      "signature_valid": true,
+      "signer_fingerprint": "68B3537F39A313B3E574D06777193F152BDBE6A6",
+      "retrieved_utc": "2026-10-20T05:07:51.456955+00:00",
+      "gpg_status": [
+        "[GNUPG:] NEWSIG",
+        "[GNUPG:] KEY_CONSIDERED 68B3537F39A313B3E574D06777193F152BDBE6A6 0",
+        "[GNUPG:] SIG_ID 4moIVh5PE4NvGhCQekgsn+hAhq4 2026-10-12 1791847537",
+        "[GNUPG:] GOODSIG 77193F152BDBE6A6 Arch Linux ARM Build System <builder@archlinuxarm.org>",
+        "[GNUPG:] VALIDSIG 68B3537F39A313B3E574D06777193F152BDBE6A6 2026-10-12 1791847537 0 4 0 1 10 00 68B3537F39A313B3E574D06777193F152BDBE6A6"
+      ],
+      "pkginfo": {
+        "pkgname": [
+          "vim"
+        ],
+        "pkgbase": [
+          "vim"
+        ],
+        "xdata": [
+          "pkgtype=split"
+        ],
+        "pkgver": [
+          "9.2.1178-1"
+        ],
+        "pkgdesc": [
+          "Vi Improved, a highly configurable, improved version of the vi text editor"
+        ],
+        "url": [
+          "https://www.vim.org"
+        ],
+        "builddate": [
+          "1791847238"
+        ],
+        "packager": [
+          "Arch Linux ARM Build System <builder+seattle@archlinuxarm.org>"
+        ],
+        "size": [
+          "5723777"
+        ],
+        "arch": [
+          "aarch64"
+        ],
+        "license": [
+          "custom:vim"
+        ],
+        "replaces": [
+          "vim-minimal"
+        ],
+        "conflict": [
+          "gvim",
+          "vim-minimal"
+        ],
+        "provides": [
+          "xxd",
+          "vim-minimal",
+          "vim-plugin-runtime"
+        ],
+        "depend": [
+          "vim-runtime=9.2.1178-1",
+          "gpm",
+          "acl",
+          "glibc",
+          "libgcrypt",
+          "zlib"
+        ],
+        "optdepend": [
+          "python: Python language support",
+          "ruby: Ruby language support",
+          "lua: Lua language support",
+          "perl: Perl language support",
+          "tcl: Tcl language support"
+        ],
+        "makedepend": [
+          "gawk",
+          "git",
+          "glibc",
+          "gpm",
+          "gtk3",
+          "libcanberra",
+          "libgcrypt",
+          "libxt",
+          "lua",
+          "perl",
+          "python",
+          "ruby",
+          "tcl",
+          "zlib"
+        ]
+      },
+      "has_install_script": false,
+      "bin_entries": [
+        {
+          "path": "usr/bin/rview",
+          "linkname": "vim",
+          "type": "2",
+          "size": 0
+        },
+        {
+          "path": "usr/bin/rvim",
+          "linkname": "vim",
+          "type": "2",
+          "size": 0
+        },
+        {
+          "path": "usr/bin/vim",
+          "linkname": "",
+          "type": "0",
+          "size": 5330528,
+          "sha256": "89f67f72e5dae7f87be488894ea8f07fc89fd29a962b33696fcd542b06d0415d"
+        },
+        {
+          "path": "usr/bin/vimdiff",
+          "linkname": "vim",
+          "type": "2",
+          "size": 0
+        },
+        {
+          "path": "usr/bin/vimtutor",
+          "linkname": "",
+          "type": "0",
+          "size": 4870
+        },
+        {
+          "path": "usr/bin/xxd",
+          "linkname": "",
+          "type": "0",
+          "size": 67768
+        }
+      ]
+    },
+    "vim-runtime": {
+      "name": "vim-runtime",
+      "version": "9.2.1178-1",
+      "architecture": "aarch64",
+      "url": "https://arm-mirror.omarchy.org/aarch64/extra/vim-runtime-9.2.1178-1-aarch64.pkg.tar.xz",
+      "sha256": "340ee0b85995517e50832aea2e69224044ff77b384fc5c8e017959bcdcfc78f8",
+      "bytes": 7703748,
+      "signature_valid": true,
+      "signer_fingerprint": "68B3537F39A313B3E574D06777193F152BDBE6A6",
+      "retrieved_utc": "2026-10-20T05:07:52.012121+00:00",
+      "gpg_status": [
+        "[GNUPG:] NEWSIG",
+        "[GNUPG:] KEY_CONSIDERED 68B3537F39A313B3E574D06777193F152BDBE6A6 0",
+        "[GNUPG:] SIG_ID e5YTkQPOoiFe5/NV+ShXCCi52Rs 2026-10-12 1791847537",
+        "[GNUPG:] GOODSIG 77193F152BDBE6A6 Arch Linux ARM Build System <builder@archlinuxarm.org>",
+        "[GNUPG:] VALIDSIG 68B3537F39A313B3E574D06777193F152BDBE6A6 2026-10-12 1791847537 0 4 0 1 10 00 68B3537F39A313B3E574D06777193F152BDBE6A6"
+      ],
+      "pkginfo": {
+        "pkgname": [
+          "vim-runtime"
+        ],
+        "pkgbase": [
+          "vim"
+        ],
+        "xdata": [
+          "pkgtype=split"
+        ],
+        "pkgver": [
+          "9.2.1178-1"
+        ],
+        "pkgdesc": [
+          "Vi Improved, a highly configurable, improved version of the vi text editor (shared runtime)"
+        ],
+        "url": [
+          "https://www.vim.org"
+        ],
+        "builddate": [
+          "1791847238"
+        ],
+        "packager": [
+          "Arch Linux ARM Build System <builder+seattle@archlinuxarm.org>"
+        ],
+        "size": [
+          "40694237"
+        ],
+        "arch": [
+          "aarch64"
+        ],
+        "license": [
+          "custom:vim"
+        ],
+        "backup": [
+          "etc/vimrc"
+        ],
+        "optdepend": [
+          "sh: support for some tools and macros",
+          "python: demoserver example tool",
+          "gawk: mve tools support"
+        ],
+        "makedepend": [
+          "gawk",
+          "git",
+          "glibc",
+          "gpm",
+          "gtk3",
+          "libcanberra",
+          "libgcrypt",
+          "libxt",
+          "lua",
+          "perl",
+          "python",
+          "ruby",
+          "tcl",
+          "zlib"
+        ]
+      },
+      "has_install_script": false,
+      "bin_entries": []
+    }
+  }
+}

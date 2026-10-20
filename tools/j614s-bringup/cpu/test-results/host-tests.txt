@@ -1,0 +1,15 @@
+test_bad_dt_cpu_or_workaround (test_qualify.QualificationTests.test_bad_dt_cpu_or_workaround) ... ok
+test_generic_hash_worker_on_host_cpu (test_qualify.QualificationTests.test_generic_hash_worker_on_host_cpu) ... ok
+test_idle_and_cpu_list (test_qualify.QualificationTests.test_idle_and_cpu_list) ... ok
+test_kernel_fault_patterns (test_qualify.QualificationTests.test_kernel_fault_patterns) ... ok
+test_offline_or_disallowed_cpu (test_qualify.QualificationTests.test_offline_or_disallowed_cpu) ... ok
+test_process_timeout_raises (test_qualify.QualificationTests.test_process_timeout_raises) ... ok
+test_saved_coherency_evidence (test_qualify.QualificationTests.test_saved_coherency_evidence) ... ok
+test_saved_simd_evidence (test_qualify.QualificationTests.test_saved_simd_evidence) ... ok
+test_topology_accepts_exact_fixture (test_qualify.QualificationTests.test_topology_accepts_exact_fixture) ... ok
+test_wrong_hardware (test_qualify.QualificationTests.test_wrong_hardware) ... ok
+
+----------------------------------------------------------------------
+Ran 10 tests in 0.190s
+
+OK

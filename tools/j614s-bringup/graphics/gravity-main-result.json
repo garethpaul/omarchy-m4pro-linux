@@ -1,0 +1,18 @@
+{
+  "source_commit": "4fc326f6c25ccceb7515e2635c22e01fde5d3bac",
+  "hardware_tested": false,
+  "compiled_encoder_main_size": 1280,
+  "gravity_power_469": "0xfffffc20c04dd380",
+  "g16s_consumer_power_471": "0x0000000000000000",
+  "g16s_consumer_descriptor_2e0": "0x0000007000280000",
+  "g16s_consumer_descriptor_2f0": "0x0000000000000000",
+  "g16s_consumer_log_enable_250": 0,
+  "g16s_consumer_views_254": [
+    "0xfffffc20c04da680",
+    "0xfffffc20c04db2c0",
+    "0xfffffc20c04dc540",
+    "0xfffffc20c04e3900",
+    "0x0000000000000000"
+  ],
+  "conclusion": "Compiled upstream MainConfig has incompatible known pointer slots, independent of root interface version. Do not publish it to G16S."
+}
