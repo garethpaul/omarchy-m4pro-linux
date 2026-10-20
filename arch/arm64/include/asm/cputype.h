@@ -275,6 +275,13 @@ static inline u32 __attribute_const__ read_cpuid_id(void)
 	return read_cpuid(MIDR_EL1);
 }
 
+/* Apple part numbers from Donan onward identify M4 and later cores. */
+static inline bool midr_is_apple_m4_or_later(u32 midr)
+{
+	return MIDR_IMPLEMENTOR(midr) == ARM_CPU_IMP_APPLE &&
+	       MIDR_PARTNUM(midr) >= APPLE_CPU_PART_M4_DONAN_ECORE;
+}
+
 /*
  * Represent a range of MIDR values for a given CPU model and a
  * range of variant/revision values.
