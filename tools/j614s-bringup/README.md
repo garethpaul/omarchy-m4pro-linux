@@ -14,7 +14,7 @@ default boot remain incomplete. Read PROGRESS.md before running any experiment.
 - infra/: isolated kernel and RAM-loader builds with tool/source/config/artifact integrity checks, independent artifact comparisons and retained failures.
 - capture/: gated minimal Metal workload, validated on a separate M1 Pro builder; M4 capture remains untested.
 - qualification/: all-phase status matrix and selected captured hardware evidence.
-- recovery/: USB/webcam observation and PMU counter read without counter or watchdog changes.
+- recovery/: USB/webcam observation, resident CPU-slot reads and PMU counter read without core, counter or watchdog changes.
 
 Run component commands from this directory, with explicit external source/build
 paths for this workspace. Examples showing sibling development trees describe

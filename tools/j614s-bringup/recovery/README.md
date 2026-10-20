@@ -46,3 +46,28 @@ response and nonzero count preservation. The actual restored target returned
 count0, no recorded proxy exception, and an empty FIFO before/after; watchdog
 state was unchanged. This reads the count after a manual restart. It does not
 establish what caused the preceding fallback.
+
+## Resident CPU slots without starting cores
+
+```sh
+python3 recovery/read_resident_cpus.py --m1n1-source /path/to/qualified-m1n1 \
+  --output new-private-cpu-observation.json
+python3 -m unittest discover -s recovery -p test_resident_cpus.py -v
+```
+
+This observer pairs the exact local ELF with the pinned installed flat binary,
+checks the live proxy/board/firmware and RAM bounds, double-reads live ADT and
+resident slots, and derives CPU identities from that ADT. It never invokes CALL,
+starts cores, changes WFE, arms a watchdog or writes a release slot. It computes
+release addresses from the qualified table layout; it does not call
+`smp_get_release_addr`, which clears argument slots. The older capture helper
+also arms a watchdog and must not be treated as read-only.
+
+Eight host controls cover stable/stopped/queued slots, torn reads, wrong active
+MPIDRs, invalid extents/IDs, non-magic flag counters and direct API-call scope.
+These controls do not prove atomic hardware coherence or physical core liveness.
+The real07:04UTC observation in `resident-cpu-observation.json` has zero secondary
+flags and WFE false after the manual restart. This is expected idle-proxy state,
+not regression evidence against the earlier12-core Linux test. Old release-table
+evidence from USB45 cannot qualify the currentUSB63 session. ASLR-dependent
+addresses remain private. Recovery is still unverified and no cores were started.

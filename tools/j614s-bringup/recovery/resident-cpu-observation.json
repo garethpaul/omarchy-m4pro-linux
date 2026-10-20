@@ -1,0 +1,124 @@
+{
+  "cpus": [
+    {
+      "cpu_id": 0,
+      "expected_mpidr": 0,
+      "observed_mpidr": 0,
+      "resident_flag": 0,
+      "target_zero": true,
+      "arguments_zero": true
+    },
+    {
+      "cpu_id": 1,
+      "expected_mpidr": 1,
+      "observed_mpidr": 0,
+      "resident_flag": 0,
+      "target_zero": true,
+      "arguments_zero": true
+    },
+    {
+      "cpu_id": 2,
+      "expected_mpidr": 2,
+      "observed_mpidr": 0,
+      "resident_flag": 0,
+      "target_zero": true,
+      "arguments_zero": true
+    },
+    {
+      "cpu_id": 3,
+      "expected_mpidr": 3,
+      "observed_mpidr": 0,
+      "resident_flag": 0,
+      "target_zero": true,
+      "arguments_zero": true
+    },
+    {
+      "cpu_id": 4,
+      "expected_mpidr": 65792,
+      "observed_mpidr": 65792,
+      "resident_flag": 0,
+      "target_zero": true,
+      "arguments_zero": true
+    },
+    {
+      "cpu_id": 5,
+      "expected_mpidr": 65793,
+      "observed_mpidr": 0,
+      "resident_flag": 0,
+      "target_zero": true,
+      "arguments_zero": true
+    },
+    {
+      "cpu_id": 6,
+      "expected_mpidr": 65794,
+      "observed_mpidr": 0,
+      "resident_flag": 0,
+      "target_zero": true,
+      "arguments_zero": true
+    },
+    {
+      "cpu_id": 7,
+      "expected_mpidr": 65795,
+      "observed_mpidr": 0,
+      "resident_flag": 0,
+      "target_zero": true,
+      "arguments_zero": true
+    },
+    {
+      "cpu_id": 10,
+      "expected_mpidr": 66048,
+      "observed_mpidr": 0,
+      "resident_flag": 0,
+      "target_zero": true,
+      "arguments_zero": true
+    },
+    {
+      "cpu_id": 11,
+      "expected_mpidr": 66049,
+      "observed_mpidr": 0,
+      "resident_flag": 0,
+      "target_zero": true,
+      "arguments_zero": true
+    },
+    {
+      "cpu_id": 12,
+      "expected_mpidr": 66050,
+      "observed_mpidr": 0,
+      "resident_flag": 0,
+      "target_zero": true,
+      "arguments_zero": true
+    },
+    {
+      "cpu_id": 13,
+      "expected_mpidr": 66051,
+      "observed_mpidr": 0,
+      "resident_flag": 0,
+      "target_zero": true,
+      "arguments_zero": true
+    }
+  ],
+  "secondary_flags_set": 0,
+  "secondary_slots_idle": false,
+  "scope": "Resident software slots only; not a Linux online-core, physical liveness, atomic coherency or recovery test",
+  "status": "WORKS (read-only resident observation)",
+  "captured_utc": "2026-10-20T07:04:19.926679+00:00",
+  "binary_sha256": "fb31c765c54b2c8108ac7598c8307f663b91fb25ef9cbeb88e75bafffc0f3afb",
+  "adt_sha256": "ee5d2412e0cee64ad8861bcdc3cb2301e393041b746355c8fd3759062f3cf96a",
+  "slot_snapshot_sha256": "301c9264be59a52d63195893106b6f08b9a4c9e4b46f6452f51c300f7c1d8bac",
+  "usb_enumeration": "63",
+  "boot_cpu": 4,
+  "boot_mpidr": 2147549440,
+  "resident_wfe_mode": false,
+  "target_memory_written": false,
+  "code_executed_via_call": false,
+  "watchdog_action": "unchanged",
+  "cores_started": false,
+  "recovery_verified": false,
+  "exceptions": 0,
+  "observer_sha256": "d9ff054539bd7336b9787f2ea48cab329c92d91e9fea0a0c2f3694f960cace39",
+  "tests": {
+    "count": 8,
+    "red_before_implementation": "7 tests failed with explicit NotImplementedError before slot decoder implementation",
+    "green": "8 controls pass; actual target observation separately recorded"
+  }
+}

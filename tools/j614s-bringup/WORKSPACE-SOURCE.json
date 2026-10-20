@@ -1,6 +1,6 @@
 {
-  "workspace_commit": "6c0b65f944d3d7819a87044f1cab115bed55ecd2",
-  "source_archive_sha256": "7da93772971538365ad8c1df64a8f562f52e5b5566e5d220ea85fe73f97c5369",
+  "workspace_commit": "0fe44fc2d7a618f4e9680cd5b477ce3483a7667b",
+  "source_archive_sha256": "368e125c7f97fbf4bf2088d6825cd738ecbb4537f76590c994d66b23a6eee42d",
   "status": "experimental tooling; no deployment or production qualification",
   "files": [
     {
@@ -9,7 +9,7 @@
     },
     {
       "file": "PROGRESS.md",
-      "sha256": "cbc723e8af022b33b7b3ef8dffe585f5a5943d30e8d8053c0f4343443dac01d7"
+      "sha256": "0a8fc27d89e787e8710bda2963cceb277f7c1cd549e47392a51e0e8c2b6ae52b"
     },
     {
       "file": "capture/.gitignore",
@@ -2108,8 +2108,12 @@
       "sha256": "32dae3052f331ee34d628ef535709b301259a45df7c7522c4d35dcf49873f00b"
     },
     {
+      "file": "recovery/NEXT-TEST.md",
+      "sha256": "9d512c0c887defa020ecf335966c478c8a812afa301a32a56e797fb02f95038e"
+    },
+    {
       "file": "recovery/README.md",
-      "sha256": "7bf9916647ea50a2bae7bb60b6aefd154f116b0f91e0142fa873e9117a10dfc9"
+      "sha256": "bbda7a47b6d77d35623663209f2c6af92f8601e280f18061a9667d77100ad427"
     },
     {
       "file": "recovery/evidence/pmu-observation.json",
@@ -2124,12 +2128,24 @@
       "sha256": "a77f207bc1142265f20b343384b58f0621e441a80e863e24db0677333a1dd3f7"
     },
     {
+      "file": "recovery/read_resident_cpus.py",
+      "sha256": "d9ff054539bd7336b9787f2ea48cab329c92d91e9fea0a0c2f3694f960cace39"
+    },
+    {
+      "file": "recovery/resident-cpu-observation.json",
+      "sha256": "b4108e782d1160c0e5d6bac0decbfe9de68a5d47ddc0d3062ddb7ef65e22a184"
+    },
+    {
       "file": "recovery/test_observe.py",
       "sha256": "a99fcdbed05424a555af073a0455704a9ca95440d4d4c44863005590f604d2c1"
     },
     {
       "file": "recovery/test_pmu_counter.py",
       "sha256": "f99de0b2bf0d7c158818c27382a2d0ec6d1a9bd84e00253c0e6b24d49106bb81"
+    },
+    {
+      "file": "recovery/test_resident_cpus.py",
+      "sha256": "52a99015830eac24f7136b2111e96e58d0fec5dc4033d7671177b60cc13b7b30"
     }
   ]
 }

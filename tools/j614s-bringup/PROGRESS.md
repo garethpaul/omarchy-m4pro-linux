@@ -540,3 +540,29 @@ Remaining critical-path hardware work requires supervised physical recovery.
 The pending availability request is unanswered; manual restart is the only
 proven fallback. XNU/macOS staging/boot and protected persistence need separately
 scoped authority. These are external gates, not reasons to mark the goal complete.
+
+## Current resident CPU handoff observation
+
+Added read-only slot observer after finding that the legacy capture helper
+arms a watchdog and calls a helper that clears argument slots. Eight host
+controls pass (initial decoder red phase preserved in tool output). Actual
+07:04:19UTC observation verifies the paired installedfb31 binary/ELF, live
+Mac16,8/board4/firmware, ADT-derived12 CPU identities, stable bounded RAM reads
+and zero exceptions. USB63 has0 secondary flags and WFEfalse; no core, timer,
+release slot or target code was changed. This is proxy state, not a Linux SMP
+failure. Old USB45 release metadata must not be reused for this session.
+Current observer source/evidence is in recovery/read_resident_cpus.py and
+recovery/resident-cpu-observation.json; ASLR-dependent addresses remain private.
+The next handoff still requires supervised core initialization and a newly
+validated session DT before any RAM kernel boot.
+
+## External hardware gate audit
+
+Safe source/build/package lanes are checkpointed. The live readonly observer
+confirms that current-session CPU startup/release qualification is still needed
+before a new kernel handoff. The pending operator-availability request remains
+unanswered, and remote recovery is unverified. This is the first recorded
+consecutive goal-turn audit after this iteration's independent work completed;
+no completion or blocked goal status is inferred from earlier compacted turns.
+`recovery/NEXT-TEST.md` records exact prepared inputs and the supervised sequence.
+No aggregate work/time/token/turn limit is imposed.
