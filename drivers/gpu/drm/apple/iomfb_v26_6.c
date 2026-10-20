@@ -102,71 +102,79 @@ static_assert(sizeof(struct dcp_set_frame_sync_props_resp_v26_6_0) == 0x50);
 static_assert(sizeof(struct dcp_dict_passthrough_req_v26_6) == 0x1044);
 static_assert(sizeof(struct dcp_dict_passthrough_resp_v26_6) == 0x1004);
 
-static const iomfb_cb_handler cb_handlers[IOMFB_MAX_CB] = {
-	[0] = trampoline_true,
-	[1] = trampoline_true,
-	[2] = trampoline_nop,
-	[3] = trampoline_rt_bandwidth,
-	[6] = trampoline_set_frame_sync_props,
-	[100] = iomfbep_cb_match_pmu_service,
-	[101] = trampoline_zero,
-	[102] = trampoline_nop,
-	[104] = trampoline_nop,
-	[107] = trampoline_nop,
-	[108] = trampoline_true,
-	[109] = trampoline_true,
-	[110] = trampoline_true,
-	[111] = trampoline_true,
-	[112] = trampoline_create_backlight_service,
-	[113] = trampoline_true,
-	[114] = trampoline_passthrough_dict_v26_6,
+DCP_CB_SIZE(trampoline_passthrough_dict_v26_6,
+	    sizeof(struct dcp_dict_passthrough_req_v26_6),
+	    sizeof(struct dcp_dict_passthrough_resp_v26_6));
+
+#define CB(tag, func) [tag] = { func, func ## _in_size, func ## _out_size }
+static const struct iomfb_cb_contract cb_contracts[IOMFB_MAX_CB] = {
+	CB(0, trampoline_true),
+	CB(1, trampoline_true),
+	CB(2, trampoline_nop),
+	CB(3, trampoline_rt_bandwidth),
+	CB(6, trampoline_set_frame_sync_props),
+	CB(100, iomfbep_cb_match_pmu_service),
+	CB(101, trampoline_zero),
+	CB(102, trampoline_nop),
+	CB(104, trampoline_nop),
+	CB(107, trampoline_nop),
+	CB(108, trampoline_true),
+	CB(109, trampoline_true),
+	CB(110, trampoline_true),
+	CB(111, trampoline_true),
+	CB(112, trampoline_create_backlight_service),
+	CB(113, trampoline_true),
+	CB(114, trampoline_passthrough_dict_v26_6),
 	/* set_tiling_state: 26.6 returns the value followed by success. */
-	[115] = trampoline_get_tiling_state,
-	[121] = dcpep_cb_boot_1,
-	[122] = trampoline_false, /* native display sleep/wake query */
-	[123] = trampoline_false,
-	[125] = trampoline_read_edt_data,
-	[127] = trampoline_prop_start,
-	[128] = trampoline_prop_chunk,
-	[129] = trampoline_prop_end,
-	[134] = trampoline_zero,
-	[201] = trampoline_map_piodma,
-	[206] = iomfbep_cb_match_pmu_service_2,
-	[207] = iomfbep_cb_match_backlight_service,
-	[208] = trampoline_nop,
-	[209] = trampoline_get_time,
-	[300] = trampoline_pr_publish,
-	[400] = trampoline_nop,
-	[401] = trampoline_get_uint_prop,
-	[406] = trampoline_nop, /* set_fx_prop: host property notification */
-	[408] = trampoline_get_frequency,
-	[411] = trampoline_map_reg,
-	[413] = trampoline_true,
-	[414] = trampoline_sr_set_property_int,
-	[415] = trampoline_true,
-	[451] = trampoline_allocate_buffer,
-	[552] = trampoline_true,
-	[561] = trampoline_true,
-	[563] = trampoline_true,
-	[565] = trampoline_true,
-	[567] = trampoline_true,
+	CB(115, trampoline_get_tiling_state),
+	CB(121, dcpep_cb_boot_1),
+	CB(122, trampoline_false), /* native display sleep/wake query */
+	CB(123, trampoline_false),
+	CB(125, trampoline_read_edt_data),
+	CB(127, trampoline_prop_start),
+	CB(128, trampoline_prop_chunk),
+	CB(129, trampoline_prop_end),
+	CB(134, trampoline_zero),
+	CB(201, trampoline_map_piodma),
+	CB(206, iomfbep_cb_match_pmu_service_2),
+	CB(207, iomfbep_cb_match_backlight_service),
+	CB(208, trampoline_nop),
+	CB(209, trampoline_get_time),
+	CB(300, trampoline_pr_publish),
+	CB(400, trampoline_nop),
+	CB(401, trampoline_get_uint_prop),
+	CB(406, trampoline_nop), /* set_fx_prop: host property notification */
+	CB(408, trampoline_get_frequency),
+	CB(411, trampoline_map_reg),
+	CB(413, trampoline_true),
+	CB(414, trampoline_sr_set_property_int),
+	CB(415, trampoline_true),
+	CB(451, trampoline_allocate_buffer),
+	CB(552, trampoline_true),
+	CB(561, trampoline_true),
+	CB(563, trampoline_true),
+	CB(565, trampoline_true),
+	CB(567, trampoline_true),
 	/* Native 26.6 returns a zero status for both start and stop events. */
-	[572] = trampoline_zero,
-	[575] = trampoline_hotplug,
-	[576] = trampoline_nop,
-	[581] = trampoline_nop,
-	[582] = trampoline_true, /* create_default_fb_surface */
-	[590] = trampoline_swap_complete,
-	[592] = trampoline_swap_complete_intent_gated,
-	[594] = trampoline_nop, /* native display re-enable notification: empty ACK */
-	[595] = trampoline_nop,
-	[598] = trampoline_nop,
-	[599] = trampoline_nop,
+	CB(572, trampoline_zero),
+	CB(575, trampoline_hotplug),
+	CB(576, trampoline_nop),
+	CB(581, trampoline_nop),
+	CB(582, trampoline_true), /* create_default_fb_surface */
+	CB(590, trampoline_swap_complete),
+	CB(592, trampoline_swap_complete_intent_gated),
+	CB(594, trampoline_nop), /* native display re-enable notification: empty ACK */
+	CB(595, trampoline_nop),
+	CB(598, trampoline_nop),
+	CB(599, trampoline_nop),
 };
+
+#undef CB
 
 void DCP_FW_NAME(iomfb_start)(struct apple_dcp *dcp)
 {
-	dcp->cb_handlers = cb_handlers;
+	dcp->cb_handlers = NULL;
+	dcp->cb_contracts = cb_contracts;
 	dcp_start_signal(dcp, false, dcp_started, NULL);
 }
 

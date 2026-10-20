@@ -274,6 +274,7 @@ static void dcpep_handle_cb(struct apple_dcp *dcp, enum dcp_context_id context,
 	struct device *dev = dcp->dev;
 	void *in, *out;
 	int tag = dcp_parse_tag(hdr->tag);
+	iomfb_cb_handler handler = NULL;
 	struct dcp_channel *ch = dcp_get_channel(dcp, context);
 	u8 depth;
 
@@ -282,7 +283,28 @@ static void dcpep_handle_cb(struct apple_dcp *dcp, enum dcp_context_id context,
 		return;
 	}
 
-	if (tag < 0 || tag >= IOMFB_MAX_CB || !dcp->cb_handlers || !dcp->cb_handlers[tag]) {
+	if (tag >= 0 && tag < IOMFB_MAX_CB) {
+		if (dcp->cb_contracts) {
+			const struct iomfb_cb_contract *contract = &dcp->cb_contracts[tag];
+
+			handler = contract->handler;
+			/* Validate before clearing output, mutating depth, or dispatching.
+			 * Extra bytes may be opaque; these are minimum typed extents.
+			 */
+			if (handler && (hdr->in_len < contract->min_in ||
+					hdr->out_len < contract->min_out)) {
+				dev_warn(dev, "short callback D%03d in %u/%u out %u/%u\n",
+					 tag, hdr->in_len, contract->min_in,
+					 hdr->out_len, contract->min_out);
+				return;
+			}
+		} else if (dcp->cb_handlers) {
+			/* Preserve older firmware's existing dispatch path. */
+			handler = dcp->cb_handlers[tag];
+		}
+	}
+
+	if (!handler) {
 		dev_warn(dev, "received unknown callback %c%c%c%c\n",
 			 hdr->tag[3], hdr->tag[2], hdr->tag[1], hdr->tag[0]);
 		return;
@@ -291,8 +313,7 @@ static void dcpep_handle_cb(struct apple_dcp *dcp, enum dcp_context_id context,
 	in = data + sizeof(*hdr);
 	out = in + hdr->in_len;
 
-	// TODO: verify that in_len and out_len match our prototypes
-	// for now just clear the out data to have at least consistent results
+	/* Zero the bounded output after any available typed contract checks. */
 	if (hdr->out_len)
 		memset(out, 0, hdr->out_len);
 
@@ -300,7 +321,7 @@ static void dcpep_handle_cb(struct apple_dcp *dcp, enum dcp_context_id context,
 	ch->output[depth] = out;
 	ch->end[depth] = offset + ALIGN(length, DCP_PACKET_ALIGNMENT);
 
-	if (dcp->cb_handlers[tag](dcp, tag, out, in)) {
+	if (handler(dcp, tag, out, in)) {
 		dcp_ack(dcp, context);
 	}
 }

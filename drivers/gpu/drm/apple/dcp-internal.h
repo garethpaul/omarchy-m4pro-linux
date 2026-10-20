@@ -179,6 +179,7 @@ struct apple_dcp {
 
 	/* iomfb EP callback handlers */
 	const iomfb_cb_handler *cb_handlers;
+	const struct iomfb_cb_contract *cb_contracts;
 
 	/* Active chunked transfer. There can only be one at a time. */
 	struct dcp_chunks chunks;
