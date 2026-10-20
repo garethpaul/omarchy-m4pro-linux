@@ -9,6 +9,7 @@
  */
 
 #include <linux/kernel.h>
+#include <linux/of.h>
 #include <linux/slab.h>
 #include <linux/spinlock.h>
 #include <linux/platform_device.h>
@@ -26,6 +27,13 @@
 #include "debug.h"
 #include "gadget.h"
 #include "io.h"
+
+/* Temporary J614s bring-up markers; no controller or gadget state writes. */
+static void j614s_usb_trace(struct device *dev, const char *step, int value)
+{
+	if (of_machine_is_compatible("apple,j614s"))
+		dev_info(dev, "J614S_USB: %s %d\n", step, value);
+}
 
 static void __dwc3_ep0_do_control_status(struct dwc3 *dwc, struct dwc3_ep *dep);
 static void __dwc3_ep0_do_control_data(struct dwc3 *dwc,
@@ -645,16 +653,24 @@ static int dwc3_ep0_set_config(struct dwc3 *dwc, struct usb_ctrlrequest *ctrl)
 	u32 reg;
 
 	cfg = le16_to_cpu(ctrl->wValue);
+	j614s_usb_trace(dwc->dev, "config.enter", cfg);
+	j614s_usb_trace(dwc->dev, "config.state", state);
 
 	switch (state) {
 	case USB_STATE_DEFAULT:
 		return -EINVAL;
 
 	case USB_STATE_ADDRESS:
+		j614s_usb_trace(dwc->dev, "resources.enter", 0);
 		dwc3_gadget_start_config(dwc, 2);
+		j614s_usb_trace(dwc->dev, "resources.returned", 0);
+		j614s_usb_trace(dwc->dev, "fifo.enter", 0);
 		dwc3_gadget_clear_tx_fifos(dwc);
+		j614s_usb_trace(dwc->dev, "fifo.returned", 0);
 
+		j614s_usb_trace(dwc->dev, "delegate.enter", 0);
 		ret = dwc3_ep0_delegate_req(dwc, ctrl);
+		j614s_usb_trace(dwc->dev, "delegate.returned", ret);
 		/* if the cfg matches and the cfg is non zero */
 		if (cfg && (!ret || (ret == USB_GADGET_DELAYED_STATUS))) {
 
@@ -682,7 +698,9 @@ static int dwc3_ep0_set_config(struct dwc3 *dwc, struct usb_ctrlrequest *ctrl)
 		break;
 
 	case USB_STATE_CONFIGURED:
+		j614s_usb_trace(dwc->dev, "delegate.enter", 0);
 		ret = dwc3_ep0_delegate_req(dwc, ctrl);
+		j614s_usb_trace(dwc->dev, "delegate.returned", ret);
 		if (!cfg && !ret)
 			usb_gadget_set_state(dwc->gadget,
 					USB_STATE_ADDRESS);
@@ -690,6 +708,7 @@ static int dwc3_ep0_set_config(struct dwc3 *dwc, struct usb_ctrlrequest *ctrl)
 	default:
 		ret = -EINVAL;
 	}
+	j614s_usb_trace(dwc->dev, "config.returned", ret);
 	return ret;
 }
 

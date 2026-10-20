@@ -14,6 +14,7 @@
 #include <linux/cleanup.h>
 #include <linux/slab.h>
 #include <linux/kernel.h>
+#include <linux/of.h>
 #include <linux/module.h>
 #include <linux/device.h>
 #include <linux/err.h>
@@ -39,6 +40,13 @@
  * seem to understand CDC Union descriptors.  The new "association"
  * descriptors (roughly equivalent to CDC Unions) may sometimes help.
  */
+
+/* Temporary J614s bring-up markers; no controller or gadget state writes. */
+static void j614s_usb_trace(struct device *dev, const char *step, int value)
+{
+	if (of_machine_is_compatible("apple,j614s"))
+		dev_info(dev, "J614S_USB: %s %d\n", step, value);
+}
 
 struct f_acm {
 	struct gserial			port;
@@ -426,26 +434,34 @@ static int acm_set_alt(struct usb_function *f, unsigned intf, unsigned alt)
 	struct f_acm		*acm = func_to_acm(f);
 	struct usb_composite_dev *cdev = f->config->cdev;
 
+	j614s_usb_trace(&cdev->gadget->dev, "acm.interface", intf);
+
 	/* we know alt == 0, so this is an activation or a reset */
 
 	if (intf == acm->ctrl_id) {
 		if (acm->notify->enabled) {
 			dev_vdbg(&cdev->gadget->dev,
 					"reset acm control interface %d\n", intf);
+			j614s_usb_trace(&cdev->gadget->dev, "notify.disable.enter", 0);
 			usb_ep_disable(acm->notify);
+			j614s_usb_trace(&cdev->gadget->dev, "notify.disable.returned", 0);
 		}
 
 		if (!acm->notify->desc)
 			if (config_ep_by_speed(cdev->gadget, f, acm->notify))
 				return -EINVAL;
 
+		j614s_usb_trace(&cdev->gadget->dev, "notify.enable.enter", 0);
 		usb_ep_enable(acm->notify);
+		j614s_usb_trace(&cdev->gadget->dev, "notify.enable.returned", 0);
 
 	} else if (intf == acm->data_id) {
 		if (acm->notify->enabled) {
 			dev_dbg(&cdev->gadget->dev,
 				"reset acm ttyGS%d\n", acm->port_num);
+			j614s_usb_trace(&cdev->gadget->dev, "serial.disconnect.enter", 0);
 			gserial_disconnect(&acm->port);
+			j614s_usb_trace(&cdev->gadget->dev, "serial.disconnect.returned", 0);
 		}
 		if (!acm->port.in->desc || !acm->port.out->desc) {
 			dev_dbg(&cdev->gadget->dev,
@@ -459,11 +475,14 @@ static int acm_set_alt(struct usb_function *f, unsigned intf, unsigned alt)
 				return -EINVAL;
 			}
 		}
+		j614s_usb_trace(&cdev->gadget->dev, "serial.connect.enter", 0);
 		gserial_connect(&acm->port, acm->port_num);
+		j614s_usb_trace(&cdev->gadget->dev, "serial.connect.returned", 0);
 
 	} else
 		return -EINVAL;
 
+	j614s_usb_trace(&cdev->gadget->dev, "acm.returned", 0);
 	return 0;
 }
 
