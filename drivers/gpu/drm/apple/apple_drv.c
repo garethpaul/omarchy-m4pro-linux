@@ -10,6 +10,7 @@
 #include <linux/aperture.h>
 #include <linux/component.h>
 #include <linux/delay.h>
+#include <linux/dma-buf.h>
 #include <linux/dma-direct.h>
 #include <linux/dma-mapping.h>
 #include <linux/jiffies.h>
@@ -44,6 +45,7 @@
 #include <drm/drm_of.h>
 #include <drm/drm_print.h>
 #include <drm/drm_probe_helper.h>
+#include <drm/drm_prime.h>
 #include <drm/drm_vblank.h>
 #include <drm/drm_fixed.h>
 
@@ -309,9 +311,31 @@ static int apple_drm_gem_dumb_create(struct drm_file *file_priv,
 	return ret;
 }
 
+static struct drm_gem_object *
+apple_drm_gem_prime_import(struct drm_device *drm, struct dma_buf *dma_buf)
+{
+	if (IS_MODULE(CONFIG_DRM_APPLE)) {
+		struct apple_drm_gem_object *obj;
+
+		/* Authenticate the exporter before treating its private data as GEM. */
+		if (!drm_gem_is_prime_exported_dma_buf(drm, dma_buf))
+			return ERR_PTR(-EOPNOTSUPP);
+
+		obj = container_of(to_drm_gem_dma_obj(dma_buf->priv),
+				   struct apple_drm_gem_object, dma);
+		/* Set only after validating our own no-map pool allocation. */
+		if (!obj->pool_fixed_iova)
+			return ERR_PTR(-EOPNOTSUPP);
+	}
+
+	/* Same-device pool BOs use the default refcount-only self-import path. */
+	return drm_gem_prime_import(drm, dma_buf);
+}
+
 static const struct drm_driver apple_drm_driver = {
 	DRM_GEM_DMA_DRIVER_OPS_VMAP_WITH_DUMB_CREATE(apple_drm_gem_dumb_create),
 	DRM_FBDEV_DMA_DRIVER_OPS,
+	.gem_prime_import	= apple_drm_gem_prime_import,
 	.gem_create_object	= apple_drm_gem_create_object,
 	.name			= DRIVER_NAME,
 	.desc			= DRIVER_DESC,
