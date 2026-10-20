@@ -1521,6 +1521,14 @@ static struct apple_nvme *apple_nvme_alloc(struct platform_device *pdev)
 	struct apple_nvme *anv;
 	int ret;
 
+	/* Aurora's measured J614s diagnostic depends on inherited RTKit adoption.
+	 * Gravity lacks that state/endpoint ownership path. Do not reset ANS or
+	 * accept a generic/T8132 fallback on this board until it is ported.
+	 */
+	if (of_machine_is_compatible("apple,j614s"))
+		return ERR_PTR(dev_err_probe(dev, -EOPNOTSUPP,
+			"J614s ANS inherited RTKit adoption has not been ported\n"));
+
 	anv = devm_kzalloc(dev, sizeof(*anv), GFP_KERNEL);
 	if (!anv)
 		return ERR_PTR(-ENOMEM);

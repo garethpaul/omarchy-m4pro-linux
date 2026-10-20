@@ -21,6 +21,7 @@
 #include <linux/unaligned.h>
 #include <linux/of.h>
 #include "../hid-ids.h"
+#include "dockchannel-hid-protocol.h"
 
 #define COMMAND_TIMEOUT_MS 1000
 #define START_TIMEOUT_MS 2000
@@ -171,6 +172,9 @@ struct dchid_iface {
 	struct gpio_desc *gpio;
 	char gpio_name[MAX_GPIO_NAME];
 	int gpio_id;
+	bool gpio_announced;
+	u32 power_method;
+	bool firmware_managed_reset;
 
 	struct mutex out_mutex;
 	u32 out_flags;
@@ -190,6 +194,8 @@ struct dockchannel_hid {
 
 	struct mutex ring_mutex;
 	bool use_ring;
+	bool j614s;
+	struct gpio_desc *afe_reset;
 	bool ring_registered;
 	int ring_error;
 	void *ring;
@@ -240,6 +246,7 @@ dchid_get_interface(struct dockchannel_hid *dchid, int index, const char *name)
 	iface->index = index;
 	iface->name = devm_kstrdup(dchid->dev, name, GFP_KERNEL);
 	iface->dchid = dchid;
+	iface->power_method = DCHID_POWER_METHOD_1;
 	iface->out_report= -1;
 	init_completion(&iface->out_complete);
 	init_completion(&iface->ready);
@@ -258,6 +265,20 @@ dchid_get_interface(struct dockchannel_hid *dchid, int index, const char *name)
 	if (!iface->of_node) {
 		dev_warn(dchid->dev, "No OF node for subdevice %s, ignoring.", name);
 		return NULL;
+	}
+
+	if (dchid->j614s) {
+		of_property_read_u32(iface->of_node, "apple,power-method", &iface->power_method);
+		iface->firmware_managed_reset =
+			of_property_read_bool(iface->of_node, "apple,firmware-managed-reset");
+		if ((iface->power_method != DCHID_POWER_METHOD_1 &&
+		     iface->power_method != DCHID_POWER_METHOD_2) ||
+		    (iface->power_method == DCHID_POWER_METHOD_2 && strcmp(name, "multi-touch")) ||
+		    (iface->firmware_managed_reset && iface->power_method != DCHID_POWER_METHOD_2)) {
+			of_node_put(iface->of_node);
+			destroy_workqueue(iface->wq);
+			return NULL;
+		}
 	}
 
 	dchid->ifaces[index] = iface;
@@ -402,6 +423,39 @@ static int dchid_reset_interface(struct dchid_iface *iface, int state)
 	return dchid_comm_cmd(iface->dchid, msg2, sizeof(msg2));
 }
 
+/*
+ * Power method 2: announce the transition, drive the AFE reset line to the
+ * new state and confirm the transition. The reset is asserted for a power-off
+ * and held for 50 ms, and released for a power-on.
+ */
+static int dchid_pm2_set_power(struct dchid_iface *iface, u8 state)
+{
+	struct dockchannel_hid *dchid = iface->dchid;
+	u8 msg[DCHID_PM2_CMD_SIZE];
+	int ret;
+
+	dchid_pm2_command(iface->index, state, false, msg);
+	ret = dchid_comm_cmd(dchid, msg, sizeof(msg));
+	if (ret < 0)
+		return ret;
+
+	if (iface->firmware_managed_reset) {
+		/* Firmware owns the reset; allow its power-on transition to settle. */
+		if (state == DCHID_POWER_STATE_ON)
+			fsleep(50 * USEC_PER_MSEC);
+	} else {
+		ret = gpiod_set_value_cansleep(dchid->afe_reset,
+					       state == DCHID_POWER_STATE_OFF);
+		if (ret < 0)
+			return ret;
+		if (state == DCHID_POWER_STATE_OFF)
+			fsleep(50 * USEC_PER_MSEC);
+	}
+
+	dchid_pm2_command(iface->index, state, true, msg);
+	return dchid_comm_cmd(dchid, msg, sizeof(msg));
+}
+
 static int dchid_register_ring(struct dockchannel_hid *dchid)
 {
 	struct {
@@ -488,6 +542,11 @@ static int dchid_get_firmware(struct dchid_iface *iface, void **firmware, size_t
 	if (ret)
 		return ret;
 
+	if (fw->size < sizeof(*hdr)) {
+		ret = -EINVAL;
+		goto done;
+	}
+
 	hdr = (struct fw_header *)fw->data;
 
 	if (hdr->magic != FW_MAGIC || hdr->version != FW_VER ||
@@ -527,6 +586,14 @@ static int dchid_request_gpio(struct dchid_iface *iface)
 		return -EOPNOTSUPP;
 	}
 
+	if (iface->firmware_managed_reset)
+		return -EINVAL;
+	if (iface->dchid->j614s && iface->power_method == DCHID_POWER_METHOD_2 &&
+	    !strcmp(iface->gpio_name, "afe-reset")) {
+		iface->gpio = iface->dchid->afe_reset;
+		return iface->gpio ? 0 : -EINVAL;
+	}
+
 	if (iface->gpio)
 		return 0;
 
@@ -548,9 +615,10 @@ static int dchid_request_gpio(struct dchid_iface *iface)
 
 static int dchid_start_interface(struct dchid_iface *iface)
 {
-	void *fw;
-	size_t size;
+	void *fw = NULL;
+	size_t size = 0;
 	int ret;
+	int step = 0;
 
 	if (iface->starting) {
 		dev_warn(iface->dchid->dev, "Interface %s is already starting", iface->name);
@@ -560,17 +628,21 @@ static int dchid_start_interface(struct dchid_iface *iface)
 	dev_info(iface->dchid->dev, "Starting interface %s\n", iface->name);
 
 	iface->starting = true;
+	step = 1;
 	ret = dchid_register_ring(iface->dchid);
 	if (ret < 0)
 		goto err;
 
 	/* Look to see if we need firmware */
+	step = 2;
 	ret = dchid_get_firmware(iface, &fw, &size);
 	if (ret < 0)
 		goto err;
 
 	/* T8132 startup does not use the older host GPIO reset. */
-	if (!iface->dchid->use_ring && iface->gpio_id) {
+	if (!iface->dchid->use_ring && (iface->gpio_id ||
+	    (iface->dchid->j614s && iface->gpio_announced))) {
+		step = 3;
 		ret = dchid_request_gpio(iface);
 		if (ret < 0)
 			goto err;
@@ -581,6 +653,7 @@ static int dchid_start_interface(struct dchid_iface *iface)
 
 		/* Send firmware to the device */
 		dev_info(iface->dchid->dev, "Sending firmware for %s\n", iface->name);
+		step = 4;
 		ret = dchid_send_firmware(iface, fw, size);
 		if (ret < 0) {
 			dev_err(iface->dchid->dev, "Failed to send %s firmwareS", iface->name);
@@ -589,13 +662,26 @@ static int dchid_start_interface(struct dchid_iface *iface)
 
 		/* After loading firmware, multi-touch needs a reset */
 		dev_info(iface->dchid->dev, "Resetting %s\n", iface->name);
-		dchid_reset_interface(iface, 0);
-		dchid_reset_interface(iface, 2);
+		step = 5;
+		if (iface->dchid->j614s && iface->power_method == DCHID_POWER_METHOD_2) {
+			ret = dchid_pm2_set_power(iface, DCHID_POWER_STATE_OFF);
+			if (ret < 0)
+				goto err;
+			ret = dchid_pm2_set_power(iface, DCHID_POWER_STATE_ON);
+			if (ret < 0)
+				goto err;
+		} else {
+			dchid_reset_interface(iface, 0);
+			dchid_reset_interface(iface, 2);
+		}
 	}
 
 	return 0;
 
 err:
+	if (iface->dchid->j614s)
+		dev_err(iface->dchid->dev, "J614s interface %s start step %d failed: %d (fw=%zu)\n",
+			iface->name, step, ret, size);
 	iface->starting = false;
 	return ret;
 }
@@ -891,6 +977,7 @@ static void dchid_handle_init(struct dockchannel_hid *dchid, void *data, size_t 
 
 			strscpy(iface->gpio_name, req->name, MAX_GPIO_NAME);
 			iface->gpio_id = req->id;
+			iface->gpio_announced = true;
 			break;
 		}
 
@@ -1260,6 +1347,9 @@ static int dockchannel_hid_probe(struct platform_device *pdev)
 	dchid->dev = dev;
 	mutex_init(&dchid->ring_mutex);
 	dchid->use_ring = of_device_is_compatible(dev->of_node, "apple,t8132-dockchannel-hid");
+	dchid->j614s = of_machine_is_compatible("apple,j614s");
+	if (dchid->j614s && dchid->use_ring)
+		return dev_err_probe(dev, -EOPNOTSUPP, "J614s T8132 ring alias is unqualified\n");
 
 	/*
 	 * First make sure all the GPIOs are available, in cased we need to defer.
@@ -1285,6 +1375,37 @@ static int dockchannel_hid_probe(struct platform_device *pdev)
 				}
 			} else {
 				gpiod_put(gpio);
+			}
+		}
+	}
+
+	if (dchid->j614s) {
+		/*
+		 * With power method 2 the host drives the multi-touch AFE reset line
+		 * during every power transition, so the line must be there before the
+		 * coprocessor announces the interface. Request it now, while a
+		 * -EPROBE_DEFER can still be honoured, and leave its level alone until
+		 * the first transition has been announced.
+		 */
+		child = of_get_child_by_name(dev->of_node, "multi-touch");
+		if (child) {
+			u32 power_method = DCHID_POWER_METHOD_1;
+			bool firmware_managed_reset;
+
+			of_property_read_u32(child, "apple,power-method", &power_method);
+			firmware_managed_reset =
+				of_property_read_bool(child, "apple,firmware-managed-reset");
+			of_node_put(child);
+			if (firmware_managed_reset &&
+			    (power_method != DCHID_POWER_METHOD_2 ||
+			     of_property_present(dev->of_node, "apple,afe-reset-gpios")))
+				return dev_err_probe(dev, -EINVAL, "Conflicting touch reset ownership\n");
+			if (power_method == DCHID_POWER_METHOD_2 && !firmware_managed_reset) {
+				dchid->afe_reset = devm_gpiod_get(dev, "apple,afe-reset",
+								  GPIOD_ASIS);
+				if (IS_ERR(dchid->afe_reset))
+					return dev_err_probe(dev, PTR_ERR(dchid->afe_reset),
+							     "Failed to request the AFE reset line\n");
 			}
 		}
 	}

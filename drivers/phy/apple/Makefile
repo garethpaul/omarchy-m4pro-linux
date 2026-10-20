@@ -5,3 +5,6 @@ phy-apple-atc-y			:= atc.o
 
 obj-$(CONFIG_PHY_APPLE_DPTX)	+= phy-apple-dptx.o
 phy-apple-dptx-y		+= dptx.o
+
+obj-$(CONFIG_PHY_APPLE_T6040_USB2_INHERITED) += usb2-t6040-inherited.o
+obj-$(CONFIG_PHY_APPLE_J614S_USB2_HOST_DIAGNOSTIC) += usb2-j614s-host-diagnostic.o
