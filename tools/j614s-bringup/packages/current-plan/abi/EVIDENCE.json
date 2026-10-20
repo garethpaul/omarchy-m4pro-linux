@@ -5,18 +5,18 @@
   "actions": [],
   "tests": {
     "status": "WORKS",
-    "count": 20,
+    "count": 29,
     "red_before_implementation": [
       "5 initial ELF parser/contract tests failed with explicit NotImplementedError (9 subcase errors), not import errors",
       "Separate real compiled dependency-scope regression failed with explicit NotImplementedError before scope implementation"
     ],
-    "green": "20 real ELF, graph, virtual-root and provenance regressions pass",
+    "green": "29 actual ELF, graph, virtual-root, provenance, complete-baseline and normal libalpm regressions pass; 6 prepare controls also pass ASan+UBSan",
     "note": "Two own scope audit runs were interrupted to remove repeated export-set work; preserved private failure logs. Final indexed run retains all checks.",
     "provenance_controls": "Actual archived old function accepts changed restore; actual current CLI rejects changed sealed file, exact bytes restored, cached real117 replay byte-identical; actual reused provider mutation refused."
   },
   "hardware": "UNTESTED; no target access",
   "runtime_ABI": "UNTESTED",
-  "filesystem_model": "PARTIAL: same-name overlay; name-changing package removals not established",
+  "filesystem_model": "PARTIAL: initial same-name overlay retained separately; new transaction model includes four exact normally prepared hypothetical removals",
   "blocked": [
     "8 exact untouched Qt consumers lose12 Qt_6_PRIVATE_API imports",
     "16 new/incoming direct SONAME edges unresolved in bounded model",
@@ -25,9 +25,10 @@
   ],
   "files": {
     ".gitignore": "0090a854cd9b906751909c1f21e1454e3de0f601a7f300f05246ef49dca5a770",
-    "README.md": "6bc64521caec2002e7b4afde19f6b49630a62a2ff29a75d9e015b635ffb684f4",
+    "README.md": "4d9548624253dbc8281f1dc0714162bb29473cae1a29ea24dd09d02cf86bd9a0",
     "audit_elf.py": "bb29a7e7efbd32272dee5570179bb0f17104fdee7e3affeb7132753351122767",
     "audit_plan.py": "21be9986ede57f06818c8ab70ebddd1dc1e20650e989e871176c43c31c670060",
+    "baseline.py": "ca3de64f4e7304c0b1d0d26bb26b511a7c45775d023f3b42547972f993b463b4",
     "classify_findings.py": "94de265ece376f8e4c87df67aa82e115908b998e13317c883f8b4136bfcba3d9",
     "crosscheck_readelf.py": "b9594aaad35b653b3fc6b9f6e8aea8686e00f1f003793bd3f12ab3021e29c0a3",
     "evidence/cache-before-fix.json": "884dac771844043d49dfd78709b0830933f3274a9cc798216329ad1ef8abe35f",
@@ -38,12 +39,32 @@
     "evidence/qt-private-abi.json": "43fbfa02b68ad1b47e59afdc815be0eaff5e0a9a9bea6c99e7e315e352378b87",
     "evidence/readelf-crosscheck.json": "b5c9989be623d71be207d93e4ad14faf653cb520230562a8e00dc932ba2bffea",
     "evidence/static-abi.json": "197027bf6426aa90fe1d8836d039c9b2f0f169a7498597e146ed674bd1004dc9",
-    "evidence/tests.log": "bfd5ce1ae4743981f1b6a703c5290cc4236270e6c0cf844859338fed5ce3281a",
+    "evidence/tests.log": "8ed33d841881c061c0034203f6880b69d44cdc20d998c88ab52c07b53f3997aa",
     "filesystem.py": "1b7f2b45764787feab935321e9310d08b280dd269c45752b24ebd338ca77fbba",
     "prove_qt_break.py": "ee8fa6ef38d778aca9e70bd4fb87f8d1c0d36beeeecf57c08795defd287dd39c",
     "restore_image.py": "2c240f7cc41ea38a44502121b23f0da924ed398200ba5a024ae0167e77094bd0",
+    "tests/test_baseline.py": "8b91449112fbf2cf49d7e9b5d0bbbcc3482ab9f8cdaf43c881e8cfd89ef27073",
     "tests/test_elf.py": "faa3f0dbbf30d85a7b64ead560d1460e62046c69aa165028ce30b4ee1709e948",
+    "tests/test_prepare.py": "7f5817520eacda83f48b0bb1d0f1ad4bd653806ceb87d1aca68693901a3e64d2",
     "tests/test_provenance.py": "82ab84c8388271c84259bf3936db7907cfdc14e50323c987e3eb1c4df0401d17",
-    "tests/test_resolution.py": "99d0f2c820ff3e74759372a84bd22751ac4c0ad62f9c38ed9b0021528054df8a"
+    "tests/test_resolution.py": "99d0f2c820ff3e74759372a84bd22751ac4c0ad62f9c38ed9b0021528054df8a",
+    "transaction/EVIDENCE.json": "c3a06179950d50f9ddca536f5f613a86afb889cf8372d392f0e7cbf8253600af",
+    "transaction/README.md": "f094963e2fb9c0d2af22ff614e83db7fd8b3ef43c95b1a0bdca875ae1c8cba76",
+    "transaction/baseline-before-fix.json": "2b6dc262444986ceba51e6d4277fe246e0bd76c9cb20dc1bd6fc08958f9918da",
+    "transaction/baseline-mutation-refusal.json": "5da2ad294874d95241c010a4d832b3da5e76a100d498ed377de4011da60ce9c6",
+    "transaction/current117-filesystem-model-baseline-bound.json": "2d2bbbb24fb3ae62db23653506e350c5d437bd37fa3590bc528922d0c8c6e8f2",
+    "transaction/current117-filesystem-model.json": "bdc22dea932d68be81acb87ef8a2b7507b8bf389fd6fb8313f43710f2f315645",
+    "transaction/current117-preparation-02.json": "58275743e617ed1d17797ed18cc3029e7146e0fa0cfd527ea45fac1c9dea4349",
+    "transaction/current117-preparation-03.json": "96a24e0ed707318a4d8b74292c4f385faabf7deac77923dddef4c6f286a81e5f",
+    "transaction/current117-preparation-04-baseline-bound.json": "c08f218ae641ff3bc2d62e2507351d8f129b41895587b9b59d93a5ece77a024c",
+    "transaction/current117-preparation.json": "e3a7f3adb5de37b286242051a313be3d03755956fc881a1946a5c0bdd25d7a55",
+    "transaction/model-baseline-mutation-refusal.json": "a1e38ffde97856816eeb4a8235eff9c0d90764744d50ab45329a85ddd3a8cab7",
+    "transaction/model.py": "d4cdb356509c4a52f241490b9a2f6e1a3d15636ed011882d5faf7525075f2e7d",
+    "transaction/pacman-print-source.json": "0b7e58ed2c4094ef13f64d694b71b86f129d1ad1a562946c2aa12abd7f03716e",
+    "transaction/prepare.c": "db37b588924b5ee6c162e216c4b035007944c41f9586eb2601e099ea58580fe5",
+    "transaction/prepare.py": "aad1cd974003400277740a8cb5e9d11e0477e4bedf67395315e823ed09792230",
+    "transaction/sanitizer-tests.log": "b2d7f9a605a4b6bec84526ae2cb8c2aba3b933139e930a7f93a0acc9721941f0",
+    "transaction/scenario-current117-01.json": "2e9f7aa7454611a58891849dd77b46f475db9479f68960044bef6a427b8433e9",
+    "transaction/scenario-current117-aliases.json": "da32c93fc079f1be66fc02c655bc58a2d01f128d09fc7d582e903ef5735bd33e"
   }
 }

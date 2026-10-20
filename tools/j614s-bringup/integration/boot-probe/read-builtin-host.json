@@ -1,0 +1,31 @@
+{
+  "scope": "standalone native BusyBox read builtin only; init never executed",
+  "busybox_sha256": "f10ec6f1c3b41b6015cc0f15c11a4ce4e06fff158e20bdbe9a527a3ed3ea752a",
+  "tests": [
+    {
+      "input_escaped": "'probe\\n'",
+      "output_escaped": "'status=0 value=<probe>\\n'",
+      "exit_code": 0
+    },
+    {
+      "input_escaped": "'status\\n'",
+      "output_escaped": "'status=0 value=<status>\\n'",
+      "exit_code": 0
+    },
+    {
+      "input_escaped": "'probe\\r\\n'",
+      "output_escaped": "'status=0 value=<probe\\r>\\n'",
+      "exit_code": 0
+    }
+  ],
+  "LF_required": true,
+  "hardware": "UNTESTED",
+  "program": "IFS= read -r -n 64 -t 2 command; result=$?; printf \"status=%s value=<%s>\\n\" \"$result\" \"$command\"",
+  "command": [
+    "qemu-aarch64-static",
+    "PINNED_BUSYBOX",
+    "sh",
+    "-c",
+    "PROGRAM"
+  ]
+}

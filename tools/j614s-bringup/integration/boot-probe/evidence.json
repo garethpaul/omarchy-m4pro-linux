@@ -1,0 +1,56 @@
+{
+  "busybox_provenance": "Both official Debian archive signatures and complete digest/extraction chain reverified offline",
+  "hardware": "UNTESTED",
+  "init_executed": false,
+  "input_bundle_modified": false,
+  "pure_helper_execution": "Only probe-state.sh classification function executed in isolated host sh; init only parsed",
+  "qualified_kernel_reproducibility_reference": "infra gravity-combined-reproducibility.json at evidence commit8fc52f5; independent kernel build not repeated by this lane",
+  "reproducibility": {
+    "archive_byte_identical": true,
+    "bytes": 1097147,
+    "distinct_inodes": true,
+    "fresh_outputs": 2,
+    "sha256": "a3a01204b0310877dd41fd24c6f6ce803344cb48c4e9ef49a9bc4c994f1c39e8"
+  },
+  "review_corrections": [
+    "Sticky monotonic RO error classification; first/latest details in status, first error in logs",
+    "Asynchronous module loader waits for first actual guardian scan acknowledgement; missing ack/error refuses all loads",
+    "Serial read EOF backs off100ms",
+    "All prior generated initrds retained privately; final artifact separately named frozen-01/02"
+  ],
+  "runtime_limits": [
+    "USB ACM function/reconnect UNTESTED",
+    "NVMe runtime/admission/concurrency UNTESTED",
+    "50ms RO poll is not atomic at creation",
+    "No storage mounts or user-data workloads",
+    "No loader/DT/FW freshness or ownership qualification",
+    "No watchdog or recovery guarantee",
+    "No target boot authority",
+    "Guardian first-scan acknowledgement/scheduling UNTESTED",
+    "Sticky error runtime recording and process-loss detection UNTESTED",
+    "Serial EOF/reconnect/backoff runtime UNTESTED"
+  ],
+  "schema": 1,
+  "source_sha256": {
+    "build_probe.py": "7663fb64081b4a3cc92bfb1c1071ce57e8d8f553d7efb0df5fc01e7b2f267997",
+    "busybox-provenance.json": "c2b0a015d15512dc9cbc59baa3227fbff334a32460a1ae258d42f08ed7d9238b",
+    "init": "77880015104e73f367869f545e30495d65c358aad82cee6ecd1afcaeb6a1c280",
+    "pins.json": "98612d92cfbd2af5c4cac6c94741d49b6ea2ff31459053db1139af53423217e2",
+    "probe-state.sh": "87ae6117307bdc67dbbb9996229f9229c5fce7e9d2614615acb495ba93f2d099",
+    "test_probe.py": "0fdc4b3400a13ceff36e4fd2467bb106f41b24f22ebc42bf02996b794c21cc68",
+    "verify_busybox_provenance.py": "c0cd19a620d9d17c20c9ef25b8b33e53b950ad7405ce64ad388790f5fff859a8"
+  },
+  "status": "OFFLINE_VALIDATED",
+  "syntax": {
+    "host_sh_n": "PASS",
+    "init_executed": false,
+    "qualified_aarch64_busybox_sh_n_under_existing_qemu": "PASS"
+  },
+  "target_access": false,
+  "tests": {
+    "command": "J614S_KERNEL_BUNDLE=<qualified-build02> J614S_KERNEL_VERIFIER=<pinned-verifier> python3 test_probe.py",
+    "passed": 32,
+    "scope": "14 archive/ELF controls, 8 isolated pure shell classification controls and 10 actual copied-bundle/input controls",
+    "skipped": 0
+  }
+}

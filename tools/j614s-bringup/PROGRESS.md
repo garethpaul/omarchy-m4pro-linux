@@ -12,10 +12,11 @@ Goal: native accelerated, responsive, persistently bootable Omarchy. Overall INC
 - Native GPU INIT/rendering, native DCP and persistent default boot are incomplete.
   Prior12-core and GPU-transport hardware passes remain separately evidenced.
 - ARM package signatures pass117/117, but exact Qt/SONAME ABI defects block the
-  proposed transaction. Sealed replay rejects changed evidence; conflict/removal
-  preparation and a separate coherent dependency closure are ongoing.
+  proposed transaction. Sealed replay rejects changed evidence. Normal libalpm preparation now binds all986
+  baseline descriptions and models four exact hypothetical removals;29 root-rerun
+  tests pass. A separate145-package coherent dependency closure is under audit.
 - Source fixes are reviewable in kernel draft PR6 and nvim package draft PR1.
-  Minimal USB/RO probe preparation is offline only; protected boot/disk changes
+  Minimal USB/RO probe is packaged and32 host tests pass; init is unexecuted; protected boot/disk changes
   remain outside current authorization.
 
 ## Baseline
@@ -440,3 +441,51 @@ Both exact configurations/critical tools/contracts match; layout assertions and
 strict verification/path audits pass. The new artifact export includes the
 comparison and refreshed hashes. Same-host reproducibility does not establish
 hermetic or cross-machine builds, hardware behavior, storage durability or boot.
+
+## Concrete RAM probe, still unexecuted
+
+The minimal source8f2 initramfs is packaged:1,097,147bytes, SHA256
+a3a01204b0310877dd41fd24c6f6ce803344cb48c4e9ef49a9bc4c994f1c39e8. Two fresh
+archives match. It validates the exact kernel contract/module digests and signed
+Debian BusyBox provenance. Root reran32 tests and signature/payload verification,
+then independently checked LF/CR behavior of the native BusyBox read builtin.
+Init was never executed. Root decompressed the actual archive and verified its
+init/helper bytes against committed source and both module/BusyBox digests.
+The local ram-probe export has complete checksums and explicit scope.
+
+The physical ACM dispatcher must exist and receive literal probe before loading
+either NVMe module. Review corrected a hidden-transient-failure risk: RO errors
+now stay sticky, first/latest details remain visible, and the loader waits for
+guardian first-scan acknowledgement/liveness. EOF reads back off instead of
+spinning. Scheduling, USB reconnect, actual RO timing, cache ownership and recovery
+remain hardware UNTESTED. There is no DT/loader/firmware/boot entry or new boot
+authority. The target remains at the installed proxy.
+
+Normal package preparation now captures117 adds and four hypothetical removals
+with conflict/version/dependency checks enabled. The removal-aware virtual
+filesystem still has24 new/incoming ABI issues. Root reran26 tests. A further
+full986-description baseline identity check is being added before the next
+freeze; current original inputs are not known to have changed. Coherent package
+closure remains separate ongoing work, with original holds/plan unchanged.
+
+## Complete package baseline and safe loader preparation
+
+Package source85b0ab6 (central541d37f) binds preparation to all986 original
+package descriptions, not only20 protected pins. Root reran29 tests and verified
+42 ABI plus17 transaction evidence hashes with no mismatch. An actual changed
+non-held description is refused before transaction setup; four removals remain
+hypothetical metadata answers, not installation authority. The original117
+proposal still has24 new/incoming bounded ELF issue edges. A separate145-row
+closure retains those117 rows and28 additions; its full audit is ongoing.
+
+`infra/watchdog-handoff-source.json` records the exact8f2 source/config facts:
+APPLE_WATCHDOG=y, open_timeout=15, pre-userspace handler defaults disabled.
+The Apple driver's probe resets the counter and applies its timeout before
+registration. A loader timer and an init script that never opens watchdog
+cannot by themselves prove recovery. No target timer or boot was exercised.
+
+An isolated RAM-loader source cleanup is active: remove fixed-address display
+debug writes and replace PMU counter clearing with a read-only zero requirement.
+Original dirty loader source and qualified binary remain preserved. A new
+loader build, any replacement DT and the actual combined kernel boot are
+UNTESTED; supervised availability remains pending.

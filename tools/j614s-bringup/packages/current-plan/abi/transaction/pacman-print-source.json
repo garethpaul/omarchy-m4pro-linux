@@ -1,0 +1,27 @@
+{
+  "status": "WORKS (official source review + observed print/preparation difference)",
+  "repository": "https://gitlab.archlinux.org/pacman/pacman.git",
+  "tag": "v7.1.0",
+  "commit": "5683f8477a0afcc6b331766175a83445b2dcfe89",
+  "files": {
+    "src/pacman/pacman.c": "5233e707f1667b59a47e4180bec292d3aaf6e6a93c16a7f52ca0f39071a1244d",
+    "src/pacman/sync.c": "af6f1104093c033ae90986d1861649506c8cdcf6031ef1c2138b4d9e0fae78c8",
+    "lib/libalpm/sync.c": "6b297364eaba94e82a1e30b50dde9b3b96f88075855b66ff455aca1e24995d46"
+  },
+  "print_flags_source": {
+    "file": "src/pacman/pacman.c",
+    "lines": [
+      1293,
+      1294,
+      1295,
+      1296,
+      1297,
+      1298
+    ],
+    "finding": "--print automatically adds NOCONFLICTS and NOLOCK; ordinary print success does not establish accepted conflict removals"
+  },
+  "prepare_api_source": "https://man.archlinux.org/man/core/pacman/libalpm_trans.3.en",
+  "actual_host": "Pacman7.1.0/libalpm16.0.1; normal prepare-only scenarios separately captured; no assertion of byte-identical official source and installed binary",
+  "missing_release_tar": "https://sources.archlinux.org/other/pacman/pacman-7.1.0.tar.xz returned404; officialGit tag fetched successfully",
+  "scope": "No upstream code executed or rebuilt; only own small metadata helper linked against existing host libalpm"
+}

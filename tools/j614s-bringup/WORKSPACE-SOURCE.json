@@ -1,6 +1,6 @@
 {
-  "workspace_commit": "ba73010de16e1ce08399598bab8f2a34975e55ab",
-  "source_archive_sha256": "36a3a69fb5dbe42c66438c9a0a3ea330a712d99fed5a6ed61f1e39ac7049eb2d",
+  "workspace_commit": "b43135ac24a521fbf7b26e094fd473950abd2a3f",
+  "source_archive_sha256": "eb66c0ad01fd3b65e13740561a996015eaac36bc10ccda0e90194ad3c85998ce",
   "status": "experimental tooling; no deployment or production qualification",
   "files": [
     {
@@ -9,7 +9,7 @@
     },
     {
       "file": "PROGRESS.md",
-      "sha256": "fe52258f8ae30493f1eb687816e95f8398e718524eb192175b6132d6cc6f2a7f"
+      "sha256": "cc9287160e71fe5d8399ed37d6dba4926675cc4618ab16ba7648988e89be81a7"
     },
     {
       "file": "capture/.gitignore",
@@ -760,12 +760,64 @@
       "sha256": "b4910e9c59832c2bc8cdfa4ee3df9cebe9ca5fcc149a76445e1138cd553fad8d"
     },
     {
+      "file": "infra/watchdog-handoff-source.json",
+      "sha256": "02c33f1919218f4dad5ddfaa55cdf684c908890e12d7f0eb440a0a4d781448f8"
+    },
+    {
       "file": "integration/.gitignore",
       "sha256": "0090a854cd9b906751909c1f21e1454e3de0f601a7f300f05246ef49dca5a770"
     },
     {
       "file": "integration/README.md",
       "sha256": "35ee38de7abab47b67e04845d8d18e6d249fdbb73df0c74f90a82d74b50a5b1b"
+    },
+    {
+      "file": "integration/boot-probe/.gitignore",
+      "sha256": "0090a854cd9b906751909c1f21e1454e3de0f601a7f300f05246ef49dca5a770"
+    },
+    {
+      "file": "integration/boot-probe/README.md",
+      "sha256": "a42c9b197f7e96424091262a449b43d0ba1bab11d6ceea0599f29a750720b325"
+    },
+    {
+      "file": "integration/boot-probe/artifact-manifest.json",
+      "sha256": "40745445aced711f4f181d708f749901c04f590caa642ba2d3b76af2f0c0466d"
+    },
+    {
+      "file": "integration/boot-probe/build_probe.py",
+      "sha256": "7663fb64081b4a3cc92bfb1c1071ce57e8d8f553d7efb0df5fc01e7b2f267997"
+    },
+    {
+      "file": "integration/boot-probe/busybox-provenance.json",
+      "sha256": "c2b0a015d15512dc9cbc59baa3227fbff334a32460a1ae258d42f08ed7d9238b"
+    },
+    {
+      "file": "integration/boot-probe/evidence.json",
+      "sha256": "5f6043686e65367aa178715b3de1be2523590f068e1c455a117134bb5bae4c85"
+    },
+    {
+      "file": "integration/boot-probe/init",
+      "sha256": "77880015104e73f367869f545e30495d65c358aad82cee6ecd1afcaeb6a1c280"
+    },
+    {
+      "file": "integration/boot-probe/pins.json",
+      "sha256": "98612d92cfbd2af5c4cac6c94741d49b6ea2ff31459053db1139af53423217e2"
+    },
+    {
+      "file": "integration/boot-probe/probe-state.sh",
+      "sha256": "87ae6117307bdc67dbbb9996229f9229c5fce7e9d2614615acb495ba93f2d099"
+    },
+    {
+      "file": "integration/boot-probe/read-builtin-host.json",
+      "sha256": "5b3543d4b8ecd367632fb33bdc523595d606fd111d906bc9ffe4b5f54e9c7fb1"
+    },
+    {
+      "file": "integration/boot-probe/test_probe.py",
+      "sha256": "0fdc4b3400a13ceff36e4fd2467bb106f41b24f22ebc42bf02996b794c21cc68"
+    },
+    {
+      "file": "integration/boot-probe/verify_busybox_provenance.py",
+      "sha256": "c0cd19a620d9d17c20c9ef25b8b33e53b950ad7405ce64ad388790f5fff859a8"
     },
     {
       "file": "integration/config-normalization.diff",
@@ -1441,11 +1493,11 @@
     },
     {
       "file": "packages/current-plan/abi/EVIDENCE.json",
-      "sha256": "8087296acf667ce889e4879d2bc4b5f23bed1b9f9127d84242e1ab0612dbbe9a"
+      "sha256": "4eab3ad847f33217d411fd989688c7285e08f6d21f6008a276a72a98e15da228"
     },
     {
       "file": "packages/current-plan/abi/README.md",
-      "sha256": "6bc64521caec2002e7b4afde19f6b49630a62a2ff29a75d9e015b635ffb684f4"
+      "sha256": "4d9548624253dbc8281f1dc0714162bb29473cae1a29ea24dd09d02cf86bd9a0"
     },
     {
       "file": "packages/current-plan/abi/audit_elf.py",
@@ -1454,6 +1506,10 @@
     {
       "file": "packages/current-plan/abi/audit_plan.py",
       "sha256": "21be9986ede57f06818c8ab70ebddd1dc1e20650e989e871176c43c31c670060"
+    },
+    {
+      "file": "packages/current-plan/abi/baseline.py",
+      "sha256": "ca3de64f4e7304c0b1d0d26bb26b511a7c45775d023f3b42547972f993b463b4"
     },
     {
       "file": "packages/current-plan/abi/classify_findings.py",
@@ -1497,7 +1553,7 @@
     },
     {
       "file": "packages/current-plan/abi/evidence/tests.log",
-      "sha256": "bfd5ce1ae4743981f1b6a703c5290cc4236270e6c0cf844859338fed5ce3281a"
+      "sha256": "8ed33d841881c061c0034203f6880b69d44cdc20d998c88ab52c07b53f3997aa"
     },
     {
       "file": "packages/current-plan/abi/filesystem.py",
@@ -1512,8 +1568,16 @@
       "sha256": "2c240f7cc41ea38a44502121b23f0da924ed398200ba5a024ae0167e77094bd0"
     },
     {
+      "file": "packages/current-plan/abi/tests/test_baseline.py",
+      "sha256": "8b91449112fbf2cf49d7e9b5d0bbbcc3482ab9f8cdaf43c881e8cfd89ef27073"
+    },
+    {
       "file": "packages/current-plan/abi/tests/test_elf.py",
       "sha256": "faa3f0dbbf30d85a7b64ead560d1460e62046c69aa165028ce30b4ee1709e948"
+    },
+    {
+      "file": "packages/current-plan/abi/tests/test_prepare.py",
+      "sha256": "7f5817520eacda83f48b0bb1d0f1ad4bd653806ceb87d1aca68693901a3e64d2"
     },
     {
       "file": "packages/current-plan/abi/tests/test_provenance.py",
@@ -1522,6 +1586,78 @@
     {
       "file": "packages/current-plan/abi/tests/test_resolution.py",
       "sha256": "99d0f2c820ff3e74759372a84bd22751ac4c0ad62f9c38ed9b0021528054df8a"
+    },
+    {
+      "file": "packages/current-plan/abi/transaction/EVIDENCE.json",
+      "sha256": "c3a06179950d50f9ddca536f5f613a86afb889cf8372d392f0e7cbf8253600af"
+    },
+    {
+      "file": "packages/current-plan/abi/transaction/README.md",
+      "sha256": "f094963e2fb9c0d2af22ff614e83db7fd8b3ef43c95b1a0bdca875ae1c8cba76"
+    },
+    {
+      "file": "packages/current-plan/abi/transaction/baseline-before-fix.json",
+      "sha256": "2b6dc262444986ceba51e6d4277fe246e0bd76c9cb20dc1bd6fc08958f9918da"
+    },
+    {
+      "file": "packages/current-plan/abi/transaction/baseline-mutation-refusal.json",
+      "sha256": "5da2ad294874d95241c010a4d832b3da5e76a100d498ed377de4011da60ce9c6"
+    },
+    {
+      "file": "packages/current-plan/abi/transaction/current117-filesystem-model-baseline-bound.json",
+      "sha256": "2d2bbbb24fb3ae62db23653506e350c5d437bd37fa3590bc528922d0c8c6e8f2"
+    },
+    {
+      "file": "packages/current-plan/abi/transaction/current117-filesystem-model.json",
+      "sha256": "bdc22dea932d68be81acb87ef8a2b7507b8bf389fd6fb8313f43710f2f315645"
+    },
+    {
+      "file": "packages/current-plan/abi/transaction/current117-preparation-02.json",
+      "sha256": "58275743e617ed1d17797ed18cc3029e7146e0fa0cfd527ea45fac1c9dea4349"
+    },
+    {
+      "file": "packages/current-plan/abi/transaction/current117-preparation-03.json",
+      "sha256": "96a24e0ed707318a4d8b74292c4f385faabf7deac77923dddef4c6f286a81e5f"
+    },
+    {
+      "file": "packages/current-plan/abi/transaction/current117-preparation-04-baseline-bound.json",
+      "sha256": "c08f218ae641ff3bc2d62e2507351d8f129b41895587b9b59d93a5ece77a024c"
+    },
+    {
+      "file": "packages/current-plan/abi/transaction/current117-preparation.json",
+      "sha256": "e3a7f3adb5de37b286242051a313be3d03755956fc881a1946a5c0bdd25d7a55"
+    },
+    {
+      "file": "packages/current-plan/abi/transaction/model-baseline-mutation-refusal.json",
+      "sha256": "a1e38ffde97856816eeb4a8235eff9c0d90764744d50ab45329a85ddd3a8cab7"
+    },
+    {
+      "file": "packages/current-plan/abi/transaction/model.py",
+      "sha256": "d4cdb356509c4a52f241490b9a2f6e1a3d15636ed011882d5faf7525075f2e7d"
+    },
+    {
+      "file": "packages/current-plan/abi/transaction/pacman-print-source.json",
+      "sha256": "0b7e58ed2c4094ef13f64d694b71b86f129d1ad1a562946c2aa12abd7f03716e"
+    },
+    {
+      "file": "packages/current-plan/abi/transaction/prepare.c",
+      "sha256": "db37b588924b5ee6c162e216c4b035007944c41f9586eb2601e099ea58580fe5"
+    },
+    {
+      "file": "packages/current-plan/abi/transaction/prepare.py",
+      "sha256": "aad1cd974003400277740a8cb5e9d11e0477e4bedf67395315e823ed09792230"
+    },
+    {
+      "file": "packages/current-plan/abi/transaction/sanitizer-tests.log",
+      "sha256": "b2d7f9a605a4b6bec84526ae2cb8c2aba3b933139e930a7f93a0acc9721941f0"
+    },
+    {
+      "file": "packages/current-plan/abi/transaction/scenario-current117-01.json",
+      "sha256": "2e9f7aa7454611a58891849dd77b46f475db9479f68960044bef6a427b8433e9"
+    },
+    {
+      "file": "packages/current-plan/abi/transaction/scenario-current117-aliases.json",
+      "sha256": "da32c93fc079f1be66fc02c655bc58a2d01f128d09fc7d582e903ef5735bd33e"
     },
     {
       "file": "packages/current-plan/evidence/configured-current-payload-qualification.json",
@@ -1641,11 +1777,11 @@
     },
     {
       "file": "qualification/EVIDENCE.json",
-      "sha256": "76ab828b1f81aad56005e5e9b7545a46669468c13baf523e3eb376de8becc2ef"
+      "sha256": "2973a25f47ea8364bb1e48d84f7f8eff022d028abd4cdaa01a2058681f334d85"
     },
     {
       "file": "qualification/STATUS.md",
-      "sha256": "ab3f78db87bf02a2b59857668cb201fa1c5157857605fca0f2c622250bc269dd"
+      "sha256": "723a6134b3a5e7696e1d7abc4f4ca86e2617b45ef71917edef1b6e5152516a95"
     },
     {
       "file": "qualification/adt-node-comparison.json",

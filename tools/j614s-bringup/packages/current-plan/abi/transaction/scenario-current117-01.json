@@ -1,0 +1,11 @@
+{
+  "schema": 1,
+  "deployable": false,
+  "actions": [],
+  "scope": "hypothetical conflict-removal answers for metadata preparation only; no real removal/install authorization",
+  "allow_conflict_removals": [
+    {"incoming": "dotnet-host-bin", "retained": "dotnet-host"},
+    {"incoming": "mise-bin", "retained": "mise"},
+    {"incoming": "quickshell", "retained": "quickshell-git"}
+  ]
+}

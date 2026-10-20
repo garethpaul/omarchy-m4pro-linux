@@ -1,0 +1,11 @@
+test_actual_libalpm_declines_unlisted_removal (test_prepare.PrepareOnly.test_actual_libalpm_declines_unlisted_removal) ... ok
+test_actual_libalpm_protects_held_removal (test_prepare.PrepareOnly.test_actual_libalpm_protects_held_removal) ... ok
+test_actual_libalpm_rejects_broken_reverse_dependency (test_prepare.PrepareOnly.test_actual_libalpm_rejects_broken_reverse_dependency) ... ok
+test_actual_libalpm_rejects_wrong_architecture (test_prepare.PrepareOnly.test_actual_libalpm_rejects_wrong_architecture) ... ok
+test_actual_libalpm_scenario_removes_only_exact_conflict (test_prepare.PrepareOnly.test_actual_libalpm_scenario_removes_only_exact_conflict) ... ok
+test_helper_has_no_commit_or_sysupgrade_import (test_prepare.PrepareOnly.test_helper_has_no_commit_or_sysupgrade_import) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.253s
+
+OK

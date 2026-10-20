@@ -1,0 +1,42 @@
+{
+  "status": "PARTIAL",
+  "deployable": false,
+  "execution_ready": false,
+  "actions": [],
+  "metadata_preparation": "WORKS: exact117adds and four explicitly hypothetical removals; no commit",
+  "static_link_contracts": "BLOCKED:24new/incoming issue edges remain",
+  "tests": {
+    "ordinary_real_libalpm": 6,
+    "asan_ubsan_real_libalpm": 6,
+    "full_suite": 29,
+    "red": "actual prepare fixture failed against initial not-implemented helper stub"
+  },
+  "protected_installed_pin_count": 20,
+  "held_request_count": 4,
+  "files": {
+    "README.md": "f094963e2fb9c0d2af22ff614e83db7fd8b3ef43c95b1a0bdca875ae1c8cba76",
+    "baseline-before-fix.json": "2b6dc262444986ceba51e6d4277fe246e0bd76c9cb20dc1bd6fc08958f9918da",
+    "baseline-mutation-refusal.json": "5da2ad294874d95241c010a4d832b3da5e76a100d498ed377de4011da60ce9c6",
+    "current117-filesystem-model-baseline-bound.json": "2d2bbbb24fb3ae62db23653506e350c5d437bd37fa3590bc528922d0c8c6e8f2",
+    "current117-filesystem-model.json": "bdc22dea932d68be81acb87ef8a2b7507b8bf389fd6fb8313f43710f2f315645",
+    "current117-preparation-02.json": "58275743e617ed1d17797ed18cc3029e7146e0fa0cfd527ea45fac1c9dea4349",
+    "current117-preparation-03.json": "96a24e0ed707318a4d8b74292c4f385faabf7deac77923dddef4c6f286a81e5f",
+    "current117-preparation-04-baseline-bound.json": "c08f218ae641ff3bc2d62e2507351d8f129b41895587b9b59d93a5ece77a024c",
+    "current117-preparation.json": "e3a7f3adb5de37b286242051a313be3d03755956fc881a1946a5c0bdd25d7a55",
+    "model-baseline-mutation-refusal.json": "a1e38ffde97856816eeb4a8235eff9c0d90764744d50ab45329a85ddd3a8cab7",
+    "model.py": "d4cdb356509c4a52f241490b9a2f6e1a3d15636ed011882d5faf7525075f2e7d",
+    "pacman-print-source.json": "0b7e58ed2c4094ef13f64d694b71b86f129d1ad1a562946c2aa12abd7f03716e",
+    "prepare.c": "db37b588924b5ee6c162e216c4b035007944c41f9586eb2601e099ea58580fe5",
+    "prepare.py": "aad1cd974003400277740a8cb5e9d11e0477e4bedf67395315e823ed09792230",
+    "sanitizer-tests.log": "b2d7f9a605a4b6bec84526ae2cb8c2aba3b933139e930a7f93a0acc9721941f0",
+    "scenario-current117-01.json": "2e9f7aa7454611a58891849dd77b46f475db9479f68960044bef6a427b8433e9",
+    "scenario-current117-aliases.json": "da32c93fc079f1be66fc02c655bc58a2d01f128d09fc7d582e903ef5735bd33e"
+  },
+  "full_baseline_guard": {
+    "count": 986,
+    "digest": "05592373e5f03cfcfeb32ea3dcf0fb835b307e9e1eae75540e670db36e5e1e7e",
+    "actual_old_wrapper_acceptance_reproduced": true,
+    "actual_current_wrapper_mutation_refused": true,
+    "actual_current_model_mutation_refused": true
+  }
+}

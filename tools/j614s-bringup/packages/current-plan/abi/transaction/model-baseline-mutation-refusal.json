@@ -1,0 +1,9 @@
+{
+  "status": "WORKS (actual model CLI negative control)",
+  "method": "Change only reported full baseline digest in a separate copy of actual successful preparation04; run current model.py against unchanged sealed actual image",
+  "observed": "ValueError: prepared baseline does not match all sealed-image local descriptions",
+  "exit_code": 1,
+  "model_output_created": false,
+  "original_preparation_modified": false,
+  "payload_executed": false
+}

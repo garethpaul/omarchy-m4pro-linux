@@ -1,0 +1,212 @@
+#!/bin/sh
+# RAM-only diagnostic PID 1. Never execute this file on the development host.
+export PATH=/bin
+export LC_ALL=C
+umask 077
+mount -t devtmpfs devtmpfs /dev || while :; do sleep 60; done
+exec </dev/console >/dev/console 2>&1
+mount -t proc proc /proc || while :; do sleep 60; done
+mount -t sysfs sysfs /sys || while :; do sleep 60; done
+mount -t tmpfs -o mode=0700,size=16m tmpfs /run || while :; do sleep 60; done
+STATE=REFUSED
+SERIAL_READY=0
+PROBE_STARTED=0
+. /lib/probe-state.sh
+report() {
+    printf 'J614S_PROBE: %s\n' "$*"
+    printf 'J614S_PROBE: %s\n' "$*" >> /run/probe.log
+}
+# Responses are bounded and cancellable if the USB host disconnects.
+send_file() { timeout 3 cat "$1" >&3; }
+reply() { printf '%s\n' "$*" > /run/reply; send_file /run/reply; }
+report 'EARLY_INIT; no watchdog recovery is armed or assumed'
+report 'No storage mounts, write workloads, network services or automatic reboot'
+report "CPU online=$(cat /sys/devices/system/cpu/online) present=$(cat /sys/devices/system/cpu/present)"
+
+platform_guard() {
+    [ "$(uname -m)" = aarch64 ] || return 1
+    [ "$(uname -r)" = "$(cat /etc/expected-release)" ] || return 1
+    tr '\000' '\n' < /sys/firmware/devicetree/base/compatible > /run/compatible || return 1
+    grep -qx 'apple,j614s' /run/compatible || return 1
+    grep -qx 'apple,t6040' /run/compatible || return 1
+    gzip -dc /proc/config.gz > /run/config || return 1
+    actual=$(sha256sum /run/config) || return 1
+    [ "${actual%% *}" = "$(cat /etc/expected-config-sha256)" ] || return 1
+}
+hardware_guard() {
+    platform_guard || return 1
+    [ "$(cat /sys/devices/system/cpu/online)" = 0-11 ] || return 1
+    [ "$(cat /sys/devices/system/cpu/present)" = 0-11 ] || return 1
+    # procfs file sizes are not meaningful: read the contents.
+    [ -z "$(cat /proc/modules)" ] || return 1
+    for p in /sys/class/block/nvme*; do [ ! -e "$p/dev" ] || return 1; done
+}
+
+snapshot() {
+    {
+        printf 'STATE=%s PROBE_STARTED=%s\n' "$STATE" "$PROBE_STARTED"
+        uname -a
+        for n in online present possible; do
+            printf 'CPU_%s=' "$n"; cat "/sys/devices/system/cpu/$n"
+        done
+        printf '\nMODULES\n'; cat /proc/modules
+        printf '\nUSB_STATE\n'; cat /sys/class/udc/38a280000.usb/state
+        printf '\nREAD_ONLY_GUARD\n'; cat /run/ro-status 2>/dev/null
+        if [ -e /run/ro-failed ]; then printf 'STICKY_RO_FAILURE=1\n'; fi
+        cat /run/ro-first-error /run/ro-errors 2>/dev/null
+        printf '\nBLOCK_DEVICES_AND_COUNTERS\n'
+        for p in /sys/class/block/nvme*; do
+            [ -e "$p/dev" ] || continue
+            printf '%s dev=' "${p##*/}"; cat "$p/dev"
+            printf 'ro='; cat "$p/ro"
+            printf 'stat='; cat "$p/stat"
+        done
+        printf '\nDMESG (includes admission/ownership refusal)\n'; dmesg
+    } > "${1:-/run/status}" 2>&1
+}
+
+# UEVENT_HELPER is disabled in the pinned kernel. Poll devtmpfs every 50ms,
+# including partition devices. This is not an atomic kernel RO-at-creation claim.
+# No userspace storage consumers or automatic module/partition mount helpers run.
+ro_guard() {
+    failures=0
+    while :; do
+        failed=0; count=0
+        for p in /sys/class/block/nvme*; do
+            [ -e "$p/dev" ] || continue
+            count=$((count + 1)); dev=/dev/${p##*/}
+            if [ ! -b "$dev" ] || ! blockdev --setro "$dev" ||
+               [ "$(blockdev --getro "$dev")" != 1 ] || [ "$(cat "$p/ro")" != 1 ]; then
+                failed=1
+                failures=$((failures + 1))
+                printf '%s RO enforcement failed or device not ready\n' "${p##*/}" > /run/ro-errors
+                if [ ! -e /run/ro-failed ]; then
+                    cat /run/ro-errors > /run/ro-first-error
+                    : > /run/ro-failed
+                    report "BLOCKED: sticky RO failure; $(cat /run/ro-first-error)"
+                fi
+            fi
+        done
+        printf 'devices=%s current_failed=%s cumulative_failures=%s\n' "$count" "$failed" "$failures" > /run/ro-status.next
+        mv /run/ro-status.next /run/ro-status
+        # Acknowledge only after the first actual scan and status publication.
+        [ -e /run/ro-ready ] || : > /run/ro-ready
+        usleep 50000
+    done
+}
+
+probe() {
+    # Called only after physical host configured, opened ACM, and sent "probe".
+    if [ "$PROBE_STARTED" != 0 ]; then reply 'REFUSED: probe is single-shot'; return; fi
+    if ! hardware_guard; then
+        report 'REFUSED: board/CPU/release/config/preloaded-device guard';
+        reply 'REFUSED: guard failed; status and dmesg remain available'; return
+    fi
+    snapshot /run/before.status
+    cat /run/before.status
+    PROBE_STARTED=1
+    ro_guard &
+    GUARD_PID=$!
+    STATE=PROBING
+    report 'PROBE_STARTED; waiting for guardian first-scan acknowledgement'
+    # Keep the physical command dispatcher responsive if module init blocks.
+    (
+        ready=0; attempts=0
+        while [ "$attempts" -lt 40 ]; do
+            if [ -e /run/ro-ready ] && kill -0 "$GUARD_PID" 2>/dev/null; then ready=1; break; fi
+            attempts=$((attempts + 1)); usleep 50000
+        done
+        if [ "$ready" != 1 ] || [ -e /run/ro-failed ]; then
+            report 'BLOCKED: guardian unavailable or sticky failure before modules; no NVMe load'
+            printf '%s\n' FINISHED > /run/probe-finished
+            exit 0
+        fi
+        report 'GUARDIAN_ACKNOWLEDGED; loading the two NVMe modules once'
+        if insmod /lib/modules/nvme-core.ko && insmod /lib/modules/nvme-apple.ko; then
+            sleep 2
+            count=0; failed=0
+            for p in /sys/class/block/nvme*; do
+                [ -e "$p/dev" ] || continue
+                count=$((count + 1))
+                [ "$(cat "$p/ro")" = 1 ] && [ "$(blockdev --getro "/dev/${p##*/}")" = 1 ] || failed=1
+            done
+            if ! kill -0 "$GUARD_PID" 2>/dev/null; then
+                : > /run/ro-failed
+                report 'BLOCKED: guardian process lost; sticky RO failure'
+            fi
+            sticky=0; [ ! -e /run/ro-failed ] || sticky=1
+            classification=$(classify_ro "$count" "$failed" "$sticky")
+            case "$classification" in
+                ENUMERATED_RO) report 'ENUMERATED_RO: current devices asserted RO and no recorded guardian failure; no read workload run' ;;
+                PARTIAL) report 'PARTIAL: modules loaded but no NVMe block device; inspect dmesg/refusal' ;;
+                *) report 'BLOCKED: current or sticky RO assertion failure; no storage workloads permitted' ;;
+            esac
+        else
+            report 'BLOCKED: module load failed; serial diagnostics retained'
+        fi
+        snapshot /run/after.status
+        cat /run/after.status
+        printf '%s\n' FINISHED > /run/probe-finished
+    ) &
+    reply 'Probe started asynchronously; use status, logs or dmesg; never retry/remove/reset'
+}
+
+# Existing tested diagnostic UDC identity is reused, not inferred from first glob.
+# This new ACM function and kernel combination still require supervised validation.
+if platform_guard && mount -t configfs configfs /sys/kernel/config; then
+    G=/sys/kernel/config/usb_gadget/j614s_ro_probe
+    if [ -d /sys/class/udc/38a280000.usb ] &&
+       [ "$(ls /sys/class/udc | wc -l)" = 1 ] &&
+       mkdir "$G" &&
+       printf 0x1d6b > "$G/idVendor" && printf 0x0104 > "$G/idProduct" &&
+       mkdir -p "$G/strings/0x409" "$G/configs/c.1/strings/0x409" &&
+       printf 'J614s supervised RAM-only probe' > "$G/strings/0x409/product" &&
+       printf 'J614S-RO-PROBE-8F2F3D13' > "$G/strings/0x409/serialnumber" &&
+       printf 'CDC ACM diagnostics only' > "$G/configs/c.1/strings/0x409/configuration" &&
+       mkdir "$G/functions/acm.usb0" &&
+       ln -s "$G/functions/acm.usb0" "$G/configs/c.1/acm.usb0" &&
+       printf 38a280000.usb > "$G/UDC"; then
+        STATE=WAITING_FOR_PHYSICAL_SERIAL
+        report 'ACM bound; waiting for configured host and explicit serial probe command'
+    else
+        report 'BLOCKED: exact UDC or configfs ACM setup failed; no NVMe loaded'
+    fi
+else
+    report 'BLOCKED: hardware guard or configfs failed; no NVMe loaded'
+fi
+
+# PID 1 remains alive. Failures do not trigger watchdog/reboot or detach hardware.
+while :; do
+    if [ "$PROBE_STARTED" = 1 ] && [ ! -e /run/ro-failed ] && ! kill -0 "$GUARD_PID" 2>/dev/null; then
+        : > /run/ro-failed
+        report 'BLOCKED: guardian process lost; sticky RO failure'
+    fi
+    if [ -e /run/probe-finished ]; then STATE=FINISHED; fi
+    if [ "$STATE" = REFUSED ]; then sleep 10; continue; fi
+    if [ "$(cat /sys/class/udc/38a280000.usb/state 2>/dev/null)" != configured ]; then
+        if [ "$SERIAL_READY" = 1 ]; then exec 3>&-; SERIAL_READY=0; fi
+        sleep 1; continue
+    fi
+    if [ "$SERIAL_READY" = 0 ]; then
+        exec 3<>/dev/ttyGS0
+        stty -F /dev/ttyGS0 raw -echo || { sleep 1; continue; }
+        SERIAL_READY=1
+        reply 'J614S physical diagnostic channel. Commands: help status before after logs dmesg probe'
+    fi
+    if IFS= read -r -n 64 -t 2 command <&3; then
+        # Bound accepted commands; never eval or execute received text.
+        case "$command" in
+            probe) probe ;;
+            status) snapshot; send_file /run/status ;;
+            before) if [ -f /run/before.status ]; then send_file /run/before.status; else reply 'No probe baseline yet'; fi ;;
+            after) if [ -f /run/after.status ]; then send_file /run/after.status; else reply 'No completion snapshot yet'; fi ;;
+            logs) send_file /run/probe.log ;;
+            dmesg) dmesg > /run/dmesg; send_file /run/dmesg ;;
+            help) reply 'help status before after logs dmesg probe (single-shot; enumeration only)' ;;
+            *) reply 'REFUSED: unknown command' ;;
+        esac
+    else
+        # EOF can persist while UDC still says configured; avoid a busy loop.
+        usleep 100000
+    fi
+ done

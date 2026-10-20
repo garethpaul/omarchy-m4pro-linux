@@ -1,0 +1,47 @@
+{
+  "schema": 1,
+  "status": "PARTIAL (source/config inspection only)",
+  "source_commit": "8f2f3d13600aacadd93d577855b7e212b8ae57ff",
+  "config_sha256": "6c5aba7745d918c528300c5a395fcd7db0c2b718acda7d1467af2816a8d56516",
+  "configuration": [
+    "# CONFIG_WATCHDOG_HANDLE_BOOT_ENABLED is not set",
+    "CONFIG_WATCHDOG_OPEN_TIMEOUT=15",
+    "CONFIG_APPLE_WATCHDOG=y"
+  ],
+  "files": {
+    "drivers/watchdog/apple_wdt.c": "937beceb5183621e9241c3a9c1b7c63877b0d5f2da383759390593fd420a22ec",
+    "drivers/watchdog/watchdog_dev.c": "0b6958a598045e4c64b54632a98efb8bbc87a3783b93ae865ed0ea0a5cfc7932",
+    "drivers/watchdog/Makefile": "aa4ea667cf51cd2a04cc106cfe111db3ec01b7f605fe9eb0573dbdcce8a161e6"
+  },
+  "observations": [
+    "apple_wdt_probe detects WD1 running, initializes timeout from firmware/DT, then calls apple_wdt_set_timeout before registration. set_timeout resets current-time and replaces bite-time; an earlier loader deadline cannot be assumed to survive probe unchanged.",
+    "watchdog registration starts its pre-userspace ping timer only when handle_boot_enabled is true. The exact candidate configuration defaults it false; an explicit boot parameter can override that default.",
+    "The open_timeout default is15 seconds, not zero. It is not independent remote recovery proof; no new DT/boot command line has been qualified.",
+    "A kernel watchdog worker, userspace process or firmware can change effective behavior. These source observations do not establish the cause of any previous failed recovery or demonstrate any hardware deadline."
+  ],
+  "excerpts": [
+    {
+      "file": "drivers/watchdog/apple_wdt.c",
+      "start_line": 93,
+      "end_line": 106,
+      "text": "}\n\nstatic int apple_wdt_set_timeout(struct watchdog_device *wdd, unsigned int s)\n{\n\tstruct apple_wdt *wdt = to_apple_wdt(wdd);\n\tu32 actual;\n\n\twritel_relaxed(0, wdt->regs + APPLE_WDT_WD1_CUR_TIME);\n\n\tactual = min(s, wdd->max_hw_heartbeat_ms / 1000);\n\twritel_relaxed(wdt->clk_rate * actual, wdt->regs + APPLE_WDT_WD1_BITE_TIME);\n\n\twdd->timeout = s;\n"
+    },
+    {
+      "file": "drivers/watchdog/apple_wdt.c",
+      "start_line": 185,
+      "end_line": 207,
+      "text": "\n\twdt_ctrl = readl_relaxed(wdt->regs + APPLE_WDT_WD1_CTRL);\n\tif (wdt_ctrl & APPLE_WDT_CTRL_RESET_EN)\n\t\tset_bit(WDOG_HW_RUNNING, &wdt->wdd.status);\n\n\twatchdog_init_timeout(&wdt->wdd, 0, dev);\n\tapple_wdt_set_timeout(&wdt->wdd, wdt->wdd.timeout);\n\twatchdog_stop_on_unregister(&wdt->wdd);\n\twatchdog_set_restart_priority(&wdt->wdd, 128);\n\n\treturn devm_watchdog_register_device(dev, &wdt->wdd);\n}\n\nstatic int apple_wdt_resume(struct device *dev)\n{\n\tstruct apple_wdt *wdt = dev_get_drvdata(dev);\n\n\tif (watchdog_active(&wdt->wdd) || watchdog_hw_running(&wdt->wdd))\n\t\tapple_wdt_start(&wdt->wdd);\n\n\treturn 0;\n}\n"
+    },
+    {
+      "file": "drivers/watchdog/watchdog_dev.c",
+      "start_line": 1088,
+      "end_line": 1106,
+      "text": "\twatchdog_set_open_deadline(wd_data);\n\n\t/*\n\t * If the watchdog is running, prevent its driver from being unloaded,\n\t * and schedule an immediate ping.\n\t */\n\tif (watchdog_hw_running(wdd)) {\n\t\t__module_get(wdd->ops->owner);\n\t\tget_device(&wd_data->dev);\n\t\tif (handle_boot_enabled)\n\t\t\thrtimer_start(&wd_data->timer, 0,\n\t\t\t\t      HRTIMER_MODE_REL_HARD);\n\t\telse\n\t\t\tpr_info(\"watchdog%d running and kernel based pre-userspace handler disabled\\n\",\n\t\t\t\twdd->id);\n\t}\n\n\treturn 0;\n}"
+    }
+  ],
+  "hardware_tested": false,
+  "watchdog_written": false,
+  "boot_performed": false,
+  "recovery_verified": false,
+  "decision": "Keep unattended boot blocked. A supervised test still needs independently reviewed concrete loader/DT/kernel/initrd inputs and a physically available recovery operator."
+}

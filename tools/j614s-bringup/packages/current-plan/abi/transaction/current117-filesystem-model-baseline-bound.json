@@ -1,0 +1,3657 @@
+{
+  "accepted_hypothetical_removals": [
+    {
+      "name": "quickshell-git",
+      "repository": "local",
+      "version": "0.3.0.r20.g28771c7-2"
+    },
+    {
+      "name": "mise",
+      "repository": "local",
+      "version": "2026.9.4-1"
+    },
+    {
+      "name": "dotnet-runtime",
+      "repository": "local",
+      "version": "10.0.11.sdk400-1"
+    },
+    {
+      "name": "dotnet-host",
+      "repository": "local",
+      "version": "10.0.11.sdk400-1"
+    }
+  ],
+  "actions": [],
+  "baseline_description_identity": {
+    "count": 986,
+    "digest": "05592373e5f03cfcfeb32ea3dcf0fb835b307e9e1eae75540e670db36e5e1e7e"
+  },
+  "baseline_identity_helper_sha256": "ca3de64f4e7304c0b1d0d26bb26b511a7c45775d023f3b42547972f993b463b4",
+  "baseline_qualification_sha256": "d63559fc4cad4c7e3974cbc71acaee9ddfc9d1b4b6d67b6eff13e44a17d16eb7",
+  "cache_provenance": {
+    "baseline": {
+      "filename": "baseline-f0d90cfc372081264bc3eda9e17fd9b8159c94d786ea6b1a34eaf53813fc0862.json.gz",
+      "sha256": "b5a5ed4d50ae41a931544eae10cac12734f8b7e4b92c3beaa41fa6902f8639fe"
+    },
+    "incoming": {
+      "filename": "model-incoming-140046b8000e482612481aba40485c548bf2b15194c90045879bb6c70ebc0f9d.json.gz",
+      "sha256": "071be3d7bd98e35220d349e808af33609ede5b567915fb636e87938b74b07732"
+    }
+  },
+  "counts": {
+    "baseline_packages": 986,
+    "direct_edges_checked": 12596,
+    "incoming_ELF_machines": {
+      "183": 1255,
+      "62": 1
+    },
+    "incoming_ELFs": 1256,
+    "incoming_file_collisions": 0,
+    "new_or_incoming_issue_edges": 24,
+    "parse_gaps": 344,
+    "prepared_removals": 4,
+    "preserved_issue_edges": 52,
+    "resolution_gaps": 0,
+    "resulting_ELFs": 9532,
+    "retained_owner_path_collisions": 0,
+    "selected_packages": 117,
+    "untouched_reverse_consumers": 327
+  },
+  "data_parser_source_sha256": "21be9986ede57f06818c8ab70ebddd1dc1e20650e989e871176c43c31c670060",
+  "deployable": false,
+  "execution_ready": false,
+  "filesystem_model": "Exact successful normal libalpm metadata add/remove scenario over sealed image; still a virtual model, no actual installation",
+  "held_request_count": 4,
+  "image": {
+    "bytes": 14344519680,
+    "root": 256,
+    "sha256": "f6ceb11ef79914eaa10cc07637c929a99afe5982d216d8b89905c86e863b2491"
+  },
+  "incoming_file_collisions": [],
+  "limits": [
+    "Normal dependency/conflict preparation does not commit, validate all file conflicts, execute hooks/scripts, or establish runtime ABI.",
+    "Static resolution remains bounded to all incoming ELFs and retained usr/bin,usr/lib,usr/libexec,opt; original audited resolver limitations remain.",
+    "Removal-hook operation matching is UNTESTED; incoming qualification retains its boot-generation blockers.",
+    "No source-candidate unsigned package can replace a signed frozen row in this model.",
+    "Protected holds, boot hooks, original boot/recovery and actual hardware acceptance remain BLOCKED."
+  ],
+  "model_source_sha256": "d4cdb356509c4a52f241490b9a2f6e1a3d15636ed011882d5faf7525075f2e7d",
+  "new_or_incoming_issues": [
+    {
+      "baseline_issues": null,
+      "consumer": "usr/bin/evince",
+      "consumer_owner": "evince",
+      "introduced_issue_set": [
+        "unresolved_needed"
+      ],
+      "issues": [
+        "unresolved_needed"
+      ],
+      "needed": "libgnome-desktop-3.so.21",
+      "provider": null,
+      "provider_owner": null,
+      "resolution_gap": null
+    },
+    {
+      "baseline_issues": null,
+      "consumer": "usr/lib/GraphicsMagick-1.3.49/modules-Q16/coders/jbig.so",
+      "consumer_owner": "graphicsmagick",
+      "introduced_issue_set": [
+        "unresolved_needed"
+      ],
+      "issues": [
+        "unresolved_needed"
+      ],
+      "needed": "libjbig.so.2.2",
+      "provider": null,
+      "provider_owner": null,
+      "resolution_gap": null
+    },
+    {
+      "baseline_issues": null,
+      "consumer": "usr/lib/GraphicsMagick-1.3.49/modules-Q16/coders/wmf.so",
+      "consumer_owner": "graphicsmagick",
+      "introduced_issue_set": [
+        "unresolved_needed"
+      ],
+      "issues": [
+        "unresolved_needed"
+      ],
+      "needed": "libwmflite-0.2.so.7",
+      "provider": null,
+      "provider_owner": null,
+      "resolution_gap": null
+    },
+    {
+      "baseline_issues": null,
+      "consumer": "usr/lib/ImageMagick-7.1.2/modules-Q16HDRI/coders/exr.so",
+      "consumer_owner": "imagemagick",
+      "introduced_issue_set": [
+        "unresolved_needed"
+      ],
+      "issues": [
+        "unresolved_needed"
+      ],
+      "needed": "libOpenEXR-3_5.so.34",
+      "provider": null,
+      "provider_owner": null,
+      "resolution_gap": null
+    },
+    {
+      "baseline_issues": null,
+      "consumer": "usr/lib/ImageMagick-7.1.2/modules-Q16HDRI/coders/exr.so",
+      "consumer_owner": "imagemagick",
+      "introduced_issue_set": [
+        "unresolved_needed"
+      ],
+      "issues": [
+        "unresolved_needed"
+      ],
+      "needed": "libOpenEXRCore-3_5.so.34",
+      "provider": null,
+      "provider_owner": null,
+      "resolution_gap": null
+    },
+    {
+      "baseline_issues": null,
+      "consumer": "usr/lib/ImageMagick-7.1.2/modules-Q16HDRI/coders/jbig.so",
+      "consumer_owner": "imagemagick",
+      "introduced_issue_set": [
+        "unresolved_needed"
+      ],
+      "issues": [
+        "unresolved_needed"
+      ],
+      "needed": "libjbig.so.2.2",
+      "provider": null,
+      "provider_owner": null,
+      "resolution_gap": null
+    },
+    {
+      "baseline_issues": null,
+      "consumer": "usr/lib/gvfsd-nfs",
+      "consumer_owner": "gvfs-nfs",
+      "introduced_issue_set": [
+        "unresolved_needed"
+      ],
+      "issues": [
+        "unresolved_needed"
+      ],
+      "needed": "libnfs.so.17",
+      "provider": null,
+      "provider_owner": null,
+      "resolution_gap": null
+    },
+    {
+      "baseline_issues": null,
+      "consumer": "usr/lib/libFcitx5Qt5DBusAddons.so.5.1.16",
+      "consumer_owner": "fcitx5-qt",
+      "introduced_issue_set": [
+        "unresolved_needed"
+      ],
+      "issues": [
+        "unresolved_needed"
+      ],
+      "needed": "libQt5DBus.so.5",
+      "provider": null,
+      "provider_owner": null,
+      "resolution_gap": null
+    },
+    {
+      "baseline_issues": null,
+      "consumer": "usr/lib/libFcitx5Qt5DBusAddons.so.5.1.16",
+      "consumer_owner": "fcitx5-qt",
+      "introduced_issue_set": [
+        "unresolved_needed"
+      ],
+      "issues": [
+        "unresolved_needed"
+      ],
+      "needed": "libQt5Core.so.5",
+      "provider": null,
+      "provider_owner": null,
+      "resolution_gap": null
+    },
+    {
+      "baseline_issues": null,
+      "consumer": "usr/lib/libFcitx5Qt5WidgetsAddons.so.5.1.16",
+      "consumer_owner": "fcitx5-qt",
+      "introduced_issue_set": [
+        "unresolved_needed"
+      ],
+      "issues": [
+        "unresolved_needed"
+      ],
+      "needed": "libQt5Widgets.so.5",
+      "provider": null,
+      "provider_owner": null,
+      "resolution_gap": null
+    },
+    {
+      "baseline_issues": null,
+      "consumer": "usr/lib/libFcitx5Qt5WidgetsAddons.so.5.1.16",
+      "consumer_owner": "fcitx5-qt",
+      "introduced_issue_set": [
+        "unresolved_needed"
+      ],
+      "issues": [
+        "unresolved_needed"
+      ],
+      "needed": "libQt5Gui.so.5",
+      "provider": null,
+      "provider_owner": null,
+      "resolution_gap": null
+    },
+    {
+      "baseline_issues": null,
+      "consumer": "usr/lib/libFcitx5Qt5WidgetsAddons.so.5.1.16",
+      "consumer_owner": "fcitx5-qt",
+      "introduced_issue_set": [
+        "unresolved_needed"
+      ],
+      "issues": [
+        "unresolved_needed"
+      ],
+      "needed": "libQt5Core.so.5",
+      "provider": null,
+      "provider_owner": null,
+      "resolution_gap": null
+    },
+    {
+      "baseline_issues": [],
+      "consumer": "usr/lib/libQt6NetworkAuth.so.6.11.2",
+      "consumer_owner": "qt6-networkauth",
+      "introduced_issue_set": [
+        "missing_symbol:_ZN14QObjectPrivateC2E16QtPrivate_6_11_2@Qt_6_PRIVATE_API"
+      ],
+      "issues": [
+        "missing_symbol:_ZN14QObjectPrivateC2E16QtPrivate_6_11_2@Qt_6_PRIVATE_API"
+      ],
+      "needed": "libQt6Core.so.6",
+      "provider": "usr/lib/libQt6Core.so.6.12.0",
+      "provider_owner": "qt6-base",
+      "resolution_gap": null
+    },
+    {
+      "baseline_issues": [],
+      "consumer": "usr/lib/libQt6Positioning.so.6.11.2",
+      "consumer_owner": "qt6-positioning",
+      "introduced_issue_set": [
+        "missing_symbol:_ZN14QObjectPrivateC2E16QtPrivate_6_11_2@Qt_6_PRIVATE_API"
+      ],
+      "issues": [
+        "missing_symbol:_ZN14QObjectPrivateC2E16QtPrivate_6_11_2@Qt_6_PRIVATE_API"
+      ],
+      "needed": "libQt6Core.so.6",
+      "provider": "usr/lib/libQt6Core.so.6.12.0",
+      "provider_owner": "qt6-base",
+      "resolution_gap": null
+    },
+    {
+      "baseline_issues": [],
+      "consumer": "usr/lib/libQt6PositioningQuick.so.6.11.2",
+      "consumer_owner": "qt6-positioning",
+      "introduced_issue_set": [
+        "missing_symbol:_ZN14QObjectPrivateC2E16QtPrivate_6_11_2@Qt_6_PRIVATE_API"
+      ],
+      "issues": [
+        "missing_symbol:_ZN14QObjectPrivateC2E16QtPrivate_6_11_2@Qt_6_PRIVATE_API"
+      ],
+      "needed": "libQt6Core.so.6",
+      "provider": "usr/lib/libQt6Core.so.6.12.0",
+      "provider_owner": "qt6-base",
+      "resolution_gap": null
+    },
+    {
+      "baseline_issues": null,
+      "consumer": "usr/lib/libQt6Quick3DSpatialAudio.so.6.12.0",
+      "consumer_owner": "qt6-multimedia",
+      "introduced_issue_set": [
+        "unresolved_needed"
+      ],
+      "issues": [
+        "unresolved_needed"
+      ],
+      "needed": "libQt6Quick3D.so.6",
+      "provider": null,
+      "provider_owner": null,
+      "resolution_gap": null
+    },
+    {
+      "baseline_issues": [],
+      "consumer": "usr/lib/libQt6TextToSpeech.so.6.11.2",
+      "consumer_owner": "qt6-speech",
+      "introduced_issue_set": [
+        "missing_symbol:_ZN14QObjectPrivateC2E16QtPrivate_6_11_2@Qt_6_PRIVATE_API"
+      ],
+      "issues": [
+        "missing_symbol:_ZN14QObjectPrivateC2E16QtPrivate_6_11_2@Qt_6_PRIVATE_API"
+      ],
+      "needed": "libQt6Core.so.6",
+      "provider": "usr/lib/libQt6Core.so.6.12.0",
+      "provider_owner": "qt6-base",
+      "resolution_gap": null
+    },
+    {
+      "baseline_issues": [],
+      "consumer": "usr/lib/libQt6WebChannel.so.6.11.2",
+      "consumer_owner": "qt6-webchannel",
+      "introduced_issue_set": [
+        "missing_symbol:_ZN14QObjectPrivateC2E16QtPrivate_6_11_2@Qt_6_PRIVATE_API"
+      ],
+      "issues": [
+        "missing_symbol:_ZN14QObjectPrivateC2E16QtPrivate_6_11_2@Qt_6_PRIVATE_API"
+      ],
+      "needed": "libQt6Core.so.6",
+      "provider": "usr/lib/libQt6Core.so.6.12.0",
+      "provider_owner": "qt6-base",
+      "resolution_gap": null
+    },
+    {
+      "baseline_issues": [],
+      "consumer": "usr/lib/libQt6WebChannelQuick.so.6.11.2",
+      "consumer_owner": "qt6-webchannel",
+      "introduced_issue_set": [
+        "missing_symbol:_ZN14QObjectPrivateC2E16QtPrivate_6_11_2@Qt_6_PRIVATE_API"
+      ],
+      "issues": [
+        "missing_symbol:_ZN14QObjectPrivateC2E16QtPrivate_6_11_2@Qt_6_PRIVATE_API"
+      ],
+      "needed": "libQt6Core.so.6",
+      "provider": "usr/lib/libQt6Core.so.6.12.0",
+      "provider_owner": "qt6-base",
+      "resolution_gap": null
+    },
+    {
+      "baseline_issues": null,
+      "consumer": "usr/lib/libvips.so.42.20.7",
+      "consumer_owner": "libvips",
+      "introduced_issue_set": [
+        "unresolved_needed"
+      ],
+      "issues": [
+        "unresolved_needed"
+      ],
+      "needed": "libOpenEXR-3_5.so.34",
+      "provider": null,
+      "provider_owner": null,
+      "resolution_gap": null
+    },
+    {
+      "baseline_issues": [],
+      "consumer": "usr/lib/qt6/plugins/multimedia/libffmpegmediaplugin.so",
+      "consumer_owner": "qt6-multimedia-ffmpeg",
+      "introduced_issue_set": [
+        "missing_symbol:_ZN10QtPipeWire16QPipeWireCapture11isSupportedEv@Qt_6_PRIVATE_API",
+        "missing_symbol:_ZN10QtPipeWire16QPipeWireCaptureC1ESt7variantIJ8QPointerI7QScreenE17QCapturableWindowEE@Qt_6_PRIVATE_API",
+        "missing_symbol:_ZN15QPlatformCameraC2EP7QCamera@Qt_6_PRIVATE_API",
+        "missing_symbol:_ZN21QPlatformAudioDecoder15durationChangedEx@Qt_6_PRIVATE_API",
+        "missing_symbol:_ZN21QPlatformAudioDecoder15positionChangedEx@Qt_6_PRIVATE_API"
+      ],
+      "issues": [
+        "missing_symbol:_ZN10QtPipeWire16QPipeWireCapture11isSupportedEv@Qt_6_PRIVATE_API",
+        "missing_symbol:_ZN10QtPipeWire16QPipeWireCaptureC1ESt7variantIJ8QPointerI7QScreenE17QCapturableWindowEE@Qt_6_PRIVATE_API",
+        "missing_symbol:_ZN15QPlatformCameraC2EP7QCamera@Qt_6_PRIVATE_API",
+        "missing_symbol:_ZN21QPlatformAudioDecoder15durationChangedEx@Qt_6_PRIVATE_API",
+        "missing_symbol:_ZN21QPlatformAudioDecoder15positionChangedEx@Qt_6_PRIVATE_API"
+      ],
+      "needed": "libQt6Multimedia.so.6",
+      "provider": "usr/lib/libQt6Multimedia.so.6.12.0",
+      "provider_owner": "qt6-multimedia",
+      "resolution_gap": null
+    },
+    {
+      "baseline_issues": [],
+      "consumer": "usr/lib/qt6/plugins/position/libqtposition_nmea.so",
+      "consumer_owner": "qt6-positioning",
+      "introduced_issue_set": [
+        "missing_symbol:_ZN16QIODevicePrivateC2E16QtPrivate_6_11_2@Qt_6_PRIVATE_API"
+      ],
+      "issues": [
+        "missing_symbol:_ZN16QIODevicePrivateC2E16QtPrivate_6_11_2@Qt_6_PRIVATE_API"
+      ],
+      "needed": "libQt6Core.so.6",
+      "provider": "usr/lib/libQt6Core.so.6.12.0",
+      "provider_owner": "qt6-base",
+      "resolution_gap": null
+    },
+    {
+      "baseline_issues": null,
+      "consumer": "usr/lib/sushi/web-process-extensions/libsushiwebprocessextension.so",
+      "consumer_owner": "sushi",
+      "introduced_issue_set": [
+        "unresolved_needed"
+      ],
+      "issues": [
+        "unresolved_needed"
+      ],
+      "needed": "libwebkitgtk-6.0.so.4",
+      "provider": null,
+      "provider_owner": null,
+      "resolution_gap": null
+    },
+    {
+      "baseline_issues": null,
+      "consumer": "usr/share/dotnet/shared/Microsoft.NETCore.App/10.0.13/libcoreclrtraceptprovider.so",
+      "consumer_owner": "dotnet-runtime-bin",
+      "introduced_issue_set": [
+        "unresolved_needed"
+      ],
+      "issues": [
+        "unresolved_needed"
+      ],
+      "needed": "liblttng-ust.so.0",
+      "provider": null,
+      "provider_owner": null,
+      "resolution_gap": null
+    }
+  ],
+  "parse_gaps": [
+    {
+      "path": "usr/lib/guile/3.0/ccache/rnrs.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/statprof.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/texinfo.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/ice-9/and-let-star.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/ice-9/arrays.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/ice-9/atomic.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/ice-9/binary-ports.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/ice-9/boot-9.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/ice-9/buffered-input.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/ice-9/calling.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/ice-9/command-line.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/ice-9/common-list.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/ice-9/control.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/ice-9/copy-tree.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/ice-9/curried-definitions.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/ice-9/custom-ports.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/ice-9/deprecated.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/ice-9/documentation.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/ice-9/eval-string.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/ice-9/eval.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/ice-9/exceptions.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/ice-9/expect.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/ice-9/fdes-finalizers.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/ice-9/format.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/ice-9/ftw.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/ice-9/futures.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/ice-9/gap-buffer.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/ice-9/getopt-long.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/ice-9/hash-table.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/ice-9/hcons.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/ice-9/history.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/ice-9/i18n.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/ice-9/iconv.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/ice-9/lineio.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/ice-9/list.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/ice-9/local-eval.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/ice-9/ls.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/ice-9/match.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/ice-9/networking.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/ice-9/null.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/ice-9/occam-channel.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/ice-9/optargs.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/ice-9/peg.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/ice-9/poe.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/ice-9/poll.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/ice-9/popen.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/ice-9/ports.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/ice-9/posix.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/ice-9/pretty-print.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/ice-9/psyntax-pp.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/ice-9/q.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/ice-9/r5rs.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/ice-9/rdelim.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/ice-9/readline.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/ice-9/receive.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/ice-9/regex.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/ice-9/runq.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/ice-9/rw.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/ice-9/safe-r5rs.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/ice-9/safe.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/ice-9/sandbox.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/ice-9/save-stack.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/ice-9/scm-style-repl.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/ice-9/serialize.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/ice-9/session.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/ice-9/slib.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/ice-9/soft-ports.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/ice-9/stack-catch.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/ice-9/streams.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/ice-9/string-fun.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/ice-9/suspendable-ports.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/ice-9/textual-ports.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/ice-9/threads.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/ice-9/time.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/ice-9/top-repl.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/ice-9/unicode.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/ice-9/vlist.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/ice-9/weak-vector.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/ice-9/peg/cache.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/ice-9/peg/codegen.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/ice-9/peg/simplify-tree.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/ice-9/peg/string-peg.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/ice-9/peg/using-parsers.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/language/bytecode.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/language/cps.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/language/tree-il.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/language/wisp.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/language/brainfuck/compile-scheme.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/language/brainfuck/compile-tree-il.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/language/brainfuck/parse.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/language/brainfuck/spec.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/language/bytecode/spec.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/language/cps/closure-conversion.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/language/cps/compile-bytecode.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/language/cps/contification.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/language/cps/cse.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/language/cps/dce.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/language/cps/devirtualize-integers.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/language/cps/dump.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/language/cps/effects-analysis.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/language/cps/elide-arity-checks.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/language/cps/graphs.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/language/cps/guile-vm.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/language/cps/intmap.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/language/cps/intset.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/language/cps/licm.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/language/cps/optimize.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/language/cps/peel-loops.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/language/cps/prune-top-level-scopes.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/language/cps/renumber.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/language/cps/return-types.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/language/cps/rotate-loops.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/language/cps/self-references.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/language/cps/simplify.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/language/cps/slot-allocation.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/language/cps/spec.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/language/cps/specialize-numbers.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/language/cps/specialize-primcalls.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/language/cps/split-rec.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/language/cps/switch.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/language/cps/type-checks.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/language/cps/type-fold.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/language/cps/types.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/language/cps/utils.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/language/cps/verify.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/language/cps/with-cps.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/language/cps/guile-vm/loop-instrumentation.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/language/cps/guile-vm/lower-primcalls.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/language/cps/guile-vm/reify-primitives.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/language/ecmascript/array.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/language/ecmascript/base.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/language/ecmascript/compile-tree-il.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/language/ecmascript/function.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/language/ecmascript/impl.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/language/ecmascript/parse.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/language/ecmascript/spec.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/language/ecmascript/tokenize.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/language/elisp/bindings.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/language/elisp/boot.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/language/elisp/compile-tree-il.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/language/elisp/falias.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/language/elisp/lexer.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/language/elisp/parser.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/language/elisp/runtime.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/language/elisp/spec.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/language/elisp/runtime/function-slot.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/language/elisp/runtime/value-slot.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/language/scheme/compile-tree-il.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/language/scheme/decompile-tree-il.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/language/scheme/spec.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/language/tree-il/analyze.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/language/tree-il/compile-bytecode.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/language/tree-il/compile-cps.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/language/tree-il/cps-primitives.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/language/tree-il/debug.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/language/tree-il/demux-lambda.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/language/tree-il/effects.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/language/tree-il/eta-expand.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/language/tree-il/fix-letrec.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/language/tree-il/inlinable-exports.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/language/tree-il/letrectify.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/language/tree-il/optimize.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/language/tree-il/peval.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/language/tree-il/primitives.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/language/tree-il/resolve-free-vars.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/language/tree-il/spec.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/language/value/spec.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/language/wisp/spec.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/oop/goops.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/oop/goops/accessors.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/oop/goops/active-slot.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/oop/goops/composite-slot.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/oop/goops/describe.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/oop/goops/internal.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/oop/goops/keyword-formals.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/oop/goops/save.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/oop/goops/simple.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/oop/goops/stklos.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/rnrs/base.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/rnrs/bytevectors.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/rnrs/conditions.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/rnrs/control.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/rnrs/enums.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/rnrs/eval.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/rnrs/exceptions.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/rnrs/files.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/rnrs/hashtables.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/rnrs/lists.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/rnrs/mutable-pairs.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/rnrs/mutable-strings.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/rnrs/programs.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/rnrs/r5rs.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/rnrs/sorting.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/rnrs/syntax-case.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/rnrs/unicode.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/rnrs/arithmetic/bitwise.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/rnrs/arithmetic/fixnums.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/rnrs/arithmetic/flonums.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/rnrs/bytevectors/gnu.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/rnrs/io/ports.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/rnrs/io/simple.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/rnrs/records/inspection.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/rnrs/records/procedural.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/rnrs/records/syntactic.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/scheme/base.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/scheme/case-lambda.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/scheme/char.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/scheme/complex.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/scheme/cxr.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/scheme/eval.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/scheme/file.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/scheme/inexact.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/scheme/lazy.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/scheme/load.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/scheme/process-context.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/scheme/r5rs.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/scheme/read.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/scheme/repl.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/scheme/time.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/scheme/write.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/scripts/api-diff.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/scripts/autofrisk.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/scripts/compile.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/scripts/disassemble.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/scripts/display-commentary.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/scripts/doc-snarf.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/scripts/frisk.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/scripts/generate-autoload.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/scripts/help.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/scripts/lint.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/scripts/list.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/scripts/punify.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/scripts/read-rfc822.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/scripts/read-scheme-source.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/scripts/read-text-outline.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/scripts/scan-api.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/scripts/snarf-check-and-output-texi.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/scripts/snarf-guile-m4-docs.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/scripts/summarize-guile-TODO.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/scripts/use2dot.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/srfi/srfi-1.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/srfi/srfi-10.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/srfi/srfi-11.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/srfi/srfi-111.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/srfi/srfi-13.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/srfi/srfi-14.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/srfi/srfi-16.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/srfi/srfi-17.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/srfi/srfi-171.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/srfi/srfi-18.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/srfi/srfi-19.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/srfi/srfi-197.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/srfi/srfi-2.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/srfi/srfi-207.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/srfi/srfi-244.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/srfi/srfi-26.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/srfi/srfi-27.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/srfi/srfi-28.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/srfi/srfi-31.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/srfi/srfi-34.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/srfi/srfi-35.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/srfi/srfi-37.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/srfi/srfi-38.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/srfi/srfi-39.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/srfi/srfi-4.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/srfi/srfi-41.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/srfi/srfi-42.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/srfi/srfi-43.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/srfi/srfi-45.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/srfi/srfi-6.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/srfi/srfi-60.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/srfi/srfi-64.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/srfi/srfi-67.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/srfi/srfi-69.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/srfi/srfi-71.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/srfi/srfi-8.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/srfi/srfi-88.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/srfi/srfi-9.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/srfi/srfi-98.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/srfi/srfi-171/gnu.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/srfi/srfi-171/meta.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/srfi/srfi-4/gnu.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/srfi/srfi-64/automake.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/srfi/srfi-9/gnu.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/sxml/apply-templates.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/sxml/fold.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/sxml/match.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/sxml/simple.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/sxml/ssax.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/sxml/transform.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/sxml/xpath.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/sxml/ssax/input-parse.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/system/foreign-library.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/system/foreign-object.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/system/foreign.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/system/syntax.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/system/xref.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/system/base/ck.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/system/base/compile.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/system/base/lalr.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/system/base/language.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/system/base/message.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/system/base/optimize.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/system/base/pmatch.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/system/base/syntax.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/system/base/target.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/system/base/types.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/system/base/types/internal.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/system/repl/command.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/system/repl/common.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/system/repl/coop-server.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/system/repl/debug.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/system/repl/error-handling.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/system/repl/repl.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/system/repl/server.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/system/vm/assembler.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/system/vm/coverage.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/system/vm/debug.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/system/vm/disassembler.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/system/vm/dwarf.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/system/vm/elf.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/system/vm/frame.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/system/vm/inspect.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/system/vm/linker.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/system/vm/loader.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/system/vm/program.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/system/vm/trace.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/system/vm/trap-state.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/system/vm/traps.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/system/vm/vm.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/texinfo/docbook.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/texinfo/html.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/texinfo/indexing.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/texinfo/plain-text.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/texinfo/reflection.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/texinfo/serialize.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/texinfo/string-utils.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/web/client.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/web/http.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/web/request.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/web/response.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/web/server.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/web/uri.go",
+      "reason": "ValueError: bad dynamic section"
+    },
+    {
+      "path": "usr/lib/guile/3.0/ccache/web/server/http.go",
+      "reason": "ValueError: bad dynamic section"
+    }
+  ],
+  "preparation_sha256": "c08f218ae641ff3bc2d62e2507351d8f129b41895587b9b59d93a5ece77a024c",
+  "preserved_issue_edges": [
+    {
+      "baseline_issues": [
+        "unresolved_needed"
+      ],
+      "consumer": "usr/bin/fcitx5-qt5-immodule-probing",
+      "consumer_owner": "fcitx5-qt",
+      "introduced_issue_set": [],
+      "issues": [
+        "unresolved_needed"
+      ],
+      "needed": "libQt5Gui.so.5",
+      "provider": null,
+      "provider_owner": null,
+      "resolution_gap": null
+    },
+    {
+      "baseline_issues": [
+        "unresolved_needed"
+      ],
+      "consumer": "usr/bin/fcitx5-qt5-immodule-probing",
+      "consumer_owner": "fcitx5-qt",
+      "introduced_issue_set": [],
+      "issues": [
+        "unresolved_needed"
+      ],
+      "needed": "libQt5Core.so.5",
+      "provider": null,
+      "provider_owner": null,
+      "resolution_gap": null
+    },
+    {
+      "baseline_issues": [
+        "unresolved_needed"
+      ],
+      "consumer": "usr/bin/zbarcam-qt",
+      "consumer_owner": "zbar",
+      "introduced_issue_set": [],
+      "issues": [
+        "unresolved_needed"
+      ],
+      "needed": "libQt5Core.so.5",
+      "provider": null,
+      "provider_owner": null,
+      "resolution_gap": null
+    },
+    {
+      "baseline_issues": [
+        "unresolved_needed"
+      ],
+      "consumer": "usr/bin/zbarcam-qt",
+      "consumer_owner": "zbar",
+      "introduced_issue_set": [],
+      "issues": [
+        "unresolved_needed"
+      ],
+      "needed": "libQt5Gui.so.5",
+      "provider": null,
+      "provider_owner": null,
+      "resolution_gap": null
+    },
+    {
+      "baseline_issues": [
+        "unresolved_needed"
+      ],
+      "consumer": "usr/bin/zbarcam-qt",
+      "consumer_owner": "zbar",
+      "introduced_issue_set": [],
+      "issues": [
+        "unresolved_needed"
+      ],
+      "needed": "libQt5Widgets.so.5",
+      "provider": null,
+      "provider_owner": null,
+      "resolution_gap": null
+    },
+    {
+      "baseline_issues": [
+        "unresolved_needed"
+      ],
+      "consumer": "usr/lib/ImageMagick-7.1.2/modules-Q16HDRI/coders/uhdr.so",
+      "consumer_owner": "imagemagick",
+      "introduced_issue_set": [],
+      "issues": [
+        "unresolved_needed"
+      ],
+      "needed": "libuhdr.so.2",
+      "provider": null,
+      "provider_owner": null,
+      "resolution_gap": null
+    },
+    {
+      "baseline_issues": [
+        "unresolved_needed"
+      ],
+      "consumer": "usr/lib/ImageMagick-7.1.2/modules-Q16HDRI/coders/wmf.so",
+      "consumer_owner": "imagemagick",
+      "introduced_issue_set": [],
+      "issues": [
+        "unresolved_needed"
+      ],
+      "needed": "libwmflite-0.2.so.7",
+      "provider": null,
+      "provider_owner": null,
+      "resolution_gap": null
+    },
+    {
+      "baseline_issues": [
+        "unresolved_needed"
+      ],
+      "consumer": "usr/lib/evince/4/backends/libdvidocument.so",
+      "consumer_owner": "evince",
+      "introduced_issue_set": [],
+      "issues": [
+        "unresolved_needed"
+      ],
+      "needed": "libkpathsea.so.6",
+      "provider": null,
+      "provider_owner": null,
+      "resolution_gap": null
+    },
+    {
+      "baseline_issues": [
+        "unresolved_needed"
+      ],
+      "consumer": "usr/lib/fcitx5-qt5-gui-wrapper",
+      "consumer_owner": "fcitx5-qt",
+      "introduced_issue_set": [],
+      "issues": [
+        "unresolved_needed"
+      ],
+      "needed": "libQt5DBus.so.5",
+      "provider": null,
+      "provider_owner": null,
+      "resolution_gap": null
+    },
+    {
+      "baseline_issues": [
+        "unresolved_needed"
+      ],
+      "consumer": "usr/lib/fcitx5-qt5-gui-wrapper",
+      "consumer_owner": "fcitx5-qt",
+      "introduced_issue_set": [],
+      "issues": [
+        "unresolved_needed"
+      ],
+      "needed": "libQt5Widgets.so.5",
+      "provider": null,
+      "provider_owner": null,
+      "resolution_gap": null
+    },
+    {
+      "baseline_issues": [
+        "unresolved_needed"
+      ],
+      "consumer": "usr/lib/fcitx5-qt5-gui-wrapper",
+      "consumer_owner": "fcitx5-qt",
+      "introduced_issue_set": [],
+      "issues": [
+        "unresolved_needed"
+      ],
+      "needed": "libQt5Gui.so.5",
+      "provider": null,
+      "provider_owner": null,
+      "resolution_gap": null
+    },
+    {
+      "baseline_issues": [
+        "unresolved_needed"
+      ],
+      "consumer": "usr/lib/fcitx5-qt5-gui-wrapper",
+      "consumer_owner": "fcitx5-qt",
+      "introduced_issue_set": [],
+      "issues": [
+        "unresolved_needed"
+      ],
+      "needed": "libQt5Core.so.5",
+      "provider": null,
+      "provider_owner": null,
+      "resolution_gap": null
+    },
+    {
+      "baseline_issues": [
+        "unresolved_needed"
+      ],
+      "consumer": "usr/lib/libreoffice/program/liblnthlo.so",
+      "consumer_owner": "libreoffice-fresh",
+      "introduced_issue_set": [],
+      "issues": [
+        "unresolved_needed"
+      ],
+      "needed": "libmythes-1.2.so.0",
+      "provider": null,
+      "provider_owner": null,
+      "resolution_gap": null
+    },
+    {
+      "baseline_issues": [
+        "unresolved_needed"
+      ],
+      "consumer": "usr/lib/libreoffice/program/libofficebean.so",
+      "consumer_owner": "libreoffice-fresh",
+      "introduced_issue_set": [],
+      "issues": [
+        "unresolved_needed"
+      ],
+      "needed": "libjawt.so",
+      "provider": null,
+      "provider_owner": null,
+      "resolution_gap": null
+    },
+    {
+      "baseline_issues": [
+        "unresolved_needed"
+      ],
+      "consumer": "usr/lib/libreoffice/program/libsolverlo.so",
+      "consumer_owner": "libreoffice-fresh",
+      "introduced_issue_set": [],
+      "issues": [
+        "unresolved_needed"
+      ],
+      "needed": "libCoinMP.so.1",
+      "provider": null,
+      "provider_owner": null,
+      "resolution_gap": null
+    },
+    {
+      "baseline_issues": [
+        "unresolved_needed"
+      ],
+      "consumer": "usr/lib/libreoffice/program/libsolverlo.so",
+      "consumer_owner": "libreoffice-fresh",
+      "introduced_issue_set": [],
+      "issues": [
+        "unresolved_needed"
+      ],
+      "needed": "libCbcSolver.so.3",
+      "provider": null,
+      "provider_owner": null,
+      "resolution_gap": null
+    },
+    {
+      "baseline_issues": [
+        "unresolved_needed"
+      ],
+      "consumer": "usr/lib/libreoffice/program/libwpftdrawlo.so",
+      "consumer_owner": "libreoffice-fresh",
+      "introduced_issue_set": [],
+      "issues": [
+        "unresolved_needed"
+      ],
+      "needed": "libwpg-0.3.so.3",
+      "provider": null,
+      "provider_owner": null,
+      "resolution_gap": null
+    },
+    {
+      "baseline_issues": [
+        "unresolved_needed"
+      ],
+      "consumer": "usr/lib/libreoffice/program/libwpftwriterlo.so",
+      "consumer_owner": "libreoffice-fresh",
+      "introduced_issue_set": [],
+      "issues": [
+        "unresolved_needed"
+      ],
+      "needed": "libwpg-0.3.so.3",
+      "provider": null,
+      "provider_owner": null,
+      "resolution_gap": null
+    },
+    {
+      "baseline_issues": [
+        "unresolved_needed"
+      ],
+      "consumer": "usr/lib/libzbarqt.so.0.1.2",
+      "consumer_owner": "zbar",
+      "introduced_issue_set": [],
+      "issues": [
+        "unresolved_needed"
+      ],
+      "needed": "libQt5Core.so.5",
+      "provider": null,
+      "provider_owner": null,
+      "resolution_gap": null
+    },
+    {
+      "baseline_issues": [
+        "unresolved_needed"
+      ],
+      "consumer": "usr/lib/libzbarqt.so.0.1.2",
+      "consumer_owner": "zbar",
+      "introduced_issue_set": [],
+      "issues": [
+        "unresolved_needed"
+      ],
+      "needed": "libQt5Gui.so.5",
+      "provider": null,
+      "provider_owner": null,
+      "resolution_gap": null
+    },
+    {
+      "baseline_issues": [
+        "unresolved_needed"
+      ],
+      "consumer": "usr/lib/libzbarqt.so.0.1.2",
+      "consumer_owner": "zbar",
+      "introduced_issue_set": [],
+      "issues": [
+        "unresolved_needed"
+      ],
+      "needed": "libQt5Widgets.so.5",
+      "provider": null,
+      "provider_owner": null,
+      "resolution_gap": null
+    },
+    {
+      "baseline_issues": [
+        "unresolved_needed"
+      ],
+      "consumer": "usr/lib/libzbarqt.so.0.1.2",
+      "consumer_owner": "zbar",
+      "introduced_issue_set": [],
+      "issues": [
+        "unresolved_needed"
+      ],
+      "needed": "libQt5X11Extras.so.5",
+      "provider": null,
+      "provider_owner": null,
+      "resolution_gap": null
+    },
+    {
+      "baseline_issues": [
+        "unresolved_needed"
+      ],
+      "consumer": "usr/lib/python3.14/site-packages/KCoreAddons.cpython-314-aarch64-linux-gnu.so",
+      "consumer_owner": "kcoreaddons",
+      "introduced_issue_set": [],
+      "issues": [
+        "unresolved_needed"
+      ],
+      "needed": "libpyside6.cpython-314-aarch64-linux-gnu.so.6.11",
+      "provider": null,
+      "provider_owner": null,
+      "resolution_gap": null
+    },
+    {
+      "baseline_issues": [
+        "unresolved_needed"
+      ],
+      "consumer": "usr/lib/python3.14/site-packages/KCoreAddons.cpython-314-aarch64-linux-gnu.so",
+      "consumer_owner": "kcoreaddons",
+      "introduced_issue_set": [],
+      "issues": [
+        "unresolved_needed"
+      ],
+      "needed": "libshiboken6.cpython-314-aarch64-linux-gnu.so.6.11",
+      "provider": null,
+      "provider_owner": null,
+      "resolution_gap": null
+    },
+    {
+      "baseline_issues": [
+        "unresolved_needed"
+      ],
+      "consumer": "usr/lib/python3.14/site-packages/KGuiAddons.cpython-314-aarch64-linux-gnu.so",
+      "consumer_owner": "kguiaddons",
+      "introduced_issue_set": [],
+      "issues": [
+        "unresolved_needed"
+      ],
+      "needed": "libpyside6.cpython-314-aarch64-linux-gnu.so.6.11",
+      "provider": null,
+      "provider_owner": null,
+      "resolution_gap": null
+    },
+    {
+      "baseline_issues": [
+        "unresolved_needed"
+      ],
+      "consumer": "usr/lib/python3.14/site-packages/KGuiAddons.cpython-314-aarch64-linux-gnu.so",
+      "consumer_owner": "kguiaddons",
+      "introduced_issue_set": [],
+      "issues": [
+        "unresolved_needed"
+      ],
+      "needed": "libshiboken6.cpython-314-aarch64-linux-gnu.so.6.11",
+      "provider": null,
+      "provider_owner": null,
+      "resolution_gap": null
+    },
+    {
+      "baseline_issues": [
+        "unresolved_needed"
+      ],
+      "consumer": "usr/lib/python3.14/site-packages/KJobWidgets.cpython-314-aarch64-linux-gnu.so",
+      "consumer_owner": "kjobwidgets",
+      "introduced_issue_set": [],
+      "issues": [
+        "unresolved_needed"
+      ],
+      "needed": "libpyside6.cpython-314-aarch64-linux-gnu.so.6.11",
+      "provider": null,
+      "provider_owner": null,
+      "resolution_gap": null
+    },
+    {
+      "baseline_issues": [
+        "unresolved_needed"
+      ],
+      "consumer": "usr/lib/python3.14/site-packages/KJobWidgets.cpython-314-aarch64-linux-gnu.so",
+      "consumer_owner": "kjobwidgets",
+      "introduced_issue_set": [],
+      "issues": [
+        "unresolved_needed"
+      ],
+      "needed": "libshiboken6.cpython-314-aarch64-linux-gnu.so.6.11",
+      "provider": null,
+      "provider_owner": null,
+      "resolution_gap": null
+    },
+    {
+      "baseline_issues": [
+        "unresolved_needed"
+      ],
+      "consumer": "usr/lib/python3.14/site-packages/KNotifications.cpython-314-aarch64-linux-gnu.so",
+      "consumer_owner": "knotifications",
+      "introduced_issue_set": [],
+      "issues": [
+        "unresolved_needed"
+      ],
+      "needed": "libpyside6.cpython-314-aarch64-linux-gnu.so.6.11",
+      "provider": null,
+      "provider_owner": null,
+      "resolution_gap": null
+    },
+    {
+      "baseline_issues": [
+        "unresolved_needed"
+      ],
+      "consumer": "usr/lib/python3.14/site-packages/KNotifications.cpython-314-aarch64-linux-gnu.so",
+      "consumer_owner": "knotifications",
+      "introduced_issue_set": [],
+      "issues": [
+        "unresolved_needed"
+      ],
+      "needed": "libshiboken6.cpython-314-aarch64-linux-gnu.so.6.11",
+      "provider": null,
+      "provider_owner": null,
+      "resolution_gap": null
+    },
+    {
+      "baseline_issues": [
+        "unresolved_needed"
+      ],
+      "consumer": "usr/lib/python3.14/site-packages/KWidgetsAddons.cpython-314-aarch64-linux-gnu.so",
+      "consumer_owner": "kwidgetsaddons",
+      "introduced_issue_set": [],
+      "issues": [
+        "unresolved_needed"
+      ],
+      "needed": "libpyside6.cpython-314-aarch64-linux-gnu.so.6.11",
+      "provider": null,
+      "provider_owner": null,
+      "resolution_gap": null
+    },
+    {
+      "baseline_issues": [
+        "unresolved_needed"
+      ],
+      "consumer": "usr/lib/python3.14/site-packages/KWidgetsAddons.cpython-314-aarch64-linux-gnu.so",
+      "consumer_owner": "kwidgetsaddons",
+      "introduced_issue_set": [],
+      "issues": [
+        "unresolved_needed"
+      ],
+      "needed": "libshiboken6.cpython-314-aarch64-linux-gnu.so.6.11",
+      "provider": null,
+      "provider_owner": null,
+      "resolution_gap": null
+    },
+    {
+      "baseline_issues": [
+        "unresolved_needed"
+      ],
+      "consumer": "usr/lib/python3.14/site-packages/KXmlGui.cpython-314-aarch64-linux-gnu.so",
+      "consumer_owner": "kxmlgui",
+      "introduced_issue_set": [],
+      "issues": [
+        "unresolved_needed"
+      ],
+      "needed": "libpyside6.cpython-314-aarch64-linux-gnu.so.6.11",
+      "provider": null,
+      "provider_owner": null,
+      "resolution_gap": null
+    },
+    {
+      "baseline_issues": [
+        "unresolved_needed"
+      ],
+      "consumer": "usr/lib/python3.14/site-packages/KXmlGui.cpython-314-aarch64-linux-gnu.so",
+      "consumer_owner": "kxmlgui",
+      "introduced_issue_set": [],
+      "issues": [
+        "unresolved_needed"
+      ],
+      "needed": "libshiboken6.cpython-314-aarch64-linux-gnu.so.6.11",
+      "provider": null,
+      "provider_owner": null,
+      "resolution_gap": null
+    },
+    {
+      "baseline_issues": [
+        "unresolved_needed"
+      ],
+      "consumer": "usr/lib/qt/plugins/platforminputcontexts/libfcitx5platforminputcontextplugin.so",
+      "consumer_owner": "fcitx5-qt",
+      "introduced_issue_set": [],
+      "issues": [
+        "unresolved_needed"
+      ],
+      "needed": "libQt5Widgets.so.5",
+      "provider": null,
+      "provider_owner": null,
+      "resolution_gap": null
+    },
+    {
+      "baseline_issues": [
+        "unresolved_needed"
+      ],
+      "consumer": "usr/lib/qt/plugins/platforminputcontexts/libfcitx5platforminputcontextplugin.so",
+      "consumer_owner": "fcitx5-qt",
+      "introduced_issue_set": [],
+      "issues": [
+        "unresolved_needed"
+      ],
+      "needed": "libQt5Gui.so.5",
+      "provider": null,
+      "provider_owner": null,
+      "resolution_gap": null
+    },
+    {
+      "baseline_issues": [
+        "unresolved_needed"
+      ],
+      "consumer": "usr/lib/qt/plugins/platforminputcontexts/libfcitx5platforminputcontextplugin.so",
+      "consumer_owner": "fcitx5-qt",
+      "introduced_issue_set": [],
+      "issues": [
+        "unresolved_needed"
+      ],
+      "needed": "libQt5DBus.so.5",
+      "provider": null,
+      "provider_owner": null,
+      "resolution_gap": null
+    },
+    {
+      "baseline_issues": [
+        "unresolved_needed"
+      ],
+      "consumer": "usr/lib/qt/plugins/platforminputcontexts/libfcitx5platforminputcontextplugin.so",
+      "consumer_owner": "fcitx5-qt",
+      "introduced_issue_set": [],
+      "issues": [
+        "unresolved_needed"
+      ],
+      "needed": "libQt5Core.so.5",
+      "provider": null,
+      "provider_owner": null,
+      "resolution_gap": null
+    },
+    {
+      "baseline_issues": [
+        "unresolved_needed"
+      ],
+      "consumer": "usr/lib/qt6/plugins/crypto/libqca-botan.so",
+      "consumer_owner": "qca-qt6",
+      "introduced_issue_set": [],
+      "issues": [
+        "unresolved_needed"
+      ],
+      "needed": "libbotan-3.so.13",
+      "provider": null,
+      "provider_owner": null,
+      "resolution_gap": null
+    },
+    {
+      "baseline_issues": [
+        "unresolved_needed"
+      ],
+      "consumer": "usr/lib/qt6/plugins/crypto/libqca-pkcs11.so",
+      "consumer_owner": "qca-qt6",
+      "introduced_issue_set": [],
+      "issues": [
+        "unresolved_needed"
+      ],
+      "needed": "libpkcs11-helper.so.1",
+      "provider": null,
+      "provider_owner": null,
+      "resolution_gap": null
+    },
+    {
+      "baseline_issues": [
+        "unresolved_needed"
+      ],
+      "consumer": "usr/lib/qt6/plugins/kf6/kfilemetadata/kfilemetadata_appimageextractor.so",
+      "consumer_owner": "kfilemetadata",
+      "introduced_issue_set": [],
+      "issues": [
+        "unresolved_needed"
+      ],
+      "needed": "libappimage.so.1.0",
+      "provider": null,
+      "provider_owner": null,
+      "resolution_gap": null
+    },
+    {
+      "baseline_issues": [
+        "unresolved_needed"
+      ],
+      "consumer": "usr/lib/qt6/plugins/kf6/kfilemetadata/kfilemetadata_mobiextractor.so",
+      "consumer_owner": "kfilemetadata",
+      "introduced_issue_set": [],
+      "issues": [
+        "unresolved_needed"
+      ],
+      "needed": "libQMobipocket6.so.3",
+      "provider": null,
+      "provider_owner": null,
+      "resolution_gap": null
+    },
+    {
+      "baseline_issues": [
+        "unresolved_needed"
+      ],
+      "consumer": "usr/lib/qt6/plugins/kf6/kio/kio_ghelp.so",
+      "consumer_owner": "kio",
+      "introduced_issue_set": [],
+      "issues": [
+        "unresolved_needed"
+      ],
+      "needed": "libKF6DocTools.so.6",
+      "provider": null,
+      "provider_owner": null,
+      "resolution_gap": null
+    },
+    {
+      "baseline_issues": [
+        "unresolved_needed"
+      ],
+      "consumer": "usr/lib/qt6/plugins/kf6/kio/kio_help.so",
+      "consumer_owner": "kio",
+      "introduced_issue_set": [],
+      "issues": [
+        "unresolved_needed"
+      ],
+      "needed": "libKF6DocTools.so.6",
+      "provider": null,
+      "provider_owner": null,
+      "resolution_gap": null
+    },
+    {
+      "baseline_issues": [
+        "unresolved_needed"
+      ],
+      "consumer": "usr/lib/qt6/plugins/kf6/sonnet/sonnet_aspell.so",
+      "consumer_owner": "sonnet",
+      "introduced_issue_set": [],
+      "issues": [
+        "unresolved_needed"
+      ],
+      "needed": "libaspell.so.15",
+      "provider": null,
+      "provider_owner": null,
+      "resolution_gap": null
+    },
+    {
+      "baseline_issues": [
+        "unresolved_needed"
+      ],
+      "consumer": "usr/lib/qt6/plugins/kf6/sonnet/sonnet_hspell.so",
+      "consumer_owner": "sonnet",
+      "introduced_issue_set": [],
+      "issues": [
+        "unresolved_needed"
+      ],
+      "needed": "libhspell.so.0",
+      "provider": null,
+      "provider_owner": null,
+      "resolution_gap": null
+    },
+    {
+      "baseline_issues": [
+        "unresolved_needed"
+      ],
+      "consumer": "usr/lib/qt6/plugins/kf6/sonnet/sonnet_voikko.so",
+      "consumer_owner": "sonnet",
+      "introduced_issue_set": [],
+      "issues": [
+        "unresolved_needed"
+      ],
+      "needed": "libvoikko.so.1",
+      "provider": null,
+      "provider_owner": null,
+      "resolution_gap": null
+    },
+    {
+      "baseline_issues": [
+        "unresolved_needed"
+      ],
+      "consumer": "usr/lib/qt6/plugins/position/libqtposition_nmea.so",
+      "consumer_owner": "qt6-positioning",
+      "introduced_issue_set": [],
+      "issues": [
+        "unresolved_needed"
+      ],
+      "needed": "libQt6SerialPort.so.6",
+      "provider": null,
+      "provider_owner": null,
+      "resolution_gap": null
+    },
+    {
+      "baseline_issues": [
+        "unresolved_needed"
+      ],
+      "consumer": "usr/lib/qt6/plugins/sqldrivers/libqsqlodbc.so",
+      "consumer_owner": "qt6-base",
+      "introduced_issue_set": [],
+      "issues": [
+        "unresolved_needed"
+      ],
+      "needed": "libodbc.so.2",
+      "provider": null,
+      "provider_owner": null,
+      "resolution_gap": null
+    },
+    {
+      "baseline_issues": [
+        "unresolved_needed"
+      ],
+      "consumer": "usr/lib/qt6/plugins/texttospeech/libqtexttospeech_flite.so",
+      "consumer_owner": "qt6-speech",
+      "introduced_issue_set": [],
+      "issues": [
+        "unresolved_needed"
+      ],
+      "needed": "libflite.so.1",
+      "provider": null,
+      "provider_owner": null,
+      "resolution_gap": null
+    },
+    {
+      "baseline_issues": [
+        "unresolved_needed"
+      ],
+      "consumer": "usr/lib/qt6/plugins/texttospeech/libqtexttospeech_speechd.so",
+      "consumer_owner": "qt6-speech",
+      "introduced_issue_set": [],
+      "issues": [
+        "unresolved_needed"
+      ],
+      "needed": "libspeechd.so.2",
+      "provider": null,
+      "provider_owner": null,
+      "resolution_gap": null
+    },
+    {
+      "baseline_issues": [
+        "unresolved_needed"
+      ],
+      "consumer": "usr/lib/vips-modules-8.18/vips-openslide.so",
+      "consumer_owner": "libvips",
+      "introduced_issue_set": [],
+      "issues": [
+        "unresolved_needed"
+      ],
+      "needed": "libopenslide.so.1",
+      "provider": null,
+      "provider_owner": null,
+      "resolution_gap": null
+    }
+  ],
+  "prior_execution_blockers": [
+    {
+      "hooks": [
+        "usr/share/libalpm/hooks/10-limine-snapper-lock.hook",
+        "etc/pacman.d/hooks/90-mkinitcpio-install.hook",
+        "usr/share/libalpm/hooks/91-omarchy-mac-boot-initramfs.hook"
+      ],
+      "reason": "incoming_payload_triggers_boot_related_hooks"
+    },
+    {
+      "reason": "live_recovery_and_script_hook_execution_unqualified"
+    }
+  ],
+  "prior_incoming_boot_effects": [
+    {
+      "effect": "boot_related_hook_requires_review",
+      "effective_hook": "usr/share/libalpm/hooks/10-limine-snapper-lock.hook",
+      "exec": [
+        "/usr/share/libalpm/scripts/limine-snapper-lock"
+      ],
+      "execution": "UNTESTED; static retained-image evidence only",
+      "hook_sha256": "4270416c84daa9b267be21a656bc98b6686b9155a8fdbc384b6b5871f5161c0b",
+      "incoming_matches": [
+        {
+          "matching_values": [
+            "avahi"
+          ],
+          "operation": "Upgrade",
+          "package": "avahi",
+          "type": "Package"
+        },
+        {
+          "matching_values": [
+            "libsecret"
+          ],
+          "operation": "Upgrade",
+          "package": "libsecret",
+          "type": "Package"
+        },
+        {
+          "matching_values": [
+            "noto-fonts"
+          ],
+          "operation": "Upgrade",
+          "package": "noto-fonts",
+          "type": "Package"
+        },
+        {
+          "matching_values": [
+            "aether"
+          ],
+          "operation": "Upgrade",
+          "package": "aether",
+          "type": "Package"
+        },
+        {
+          "matching_values": [
+            "asdcontrol"
+          ],
+          "operation": "Upgrade",
+          "package": "asdcontrol",
+          "type": "Package"
+        },
+        {
+          "matching_values": [
+            "bat"
+          ],
+          "operation": "Upgrade",
+          "package": "bat",
+          "type": "Package"
+        },
+        {
+          "matching_values": [
+            "chromium"
+          ],
+          "operation": "Upgrade",
+          "package": "chromium",
+          "type": "Package"
+        },
+        {
+          "matching_values": [
+            "ffmpeg"
+          ],
+          "operation": "Upgrade",
+          "package": "ffmpeg",
+          "type": "Package"
+        },
+        {
+          "matching_values": [
+            "cliamp"
+          ],
+          "operation": "Upgrade",
+          "package": "cliamp",
+          "type": "Package"
+        },
+        {
+          "matching_values": [
+            "cups-filters"
+          ],
+          "operation": "Upgrade",
+          "package": "cups-filters",
+          "type": "Package"
+        },
+        {
+          "matching_values": [
+            "cups"
+          ],
+          "operation": "Upgrade",
+          "package": "cups",
+          "type": "Package"
+        },
+        {
+          "matching_values": [
+            "ddcutil"
+          ],
+          "operation": "Upgrade",
+          "package": "ddcutil",
+          "type": "Package"
+        },
+        {
+          "matching_values": [
+            "disktree-bin"
+          ],
+          "operation": "Install",
+          "package": "disktree-bin",
+          "type": "Package"
+        },
+        {
+          "matching_values": [
+            "docker"
+          ],
+          "operation": "Upgrade",
+          "package": "docker",
+          "type": "Package"
+        },
+        {
+          "matching_values": [
+            "docker-buildx"
+          ],
+          "operation": "Upgrade",
+          "package": "docker-buildx",
+          "type": "Package"
+        },
+        {
+          "matching_values": [
+            "docker-compose"
+          ],
+          "operation": "Upgrade",
+          "package": "docker-compose",
+          "type": "Package"
+        },
+        {
+          "matching_values": [
+            "dotnet-host-bin"
+          ],
+          "operation": "Install",
+          "package": "dotnet-host-bin",
+          "type": "Package"
+        },
+        {
+          "matching_values": [
+            "dotnet-runtime-bin"
+          ],
+          "operation": "Install",
+          "package": "dotnet-runtime-bin",
+          "type": "Package"
+        },
+        {
+          "matching_values": [
+            "gvfs"
+          ],
+          "operation": "Upgrade",
+          "package": "gvfs",
+          "type": "Package"
+        },
+        {
+          "matching_values": [
+            "evince"
+          ],
+          "operation": "Upgrade",
+          "package": "evince",
+          "type": "Package"
+        },
+        {
+          "matching_values": [
+            "fastfetch"
+          ],
+          "operation": "Upgrade",
+          "package": "fastfetch",
+          "type": "Package"
+        },
+        {
+          "matching_values": [
+            "fcitx5"
+          ],
+          "operation": "Upgrade",
+          "package": "fcitx5",
+          "type": "Package"
+        },
+        {
+          "matching_values": [
+            "libchewing"
+          ],
+          "operation": "Install",
+          "package": "libchewing",
+          "type": "Package"
+        },
+        {
+          "matching_values": [
+            "fcitx5-chewing"
+          ],
+          "operation": "Install",
+          "package": "fcitx5-chewing",
+          "type": "Package"
+        },
+        {
+          "matching_values": [
+            "qt6-base"
+          ],
+          "operation": "Upgrade",
+          "package": "qt6-base",
+          "type": "Package"
+        },
+        {
+          "matching_values": [
+            "fcitx5-qt"
+          ],
+          "operation": "Upgrade",
+          "package": "fcitx5-qt",
+          "type": "Package"
+        },
+        {
+          "matching_values": [
+            "libime"
+          ],
+          "operation": "Install",
+          "package": "libime",
+          "type": "Package"
+        },
+        {
+          "matching_values": [
+            "marisa"
+          ],
+          "operation": "Install",
+          "package": "marisa",
+          "type": "Package"
+        },
+        {
+          "matching_values": [
+            "opencc"
+          ],
+          "operation": "Install",
+          "package": "opencc",
+          "type": "Package"
+        },
+        {
+          "matching_values": [
+            "qt6-declarative"
+          ],
+          "operation": "Upgrade",
+          "package": "qt6-declarative",
+          "type": "Package"
+        },
+        {
+          "matching_values": [
+            "fcitx5-chinese-addons"
+          ],
+          "operation": "Install",
+          "package": "fcitx5-chinese-addons",
+          "type": "Package"
+        },
+        {
+          "matching_values": [
+            "libhangul"
+          ],
+          "operation": "Install",
+          "package": "libhangul",
+          "type": "Package"
+        },
+        {
+          "matching_values": [
+            "fcitx5-hangul"
+          ],
+          "operation": "Install",
+          "package": "fcitx5-hangul",
+          "type": "Package"
+        },
+        {
+          "matching_values": [
+            "fcitx5-mozc"
+          ],
+          "operation": "Install",
+          "package": "fcitx5-mozc",
+          "type": "Package"
+        },
+        {
+          "matching_values": [
+            "fcitx5-table-extra"
+          ],
+          "operation": "Install",
+          "package": "fcitx5-table-extra",
+          "type": "Package"
+        },
+        {
+          "matching_values": [
+            "fzf"
+          ],
+          "operation": "Upgrade",
+          "package": "fzf",
+          "type": "Package"
+        },
+        {
+          "matching_values": [
+            "git"
+          ],
+          "operation": "Upgrade",
+          "package": "git",
+          "type": "Package"
+        },
+        {
+          "matching_values": [
+            "xdg-desktop-portal-gtk"
+          ],
+          "operation": "Upgrade",
+          "package": "xdg-desktop-portal-gtk",
+          "type": "Package"
+        },
+        {
+          "matching_values": [
+            "libvips"
+          ],
+          "operation": "Upgrade",
+          "package": "libvips",
+          "type": "Package"
+        },
+        {
+          "matching_values": [
+            "gliff"
+          ],
+          "operation": "Install",
+          "package": "gliff",
+          "type": "Package"
+        },
+        {
+          "matching_values": [
+            "gnome-keyring"
+          ],
+          "operation": "Upgrade",
+          "package": "gnome-keyring",
+          "type": "Package"
+        },
+        {
+          "matching_values": [
+            "gpu-screen-recorder"
+          ],
+          "operation": "Upgrade",
+          "package": "gpu-screen-recorder",
+          "type": "Package"
+        },
+        {
+          "matching_values": [
+            "gum"
+          ],
+          "operation": "Upgrade",
+          "package": "gum",
+          "type": "Package"
+        },
+        {
+          "matching_values": [
+            "gvfs-mtp"
+          ],
+          "operation": "Upgrade",
+          "package": "gvfs-mtp",
+          "type": "Package"
+        },
+        {
+          "matching_values": [
+            "gvfs-nfs"
+          ],
+          "operation": "Upgrade",
+          "package": "gvfs-nfs",
+          "type": "Package"
+        },
+        {
+          "matching_values": [
+            "gvfs-smb"
+          ],
+          "operation": "Upgrade",
+          "package": "gvfs-smb",
+          "type": "Package"
+        },
+        {
+          "matching_values": [
+            "herdr"
+          ],
+          "operation": "Upgrade",
+          "package": "herdr",
+          "type": "Package"
+        },
+        {
+          "matching_values": [
+            "qt6-multimedia"
+          ],
+          "operation": "Upgrade",
+          "package": "qt6-multimedia",
+          "type": "Package"
+        },
+        {
+          "matching_values": [
+            "qt6-imageformats"
+          ],
+          "operation": "Upgrade",
+          "package": "qt6-imageformats",
+          "type": "Package"
+        },
+        {
+          "matching_values": [
+            "qt6-svg"
+          ],
+          "operation": "Upgrade",
+          "package": "qt6-svg",
+          "type": "Package"
+        },
+        {
+          "matching_values": [
+            "hype"
+          ],
+          "operation": "Install",
+          "package": "hype",
+          "type": "Package"
+        },
+        {
+          "matching_values": [
+            "hyprtoolkit"
+          ],
+          "operation": "Upgrade",
+          "package": "hyprtoolkit",
+          "type": "Package"
+        },
+        {
+          "matching_values": [
+            "hyprland-guiutils"
+          ],
+          "operation": "Upgrade",
+          "package": "hyprland-guiutils",
+          "type": "Package"
+        },
+        {
+          "matching_values": [
+            "hyprland"
+          ],
+          "operation": "Upgrade",
+          "package": "hyprland",
+          "type": "Package"
+        },
+        {
+          "matching_values": [
+            "hyprland-preview-share-picker"
+          ],
+          "operation": "Upgrade",
+          "package": "hyprland-preview-share-picker",
+          "type": "Package"
+        },
+        {
+          "matching_values": [
+            "imagemagick"
+          ],
+          "operation": "Upgrade",
+          "package": "imagemagick",
+          "type": "Package"
+        },
+        {
+          "matching_values": [
+            "inotify-tools"
+          ],
+          "operation": "Upgrade",
+          "package": "inotify-tools",
+          "type": "Package"
+        },
+        {
+          "matching_values": [
+            "networkmanager"
+          ],
+          "operation": "Upgrade",
+          "package": "networkmanager",
+          "type": "Package"
+        },
+        {
+          "matching_values": [
+            "lazygit"
+          ],
+          "operation": "Upgrade",
+          "package": "lazygit",
+          "type": "Package"
+        },
+        {
+          "matching_values": [
+            "less"
+          ],
+          "operation": "Upgrade",
+          "package": "less",
+          "type": "Package"
+        },
+        {
+          "matching_values": [
+            "libreoffice-fresh"
+          ],
+          "operation": "Upgrade",
+          "package": "libreoffice-fresh",
+          "type": "Package"
+        },
+        {
+          "matching_values": [
+            "mariadb-libs"
+          ],
+          "operation": "Upgrade",
+          "package": "mariadb-libs",
+          "type": "Package"
+        },
+        {
+          "matching_values": [
+            "mise-bin"
+          ],
+          "operation": "Install",
+          "package": "mise-bin",
+          "type": "Package"
+        },
+        {
+          "matching_values": [
+            "monologue"
+          ],
+          "operation": "Install",
+          "package": "monologue",
+          "type": "Package"
+        },
+        {
+          "matching_values": [
+            "moonlight-qt"
+          ],
+          "operation": "Upgrade",
+          "package": "moonlight-qt",
+          "type": "Package"
+        },
+        {
+          "matching_values": [
+            "mpv-mpris"
+          ],
+          "operation": "Upgrade",
+          "package": "mpv-mpris",
+          "type": "Package"
+        },
+        {
+          "matching_values": [
+            "nautilus"
+          ],
+          "operation": "Upgrade",
+          "package": "nautilus",
+          "type": "Package"
+        },
+        {
+          "matching_values": [
+            "python-gobject"
+          ],
+          "operation": "Upgrade",
+          "package": "python-gobject",
+          "type": "Package"
+        },
+        {
+          "matching_values": [
+            "nautilus-python"
+          ],
+          "operation": "Upgrade",
+          "package": "nautilus-python",
+          "type": "Package"
+        },
+        {
+          "matching_values": [
+            "nss-mdns"
+          ],
+          "operation": "Upgrade",
+          "package": "nss-mdns",
+          "type": "Package"
+        },
+        {
+          "matching_values": [
+            "neovim"
+          ],
+          "operation": "Upgrade",
+          "package": "neovim",
+          "type": "Package"
+        },
+        {
+          "matching_values": [
+            "obsidian"
+          ],
+          "operation": "Upgrade",
+          "package": "obsidian",
+          "type": "Package"
+        },
+        {
+          "matching_values": [
+            "omacalc"
+          ],
+          "operation": "Upgrade",
+          "package": "omacalc",
+          "type": "Package"
+        },
+        {
+          "matching_values": [
+            "omacut"
+          ],
+          "operation": "Upgrade",
+          "package": "omacut",
+          "type": "Package"
+        },
+        {
+          "matching_values": [
+            "omawrite"
+          ],
+          "operation": "Upgrade",
+          "package": "omawrite",
+          "type": "Package"
+        },
+        {
+          "matching_values": [
+            "omarchy-nvim"
+          ],
+          "operation": "Upgrade",
+          "package": "omarchy-nvim",
+          "type": "Package"
+        },
+        {
+          "matching_values": [
+            "omarchy-hyprland-titlebars"
+          ],
+          "operation": "Install",
+          "package": "omarchy-hyprland-titlebars",
+          "type": "Package"
+        },
+        {
+          "matching_values": [
+            "layer-shell-qt"
+          ],
+          "operation": "Install",
+          "package": "layer-shell-qt",
+          "type": "Package"
+        },
+        {
+          "matching_values": [
+            "omasnap"
+          ],
+          "operation": "Install",
+          "package": "omasnap",
+          "type": "Package"
+        },
+        {
+          "matching_values": [
+            "owe"
+          ],
+          "operation": "Install",
+          "package": "owe",
+          "type": "Package"
+        },
+        {
+          "matching_values": [
+            "owe-lockfeed"
+          ],
+          "operation": "Install",
+          "package": "owe-lockfeed",
+          "type": "Package"
+        },
+        {
+          "matching_values": [
+            "pinta"
+          ],
+          "operation": "Upgrade",
+          "package": "pinta",
+          "type": "Package"
+        },
+        {
+          "matching_values": [
+            "plymouth"
+          ],
+          "operation": "Upgrade",
+          "package": "plymouth",
+          "type": "Package"
+        },
+        {
+          "matching_values": [
+            "postgresql-libs"
+          ],
+          "operation": "Upgrade",
+          "package": "postgresql-libs",
+          "type": "Package"
+        },
+        {
+          "matching_values": [
+            "python-poetry-core"
+          ],
+          "operation": "Upgrade",
+          "package": "python-poetry-core",
+          "type": "Package"
+        },
+        {
+          "matching_values": [
+            "qt6-wayland"
+          ],
+          "operation": "Install",
+          "package": "qt6-wayland",
+          "type": "Package"
+        },
+        {
+          "matching_values": [
+            "ttfx"
+          ],
+          "operation": "Upgrade",
+          "package": "ttfx",
+          "type": "Package"
+        },
+        {
+          "matching_values": [
+            "qemu-user-static-binfmt"
+          ],
+          "operation": "Upgrade",
+          "package": "qemu-user-static-binfmt",
+          "type": "Package"
+        },
+        {
+          "matching_values": [
+            "quickshell"
+          ],
+          "operation": "Install",
+          "package": "quickshell",
+          "type": "Package"
+        },
+        {
+          "matching_values": [
+            "signed"
+          ],
+          "operation": "Install",
+          "package": "signed",
+          "type": "Package"
+        },
+        {
+          "matching_values": [
+            "starship"
+          ],
+          "operation": "Upgrade",
+          "package": "starship",
+          "type": "Package"
+        },
+        {
+          "matching_values": [
+            "libwireplumber"
+          ],
+          "operation": "Upgrade",
+          "package": "libwireplumber",
+          "type": "Package"
+        },
+        {
+          "matching_values": [
+            "wireplumber"
+          ],
+          "operation": "Upgrade",
+          "package": "wireplumber",
+          "type": "Package"
+        },
+        {
+          "matching_values": [
+            "superwhisper-bin"
+          ],
+          "operation": "Install",
+          "package": "superwhisper-bin",
+          "type": "Package"
+        },
+        {
+          "matching_values": [
+            "gtksourceview5"
+          ],
+          "operation": "Install",
+          "package": "gtksourceview5",
+          "type": "Package"
+        },
+        {
+          "matching_values": [
+            "libspelling"
+          ],
+          "operation": "Install",
+          "package": "libspelling",
+          "type": "Package"
+        },
+        {
+          "matching_values": [
+            "papers"
+          ],
+          "operation": "Install",
+          "package": "papers",
+          "type": "Package"
+        },
+        {
+          "matching_values": [
+            "sushi"
+          ],
+          "operation": "Upgrade",
+          "package": "sushi",
+          "type": "Package"
+        },
+        {
+          "matching_values": [
+            "tmux"
+          ],
+          "operation": "Upgrade",
+          "package": "tmux",
+          "type": "Package"
+        },
+        {
+          "matching_values": [
+            "tobi-try"
+          ],
+          "operation": "Upgrade",
+          "package": "tobi-try",
+          "type": "Package"
+        },
+        {
+          "matching_values": [
+            "ttf-ia-writer"
+          ],
+          "operation": "Upgrade",
+          "package": "ttf-ia-writer",
+          "type": "Package"
+        },
+        {
+          "matching_values": [
+            "ttf-jetbrains-mono-nerd-basic"
+          ],
+          "operation": "Upgrade",
+          "package": "ttf-jetbrains-mono-nerd-basic",
+          "type": "Package"
+        },
+        {
+          "matching_values": [
+            "tzupdate"
+          ],
+          "operation": "Upgrade",
+          "package": "tzupdate",
+          "type": "Package"
+        },
+        {
+          "matching_values": [
+            "ufw-docker"
+          ],
+          "operation": "Upgrade",
+          "package": "ufw-docker",
+          "type": "Package"
+        },
+        {
+          "matching_values": [
+            "usage"
+          ],
+          "operation": "Upgrade",
+          "package": "usage",
+          "type": "Package"
+        },
+        {
+          "matching_values": [
+            "uwsm"
+          ],
+          "operation": "Upgrade",
+          "package": "uwsm",
+          "type": "Package"
+        },
+        {
+          "matching_values": [
+            "vim-runtime"
+          ],
+          "operation": "Install",
+          "package": "vim-runtime",
+          "type": "Package"
+        },
+        {
+          "matching_values": [
+            "vim"
+          ],
+          "operation": "Install",
+          "package": "vim",
+          "type": "Package"
+        },
+        {
+          "matching_values": [
+            "ex-vi-compat"
+          ],
+          "operation": "Install",
+          "package": "ex-vi-compat",
+          "type": "Package"
+        },
+        {
+          "matching_values": [
+            "xdg-terminal-exec"
+          ],
+          "operation": "Upgrade",
+          "package": "xdg-terminal-exec",
+          "type": "Package"
+        },
+        {
+          "matching_values": [
+            "yaru-icon-theme"
+          ],
+          "operation": "Upgrade",
+          "package": "yaru-icon-theme",
+          "type": "Package"
+        },
+        {
+          "matching_values": [
+            "graphicsmagick"
+          ],
+          "operation": "Install",
+          "package": "graphicsmagick",
+          "type": "Package"
+        },
+        {
+          "matching_values": [
+            "zbar"
+          ],
+          "operation": "Upgrade",
+          "package": "zbar",
+          "type": "Package"
+        },
+        {
+          "matching_values": [
+            "zram-generator"
+          ],
+          "operation": "Install",
+          "package": "zram-generator",
+          "type": "Package"
+        },
+        {
+          "matching_values": [
+            "rtkit"
+          ],
+          "operation": "Upgrade",
+          "package": "rtkit",
+          "type": "Package"
+        },
+        {
+          "matching_values": [
+            "libva-v4l2_request-avd"
+          ],
+          "operation": "Install",
+          "package": "libva-v4l2_request-avd",
+          "type": "Package"
+        },
+        {
+          "matching_values": [
+            "wf-recorder"
+          ],
+          "operation": "Install",
+          "package": "wf-recorder",
+          "type": "Package"
+        }
+      ]
+    },
+    {
+      "effect": "boot_artifact_generation",
+      "effective_hook": "etc/pacman.d/hooks/90-mkinitcpio-install.hook",
+      "exec": [
+        "/usr/share/libalpm/scripts/limine-mkinitcpio-install"
+      ],
+      "execution": "UNTESTED; static retained-image evidence only",
+      "hook_sha256": "97ae91e1309dd2e70458abc757233837e3919011f450cb69a7e8a8c8ec4c72c1",
+      "incoming_matches": [
+        {
+          "matching_values": [
+            "usr/lib/initcpio/hooks",
+            "usr/lib/initcpio/hooks/plymouth",
+            "usr/lib/initcpio/install",
+            "usr/lib/initcpio/install/plymouth",
+            "usr/lib/initcpio/install/plymouth-shutdown"
+          ],
+          "operation": "Upgrade",
+          "package": "plymouth",
+          "type": "Path"
+        }
+      ]
+    },
+    {
+      "effect": "boot_artifact_generation",
+      "effective_hook": "usr/share/libalpm/hooks/91-omarchy-mac-boot-initramfs.hook",
+      "exec": [
+        "/usr/share/libalpm/scripts/mkinitcpio install"
+      ],
+      "execution": "UNTESTED; static retained-image evidence only",
+      "hook_sha256": "564fe04b434e425d332e34b0d90391b2bd2c3be37b4afb112222a73ac785f825",
+      "incoming_matches": [
+        {
+          "matching_values": [
+            "usr/lib/initcpio/install/plymouth",
+            "usr/lib/initcpio/install/plymouth-shutdown"
+          ],
+          "operation": "Upgrade",
+          "package": "plymouth",
+          "type": "Path"
+        }
+      ]
+    }
+  ],
+  "proposal_sha256": "fbe2e7fde7b82be9bb51011ec4b67a5ce2c333d3437bd13e1c6cc45cb619df5e",
+  "protected_installed_pin_count": 20,
+  "qualification_sha256": "468862b06d7f38c41c2c030e5f8fea796563b64ec3af0342c14925450093f1e0",
+  "removed_package_install_scripts": [
+    {
+      "execution": "UNTESTED; no script executed",
+      "installed_remove_script_present": false,
+      "name": "dotnet-host",
+      "script_sha256": null,
+      "version": "10.0.11.sdk400-1"
+    },
+    {
+      "execution": "UNTESTED; no script executed",
+      "installed_remove_script_present": false,
+      "name": "dotnet-runtime",
+      "script_sha256": null,
+      "version": "10.0.11.sdk400-1"
+    },
+    {
+      "execution": "UNTESTED; no script executed",
+      "installed_remove_script_present": false,
+      "name": "mise",
+      "script_sha256": null,
+      "version": "2026.9.4-1"
+    },
+    {
+      "execution": "UNTESTED; no script executed",
+      "installed_remove_script_present": false,
+      "name": "quickshell-git",
+      "script_sha256": null,
+      "version": "0.3.0.r20.g28771c7-2"
+    }
+  ],
+  "resolution_gaps": [],
+  "retained_owner_path_collisions": [],
+  "schema": 1,
+  "sealed_restore": {
+    "entry_count": 70825,
+    "manifest_sha256": "30a72f4608f94d7a4487e3529e7343bdf962a412d9c961b637a7bf196b54b947",
+    "tree_entries_sha256": "1f8bb4fa1aacf37242eca9030e4b684754df203022a61ea907d6523570f8c068"
+  },
+  "status": "PARTIAL"
+}

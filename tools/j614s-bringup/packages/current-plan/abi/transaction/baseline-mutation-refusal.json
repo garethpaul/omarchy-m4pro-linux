@@ -1,0 +1,10 @@
+{
+  "status": "WORKS (actual CLI negative control)",
+  "method": "Run current prepare.py against the same separate copied986-description source where only a non-held neovim DESC was changed; original source/image remain untouched",
+  "expected": "Reject complete baseline digest mismatch before creating a private transaction directory or compiling the helper",
+  "observed": "ValueError: complete baseline description identity differs",
+  "exit_code": 1,
+  "private_transaction_created": false,
+  "result_created": false,
+  "payload_executed": false
+}

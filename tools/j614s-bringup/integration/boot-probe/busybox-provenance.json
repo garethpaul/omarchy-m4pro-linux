@@ -1,0 +1,39 @@
+{
+  "architecture": "arm64",
+  "archive_primary_fingerprints": [
+    "B8B80B5B623EAB6AD8775C45B7C5D7D6350947F8",
+    "04B54C3CDCA79751B16BC6B5225629DF75B188BD"
+  ],
+  "binary_execution": "Only --list under existing qemu-aarch64-static after signature/digest verification; init never executed.",
+  "binary_sha256": "f10ec6f1c3b41b6015cc0f15c11a4ce4e06fff158e20bdbe9a527a3ed3ea752a",
+  "files": {
+    "InRelease": "0cf4c196363fadd12d8db95e19890f1bcd1ac76fb268a1d2a460827616718f01",
+    "Packages.xz": "5a58291d725cbe2b4a712c3829096e257aebfa2d07e020be50b3999bf5f77390",
+    "busybox": "f10ec6f1c3b41b6015cc0f15c11a4ce4e06fff158e20bdbe9a527a3ed3ea752a",
+    "busybox-static.deb": "968d1aa8f579fa1ac59c26afa365454369e13cf29848e6400b50028fed0ffda0",
+    "debian-archive-12.asc": "c2a9a16fde95e037bafd0fa6b7e31f41b4ff1e85851de5558f19a2a2f0e955e2",
+    "debian-archive-13.asc": "6f1d277429dd7ffedcc6f8688a7ad9a458859b1139ffa026d1eeaadcbffb0da7"
+  },
+  "gpg_status": [
+    "[GNUPG:] NEWSIG",
+    "[GNUPG:] KEY_CONSIDERED B8B80B5B623EAB6AD8775C45B7C5D7D6350947F8 0",
+    "[GNUPG:] SIG_ID aPc6foVTrnR1hCX1YHbEXlhQ0HE 2026-10-20 1792462176",
+    "[GNUPG:] GOODSIG 6ED0E7B82643E131 Debian Archive Automatic Signing Key (12/bookworm) <ftpmaster@debian.org>",
+    "[GNUPG:] VALIDSIG 4CB50190207B4758A3F73A796ED0E7B82643E131 2026-10-20 1792462176 0 4 0 1 8 01 B8B80B5B623EAB6AD8775C45B7C5D7D6350947F8",
+    "[GNUPG:] NEWSIG",
+    "[GNUPG:] KEY_CONSIDERED 04B54C3CDCA79751B16BC6B5225629DF75B188BD 0",
+    "[GNUPG:] SIG_ID JWKaYgTX3YhvLHfuC/08OjmoJtc 2026-10-20 1792462180",
+    "[GNUPG:] GOODSIG 78DBA3BC47EF2265 Debian Archive Automatic Signing Key (13/trixie) <ftpmaster@debian.org>",
+    "[GNUPG:] VALIDSIG B8E5F13176D2A7A75220028078DBA3BC47EF2265 2026-10-20 1792462180 0 4 0 1 8 01 04B54C3CDCA79751B16BC6B5225629DF75B188BD"
+  ],
+  "key_page": "https://ftp-master.debian.org/keys.html",
+  "package": "busybox-static",
+  "package_url": "https://deb.debian.org/debian/pool/main/b/busybox/busybox-static_1.38.0-3+b1_arm64.deb",
+  "release_date": "Tue, 20 Oct 2026 02:08:12 UTC",
+  "release_valid_until": "Tue, 27 Oct 2026 02:08:12 UTC",
+  "repository": "https://deb.debian.org/debian/dists/sid/",
+  "schema": 1,
+  "signed_metadata": "InRelease SHA256 authenticates Packages.xz SHA256; package paragraph authenticates exact .deb SHA256; extracted regular BusyBox file authenticated transitively.",
+  "trust_bootstrap": "Official Debian HTTPS archive keys, fingerprints pinned from ftp-master key page; not an independently provisioned trust root. No signing key was created.",
+  "version": "1:1.38.0-3+b1"
+}

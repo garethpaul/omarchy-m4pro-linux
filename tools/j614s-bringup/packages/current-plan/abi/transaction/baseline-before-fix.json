@@ -1,0 +1,14 @@
+{
+  "status": "REPRODUCED",
+  "archived_source_commit": "d6e57f7",
+  "method": "Actual archived prepare.py/helper against separate full copied986-description source; change only neovim DESC text; all20 protected descriptions remain identical; exact signed117 rows and frozen DBs unchanged",
+  "changed_description": "neovim-0.12.5-1",
+  "original_description_sha256": "540008e43d0c7ea104f1a6dd1062d2046a527b379a6d2c8ddaa3478165dd816b",
+  "changed_description_sha256": "a6230257b357cf104a3cf4892ec953ead27587160b41f35746c332b44dc5da98",
+  "old_observed_prepared": true,
+  "old_observed_add_count": 117,
+  "old_observed_remove_count": 4,
+  "limitation": "Before/after local DB identity only established no changes during preparation; no binding of initial non-held descriptions to original image",
+  "original_source_mutated": false,
+  "payload_executed": false
+}
