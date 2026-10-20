@@ -1386,7 +1386,7 @@ static enum blk_eh_timer_return apple_nvme_timeout(struct request *req)
 	if (!anv->inherited_rtkit)
 		return apple_nvme_timeout_legacy(req);
 
-	if (blk_mq_request_completed(req))
+	if (blk_mq_rq_state(req) != MQ_RQ_IN_FLIGHT)
 		return BLK_EH_DONE;
 	if (READ_ONCE(anv->quarantined) || READ_ONCE(anv->detached))
 		return BLK_EH_RESET_TIMER;
@@ -1401,7 +1401,7 @@ static enum blk_eh_timer_return apple_nvme_timeout(struct request *req)
 		spin_lock_irqsave(&anv->lock, flags);
 		apple_nvme_handle_cq(q, false);
 		spin_unlock_irqrestore(&anv->lock, flags);
-		if (blk_mq_request_completed(req)) {
+		if (blk_mq_rq_state(req) != MQ_RQ_IN_FLIGHT) {
 			dev_warn(anv->dev,
 				 "I/O %d(aq:%d) timeout in state %d: completion polled\n",
 				 req->tag, q->is_adminq, state);
