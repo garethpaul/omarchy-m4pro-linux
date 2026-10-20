@@ -56,7 +56,14 @@ typedef void (*dcp_callback_t)(struct apple_dcp *, void *, void *);
  * input data (so if the types don't match, gcc errors out).
  */
 
+/* Keep access bounds next to the typed wrapper, so changing a C type also
+ * changes its callback contract. Zero input means opaque/unconsumed input.
+ */
+#define DCP_CB_SIZE(func, in_size, out_size) \
+	enum { func ## _in_size = (in_size), func ## _out_size = (out_size) }
+
 #define TRAMPOLINE_VOID(func, handler)                                        \
+	DCP_CB_SIZE(func, 0, 0);                                              \
 	static bool __maybe_unused func(struct apple_dcp *dcp, int tag, void *out, void *in) \
 	{                                                                     \
 		trace_iomfb_callback(dcp, tag, #handler);                     \
@@ -65,6 +72,7 @@ typedef void (*dcp_callback_t)(struct apple_dcp *, void *, void *);
 	}
 
 #define TRAMPOLINE_IN(func, handler, T_in)                                    \
+	DCP_CB_SIZE(func, sizeof(T_in), 0);                                   \
 	typedef void (*callback_##handler)(struct apple_dcp *, T_in *);       \
                                                                               \
 	static bool __maybe_unused func(struct apple_dcp *dcp, int tag, void *out, void *in) \
@@ -77,6 +85,7 @@ typedef void (*dcp_callback_t)(struct apple_dcp *, void *, void *);
 	}
 
 #define TRAMPOLINE_INOUT(func, handler, T_in, T_out)                          \
+	DCP_CB_SIZE(func, sizeof(T_in), sizeof(T_out));                       \
 	typedef T_out (*callback_##handler)(struct apple_dcp *, T_in *);      \
                                                                               \
 	static bool __maybe_unused func(struct apple_dcp *dcp, int tag, void *out, void *in) \
@@ -90,6 +99,7 @@ typedef void (*dcp_callback_t)(struct apple_dcp *, void *, void *);
 	}
 
 #define TRAMPOLINE_OUT(func, handler, T_out)                                  \
+	DCP_CB_SIZE(func, 0, sizeof(T_out));                                  \
 	static bool __maybe_unused func(struct apple_dcp *dcp, int tag, void *out, void *in) \
 	{                                                                     \
 		T_out *typed_out = out;                                       \

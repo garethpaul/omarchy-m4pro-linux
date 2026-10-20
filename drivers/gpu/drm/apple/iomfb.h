@@ -180,6 +180,13 @@ struct apple_dcp;
 
 typedef bool (*iomfb_cb_handler)(struct apple_dcp *, int, void *, void *);
 
+/* Minimum extents accessed by this handler, not a complete wire ABI schema. */
+struct iomfb_cb_contract {
+	iomfb_cb_handler handler;
+	u32 min_in;
+	u32 min_out;
+};
+
 /* Prototypes */
 
 struct dcp_set_digital_out_mode_req {
