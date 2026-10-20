@@ -216,7 +216,7 @@ struct apple_nvme {
 	struct apple_sart *sart;
 	struct apple_rtkit *rtk;
 	struct reset_control *reset;
-	/* Staged inherited-session port; J614s early refusal remains in force. */
+	/* True only after exact J614s topology and inherited state admission. */
 	bool inherited_rtkit;
 	bool handoff_disabled;
 	bool quarantined;
@@ -2445,13 +2445,6 @@ static struct apple_nvme *apple_nvme_alloc(struct platform_device *pdev)
 	struct resource *resource;
 	int ret;
 
-	/* Aurora's measured J614s diagnostic depends on inherited RTKit adoption.
-	 * Gravity lacks that state/endpoint ownership path. Do not reset ANS or
-	 * accept a generic/T8132 fallback on this board until it is ported.
-	 */
-	if (of_machine_is_compatible("apple,j614s"))
-		return ERR_PTR(dev_err_probe(dev, -EOPNOTSUPP,
-			"J614s ANS inherited RTKit adoption has not been ported\n"));
 
 	ret = apple_nvme_check_j614s_resources(pdev,
 					     of_device_get_match_data(dev));
@@ -2518,17 +2511,9 @@ static struct apple_nvme *apple_nvme_alloc(struct platform_device *pdev)
 		anv->ioq.cq_db = anv->mmio_nvme + APPLE_ANS_IOCQ_DB;
 	}
 
-	anv->sart = devm_apple_sart_get(dev);
-	if (IS_ERR(anv->sart)) {
-		ret = dev_err_probe(dev, PTR_ERR(anv->sart),
-				    "Failed to initialize SART");
-		goto put_dev;
-	}
-
-	if (of_machine_is_compatible("apple,j614s")) {
-		/* The first branch in this allocator currently refuses this board.
-		 * Do not remove it until controller/DMA lifetime and teardown are
-		 * ported and the actual-source host regressions pass.
+	if (anv->hw->j614s_diagnostic) {
+		/* Validate inherited state before supplier links, queue DMA, IRQ/RX
+		 * ownership or any controller-register write can be established.
 		 */
 		ret = apple_nvme_read_handoff(anv);
 		if (ret)
@@ -2539,6 +2524,15 @@ static struct apple_nvme *apple_nvme_alloc(struct platform_device *pdev)
 			goto put_dev;
 		}
 	}
+
+
+	anv->sart = devm_apple_sart_get(dev);
+	if (IS_ERR(anv->sart)) {
+		ret = dev_err_probe(dev, PTR_ERR(anv->sart),
+				    "Failed to initialize SART");
+		goto put_dev;
+	}
+
 
 	if (anv->hw->j614s_diagnostic)
 		anv->reset = devm_reset_control_array_get_optional_exclusive(anv->dev);
