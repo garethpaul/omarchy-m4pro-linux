@@ -2015,11 +2015,7 @@ rtkit_ready:
 	return;
 
 out_remove_sq:
-	if (!anv->inherited_rtkit)
-		apple_nvme_remove_sq(anv);
 out_remove_cq:
-	if (!anv->inherited_rtkit)
-		apple_nvme_remove_cq(anv);
 out:
 	if (phase_locked)
 		mutex_unlock(&anv->disable_lock);
@@ -2405,6 +2401,22 @@ static int apple_nvme_check_j614s_resources(struct platform_device *pdev,
 	return 0;
 }
 
+static bool apple_nvme_controller_quarantined(resource_size_t start)
+{
+	struct apple_nvme *held;
+	bool found = false;
+
+	mutex_lock(&apple_nvme_quarantine_lock);
+	list_for_each_entry(held, &apple_nvme_quarantines, quarantine_node) {
+		if (held->controller_start == start) {
+			found = true;
+			break;
+		}
+	}
+	mutex_unlock(&apple_nvme_quarantine_lock);
+	return found;
+}
+
 static struct apple_nvme *apple_nvme_alloc_owner(struct device *dev,
 					       resource_size_t controller_start)
 {
@@ -2429,7 +2441,7 @@ static struct apple_nvme *apple_nvme_alloc_owner(struct device *dev,
 static struct apple_nvme *apple_nvme_alloc(struct platform_device *pdev)
 {
 	struct device *dev = &pdev->dev;
-	struct apple_nvme *anv, *held;
+	struct apple_nvme *anv;
 	struct resource *resource;
 	int ret;
 
@@ -2448,15 +2460,9 @@ static struct apple_nvme *apple_nvme_alloc(struct platform_device *pdev)
 	resource = platform_get_resource_byname(pdev, IORESOURCE_MEM, "nvme");
 	if (!resource)
 		return ERR_PTR(-EINVAL);
-	mutex_lock(&apple_nvme_quarantine_lock);
-	list_for_each_entry(held, &apple_nvme_quarantines, quarantine_node) {
-		if (held->controller_start == resource->start) {
-			mutex_unlock(&apple_nvme_quarantine_lock);
-			return ERR_PTR(dev_err_probe(dev, -EBUSY,
-				"DMA ownership is uncertain until platform reset\n"));
-		}
-	}
-	mutex_unlock(&apple_nvme_quarantine_lock);
+	if (apple_nvme_controller_quarantined(resource->start))
+		return ERR_PTR(dev_err_probe(dev, -EBUSY,
+			"DMA ownership is uncertain until platform reset\n"));
 	anv = apple_nvme_alloc_owner(dev, resource->start);
 	if (IS_ERR(anv))
 		return anv;
