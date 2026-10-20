@@ -105,7 +105,7 @@ void dcp_push(struct apple_dcp *dcp, bool oob, const struct dcp_method_entry *ca
 		     void *cookie);
 
 /* Parse a callback tag "D123" into the ID 123. Returns -EINVAL on failure. */
-int dcp_parse_tag(char tag[4]);
+int dcp_parse_tag(const char tag[4]);
 
 void dcp_ack(struct apple_dcp *dcp, enum dcp_context_id context);
 
