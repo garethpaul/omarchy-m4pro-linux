@@ -19,7 +19,8 @@ config DRM_APPLE
 
 	  A module requires a bootloader-provided no-map scanout pool with
 	  a pre-mapped DART IOVA range. Other scanout allocations are rejected
-	  before binding the display components.
+	  before binding the display components. PRIME import is restricted to
+	  GEM objects exported from this device and owned by its no-map pool.
 
 config DRM_APPLE_AUDIO
 	bool "DisplayPort/HDMI Audio support"
