@@ -42,6 +42,10 @@ struct apple_rtkit {
 	bool early_crashlog;
 	struct completion crashlog_completion;
 	bool crashed;
+	bool shutting_down;
+	/* Inherited ANS traffic has no locally observed SYSLOG_INIT geometry. */
+	bool syslog_inherited;
+	bool crashlog_inherited;
 
 	DECLARE_BITMAP(endpoints, APPLE_RTKIT_MAX_ENDPOINTS);
 
