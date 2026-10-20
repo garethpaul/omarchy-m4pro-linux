@@ -1,0 +1,35 @@
+{
+  "comparison": {
+    "heapblock": "heap_base is the high-water; heap_limit0 means no explicit limit; heapblock_alloc(0) mutates alignment and is prohibited here",
+    "legacy_test52": "64MiB separate child,2MiB alignment,container<32MiB,bootargs+32MiB,PICentry+0x800; sorted carveout traversal; allocator advancement across holes is NOT adopted",
+    "native_find_ram": "4GiB kernel allocation uses repeated passes over both ADT maps, skips only exact all-ones sentinel and exact full usable carveout region-id-24; never invoked here",
+    "new_stricter_rule": "Any protected span crossed by the entire proposed heap advance refuses a plan, even if the final child span is clear"
+  },
+  "hardware": "UNTESTED",
+  "legacy_test52_script_sha256": "bbbb72f433ef4bbe918e1a458a73fe40eab5a24f4a37724f230aa01e0a309c55",
+  "native_6249_source_sha256": "fc88b9e9da14593896220f5752c7a84896c2007b56f7bd8ba7d562beae4b4118",
+  "resident_binary_sha256": "fb31c765c54b2c8108ac7598c8307f663b91fb25ef9cbeb88e75bafffc0f3afb",
+  "resident_elf_sha256": "4a32c15fbda69acc47175f1e6b514cfb7d5920916df7630dec216c29177fc28f",
+  "resident_heap_source_sha256": "8f32744ef80273be9a42cef82b9f53667369adb4f9a1588a3a9124546bfa43e5",
+  "resident_offsets": {
+    "bootstack": [
+      3342336,
+      131072
+    ],
+    "heap_base": 1262440,
+    "heap_limit": 1262448,
+    "resident_end": 3473408,
+    "secondary_stacks": [
+      1277952,
+      1572864
+    ],
+    "secondary_stacks_el3": [
+      2867200,
+      262144
+    ],
+    "spin_table": 721304
+  },
+  "schema": 1,
+  "scope": "Source offsets are ELF-relative, not private live ASLR addresses. Legacy script is only read as text, never imported or executed.",
+  "status": "PARTIAL: offline source comparison only"
+}

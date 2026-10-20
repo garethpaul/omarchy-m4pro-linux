@@ -123,3 +123,22 @@ and 27 transcript tests; original XOR evidence is retained separately.
    Hyprland/input benchmark. Package the hardware profile only after real passes.
 6. Qualify storage/reboot/U-Boot rollback and propose the concrete persistent
    installation separately. Protected boot/disk actions remain unapproved.
+
+
+## Latest source-only GPU input checkpoint
+
+[Lossless T6040 performance decoder](../graphics/PERF-INPUTS.md), kernel source
+`eb40b68bcdca7bf66f79b045b96c5599adb720ab`, passes seven host controls and exact
+replay of64 actual captured ADT records plus a core-only AArch64 object build.
+This is PARTIAL GPU enablement preparation:16 indexed states, two voltage banks
+and exact sampling clocks are preserved. Existing11-state G16G platform input
+and one-cluster checks are unchanged; no runtime caller or INIT was enabled.
+The [actual AArch64 kernel-crate build](../infra/g16-perf/README.md) passes on combined source5628d35c with all3174 layout blocks/16413 offsets; [root artifact checks](g16-perf-crate-root.json) independently verify its identities/architecture. Full linking and hardware remain UNTESTED. Native compute/rendering,
+coherent early T6040 capture and DCP remain blocked as above.
+
+[Strict offline staging replay](staging-plan-root.json) validates the frozen
+geometry but refuses heap advance through protected firmware memory. No child
+plan, allocation or real container is produced. Secondary/WFE and live freshness
+remain additional gates. [11:17 webcam/USB observation](proxy-checkpoint-1117.json)
+still shows the preserved proxy, not Linux. The known manual recovery does not
+qualify unattended remote recovery.

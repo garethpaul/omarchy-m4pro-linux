@@ -1,0 +1,89 @@
+{
+  "actual_ADT_macros_sha256": "b80b864aad792e3c1298636304f14112c4c0790744211a89ca06d2c633a70ca3",
+  "hardware": "UNTESTED",
+  "runs": [
+    {
+      "cases": [
+        {
+          "case": "unsorted_fixed_point",
+          "start_offset": 7516192768
+        },
+        {
+          "case": "sorted_same_result",
+          "start_offset": 7516192768
+        },
+        {
+          "case": "nested",
+          "result": 0
+        },
+        {
+          "case": "sentinel_zero_and_exact_carveout_exemption",
+          "result": 0
+        },
+        {
+          "case": "memory_map_envelope_is_NOT_exempt",
+          "result": -1
+        },
+        {
+          "case": "overflow",
+          "result": -1
+        }
+      ],
+      "compiler": "gcc",
+      "flags": [
+        "-std=c11",
+        "-O1",
+        "-g",
+        "-Wall",
+        "-Wextra",
+        "-Werror",
+        "-fsanitize=address,undefined",
+        "-fno-sanitize-recover=all"
+      ],
+      "stderr_bytes": 0
+    },
+    {
+      "cases": [
+        {
+          "case": "unsorted_fixed_point",
+          "start_offset": 7516192768
+        },
+        {
+          "case": "sorted_same_result",
+          "start_offset": 7516192768
+        },
+        {
+          "case": "nested",
+          "result": 0
+        },
+        {
+          "case": "sentinel_zero_and_exact_carveout_exemption",
+          "result": 0
+        },
+        {
+          "case": "memory_map_envelope_is_NOT_exempt",
+          "result": -1
+        },
+        {
+          "case": "overflow",
+          "result": -1
+        }
+      ],
+      "compiler": "clang",
+      "flags": [
+        "-std=c11",
+        "-O1",
+        "-g",
+        "-Wall",
+        "-Wextra",
+        "-Werror",
+        "-fsanitize=address,undefined",
+        "-fno-sanitize-recover=all"
+      ],
+      "stderr_bytes": 0
+    }
+  ],
+  "scope": "Actual6249 4GiB find_ram function with mocked ADT transport; not hardware or proof that future4GiB allocation fits",
+  "source_function_sha256": "24cd7a62a37404dd2b6229256044a02414b52596324cddbdd22aa549a4440c06",
+  "status": "PASS"
+}

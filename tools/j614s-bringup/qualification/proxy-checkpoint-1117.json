@@ -1,0 +1,35 @@
+{
+  "status": "OBSERVED_PROXY_ONLY",
+  "utc": "2026-10-20T11:17:06Z",
+  "screen_read_by_primary": "Running proxy",
+  "camera": {
+    "bytes": 107254,
+    "decoder_diagnostic": false,
+    "discarded_frames": 15,
+    "file": "frame-00001.jpg",
+    "sha256": "86e4658983e92affac300bbf56e9c413390a962622624dd6c74a9a2b2f6aeba3"
+  },
+  "usb_before": [
+    {
+      "bus": "1",
+      "enumeration": "63",
+      "product": "m1n1 uartproxy 8e0cf28",
+      "product_id": "316d",
+      "vendor": "1209"
+    }
+  ],
+  "usb_after": [
+    {
+      "bus": "1",
+      "enumeration": "63",
+      "product": "m1n1 uartproxy 8e0cf28",
+      "product_id": "316d",
+      "vendor": "1209"
+    }
+  ],
+  "recovery_verified": false,
+  "target_code_executed": false,
+  "target_memory_written": false,
+  "watchdog_or_power_changed": false,
+  "fingerbot_used": false
+}

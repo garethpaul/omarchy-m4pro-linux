@@ -1,0 +1,21 @@
+{
+  "schema": 1,
+  "hardware": "UNTESTED",
+  "target_actions": false,
+  "attempts": [
+    {
+      "attempt": "baseline-only-aborted-01",
+      "source": "8f2f3d13600aacadd93d577855b7e212b8ae57ff",
+      "cause": "Local git fetch rejected abbreviated eb40b68 ref; orchestration shell incorrectly continued to baseline-only qualification",
+      "action": "Stopped only this attempt's process tree; preserved separate source01/build01 and log",
+      "decoder_applied": false,
+      "claim": "No decoder compile or success claim"
+    },
+    {
+      "attempt": "candidate-preflight-rejection",
+      "cause": "qualify_gravity.py requires the full immutable source SHA and rejected abbreviated5628d35c3",
+      "output_created": false,
+      "action": "Resolved full SHA and reran unchanged helper against fresh output"
+    }
+  ]
+}

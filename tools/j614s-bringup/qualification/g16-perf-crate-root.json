@@ -1,0 +1,14 @@
+{
+  "status": "ROOT_IDENTITY_AND_OBJECT_CHECK_PASS",
+  "source": "5628d35c32649341516db300b1a7939fe5753334",
+  "source_files_verified": 2,
+  "object_sha256": "7dbf0f6a8e95f8f1346683ada0830819687009a8b97caa860edad385782db451",
+  "object_bytes": 681624,
+  "object_target": "ELF64 REL AArch64",
+  "config_sha256": "6c5aba7745d918c528300c5a395fcd7db0c2b718acda7d1467af2816a8d56516",
+  "build_log_sha256": "16bd2c6373e49b132946e9a0ff3e6b1b540f851769c6a364e75d259fe43f23d3",
+  "kernel_build_repeated_by_root": false,
+  "module_link_tested": false,
+  "hardware_tested": false,
+  "scope": "Independent local artifact/source/config identity and ELF architecture checks; actual crate build performed by build lane"
+}

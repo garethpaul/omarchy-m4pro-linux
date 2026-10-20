@@ -1,0 +1,41 @@
+{
+  "status": "WORKS within RAM-only metadata observation; staging/handoff UNTESTED",
+  "captured_utc": "2026-10-20T07:54:40.737646+00:00",
+  "capture_sha256": "af303859c7cfd853e85b509a0a14c8fed5eb4ea240eaf73f13bd77c1df80f78d",
+  "observer_sha256": "dbeab84b31fb4861238df54da971378bb4e7fb482a9dc1513c13e37f90af30e9",
+  "helper_sources": {
+    "cpu_observer_sha256": "fce3a31052563734305b5c475bce7d247cf0c716fb0d0f177b81acf1da3c55d7",
+    "staging_memory_sha256": "42860b7b024cb14dfcfd0c81dcaa460cba79f0f121f03a750ee14da76f464a8a"
+  },
+  "resident_binary_sha256": "fb31c765c54b2c8108ac7598c8307f663b91fb25ef9cbeb88e75bafffc0f3afb",
+  "resident_elf_sha256": "4a32c15fbda69acc47175f1e6b514cfb7d5920916df7630dec216c29177fc28f",
+  "bootargs_sha256": "1a2b271f7cc02878edb0b4a919df814539d9567cdba86a196164becbbce3368e",
+  "adt_sha256": "ee5d2412e0cee64ad8861bcdc3cb2301e393041b746355c8fd3759062f3cf96a",
+  "usb_enumeration": "63",
+  "cpu_state": {
+    "secondary_flags_set": 0,
+    "secondary_slots_idle": false,
+    "resident_wfe_mode": false
+  },
+  "range_count": 199,
+  "range_counts_by_source": {
+    "/chosen/memory-map": 94,
+    "/chosen/carveout-memory-map": 105
+  },
+  "copied_bootargs_bytes": 1152,
+  "heap_metadata_stable": true,
+  "allocator_called": false,
+  "target_memory_written": false,
+  "watchdog_action": "unchanged",
+  "cores_started": false,
+  "exceptions": 0,
+  "raw_captures_published": false,
+  "deployment_authorized": false,
+  "recovery_verified": false,
+  "host_tests": {
+    "count": 12,
+    "status": "PASS",
+    "initial_helper_stubs": "RED: NotImplementedError retained in tool output"
+  },
+  "scope": "Frozen double-read observation, not live freshness, atomic coherency, ownership claim, reservation or native handoff"
+}

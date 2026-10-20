@@ -1,0 +1,27 @@
+# Offline staging geometry checkpoint
+
+**PARTIAL:** the frozen read-only capture is validated and observed. **WORKS:** host interval controls and mocked actual-source `find_ram` controls pass. **BLOCKED:** the real heap is inside a protected carveout; the strict whole-advance rule refuses advancement across it. Secondary slots are not idle and resident WFE is false. **UNTESTED:** hardware placement, allocator reservation, recovery and execution.
+
+This checkpoint has no child-placement API, container acceptance, allocator, target interface, stager or executable command generator. `observe_geometry(capture_bytes, expected_pins)` accepts caller-pinned raw JSON bytes and returns a **private** observation containing memory addresses. Keep that return value private. `check_capture.py` prints only a redacted observation of the frozen capture; the committed `actual-observation-summary.json` contains no live memory addresses. Neither the producer nor any target module is imported. Helpers are executed from their source bytes, without Python bytecode-cache loading.
+
+The capture hash is checked before parsing. The session, resident flat/ELF, observer and decoder hashes are bound explicitly. This establishes an offline byte identity contract, not provenance authentication, current live freshness, ownership or permission. The raw 16-byte entries are decoded and checked against their supplied integers. Duplicate property identities, invalid sources, overflow, changed session/hash, malformed metadata and unsafe memory ordering refuse. Both ADT source sections are required. Every entry remains counted, including sentinel, zero and outside-usable entries. Only `/chosen/carveout-memory-map:region-id-24`, matching the exact usable envelope, receives the full-envelope exemption. A memory-map property of the same name is protected.
+
+The protected union includes the entire resident extent (code, BSS, stacks and spin table), its live heap, live BootArgs/ADT, in-bounds raw reserved ranges, and the framebuffer. The framebuffer is checked against its separate physical envelope and the existing public loader's fixed display guard; it must remain outside usable allocation RAM. No raw ADT, private capture, live ASLR addresses or binaries are included here. `source-comparison.json` records public ELF-relative offsets and source hashes.
+
+`choose_base` is an internal pure interval-search control. It sorts and merges intervals, so unsorted or nested regions cannot be skipped accidentally. It is **not** a placement result. A hypothetical separate child uses 2MiB alignment, at least64MiB, raw PIC entry `child+0x800`, a container strictly below32MiB, and copied1152-byte BootArgs at `child+32MiB`. The current checkpoint does not accept or validate any container and never returns that geometry as a plan. Synthetic tests exercise these arithmetic constraints only.
+
+`require_clear_advance` separately refuses any protected span intersecting the whole prospective advance from the raw heap pointer through reservation end. This is deliberately stricter than the historical test52 script's sorted skip-then-advance algorithm. The real capture fails this rule even if secondary CPUs become ready. The actual allocator's ability to advance without writing skipped memory is **not qualified or adopted here**; proving a separate source/binary-bound reservation contract is future work. A reserved carveout never becomes writable ownership merely because a search skips it. The raw heap is not assumed aligned: the64-byte alignment is computed arithmetically, and `heapblock_alloc(0)` is never called.
+
+The native6249 `find_ram` source function performs fixed-point traversal for a future4GiB allocation. `source_control.py` extracts that pinned function and actual ADT macros into a host harness with mocked ADT transport. Six cases pass under both GCC and Clang with fatal ASan/UBSan and warnings as errors. This does not establish that4GiB fits on the real machine. The historical test52 script was read as text only; its target calls, PMU reset and watchdog actions are never executed. The synthetic negative control demonstrates a naive unsorted single-pass bug, not a bug attribution to that historical script (which sorts and asserts).
+
+Reproduce from this repository root:
+
+```sh
+python3 infra/staging-plan/test_planner.py
+python3 infra/staging-plan/source_control.py --source "$PINNED_6249_SOURCE" --output "$FRESH_HOST_RESULT"
+python3 infra/staging-plan/check_capture.py "$PRIVATE_CAPTURE_01"
+```
+
+`PINNED_6249_SOURCE` must contain the exact source SHA in `source-comparison.json`; the harness refuses a changed source. `PRIVATE_CAPTURE_01` must match the committed capture hash. The observer is not run by these commands. The first command uses wholly synthetic fixtures created from scratch, and never edits or derives a passing fixture from the actual capture. The second writes only the requested host result. The third reads only an existing file and prints a redacted summary. Preserve previous results instead of overwriting them during independent replay.
+
+Completed checks are recorded in `test-result.json`, `source-control-result.json` and `actual-observation-summary.json`. Deferred work is explicit: verified container-facts schema/acceptance, child-plan output, nonwriting reservation qualification, live recheck, recovery qualification and all hardware actions. Current inputs provide no actual verified container and no deployable bundle.

@@ -1,0 +1,32 @@
+{
+  "blocked_gates": [
+    "LIVE_FRESHNESS_UNQUALIFIED",
+    "RESERVATION_NOT_CLAIMED",
+    "RECOVERY_UNTESTED",
+    "SECONDARY_SLOTS_NOT_IDLE",
+    "RESIDENT_WFE_FALSE",
+    "HEAP_INSIDE_PROTECTED_SPAN",
+    "STRICT_HEAP_ADVANCE_UNSAFE",
+    "NO_VERIFIED_CONTAINER"
+  ],
+  "capture_sha256": "af303859c7cfd853e85b509a0a14c8fed5eb4ea240eaf73f13bd77c1df80f78d",
+  "capture_unchanged": true,
+  "deployment_authorized": false,
+  "hardware": "UNTESTED",
+  "placement": null,
+  "planner_sha256": "e8b9d4ce0da16f20ad0f205a3dbe2bfa0a6621b2b37ed86d6e9fca872e223363",
+  "range_counts": {
+    "exact_envelope_exemption": 1,
+    "outside_usable": 65,
+    "protected": 48,
+    "sentinel": 61,
+    "zero": 24
+  },
+  "reservation_claimed": false,
+  "schema": 1,
+  "scope": "Disk-only replay; no actual container, reservation, freshness or recovery qualification",
+  "status": "GEOMETRY_OBSERVATION_ONLY",
+  "strict_gap_control": "HEAP_ADVANCE_CROSSES_PROTECTED_SPAN",
+  "synthetic_fixture": false,
+  "target_memory_written": false
+}

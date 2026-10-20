@@ -1,6 +1,6 @@
 {
-  "workspace_commit": "1f37176e3d7b98beacc9ffbd27ab239344b26f22",
-  "source_archive_sha256": "261aae2fb866fb6e0e9d139dfb229980942ac4f308fec9072f9feb5a9d4c19ca",
+  "workspace_commit": "9be25641638b1354a847fcffae411ed4a49c7ab2",
+  "source_archive_sha256": "94ed6b8f39294cde93a406d8ef06be2f5466d5f11ca0a7c87a6e14368cd55f49",
   "status": "experimental tooling; no deployment or production qualification",
   "files": [
     {
@@ -9,7 +9,7 @@
     },
     {
       "file": "PROGRESS.md",
-      "sha256": "7eaccdd8cf54ce140d81744874087d690d505f13d14cbd66f58292483b842837"
+      "sha256": "ac8a0f79db7ba3bc7ff81227891060d7213c028ee6def706d81d016c217db364"
     },
     {
       "file": "capture/.gitignore",
@@ -280,6 +280,10 @@
       "sha256": "1e766734bddaf897c00a398ebb78ee9735c7c9940f264135e5d340388cbe6485"
     },
     {
+      "file": "graphics/PERF-INPUTS.md",
+      "sha256": "a511710211b71d5fc82d157ac9a9479425443624a6a134f04cd5c408948a35ca"
+    },
+    {
       "file": "graphics/README.md",
       "sha256": "36b7f919e7ca976f1b1bf301bbca011a799b45390f1d380d78727bc2d1535bae"
     },
@@ -392,6 +396,14 @@
       "sha256": "5b325f4c1f75ed5e7a3abcead778687b7c04f7a36327744356a7ad9461b8e35e"
     },
     {
+      "file": "graphics/g16-perf-inputs.patch",
+      "sha256": "78cdf28768d472f90caf8a0bcbc5f0da36b016df5ea26014bd4d02b2d3216f3e"
+    },
+    {
+      "file": "graphics/g16-perf-result.json",
+      "sha256": "af28fec1721891755ee7f8f5e79d42c98e8519db711a23f88d6a9de70db83751"
+    },
+    {
       "file": "graphics/g16s-inspect.c",
       "sha256": "27bafa3c9200780d8a8e0f969914ef3f221dcd9f48056ca8fb8b012ce94503ea"
     },
@@ -456,6 +468,10 @@
       "sha256": "875c76cf9d9845882d4832427492e01c46c3e514a053fc3f308a7f2471a194a0"
     },
     {
+      "file": "graphics/replay_g16_perf.py",
+      "sha256": "c9b66f5ec62bd168be8d1ad73a019c624fe6e1dd386b3b2e47172e1df21d8ed4"
+    },
+    {
       "file": "graphics/run-driver-regression.py",
       "sha256": "f9dbc2aa1b1b33499eb5fe98c57305e97e343d1eee3ee0dfce71c73f065e83d9"
     },
@@ -478,6 +494,10 @@
     {
       "file": "graphics/test_early_capture.py",
       "sha256": "1e2dcfa4f3ac9b01b752037003ffe2fc1281144b5599de568012523862e82e1d"
+    },
+    {
+      "file": "graphics/test_g16_perf.rs",
+      "sha256": "1ea5ba7ab6044201f07583070fe23aefc2760647305a96329333f75ff69ed777"
     },
     {
       "file": "graphics/test_g16s_abi.c",
@@ -602,6 +622,18 @@
     {
       "file": "infra/g16-object-result.json",
       "sha256": "70be4872a3fb75e213d6f4f63811372d7b8b168e6b8977393a4ff4da6b9ad92f"
+    },
+    {
+      "file": "infra/g16-perf/README.md",
+      "sha256": "88d2d6e9d969cdc0e6f1267e3183608c2d2b87bdf65abe002b21560cc961384e"
+    },
+    {
+      "file": "infra/g16-perf/attempts.json",
+      "sha256": "40a5673e5f9e56eebef8f77f6a2e91798ef3d8999d9820f82168bc7956ffa5c4"
+    },
+    {
+      "file": "infra/g16-perf/result.json",
+      "sha256": "84b2d07a7739b75a702b44acd444bd9f4d79da10db82633f5195b9bfd8ab04f3"
     },
     {
       "file": "infra/gravity-artifact-negative-results.json",
@@ -874,6 +906,42 @@
     {
       "file": "infra/sanitizer-fatal-probe.json",
       "sha256": "1b30983b40a448b530bef3664f1d496fb32f9483af699a2faea95a4fd6ec971a"
+    },
+    {
+      "file": "infra/staging-plan/README.md",
+      "sha256": "ede64f765936ff505ab6573b8b5cc1451658ac34620543e937615c95467570ac"
+    },
+    {
+      "file": "infra/staging-plan/actual-observation-summary.json",
+      "sha256": "932f855409e24d1861576f2f50fba1d42ab2f763b14f1fd9137736c82b885eeb"
+    },
+    {
+      "file": "infra/staging-plan/check_capture.py",
+      "sha256": "4ebb2ce5ad87615905bae6a8de17d4a480e5e96dc319b021de07d44ddde54438"
+    },
+    {
+      "file": "infra/staging-plan/planner.py",
+      "sha256": "e8b9d4ce0da16f20ad0f205a3dbe2bfa0a6621b2b37ed86d6e9fca872e223363"
+    },
+    {
+      "file": "infra/staging-plan/source-comparison.json",
+      "sha256": "2724719ec916435538da275a88680284e24d1791f42f927ef7692ce682eab8c9"
+    },
+    {
+      "file": "infra/staging-plan/source-control-result.json",
+      "sha256": "86f18ff0e262d6b7cc62bd728ec81b1ce94c74442e1d72b47f73c6b961b7e74c"
+    },
+    {
+      "file": "infra/staging-plan/source_control.py",
+      "sha256": "5fac7ddfb64c4dcacf60a2ea94faad8d88acbd61af28d46c48c721434a534a9e"
+    },
+    {
+      "file": "infra/staging-plan/test-result.json",
+      "sha256": "d05f4285a151dac237140120cec32aa3b468d51e478c1a3ca286f33d5016f36c"
+    },
+    {
+      "file": "infra/staging-plan/test_planner.py",
+      "sha256": "ac32cb4dd47fa17fbdff04eb2bc5ba3b0a6c53cd7962ba877cf0b8e3a2f42826"
     },
     {
       "file": "infra/test_dcp_prime.py",
@@ -2329,7 +2397,7 @@
     },
     {
       "file": "qualification/STATUS.md",
-      "sha256": "dc6fac91bf57072040eb3899bb24cd481421e903326e9e26b17a8af159b3757f"
+      "sha256": "c2e60a83d77d648a9de518403345c30b7988c881f997795cb756234bfe08caaf"
     },
     {
       "file": "qualification/adt-node-comparison.json",
@@ -2346,6 +2414,10 @@
     {
       "file": "qualification/desktop-test52.json",
       "sha256": "af570fb001c74576a4aacb6b683cd51e94d993527274857198f849aa8e6b3a46"
+    },
+    {
+      "file": "qualification/g16-perf-crate-root.json",
+      "sha256": "695420a0661983e54e62af85a40aaa14825158b7153eb76a7bb70855673aa3da"
     },
     {
       "file": "qualification/gpu-test56-dmesg.txt",
@@ -2372,8 +2444,16 @@
       "sha256": "61d04e17235b75d2e8da4884a6dbade88ff97b1c761b49a00268fcb9059f3727"
     },
     {
+      "file": "qualification/proxy-checkpoint-1117.json",
+      "sha256": "04d74c75573410479bba9eea073fff456c4542610fd8163168aa241c77686b8a"
+    },
+    {
       "file": "qualification/proxy-current.json",
       "sha256": "8b539e1eefae24001682f4ca5871ac94011b7274d881a30380d8597ee5297867"
+    },
+    {
+      "file": "qualification/staging-plan-root.json",
+      "sha256": "13303a05d4b17ab9c8158859e75ba52d0022de4700e86b110f07161043b51578"
     },
     {
       "file": "qualification/storage-device-test52.txt",
@@ -2408,6 +2488,14 @@
       "sha256": "bbda7a47b6d77d35623663209f2c6af92f8601e280f18061a9667d77100ad427"
     },
     {
+      "file": "recovery/STAGING-MEMORY.md",
+      "sha256": "18840714e6d634c6c7fdbf2adc1b974649c1a3f12a51c91a1da90d1f49bf7885"
+    },
+    {
+      "file": "recovery/allocator-instructions.json",
+      "sha256": "f6108800b09d763c76d19749119c91eea47e3532275ecea1d6e699bc5e55a201"
+    },
+    {
       "file": "recovery/collector-proxy-rejection.json",
       "sha256": "44f24984d97f791435307c2b8f443ab349684d7659f4d3bdcccde3255fb8a90d"
     },
@@ -2436,6 +2524,10 @@
       "sha256": "fce3a31052563734305b5c475bce7d247cf0c716fb0d0f177b81acf1da3c55d7"
     },
     {
+      "file": "recovery/read_staging_memory.py",
+      "sha256": "dbeab84b31fb4861238df54da971378bb4e7fb482a9dc1513c13e37f90af30e9"
+    },
+    {
       "file": "recovery/resident-cpu-observation-02.json",
       "sha256": "9874a44e8204ad142b8cce09cbd36e52b738f985c32a1f4c6035792240574119"
     },
@@ -2448,8 +2540,16 @@
       "sha256": "b4108e782d1160c0e5d6bac0decbfe9de68a5d47ddc0d3062ddb7ef65e22a184"
     },
     {
+      "file": "recovery/staging-memory-observation-01.json",
+      "sha256": "35a5bc038258bb26b84f152d4b441d4c9e485f0ef46a069258a3f566d42b69dc"
+    },
+    {
       "file": "recovery/staging-source-hazard.json",
       "sha256": "258a56dcba1b46e3536b57e1a0a30dff0fd425c076158052eaf176a267f4c020"
+    },
+    {
+      "file": "recovery/staging_memory.py",
+      "sha256": "42860b7b024cb14dfcfd0c81dcaa460cba79f0f121f03a750ee14da76f464a8a"
     },
     {
       "file": "recovery/test_observe.py",
@@ -2462,6 +2562,10 @@
     {
       "file": "recovery/test_resident_cpus.py",
       "sha256": "64d501c87d66249da5a9227679d0fccc0dcabe8a6457176d64068f3ebb205aab"
+    },
+    {
+      "file": "recovery/test_staging_memory.py",
+      "sha256": "a292026c3663e58bc6067dd6f2aab069426e5b5d34caa4fdac3418b75fde027f"
     }
   ]
 }

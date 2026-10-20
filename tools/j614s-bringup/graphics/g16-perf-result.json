@@ -1,0 +1,71 @@
+{
+  "status": "ACTUAL_ADT_RUST_DECODE_ONLY",
+  "hardware_tested": false,
+  "firmware_init_enabled": false,
+  "runtime_caller_added": false,
+  "target_adt_sha256": "ee5d2412e0cee64ad8861bcdc3cb2301e393041b746355c8fd3759062f3cf96a",
+  "decoder_sha256": "e1f474d5a3480c10337686ebbfe18e0c8b7f7692f47a02a620e651d0c8e26781",
+  "test_harness_sha256": "1ea5ba7ab6044201f07583070fe23aefc2760647305a96329333f75ff69ed777",
+  "harness_tests": 7,
+  "aarch64_no_std_object_sha256": "c3997cdc83f87bc8b939daa542caae1672cc7c852a039930446f3d56552c231b",
+  "state_records_verified": 64,
+  "object_target": "aarch64-unknown-none-softfloat",
+  "state_count": 16,
+  "active_state_count": 15,
+  "table_count": 2,
+  "period_clocks": 200000,
+  "period_ms": 8,
+  "clocks_lost_if_reconstructed_from_ms": 8000,
+  "active_mcc_mask": 15,
+  "repeated_frequency_indices": [
+    9
+  ],
+  "descending_frequency_indices": [
+    11,
+    13
+  ],
+  "distinct_core_voltage_banks": true,
+  "mirror_properties_verified": true,
+  "baselines": {
+    "j413ap": {
+      "adt_sha256": "2a0c26929ef8afbe7835816183f919a2bcfdc42a662429e67526f64babc9c88e",
+      "source": "vendor static ADT; not a runtime capture",
+      "perf_state_count": 0,
+      "gpu_num_perf_states": 2,
+      "perf_state_table_count_present": false,
+      "table_byte_lengths": {
+        "perf-states": 128,
+        "perf-states-sram": null,
+        "perf-states1": null,
+        "perf-states-sram1": null
+      },
+      "runtime_shape_qualified": false
+    },
+    "j613ap": {
+      "adt_sha256": "6430fdc6da49c64025d038d50fdcff3c57dfe2b1f3d37052c12f1dc27e988c2f",
+      "source": "vendor static ADT; not a runtime capture",
+      "perf_state_count": 0,
+      "gpu_num_perf_states": 2,
+      "perf_state_table_count_present": false,
+      "table_byte_lengths": {
+        "perf-states": 128,
+        "perf-states-sram": null,
+        "perf-states1": null,
+        "perf-states-sram1": null
+      },
+      "runtime_shape_qualified": false
+    }
+  },
+  "raw_properties_exported": false,
+  "source_license": "GPL-2.0-only",
+  "blocked": "Firmware hwdata/power layout, UAT and first APP INIT still require earliest coherent T6040 capture; this decoder does not serialize or submit them",
+  "stdout": [
+    "\nrunning 7 tests\ntest preserves_state_order_both_voltage_banks_and_fractional_sampling ... ok\ntest refuses_count_alias_and_single_bank_substitution ... ok\ntest refuses_misaligned_sram_frequencies_and_zero_active_state ... ok\ntest refuses_inconsistent_sampling_and_empty_mcc ... ok\ntest refuses_mismatched_second_bank_alias ... ok\ntest refuses_truncation_and_trailing_data ... ok\ntest refuses_voltage_conversion_overflow ... ok\n\ntest result: ok. 7 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+    "PASS: actual Rust decoder preserved all64 states and exact sampling inputs\n"
+  ],
+  "kernel_commit": "eb40b68bcdca7bf66f79b045b96c5599adb720ab",
+  "base_commit": "db9f2f8f00986e3ef03fddbdaad55a861e793123",
+  "patch_sha256": "78cdf28768d472f90caf8a0bcbc5f0da36b016df5ea26014bd4d02b2d3216f3e",
+  "initial_host_red": "one focused preservation test failed with DecodeError::Shape before implementation",
+  "initial_cross_compile_failure": "AArch64 Linux core target absent; corrected to installed aarch64-unknown-none-softfloat core target. No source check disabled."
+}

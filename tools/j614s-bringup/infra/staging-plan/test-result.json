@@ -1,0 +1,20 @@
+{
+  "actual_capture_status": "GEOMETRY_OBSERVATION_ONLY",
+  "actual_strict_gap": "REFUSED",
+  "hardware": "UNTESTED",
+  "placement_api": "NOT_IMPLEMENTED",
+  "schema": 1,
+  "scope": "Host-only checkpoint; no actual container, reservation, deployment or hardware qualification",
+  "source_control_runs": 12,
+  "source_sha256": {
+    "check_capture.py": "4ebb2ce5ad87615905bae6a8de17d4a480e5e96dc319b021de07d44ddde54438",
+    "planner.py": "e8b9d4ce0da16f20ad0f205a3dbe2bfa0a6621b2b37ed86d6e9fca872e223363",
+    "source_control.py": "5fac7ddfb64c4dcacf60a2ea94faad8d88acbd61af28d46c48c721434a534a9e",
+    "test_planner.py": "ac32cb4dd47fa17fbdff04eb2bc5ba3b0a6c53cd7962ba877cf0b8e3a2f42826"
+  },
+  "status": "PASS",
+  "synthetic_mutation_refusals": 13,
+  "synthetic_test_methods": 10,
+  "target_actions": false,
+  "test_output": "..........\n----------------------------------------------------------------------\nRan 10 tests in 0.003s\n\nOK"
+}

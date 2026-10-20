@@ -691,3 +691,61 @@ identity unchanged. The capture returned a minor MJPEG decoder warning; actual
 JPEG was viewed and text readable. Address-free observation/hash is retained
 in qualification/proxy-checkpoint-0745.json; raw screen stays private. No
 Fingerbot, reboot, core, PMU, timer, target code or protected write was used.
+
+## Read-only staging geometry prerequisite
+
+Previous goal continuation classified PROGRESS. A remaining concrete source gap
+was found after that checkpoint: no reviewed separate-child placement model
+exists yet. The generic helper overwrites resident memory and the legacy PIC
+helper cannot be reused unchanged. Safe offline planner development is now
+active in the build lane; it has no target/stager/boot interface.
+
+Root added a separate RAM-only observer without altering pinnedfce3 source or
+old inputs. Twelve host controls pass after the initial red helper stubs.
+Actual07:54:40UTC capture01 preserves199 ADT ranges and double-stable resident
+heap/CPU/bootargs/ADT metadata,USB63,zero exceptions. It reads rawheap_base and
+limit rather than calling mutating heapblock_alloc(0); address-only bootargs
+query avoids the old helper's hidden physical read8. Rawprivate inputs/hash
+bindings are retained; public recovery/staging-memory-observation-01.json has
+no absolute target addresses. Secondaryflags0/WFEfalse still prevent handoff.
+
+Host llvm-objdump aborted on the paired ELF. Original artifact is unchanged.
+Narrow raw-function decoding via llvm-mc succeeds and independently resolves
+the high-water load to the paired heap_base symbol; no ELF parser or allocator
+execution pass is inferred. No target allocation/write, core/WFE/PMU/timer
+change, staging or boot occurred. The pending physical availability request
+still has no answer.
+
+## Lossless T6040 performance inputs and strict staging checkpoint
+
+The requested Gravity-first follow-up compares the current working M4 code to
+this actual T6040, rather than changing a model ID. Current upstream kernel
+4fc326f6 and Mesa87ac51d refs are unchanged. A new source patch eb40b68 adds a
+core-only Rust decoder/module for the measured16-state/two-bank ADT shape.
+Actual replay verifies all64 core/SRAM records, repeated/descending index
+order, distinct voltage banks and mirrored secondary properties. Exact200000
+sampling clocks remain intact alongside8ms; deriving clocks from ms loses8000.
+Seven host tests pass after an observed red preservation test; no_std AArch64
+object compile passes. The first Linux target compile lacked its core library;
+the installed softfloat core target succeeds without suppressing checks.
+Actual kernel-crate compilation now passes on combined-source5628d35c with exact6c config and3174 layout blocks/16413 field checks. No runtime caller, GPU model
+admission, register window or firmware serializer changed. GPU INIT/compute,
+DCP and accelerated desktop remain UNTESTED/BLOCKED on coherent early capture.
+M2/M3 static SGX inputs were compared first; their unpopulated counts cannot
+qualify runtime ladder reuse. See graphics/PERF-INPUTS.md and result JSON. Root independently verifies source/object/config/build-log identities, ELF64/AArch64 and the exact2-file diff; the actual compile is not independently repeated. All12 warnings retained. Historical abbreviated-ref refusal/aborted baseline build are preserved in infra/g16-perf/attempts.json. Full Image/module link remains UNTESTED for5628d35c; original8f2 artifacts unchanged.
+
+Integrated build-lane11a3450 as f3ec24b. Root replays ten interval tests and the
+actual6249 find_ram function's six cases under both GCC and Clang with fatal
+ASan/UBSan. Frozen capture01 reproduces the strict full-advance refusal: current
+heap lies inside a protected range; CPU slots/WFE also unready. No placement,
+reservation or actual container exists. A nonwriting allocator-advance contract
+is deliberately deferred, not silently assumed to own skipped firmware memory.
+See infra/staging-plan/README.md and qualification/staging-plan-root.json.
+
+Fresh11:17:06UTC webcam image was viewed: Running proxy. Both camera samples
+have no decoder diagnostic and USB63/8e0cf28 unchanged. Raw images remain private;
+address-free qualification/proxy-checkpoint-1117.json records this observation.
+No proxy code execution, target allocation/write, watchdog/core/PMU change,
+Fingerbot, boot or protected write occurred. Physical recovery availability is
+still unanswered. The current work made offline code/build progress; overall
+native accelerated persistent Omarchy is incomplete.
