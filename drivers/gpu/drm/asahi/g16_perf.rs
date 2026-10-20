@@ -1,0 +1,93 @@
+// SPDX-License-Identifier: GPL-2.0-only
+//! Lossless T6040 ADT performance inputs. Not a firmware power-data encoder.
+
+#[derive(Debug, PartialEq, Eq)]
+pub enum DecodeError {
+    Shape,
+    Length,
+    Frequency,
+    Voltage,
+    Mirror,
+    Sampling,
+}
+
+#[derive(Clone, Copy, Debug, Default, PartialEq, Eq)]
+pub struct State {
+    pub frequency_hz: u32,
+    pub voltage_mv: u32,
+}
+
+pub struct Inputs {
+    pub core: [[State; 16]; 2],
+    pub sram: [[State; 16]; 2],
+    pub period_clocks: u32,
+    pub period_ms: u32,
+    pub active_mcc_mask: u32,
+}
+
+impl Inputs {
+    /// Counts are the raw little-endian ADT values, decoded by the caller.
+    /// The `*1` properties must be byte-for-byte aliases of the second bank.
+    /// Preserve index order: T6040 states are not strictly frequency-sorted.
+    pub fn decode(
+        count: u32,
+        active: u32,
+        tables: u32,
+        core: &[u8],
+        sram: &[u8],
+        core1: &[u8],
+        sram1: &[u8],
+        period_clocks: u32,
+        period_ms: u32,
+        active_mcc_mask: u32,
+    ) -> Result<Self, DecodeError> {
+        if (count, active, tables) != (16, 15, 2) {
+            return Err(DecodeError::Shape);
+        }
+        if core.len() != 256 || sram.len() != 256 || core1.len() != 128 || sram1.len() != 128 {
+            return Err(DecodeError::Length);
+        }
+        if &core[128..] != core1 || &sram[128..] != sram1 {
+            return Err(DecodeError::Mirror);
+        }
+        if period_ms == 0 || period_clocks / 24_000 != period_ms || active_mcc_mask == 0 {
+            return Err(DecodeError::Sampling);
+        }
+        let mut out = Self {
+            core: [[State::default(); 16]; 2],
+            sram: [[State::default(); 16]; 2],
+            period_clocks,
+            period_ms,
+            active_mcc_mask,
+        };
+        for bank in 0..2 {
+            for index in 0..16 {
+                let offset = (bank * 16 + index) * 8;
+                let c = state(&core[offset..offset + 8]);
+                let s = state(&sram[offset..offset + 8]);
+                if c.frequency_hz != s.frequency_hz || (c.frequency_hz == 0) != (index == 0) {
+                    return Err(DecodeError::Frequency);
+                }
+                // Keep mV intact, but refuse values that cannot be represented
+                // if a later qualified OPP publisher converts to uV.
+                if c.voltage_mv == 0
+                    || s.voltage_mv == 0
+                    || c.voltage_mv.checked_mul(1000).is_none()
+                    || s.voltage_mv.checked_mul(1000).is_none()
+                {
+                    return Err(DecodeError::Voltage);
+                }
+                out.core[bank][index] = c;
+                out.sram[bank][index] = s;
+            }
+        }
+        Ok(out)
+    }
+}
+
+fn state(bytes: &[u8]) -> State {
+    State {
+        frequency_hz: u32::from_le_bytes([bytes[0], bytes[1], bytes[2], bytes[3]]),
+        voltage_mv: u32::from_le_bytes([bytes[4], bytes[5], bytes[6], bytes[7]]),
+    }
+}

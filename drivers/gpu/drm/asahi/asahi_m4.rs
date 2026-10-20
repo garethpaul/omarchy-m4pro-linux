@@ -11,6 +11,7 @@ mod g16_alloc;
 mod g16_compute;
 mod g16_drm;
 mod g16_fw;
+mod g16_perf;
 mod g16_platform;
 mod g16_power;
 mod g16_render;
