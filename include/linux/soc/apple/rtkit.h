@@ -178,6 +178,9 @@ int apple_rtkit_idle(struct apple_rtkit *rtk);
  */
 bool apple_rtkit_is_running(struct apple_rtkit *rtk);
 
+/* Negotiated transport version; no application readiness is implied. */
+unsigned int apple_rtkit_protocol_version(struct apple_rtkit *rtk);
+
 /*
  * Checks if RTKit has crashed.
  */

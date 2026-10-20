@@ -51,3 +51,12 @@ config DRM_ASAHI_DEBUG_ALLOCATOR
 
 	  Say N unless you are debugging firmware structures or porting to a
 	  new firmware version.
+
+config DRM_ASAHI_G16_BOOTSTRAP
+	tristate "J614s guarded G16S RTKit bootstrap diagnostic"
+	depends on ARCH_APPLE && OF
+	select APPLE_RTKIT
+	help
+	  Explicit J614s/25G83/B1 RAM diagnostic only. Creates no DRM device,
+	  sends no application INIT, and requires caller-owned power, memory
+	  exclusion and recovery. This option does not provide rendering.
