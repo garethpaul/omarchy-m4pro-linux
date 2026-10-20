@@ -136,3 +136,12 @@ allocation/action failures, ordinary cleanup and retained queue/pool/tag owners.
 The fakes do not establish Linux devres concurrency, firmware DMA safety or a
 working controller. Full timeout/recovery/reset/adoption integration remains in
 progress; no target access or deployment has occurred.
+
+## Complete strict source admission checkpoint
+
+The newer [admission checkpoint](admission/README.md) supersedes the staged
+refusal for the exact RAM-diagnostic profile only. It records the full source
+chain, real selected-source host tests, reproduced/fixed failures, ordering
+checks and a byte-exact 21-patch replay. This is PARTIAL source implementation;
+new-kernel NVMe hardware and persistent installation remain unqualified. Earlier
+staged proofs above remain historical and do not claim current hardware support.

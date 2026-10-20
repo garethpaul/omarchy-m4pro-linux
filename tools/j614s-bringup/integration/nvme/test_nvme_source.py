@@ -26,6 +26,7 @@ p.add_argument('--output', type=Path, required=True)
 p.add_argument('--cc', default='clang')
 a = p.parse_args()
 a.output.mkdir(parents=True, exist_ok=False)
+a.commit = subprocess.check_output(['git', '-C', str(a.source), 'rev-parse', a.commit], text=True).strip()
 source = subprocess.check_output(['git', '-C', str(a.source), 'show', a.commit + ':drivers/nvme/host/apple.c'], text=True)
 markers = ['static bool apple_nvme_can_adopt_rtkit(', 'static int apple_nvme_read_handoff(',
            'static bool apple_nvme_in_inherited_rtkit_range(', 'struct apple_nvme_rtkit_mapping {',
@@ -56,6 +57,6 @@ report = {'status': 'WORKS (actual selected source host fake only)', 'source_com
           'compile_exit': built.returncode, 'run_exit': r.returncode, 'output': r.stdout.splitlines(),
           'scope': 'fake MMIO reads, pages, SART, cache and DMA; no real hardware or concurrency',
           'controller_writes': False, 'target_access': False, 'hardware': 'UNTESTED',
-          'full_adopted_probe': 'BLOCKED; initial J614s refusal remains active'}
+          'full_adopted_probe': ('BLOCKED; initial J614s refusal remains active' if 'J614s ANS inherited RTKit adoption has not been ported' in source else 'PARTIAL source-only strict diagnostic admission; hardware UNTESTED')}
 (a.output / 'result.json').write_text(json.dumps(report, indent=2) + '\n')
 print(json.dumps(report, indent=2))

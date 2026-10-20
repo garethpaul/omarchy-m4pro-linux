@@ -1,0 +1,38 @@
+From 2e4c90541e850d7e29bbb39067453e2de740a94e Mon Sep 17 00:00:00 2001
+From: gareth jones <gareth@garethpaul.com>
+Date: Mon, 19 Oct 2026 23:06:58 -0700
+Subject: [PATCH] nvme: stage explicit inherited-only J614s diagnostic profile
+
+---
+ drivers/nvme/host/apple.c | 20 ++++++++++++++++++--
+ 1 file changed, 18 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/nvme/host/apple.c b/drivers/nvme/host/apple.c
+index c6280b9d4..799408f3c 100644
+--- a/drivers/nvme/host/apple.c
++++ b/drivers/nvme/host/apple.c
+@@ -313,0 +314,3 @@ static bool apple_nvme_can_adopt_rtkit(struct apple_nvme *anv)
++	if (anv->hw->j614s_diagnostic &&
++	    !(readl(anv->mmio_nvme + APPLE_ANS_LINEAR_SQ_CTRL) & APPLE_ANS_LINEAR_SQ_EN))
++		return false;
+@@ -2534 +2537,4 @@ static struct apple_nvme *apple_nvme_alloc(struct platform_device *pdev)
+-	anv->reset = devm_reset_control_array_get_exclusive(anv->dev);
++	if (anv->hw->j614s_diagnostic)
++		anv->reset = devm_reset_control_array_get_optional_exclusive(anv->dev);
++	else
++		anv->reset = devm_reset_control_array_get_exclusive(anv->dev);
+@@ -2607 +2613,2 @@ static struct apple_nvme *apple_nvme_alloc(struct platform_device *pdev)
+-			     NVME_QUIRK_ADMIN_PAGE_ALIGN);
++			     NVME_QUIRK_ADMIN_PAGE_ALIGN |
++			     (anv->inherited_rtkit ? NVME_QUIRK_BROKEN_FUA : 0));
+@@ -2764,0 +2772,8 @@ static const struct apple_nvme_hw apple_nvme_t8132_hw = {
++/* Explicit RAM-diagnostic profile only; measured inherited session required. */
++static const struct apple_nvme_hw apple_nvme_j614s_diagnostic_hw = {
++	.j614s_diagnostic = true,
++	.has_lsq_nvmmu = true,
++	.needs_ioq_register = true,
++	.max_queue_depth = 64,
++};
++
+@@ -2765,0 +2781 @@ static const struct of_device_id apple_nvme_of_match[] = {
++	{ .compatible = "apple,j614s-nvme-diagnostic", .data = &apple_nvme_j614s_diagnostic_hw },

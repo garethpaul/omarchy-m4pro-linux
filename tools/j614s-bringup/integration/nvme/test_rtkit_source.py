@@ -55,6 +55,9 @@ for name, commit in [('baseline', a.baseline), ('candidate', a.candidate)]:
             'static void apple_rtkit_release_rx(', 'static struct apple_rtkit *__apple_rtkit_init(',
             'struct apple_rtkit *apple_rtkit_init(', 'struct apple_rtkit *apple_rtkit_init_adopted(',
             'void apple_rtkit_free(', 'void apple_rtkit_free_retaining_buffers('])
+    if name == 'candidate' and 'void apple_rtkit_quiesce_retaining_state(' in code:
+        functions += extract(code, 'void apple_rtkit_quiesce_retaining_state(')
+        functions = '#define HAS_RETAINED_STATE 1\n' + functions
     (work / 'rtkit-types-under-test.h').write_text(types)
     (work / 'rtkit-constants-under-test.h').write_text(constants)
     (work / 'rtkit-functions-under-test.c').write_text(functions)
@@ -96,6 +99,6 @@ report = {'status': 'WORKS (baseline failure reproduced; candidate host invarian
           'candidate_type_bundle_sha256': hashlib.sha256(types.encode()).hexdigest(),
           'compiler': subprocess.check_output([a.cc, '--version'], text=True).splitlines()[0],
           'runs': runs, 'hardware': 'UNTESTED', 'target_access': False,
-          'nvme_adoption': 'UNTESTED; J614s refusal remains'}
+          'nvme_adoption': 'UNTESTED; host fake RTKit validation only'}
 (a.output / 'result.json').write_text(json.dumps(report, indent=2) + '\n')
 print(json.dumps(report, indent=2))

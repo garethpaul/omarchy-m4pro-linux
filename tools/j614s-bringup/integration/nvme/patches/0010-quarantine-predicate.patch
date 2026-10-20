@@ -1,0 +1,53 @@
+From 20d8b237f4e71913f9cfbf768f64f57e9cf6ea6f Mon Sep 17 00:00:00 2001
+From: gareth jones <gareth@garethpaul.com>
+Date: Mon, 19 Oct 2026 23:07:30 -0700
+Subject: [PATCH] nvme: expose retained-controller admission check for source
+ regression tests
+
+---
+ drivers/nvme/host/apple.c | 34 ++++++++++++++++++++--------------
+ 1 file changed, 20 insertions(+), 14 deletions(-)
+
+diff --git a/drivers/nvme/host/apple.c b/drivers/nvme/host/apple.c
+index 799408f3c..bf8241f40 100644
+--- a/drivers/nvme/host/apple.c
++++ b/drivers/nvme/host/apple.c
+@@ -2018,2 +2017,0 @@ static void apple_nvme_reset_work(struct work_struct *work)
+-	if (!anv->inherited_rtkit)
+-		apple_nvme_remove_sq(anv);
+@@ -2021,2 +2018,0 @@ static void apple_nvme_reset_work(struct work_struct *work)
+-	if (!anv->inherited_rtkit)
+-		apple_nvme_remove_cq(anv);
+@@ -2407,0 +2404,16 @@ static int apple_nvme_check_j614s_resources(struct platform_device *pdev,
++static bool apple_nvme_controller_quarantined(resource_size_t start)
++{
++	struct apple_nvme *held;
++	bool found = false;
++
++	mutex_lock(&apple_nvme_quarantine_lock);
++	list_for_each_entry(held, &apple_nvme_quarantines, quarantine_node) {
++		if (held->controller_start == start) {
++			found = true;
++			break;
++		}
++	}
++	mutex_unlock(&apple_nvme_quarantine_lock);
++	return found;
++}
++
+@@ -2432 +2444 @@ static struct apple_nvme *apple_nvme_alloc(struct platform_device *pdev)
+-	struct apple_nvme *anv, *held;
++	struct apple_nvme *anv;
+@@ -2451,9 +2463,3 @@ static struct apple_nvme *apple_nvme_alloc(struct platform_device *pdev)
+-	mutex_lock(&apple_nvme_quarantine_lock);
+-	list_for_each_entry(held, &apple_nvme_quarantines, quarantine_node) {
+-		if (held->controller_start == resource->start) {
+-			mutex_unlock(&apple_nvme_quarantine_lock);
+-			return ERR_PTR(dev_err_probe(dev, -EBUSY,
+-				"DMA ownership is uncertain until platform reset\n"));
+-		}
+-	}
+-	mutex_unlock(&apple_nvme_quarantine_lock);
++	if (apple_nvme_controller_quarantined(resource->start))
++		return ERR_PTR(dev_err_probe(dev, -EBUSY,
++			"DMA ownership is uncertain until platform reset\n"));

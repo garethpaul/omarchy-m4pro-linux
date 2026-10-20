@@ -6,13 +6,14 @@
     "gpu-test56-dmesg.txt": 56,
     "desktop-test52.json": 52,
     "battery-test42.txt": 42,
-    "storage-test52.txt": 52
+    "storage-test52.txt": 52,
+    "storage-device-test52.txt": 52
   },
   "storage_redaction": "Filesystem UUID line removed; original retained privately.",
   "files": [
     {
       "file": "STATUS.md",
-      "sha256": "c5e3006e84a7291cfde88900eb907453af1e3c22aec4f1d32bfcbef46ed91a36"
+      "sha256": "b738ab2a2a389acf2273838f114778e24cff0aa19ebb33dde778595ce9cad13d"
     },
     {
       "file": "adt-node-comparison.json",
@@ -45,6 +46,10 @@
     {
       "file": "storage-test52.txt",
       "sha256": "dce1ff075a999b7d56e527d36bfa2e19a1635c0927f433d2379483df34cb860b"
+    },
+    {
+      "file": "storage-device-test52.txt",
+      "sha256": "162b4643193ebe58a9f6b873bc7ae97d5f7ce26d8e5b99dda256525583caa797"
     }
   ]
 }

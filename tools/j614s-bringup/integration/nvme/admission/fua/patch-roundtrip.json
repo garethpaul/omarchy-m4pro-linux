@@ -1,0 +1,159 @@
+{
+  "status": "WORKS (exact source replay)",
+  "base": "b442be4b28f3720daff6c5f26fe8b1ab3aef28f1",
+  "candidate": "dd3f608d60ed503b87a9400255286d1c8fe5ac2d",
+  "patch_count": 22,
+  "file_count": 37,
+  "files": [
+    {
+      "path": "arch/arm64/include/asm/apple-idle.h",
+      "sha256": "fb7b1c8b6c4ce5e2054831987eb32fcaa8c3ab9444748ec7eeee9dbc25eb2501"
+    },
+    {
+      "path": "arch/arm64/include/asm/cputype.h",
+      "sha256": "aeefbde07f3badf488f3c6753eb3a361625e2ed59db0652f9a7adf7c71248987"
+    },
+    {
+      "path": "arch/arm64/kernel/Makefile",
+      "sha256": "83c84acd640d302cb5ab5a499b1583d0ef5cdcbbc66b7234cd82226107e1741a"
+    },
+    {
+      "path": "arch/arm64/kernel/idle-apple.S",
+      "sha256": "ae36d25beff91eecf643e7cbe5f9ce1112818461042213a1a8acd2ea618f019b"
+    },
+    {
+      "path": "arch/arm64/kernel/idle.c",
+      "sha256": "d427fd7c5d734ee747a12b8cda1ef1a5f702c4abd1c779588322259350bea79c"
+    },
+    {
+      "path": "arch/arm64/kernel/pi/idreg-override.c",
+      "sha256": "4a6a71a924950c949598cef79f58267712a7d7e9b4b445f8fdb8faba82c5ca1f"
+    },
+    {
+      "path": "drivers/gpio/gpio-macsmc.c",
+      "sha256": "7c7241e8a444ba37cf67e062085c7472c5815a07e3d94698dfac3898cc8af1e5"
+    },
+    {
+      "path": "drivers/gpu/drm/apple/Kconfig",
+      "sha256": "3d1f6c4f8ef4b9c391c710df3a690b0ffa861e3a27b3b62de66bb5646c993873"
+    },
+    {
+      "path": "drivers/gpu/drm/apple/apple_drv.c",
+      "sha256": "44f390924a0566834b839156746322eba1b20ed606a8d9eb22ffaef09dd63874"
+    },
+    {
+      "path": "drivers/gpu/drm/apple/dcp-internal.h",
+      "sha256": "b8ee560cb2c373434d87116a99f98255f568e4d191f457f8da1652d21ee6a4ec"
+    },
+    {
+      "path": "drivers/gpu/drm/apple/iomfb-packet.h",
+      "sha256": "d054447de8897e4493ef2b5957b6b48197589ff478937080a7317f3b7f35da75"
+    },
+    {
+      "path": "drivers/gpu/drm/apple/iomfb.c",
+      "sha256": "2c2c73352e22ae59366696aaabc1cb1577ff6e9715a5aed73c9154d5cd2c5e76"
+    },
+    {
+      "path": "drivers/gpu/drm/apple/iomfb.h",
+      "sha256": "92a7c0a90c45836dc90aa5452a7b11091dbcfcc5a0de1dd661ae9756b2fd75ce"
+    },
+    {
+      "path": "drivers/gpu/drm/apple/iomfb_internal.h",
+      "sha256": "7615b905c3bd995ec5a679b63671644cb62a290ca8eee0f645c1a117fd757159"
+    },
+    {
+      "path": "drivers/gpu/drm/apple/iomfb_template.c",
+      "sha256": "1f4810fd842ac7e3367cbfbfef0b0e33f52819422329bd5d29d539ef985e7a95"
+    },
+    {
+      "path": "drivers/gpu/drm/apple/iomfb_v26_6.c",
+      "sha256": "c811803412d0a97f03f105a85fc53d00cfb8b21e02497254e108b07a03c4b406"
+    },
+    {
+      "path": "drivers/gpu/drm/asahi/Kconfig",
+      "sha256": "03b6f4dbe9c75b5dff7b436786420a4270381ea01a6f61e94b0a3cd7cdacfe14"
+    },
+    {
+      "path": "drivers/gpu/drm/asahi/Makefile",
+      "sha256": "fda7c63df18514c6a4f965b54b4599fabf4b1d9d37096030eeaab3a623ce4435"
+    },
+    {
+      "path": "drivers/gpu/drm/asahi/g16-bootstrap.c",
+      "sha256": "d41717fbfa02d1e1db8cba5e11060661f978b6d5122f5ce14586e798e9064878"
+    },
+    {
+      "path": "drivers/hid/dockchannel-hid/dockchannel-hid-protocol.h",
+      "sha256": "afd67d2bd6f1e2f2a04e4cdb62f5be0581e06fe3a9dedd4d994a15c5422c1524"
+    },
+    {
+      "path": "drivers/hid/dockchannel-hid/dockchannel-hid.c",
+      "sha256": "58e712e8268d9dd3d2b60deb4a83a334b43f5b30e043fd72f5fff6bc108dc5dc"
+    },
+    {
+      "path": "drivers/nvme/host/apple.c",
+      "sha256": "3837e270e802debf3364fb7b210df4ad058e8bbc429758950cd187d3ca5b9c13"
+    },
+    {
+      "path": "drivers/nvme/host/core.c",
+      "sha256": "d625cc9b024d3df64e351e78da9b930d62672c50798cf5c0527e446642fc19f9"
+    },
+    {
+      "path": "drivers/nvme/host/nvme.h",
+      "sha256": "237ed437de99f2447bcaaa0e959c72cd83fd8a72c4e1b105496df461f346e701"
+    },
+    {
+      "path": "drivers/phy/apple/Kconfig",
+      "sha256": "addb2ccf6105afa35ee3767cc4daa6bf9c20c131d0dedeeba92592e017410212"
+    },
+    {
+      "path": "drivers/phy/apple/Makefile",
+      "sha256": "a244ee1d0035080c7b016bcce6eefb695a4b5bc3bbd22d6cb64dc93967581113"
+    },
+    {
+      "path": "drivers/phy/apple/usb2-j614s-host-diagnostic.c",
+      "sha256": "9b9666b7dc1967e3568ff07d0698bf88e11942f36829d47995c34ef3d445cd81"
+    },
+    {
+      "path": "drivers/phy/apple/usb2-t6040-inherited.c",
+      "sha256": "3336440c840efab83eab479ab1e0665014bc26753b81e6e3a0f3317c617b5f03"
+    },
+    {
+      "path": "drivers/power/supply/macsmc-power.c",
+      "sha256": "9e94b2b354fae7fd22462dc9f9172057e452685a820386c9525b07ca0697537d"
+    },
+    {
+      "path": "drivers/soc/apple/rtkit-internal.h",
+      "sha256": "3c2af1177140cd77536c90c1f0afae5edbb8c54de451e28c5a27ebc9018f64da"
+    },
+    {
+      "path": "drivers/soc/apple/rtkit.c",
+      "sha256": "014b094512d536dfb62d42d5883508cb0f28120cc3fed9821c230f02a89a925e"
+    },
+    {
+      "path": "drivers/soc/apple/sart.c",
+      "sha256": "313203e3d99a41f7398ba1bebdb2fd9dcbeea723c1a82fd475d2654a9e94a9ae"
+    },
+    {
+      "path": "include/linux/soc/apple/rtkit.h",
+      "sha256": "de58674caf6cefb73e58c83b11e6c386878b8b5f4a19d743fbf36b6011131033"
+    },
+    {
+      "path": "include/linux/soc/apple/sart.h",
+      "sha256": "67e9ae897c8845ee229d47f5766aa29233d0c789e392eea796a9a090fa32f50e"
+    },
+    {
+      "path": "rust/Makefile",
+      "sha256": "3bead1821d5b2b8f485aa591898675186f89df3ff733a5a97b4d563c2d837e68"
+    },
+    {
+      "path": "tools/testing/selftests/drivers/apple-dcp/Makefile",
+      "sha256": "588b1ff2367707decf4a2f7cb1d5798b4665cbf61a3f4b21b18232815b4705f6"
+    },
+    {
+      "path": "tools/testing/selftests/drivers/apple-dcp/iomfb-packet.c",
+      "sha256": "f7820685976b4f52a87e890fb79f95e03b9413b412460a0af1b643720252aaf2"
+    }
+  ],
+  "hardware": "UNTESTED",
+  "target_access": false
+}

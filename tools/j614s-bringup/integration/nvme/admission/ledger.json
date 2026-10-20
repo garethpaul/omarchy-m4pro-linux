@@ -1,0 +1,66 @@
+{
+  "schema": 1,
+  "status": "PARTIAL (source admission/control implemented; native hardware UNTESTED)",
+  "source_commit": "05af581d3bf7574d933044d509dd6c3617e8a111",
+  "previous_export": "8acc4f6f70fa4b6b3da347cc7b19eb6cd8cf24ac",
+  "candidate_config_sha256": "6c5aba7745d918c528300c5a395fcd7db0c2b718acda7d1467af2816a8d56516",
+  "source_new_commits": [
+    {
+      "commit": "a43018f9465f559b4dabbc7081bd68379e9c2fb7",
+      "subject": "nvme: stage inherited J614s reset recovery and exact topology guards",
+      "patch": "integration/nvme/patches/0006-inherited-control.patch",
+      "sha256": "b5647539c0e66bcca4393675d623fd6733a8f8264adad84507814cc936dea7ec"
+    },
+    {
+      "commit": "acfac91e1b2aedfbb793e19c733c0dba20630fa2",
+      "subject": "nvme: treat IDLE requests as completed after inherited CQ polling",
+      "patch": "integration/nvme/patches/0007-idle-completion.patch",
+      "sha256": "cb7a7d2ae87f9c5af5ba6a5690d00b45cb833ba900ebb3e510922f8a11c26573"
+    },
+    {
+      "commit": "3bdfd666290823208bfd30d7e09622300241aa33",
+      "subject": "nvme: require measured zero-cell J614s mailbox profile",
+      "patch": "integration/nvme/patches/0008-zero-mailbox-cells.patch",
+      "sha256": "3a296c443e0c61844e3126aac8f8dea359e0374364b11e1d75380392bea35c48"
+    },
+    {
+      "commit": "2e4c90541e850d7e29bbb39067453e2de740a94e",
+      "subject": "nvme: stage explicit inherited-only J614s diagnostic profile",
+      "patch": "integration/nvme/patches/0009-diagnostic-profile.patch",
+      "sha256": "b39fd1e8f60124d6c635dac3f25d52ac928408750c1708d5f974505bd3987ef8"
+    },
+    {
+      "commit": "20d8b237f4e71913f9cfbf768f64f57e9cf6ea6f",
+      "subject": "nvme: expose retained-controller admission check for source regression tests",
+      "patch": "integration/nvme/patches/0010-quarantine-predicate.patch",
+      "sha256": "1a17fa9bfcfa8dcf174b0d5a77db32b83434fd35e45c4f92b8574d37110f0450"
+    },
+    {
+      "commit": "6578171fc49a334047d4fbf777fb4f7adf3332bb",
+      "subject": "nvme: admit only measured inherited J614s diagnostic topology",
+      "patch": "integration/nvme/patches/0011-strict-admission.patch",
+      "sha256": "96c67cfd50c0bc71d4018323b4abdd6fabf4f23a07c38e377abdee64fb5f34ad"
+    },
+    {
+      "commit": "52d138244f3855b814ea347357a68f6cc49e9838",
+      "subject": "nvme: retain diagnostic MMIO and RTKit readers after failed controller stop",
+      "patch": "integration/nvme/patches/0012-retained-readers.patch",
+      "sha256": "01db154c1e40760ec2607bf8bd3acb3a39b87094f693c092eab952b6b8f0eaf1"
+    },
+    {
+      "commit": "05af581d3bf7574d933044d509dd6c3617e8a111",
+      "subject": "nvme: use existing unified RTKit teardown admission guard",
+      "patch": "integration/nvme/patches/0013-unified-dma-guard.patch",
+      "sha256": "7b36da385e4430b0021a1796ab874919996468bcaef75c93d8e8e66758984632"
+    }
+  ],
+  "baseline_contract": "Exact J614s RAM diagnostic topology and inherited live ANS only; no power-domains or resets on consumer/providers/ancestors",
+  "hardware": "UNTESTED",
+  "persistent_storage": "BLOCKED until supervised real validation and rollback qualification",
+  "target_access": false,
+  "deployment_allowed": false,
+  "compiler_build": "PENDING independent root review and D full Image/modules compile/reproducibility",
+  "independent_review": "Earlier staged review/findings retained; final independent review stopped automatically before acceptance. Primary ordinary source inspection completed; no full concurrency/hardware proof.",
+  "normal_teardown_assumption": "Successful stop followed by namespace/admin queue destruction drains readers; cancellation alone does not. Existing already-dying admin-queue lifecycle remains an explicit assumption.",
+  "known_qualified_payload": "Preserved; no target deployment or boot-object change"
+}

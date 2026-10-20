@@ -1,0 +1,25 @@
+{
+  "status": "WORKS (selected actual source host fake only)",
+  "source_commit": "6578171fc49a334047d4fbf777fb4f7adf3332bb",
+  "bundle_sha256": "6dd1b145c350b7d6e95374a6807c3f13122162507b38b0fba3a3a23ed7e9c9c1",
+  "harness_sha256": "075780ac5671a1ecd0182da77c919df66c2cafd90824af61b7e1733c14b455b1",
+  "compiler": "clang version 23.1.3",
+  "expected_timeout_idle_bug": false,
+  "expected_poll_gate_bug": true,
+  "compile_exit": 0,
+  "run_exit": 0,
+  "output": [
+    "REPRODUCED: pre-lock poll gate accesses CQ after quarantine publication",
+    "PASS 33 actual ANS control checks across 21 scenarios"
+  ],
+  "scope": "reset/timeout/recovery/stop/quarantine and ordered MMIO; no real devres, concurrency, firmware or DMA",
+  "hardware": "UNTESTED",
+  "target_access": false,
+  "full_adoption": "PARTIAL source-only strict diagnostic admission; hardware UNTESTED",
+  "corrected_invariant_baseline": {
+    "exit": 1,
+    "output": [
+      "FAIL 209: !polled&&!drains&&a.quarantined"
+    ]
+  }
+}

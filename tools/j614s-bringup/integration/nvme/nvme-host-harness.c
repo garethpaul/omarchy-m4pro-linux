@@ -21,6 +21,8 @@ typedef uint32_t u32;typedef uint64_t phys_addr_t;typedef uint64_t dma_addr_t;
 #define PHYS_PFN(x) ((x)>>14)
 #define check_add_overflow(a,b,c) __builtin_add_overflow((a),(b),(c))
 #define dev_err(...) ((void)0)
+#define APPLE_ANS_LINEAR_SQ_CTRL 0x24908
+#define APPLE_ANS_LINEAR_SQ_EN 1
 #define APPLE_ANS_COPROC_CPU_CONTROL 0x44
 #define APPLE_ANS_COPROC_CPU_CONTROL_RUN 0x10
 #define APPLE_ANS_BOOT_STATUS 0x1300
@@ -35,7 +37,7 @@ typedef uint32_t u32;typedef uint64_t phys_addr_t;typedef uint64_t dma_addr_t;
 struct device_node { int property_result;const char *handoff; };
 struct device { struct device_node *of_node;unsigned refs; };
 struct apple_sart { bool inherited; };
-struct apple_nvme_hw { bool needs_ioq_register; };
+struct apple_nvme_hw { bool needs_ioq_register,j614s_diagnostic; };
 struct apple_nvme {
     struct device *dev;struct apple_sart *sart;struct apple_nvme_hw *hw;
     void *mmio_coproc,*mmio_nvme;
@@ -48,7 +50,7 @@ struct apple_rtkit_shmem {
 struct page { bool valid,reserved,highmem,linear; };
 static struct page pages[4];
 static unsigned char storage[4*PAGE_SIZE];
-static u32 asc[0x2000/4], nvme[0x2000/4];
+static u32 asc[0x2000/4], nvme[0x30000/4];
 static struct device_node node;
 static struct device dev;
 static struct apple_sart sart;
@@ -121,7 +123,7 @@ static unsigned checks;
 static void reset(void) {
     assert(!objects);memset(asc,0,sizeof(asc));memset(nvme,0,sizeof(nvme));memset(storage,0xa5,sizeof(storage));
     for(unsigned i=0;i<4;i++)pages[i]=(struct page){true,true,false,true};
-    node=(struct device_node){-EINVAL,NULL};dev=(struct device){&node,1};sart=(struct apple_sart){true};hw=(struct apple_nvme_hw){true};
+    node=(struct device_node){-EINVAL,NULL};dev=(struct device){&node,1};sart=(struct apple_sart){true};hw=(struct apple_nvme_hw){.needs_ioq_register=true};
     anv=(struct apple_nvme){.dev=&dev,.sart=&sart,.hw=&hw,.mmio_coproc=asc,.mmio_nvme=nvme,.inherited_rtkit=true};
     asc[APPLE_ANS_COPROC_CPU_CONTROL/4]=APPLE_ANS_COPROC_CPU_CONTROL_RUN;
     nvme[APPLE_ANS_BOOT_STATUS/4]=APPLE_ANS_BOOT_STATUS_OK;nvme[NVME_REG_CC/4]=1;nvme[NVME_REG_CSTS/4]=1;
@@ -140,7 +142,7 @@ int main(void) {
     nvme[APPLE_ANS_BOOT_STATUS/4]=0;CHECK(!apple_nvme_can_adopt_rtkit(&anv));nvme[APPLE_ANS_BOOT_STATUS/4]=APPLE_ANS_BOOT_STATUS_OK;
     for(unsigned cc=0;cc<2;cc++)for(unsigned csts=0;csts<4;csts++)for(unsigned disabled=0;disabled<2;disabled++) {
         nvme[NVME_REG_CC/4]=cc;nvme[NVME_REG_CSTS/4]=csts;anv.handoff_disabled=disabled;
-        bool wanted=!(csts&2) && (disabled?(!cc && !(csts&1)):(cc && (csts&1)));
+        bool wanted=(cc==1 && csts==1 && disabled==0) || (cc==0 && csts==0 && disabled==1);
         CHECK(apple_nvme_can_adopt_rtkit(&anv)==wanted);
     }
     reset();node.property_result=0;node.handoff="wrong";CHECK(apple_nvme_read_handoff(&anv)==-EINVAL);

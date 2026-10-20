@@ -1,0 +1,1781 @@
+{
+  "status": "PARTIAL",
+  "deployable": false,
+  "execution_ready": false,
+  "actions": [],
+  "filesystem_model": "PARTIAL: same-name selected-package overlay; name-changing conflicts/removals are unresolved. Do not treat this as the final intended installation filesystem.",
+  "unchanged_package_path_owner_conflicts": [
+    {
+      "path": "etc/profile.d/dotnet.sh",
+      "retained_owner": "dotnet-host",
+      "incoming_owner": "dotnet-host-bin",
+      "incoming_signed_conflicts": [
+        "dotnet-host"
+      ],
+      "incoming_signed_provides": [
+        "dotnet-host",
+        "dotnet-host=10.0.13"
+      ],
+      "incoming_signed_replaces": [],
+      "status": "UNTESTED removal/replacement transaction: retained name differs; signed conflicts do not by themselves prove an accepted removal"
+    },
+    {
+      "path": "usr/bin/dnx",
+      "retained_owner": "dotnet-host",
+      "incoming_owner": "dotnet-host-bin",
+      "incoming_signed_conflicts": [
+        "dotnet-host"
+      ],
+      "incoming_signed_provides": [
+        "dotnet-host",
+        "dotnet-host=10.0.13"
+      ],
+      "incoming_signed_replaces": [],
+      "status": "UNTESTED removal/replacement transaction: retained name differs; signed conflicts do not by themselves prove an accepted removal"
+    },
+    {
+      "path": "usr/bin/dotnet",
+      "retained_owner": "dotnet-host",
+      "incoming_owner": "dotnet-host-bin",
+      "incoming_signed_conflicts": [
+        "dotnet-host"
+      ],
+      "incoming_signed_provides": [
+        "dotnet-host",
+        "dotnet-host=10.0.13"
+      ],
+      "incoming_signed_replaces": [],
+      "status": "UNTESTED removal/replacement transaction: retained name differs; signed conflicts do not by themselves prove an accepted removal"
+    },
+    {
+      "path": "usr/lib/libhostfxr.so",
+      "retained_owner": "dotnet-host",
+      "incoming_owner": "dotnet-host-bin",
+      "incoming_signed_conflicts": [
+        "dotnet-host"
+      ],
+      "incoming_signed_provides": [
+        "dotnet-host",
+        "dotnet-host=10.0.13"
+      ],
+      "incoming_signed_replaces": [],
+      "status": "UNTESTED removal/replacement transaction: retained name differs; signed conflicts do not by themselves prove an accepted removal"
+    },
+    {
+      "path": "usr/share/dotnet/dnx",
+      "retained_owner": "dotnet-host",
+      "incoming_owner": "dotnet-host-bin",
+      "incoming_signed_conflicts": [
+        "dotnet-host"
+      ],
+      "incoming_signed_provides": [
+        "dotnet-host",
+        "dotnet-host=10.0.13"
+      ],
+      "incoming_signed_replaces": [],
+      "status": "UNTESTED removal/replacement transaction: retained name differs; signed conflicts do not by themselves prove an accepted removal"
+    },
+    {
+      "path": "usr/share/dotnet/dotnet",
+      "retained_owner": "dotnet-host",
+      "incoming_owner": "dotnet-host-bin",
+      "incoming_signed_conflicts": [
+        "dotnet-host"
+      ],
+      "incoming_signed_provides": [
+        "dotnet-host",
+        "dotnet-host=10.0.13"
+      ],
+      "incoming_signed_replaces": [],
+      "status": "UNTESTED removal/replacement transaction: retained name differs; signed conflicts do not by themselves prove an accepted removal"
+    },
+    {
+      "path": "usr/bin/mise",
+      "retained_owner": "mise",
+      "incoming_owner": "mise-bin",
+      "incoming_signed_conflicts": [
+        "mise"
+      ],
+      "incoming_signed_provides": [
+        "mise"
+      ],
+      "incoming_signed_replaces": [],
+      "status": "UNTESTED removal/replacement transaction: retained name differs; signed conflicts do not by themselves prove an accepted removal"
+    },
+    {
+      "path": "usr/share/fish/vendor_conf.d/mise-activate.fish",
+      "retained_owner": "mise",
+      "incoming_owner": "mise-bin",
+      "incoming_signed_conflicts": [
+        "mise"
+      ],
+      "incoming_signed_provides": [
+        "mise"
+      ],
+      "incoming_signed_replaces": [],
+      "status": "UNTESTED removal/replacement transaction: retained name differs; signed conflicts do not by themselves prove an accepted removal"
+    },
+    {
+      "path": "usr/share/man/man1/mise.1.gz",
+      "retained_owner": "mise",
+      "incoming_owner": "mise-bin",
+      "incoming_signed_conflicts": [
+        "mise"
+      ],
+      "incoming_signed_provides": [
+        "mise"
+      ],
+      "incoming_signed_replaces": [],
+      "status": "UNTESTED removal/replacement transaction: retained name differs; signed conflicts do not by themselves prove an accepted removal"
+    },
+    {
+      "path": "usr/bin/qs",
+      "retained_owner": "quickshell-git",
+      "incoming_owner": "quickshell",
+      "incoming_signed_conflicts": [
+        "quickshell-git"
+      ],
+      "incoming_signed_provides": [
+        "quickshell"
+      ],
+      "incoming_signed_replaces": [],
+      "status": "UNTESTED removal/replacement transaction: retained name differs; signed conflicts do not by themselves prove an accepted removal"
+    },
+    {
+      "path": "usr/bin/quickshell",
+      "retained_owner": "quickshell-git",
+      "incoming_owner": "quickshell",
+      "incoming_signed_conflicts": [
+        "quickshell-git"
+      ],
+      "incoming_signed_provides": [
+        "quickshell"
+      ],
+      "incoming_signed_replaces": [],
+      "status": "UNTESTED removal/replacement transaction: retained name differs; signed conflicts do not by themselves prove an accepted removal"
+    },
+    {
+      "path": "usr/lib/qt6/qml/Quickshell/Bluetooth/qmldir",
+      "retained_owner": "quickshell-git",
+      "incoming_owner": "quickshell",
+      "incoming_signed_conflicts": [
+        "quickshell-git"
+      ],
+      "incoming_signed_provides": [
+        "quickshell"
+      ],
+      "incoming_signed_replaces": [],
+      "status": "UNTESTED removal/replacement transaction: retained name differs; signed conflicts do not by themselves prove an accepted removal"
+    },
+    {
+      "path": "usr/lib/qt6/qml/Quickshell/Bluetooth/quickshell-bluetooth.qmltypes",
+      "retained_owner": "quickshell-git",
+      "incoming_owner": "quickshell",
+      "incoming_signed_conflicts": [
+        "quickshell-git"
+      ],
+      "incoming_signed_provides": [
+        "quickshell"
+      ],
+      "incoming_signed_replaces": [],
+      "status": "UNTESTED removal/replacement transaction: retained name differs; signed conflicts do not by themselves prove an accepted removal"
+    },
+    {
+      "path": "usr/lib/qt6/qml/Quickshell/DBusMenu/qmldir",
+      "retained_owner": "quickshell-git",
+      "incoming_owner": "quickshell",
+      "incoming_signed_conflicts": [
+        "quickshell-git"
+      ],
+      "incoming_signed_provides": [
+        "quickshell"
+      ],
+      "incoming_signed_replaces": [],
+      "status": "UNTESTED removal/replacement transaction: retained name differs; signed conflicts do not by themselves prove an accepted removal"
+    },
+    {
+      "path": "usr/lib/qt6/qml/Quickshell/DBusMenu/quickshell-dbusmenu.qmltypes",
+      "retained_owner": "quickshell-git",
+      "incoming_owner": "quickshell",
+      "incoming_signed_conflicts": [
+        "quickshell-git"
+      ],
+      "incoming_signed_provides": [
+        "quickshell"
+      ],
+      "incoming_signed_replaces": [],
+      "status": "UNTESTED removal/replacement transaction: retained name differs; signed conflicts do not by themselves prove an accepted removal"
+    },
+    {
+      "path": "usr/lib/qt6/qml/Quickshell/Hyprland/_FocusGrab/qmldir",
+      "retained_owner": "quickshell-git",
+      "incoming_owner": "quickshell",
+      "incoming_signed_conflicts": [
+        "quickshell-git"
+      ],
+      "incoming_signed_provides": [
+        "quickshell"
+      ],
+      "incoming_signed_replaces": [],
+      "status": "UNTESTED removal/replacement transaction: retained name differs; signed conflicts do not by themselves prove an accepted removal"
+    },
+    {
+      "path": "usr/lib/qt6/qml/Quickshell/Hyprland/_FocusGrab/quickshell-hyprland-focus-grab.qmltypes",
+      "retained_owner": "quickshell-git",
+      "incoming_owner": "quickshell",
+      "incoming_signed_conflicts": [
+        "quickshell-git"
+      ],
+      "incoming_signed_provides": [
+        "quickshell"
+      ],
+      "incoming_signed_replaces": [],
+      "status": "UNTESTED removal/replacement transaction: retained name differs; signed conflicts do not by themselves prove an accepted removal"
+    },
+    {
+      "path": "usr/lib/qt6/qml/Quickshell/Hyprland/_GlobalShortcuts/qmldir",
+      "retained_owner": "quickshell-git",
+      "incoming_owner": "quickshell",
+      "incoming_signed_conflicts": [
+        "quickshell-git"
+      ],
+      "incoming_signed_provides": [
+        "quickshell"
+      ],
+      "incoming_signed_replaces": [],
+      "status": "UNTESTED removal/replacement transaction: retained name differs; signed conflicts do not by themselves prove an accepted removal"
+    },
+    {
+      "path": "usr/lib/qt6/qml/Quickshell/Hyprland/_GlobalShortcuts/quickshell-hyprland-global-shortcuts.qmltypes",
+      "retained_owner": "quickshell-git",
+      "incoming_owner": "quickshell",
+      "incoming_signed_conflicts": [
+        "quickshell-git"
+      ],
+      "incoming_signed_provides": [
+        "quickshell"
+      ],
+      "incoming_signed_replaces": [],
+      "status": "UNTESTED removal/replacement transaction: retained name differs; signed conflicts do not by themselves prove an accepted removal"
+    },
+    {
+      "path": "usr/lib/qt6/qml/Quickshell/Hyprland/_Ipc/qmldir",
+      "retained_owner": "quickshell-git",
+      "incoming_owner": "quickshell",
+      "incoming_signed_conflicts": [
+        "quickshell-git"
+      ],
+      "incoming_signed_provides": [
+        "quickshell"
+      ],
+      "incoming_signed_replaces": [],
+      "status": "UNTESTED removal/replacement transaction: retained name differs; signed conflicts do not by themselves prove an accepted removal"
+    },
+    {
+      "path": "usr/lib/qt6/qml/Quickshell/Hyprland/_Ipc/quickshell-hyprland-ipc.qmltypes",
+      "retained_owner": "quickshell-git",
+      "incoming_owner": "quickshell",
+      "incoming_signed_conflicts": [
+        "quickshell-git"
+      ],
+      "incoming_signed_provides": [
+        "quickshell"
+      ],
+      "incoming_signed_replaces": [],
+      "status": "UNTESTED removal/replacement transaction: retained name differs; signed conflicts do not by themselves prove an accepted removal"
+    },
+    {
+      "path": "usr/lib/qt6/qml/Quickshell/Hyprland/_SurfaceExtensions/qmldir",
+      "retained_owner": "quickshell-git",
+      "incoming_owner": "quickshell",
+      "incoming_signed_conflicts": [
+        "quickshell-git"
+      ],
+      "incoming_signed_provides": [
+        "quickshell"
+      ],
+      "incoming_signed_replaces": [],
+      "status": "UNTESTED removal/replacement transaction: retained name differs; signed conflicts do not by themselves prove an accepted removal"
+    },
+    {
+      "path": "usr/lib/qt6/qml/Quickshell/Hyprland/_SurfaceExtensions/quickshell-hyprland-surface-extensions.qmltypes",
+      "retained_owner": "quickshell-git",
+      "incoming_owner": "quickshell",
+      "incoming_signed_conflicts": [
+        "quickshell-git"
+      ],
+      "incoming_signed_provides": [
+        "quickshell"
+      ],
+      "incoming_signed_replaces": [],
+      "status": "UNTESTED removal/replacement transaction: retained name differs; signed conflicts do not by themselves prove an accepted removal"
+    },
+    {
+      "path": "usr/lib/qt6/qml/Quickshell/Hyprland/qmldir",
+      "retained_owner": "quickshell-git",
+      "incoming_owner": "quickshell",
+      "incoming_signed_conflicts": [
+        "quickshell-git"
+      ],
+      "incoming_signed_provides": [
+        "quickshell"
+      ],
+      "incoming_signed_replaces": [],
+      "status": "UNTESTED removal/replacement transaction: retained name differs; signed conflicts do not by themselves prove an accepted removal"
+    },
+    {
+      "path": "usr/lib/qt6/qml/Quickshell/Hyprland/quickshell-hyprland.qmltypes",
+      "retained_owner": "quickshell-git",
+      "incoming_owner": "quickshell",
+      "incoming_signed_conflicts": [
+        "quickshell-git"
+      ],
+      "incoming_signed_provides": [
+        "quickshell"
+      ],
+      "incoming_signed_replaces": [],
+      "status": "UNTESTED removal/replacement transaction: retained name differs; signed conflicts do not by themselves prove an accepted removal"
+    },
+    {
+      "path": "usr/lib/qt6/qml/Quickshell/I3/_Ipc/qmldir",
+      "retained_owner": "quickshell-git",
+      "incoming_owner": "quickshell",
+      "incoming_signed_conflicts": [
+        "quickshell-git"
+      ],
+      "incoming_signed_provides": [
+        "quickshell"
+      ],
+      "incoming_signed_replaces": [],
+      "status": "UNTESTED removal/replacement transaction: retained name differs; signed conflicts do not by themselves prove an accepted removal"
+    },
+    {
+      "path": "usr/lib/qt6/qml/Quickshell/I3/_Ipc/quickshell-i3-ipc.qmltypes",
+      "retained_owner": "quickshell-git",
+      "incoming_owner": "quickshell",
+      "incoming_signed_conflicts": [
+        "quickshell-git"
+      ],
+      "incoming_signed_provides": [
+        "quickshell"
+      ],
+      "incoming_signed_replaces": [],
+      "status": "UNTESTED removal/replacement transaction: retained name differs; signed conflicts do not by themselves prove an accepted removal"
+    },
+    {
+      "path": "usr/lib/qt6/qml/Quickshell/I3/qmldir",
+      "retained_owner": "quickshell-git",
+      "incoming_owner": "quickshell",
+      "incoming_signed_conflicts": [
+        "quickshell-git"
+      ],
+      "incoming_signed_provides": [
+        "quickshell"
+      ],
+      "incoming_signed_replaces": [],
+      "status": "UNTESTED removal/replacement transaction: retained name differs; signed conflicts do not by themselves prove an accepted removal"
+    },
+    {
+      "path": "usr/lib/qt6/qml/Quickshell/I3/quickshell-i3.qmltypes",
+      "retained_owner": "quickshell-git",
+      "incoming_owner": "quickshell",
+      "incoming_signed_conflicts": [
+        "quickshell-git"
+      ],
+      "incoming_signed_provides": [
+        "quickshell"
+      ],
+      "incoming_signed_replaces": [],
+      "status": "UNTESTED removal/replacement transaction: retained name differs; signed conflicts do not by themselves prove an accepted removal"
+    },
+    {
+      "path": "usr/lib/qt6/qml/Quickshell/Io/FileView.qml",
+      "retained_owner": "quickshell-git",
+      "incoming_owner": "quickshell",
+      "incoming_signed_conflicts": [
+        "quickshell-git"
+      ],
+      "incoming_signed_provides": [
+        "quickshell"
+      ],
+      "incoming_signed_replaces": [],
+      "status": "UNTESTED removal/replacement transaction: retained name differs; signed conflicts do not by themselves prove an accepted removal"
+    },
+    {
+      "path": "usr/lib/qt6/qml/Quickshell/Io/qmldir",
+      "retained_owner": "quickshell-git",
+      "incoming_owner": "quickshell",
+      "incoming_signed_conflicts": [
+        "quickshell-git"
+      ],
+      "incoming_signed_provides": [
+        "quickshell"
+      ],
+      "incoming_signed_replaces": [],
+      "status": "UNTESTED removal/replacement transaction: retained name differs; signed conflicts do not by themselves prove an accepted removal"
+    },
+    {
+      "path": "usr/lib/qt6/qml/Quickshell/Io/quickshell-io.qmltypes",
+      "retained_owner": "quickshell-git",
+      "incoming_owner": "quickshell",
+      "incoming_signed_conflicts": [
+        "quickshell-git"
+      ],
+      "incoming_signed_provides": [
+        "quickshell"
+      ],
+      "incoming_signed_replaces": [],
+      "status": "UNTESTED removal/replacement transaction: retained name differs; signed conflicts do not by themselves prove an accepted removal"
+    },
+    {
+      "path": "usr/lib/qt6/qml/Quickshell/Networking/qmldir",
+      "retained_owner": "quickshell-git",
+      "incoming_owner": "quickshell",
+      "incoming_signed_conflicts": [
+        "quickshell-git"
+      ],
+      "incoming_signed_provides": [
+        "quickshell"
+      ],
+      "incoming_signed_replaces": [],
+      "status": "UNTESTED removal/replacement transaction: retained name differs; signed conflicts do not by themselves prove an accepted removal"
+    },
+    {
+      "path": "usr/lib/qt6/qml/Quickshell/Networking/quickshell-network.qmltypes",
+      "retained_owner": "quickshell-git",
+      "incoming_owner": "quickshell",
+      "incoming_signed_conflicts": [
+        "quickshell-git"
+      ],
+      "incoming_signed_provides": [
+        "quickshell"
+      ],
+      "incoming_signed_replaces": [],
+      "status": "UNTESTED removal/replacement transaction: retained name differs; signed conflicts do not by themselves prove an accepted removal"
+    },
+    {
+      "path": "usr/lib/qt6/qml/Quickshell/Services/Greetd/qmldir",
+      "retained_owner": "quickshell-git",
+      "incoming_owner": "quickshell",
+      "incoming_signed_conflicts": [
+        "quickshell-git"
+      ],
+      "incoming_signed_provides": [
+        "quickshell"
+      ],
+      "incoming_signed_replaces": [],
+      "status": "UNTESTED removal/replacement transaction: retained name differs; signed conflicts do not by themselves prove an accepted removal"
+    },
+    {
+      "path": "usr/lib/qt6/qml/Quickshell/Services/Greetd/quickshell-service-greetd.qmltypes",
+      "retained_owner": "quickshell-git",
+      "incoming_owner": "quickshell",
+      "incoming_signed_conflicts": [
+        "quickshell-git"
+      ],
+      "incoming_signed_provides": [
+        "quickshell"
+      ],
+      "incoming_signed_replaces": [],
+      "status": "UNTESTED removal/replacement transaction: retained name differs; signed conflicts do not by themselves prove an accepted removal"
+    },
+    {
+      "path": "usr/lib/qt6/qml/Quickshell/Services/Mpris/qmldir",
+      "retained_owner": "quickshell-git",
+      "incoming_owner": "quickshell",
+      "incoming_signed_conflicts": [
+        "quickshell-git"
+      ],
+      "incoming_signed_provides": [
+        "quickshell"
+      ],
+      "incoming_signed_replaces": [],
+      "status": "UNTESTED removal/replacement transaction: retained name differs; signed conflicts do not by themselves prove an accepted removal"
+    },
+    {
+      "path": "usr/lib/qt6/qml/Quickshell/Services/Mpris/quickshell-service-mpris.qmltypes",
+      "retained_owner": "quickshell-git",
+      "incoming_owner": "quickshell",
+      "incoming_signed_conflicts": [
+        "quickshell-git"
+      ],
+      "incoming_signed_provides": [
+        "quickshell"
+      ],
+      "incoming_signed_replaces": [],
+      "status": "UNTESTED removal/replacement transaction: retained name differs; signed conflicts do not by themselves prove an accepted removal"
+    },
+    {
+      "path": "usr/lib/qt6/qml/Quickshell/Services/Notifications/qmldir",
+      "retained_owner": "quickshell-git",
+      "incoming_owner": "quickshell",
+      "incoming_signed_conflicts": [
+        "quickshell-git"
+      ],
+      "incoming_signed_provides": [
+        "quickshell"
+      ],
+      "incoming_signed_replaces": [],
+      "status": "UNTESTED removal/replacement transaction: retained name differs; signed conflicts do not by themselves prove an accepted removal"
+    },
+    {
+      "path": "usr/lib/qt6/qml/Quickshell/Services/Notifications/quickshell-service-notifications.qmltypes",
+      "retained_owner": "quickshell-git",
+      "incoming_owner": "quickshell",
+      "incoming_signed_conflicts": [
+        "quickshell-git"
+      ],
+      "incoming_signed_provides": [
+        "quickshell"
+      ],
+      "incoming_signed_replaces": [],
+      "status": "UNTESTED removal/replacement transaction: retained name differs; signed conflicts do not by themselves prove an accepted removal"
+    },
+    {
+      "path": "usr/lib/qt6/qml/Quickshell/Services/Pam/qmldir",
+      "retained_owner": "quickshell-git",
+      "incoming_owner": "quickshell",
+      "incoming_signed_conflicts": [
+        "quickshell-git"
+      ],
+      "incoming_signed_provides": [
+        "quickshell"
+      ],
+      "incoming_signed_replaces": [],
+      "status": "UNTESTED removal/replacement transaction: retained name differs; signed conflicts do not by themselves prove an accepted removal"
+    },
+    {
+      "path": "usr/lib/qt6/qml/Quickshell/Services/Pam/quickshell-service-pam.qmltypes",
+      "retained_owner": "quickshell-git",
+      "incoming_owner": "quickshell",
+      "incoming_signed_conflicts": [
+        "quickshell-git"
+      ],
+      "incoming_signed_provides": [
+        "quickshell"
+      ],
+      "incoming_signed_replaces": [],
+      "status": "UNTESTED removal/replacement transaction: retained name differs; signed conflicts do not by themselves prove an accepted removal"
+    },
+    {
+      "path": "usr/lib/qt6/qml/Quickshell/Services/Pipewire/qmldir",
+      "retained_owner": "quickshell-git",
+      "incoming_owner": "quickshell",
+      "incoming_signed_conflicts": [
+        "quickshell-git"
+      ],
+      "incoming_signed_provides": [
+        "quickshell"
+      ],
+      "incoming_signed_replaces": [],
+      "status": "UNTESTED removal/replacement transaction: retained name differs; signed conflicts do not by themselves prove an accepted removal"
+    },
+    {
+      "path": "usr/lib/qt6/qml/Quickshell/Services/Pipewire/quickshell-service-pipewire.qmltypes",
+      "retained_owner": "quickshell-git",
+      "incoming_owner": "quickshell",
+      "incoming_signed_conflicts": [
+        "quickshell-git"
+      ],
+      "incoming_signed_provides": [
+        "quickshell"
+      ],
+      "incoming_signed_replaces": [],
+      "status": "UNTESTED removal/replacement transaction: retained name differs; signed conflicts do not by themselves prove an accepted removal"
+    },
+    {
+      "path": "usr/lib/qt6/qml/Quickshell/Services/Polkit/qmldir",
+      "retained_owner": "quickshell-git",
+      "incoming_owner": "quickshell",
+      "incoming_signed_conflicts": [
+        "quickshell-git"
+      ],
+      "incoming_signed_provides": [
+        "quickshell"
+      ],
+      "incoming_signed_replaces": [],
+      "status": "UNTESTED removal/replacement transaction: retained name differs; signed conflicts do not by themselves prove an accepted removal"
+    },
+    {
+      "path": "usr/lib/qt6/qml/Quickshell/Services/Polkit/quickshell-service-polkit.qmltypes",
+      "retained_owner": "quickshell-git",
+      "incoming_owner": "quickshell",
+      "incoming_signed_conflicts": [
+        "quickshell-git"
+      ],
+      "incoming_signed_provides": [
+        "quickshell"
+      ],
+      "incoming_signed_replaces": [],
+      "status": "UNTESTED removal/replacement transaction: retained name differs; signed conflicts do not by themselves prove an accepted removal"
+    },
+    {
+      "path": "usr/lib/qt6/qml/Quickshell/Services/SystemTray/qmldir",
+      "retained_owner": "quickshell-git",
+      "incoming_owner": "quickshell",
+      "incoming_signed_conflicts": [
+        "quickshell-git"
+      ],
+      "incoming_signed_provides": [
+        "quickshell"
+      ],
+      "incoming_signed_replaces": [],
+      "status": "UNTESTED removal/replacement transaction: retained name differs; signed conflicts do not by themselves prove an accepted removal"
+    },
+    {
+      "path": "usr/lib/qt6/qml/Quickshell/Services/SystemTray/quickshell-service-statusnotifier.qmltypes",
+      "retained_owner": "quickshell-git",
+      "incoming_owner": "quickshell",
+      "incoming_signed_conflicts": [
+        "quickshell-git"
+      ],
+      "incoming_signed_provides": [
+        "quickshell"
+      ],
+      "incoming_signed_replaces": [],
+      "status": "UNTESTED removal/replacement transaction: retained name differs; signed conflicts do not by themselves prove an accepted removal"
+    },
+    {
+      "path": "usr/lib/qt6/qml/Quickshell/Services/UPower/qmldir",
+      "retained_owner": "quickshell-git",
+      "incoming_owner": "quickshell",
+      "incoming_signed_conflicts": [
+        "quickshell-git"
+      ],
+      "incoming_signed_provides": [
+        "quickshell"
+      ],
+      "incoming_signed_replaces": [],
+      "status": "UNTESTED removal/replacement transaction: retained name differs; signed conflicts do not by themselves prove an accepted removal"
+    },
+    {
+      "path": "usr/lib/qt6/qml/Quickshell/Services/UPower/quickshell-service-upower.qmltypes",
+      "retained_owner": "quickshell-git",
+      "incoming_owner": "quickshell",
+      "incoming_signed_conflicts": [
+        "quickshell-git"
+      ],
+      "incoming_signed_provides": [
+        "quickshell"
+      ],
+      "incoming_signed_replaces": [],
+      "status": "UNTESTED removal/replacement transaction: retained name differs; signed conflicts do not by themselves prove an accepted removal"
+    },
+    {
+      "path": "usr/lib/qt6/qml/Quickshell/Wayland/_BackgroundEffect/qmldir",
+      "retained_owner": "quickshell-git",
+      "incoming_owner": "quickshell",
+      "incoming_signed_conflicts": [
+        "quickshell-git"
+      ],
+      "incoming_signed_provides": [
+        "quickshell"
+      ],
+      "incoming_signed_replaces": [],
+      "status": "UNTESTED removal/replacement transaction: retained name differs; signed conflicts do not by themselves prove an accepted removal"
+    },
+    {
+      "path": "usr/lib/qt6/qml/Quickshell/Wayland/_BackgroundEffect/quickshell-wayland-background-effect.qmltypes",
+      "retained_owner": "quickshell-git",
+      "incoming_owner": "quickshell",
+      "incoming_signed_conflicts": [
+        "quickshell-git"
+      ],
+      "incoming_signed_provides": [
+        "quickshell"
+      ],
+      "incoming_signed_replaces": [],
+      "status": "UNTESTED removal/replacement transaction: retained name differs; signed conflicts do not by themselves prove an accepted removal"
+    },
+    {
+      "path": "usr/lib/qt6/qml/Quickshell/Wayland/_IdleInhibitor/qmldir",
+      "retained_owner": "quickshell-git",
+      "incoming_owner": "quickshell",
+      "incoming_signed_conflicts": [
+        "quickshell-git"
+      ],
+      "incoming_signed_provides": [
+        "quickshell"
+      ],
+      "incoming_signed_replaces": [],
+      "status": "UNTESTED removal/replacement transaction: retained name differs; signed conflicts do not by themselves prove an accepted removal"
+    },
+    {
+      "path": "usr/lib/qt6/qml/Quickshell/Wayland/_IdleInhibitor/quickshell-wayland-idle-inhibit.qmltypes",
+      "retained_owner": "quickshell-git",
+      "incoming_owner": "quickshell",
+      "incoming_signed_conflicts": [
+        "quickshell-git"
+      ],
+      "incoming_signed_provides": [
+        "quickshell"
+      ],
+      "incoming_signed_replaces": [],
+      "status": "UNTESTED removal/replacement transaction: retained name differs; signed conflicts do not by themselves prove an accepted removal"
+    },
+    {
+      "path": "usr/lib/qt6/qml/Quickshell/Wayland/_IdleNotify/qmldir",
+      "retained_owner": "quickshell-git",
+      "incoming_owner": "quickshell",
+      "incoming_signed_conflicts": [
+        "quickshell-git"
+      ],
+      "incoming_signed_provides": [
+        "quickshell"
+      ],
+      "incoming_signed_replaces": [],
+      "status": "UNTESTED removal/replacement transaction: retained name differs; signed conflicts do not by themselves prove an accepted removal"
+    },
+    {
+      "path": "usr/lib/qt6/qml/Quickshell/Wayland/_IdleNotify/quickshell-wayland-idle-notify.qmltypes",
+      "retained_owner": "quickshell-git",
+      "incoming_owner": "quickshell",
+      "incoming_signed_conflicts": [
+        "quickshell-git"
+      ],
+      "incoming_signed_provides": [
+        "quickshell"
+      ],
+      "incoming_signed_replaces": [],
+      "status": "UNTESTED removal/replacement transaction: retained name differs; signed conflicts do not by themselves prove an accepted removal"
+    },
+    {
+      "path": "usr/lib/qt6/qml/Quickshell/Wayland/_Screencopy/qmldir",
+      "retained_owner": "quickshell-git",
+      "incoming_owner": "quickshell",
+      "incoming_signed_conflicts": [
+        "quickshell-git"
+      ],
+      "incoming_signed_provides": [
+        "quickshell"
+      ],
+      "incoming_signed_replaces": [],
+      "status": "UNTESTED removal/replacement transaction: retained name differs; signed conflicts do not by themselves prove an accepted removal"
+    },
+    {
+      "path": "usr/lib/qt6/qml/Quickshell/Wayland/_Screencopy/quickshell-wayland-screencopy.qmltypes",
+      "retained_owner": "quickshell-git",
+      "incoming_owner": "quickshell",
+      "incoming_signed_conflicts": [
+        "quickshell-git"
+      ],
+      "incoming_signed_provides": [
+        "quickshell"
+      ],
+      "incoming_signed_replaces": [],
+      "status": "UNTESTED removal/replacement transaction: retained name differs; signed conflicts do not by themselves prove an accepted removal"
+    },
+    {
+      "path": "usr/lib/qt6/qml/Quickshell/Wayland/_ShortcutsInhibitor/qmldir",
+      "retained_owner": "quickshell-git",
+      "incoming_owner": "quickshell",
+      "incoming_signed_conflicts": [
+        "quickshell-git"
+      ],
+      "incoming_signed_provides": [
+        "quickshell"
+      ],
+      "incoming_signed_replaces": [],
+      "status": "UNTESTED removal/replacement transaction: retained name differs; signed conflicts do not by themselves prove an accepted removal"
+    },
+    {
+      "path": "usr/lib/qt6/qml/Quickshell/Wayland/_ShortcutsInhibitor/quickshell-wayland-shortcuts-inhibit.qmltypes",
+      "retained_owner": "quickshell-git",
+      "incoming_owner": "quickshell",
+      "incoming_signed_conflicts": [
+        "quickshell-git"
+      ],
+      "incoming_signed_provides": [
+        "quickshell"
+      ],
+      "incoming_signed_replaces": [],
+      "status": "UNTESTED removal/replacement transaction: retained name differs; signed conflicts do not by themselves prove an accepted removal"
+    },
+    {
+      "path": "usr/lib/qt6/qml/Quickshell/Wayland/_ToplevelManagement/qmldir",
+      "retained_owner": "quickshell-git",
+      "incoming_owner": "quickshell",
+      "incoming_signed_conflicts": [
+        "quickshell-git"
+      ],
+      "incoming_signed_provides": [
+        "quickshell"
+      ],
+      "incoming_signed_replaces": [],
+      "status": "UNTESTED removal/replacement transaction: retained name differs; signed conflicts do not by themselves prove an accepted removal"
+    },
+    {
+      "path": "usr/lib/qt6/qml/Quickshell/Wayland/_ToplevelManagement/quickshell-wayland-toplevel-management.qmltypes",
+      "retained_owner": "quickshell-git",
+      "incoming_owner": "quickshell",
+      "incoming_signed_conflicts": [
+        "quickshell-git"
+      ],
+      "incoming_signed_provides": [
+        "quickshell"
+      ],
+      "incoming_signed_replaces": [],
+      "status": "UNTESTED removal/replacement transaction: retained name differs; signed conflicts do not by themselves prove an accepted removal"
+    },
+    {
+      "path": "usr/lib/qt6/qml/Quickshell/Wayland/_WlrLayerShell/qmldir",
+      "retained_owner": "quickshell-git",
+      "incoming_owner": "quickshell",
+      "incoming_signed_conflicts": [
+        "quickshell-git"
+      ],
+      "incoming_signed_provides": [
+        "quickshell"
+      ],
+      "incoming_signed_replaces": [],
+      "status": "UNTESTED removal/replacement transaction: retained name differs; signed conflicts do not by themselves prove an accepted removal"
+    },
+    {
+      "path": "usr/lib/qt6/qml/Quickshell/Wayland/_WlrLayerShell/quickshell-wayland-layershell.qmltypes",
+      "retained_owner": "quickshell-git",
+      "incoming_owner": "quickshell",
+      "incoming_signed_conflicts": [
+        "quickshell-git"
+      ],
+      "incoming_signed_provides": [
+        "quickshell"
+      ],
+      "incoming_signed_replaces": [],
+      "status": "UNTESTED removal/replacement transaction: retained name differs; signed conflicts do not by themselves prove an accepted removal"
+    },
+    {
+      "path": "usr/lib/qt6/qml/Quickshell/Wayland/qmldir",
+      "retained_owner": "quickshell-git",
+      "incoming_owner": "quickshell",
+      "incoming_signed_conflicts": [
+        "quickshell-git"
+      ],
+      "incoming_signed_provides": [
+        "quickshell"
+      ],
+      "incoming_signed_replaces": [],
+      "status": "UNTESTED removal/replacement transaction: retained name differs; signed conflicts do not by themselves prove an accepted removal"
+    },
+    {
+      "path": "usr/lib/qt6/qml/Quickshell/Wayland/quickshell-wayland.qmltypes",
+      "retained_owner": "quickshell-git",
+      "incoming_owner": "quickshell",
+      "incoming_signed_conflicts": [
+        "quickshell-git"
+      ],
+      "incoming_signed_provides": [
+        "quickshell"
+      ],
+      "incoming_signed_replaces": [],
+      "status": "UNTESTED removal/replacement transaction: retained name differs; signed conflicts do not by themselves prove an accepted removal"
+    },
+    {
+      "path": "usr/lib/qt6/qml/Quickshell/Widgets/ClippingRectangle.qml",
+      "retained_owner": "quickshell-git",
+      "incoming_owner": "quickshell",
+      "incoming_signed_conflicts": [
+        "quickshell-git"
+      ],
+      "incoming_signed_provides": [
+        "quickshell"
+      ],
+      "incoming_signed_replaces": [],
+      "status": "UNTESTED removal/replacement transaction: retained name differs; signed conflicts do not by themselves prove an accepted removal"
+    },
+    {
+      "path": "usr/lib/qt6/qml/Quickshell/Widgets/ClippingWrapperRectangle.qml",
+      "retained_owner": "quickshell-git",
+      "incoming_owner": "quickshell",
+      "incoming_signed_conflicts": [
+        "quickshell-git"
+      ],
+      "incoming_signed_provides": [
+        "quickshell"
+      ],
+      "incoming_signed_replaces": [],
+      "status": "UNTESTED removal/replacement transaction: retained name differs; signed conflicts do not by themselves prove an accepted removal"
+    },
+    {
+      "path": "usr/lib/qt6/qml/Quickshell/Widgets/ClippingWrapperRectangleInternal.qml",
+      "retained_owner": "quickshell-git",
+      "incoming_owner": "quickshell",
+      "incoming_signed_conflicts": [
+        "quickshell-git"
+      ],
+      "incoming_signed_provides": [
+        "quickshell"
+      ],
+      "incoming_signed_replaces": [],
+      "status": "UNTESTED removal/replacement transaction: retained name differs; signed conflicts do not by themselves prove an accepted removal"
+    },
+    {
+      "path": "usr/lib/qt6/qml/Quickshell/Widgets/IconImage.qml",
+      "retained_owner": "quickshell-git",
+      "incoming_owner": "quickshell",
+      "incoming_signed_conflicts": [
+        "quickshell-git"
+      ],
+      "incoming_signed_provides": [
+        "quickshell"
+      ],
+      "incoming_signed_replaces": [],
+      "status": "UNTESTED removal/replacement transaction: retained name differs; signed conflicts do not by themselves prove an accepted removal"
+    },
+    {
+      "path": "usr/lib/qt6/qml/Quickshell/Widgets/WrapperItem.qml",
+      "retained_owner": "quickshell-git",
+      "incoming_owner": "quickshell",
+      "incoming_signed_conflicts": [
+        "quickshell-git"
+      ],
+      "incoming_signed_provides": [
+        "quickshell"
+      ],
+      "incoming_signed_replaces": [],
+      "status": "UNTESTED removal/replacement transaction: retained name differs; signed conflicts do not by themselves prove an accepted removal"
+    },
+    {
+      "path": "usr/lib/qt6/qml/Quickshell/Widgets/WrapperMouseArea.qml",
+      "retained_owner": "quickshell-git",
+      "incoming_owner": "quickshell",
+      "incoming_signed_conflicts": [
+        "quickshell-git"
+      ],
+      "incoming_signed_provides": [
+        "quickshell"
+      ],
+      "incoming_signed_replaces": [],
+      "status": "UNTESTED removal/replacement transaction: retained name differs; signed conflicts do not by themselves prove an accepted removal"
+    },
+    {
+      "path": "usr/lib/qt6/qml/Quickshell/Widgets/WrapperRectangle.qml",
+      "retained_owner": "quickshell-git",
+      "incoming_owner": "quickshell",
+      "incoming_signed_conflicts": [
+        "quickshell-git"
+      ],
+      "incoming_signed_provides": [
+        "quickshell"
+      ],
+      "incoming_signed_replaces": [],
+      "status": "UNTESTED removal/replacement transaction: retained name differs; signed conflicts do not by themselves prove an accepted removal"
+    },
+    {
+      "path": "usr/lib/qt6/qml/Quickshell/Widgets/qmldir",
+      "retained_owner": "quickshell-git",
+      "incoming_owner": "quickshell",
+      "incoming_signed_conflicts": [
+        "quickshell-git"
+      ],
+      "incoming_signed_provides": [
+        "quickshell"
+      ],
+      "incoming_signed_replaces": [],
+      "status": "UNTESTED removal/replacement transaction: retained name differs; signed conflicts do not by themselves prove an accepted removal"
+    },
+    {
+      "path": "usr/lib/qt6/qml/Quickshell/Widgets/quickshell-widgets.qmltypes",
+      "retained_owner": "quickshell-git",
+      "incoming_owner": "quickshell",
+      "incoming_signed_conflicts": [
+        "quickshell-git"
+      ],
+      "incoming_signed_provides": [
+        "quickshell"
+      ],
+      "incoming_signed_replaces": [],
+      "status": "UNTESTED removal/replacement transaction: retained name differs; signed conflicts do not by themselves prove an accepted removal"
+    },
+    {
+      "path": "usr/lib/qt6/qml/Quickshell/WindowManager/qmldir",
+      "retained_owner": "quickshell-git",
+      "incoming_owner": "quickshell",
+      "incoming_signed_conflicts": [
+        "quickshell-git"
+      ],
+      "incoming_signed_provides": [
+        "quickshell"
+      ],
+      "incoming_signed_replaces": [],
+      "status": "UNTESTED removal/replacement transaction: retained name differs; signed conflicts do not by themselves prove an accepted removal"
+    },
+    {
+      "path": "usr/lib/qt6/qml/Quickshell/WindowManager/quickshell-windowmanager.qmltypes",
+      "retained_owner": "quickshell-git",
+      "incoming_owner": "quickshell",
+      "incoming_signed_conflicts": [
+        "quickshell-git"
+      ],
+      "incoming_signed_provides": [
+        "quickshell"
+      ],
+      "incoming_signed_replaces": [],
+      "status": "UNTESTED removal/replacement transaction: retained name differs; signed conflicts do not by themselves prove an accepted removal"
+    },
+    {
+      "path": "usr/lib/qt6/qml/Quickshell/X11/qmldir",
+      "retained_owner": "quickshell-git",
+      "incoming_owner": "quickshell",
+      "incoming_signed_conflicts": [
+        "quickshell-git"
+      ],
+      "incoming_signed_provides": [
+        "quickshell"
+      ],
+      "incoming_signed_replaces": [],
+      "status": "UNTESTED removal/replacement transaction: retained name differs; signed conflicts do not by themselves prove an accepted removal"
+    },
+    {
+      "path": "usr/lib/qt6/qml/Quickshell/X11/quickshell-x11.qmltypes",
+      "retained_owner": "quickshell-git",
+      "incoming_owner": "quickshell",
+      "incoming_signed_conflicts": [
+        "quickshell-git"
+      ],
+      "incoming_signed_provides": [
+        "quickshell"
+      ],
+      "incoming_signed_replaces": [],
+      "status": "UNTESTED removal/replacement transaction: retained name differs; signed conflicts do not by themselves prove an accepted removal"
+    },
+    {
+      "path": "usr/lib/qt6/qml/Quickshell/_Window/qmldir",
+      "retained_owner": "quickshell-git",
+      "incoming_owner": "quickshell",
+      "incoming_signed_conflicts": [
+        "quickshell-git"
+      ],
+      "incoming_signed_provides": [
+        "quickshell"
+      ],
+      "incoming_signed_replaces": [],
+      "status": "UNTESTED removal/replacement transaction: retained name differs; signed conflicts do not by themselves prove an accepted removal"
+    },
+    {
+      "path": "usr/lib/qt6/qml/Quickshell/_Window/quickshell-window.qmltypes",
+      "retained_owner": "quickshell-git",
+      "incoming_owner": "quickshell",
+      "incoming_signed_conflicts": [
+        "quickshell-git"
+      ],
+      "incoming_signed_provides": [
+        "quickshell"
+      ],
+      "incoming_signed_replaces": [],
+      "status": "UNTESTED removal/replacement transaction: retained name differs; signed conflicts do not by themselves prove an accepted removal"
+    },
+    {
+      "path": "usr/lib/qt6/qml/Quickshell/qmldir",
+      "retained_owner": "quickshell-git",
+      "incoming_owner": "quickshell",
+      "incoming_signed_conflicts": [
+        "quickshell-git"
+      ],
+      "incoming_signed_provides": [
+        "quickshell"
+      ],
+      "incoming_signed_replaces": [],
+      "status": "UNTESTED removal/replacement transaction: retained name differs; signed conflicts do not by themselves prove an accepted removal"
+    },
+    {
+      "path": "usr/lib/qt6/qml/Quickshell/quickshell-core.qmltypes",
+      "retained_owner": "quickshell-git",
+      "incoming_owner": "quickshell",
+      "incoming_signed_conflicts": [
+        "quickshell-git"
+      ],
+      "incoming_signed_provides": [
+        "quickshell"
+      ],
+      "incoming_signed_replaces": [],
+      "status": "UNTESTED removal/replacement transaction: retained name differs; signed conflicts do not by themselves prove an accepted removal"
+    },
+    {
+      "path": "usr/share/applications/org.quickshell.desktop",
+      "retained_owner": "quickshell-git",
+      "incoming_owner": "quickshell",
+      "incoming_signed_conflicts": [
+        "quickshell-git"
+      ],
+      "incoming_signed_provides": [
+        "quickshell"
+      ],
+      "incoming_signed_replaces": [],
+      "status": "UNTESTED removal/replacement transaction: retained name differs; signed conflicts do not by themselves prove an accepted removal"
+    },
+    {
+      "path": "usr/share/icons/hicolor/scalable/apps/org.quickshell.svg",
+      "retained_owner": "quickshell-git",
+      "incoming_owner": "quickshell",
+      "incoming_signed_conflicts": [
+        "quickshell-git"
+      ],
+      "incoming_signed_provides": [
+        "quickshell"
+      ],
+      "incoming_signed_replaces": [],
+      "status": "UNTESTED removal/replacement transaction: retained name differs; signed conflicts do not by themselves prove an accepted removal"
+    },
+    {
+      "path": "usr/share/libalpm/hooks/quickshell-check.hook",
+      "retained_owner": "quickshell-git",
+      "incoming_owner": "quickshell",
+      "incoming_signed_conflicts": [
+        "quickshell-git"
+      ],
+      "incoming_signed_provides": [
+        "quickshell"
+      ],
+      "incoming_signed_replaces": [],
+      "status": "UNTESTED removal/replacement transaction: retained name differs; signed conflicts do not by themselves prove an accepted removal"
+    },
+    {
+      "path": "usr/share/licenses/quickshell/LICENSE",
+      "retained_owner": "quickshell-git",
+      "incoming_owner": "quickshell",
+      "incoming_signed_conflicts": [
+        "quickshell-git"
+      ],
+      "incoming_signed_provides": [
+        "quickshell"
+      ],
+      "incoming_signed_replaces": [],
+      "status": "UNTESTED removal/replacement transaction: retained name differs; signed conflicts do not by themselves prove an accepted removal"
+    }
+  ],
+  "own_parser_cache_sha256": {
+    "baseline": "df114e41bdf27e32b53ce4888cc5ca37ffc34c5370626e466c22c251be00882a",
+    "incoming": "4d83f5cadbf3ddc066f4959e44701c48f2f0cd38d3383d1ad73c91ea28d36f01"
+  },
+  "static_report_sha256": "dc46c76802ceec0f3f5ef13b72930fc3ff7075025f852891b5e5cc17beec7b2b",
+  "qualification_sha256": "468862b06d7f38c41c2c030e5f8fea796563b64ec3af0342c14925450093f1e0",
+  "parse_gap_classification": {
+    "count": 344,
+    "machine_counts": {
+      "0": 344
+    },
+    "all_guile_VM_ELF": true,
+    "native_host_parse_error_count_in_scanned_scope": 0,
+    "scope": "Guile VM bytecode remains unqualified; no native CPU binary was silently treated as compatible"
+  },
+  "foreign_assets": [
+    {
+      "machine": 62,
+      "owner": "omarchy-nvim",
+      "path": "etc/skel/.local/share/nvim/mason/packages/shfmt/shfmt_v3.14.1_linux_amd64",
+      "sha256": "0822976586a20db68cade654fb68a03ef0816959c5a776f1744aad0aa97606c6",
+      "signed_package_version": "2026.9.21-5",
+      "signed_package_architecture": "any",
+      "signed_package_sha256": "b46d41973cacfcf2d8be371351336a3f689e2eb7b9bacdb7ca81939354cbcbc9",
+      "archive_mode": "0o644",
+      "archive_bytes": 3570072,
+      "template_link": {
+        "path": "etc/skel/.local/share/nvim/mason/bin/shfmt",
+        "target": "../packages/shfmt/shfmt_v3.14.1_linux_amd64"
+      },
+      "receipt_sha256": "4a822ddb547e87830ae13f09b0cfe4df66df54a008883bb6172efda339805285",
+      "receipt_shfmt_link": "shfmt_v3.14.1_linux_amd64",
+      "independent_machine_check": "GNU readelf: Advanced Micro Devices X86-64",
+      "status": "PARTIAL: architecture-specific Mason asset in architecture=any ARM proposal; target0644; dormant /etc/skel data, not proof existing account executes it"
+    }
+  ],
+  "unresolved_direct_edges": [
+    {
+      "baseline_issues": null,
+      "consumer": "usr/bin/evince",
+      "consumer_owner": "evince",
+      "introduced_issue_set": [
+        "unresolved_needed"
+      ],
+      "issues": [
+        "unresolved_needed"
+      ],
+      "needed": "libgnome-desktop-3.so.21",
+      "provider": null,
+      "provider_owner": null,
+      "resolution_gap": null,
+      "declared_dependencies": [
+        "at-spi2-core",
+        "cairo",
+        "dconf",
+        "djvulibre",
+        "exempi",
+        "gdk-pixbuf2",
+        "glib2",
+        "glibc",
+        "gnome-desktop",
+        "gsettings-desktop-schemas",
+        "gsfonts",
+        "gspell",
+        "gst-plugins-base-libs",
+        "gstreamer",
+        "gtk3",
+        "gvfs",
+        "hicolor-icon-theme",
+        "libarchive",
+        "libgcc",
+        "libgxps",
+        "libhandy",
+        "libsecret",
+        "libspectre",
+        "libsynctex",
+        "libtiff",
+        "libxml2",
+        "pango",
+        "poppler-glib"
+      ],
+      "declared_optional_dependencies": [
+        "texlive-bin: DVI support"
+      ],
+      "qualification": "PARTIAL: required direct ELF lookup unresolved in modeled filesystem; plugin/optional feature use and runtime context are not inferred"
+    },
+    {
+      "baseline_issues": null,
+      "consumer": "usr/lib/GraphicsMagick-1.3.49/modules-Q16/coders/jbig.so",
+      "consumer_owner": "graphicsmagick",
+      "introduced_issue_set": [
+        "unresolved_needed"
+      ],
+      "issues": [
+        "unresolved_needed"
+      ],
+      "needed": "libjbig.so.2.2",
+      "provider": null,
+      "provider_owner": null,
+      "resolution_gap": null,
+      "declared_dependencies": [
+        "bzip2",
+        "freetype2",
+        "lcms2",
+        "libltdl",
+        "libpng",
+        "libtiff",
+        "libwebp",
+        "libxext",
+        "xz"
+      ],
+      "declared_optional_dependencies": [
+        "jasper: jp2 module",
+        "libwmf: wmf module",
+        "libxml2: msl, svg, url modules",
+        "ghostscript: pdf, ps modules",
+        "libheif: heic module",
+        "libjxl: jpeg-xl module"
+      ],
+      "qualification": "PARTIAL: required direct ELF lookup unresolved in modeled filesystem; plugin/optional feature use and runtime context are not inferred"
+    },
+    {
+      "baseline_issues": null,
+      "consumer": "usr/lib/GraphicsMagick-1.3.49/modules-Q16/coders/wmf.so",
+      "consumer_owner": "graphicsmagick",
+      "introduced_issue_set": [
+        "unresolved_needed"
+      ],
+      "issues": [
+        "unresolved_needed"
+      ],
+      "needed": "libwmflite-0.2.so.7",
+      "provider": null,
+      "provider_owner": null,
+      "resolution_gap": null,
+      "declared_dependencies": [
+        "bzip2",
+        "freetype2",
+        "lcms2",
+        "libltdl",
+        "libpng",
+        "libtiff",
+        "libwebp",
+        "libxext",
+        "xz"
+      ],
+      "declared_optional_dependencies": [
+        "jasper: jp2 module",
+        "libwmf: wmf module",
+        "libxml2: msl, svg, url modules",
+        "ghostscript: pdf, ps modules",
+        "libheif: heic module",
+        "libjxl: jpeg-xl module"
+      ],
+      "qualification": "PARTIAL: required direct ELF lookup unresolved in modeled filesystem; plugin/optional feature use and runtime context are not inferred"
+    },
+    {
+      "baseline_issues": null,
+      "consumer": "usr/lib/ImageMagick-7.1.2/modules-Q16HDRI/coders/exr.so",
+      "consumer_owner": "imagemagick",
+      "introduced_issue_set": [
+        "unresolved_needed"
+      ],
+      "issues": [
+        "unresolved_needed"
+      ],
+      "needed": "libOpenEXR-3_5.so.34",
+      "provider": null,
+      "provider_owner": null,
+      "resolution_gap": null,
+      "declared_dependencies": [
+        "bzip2",
+        "cairo",
+        "fftw",
+        "fontconfig",
+        "freetype2",
+        "glib2",
+        "glibc",
+        "lcms2",
+        "liblqr",
+        "libltdl",
+        "libpng",
+        "libraqm",
+        "libxext",
+        "libxml2",
+        "libgcc",
+        "libstdc++",
+        "libgomp",
+        "xz",
+        "zlib"
+      ],
+      "declared_optional_dependencies": [
+        "ghostscript: PS/PDF support",
+        "jbigkit: JBIG support",
+        "libheif: HEIF support",
+        "libjpeg-turbo: JPEG support",
+        "libjxl: JPEG XL support",
+        "libraw: DNG support",
+        "librsvg: SVG support",
+        "libtiff: TIFF support",
+        "libultrahdr: UHDR support",
+        "libwebp: WEBP support",
+        "libwmf: WMF support",
+        "libzip: OpenRaster support",
+        "ocl-icd: OpenCL support",
+        "openexr: OpenEXR support",
+        "openjpeg2: JPEG2000 support",
+        "djvulibre: DJVU support",
+        "pango: Text rendering"
+      ],
+      "qualification": "PARTIAL: required direct ELF lookup unresolved in modeled filesystem; plugin/optional feature use and runtime context are not inferred"
+    },
+    {
+      "baseline_issues": null,
+      "consumer": "usr/lib/ImageMagick-7.1.2/modules-Q16HDRI/coders/exr.so",
+      "consumer_owner": "imagemagick",
+      "introduced_issue_set": [
+        "unresolved_needed"
+      ],
+      "issues": [
+        "unresolved_needed"
+      ],
+      "needed": "libOpenEXRCore-3_5.so.34",
+      "provider": null,
+      "provider_owner": null,
+      "resolution_gap": null,
+      "declared_dependencies": [
+        "bzip2",
+        "cairo",
+        "fftw",
+        "fontconfig",
+        "freetype2",
+        "glib2",
+        "glibc",
+        "lcms2",
+        "liblqr",
+        "libltdl",
+        "libpng",
+        "libraqm",
+        "libxext",
+        "libxml2",
+        "libgcc",
+        "libstdc++",
+        "libgomp",
+        "xz",
+        "zlib"
+      ],
+      "declared_optional_dependencies": [
+        "ghostscript: PS/PDF support",
+        "jbigkit: JBIG support",
+        "libheif: HEIF support",
+        "libjpeg-turbo: JPEG support",
+        "libjxl: JPEG XL support",
+        "libraw: DNG support",
+        "librsvg: SVG support",
+        "libtiff: TIFF support",
+        "libultrahdr: UHDR support",
+        "libwebp: WEBP support",
+        "libwmf: WMF support",
+        "libzip: OpenRaster support",
+        "ocl-icd: OpenCL support",
+        "openexr: OpenEXR support",
+        "openjpeg2: JPEG2000 support",
+        "djvulibre: DJVU support",
+        "pango: Text rendering"
+      ],
+      "qualification": "PARTIAL: required direct ELF lookup unresolved in modeled filesystem; plugin/optional feature use and runtime context are not inferred"
+    },
+    {
+      "baseline_issues": null,
+      "consumer": "usr/lib/ImageMagick-7.1.2/modules-Q16HDRI/coders/jbig.so",
+      "consumer_owner": "imagemagick",
+      "introduced_issue_set": [
+        "unresolved_needed"
+      ],
+      "issues": [
+        "unresolved_needed"
+      ],
+      "needed": "libjbig.so.2.2",
+      "provider": null,
+      "provider_owner": null,
+      "resolution_gap": null,
+      "declared_dependencies": [
+        "bzip2",
+        "cairo",
+        "fftw",
+        "fontconfig",
+        "freetype2",
+        "glib2",
+        "glibc",
+        "lcms2",
+        "liblqr",
+        "libltdl",
+        "libpng",
+        "libraqm",
+        "libxext",
+        "libxml2",
+        "libgcc",
+        "libstdc++",
+        "libgomp",
+        "xz",
+        "zlib"
+      ],
+      "declared_optional_dependencies": [
+        "ghostscript: PS/PDF support",
+        "jbigkit: JBIG support",
+        "libheif: HEIF support",
+        "libjpeg-turbo: JPEG support",
+        "libjxl: JPEG XL support",
+        "libraw: DNG support",
+        "librsvg: SVG support",
+        "libtiff: TIFF support",
+        "libultrahdr: UHDR support",
+        "libwebp: WEBP support",
+        "libwmf: WMF support",
+        "libzip: OpenRaster support",
+        "ocl-icd: OpenCL support",
+        "openexr: OpenEXR support",
+        "openjpeg2: JPEG2000 support",
+        "djvulibre: DJVU support",
+        "pango: Text rendering"
+      ],
+      "qualification": "PARTIAL: required direct ELF lookup unresolved in modeled filesystem; plugin/optional feature use and runtime context are not inferred"
+    },
+    {
+      "baseline_issues": null,
+      "consumer": "usr/lib/gvfsd-nfs",
+      "consumer_owner": "gvfs-nfs",
+      "introduced_issue_set": [
+        "unresolved_needed"
+      ],
+      "issues": [
+        "unresolved_needed"
+      ],
+      "needed": "libnfs.so.17",
+      "provider": null,
+      "provider_owner": null,
+      "resolution_gap": null,
+      "declared_dependencies": [
+        "gvfs=1.62.0",
+        "glib2",
+        "glibc",
+        "libgcc",
+        "libnfs"
+      ],
+      "declared_optional_dependencies": [],
+      "qualification": "PARTIAL: required direct ELF lookup unresolved in modeled filesystem; plugin/optional feature use and runtime context are not inferred"
+    },
+    {
+      "baseline_issues": null,
+      "consumer": "usr/lib/libFcitx5Qt5DBusAddons.so.5.1.16",
+      "consumer_owner": "fcitx5-qt",
+      "introduced_issue_set": [
+        "unresolved_needed"
+      ],
+      "issues": [
+        "unresolved_needed"
+      ],
+      "needed": "libQt5DBus.so.5",
+      "provider": null,
+      "provider_owner": null,
+      "resolution_gap": null,
+      "declared_dependencies": [
+        "glibc",
+        "libgcc",
+        "libstdc++",
+        "libxcb",
+        "libxkbcommon",
+        "fcitx5",
+        "qt6-base",
+        "wayland"
+      ],
+      "declared_optional_dependencies": [],
+      "qualification": "PARTIAL: required direct ELF lookup unresolved in modeled filesystem; plugin/optional feature use and runtime context are not inferred"
+    },
+    {
+      "baseline_issues": null,
+      "consumer": "usr/lib/libFcitx5Qt5DBusAddons.so.5.1.16",
+      "consumer_owner": "fcitx5-qt",
+      "introduced_issue_set": [
+        "unresolved_needed"
+      ],
+      "issues": [
+        "unresolved_needed"
+      ],
+      "needed": "libQt5Core.so.5",
+      "provider": null,
+      "provider_owner": null,
+      "resolution_gap": null,
+      "declared_dependencies": [
+        "glibc",
+        "libgcc",
+        "libstdc++",
+        "libxcb",
+        "libxkbcommon",
+        "fcitx5",
+        "qt6-base",
+        "wayland"
+      ],
+      "declared_optional_dependencies": [],
+      "qualification": "PARTIAL: required direct ELF lookup unresolved in modeled filesystem; plugin/optional feature use and runtime context are not inferred"
+    },
+    {
+      "baseline_issues": null,
+      "consumer": "usr/lib/libFcitx5Qt5WidgetsAddons.so.5.1.16",
+      "consumer_owner": "fcitx5-qt",
+      "introduced_issue_set": [
+        "unresolved_needed"
+      ],
+      "issues": [
+        "unresolved_needed"
+      ],
+      "needed": "libQt5Widgets.so.5",
+      "provider": null,
+      "provider_owner": null,
+      "resolution_gap": null,
+      "declared_dependencies": [
+        "glibc",
+        "libgcc",
+        "libstdc++",
+        "libxcb",
+        "libxkbcommon",
+        "fcitx5",
+        "qt6-base",
+        "wayland"
+      ],
+      "declared_optional_dependencies": [],
+      "qualification": "PARTIAL: required direct ELF lookup unresolved in modeled filesystem; plugin/optional feature use and runtime context are not inferred"
+    },
+    {
+      "baseline_issues": null,
+      "consumer": "usr/lib/libFcitx5Qt5WidgetsAddons.so.5.1.16",
+      "consumer_owner": "fcitx5-qt",
+      "introduced_issue_set": [
+        "unresolved_needed"
+      ],
+      "issues": [
+        "unresolved_needed"
+      ],
+      "needed": "libQt5Gui.so.5",
+      "provider": null,
+      "provider_owner": null,
+      "resolution_gap": null,
+      "declared_dependencies": [
+        "glibc",
+        "libgcc",
+        "libstdc++",
+        "libxcb",
+        "libxkbcommon",
+        "fcitx5",
+        "qt6-base",
+        "wayland"
+      ],
+      "declared_optional_dependencies": [],
+      "qualification": "PARTIAL: required direct ELF lookup unresolved in modeled filesystem; plugin/optional feature use and runtime context are not inferred"
+    },
+    {
+      "baseline_issues": null,
+      "consumer": "usr/lib/libFcitx5Qt5WidgetsAddons.so.5.1.16",
+      "consumer_owner": "fcitx5-qt",
+      "introduced_issue_set": [
+        "unresolved_needed"
+      ],
+      "issues": [
+        "unresolved_needed"
+      ],
+      "needed": "libQt5Core.so.5",
+      "provider": null,
+      "provider_owner": null,
+      "resolution_gap": null,
+      "declared_dependencies": [
+        "glibc",
+        "libgcc",
+        "libstdc++",
+        "libxcb",
+        "libxkbcommon",
+        "fcitx5",
+        "qt6-base",
+        "wayland"
+      ],
+      "declared_optional_dependencies": [],
+      "qualification": "PARTIAL: required direct ELF lookup unresolved in modeled filesystem; plugin/optional feature use and runtime context are not inferred"
+    },
+    {
+      "baseline_issues": null,
+      "consumer": "usr/lib/libQt6Quick3DSpatialAudio.so.6.12.0",
+      "consumer_owner": "qt6-multimedia",
+      "introduced_issue_set": [
+        "unresolved_needed"
+      ],
+      "issues": [
+        "unresolved_needed"
+      ],
+      "needed": "libQt6Quick3D.so.6",
+      "provider": null,
+      "provider_owner": null,
+      "resolution_gap": null,
+      "declared_dependencies": [
+        "glibc",
+        "libgcc",
+        "libpulse",
+        "libstdc++",
+        "pipewire",
+        "qt6-base",
+        "qt6-multimedia-backend"
+      ],
+      "declared_optional_dependencies": [
+        "qt6-declarative: QML bindings",
+        "qt6-quick3d: for QtQuick3DAudio"
+      ],
+      "qualification": "PARTIAL: required direct ELF lookup unresolved in modeled filesystem; plugin/optional feature use and runtime context are not inferred"
+    },
+    {
+      "baseline_issues": null,
+      "consumer": "usr/lib/libvips.so.42.20.7",
+      "consumer_owner": "libvips",
+      "introduced_issue_set": [
+        "unresolved_needed"
+      ],
+      "issues": [
+        "unresolved_needed"
+      ],
+      "needed": "libOpenEXR-3_5.so.34",
+      "provider": null,
+      "provider_owner": null,
+      "resolution_gap": null,
+      "declared_dependencies": [
+        "cairo",
+        "cfitsio",
+        "expat",
+        "fftw",
+        "fontconfig",
+        "glib2",
+        "glibc",
+        "highway",
+        "lcms2",
+        "libarchive",
+        "libcgif",
+        "libexif",
+        "libgcc",
+        "libimagequant",
+        "libjpeg-turbo",
+        "libmatio",
+        "libpng",
+        "libraw",
+        "librsvg",
+        "libstdc++",
+        "libtiff",
+        "libwebp",
+        "openexr",
+        "openjpeg2",
+        "pango",
+        "zlib"
+      ],
+      "declared_optional_dependencies": [
+        "imagemagick: for magick module",
+        "libheif: for heif module",
+        "libjxl: for jxl module",
+        "openslide: for openslide module",
+        "poppler-glib: for poppler module",
+        "python: for vipsprofile"
+      ],
+      "qualification": "PARTIAL: required direct ELF lookup unresolved in modeled filesystem; plugin/optional feature use and runtime context are not inferred"
+    },
+    {
+      "baseline_issues": null,
+      "consumer": "usr/lib/sushi/web-process-extensions/libsushiwebprocessextension.so",
+      "consumer_owner": "sushi",
+      "introduced_issue_set": [
+        "unresolved_needed"
+      ],
+      "issues": [
+        "unresolved_needed"
+      ],
+      "needed": "libwebkitgtk-6.0.so.4",
+      "provider": null,
+      "provider_owner": null,
+      "resolution_gap": null,
+      "declared_dependencies": [
+        "cairo",
+        "freetype2",
+        "fribidi",
+        "gjs",
+        "glib2",
+        "glibc",
+        "glycin-gtk4",
+        "gst-plugins-base-libs",
+        "gstreamer",
+        "gtk4",
+        "harfbuzz",
+        "libgcc",
+        "libx11",
+        "pango",
+        "papers"
+      ],
+      "declared_optional_dependencies": [
+        "libreoffice: OpenDocument formats",
+        "webkitgtk-6.0: Render HTML files"
+      ],
+      "qualification": "PARTIAL: required direct ELF lookup unresolved in modeled filesystem; plugin/optional feature use and runtime context are not inferred"
+    },
+    {
+      "baseline_issues": null,
+      "consumer": "usr/share/dotnet/shared/Microsoft.NETCore.App/10.0.13/libcoreclrtraceptprovider.so",
+      "consumer_owner": "dotnet-runtime-bin",
+      "introduced_issue_set": [
+        "unresolved_needed"
+      ],
+      "issues": [
+        "unresolved_needed"
+      ],
+      "needed": "liblttng-ust.so.0",
+      "provider": null,
+      "provider_owner": null,
+      "resolution_gap": null,
+      "declared_dependencies": [
+        "dotnet-host>=10.0.13",
+        "libgcc",
+        "libstdc++",
+        "glibc",
+        "icu",
+        "libunwind",
+        "zlib",
+        "openssl"
+      ],
+      "declared_optional_dependencies": [
+        "lttng-ust2.12: CoreCLR tracing"
+      ],
+      "qualification": "PARTIAL: required direct ELF lookup unresolved in modeled filesystem; plugin/optional feature use and runtime context are not inferred"
+    }
+  ],
+  "limitations": [
+    "Unresolved plugin dependencies can represent unavailable optional features. The direct consumer need is recorded without asserting every package entry point fails.",
+    "Exact Qt old/new private ABI loss is separately proven with readelf. No runtime ABI or installation qualification follows."
+  ]
+}

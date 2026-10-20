@@ -1,0 +1,19 @@
+test_actual_file_graph_forwarding_and_wrong_version (test_elf.ActualElf.test_actual_file_graph_forwarding_and_wrong_version) ... ok
+test_machine_mismatch (test_elf.ActualElf.test_machine_mismatch) ... ok
+test_real_versioned_dependency (test_elf.ActualElf.test_real_versioned_dependency) ... ok
+test_same_soname_missing_version_and_symbol_contract (test_elf.ActualElf.test_same_soname_missing_version_and_symbol_contract) ... ok
+test_section_out_of_bounds_rejected (test_elf.ActualElf.test_section_out_of_bounds_rejected) ... ok
+test_symbol_moved_to_loaded_dependency_scope (test_elf.ActualElf.test_symbol_moved_to_loaded_dependency_scope) ... ok
+test_truncated_rejected (test_elf.ActualElf.test_truncated_rejected) ... ok
+test_actual_aarch64_object_and_independent_readelf (test_elf.CrossReadOnly.test_actual_aarch64_object_and_independent_readelf) ... ok
+test_image_absolute_and_relative_links_stay_virtual (test_resolution.VirtualFilesystem.test_image_absolute_and_relative_links_stay_virtual) ... ok
+test_no_archive_traversal (test_resolution.VirtualFilesystem.test_no_archive_traversal) ... ok
+test_origin_runpath_precedes_default (test_resolution.VirtualFilesystem.test_origin_runpath_precedes_default) ... ok
+test_symlink_escape_rejected (test_resolution.VirtualFilesystem.test_symlink_escape_rejected) ... ok
+test_symlink_loop_rejected (test_resolution.VirtualFilesystem.test_symlink_loop_rejected) ... ok
+test_unsupported_token_does_not_fall_through (test_resolution.VirtualFilesystem.test_unsupported_token_does_not_fall_through) ... ok
+
+----------------------------------------------------------------------
+Ran 14 tests in 0.091s
+
+OK

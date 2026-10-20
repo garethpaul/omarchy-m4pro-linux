@@ -308,3 +308,45 @@ layout/offset checks, plus actual-source host regressions independently rerun
 by root. Full ANS admission/lifetime integration is not yet wired; current
 refusal stays. An independent read-only review is tracing actual DMA/devres
 lifetime and mailbox contracts before any future test.
+
+## Strict ANS admission and combined build failure
+
+The immutable05af581d3bf7574d933044d509dd6c3617e8a111 source replaces the initial
+blanket refusal only for the exact measured J614s inherited-session profile.
+Six actual-source host suites,12 wiring assertions and21 sequential patch
+replays/all35 modified files pass. The IDLE-completion and failed-stop reader
+regressions retain causal baseline failures. Final independent review stopped
+automatically; the primary inspected ordinary source contracts, without claiming
+independent acceptance or real concurrency/hardware qualification.
+
+Build-only combined sourcea652cf765b6749b268af16ddbcf29ce314dfab85 adds checked
+GPU MMIO and owned-pool PRIME fixes with exact per-file and patch-ID provenance.
+Its real AArch64 build FAILED at apple.c:2679: NVME_QUIRK_BROKEN_FUA is undeclared
+in the Gravity core. Configuration6c5aba, source and tools did not drift; RTKit
+and SART objects compiled. The failed source/build remain intact. Next executable
+action is a separate narrow core dependency correction, actual-source regression,
+fresh full build and only then an independent fresh reproduction. No combined
+boot bundle or hardware pass is claimed.
+
+The Mac remains at the installed m1n1 proxy. A supervised availability question
+is pending; absent an answer, no boot-sensitive operation is authorized.
+
+## Actual package ABI blockers
+
+The separate signed117-payload plan now has an actual ELF audit:1256 incoming
+ELFs,328 untouched reverse consumers and12,596 direct edges. Eight Qt consumers
+lose12 mandatory Qt_6_PRIVATE_API imports under the partial6.12 upgrade; exact
+GNU readelf before/after proofs identify the bytes. Sixteen incoming/new direct
+SONAME edges are unresolved in the bounded model;52 existing issue edges remain
+separate. The new-home Omarchy nvim template contains a dormant mode0644 x86_64
+shfmt asset, not evidence of an existing user's running foreign code.
+
+The initial model only replaces same-name packages; signed conflicts involving
+dotnet-host-bin, mise-bin and quickshell still need real removal modeling.
+Root reran14 actual ELF/virtual-root tests successfully. Root also identified
+replay-cache identity gaps; the package lane is adding restored-byte and auditor
+identity validation before a new audit. Current original bytes are not known to
+have changed. Installation, hooks, protected holds and runtime remain blocked.
+
+A fresh webcam observation at2026-10-20T06:20:25Z still shows Running proxy,
+USB1209:316d installed8e0cf28, enumeration63. No boot/reset action occurred.

@@ -1,0 +1,20 @@
+From acfac91e1b2aedfbb793e19c733c0dba20630fa2 Mon Sep 17 00:00:00 2001
+From: gareth jones <gareth@garethpaul.com>
+Date: Mon, 19 Oct 2026 23:05:23 -0700
+Subject: [PATCH] nvme: treat IDLE requests as completed after inherited CQ
+ polling
+
+---
+ drivers/nvme/host/apple.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/nvme/host/apple.c b/drivers/nvme/host/apple.c
+index c78059214..7db302724 100644
+--- a/drivers/nvme/host/apple.c
++++ b/drivers/nvme/host/apple.c
+@@ -1389 +1389 @@ static enum blk_eh_timer_return apple_nvme_timeout(struct request *req)
+-	if (blk_mq_request_completed(req))
++	if (blk_mq_rq_state(req) != MQ_RQ_IN_FLIGHT)
+@@ -1404 +1404 @@ static enum blk_eh_timer_return apple_nvme_timeout(struct request *req)
+-		if (blk_mq_request_completed(req)) {
++		if (blk_mq_rq_state(req) != MQ_RQ_IN_FLIGHT) {

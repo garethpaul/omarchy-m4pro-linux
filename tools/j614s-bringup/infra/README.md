@@ -4,7 +4,7 @@ This lane owns host build infrastructure. None of these tools contacts USB,
 SSH, KVM or the physical Mac, deploys artifacts, reboots, or changes storage or
 boot policy. Compilation is separate from hardware qualification.
 
-The current candidate is clean kernel commit
+The reproducible Aurora reference candidate is clean kernel commit
 `f93a3416c60f26c68084134dc6c1d205becd5753`: archived diagnostic source, removed
 fixed-address early framebuffer writes, and the reviewed G16 crash-state latch.
 Its exact config is `configs/j614s-clean-candidate.config`, SHA-256
@@ -312,3 +312,24 @@ J614s refusal. It establishes no admitted storage probe, devres quarantine or
 hardware operation. `baseline-preservation-final.json` confirms the original
 source fingerprint, known Image and original config remain unchanged after the
 new builds. This lane performed no physical target access or deployment.
+
+## Combined storage, MMIO and PRIME qualification
+
+`gravity-combined-source.json` freezes reviewed storage source `05af581d3`
+plus the checked G16 MMIO and owned-pool PRIME fixes at clean combined commit
+`a652cf765b6749b268af16ddbcf29ce314dfab85`. The three changed files exactly match
+the reviewed sources; stable patch IDs and file hashes are recorded.
+
+**BLOCKED (compile dependency):** the first real AArch64 ANS compile reaches
+`apple.c:2679` and fails because `NVME_QUIRK_BROKEN_FUA` is absent from this
+Gravity NVMe core. `gravity-combined-attempt-01-failure.json` retains the failure,
+zero config normalization drift and unchanged source/tool fingerprints. No
+unrelated quirk was substituted and no feature or assertion disabled. RTKit and
+SART objects compiled in that attempt; complete kernel and module linking were
+not reached. A separate storage dependency correction is required before a new
+immutable combined build. The planned independent second build will qualify the
+actual combined artifacts; the earlier Aurora reproduction does not do that.
+
+Hardware and storage concurrency remain **UNTESTED**. Module-owned-pool PRIME
+restriction also blocks foreign AGX-to-DCP zero-copy presentation. This source
+checkpoint has no deployment authority.

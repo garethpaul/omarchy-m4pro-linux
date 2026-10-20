@@ -1,0 +1,49 @@
+From 6578171fc49a334047d4fbf777fb4f7adf3332bb Mon Sep 17 00:00:00 2001
+From: gareth jones <gareth@garethpaul.com>
+Date: Mon, 19 Oct 2026 23:07:52 -0700
+Subject: [PATCH] nvme: admit only measured inherited J614s diagnostic topology
+
+---
+ drivers/nvme/host/apple.c | 32 +++++++++++++-------------------
+ 1 file changed, 13 insertions(+), 19 deletions(-)
+
+diff --git a/drivers/nvme/host/apple.c b/drivers/nvme/host/apple.c
+index bf8241f40..644e3be3a 100644
+--- a/drivers/nvme/host/apple.c
++++ b/drivers/nvme/host/apple.c
+@@ -219 +219 @@ struct apple_nvme {
+-	/* Staged inherited-session port; J614s early refusal remains in force. */
++	/* True only after exact J614s topology and inherited state admission. */
+@@ -2448,7 +2447,0 @@ static struct apple_nvme *apple_nvme_alloc(struct platform_device *pdev)
+-	/* Aurora's measured J614s diagnostic depends on inherited RTKit adoption.
+-	 * Gravity lacks that state/endpoint ownership path. Do not reset ANS or
+-	 * accept a generic/T8132 fallback on this board until it is ported.
+-	 */
+-	if (of_machine_is_compatible("apple,j614s"))
+-		return ERR_PTR(dev_err_probe(dev, -EOPNOTSUPP,
+-			"J614s ANS inherited RTKit adoption has not been ported\n"));
+@@ -2521,11 +2514,3 @@ static struct apple_nvme *apple_nvme_alloc(struct platform_device *pdev)
+-	anv->sart = devm_apple_sart_get(dev);
+-	if (IS_ERR(anv->sart)) {
+-		ret = dev_err_probe(dev, PTR_ERR(anv->sart),
+-				    "Failed to initialize SART");
+-		goto put_dev;
+-	}
+-
+-	if (of_machine_is_compatible("apple,j614s")) {
+-		/* The first branch in this allocator currently refuses this board.
+-		 * Do not remove it until controller/DMA lifetime and teardown are
+-		 * ported and the actual-source host regressions pass.
++	if (anv->hw->j614s_diagnostic) {
++		/* Validate inherited state before supplier links, queue DMA, IRQ/RX
++		 * ownership or any controller-register write can be established.
+@@ -2542,0 +2528,9 @@ static struct apple_nvme *apple_nvme_alloc(struct platform_device *pdev)
++
++	anv->sart = devm_apple_sart_get(dev);
++	if (IS_ERR(anv->sart)) {
++		ret = dev_err_probe(dev, PTR_ERR(anv->sart),
++				    "Failed to initialize SART");
++		goto put_dev;
++	}
++
++

@@ -1,0 +1,20 @@
+From 3bdfd666290823208bfd30d7e09622300241aa33 Mon Sep 17 00:00:00 2001
+From: gareth jones <gareth@garethpaul.com>
+Date: Mon, 19 Oct 2026 23:06:30 -0700
+Subject: [PATCH] nvme: require measured zero-cell J614s mailbox profile
+
+---
+ drivers/nvme/host/apple.c | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/drivers/nvme/host/apple.c b/drivers/nvme/host/apple.c
+index 7db302724..c6280b9d4 100644
+--- a/drivers/nvme/host/apple.c
++++ b/drivers/nvme/host/apple.c
+@@ -2357,0 +2358 @@ static bool apple_nvme_provider_matches(struct device_node *consumer,
++	u32 cells;
+@@ -2363 +2364,3 @@ static bool apple_nvme_provider_matches(struct device_node *consumer,
+-	valid = of_device_is_compatible(provider, compatible) &&
++	valid = (strcmp(property, "mboxes") ||
++		 (!of_property_read_u32(provider, "#mbox-cells", &cells) && !cells)) &&
++		of_device_is_compatible(provider, compatible) &&

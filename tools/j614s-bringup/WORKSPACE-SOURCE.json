@@ -1,6 +1,6 @@
 {
-  "workspace_commit": "e8d92a2bd7b5ac555307e52f7c988eb573abfd84",
-  "source_archive_sha256": "211355c62aa02b5a7ea615819805ee75268e4f683b84eea07f2a5e37b0bb82aa",
+  "workspace_commit": "7aa8f7cee9a64f8795fbf4ef993956a0e57e7cab",
+  "source_archive_sha256": "d24ce05aa8dfbb3de7f3e65c48dc55e1918b976115e1a4dbdd2fa91ca4796991",
   "status": "experimental tooling; no deployment or production qualification",
   "files": [
     {
@@ -9,7 +9,7 @@
     },
     {
       "file": "PROGRESS.md",
-      "sha256": "2fc475b6c7a35c104017d6778c7c93e6f45af480318162c837a73e25bae9b787"
+      "sha256": "74a93ea0ee0220966aefea2927bf967bb0758017be35199a0265852ca424a1bc"
     },
     {
       "file": "capture/.gitignore",
@@ -501,7 +501,7 @@
     },
     {
       "file": "infra/README.md",
-      "sha256": "028ef0e45ae34863a72b8ddefaacf26520b2a0de4ed7a0de94cc4edfd3f206d6"
+      "sha256": "858890a6ca42f68eadd4076c8935c77d6a03dba02311f1b180a7440e3ca5b70e"
     },
     {
       "file": "infra/baseline-contract.json",
@@ -610,6 +610,14 @@
     {
       "file": "infra/gravity-attempts.json",
       "sha256": "6b651a84f0e5377dd8c0a7200f7f225c8d648c0379d2ca0d8a5971a8b042e4bd"
+    },
+    {
+      "file": "infra/gravity-combined-attempt-01-failure.json",
+      "sha256": "db91eb91bbfb2ed8560f7c4e4d2ad26413996fcc8ec02ce25563c2b41e9c9bfd"
+    },
+    {
+      "file": "infra/gravity-combined-source.json",
+      "sha256": "41dea57cca934c977f11864c37d00f7fbef9fa385bd5bcf7b4b85cb80e58b7f1"
     },
     {
       "file": "infra/gravity-compile-config.diff",
@@ -797,15 +805,107 @@
     },
     {
       "file": "integration/nvme/README.md",
-      "sha256": "521872027103bc597777d957d07f1b5e699d5bf76e90fe1b476ab088af5c23da"
+      "sha256": "ab723be630dc6a35695538eb45b61f3a613afaec9bbbd7e5e848b825a927528f"
+    },
+    {
+      "file": "integration/nvme/admission/README.md",
+      "sha256": "024dde78c35c09b1d6eebed5d77d997a8330a81ff4143affdcc224f907237fd4"
+    },
+    {
+      "file": "integration/nvme/admission/control-host-result.json",
+      "sha256": "ed5271ac05757c871e4ac19ac46a15447841d896ebce0300024f88720adc8f74"
+    },
+    {
+      "file": "integration/nvme/admission/failed_stop-host-result.json",
+      "sha256": "06b61e116fa57d997ea0d5717a17a4e12d5eb6a34dde51360ad0ba0c15196528"
+    },
+    {
+      "file": "integration/nvme/admission/fua/README.md",
+      "sha256": "e56fbfb7776ef126bedc1b3dd570a94eb3082037762747bf9c693f5da92b653f"
+    },
+    {
+      "file": "integration/nvme/admission/fua/candidate-host.json",
+      "sha256": "016823c8913267e9e53bfdbe41235fc5400a95eaf1497235392d2988160f0921"
+    },
+    {
+      "file": "integration/nvme/admission/fua/ledger.json",
+      "sha256": "30091644f4214fa2f8dc15682571dc24e0ba2152fb6f67dc98c69ae4b8c3ddb2"
+    },
+    {
+      "file": "integration/nvme/admission/fua/missing-quirk-baseline.json",
+      "sha256": "a7baee172c8eea9fcddd572e659cbe6da499f3c85b11301ace9f4a86abc91bd6"
+    },
+    {
+      "file": "integration/nvme/admission/fua/old-behavior-baseline.json",
+      "sha256": "8bcf0c3df9e566d9888e9a26f8ed29a1f02ae6784dbf9796fa6caa7d3ff0ce4e"
+    },
+    {
+      "file": "integration/nvme/admission/fua/old-behavior-corrected-invariant.json",
+      "sha256": "92f06c70b7d43866be3547e39834388081c92069ee7872052e1cc2baed3f72ea"
+    },
+    {
+      "file": "integration/nvme/admission/fua/patch-roundtrip.json",
+      "sha256": "1e98b648dd8143b4489d8ec148f00114cfb119e979abc5d7eb164bfb19379d64"
+    },
+    {
+      "file": "integration/nvme/admission/idle-causal-baseline.json",
+      "sha256": "1cef1c99d9e4c31f1cabcc0f55c122bf8f5b48324b6fa47e34f86051e82e33c4"
+    },
+    {
+      "file": "integration/nvme/admission/ledger.json",
+      "sha256": "9658e1c5a55917a325bdc29401305edcba42eb1fdde8b1ec08e1b8f3a527d6aa"
+    },
+    {
+      "file": "integration/nvme/admission/lifetime-host-result.json",
+      "sha256": "6b8c3a5fe3f0ed5611d72e9edb58570497b9431e4d8b1031a0a9d79b7466b525"
+    },
+    {
+      "file": "integration/nvme/admission/metadata-causal-baseline.json",
+      "sha256": "5a060680904eb52badf71d7c41b4c8a8c3222b3bb520e8543f6239beca26ce3a"
+    },
+    {
+      "file": "integration/nvme/admission/nvme-host-result.json",
+      "sha256": "74ee51ccce27de7e6bd792c791e86b155418241a0c5ddb1562787ae8c9d02898"
+    },
+    {
+      "file": "integration/nvme/admission/patch-roundtrip.json",
+      "sha256": "439961ef48b9c9465f5967d337c28a1351063526bd97a3161cc7fafec5973981"
+    },
+    {
+      "file": "integration/nvme/admission/poll-causal-baseline.json",
+      "sha256": "1049f5ee9ff303ff430dde7a39e0dbb12df983e4797959121c9f99b5b8585cf2"
+    },
+    {
+      "file": "integration/nvme/admission/rtkit-host-result.json",
+      "sha256": "66558c009caba871eaf6e3248b5cf0fa071e226587ee15d1e10cae181232f8d0"
+    },
+    {
+      "file": "integration/nvme/admission/source-wiring.json",
+      "sha256": "3c15516565d651e02a3be72ea3cd63838897bf017b61700c1ebea1dac3236ea1"
+    },
+    {
+      "file": "integration/nvme/admission/topology-host-result.json",
+      "sha256": "d2b98d6be859f8fe0f0e329d62c2ba5916811d62136cc962a3dc5fd60860cf24"
     },
     {
       "file": "integration/nvme/borrowed-buffer-ledger.json",
       "sha256": "510e4f8018181cb0fc03ea985b5a375711f16efd7d1d542d3be0a98b4da6944e"
     },
     {
+      "file": "integration/nvme/control-host-harness.c",
+      "sha256": "075780ac5671a1ecd0182da77c919df66c2cafd90824af61b7e1733c14b455b1"
+    },
+    {
+      "file": "integration/nvme/failed-stop-host-harness.c",
+      "sha256": "4bf153aeb7f42eded19efc7692f475ec1ac1eb81d8a8d349e026b6e137b164dd"
+    },
+    {
+      "file": "integration/nvme/fua-host-harness.c",
+      "sha256": "4212f925f1f793ec69797b3f4308e7a0a43096111d6459fac3eaa78e0980b136"
+    },
+    {
       "file": "integration/nvme/lifetime-host-harness.c",
-      "sha256": "3620552c89118307d2934e9ab12813271614bc2e33ae705f7c449d6a42be7b0a"
+      "sha256": "c44115f0bbe59ecae40ddc855530c67baba4d1609cbf6e120d1c9ceefae02270"
     },
     {
       "file": "integration/nvme/lifetime-host-result.json",
@@ -821,7 +921,7 @@
     },
     {
       "file": "integration/nvme/nvme-host-harness.c",
-      "sha256": "6024bd880c157f33e7624f514d0b7279edbe2abc35db5bf9aabcfa8189525929"
+      "sha256": "72db29996e07fac496a135e9590845986c07ccb8b6a92f999bf76be427f432f5"
     },
     {
       "file": "integration/nvme/nvme-host-result.json",
@@ -852,12 +952,48 @@
       "sha256": "aabc6e4df0830ed9fc3ae6304f3469f0db19355bd0dab0ac22abb1fba682fe23"
     },
     {
+      "file": "integration/nvme/patches/0006-inherited-control.patch",
+      "sha256": "b5647539c0e66bcca4393675d623fd6733a8f8264adad84507814cc936dea7ec"
+    },
+    {
+      "file": "integration/nvme/patches/0007-idle-completion.patch",
+      "sha256": "cb7a7d2ae87f9c5af5ba6a5690d00b45cb833ba900ebb3e510922f8a11c26573"
+    },
+    {
+      "file": "integration/nvme/patches/0008-zero-mailbox-cells.patch",
+      "sha256": "3a296c443e0c61844e3126aac8f8dea359e0374364b11e1d75380392bea35c48"
+    },
+    {
+      "file": "integration/nvme/patches/0009-diagnostic-profile.patch",
+      "sha256": "b39fd1e8f60124d6c635dac3f25d52ac928408750c1708d5f974505bd3987ef8"
+    },
+    {
+      "file": "integration/nvme/patches/0010-quarantine-predicate.patch",
+      "sha256": "1a17fa9bfcfa8dcf174b0d5a77db32b83434fd35e45c4f92b8574d37110f0450"
+    },
+    {
+      "file": "integration/nvme/patches/0011-strict-admission.patch",
+      "sha256": "96c67cfd50c0bc71d4018323b4abdd6fabf4f23a07c38e377abdee64fb5f34ad"
+    },
+    {
+      "file": "integration/nvme/patches/0012-retained-readers.patch",
+      "sha256": "01db154c1e40760ec2607bf8bd3acb3a39b87094f693c092eab952b6b8f0eaf1"
+    },
+    {
+      "file": "integration/nvme/patches/0013-unified-dma-guard.patch",
+      "sha256": "7b36da385e4430b0021a1796ab874919996468bcaef75c93d8e8e66758984632"
+    },
+    {
+      "file": "integration/nvme/patches/0014-fua-core-dependency.patch",
+      "sha256": "831c2cec8e0c0ce26b29d10939974faeb44297253e0aaaa8fae9a804c328c1c2"
+    },
+    {
       "file": "integration/nvme/prerequisite-ledger.json",
       "sha256": "24a72a3a7e8cfdca79bdc58e5de78e9e369b94bf040a2d43dad8c4587b3950aa"
     },
     {
       "file": "integration/nvme/rtkit-host-harness.c",
-      "sha256": "e579a71946443dc58e6b7794194de2d6d74c296dfb1a8a1ee6fe921b4767e584"
+      "sha256": "8f2bb8602c8f9dc6d195813dc5fd7e81628017b6931e4ca2ee0b288fb18edf74"
     },
     {
       "file": "integration/nvme/rtkit-host-result.json",
@@ -872,20 +1008,44 @@
       "sha256": "83d03435762ca3f71757c5dc9ead03bc3591f3659b892cb3b8e866456e06b165"
     },
     {
+      "file": "integration/nvme/test_control_source.py",
+      "sha256": "72d92f9d383d543cfd98e733d7c31e61e00e76dd1d7154e49cfb86bd20cded2c"
+    },
+    {
+      "file": "integration/nvme/test_failed_stop_source.py",
+      "sha256": "bb168d067abdc446785cc6ae43c1d44974c35eaaf71f2cb354ee57b3b14f82a0"
+    },
+    {
+      "file": "integration/nvme/test_fua_source.py",
+      "sha256": "67205e0b2f9abfd30ed9272542ee18a8ae20da5f70d4134a73df5524e2c90358"
+    },
+    {
       "file": "integration/nvme/test_lifetime_source.py",
-      "sha256": "45d22502fc6ec5ee242aea5b209046f6c4f8719084bdbef04ba771e4a4fee107"
+      "sha256": "477bdfc8611257a1c5f82864db8ba32b387815f913686f186b4908dede4ef3c8"
     },
     {
       "file": "integration/nvme/test_nvme_source.py",
-      "sha256": "1bbb2a3063662cb3c8976a3d8e7568958c263f99793a8a7437518379d03a3728"
+      "sha256": "df845a4b0531dea54838ac3b59fd88938187b75fb7f57f197bc5615b8ed19410"
     },
     {
       "file": "integration/nvme/test_rtkit_source.py",
-      "sha256": "13f78f800147a8a53f7565f04e783211a17f07747a6dd3d6b64ea18510468578"
+      "sha256": "9dc2793088588de74ed9514c7e44c589fa9359df68d5a5e0d9b078389ebe34ed"
     },
     {
       "file": "integration/nvme/test_sart_source.py",
       "sha256": "99cff41d30272a163dfde6d7b299c4be963dc6a4d9b4f6e7328106ad856a31a2"
+    },
+    {
+      "file": "integration/nvme/test_topology_source.py",
+      "sha256": "47d9ca09fa4709ab54b413dbe3415088e8ea8bf584fda6019cccdb065b1ac9aa"
+    },
+    {
+      "file": "integration/nvme/topology-host-harness.c",
+      "sha256": "41934b31fc49cbbc64da50a9f9c9e2d6107bd78c26b029172fd4465d72661fb1"
+    },
+    {
+      "file": "integration/nvme/validate_admission.py",
+      "sha256": "1d6066276eb4a1f98a3bfc453c86854e6cdfb3899b1754072acb0fde5ec535de"
     },
     {
       "file": "integration/patches-dcp/0005-drm-apple-validate-IOMFB-callback-envelopes-before-s.patch",
@@ -1132,6 +1292,70 @@
       "sha256": "740b5b81ed7676efadc6f4bcf146f4715fdd0df1f0765ea5f3c04dc8a84a3d46"
     },
     {
+      "file": "packages/current-plan/abi/.gitignore",
+      "sha256": "0090a854cd9b906751909c1f21e1454e3de0f601a7f300f05246ef49dca5a770"
+    },
+    {
+      "file": "packages/current-plan/abi/EVIDENCE.json",
+      "sha256": "6268bfda1cab76505e2e41d026aa34946ee447806adc132d5e211f7efcfa3812"
+    },
+    {
+      "file": "packages/current-plan/abi/README.md",
+      "sha256": "72db710fe3645b7ed1827a64b5b3e66292314c24f7bded02a224b08ae1595775"
+    },
+    {
+      "file": "packages/current-plan/abi/audit_elf.py",
+      "sha256": "bb29a7e7efbd32272dee5570179bb0f17104fdee7e3affeb7132753351122767"
+    },
+    {
+      "file": "packages/current-plan/abi/audit_plan.py",
+      "sha256": "f0e0c0c68cf7cf5291a7973b4bd46bc05dc1b16c9fa88d34897a8f6cbd98af0c"
+    },
+    {
+      "file": "packages/current-plan/abi/classify_findings.py",
+      "sha256": "799c247244a5ded4e9449ef71cb917bdbe30bf7deeca6f60713f0cdeeebe379e"
+    },
+    {
+      "file": "packages/current-plan/abi/crosscheck_readelf.py",
+      "sha256": "b9594aaad35b653b3fc6b9f6e8aea8686e00f1f003793bd3f12ab3021e29c0a3"
+    },
+    {
+      "file": "packages/current-plan/abi/evidence/classification.json",
+      "sha256": "c9e2e766224dcaf43e404debdb866565bde9ca398a0d596c8dad7d21679af1a0"
+    },
+    {
+      "file": "packages/current-plan/abi/evidence/qt-private-abi.json",
+      "sha256": "5ff0dc12c3f23a6ce9922fa3605a2d90cd36288041dab2889e5f8ac8a61d4afe"
+    },
+    {
+      "file": "packages/current-plan/abi/evidence/readelf-crosscheck.json",
+      "sha256": "b5c9989be623d71be207d93e4ad14faf653cb520230562a8e00dc932ba2bffea"
+    },
+    {
+      "file": "packages/current-plan/abi/evidence/static-abi.json",
+      "sha256": "dc46c76802ceec0f3f5ef13b72930fc3ff7075025f852891b5e5cc17beec7b2b"
+    },
+    {
+      "file": "packages/current-plan/abi/evidence/tests.log",
+      "sha256": "b292e9107c0f75acc2cecc6335283593c89860cb01b5924da53dff319e8636e4"
+    },
+    {
+      "file": "packages/current-plan/abi/prove_qt_break.py",
+      "sha256": "6827f302b2fe42ae2e3b1ac0f15b5031de2cda91f34227df2b37f23dfc1a7efb"
+    },
+    {
+      "file": "packages/current-plan/abi/restore_image.py",
+      "sha256": "77fbd06e4b9a25ce2c189c85d3865cd005b19dfa842dfcd42409733d2ae8dc41"
+    },
+    {
+      "file": "packages/current-plan/abi/tests/test_elf.py",
+      "sha256": "faa3f0dbbf30d85a7b64ead560d1460e62046c69aa165028ce30b4ee1709e948"
+    },
+    {
+      "file": "packages/current-plan/abi/tests/test_resolution.py",
+      "sha256": "99d0f2c820ff3e74759372a84bd22751ac4c0ad62f9c38ed9b0021528054df8a"
+    },
+    {
       "file": "packages/current-plan/evidence/configured-current-payload-qualification.json",
       "sha256": "468862b06d7f38c41c2c030e5f8fea796563b64ec3af0342c14925450093f1e0"
     },
@@ -1249,11 +1473,11 @@
     },
     {
       "file": "qualification/EVIDENCE.json",
-      "sha256": "6d92378195eddef96e0f56f9c6422f4fb36596856f40b50b213cb9c212ce2c07"
+      "sha256": "a8f71abf0a6a3b82bad0ed1e7ca57374d6f877dffc42d59c3fe3beb42817502a"
     },
     {
       "file": "qualification/STATUS.md",
-      "sha256": "c5e3006e84a7291cfde88900eb907453af1e3c22aec4f1d32bfcbef46ed91a36"
+      "sha256": "b738ab2a2a389acf2273838f114778e24cff0aa19ebb33dde778595ce9cad13d"
     },
     {
       "file": "qualification/adt-node-comparison.json",
@@ -1282,6 +1506,10 @@
     {
       "file": "qualification/proxy-current.json",
       "sha256": "8b539e1eefae24001682f4ca5871ac94011b7274d881a30380d8597ee5297867"
+    },
+    {
+      "file": "qualification/storage-device-test52.txt",
+      "sha256": "162b4643193ebe58a9f6b873bc7ae97d5f7ce26d8e5b99dda256525583caa797"
     },
     {
       "file": "qualification/storage-test52.txt",

@@ -1,0 +1,23 @@
+{
+  "status": "WORKS (source wiring assertions only)",
+  "source_commit": "05af581d3bf7574d933044d509dd6c3617e8a111",
+  "apple_sha256": "3837e270e802debf3364fb7b210df4ad058e8bbc429758950cd187d3ca5b9c13",
+  "rtkit_sha256": "014b094512d536dfb62d42d5883508cb0f28120cc3fed9821c230f02a89a925e",
+  "checks": [
+    "metadata and no-reprobe precede allocation; measured state precedes supplier/DMA/RX/controller initialization",
+    "no blanket refusal or generic T6040 match replaces explicit diagnostic admission",
+    "apple_nvme_reset_work legacy body retained byte-for-byte",
+    "apple_nvme_timeout legacy body retained byte-for-byte",
+    "inherited worker has no cold/PMGR reset, RTKit handshake replay, shutdown or DeleteSQ/CQ call",
+    "inherited worker dispatches legacy only before entering inherited phases",
+    "poll quarantine test under CQ lock before DMA/CQ use",
+    "quarantine publication uses same CQ lock before module/resource pins",
+    "failed stop quiesces retaining object before ordinary free paths",
+    "manual MMIO cleanup skips both unmap and region release on quarantine",
+    "quiesce retains RTKit object, shared buffers and mailbox cookie reservation",
+    "RX drain destroys workqueue once and clears pointer"
+  ],
+  "count": 12,
+  "hardware": "UNTESTED",
+  "target_access": false
+}

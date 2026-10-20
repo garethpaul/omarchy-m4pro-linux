@@ -1,0 +1,194 @@
+{
+  "status": "BLOCKED (static Qt private ABI mismatch in separate117 proposal)",
+  "deployable": false,
+  "execution_ready": false,
+  "actions": [],
+  "report_sha256": "dc46c76802ceec0f3f5ef13b72930fc3ff7075025f852891b5e5cc17beec7b2b",
+  "qualification_sha256": "468862b06d7f38c41c2c030e5f8fea796563b64ec3af0342c14925450093f1e0",
+  "affected_untouched_package_owners": [
+    "qt6-multimedia-ffmpeg",
+    "qt6-networkauth",
+    "qt6-positioning",
+    "qt6-speech",
+    "qt6-webchannel"
+  ],
+  "consumers": [
+    {
+      "consumer": "usr/lib/libQt6NetworkAuth.so.6.11.2",
+      "consumer_owner": "qt6-networkauth",
+      "consumer_sha256": "777adb5acff6d4a9d2389ba79408a170f79e6de89996a3591fd97bc200a3f669",
+      "needed": "libQt6Core.so.6",
+      "old_provider": "usr/lib/libQt6Core.so.6.11.2",
+      "old_provider_sha256": "ecf92f8b40cf7bcb601785314ff0fced520a14a42e0edcf059f72f18661db68e",
+      "new_provider": "usr/lib/libQt6Core.so.6.12.0",
+      "new_provider_sha256": "42270fce406b74d5968cac3815794a78065c9ea206eff8407dc5ae2647843aa3",
+      "new_provider_owner": "qt6-base",
+      "new_provider_package_version": "6.12.0-3",
+      "signed_package_sha256": "2777135b375ba82250896fa9a993926bf3c05b59dd22217f63d6a1391c1b4c31",
+      "missing_versioned_symbols": [
+        "_ZN14QObjectPrivateC2E16QtPrivate_6_11_2@Qt_6_PRIVATE_API"
+      ],
+      "baseline_edge_issues": [],
+      "overlay_edge_issues": [
+        "missing_symbol:_ZN14QObjectPrivateC2E16QtPrivate_6_11_2@Qt_6_PRIVATE_API"
+      ],
+      "independent_readelf": "WORKS: each consumer UND import exported by baseline and absent from selected provider"
+    },
+    {
+      "consumer": "usr/lib/libQt6Positioning.so.6.11.2",
+      "consumer_owner": "qt6-positioning",
+      "consumer_sha256": "0c46453f20eab246ab0f2493d1e73085a8282cc53696653efaab7abc9fa8273b",
+      "needed": "libQt6Core.so.6",
+      "old_provider": "usr/lib/libQt6Core.so.6.11.2",
+      "old_provider_sha256": "ecf92f8b40cf7bcb601785314ff0fced520a14a42e0edcf059f72f18661db68e",
+      "new_provider": "usr/lib/libQt6Core.so.6.12.0",
+      "new_provider_sha256": "42270fce406b74d5968cac3815794a78065c9ea206eff8407dc5ae2647843aa3",
+      "new_provider_owner": "qt6-base",
+      "new_provider_package_version": "6.12.0-3",
+      "signed_package_sha256": "2777135b375ba82250896fa9a993926bf3c05b59dd22217f63d6a1391c1b4c31",
+      "missing_versioned_symbols": [
+        "_ZN14QObjectPrivateC2E16QtPrivate_6_11_2@Qt_6_PRIVATE_API"
+      ],
+      "baseline_edge_issues": [],
+      "overlay_edge_issues": [
+        "missing_symbol:_ZN14QObjectPrivateC2E16QtPrivate_6_11_2@Qt_6_PRIVATE_API"
+      ],
+      "independent_readelf": "WORKS: each consumer UND import exported by baseline and absent from selected provider"
+    },
+    {
+      "consumer": "usr/lib/libQt6PositioningQuick.so.6.11.2",
+      "consumer_owner": "qt6-positioning",
+      "consumer_sha256": "108cb7ce172faa66eac43888b4e12e93789cc0f6c997f15ea42e1d7ebbc18b7a",
+      "needed": "libQt6Core.so.6",
+      "old_provider": "usr/lib/libQt6Core.so.6.11.2",
+      "old_provider_sha256": "ecf92f8b40cf7bcb601785314ff0fced520a14a42e0edcf059f72f18661db68e",
+      "new_provider": "usr/lib/libQt6Core.so.6.12.0",
+      "new_provider_sha256": "42270fce406b74d5968cac3815794a78065c9ea206eff8407dc5ae2647843aa3",
+      "new_provider_owner": "qt6-base",
+      "new_provider_package_version": "6.12.0-3",
+      "signed_package_sha256": "2777135b375ba82250896fa9a993926bf3c05b59dd22217f63d6a1391c1b4c31",
+      "missing_versioned_symbols": [
+        "_ZN14QObjectPrivateC2E16QtPrivate_6_11_2@Qt_6_PRIVATE_API"
+      ],
+      "baseline_edge_issues": [],
+      "overlay_edge_issues": [
+        "missing_symbol:_ZN14QObjectPrivateC2E16QtPrivate_6_11_2@Qt_6_PRIVATE_API"
+      ],
+      "independent_readelf": "WORKS: each consumer UND import exported by baseline and absent from selected provider"
+    },
+    {
+      "consumer": "usr/lib/libQt6TextToSpeech.so.6.11.2",
+      "consumer_owner": "qt6-speech",
+      "consumer_sha256": "d955edf83d1b595edbe66743b0276e5789315025e7341496c90acea18cda1df2",
+      "needed": "libQt6Core.so.6",
+      "old_provider": "usr/lib/libQt6Core.so.6.11.2",
+      "old_provider_sha256": "ecf92f8b40cf7bcb601785314ff0fced520a14a42e0edcf059f72f18661db68e",
+      "new_provider": "usr/lib/libQt6Core.so.6.12.0",
+      "new_provider_sha256": "42270fce406b74d5968cac3815794a78065c9ea206eff8407dc5ae2647843aa3",
+      "new_provider_owner": "qt6-base",
+      "new_provider_package_version": "6.12.0-3",
+      "signed_package_sha256": "2777135b375ba82250896fa9a993926bf3c05b59dd22217f63d6a1391c1b4c31",
+      "missing_versioned_symbols": [
+        "_ZN14QObjectPrivateC2E16QtPrivate_6_11_2@Qt_6_PRIVATE_API"
+      ],
+      "baseline_edge_issues": [],
+      "overlay_edge_issues": [
+        "missing_symbol:_ZN14QObjectPrivateC2E16QtPrivate_6_11_2@Qt_6_PRIVATE_API"
+      ],
+      "independent_readelf": "WORKS: each consumer UND import exported by baseline and absent from selected provider"
+    },
+    {
+      "consumer": "usr/lib/libQt6WebChannel.so.6.11.2",
+      "consumer_owner": "qt6-webchannel",
+      "consumer_sha256": "c71bbb6f9e92e86a6c4b3f89d1cbd4a465259121c6dea2d2c33518f684b5a577",
+      "needed": "libQt6Core.so.6",
+      "old_provider": "usr/lib/libQt6Core.so.6.11.2",
+      "old_provider_sha256": "ecf92f8b40cf7bcb601785314ff0fced520a14a42e0edcf059f72f18661db68e",
+      "new_provider": "usr/lib/libQt6Core.so.6.12.0",
+      "new_provider_sha256": "42270fce406b74d5968cac3815794a78065c9ea206eff8407dc5ae2647843aa3",
+      "new_provider_owner": "qt6-base",
+      "new_provider_package_version": "6.12.0-3",
+      "signed_package_sha256": "2777135b375ba82250896fa9a993926bf3c05b59dd22217f63d6a1391c1b4c31",
+      "missing_versioned_symbols": [
+        "_ZN14QObjectPrivateC2E16QtPrivate_6_11_2@Qt_6_PRIVATE_API"
+      ],
+      "baseline_edge_issues": [],
+      "overlay_edge_issues": [
+        "missing_symbol:_ZN14QObjectPrivateC2E16QtPrivate_6_11_2@Qt_6_PRIVATE_API"
+      ],
+      "independent_readelf": "WORKS: each consumer UND import exported by baseline and absent from selected provider"
+    },
+    {
+      "consumer": "usr/lib/libQt6WebChannelQuick.so.6.11.2",
+      "consumer_owner": "qt6-webchannel",
+      "consumer_sha256": "33156cae039da9f1f96e9d3a9878898e970381539936ef4f1f08849ca0a5b2e6",
+      "needed": "libQt6Core.so.6",
+      "old_provider": "usr/lib/libQt6Core.so.6.11.2",
+      "old_provider_sha256": "ecf92f8b40cf7bcb601785314ff0fced520a14a42e0edcf059f72f18661db68e",
+      "new_provider": "usr/lib/libQt6Core.so.6.12.0",
+      "new_provider_sha256": "42270fce406b74d5968cac3815794a78065c9ea206eff8407dc5ae2647843aa3",
+      "new_provider_owner": "qt6-base",
+      "new_provider_package_version": "6.12.0-3",
+      "signed_package_sha256": "2777135b375ba82250896fa9a993926bf3c05b59dd22217f63d6a1391c1b4c31",
+      "missing_versioned_symbols": [
+        "_ZN14QObjectPrivateC2E16QtPrivate_6_11_2@Qt_6_PRIVATE_API"
+      ],
+      "baseline_edge_issues": [],
+      "overlay_edge_issues": [
+        "missing_symbol:_ZN14QObjectPrivateC2E16QtPrivate_6_11_2@Qt_6_PRIVATE_API"
+      ],
+      "independent_readelf": "WORKS: each consumer UND import exported by baseline and absent from selected provider"
+    },
+    {
+      "consumer": "usr/lib/qt6/plugins/multimedia/libffmpegmediaplugin.so",
+      "consumer_owner": "qt6-multimedia-ffmpeg",
+      "consumer_sha256": "45bbec9ebe89c1e7dc2692b366dc149908c3d359aa6d982aee88ac0baf08021a",
+      "needed": "libQt6Multimedia.so.6",
+      "old_provider": "usr/lib/libQt6Multimedia.so.6.11.2",
+      "old_provider_sha256": "bbee90aeaf084d96fa0a3eb1d62922d2a537eed11719df78d4486dbf1d283202",
+      "new_provider": "usr/lib/libQt6Multimedia.so.6.12.0",
+      "new_provider_sha256": "1b9224d13c544ba5f5bfc5d9fb0fb3c018785fe82a4fb7045a91c7fa11addc1f",
+      "new_provider_owner": "qt6-multimedia",
+      "new_provider_package_version": "6.12.0-1",
+      "signed_package_sha256": "e6b090815abc7777b2949ba5dcaa2e6eca5f3ef265fa8bf2fd33ff7e94701338",
+      "missing_versioned_symbols": [
+        "_ZN10QtPipeWire16QPipeWireCapture11isSupportedEv@Qt_6_PRIVATE_API",
+        "_ZN10QtPipeWire16QPipeWireCaptureC1ESt7variantIJ8QPointerI7QScreenE17QCapturableWindowEE@Qt_6_PRIVATE_API",
+        "_ZN15QPlatformCameraC2EP7QCamera@Qt_6_PRIVATE_API",
+        "_ZN21QPlatformAudioDecoder15durationChangedEx@Qt_6_PRIVATE_API",
+        "_ZN21QPlatformAudioDecoder15positionChangedEx@Qt_6_PRIVATE_API"
+      ],
+      "baseline_edge_issues": [],
+      "overlay_edge_issues": [
+        "missing_symbol:_ZN10QtPipeWire16QPipeWireCapture11isSupportedEv@Qt_6_PRIVATE_API",
+        "missing_symbol:_ZN10QtPipeWire16QPipeWireCaptureC1ESt7variantIJ8QPointerI7QScreenE17QCapturableWindowEE@Qt_6_PRIVATE_API",
+        "missing_symbol:_ZN15QPlatformCameraC2EP7QCamera@Qt_6_PRIVATE_API",
+        "missing_symbol:_ZN21QPlatformAudioDecoder15durationChangedEx@Qt_6_PRIVATE_API",
+        "missing_symbol:_ZN21QPlatformAudioDecoder15positionChangedEx@Qt_6_PRIVATE_API"
+      ],
+      "independent_readelf": "WORKS: each consumer UND import exported by baseline and absent from selected provider"
+    },
+    {
+      "consumer": "usr/lib/qt6/plugins/position/libqtposition_nmea.so",
+      "consumer_owner": "qt6-positioning",
+      "consumer_sha256": "cfbc990031a52fb0d748e5db950e067617ff0ccf24dbc1f85481e7628c2aa2b1",
+      "needed": "libQt6Core.so.6",
+      "old_provider": "usr/lib/libQt6Core.so.6.11.2",
+      "old_provider_sha256": "ecf92f8b40cf7bcb601785314ff0fced520a14a42e0edcf059f72f18661db68e",
+      "new_provider": "usr/lib/libQt6Core.so.6.12.0",
+      "new_provider_sha256": "42270fce406b74d5968cac3815794a78065c9ea206eff8407dc5ae2647843aa3",
+      "new_provider_owner": "qt6-base",
+      "new_provider_package_version": "6.12.0-3",
+      "signed_package_sha256": "2777135b375ba82250896fa9a993926bf3c05b59dd22217f63d6a1391c1b4c31",
+      "missing_versioned_symbols": [
+        "_ZN16QIODevicePrivateC2E16QtPrivate_6_11_2@Qt_6_PRIVATE_API"
+      ],
+      "baseline_edge_issues": [],
+      "overlay_edge_issues": [
+        "missing_symbol:_ZN16QIODevicePrivateC2E16QtPrivate_6_11_2@Qt_6_PRIVATE_API"
+      ],
+      "independent_readelf": "WORKS: each consumer UND import exported by baseline and absent from selected provider"
+    }
+  ],
+  "limit": "These exact mandatory symbol contracts break within the modeled dependency closure. Payloads were never run; global preloads/interposition, semantic ABI and affected runtime paths remain untested."
+}

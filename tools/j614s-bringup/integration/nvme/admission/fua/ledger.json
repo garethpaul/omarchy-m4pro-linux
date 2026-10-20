@@ -1,0 +1,15 @@
+{
+  "status": "PARTIAL (focused source repair host-tested; full build pending)",
+  "source_commit": "dd3f608d60ed503b87a9400255286d1c8fe5ac2d",
+  "parent": "05af581d3bf7574d933044d509dd6c3617e8a111",
+  "f93_origin": "f93a3416c60f26c68084134dc6c1d205becd5753",
+  "delta": "9 insertions only: enum bit24, quirk name, conditional BLK_FEAT_FUA clear in existing namespace limit path",
+  "preserved": "BLK_FEAT_WRITE_CACHE and unrelated profiles; storage source itself byte-identical05af",
+  "block_contract": "Actual blk_insert_flush initializes DATA+POSTFLUSH when REQ_FUA arrives with cache and without native FUA; actual blk_flush_complete_seq queues POSTFLUSH after data completion",
+  "behavior_baseline_bridge": "Old core/block fragment executed against candidate enum definition solely to isolate old namespace feature behavior; original05af driver/enum does not compile",
+  "hardware": "UNTESTED",
+  "durability": "UNTESTED; host sequencing and compile cannot establish persistent storage",
+  "target_access": false,
+  "deployment_allowed": false,
+  "patch_sha256": "831c2cec8e0c0ce26b29d10939974faeb44297253e0aaaa8fae9a804c328c1c2"
+}

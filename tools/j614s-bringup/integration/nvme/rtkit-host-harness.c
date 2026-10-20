@@ -186,6 +186,19 @@ int main(int argc, char **argv) {
     adopted->ioreport_buffer=(struct apple_rtkit_shmem){.size=4096,.buffer=shared};
     apple_rtkit_free_retaining_buffers(adopted);
     assert(stopped==1 && !destroys && !mailbox.cookie && !mailbox.rx && !allocations && !workqueues);
+#ifdef HAS_RETAINED_STATE
+    reset();
+    struct apple_rtkit *retained=apple_rtkit_init_adopted(&device,NULL,NULL,0,&ops);
+    retained->ioreport_buffer=(struct apple_rtkit_shmem){.size=4096,.buffer=shared};
+    apple_rtkit_quiesce_retaining_state(retained);
+    assert(!mailbox.rx && mailbox.cookie==retained && !workqueues && allocations==1 && !destroys);
+    assert(retained->version==0 && retained->ioreport_buffer.buffer==shared && retained->shutting_down);
+    apple_rtkit_quiesce_retaining_state(retained); /* Idempotent, no double destroy. */
+    assert(mailbox.cookie==retained && allocations==1 && !destroys);
+    /* Test-only retirement after proving retention; real quarantine lasts to reset. */
+    apple_rtkit_free_retaining_buffers(retained);
+    assert(!allocations && !mailbox.cookie && !mailbox.rx && !destroys);
+#endif
     reset();
     struct apple_rtkit *cold=apple_rtkit_init(&device,NULL,NULL,0,&ops);
     assert(!IS_ERR(cold) && !cold->syslog_inherited && cold->boot_ap_power && !sends);

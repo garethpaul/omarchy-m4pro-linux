@@ -1,0 +1,46 @@
+{
+  "completed_objects": [
+    {
+      "bytes": 23664,
+      "path": "drivers/soc/apple/rtkit.o",
+      "sha256": "ded9b5c85eda342826995653ae85c9cbf2a5f8a12b809d8e3e0a8b0f4b11135e"
+    },
+    {
+      "bytes": 10072,
+      "path": "drivers/soc/apple/sart.o",
+      "sha256": "21c6015f9b51fb3524259d174f8f89c241494d5e930a827a751fa25ae6be8178"
+    }
+  ],
+  "config_normalization_diff_bytes": 0,
+  "config_sha256": "6c5aba7745d918c528300c5a395fcd7db0c2b718acda7d1467af2816a8d56516",
+  "error": {
+    "context": "nvme_init_ctrl receives the inherited RTKit controller quirk; no unrelated quirk substitution made",
+    "line": 2679,
+    "message": "undeclared identifier NVME_QUIRK_BROKEN_FUA",
+    "path": "drivers/nvme/host/apple.c"
+  },
+  "exit_code": 2,
+  "hardware": "UNTESTED",
+  "next_gate": "Separate reviewed storage dependency correction then new immutable combined snapshot and fresh full build; independent reproduction only after pass",
+  "scope": "Build failure retained; inspect private local build.log",
+  "source_after": {
+    "dirty_diff_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "head": "a652cf765b6749b268af16ddbcf29ce314dfab85",
+    "untracked": {}
+  },
+  "source_before": {
+    "dirty_diff_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "head": "a652cf765b6749b268af16ddbcf29ce314dfab85",
+    "untracked": {}
+  },
+  "source_drift": false,
+  "source_provenance": "infra/gravity-combined-source.json",
+  "status": "FAILED",
+  "targets": [
+    "-j8",
+    "drivers/nvme/host/apple.o",
+    "drivers/soc/apple/rtkit.o",
+    "drivers/soc/apple/sart.o"
+  ],
+  "tools_unchanged": true
+}

@@ -1,0 +1,10 @@
+# Selected actual test52 live output. Module virtual addresses omitted.
+/sys/class/block/nvme0n1 ro=1
+/sys/class/block/nvme0n1p1 ro=1
+/sys/class/block/nvme0n1p2 ro=1
+/sys/class/block/nvme0n1p3 ro=1
+/sys/class/block/nvme0n1p4 ro=1
+/sys/class/block/nvme0n1p5 ro=1
+/sys/class/block/nvme0n1p6 ro=1
+nvme_apple 81920 - - Live [kernel-address omitted]
+nvme_core 81920 - - Live [kernel-address omitted]

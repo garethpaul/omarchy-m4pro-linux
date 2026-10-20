@@ -1,0 +1,16 @@
+From 05af581d3bf7574d933044d509dd6c3617e8a111 Mon Sep 17 00:00:00 2001
+From: gareth jones <gareth@garethpaul.com>
+Date: Mon, 19 Oct 2026 23:13:26 -0700
+Subject: [PATCH] nvme: use existing unified RTKit teardown admission guard
+
+---
+ drivers/nvme/host/apple.c | 2 --
+ 1 file changed, 2 deletions(-)
+
+diff --git a/drivers/nvme/host/apple.c b/drivers/nvme/host/apple.c
+index 9f27809d5..6368cd8a6 100644
+--- a/drivers/nvme/host/apple.c
++++ b/drivers/nvme/host/apple.c
+@@ -455,2 +454,0 @@ static int apple_nvme_sart_dma_setup(void *cookie,
+-	if (READ_ONCE(anv->quarantined))
+-		return -ESHUTDOWN;

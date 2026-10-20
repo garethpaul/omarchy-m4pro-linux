@@ -1,0 +1,142 @@
+From 52d138244f3855b814ea347357a68f6cc49e9838 Mon Sep 17 00:00:00 2001
+From: gareth jones <gareth@garethpaul.com>
+Date: Mon, 19 Oct 2026 23:11:37 -0700
+Subject: [PATCH] nvme: retain diagnostic MMIO and RTKit readers after failed
+ controller stop
+
+---
+ drivers/nvme/host/apple.c       | 81 ++++++++++++++++++++++++++++++---
+ drivers/soc/apple/rtkit.c       | 15 +++++-
+ include/linux/soc/apple/rtkit.h |  6 +++
+ 3 files changed, 94 insertions(+), 8 deletions(-)
+
+diff --git a/drivers/nvme/host/apple.c b/drivers/nvme/host/apple.c
+index 644e3be3a..9f27809d5 100644
+--- a/drivers/nvme/host/apple.c
++++ b/drivers/nvme/host/apple.c
+@@ -197,0 +198,7 @@ struct apple_nvme_hw {
++struct apple_nvme_mmio {
++	struct apple_nvme *owner;
++	resource_size_t start, size;
++	void __iomem *base;
++	bool reserved;
++};
++
+@@ -207,0 +215 @@ struct apple_nvme {
++	struct apple_nvme_mmio retained_mmio[2];
+@@ -446,0 +455,3 @@ static int apple_nvme_sart_dma_setup(void *cookie,
++	if (READ_ONCE(anv->quarantined))
++		return -ESHUTDOWN;
++
+@@ -1198,0 +1210 @@ static void apple_nvme_quarantine(struct apple_nvme *anv, int error)
++	unsigned long flags;
+@@ -1200 +1212,2 @@ static void apple_nvme_quarantine(struct apple_nvme *anv, int error)
+-	/* Called under disable_lock after both dispatch queues are quiesced. */
++	/* Serialize publication with all CQ poll/completion MMIO. */
++	spin_lock_irqsave(&anv->lock, flags);
+@@ -1201,0 +1215 @@ static void apple_nvme_quarantine(struct apple_nvme *anv, int error)
++	spin_unlock_irqrestore(&anv->lock, flags);
+@@ -1405 +1419,2 @@ static enum blk_eh_timer_return apple_nvme_timeout(struct request *req)
+-		apple_nvme_handle_cq(q, false);
++		if (!READ_ONCE(anv->quarantined) && !READ_ONCE(anv->detached))
++			apple_nvme_handle_cq(q, false);
+@@ -1469,2 +1483,0 @@ static int apple_nvme_poll(struct blk_mq_hw_ctx *hctx,
+-	if (READ_ONCE(anv->quarantined) || READ_ONCE(anv->detached))
+-		return 0;
+@@ -1472 +1485,4 @@ static int apple_nvme_poll(struct blk_mq_hw_ctx *hctx,
+-	found = apple_nvme_poll_cq(q, iob);
++	if (READ_ONCE(anv->quarantined) || READ_ONCE(anv->detached))
++		found = false;
++	else
++		found = apple_nvme_poll_cq(q, iob);
+@@ -2303,0 +2320,4 @@ static void apple_nvme_free_rtkit(void *data)
++	if (READ_ONCE(anv->quarantined)) {
++		apple_rtkit_quiesce_retaining_state(anv->rtk);
++		return;
++	}
+@@ -2419,0 +2440,41 @@ static bool apple_nvme_controller_quarantined(resource_size_t start)
++static void apple_nvme_free_retained_mmio(void *data)
++{
++	struct apple_nvme_mmio *mapping = data;
++
++	if (READ_ONCE(mapping->owner->quarantined))
++		return;
++	if (mapping->base)
++		iounmap(mapping->base);
++	if (mapping->reserved)
++		release_mem_region(mapping->start, mapping->size);
++}
++
++static void __iomem *apple_nvme_map_retained_mmio(struct platform_device *pdev,
++						struct apple_nvme *anv,
++						unsigned int index, const char *name)
++{
++	struct resource *resource;
++	struct apple_nvme_mmio *mapping = &anv->retained_mmio[index];
++	int ret;
++
++	resource = platform_get_resource_byname(pdev, IORESOURCE_MEM, name);
++	if (!resource)
++		return ERR_PTR(-EINVAL);
++	mapping->owner = anv;
++	mapping->start = resource->start;
++	mapping->size = resource_size(resource);
++	ret = devm_add_action_or_reset(anv->dev, apple_nvme_free_retained_mmio, mapping);
++	if (ret)
++		return ERR_PTR(ret);
++	if (!request_mem_region(mapping->start, mapping->size, dev_name(anv->dev)))
++		return ERR_PTR(-EBUSY);
++	mapping->reserved = true;
++	if (resource->flags & IORESOURCE_MEM_NONPOSTED)
++		mapping->base = ioremap_np(mapping->start, mapping->size);
++	else
++		mapping->base = ioremap(mapping->start, mapping->size);
++	if (!mapping->base)
++		return ERR_PTR(-ENOMEM);
++	return mapping->base;
++}
++
+@@ -2491 +2552,4 @@ static struct apple_nvme *apple_nvme_alloc(struct platform_device *pdev)
+-	anv->mmio_coproc = devm_platform_ioremap_resource_byname(pdev, "ans");
++	if (anv->hw->j614s_diagnostic)
++		anv->mmio_coproc = apple_nvme_map_retained_mmio(pdev, anv, 0, "ans");
++	else
++		anv->mmio_coproc = devm_platform_ioremap_resource_byname(pdev, "ans");
+@@ -2496 +2560,4 @@ static struct apple_nvme *apple_nvme_alloc(struct platform_device *pdev)
+-	anv->mmio_nvme = devm_platform_ioremap_resource_byname(pdev, "nvme");
++	if (anv->hw->j614s_diagnostic)
++		anv->mmio_nvme = apple_nvme_map_retained_mmio(pdev, anv, 1, "nvme");
++	else
++		anv->mmio_nvme = devm_platform_ioremap_resource_byname(pdev, "nvme");
+diff --git a/drivers/soc/apple/rtkit.c b/drivers/soc/apple/rtkit.c
+index 3ec678c49..b6c1cacd7 100644
+--- a/drivers/soc/apple/rtkit.c
++++ b/drivers/soc/apple/rtkit.c
+@@ -806 +806,4 @@ static void apple_rtkit_stop_rx(struct apple_rtkit *rtk)
+-	destroy_workqueue(rtk->wq);
++	if (rtk->wq) {
++		destroy_workqueue(rtk->wq);
++		rtk->wq = NULL;
++	}
+@@ -1275,0 +1279,10 @@ EXPORT_SYMBOL_GPL(apple_rtkit_free);
++void apple_rtkit_quiesce_retaining_state(struct apple_rtkit *rtk)
++{
++	/* The caller retains every reader's owner until platform reset. Keep
++	 * metadata, DMA buffers and the mailbox cookie reservation valid after
++	 * RX/work drain; an already-running status reader may still use rtk.
++	 */
++	apple_rtkit_stop_rx(rtk);
++}
++EXPORT_SYMBOL_GPL(apple_rtkit_quiesce_retaining_state);
++
+diff --git a/include/linux/soc/apple/rtkit.h b/include/linux/soc/apple/rtkit.h
+index 8460d0fa0..fb580450f 100644
+--- a/include/linux/soc/apple/rtkit.h
++++ b/include/linux/soc/apple/rtkit.h
+@@ -123,0 +124,6 @@ void apple_rtkit_free_retaining_buffers(struct apple_rtkit *rtk);
++/* Detach/drain RX without freeing metadata, DMA or mailbox ownership. The caller
++ * must serialize teardown and retain the object and every reader's context until
++ * platform reset. This is for an irrecoverably quarantined live coprocessor.
++ */
++void apple_rtkit_quiesce_retaining_state(struct apple_rtkit *rtk);
++

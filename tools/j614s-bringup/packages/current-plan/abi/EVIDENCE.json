@@ -1,0 +1,42 @@
+{
+  "status": "PARTIAL",
+  "deployable": false,
+  "execution_ready": false,
+  "actions": [],
+  "tests": {
+    "status": "WORKS",
+    "count": 14,
+    "red_before_implementation": [
+      "5 initial ELF parser/contract tests failed with explicit NotImplementedError (9 subcase errors), not import errors",
+      "Separate real compiled dependency-scope regression failed with explicit NotImplementedError before scope implementation"
+    ],
+    "green": "14 real compiled host/AArch64 ELF and virtual-filesystem regressions pass",
+    "note": "Two own scope audit runs were interrupted to remove repeated export-set work; preserved private failure logs. Final indexed run retains all checks."
+  },
+  "hardware": "UNTESTED; no target access",
+  "runtime_ABI": "UNTESTED",
+  "filesystem_model": "PARTIAL: same-name overlay; name-changing package removals not established",
+  "blocked": [
+    "8 exact untouched Qt consumers lose12 Qt_6_PRIVATE_API imports",
+    "16 new/incoming direct SONAME edges unresolved in bounded model",
+    "Name-changing conflicts/removals need actual transaction preparation",
+    "Original held boot requests, boot hooks, target and recovery remain blocked"
+  ],
+  "files": {
+    ".gitignore": "0090a854cd9b906751909c1f21e1454e3de0f601a7f300f05246ef49dca5a770",
+    "README.md": "72db710fe3645b7ed1827a64b5b3e66292314c24f7bded02a224b08ae1595775",
+    "audit_elf.py": "bb29a7e7efbd32272dee5570179bb0f17104fdee7e3affeb7132753351122767",
+    "audit_plan.py": "f0e0c0c68cf7cf5291a7973b4bd46bc05dc1b16c9fa88d34897a8f6cbd98af0c",
+    "classify_findings.py": "799c247244a5ded4e9449ef71cb917bdbe30bf7deeca6f60713f0cdeeebe379e",
+    "crosscheck_readelf.py": "b9594aaad35b653b3fc6b9f6e8aea8686e00f1f003793bd3f12ab3021e29c0a3",
+    "evidence/classification.json": "c9e2e766224dcaf43e404debdb866565bde9ca398a0d596c8dad7d21679af1a0",
+    "evidence/qt-private-abi.json": "5ff0dc12c3f23a6ce9922fa3605a2d90cd36288041dab2889e5f8ac8a61d4afe",
+    "evidence/readelf-crosscheck.json": "b5c9989be623d71be207d93e4ad14faf653cb520230562a8e00dc932ba2bffea",
+    "evidence/static-abi.json": "dc46c76802ceec0f3f5ef13b72930fc3ff7075025f852891b5e5cc17beec7b2b",
+    "evidence/tests.log": "b292e9107c0f75acc2cecc6335283593c89860cb01b5924da53dff319e8636e4",
+    "prove_qt_break.py": "6827f302b2fe42ae2e3b1ac0f15b5031de2cda91f34227df2b37f23dfc1a7efb",
+    "restore_image.py": "77fbd06e4b9a25ce2c189c85d3865cd005b19dfa842dfcd42409733d2ae8dc41",
+    "tests/test_elf.py": "faa3f0dbbf30d85a7b64ead560d1460e62046c69aa165028ce30b4ee1709e948",
+    "tests/test_resolution.py": "99d0f2c820ff3e74759372a84bd22751ac4c0ad62f9c38ed9b0021528054df8a"
+  }
+}
