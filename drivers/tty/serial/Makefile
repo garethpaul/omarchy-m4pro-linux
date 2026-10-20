@@ -101,6 +101,3 @@ obj-$(CONFIG_SERIAL_NUVOTON_MA35D1) += ma35d1_serial.o
 
 obj-$(CONFIG_SERIAL_APPLE_DOCKCHANNEL) += apple_dockchannel_uart.o
 obj-$(CONFIG_SERIAL_APPLE_DOCKCHANNEL_EARLYCON) += apple_dockchannel_early_uart.o
-
-# [DEBUG-J614S-ENTRY] Private exact-board diagnostic.
-obj-$(CONFIG_SERIAL_EARLYCON) += j614s_earlyfb.o

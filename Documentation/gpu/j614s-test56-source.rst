@@ -1,7 +1,7 @@
 J614s test56 source archive
 ==========================
 
-This branch archives the exact formerly uncommitted diagnostic source used by
+The parent archive commit 867fae4ca preserves the exact formerly uncommitted diagnostic source used by
 the qualified J614s RAM tests. It is an experimental reproduction checkpoint,
 not a production kernel or permission to boot another machine. The parent
 commit alone does not contain these diagnostic changes.
@@ -36,3 +36,17 @@ and56 established G16S RTKit transport and shutdown, with read-only SSD and RAM
 overlays. They did not establish GPU rendering, DCP modesetting, suspend or a
 persistent default installation. This source archive changes no installed boot
 object, protected volume, partition or Apple security policy.
+
+Clean candidate distinction
+---------------------------
+
+This candidate removes the fixed-address head.S color writes and the
+j614s_earlyfb driver and its unconditional early_initcall/build selection. The
+JSON remains a historical manifest of the parent archive, not a manifest of
+this cleaned candidate. The current driver sources must be fingerprinted in a
+new build contract. This candidate is not yet boot-tested and must not replace
+the installed boot object or the previously qualified RAM payload.
+
+Remaining USB, NVMe, MTP and read-only battery diagnostics are unchanged. Native
+framebuffer scanout remains a separate capability from a temporary debug text
+renderer. Removing diagnostic writes does not establish DCP or GPU acceleration.

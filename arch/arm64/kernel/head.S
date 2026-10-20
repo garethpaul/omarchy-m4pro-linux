@@ -82,27 +82,7 @@
 	 *  x20        primary_entry() .. __primary_switch()    CPU boot mode
 	 *  x21        primary_entry() .. start_kernel()        FDT pointer passed at boot in x0
 	 */
-
-/* [DEBUG-J614S-ENTRY] Exact captured internal framebuffer; private RAM test. */
-.macro j614s_entry_colour colour
- mov_q x9, 1124735713280
- mov_q x10, \colour
- mov x11, #192
- mov x13, #10048 // stride 12096 minus 512 32-bit pixels
-991:
- mov x12, #512
-992:
- str w10, [x9], #4
- subs x12, x12, #1
- b.ne 992b
- add x9, x9, x13
- subs x11, x11, #1
- b.ne 991b
- dsb sy
-.endm
-
 SYM_CODE_START(primary_entry)
-	j614s_entry_colour 0x3ff00000 // red: native kernel entry
 	bl	record_mmu_state
 	bl	preserve_boot_args
 
@@ -112,7 +92,6 @@ SYM_CODE_START(primary_entry)
 	adrp	x0, __pi_init_idmap_pg_dir
 	mov	x1, xzr
 	bl	__pi_create_init_idmap
-	j614s_entry_colour 0x3ffffc00 // yellow: initial page tables
 
 	/*
 	 * If the page tables have been populated with non-cacheable
@@ -148,7 +127,6 @@ SYM_CODE_START(primary_entry)
 	 * the TCR will have been set.
 	 */
 	bl	__cpu_setup			// initialise processor
-	j614s_entry_colour 0x000003ff // blue: original CPU setup completed
 	b	__primary_switch
 SYM_CODE_END(primary_entry)
 
@@ -393,7 +371,6 @@ alternative_else_nop_endif
 #endif
 
 	bl	__cpu_setup			// initialise processor
-	j614s_entry_colour 0x000003ff // blue: original CPU setup completed
 	adrp	x1, swapper_pg_dir
 	adrp	x2, idmap_pg_dir
 	bl	__enable_mmu

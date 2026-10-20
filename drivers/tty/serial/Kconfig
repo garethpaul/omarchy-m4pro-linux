@@ -7,7 +7,6 @@ menu "Serial drivers"
 	depends on HAS_IOMEM
 
 config SERIAL_EARLYCON
-	select FONT_SUPPORT # [DEBUG-J614S-ENTRY] private framebuffer console
 	bool
 	depends on SERIAL_CORE
 	help
