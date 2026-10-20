@@ -1,0 +1,53 @@
+{
+  "baseline_head": "8f2f3d13600aacadd93d577855b7e212b8ae57ff",
+  "binding_change": false,
+  "candidate_head": "5cbc8c64748b480f7da4dac87b92450b80124594",
+  "confounds": [
+    "Old test52 used CDC-subset network gadget; new boot uses ACM; previous same-ACM control not established"
+  ],
+  "known_old_head": "4ff8816df8c4bc81b1652eca17fc8c0e9e1928cc",
+  "legacy_irq_body_byte_identical_after_name_restore": true,
+  "limits": [
+    "GET_DESCRIPTOR success does not prove endpoint configuration or all new DMA mappings",
+    "No target patch deployed by this lane",
+    "Runtime DART fault/command trace from failing Linux boot unavailable",
+    "Host MMIO mocks establish source behavior, not hardware completion"
+  ],
+  "mapping_or_lockedroot_change": false,
+  "measured_exceptions": 0,
+  "measured_parameter_capture_sha256": "bd64c5e421cfbb77d4a90190a59865b2d59298666700339bbfeb727ed154794a",
+  "measured_usb_banks": [
+    {
+      "bank": 0,
+      "params3": 707396098,
+      "version": 514
+    },
+    {
+      "bank": 1,
+      "params3": 707396098,
+      "version": 514
+    }
+  ],
+  "old_v2_irq_faultname_blockpredicate_bodies_byte_identical": true,
+  "reset_source_order": "stale exception acknowledgment, conditional unlock, invalidation",
+  "schema": 1,
+  "source_port_roundtrip_exact": true,
+  "source_sha256": {
+    "baseline": "c3cae72eacf30c5a0592bda4490a6f6e5e850aca7342b2a93f3a68e0cb37d4c5",
+    "candidate": "d8900ed1c37e04f0d74d4d0c0f81a491cde15e87eccc3805b74450e01281ec40",
+    "old": "e3befe0b737fafd5f46c9b38a286b9dbf79e6ce1730c11f8740af3305126e11d"
+  },
+  "status": "SOURCE_REGRESSION_IDENTIFIED; hardware fix UNTESTED",
+  "unchanged_mapping_and_domain_function_sha256": {
+    "apple_dart_attach_dev_blocked": "7dc66267f571f77428ac55b5e1e1f75c55d41befe47ac3d59ef00d1972d96add",
+    "apple_dart_attach_dev_identity": "b2438094c87159d371d5efe0331f68b717523f0fe8eb25043e7e78e81c9abb32",
+    "apple_dart_attach_dev_paging": "41e12ffaca62655b0ab3b14e9055538e444387028cbaf144773eab795ba5892a",
+    "apple_dart_hw_map_locked_ttbr": "b2182396a3c896b4e42d9210fbe7e74f14d5ec430ccfcf46d223ece4e2e4ab0b",
+    "apple_dart_hw_sync_locked": "e291209c27f88d278700c06c9f0da5cccf77b58874ca0da3103021c4bdc53150",
+    "apple_dart_map_pages": "477a7de7314d88c19c2d2154209f5b4a49f46bfb070833f69723075f9ff8ca86",
+    "apple_dart_of_xlate": "be87c24a7830cc27ae4db67149fb0811341a10b90dd8274ff65091ea4a32bfa8",
+    "apple_dart_setup_translation": "44c3077cf4061d487810e788ed140e6fdaf9e61341de72ca07548088852ef90c",
+    "apple_dart_setup_translation_locked": "6745041d3bc9cfa89968f1a66ca413be682f684f7c24256138fa68d146c3b725",
+    "apple_dart_unmap_pages": "65c6ebb2251942a0af3a94eb6c521f3642def765253da14ec61c5a2634e07f32"
+  }
+}

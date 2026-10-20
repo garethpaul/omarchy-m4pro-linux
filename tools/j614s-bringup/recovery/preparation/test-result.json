@@ -1,0 +1,29 @@
+{
+  "actual_positive_replay": "NOT RUN; root-owned after review",
+  "base_commit": "bb629e094f1236c92fa7028274d95f7ab59aa5f5",
+  "final_output": "...............\n----------------------------------------------------------------------\nRan 15 tests in 0.081s\n\nOK",
+  "hardware": "UNTESTED",
+  "initial_red": {
+    "failures": 2,
+    "methods": [
+      "test_missing_storage_flag_refused",
+      "test_false_storage_flag_refused"
+    ],
+    "production_state": "permissive require_storage skeleton before guard implementation",
+    "reason": "AssertionError: ValueError not raised"
+  },
+  "limits": [
+    "No real DT/container/context/plan produced by this lane",
+    "Unit fake host phase tests failure retention only",
+    "No live supervision, freshness, recovery, allocation or boot qualification"
+  ],
+  "raw_slot_cross_capture_identity": "UNPROVABLE_FROM_FROZEN_STAGING_SCHEMA",
+  "schema": 1,
+  "source_sha256": {
+    "prepare_supervised.py": "32e6e5abf5ed86405aeb9ae6c518309ce711d6aed005596b5463775ac51d1728",
+    "test_preparation.py": "fef4e7076089209970194fd5986ec228c5b01af350db0f767ddc11755f0e2ea5"
+  },
+  "status": "PASS (host unit controls only)",
+  "target_actions": false,
+  "test_methods": 15
+}

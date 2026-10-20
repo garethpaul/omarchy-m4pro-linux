@@ -16,7 +16,7 @@ import types
 import sys
 
 HERE = Path(__file__).resolve().parent
-PINSET_SHA256 = 'a27b5252c6c9bab9d6ca9b833ec49bd1e26eccafac599e54417134155bfaa64f'
+PINSET_SHA256 = '24786b18734ddd9858d2276c1c490fd9d24aa7faa764af400136068bba451bc9'
 _pin_path=HERE/'pins.json'
 if not _pin_path.is_file() or _pin_path.stat().st_size>2<<20:
     raise ValueError('Reviewed native-bundle pinset missing or exceeds bound')

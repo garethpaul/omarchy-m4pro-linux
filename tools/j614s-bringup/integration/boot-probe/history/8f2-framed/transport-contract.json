@@ -1,0 +1,115 @@
+{
+  "descriptor_source": {
+    "files": {
+      "drivers/usb/gadget/function/f_acm.c": "976f3d8c7bca3836cdd586944d137cfcb280dbf13d53e2887744810a8fdf5d9d",
+      "include/uapi/linux/usb/cdc.h": "59508aa8454dc926f1aabd5c26ff621eaa98bd12400fce8b794b5ab8076dc735",
+      "include/uapi/linux/usb/ch9.h": "56ac789006af0e76a0cdfc671540aabc8da3f1edcab0c034518e2314c3e72ff8"
+    },
+    "proof": [
+      {
+        "fact": "Control interface class COMM, subclass ACM at107",
+        "file": "drivers/usb/gadget/function/f_acm.c",
+        "line": 106
+      },
+      {
+        "fact": "Control interface string CDC Abstract Control Model (ACM), attached to descriptor at630",
+        "file": "drivers/usb/gadget/function/f_acm.c",
+        "line": 275
+      },
+      {
+        "fact": "Control interface gets first usb_interface_id, data gets subsequent ID at644; sole bound ACM function therefore expects control00/data01 (source expectation, runtime UNTESTED)",
+        "file": "drivers/usb/gadget/function/f_acm.c",
+        "line": 635
+      },
+      {
+        "fact": "opts protocol defaults to USB_CDC_ACM_PROTO_AT_V25TER; copied to control descriptor at670",
+        "file": "drivers/usb/gadget/function/f_acm.c",
+        "line": 888
+      },
+      {
+        "fact": "USB_CLASS_COMM=2",
+        "file": "include/uapi/linux/usb/ch9.h",
+        "line": 324
+      },
+      {
+        "fact": "USB_CDC_SUBCLASS_ACM=0x02; AT_V25TER=1 at27",
+        "file": "include/uapi/linux/usb/cdc.h",
+        "line": 15
+      }
+    ],
+    "source_commit": "8f2f3d13600aacadd93d577855b7e212b8ae57ff"
+  },
+  "hardware": "UNTESTED",
+  "host": {
+    "classification": "FRAME_VALIDATED is transport only; hardware/boot UNTESTED and recovery UNVERIFIED",
+    "default_command": "status",
+    "extra_data_observation_seconds": 0.2,
+    "limits": [
+      "Quiet observation is bounded, not a promise no later bytes can arrive",
+      "Opening/configuring CDC ACM may assert modem control lines; it does not authorize NVMe probe",
+      "Exclusive-open/advisory lock and identity checks do not prove hardware recovery",
+      "No network, package installation, watchdog, reset, reboot or auto-rebind actions"
+    ],
+    "probe": "Separate probe-once CLI subcommand and exact primary invocation gate; same gate required at transport API; path never invoked",
+    "raw_evidence_permissions": {
+      "directory": "0700",
+      "files": "0600"
+    },
+    "read_only_commands": [
+      "status",
+      "before",
+      "after",
+      "logs",
+      "dmesg",
+      "help"
+    ],
+    "response_timeout_seconds": 10,
+    "retries": 0
+  },
+  "identity": {
+    "after_open": "Require matching character-device major/minor and re-read identity before termios/serial I/O",
+    "before_open": "Re-read complete candidate identity and compare inodes/paths/busnum/devnum; reject ambiguity",
+    "caller_supplied_physical_usb_port_required": true,
+    "control_interface_attributes": {
+      "bInterfaceClass": "02",
+      "bInterfaceNumber": "00",
+      "bInterfaceProtocol": "01",
+      "bInterfaceSubClass": "02",
+      "interface": "CDC Abstract Control Model (ACM)"
+    },
+    "device_attributes": {
+      "bConfigurationValue": "1",
+      "idProduct": "0104",
+      "idVendor": "1d6b",
+      "product": "J614s supervised RAM-only probe",
+      "serial": "J614S-RO-PROBE-8F2F3D13"
+    },
+    "excluded": "Old sourcehelper/m1n1/gserial products fail exact product+serial+ACM control descriptor matching",
+    "host_driver": "cdc_acm",
+    "runtime_match": "UNTESTED"
+  },
+  "protocol": {
+    "atomic_snapshot_publication": true,
+    "commands": [
+      "status",
+      "before",
+      "after",
+      "logs",
+      "dmesg",
+      "help",
+      "probe"
+    ],
+    "freshness_scope": "Fresh nonce correlates one response; no DT/firmware/boot or content-age guarantee",
+    "init_read_character_bound": 64,
+    "integrity_scope": "Length+SHA256/footer detects corruption/truncation; no cryptographic peer authentication",
+    "line_endings": "LF only; CRLF and extra fields rejected",
+    "maximum_header_bytes": 192,
+    "maximum_payload_bytes": 2097152,
+    "maximum_valid_request_bytes_including_lf": 53,
+    "request": "J614S_REQ_V1 <32 lowercase hex nonce> <literal command> LF",
+    "response": "J614S_FRAME_V1 <same nonce> <same command> <decimal bytes> <lowercase SHA256> LF + exact payload + LF J614S_END_V1 <same nonce> LF",
+    "stable_data": "Source copy bounded to maximum+1; frozen copy hashed, full frame assembled in RAM before one timeout-wrapped cat",
+    "unsolicited_frames": false
+  },
+  "schema": 1
+}

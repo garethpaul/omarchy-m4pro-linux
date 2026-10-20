@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "status": "REVIEWED_FOR_EXPERIMENTAL_SOURCE_PUBLICATION",
+  "scanned_through_commit": "570168c",
+  "changed_source_paths_scanned": 83,
+  "scanner_categories": {
+    "environment_assignment_shapes": 40,
+    "token_like_shapes": 14856,
+    "local_path_shapes": 2
+  },
+  "actual_high_risk_findings": 0,
+  "reviewed_false_positive_categories": [
+    "Source constant definitions and explicit test/config variables",
+    "SHA256/commit identifiers and signed-package archive member paths",
+    "Two compiler caret diagnostic sequences mistaken for local paths"
+  ],
+  "publication_scope": "Committed source/evidence only; no private captures, raw ADTs, firmware, credentials, ASLR-bearing generated artifacts or uncommitted user edits",
+  "production_qualification": false
+}

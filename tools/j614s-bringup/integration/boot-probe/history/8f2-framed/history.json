@@ -1,0 +1,12 @@
+{
+  "note": "Exact prior tracked bytes. Historical UNTESTED statements describe qualification at that commit; subsequent primary hardware observations are separate. No archive or previous evidence file overwritten.",
+  "schema": 1,
+  "sha256": {
+    "artifact-manifest.json": "b26d326c0448e03a18a2f73e7b2d5e5171276aff9c22f1a9a7ca5f94d8427d7d",
+    "evidence.json": "866f2777191e2a87287438516aad80f3441652def3c8e77233a186b3f1e2e4c1",
+    "pins.json": "98612d92cfbd2af5c4cac6c94741d49b6ea2ff31459053db1139af53423217e2",
+    "transport-contract.json": "93ced32dd2b3284f00f067ff9c8f0edd1ca61b664c7149dae2ba6dea6a4743c3"
+  },
+  "source_commit": "944f64386f527f074808405322a986eec44b0317",
+  "status": "HISTORICAL_OFFLINE_EVIDENCE"
+}

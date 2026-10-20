@@ -1,0 +1,52 @@
+{
+  "schema": 1,
+  "status": "WORKS_HOST_PREPARATION_ONLY",
+  "source_sha256": "32e6e5abf5ed86405aeb9ae6c518309ce711d6aed005596b5463775ac51d1728",
+  "root_host_controls": {
+    "passed": 15,
+    "skipped": 0
+  },
+  "actual_replay": "Complete exact-input canonical generator/assemble/verify/plan; root-owned after source review",
+  "target_actions": false,
+  "boot_permission": false,
+  "context_sha256": "0b5642c68840e90fec7e7df3ea6dca03f322312955dc81048e810867efa75e9f",
+  "container_sha256": "de207d817c72063ffa97cc3423fea1e03abcccd25fbdfc6ed0044968d12ca782",
+  "original_bootargs_copy_exact": true,
+  "final_delta": "Only8bytes at offset32; padding/rest identical",
+  "geometry_matches_prior_review": true,
+  "stage_state_absent": true,
+  "shared_capture_limit": {
+    "shared_fields": "MATCH",
+    "raw_slot_snapshot_cross_capture": "UNPROVABLE_FROM_FROZEN_STAGING_SCHEMA",
+    "live_slot_authority": "SEPARATE_STAGE_VECTOR_PAIRED_ELF_DOUBLE_READS",
+    "liveness": "UNQUALIFIED"
+  },
+  "actual_cli_negative_controls": {
+    "status": "PASS_EXPECTED_REFUSALS",
+    "cases": [
+      {
+        "case": "false-storage",
+        "exit": 1,
+        "reason": "STORAGE_DIAGNOSTIC_EXPLICIT_TRUE_REQUIRED",
+        "output_created": false,
+        "negative_fixture_not_a_hardware_capture": true
+      },
+      {
+        "case": "different-usb-session",
+        "exit": 1,
+        "reason": "CPU_STAGING_SESSION_HASHES_DIFFER",
+        "output_created": false,
+        "negative_fixture_not_a_hardware_capture": true
+      }
+    ],
+    "target_actions": false
+  },
+  "hardware": "UNTESTED",
+  "evidence_sha256": {
+    "preparation": "c1105144650dabe8d42691ef77a566320ce43a2649be8e12bff148ec84be532e",
+    "context": "0b5642c68840e90fec7e7df3ea6dca03f322312955dc81048e810867efa75e9f",
+    "plan": "a37877f4f1af6ec549a19c14d2b5a7bbb2615f6c5f15b139eb39730da560480e",
+    "CLI": "73c7ff00609eaff6fda71c011fd7235cd75fd6618fed98a2cbc11d1247b1b505"
+  },
+  "retained_root_integration_failure": "Initial cherry-pick used an object from a standalone clone before local fetch. No helper executed. Fetched exact local branch, integrated, then performed first actual replay."
+}

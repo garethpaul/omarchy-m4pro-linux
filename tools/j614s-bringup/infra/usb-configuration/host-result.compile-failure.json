@@ -1,0 +1,5 @@
+{
+  "compiler": "gcc",
+  "candidate": true,
+  "diagnostic": "host-test/host.c: In function \u2018apple_dart_drain_stale_exceptions\u2019:\nhost-test/host.c:288:33: error: comparison of integer expressions of different signedness: \u2018unsigned int\u2019 and \u2018int\u2019 [-Werror=sign-compare]\n  288 |                         if (sid >= dart->num_streams)\n      |                                 ^~\nhost-test/host.c: In function \u2018apple_dart_t8110_v2_irq\u2019:\nhost-test/host.c:412:33: error: comparison of integer expressions of different signedness: \u2018unsigned int\u2019 and \u2018int\u2019 [-Werror=sign-compare]\n  412 |                         if (sid >= dart->num_streams)\n      |                                 ^~\ncc1: all warnings being treated as errors\n"
+}

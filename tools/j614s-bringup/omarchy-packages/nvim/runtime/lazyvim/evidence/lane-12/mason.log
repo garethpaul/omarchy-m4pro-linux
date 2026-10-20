@@ -1,0 +1,77 @@
+[DEBUG Tue Oct 20 14:49:56 2026] ...im/lazy/mason.nvim/lua/mason-registry/sources/github.lua:97: Creating registry directory GitHubRegistrySource(repo=mason-org/mason-registry)
+[DEBUG Tue Oct 20 14:49:56 2026] /work/data/nvim/lazy/mason.nvim/lua/mason-core/fs.lua:122: fs: mkdirp /work/data/nvim/mason/registries/github/mason-org/mason-registry
+[DEBUG Tue Oct 20 14:49:56 2026] /work/data/nvim/lazy/mason.nvim/lua/mason-core/fs.lua:116: fs: mkdir /work/data/nvim/mason
+[DEBUG Tue Oct 20 14:49:56 2026] /work/data/nvim/lazy/mason.nvim/lua/mason-core/fs.lua:116: fs: mkdir /work/data/nvim/mason/registries
+[DEBUG Tue Oct 20 14:49:56 2026] /work/data/nvim/lazy/mason.nvim/lua/mason-core/fs.lua:116: fs: mkdir /work/data/nvim/mason/registries/github
+[DEBUG Tue Oct 20 14:49:56 2026] /work/data/nvim/lazy/mason.nvim/lua/mason-core/fs.lua:116: fs: mkdir /work/data/nvim/mason/registries/github/mason-org
+[DEBUG Tue Oct 20 14:49:56 2026] /work/data/nvim/lazy/mason.nvim/lua/mason-core/fs.lua:116: fs: mkdir /work/data/nvim/mason/registries/github/mason-org/mason-registry
+[DEBUG Tue Oct 20 14:49:56 2026] /work/data/nvim/lazy/mason.nvim/lua/mason-core/fetch.lua:37: Fetching URL "https://api.mason-registry.dev/api/github/mason-org/mason-registry/releases/latest"
+[DEBUG Tue Oct 20 14:49:56 2026] /work/data/nvim/lazy/mason.nvim/lua/mason-core/process.lua:189: Spawning cmd="curl", spawn_opts={
+  args = { "-H", "Accept: application/vnd.mason-registry.v1+json; q=1.0, application/json; q=0.8", "-H", "User-Agent: mason.nvim v2.3.1 (+https://github.com/mason-org/mason.nvim)", "-fsSL", "-X", "GET", "--connect-timeout", 30, "https://api.mason-registry.dev/api/github/mason-org/mason-registry/releases/latest" }
+}
+[DEBUG Tue Oct 20 14:49:56 2026] /work/data/nvim/lazy/mason.nvim/lua/mason-core/process.lua:236: Spawned with pid 11
+[DEBUG Tue Oct 20 14:49:56 2026] /work/data/nvim/lazy/mason.nvim/lua/mason-core/process.lua:222: Job pid=11 exited with exit_code=6, signal=0
+[DEBUG Tue Oct 20 14:49:56 2026] /work/data/nvim/lazy/mason.nvim/lua/mason-core/process.lua:189: Spawning cmd="wget", spawn_opts={
+  args = { "--header", "Accept: application/vnd.mason-registry.v1+json; q=1.0, application/json; q=0.8", "--header", "User-Agent: mason.nvim v2.3.1 (+https://github.com/mason-org/mason.nvim)", "-o", "/dev/null", "-O", "-", "-T", 30, "https://api.mason-registry.dev/api/github/mason-org/mason-registry/releases/latest" }
+}
+[ERROR Tue Oct 20 14:49:56 2026] /work/data/nvim/lazy/mason.nvim/lua/mason-core/process.lua:226: Failed to spawn process. cmd="wget", err="ENOENT: no such file or directory"
+[ERROR Tue Oct 20 14:49:56 2026] ...k/data/nvim/lazy/mason.nvim/lua/mason-core/providers.lua:81: Provider "github" "get_latest_release" failed: spawn: wget failed with exit code - and signal -. Could not find executable "wget" in PATH.
+
+[DEBUG Tue Oct 20 14:49:56 2026] /work/data/nvim/lazy/mason.nvim/lua/mason-core/process.lua:189: Spawning cmd="gh", spawn_opts={
+  args = { "api", "repos/mason-org/mason-registry/releases/latest" },
+  env = { "XDG_DATA_HOME=<redacted>", "XDG_CACHE_HOME=<redacted>", "LANG=<redacted>", "XDG_STATE_HOME=<redacted>", "NVIM_LOG_FILE=<redacted>", "GIT_CONFIG_COUNT=<redacted>", "PWD=<redacted>", "GIT_CONFIG_VALUE_0=<redacted>", "GIT_CONFIG_VALUE_1=<redacted>", "GIT_CONFIG_VALUE_2=<redacted>", "PATH=/work/data/nvim/mason/bin:/usr/bin", "XDG_CONFIG_HOME=<redacted>", "GIT_CONFIG_KEY_0=<redacted>", "MASON=<redacted>", "GIT_CONFIG_KEY_1=<redacted>", "GIT_CONFIG_VALUE_3=<redacted>", "GIT_CONFIG_KEY_2=<redacted>", "VIMRUNTIME=<redacted>", "GIT_CONFIG_KEY_3=<redacted>", "CLICOLOR_FORCE=<redacted>" }
+}
+[ERROR Tue Oct 20 14:49:56 2026] /work/data/nvim/lazy/mason.nvim/lua/mason-core/process.lua:226: Failed to spawn process. cmd="gh", err="ENOENT: no such file or directory"
+[DEBUG Tue Oct 20 14:49:56 2026] /work/data/nvim/lazy/mason.nvim/lua/mason-core/fetch.lua:37: Fetching URL "https://api.github.com/repos/mason-org/mason-registry/releases/latest"
+[DEBUG Tue Oct 20 14:49:56 2026] /work/data/nvim/lazy/mason.nvim/lua/mason-core/process.lua:189: Spawning cmd="curl", spawn_opts={
+  args = { "-H", "Accept: application/vnd.github.v3+json; q=1.0, application/json; q=0.8", "-H", "User-Agent: mason.nvim v2.3.1 (+https://github.com/mason-org/mason.nvim)", "-fsSL", "-X", "GET", "--connect-timeout", 30, "https://api.github.com/repos/mason-org/mason-registry/releases/latest" }
+}
+[DEBUG Tue Oct 20 14:49:56 2026] /work/data/nvim/lazy/mason.nvim/lua/mason-core/process.lua:236: Spawned with pid 22
+[DEBUG Tue Oct 20 14:49:56 2026] /work/data/nvim/lazy/mason.nvim/lua/mason-core/process.lua:222: Job pid=22 exited with exit_code=6, signal=0
+[DEBUG Tue Oct 20 14:49:56 2026] /work/data/nvim/lazy/mason.nvim/lua/mason-core/process.lua:189: Spawning cmd="wget", spawn_opts={
+  args = { "--header", "Accept: application/vnd.github.v3+json; q=1.0, application/json; q=0.8", "--header", "User-Agent: mason.nvim v2.3.1 (+https://github.com/mason-org/mason.nvim)", "-o", "/dev/null", "-O", "-", "-T", 30, "https://api.github.com/repos/mason-org/mason-registry/releases/latest" }
+}
+[ERROR Tue Oct 20 14:49:56 2026] /work/data/nvim/lazy/mason.nvim/lua/mason-core/process.lua:226: Failed to spawn process. cmd="wget", err="ENOENT: no such file or directory"
+[ERROR Tue Oct 20 14:49:56 2026] ...k/data/nvim/lazy/mason.nvim/lua/mason-core/providers.lua:81: Provider "github" "get_latest_release" failed: spawn: wget failed with exit code - and signal -. Could not find executable "wget" in PATH.
+
+[ERROR Tue Oct 20 14:49:56 2026] ...k/data/nvim/lazy/mason.nvim/lua/mason-core/providers.lua:92: No provider implementation succeeded for github.get_latest_release
+[ERROR Tue Oct 20 14:49:56 2026] ...im/lazy/mason.nvim/lua/mason-registry/sources/github.lua:146: Failed to install registry GitHubRegistrySource(repo=mason-org/mason-registry). "Failed to fetch latest registry version from GitHub API."
+[ERROR Tue Oct 20 14:49:56 2026] /work/data/nvim/lazy/mason.nvim/lua/mason-registry/init.lua:152: Failed to update registries. { "GitHubRegistrySource(repo=mason-org/mason-registry) failed to install: Failed to fetch latest registry version from GitHub API." }
+[DEBUG Tue Oct 20 14:49:57 2026] /work/data/nvim/lazy/mason.nvim/lua/mason-registry/init.lua:215: Refreshing the registry.
+[DEBUG Tue Oct 20 14:49:57 2026] /work/data/nvim/lazy/mason.nvim/lua/mason-registry/init.lua:141: Updating the registry.
+[DEBUG Tue Oct 20 14:49:57 2026] ...ta/nvim/lazy/mason.nvim/lua/mason-registry/installer.lua:27: Installing registries. LazySourceCollection(list={LazySource(type=github, id=mason-org/mason-registry)})
+[DEBUG Tue Oct 20 14:49:57 2026] /work/data/nvim/lazy/mason.nvim/lua/mason-core/fetch.lua:37: Fetching URL "https://api.mason-registry.dev/api/github/mason-org/mason-registry/releases/latest"
+[DEBUG Tue Oct 20 14:49:57 2026] /work/data/nvim/lazy/mason.nvim/lua/mason-core/process.lua:189: Spawning cmd="curl", spawn_opts={
+  args = { "-H", "Accept: application/vnd.mason-registry.v1+json; q=1.0, application/json; q=0.8", "-H", "User-Agent: mason.nvim v2.3.1 (+https://github.com/mason-org/mason.nvim)", "-fsSL", "-X", "GET", "--connect-timeout", 30, "https://api.mason-registry.dev/api/github/mason-org/mason-registry/releases/latest" }
+}
+[DEBUG Tue Oct 20 14:49:57 2026] /work/data/nvim/lazy/mason.nvim/lua/mason-core/process.lua:236: Spawned with pid 29
+[DEBUG Tue Oct 20 14:49:57 2026] /work/data/nvim/lazy/mason.nvim/lua/mason-registry/init.lua:215: Refreshing the registry.
+[DEBUG Tue Oct 20 14:49:57 2026] /work/data/nvim/lazy/mason.nvim/lua/mason-registry/init.lua:138: Registry update already in progress.
+[DEBUG Tue Oct 20 14:49:57 2026] /work/data/nvim/lazy/mason.nvim/lua/mason-core/process.lua:222: Job pid=29 exited with exit_code=6, signal=0
+[DEBUG Tue Oct 20 14:49:57 2026] /work/data/nvim/lazy/mason.nvim/lua/mason-core/process.lua:189: Spawning cmd="wget", spawn_opts={
+  args = { "--header", "Accept: application/vnd.mason-registry.v1+json; q=1.0, application/json; q=0.8", "--header", "User-Agent: mason.nvim v2.3.1 (+https://github.com/mason-org/mason.nvim)", "-o", "/dev/null", "-O", "-", "-T", 30, "https://api.mason-registry.dev/api/github/mason-org/mason-registry/releases/latest" }
+}
+[ERROR Tue Oct 20 14:49:57 2026] /work/data/nvim/lazy/mason.nvim/lua/mason-core/process.lua:226: Failed to spawn process. cmd="wget", err="ENOENT: no such file or directory"
+[ERROR Tue Oct 20 14:49:57 2026] ...k/data/nvim/lazy/mason.nvim/lua/mason-core/providers.lua:81: Provider "github" "get_latest_release" failed: spawn: wget failed with exit code - and signal -. Could not find executable "wget" in PATH.
+
+[DEBUG Tue Oct 20 14:49:57 2026] /work/data/nvim/lazy/mason.nvim/lua/mason-core/process.lua:189: Spawning cmd="gh", spawn_opts={
+  args = { "api", "repos/mason-org/mason-registry/releases/latest" },
+  env = { "XDG_DATA_HOME=<redacted>", "XDG_CACHE_HOME=<redacted>", "LANG=<redacted>", "XDG_STATE_HOME=<redacted>", "NVIM_LOG_FILE=<redacted>", "GIT_CONFIG_COUNT=<redacted>", "PWD=<redacted>", "GIT_CONFIG_VALUE_0=<redacted>", "GIT_CONFIG_VALUE_1=<redacted>", "GIT_CONFIG_VALUE_2=<redacted>", "PATH=/work/data/nvim/mason/bin:/usr/bin", "XDG_CONFIG_HOME=<redacted>", "GIT_CONFIG_KEY_0=<redacted>", "MASON=<redacted>", "GIT_CONFIG_KEY_1=<redacted>", "GIT_CONFIG_VALUE_3=<redacted>", "GIT_CONFIG_KEY_2=<redacted>", "VIMRUNTIME=<redacted>", "GIT_CONFIG_KEY_3=<redacted>", "CLICOLOR_FORCE=<redacted>" }
+}
+[ERROR Tue Oct 20 14:49:57 2026] /work/data/nvim/lazy/mason.nvim/lua/mason-core/process.lua:226: Failed to spawn process. cmd="gh", err="ENOENT: no such file or directory"
+[DEBUG Tue Oct 20 14:49:57 2026] /work/data/nvim/lazy/mason.nvim/lua/mason-core/fetch.lua:37: Fetching URL "https://api.github.com/repos/mason-org/mason-registry/releases/latest"
+[DEBUG Tue Oct 20 14:49:57 2026] /work/data/nvim/lazy/mason.nvim/lua/mason-core/process.lua:189: Spawning cmd="curl", spawn_opts={
+  args = { "-H", "Accept: application/vnd.github.v3+json; q=1.0, application/json; q=0.8", "-H", "User-Agent: mason.nvim v2.3.1 (+https://github.com/mason-org/mason.nvim)", "-fsSL", "-X", "GET", "--connect-timeout", 30, "https://api.github.com/repos/mason-org/mason-registry/releases/latest" }
+}
+[DEBUG Tue Oct 20 14:49:57 2026] /work/data/nvim/lazy/mason.nvim/lua/mason-core/process.lua:236: Spawned with pid 41
+[DEBUG Tue Oct 20 14:49:57 2026] /work/data/nvim/lazy/mason.nvim/lua/mason-core/process.lua:222: Job pid=41 exited with exit_code=6, signal=0
+[DEBUG Tue Oct 20 14:49:57 2026] /work/data/nvim/lazy/mason.nvim/lua/mason-core/process.lua:189: Spawning cmd="wget", spawn_opts={
+  args = { "--header", "Accept: application/vnd.github.v3+json; q=1.0, application/json; q=0.8", "--header", "User-Agent: mason.nvim v2.3.1 (+https://github.com/mason-org/mason.nvim)", "-o", "/dev/null", "-O", "-", "-T", 30, "https://api.github.com/repos/mason-org/mason-registry/releases/latest" }
+}
+[ERROR Tue Oct 20 14:49:57 2026] /work/data/nvim/lazy/mason.nvim/lua/mason-core/process.lua:226: Failed to spawn process. cmd="wget", err="ENOENT: no such file or directory"
+[ERROR Tue Oct 20 14:49:57 2026] ...k/data/nvim/lazy/mason.nvim/lua/mason-core/providers.lua:81: Provider "github" "get_latest_release" failed: spawn: wget failed with exit code - and signal -. Could not find executable "wget" in PATH.
+
+[ERROR Tue Oct 20 14:49:57 2026] ...k/data/nvim/lazy/mason.nvim/lua/mason-core/providers.lua:92: No provider implementation succeeded for github.get_latest_release
+[ERROR Tue Oct 20 14:49:57 2026] ...im/lazy/mason.nvim/lua/mason-registry/sources/github.lua:146: Failed to install registry GitHubRegistrySource(repo=mason-org/mason-registry). "Failed to fetch latest registry version from GitHub API."
+[ERROR Tue Oct 20 14:49:57 2026] /work/data/nvim/lazy/mason.nvim/lua/mason-registry/init.lua:37: Cannot find package "\"tree-sitter-cli\"".
+[ERROR Tue Oct 20 14:49:57 2026] /work/data/nvim/lazy/mason.nvim/lua/mason-registry/init.lua:152: Failed to update registries. { "GitHubRegistrySource(repo=mason-org/mason-registry) failed to install: Failed to fetch latest registry version from GitHub API." }

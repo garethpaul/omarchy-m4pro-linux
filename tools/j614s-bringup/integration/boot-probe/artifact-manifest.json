@@ -9,7 +9,7 @@
     "gzip round-trip"
   ],
   "cpio_bytes": 2197896,
-  "cpio_sha256": "e8a070b9a6a4d6cb1ccbddb8cef003da14b5003b0ca85356f82f274555f016a4",
+  "cpio_sha256": "c3623c52774d371be3d84279cb309fb4fe1e526e35bdbb32f285f3f567127579",
   "emulator_sha256": "66bdc286fd30970a1c3d2029b460605a3dc843ed6b397f4cd9825f9c19551507",
   "entries": {
     "bin": {
@@ -298,7 +298,7 @@
         0,
         0
       ],
-      "sha256": "69ee7380fad425d1ddc705ba5f25b963da3e06436c3119686741669c33a8624a"
+      "sha256": "fc8b94c6fef4b05cc6edb27ebf0c3c80dba47d8349ee7468cc843a376779acf4"
     },
     "init": {
       "bytes": 11763,
@@ -410,10 +410,10 @@
     }
   },
   "hardware": "UNTESTED",
-  "initrd_bytes": 1098565,
-  "initrd_sha256": "8fd6f861c42e4585156ff747ef657fbdba04b8bc307d0f4a0c2c226b20d16be1",
-  "kernel_image_sha256": "f9d7b637bc70fcab77b5806c43c39ae333e633fcc63fa6ccaa77cd22c91d4604",
-  "kernel_source": "8f2f3d13600aacadd93d577855b7e212b8ae57ff",
+  "initrd_bytes": 1098566,
+  "initrd_sha256": "6311976c24c8e8bf8740dd6b382acb5bf99a10055b7756d2b2c7857c9b937a6f",
+  "kernel_image_sha256": "09a5242571bef87b5d7c4c64df6210a87571156430e7013d3f556b4db33db8e8",
+  "kernel_source": "5cbc8c64748b480f7da4dac87b92450b80124594",
   "schema": 1,
   "status": "OFFLINE_VALIDATED"
 }

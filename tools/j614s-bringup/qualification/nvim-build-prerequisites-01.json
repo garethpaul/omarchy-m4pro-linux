@@ -1,0 +1,46 @@
+{
+  "schema": 1,
+  "status": "PARTIAL_BUILD_PREREQUISITE_PROBE",
+  "source_archive_verification": {
+    "expected_sha256": "d865d50211358358d3c3c1e356773c1e3de1e8964215d85eb1b4c77521e17488",
+    "actual_sha256": "d865d50211358358d3c3c1e356773c1e3de1e8964215d85eb1b4c77521e17488",
+    "matches": true,
+    "bytes": 7570,
+    "upstream_main": "803bc181d7c0d6d5eeba9274d9be49b287294d99",
+    "source_url": "https://github.com/LazyVim/starter/archive/refs/heads/main.tar.gz",
+    "build_or_package_executed": false
+  },
+  "host_dependency_check_missing": [
+    "shfmt",
+    "stylua",
+    "nodejs",
+    "npm"
+  ],
+  "host_dependencies_installed": false,
+  "docker": "Existing daemon socket access denied; no escalation or retry",
+  "baseline": "Sealed ABI extraction is not a complete runnable rootfs: executable modes/root aliases and non-ABI files are omitted. It was not modified.",
+  "namespace_probes": [
+    {
+      "exit": 1,
+      "stdout": "",
+      "stderr": "bwrap: Can't create file /dev: Read-only file system\n",
+      "scope": "Read-only disposable baseline namespace UID probe; no install/build/target action"
+    },
+    {
+      "exit": 1,
+      "stdout": "",
+      "stderr": "bwrap: execvp /usr/bin/id: Permission denied\n",
+      "scope": "Disposable tmp-overlay namespace UID probe; no install/build/target action; sealed baseline unchanged"
+    },
+    {
+      "exit": 255,
+      "stdout": "",
+      "stderr": "qemu-aarch64-static: Could not open '/lib/ld-linux-aarch64.so.1': No such file or directory\n",
+      "scope": "UID probe after restoring executable mode only in disposable tmp-overlay; sealed source hash/mode unchanged; no install/build/target action"
+    }
+  ],
+  "build_or_package_executed": false,
+  "original_signed151_unchanged": true,
+  "target_actions": false,
+  "next_build_requirement": "A faithful disposable dependency-complete nonroot build environment plus unmodified checksum/dependency checks; no source build/run false pass is claimed"
+}

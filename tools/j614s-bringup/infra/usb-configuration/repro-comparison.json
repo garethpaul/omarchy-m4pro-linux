@@ -1,0 +1,7 @@
+{
+  "compared_artifacts": 19,
+  "differences": [],
+  "hardware": "UNTESTED",
+  "scope": "Image and every matching module; logs and build directory paths excluded",
+  "status": "BYTE_IDENTICAL"
+}

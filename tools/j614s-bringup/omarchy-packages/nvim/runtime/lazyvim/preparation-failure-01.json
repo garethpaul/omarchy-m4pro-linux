@@ -1,0 +1,7 @@
+{
+  "schema": 1,
+  "status": "HARNESS_PREPARATION_FAILED",
+  "reason": "Fresh output parent missing; no payload execution occurred",
+  "payload_executed": false,
+  "target_access": false
+}

@@ -1,0 +1,164 @@
+{
+  "schema": 1,
+  "attempts": [
+    {
+      "attempt": "attempt-01",
+      "status": "RETAINED_OBSERVATION",
+      "exit": 1,
+      "timed_out": false,
+      "source_sha256": "da370eb911d0f839e9ca8faa19a9524ad42cd746af126ddbddfcbe64ff92d7f8",
+      "probe_sha256": "9b50daf95a19617a13b1dd814b375bc7d6267944ea2afc7e0087c7918255848c",
+      "result_sha256": "0f7f2dad866ba102eab3034e150cea02c6e1722a44033caa1c7749685b0c31f4",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "6906f438ef5598e5f137d1a07738378380a7b50a4b3b6894b8297fbaab8b0969",
+      "message_bytes": 0,
+      "failed_stages": []
+    },
+    {
+      "attempt": "attempt-02",
+      "status": "RETAINED_OBSERVATION",
+      "exit": 0,
+      "timed_out": false,
+      "source_sha256": "fc36cdfcadeb00c722e1b32e69973d76ee5190ecbc3238704b169cff90f825bc",
+      "probe_sha256": "9b50daf95a19617a13b1dd814b375bc7d6267944ea2afc7e0087c7918255848c",
+      "result_sha256": "ad4fc283ab93696c62dab1545ded7dc20ffb96c63cea68d7fd303cc45c35d0aa",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "message_bytes": 0,
+      "failed_stages": []
+    },
+    {
+      "attempt": "attempt-03",
+      "status": "RETAINED_OBSERVATION",
+      "exit": 0,
+      "timed_out": false,
+      "source_sha256": "d39a3c403a55266d082e431ef25de70bf52a50543cb5048b9674a36204830d42",
+      "probe_sha256": "9b50daf95a19617a13b1dd814b375bc7d6267944ea2afc7e0087c7918255848c",
+      "result_sha256": "fedf4a5c9fe0aa86e5cdf9562487c97e5b19e76bb0b3015c7550c33ff6c45ec3",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "message_bytes": 0,
+      "failed_stages": []
+    },
+    {
+      "attempt": "attempt-04",
+      "status": "RETAINED_OBSERVATION",
+      "exit": 0,
+      "timed_out": false,
+      "source_sha256": "d39a3c403a55266d082e431ef25de70bf52a50543cb5048b9674a36204830d42",
+      "probe_sha256": "111bcc01627edb1e1c04b347b0d423ec5b4c31b9f87c26d2c62d8a15387b67b1",
+      "result_sha256": "8e184c099039b6a3a19501679ab3d72412b2dfc02226b075690459707c4ed5f3",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "ed3ba5dec543ceab4b82e7520750c1dcc7bf49703f7fb6458cb65f1ab599bee7",
+      "message_bytes": 83,
+      "failed_stages": []
+    },
+    {
+      "attempt": "attempt-05",
+      "status": "RETAINED_OBSERVATION",
+      "exit": 0,
+      "timed_out": false,
+      "source_sha256": "d39a3c403a55266d082e431ef25de70bf52a50543cb5048b9674a36204830d42",
+      "probe_sha256": "d836da6859df7bba4585b8fb2e80b41fc019a08b1f46d6ca3c5e6ddf52e11bdd",
+      "result_sha256": "898306e8602d4c5d0b513b83f375af3a35e49f0fe1028b548897ac6456113ca5",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "ed3ba5dec543ceab4b82e7520750c1dcc7bf49703f7fb6458cb65f1ab599bee7",
+      "message_bytes": 83,
+      "failed_stages": []
+    },
+    {
+      "attempt": "attempt-06",
+      "status": "RETAINED_OBSERVATION",
+      "exit": 0,
+      "timed_out": false,
+      "source_sha256": "768279374ce4143b4cc44d9948dfa8b7e32b835b93d545acc74c128c42c5071f",
+      "probe_sha256": "07886214ae17d869ba46a925a18ae3ecb0308c32fd5515a4b7cab7b96d812a9e",
+      "result_sha256": "d1428d6c23c4304ee431266d76bc4844dcb32b1a3930aee72ed52fb855e5683c",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "message_bytes": 0,
+      "failed_stages": [
+        "lua"
+      ]
+    },
+    {
+      "attempt": "attempt-07",
+      "status": "INCOMPLETE_PREPARATION",
+      "outcome": "No completed result; not qualified"
+    },
+    {
+      "attempt": "attempt-08",
+      "status": "RETAINED_OBSERVATION",
+      "exit": 0,
+      "timed_out": false,
+      "source_sha256": "288672534175811bf520dc44128b6353169ca8a87eaea9005a910bb4d7f132b4",
+      "probe_sha256": "07886214ae17d869ba46a925a18ae3ecb0308c32fd5515a4b7cab7b96d812a9e",
+      "result_sha256": "0eab90634ecb36962082533352e799082eb892311bc0345cd636ca7174c695e9",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "message_bytes": 0,
+      "failed_stages": []
+    },
+    {
+      "attempt": "attempt-09",
+      "status": "RETAINED_OBSERVATION",
+      "exit": 0,
+      "timed_out": false,
+      "source_sha256": "9a4572c49b8af72e26165ca9d3bef164b5d15108c8601e5bfedbae1d1f08eef2",
+      "probe_sha256": "b941a4e3e938eb9323ade3a6d2547d025d90370fed0a90f776e485f8ae47d5bd",
+      "result_sha256": "b88ad0208762b8edbcc22f5133d6433deba99d423fb16e6c65d4f3dfa7134dcc",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "message_bytes": 0,
+      "failed_stages": []
+    },
+    {
+      "attempt": "attempt-10",
+      "status": "RETAINED_OBSERVATION",
+      "exit": 0,
+      "timed_out": false,
+      "source_sha256": "8789f3d021e53453c4592de3029c52b46e296e42829bab97d69ec3f28155e441",
+      "probe_sha256": "b941a4e3e938eb9323ade3a6d2547d025d90370fed0a90f776e485f8ae47d5bd",
+      "result_sha256": "fed2b53bbc429095ce52640751446528b7c38176eb75b4612422af3b77815e79",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "message_bytes": 0,
+      "failed_stages": []
+    },
+    {
+      "attempt": "attempt-11",
+      "status": "RETAINED_OBSERVATION",
+      "exit": 0,
+      "timed_out": false,
+      "source_sha256": "0919314afbf7160aa39377847571ac826abcbe4f386d52cce2224829d8be4f8b",
+      "probe_sha256": "306580ef6d046f18ed074a25f6a5b7142ba6c0bc2786edb5447195b145d4d1b2",
+      "result_sha256": "7f43b34d13e809391673288f8c243ee224495c666de11348daa541019bf8c57c",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "message_bytes": 0,
+      "failed_stages": []
+    },
+    {
+      "attempt": "attempt-12",
+      "status": "RETAINED_OBSERVATION",
+      "exit": 0,
+      "timed_out": false,
+      "source_sha256": "0919314afbf7160aa39377847571ac826abcbe4f386d52cce2224829d8be4f8b",
+      "probe_sha256": "50bfddeb58a9518b011494d150e34146b986dc65925989285e5004b2e916fb1d",
+      "result_sha256": "b573f8c684e47aee96e0ee30b7d71260573b37886dd7e00b67e81e7807f6a583",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "message_bytes": 0,
+      "failed_stages": []
+    }
+  ],
+  "known_causal_corrections": [
+    "Prepared probe bind destination before entering read-only root",
+    "Supplied declared signed Git binary and verified baseline library bytes",
+    "Supplied verified native parser files and exact declared parser aliases",
+    "Supplied sealed-baseline Curl8.22 and verified dependency closure; did not download8.23 or change151 model"
+  ],
+  "history_limit": "Earlier harness source snapshots are not retained for every iteration; source hashes and raw outputs remain private. Final source is frozen and independently replayed.",
+  "worker_end": "Service capacity error after completed lane12 observation; root took over review, fresh replay and curation",
+  "target_access": false
+}

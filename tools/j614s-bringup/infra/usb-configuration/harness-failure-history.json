@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "scope": "Host harness setup failures, not kernel compile failures",
+  "history": [
+    {
+      "failure": "Initial macro extraction omitted multiline define continuations, causing implicit-int after a continued macro",
+      "correction": "Capture complete original macro definitions"
+    },
+    {
+      "failure": "Strict host warning failures in mock signedness/unused logging/barrier bookkeeping",
+      "correction": "Type-safe mock bit iteration and IRQ log argument recording; barrier counter asserted; no warning flag disabled"
+    },
+    {
+      "failure": "Attempt to host-wrap entire reset function exposed mixed signed/unsigned kernel-loop types under stricter host warnings",
+      "correction": "Retain actual reset order as source assertion plus real AArch64 compilation; no claim whole reset executes in host harness; command/IRQ source bodies remain unmodified"
+    }
+  ],
+  "hardware": "UNTESTED"
+}

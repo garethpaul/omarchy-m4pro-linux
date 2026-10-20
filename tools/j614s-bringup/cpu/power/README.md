@@ -75,3 +75,20 @@ interpretation = decode(live_layout, snapshot)
 The helper opens no transport and touches no watchdog. Tests prove its callback sequence contains only six exact command reads plus exception-count queries. The primary supplies the fresh ADT bytes from its existing checked BootArgs routine, and saves `snapshot` privately. `decode_snapshot.py --comparison COMPARISON_JSON --snapshot SNAPSHOT_JSON --output DECODED_JSON` is an offline CLI alternative. It rejects identity/hash/width/address/exception/state mismatches and preserves both zero-based and one-based table-index hypotheses. Even a stable low5 value yields `PARTIAL` and `hardware_frequency=UNTESTED`.
 
 For actual frequency, compare independent CPU cycle counts against the architectural timer under a pinned workload if a qualified PMU/perf path exists. A pstate request is insufficient: firmware may throttle below it. Collect available Linux frequency/thermal/load snapshots using the companion qualification suite, and repeated per-core timings under matched conditions. Missing counters or policy exports remain UNTESTED. Before any DVFS writes, establish state indexing, current-state status semantics, retained PMP/CLPC ownership, limits, transition timing and a working temperature/thermal rollback policy. Do not bypass these gaps by exposing all SRAM entries as operating points.
+
+## Same-board public source cross-check
+
+The public [Wallace checkpoint55f116dd](https://github.com/damsleth/wallace/tree/55f116dd0e0f28d1412c6be728a101f7d861c473)
+provides a useful independent comparison, not qualification of this Mac. Its
+three OPP frequency sequences match all45 entries in our freshly captured
+ADT7/19/19 SRAM tables. Its14CPU consumer topology differs from this12CPU bin
+and cannot be copied. The shared numeric frequency inputs do not prove our
+state indexing, access safety, retained ownership, actual clocks or thermal
+limits. [Exact comparison](evidence/wallace-source-comparison.json).
+
+Wallace's reported32-bit kHz-to-Hz overflow repair is already present as
+`1000UL` in the exact5cbc candidate's cpufreq source. Reapplying that repair
+would add no support. CONFIG_CPU_FREQ remains unset and the RAM diagnostic DT
+contains no cpufreq consumers. No runtime driver/DT/voltage/clock change was
+made. Gravity kernel4fc326f6 and Mesa87ac51d upstream refs also remain unchanged
+from the previous checkpoint; no new T6040 profile was found by that check.

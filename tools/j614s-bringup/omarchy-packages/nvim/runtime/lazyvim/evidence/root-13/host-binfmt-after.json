@@ -1,0 +1,4 @@
+{
+  "qemu-aarch64": "enabled\ninterpreter /usr/bin/qemu-aarch64-static\nflags: PF\noffset 0\nmagic 7f454c460201010000000000000000000200b700\nmask ffffffffffffff00fffffffffffffffffeffffff\n",
+  "status": "enabled\n"
+}

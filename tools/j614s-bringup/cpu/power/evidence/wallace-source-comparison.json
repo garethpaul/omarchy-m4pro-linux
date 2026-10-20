@@ -1,0 +1,99 @@
+{
+  "status": "PARTIAL_OFFLINE_SAME_BOARD_COMPARISON",
+  "source_of_truth": "Current target ADT; no public tree copied into target DT",
+  "current_adt_sha256": "610566e38ce84e6740b286227cf732a8a79588128d30431ef33bdbfe596526a6",
+  "source_comparison_first": "Existing M2/T8112 and M3/T8122 CPU/PMGR comparison remains in adt-cpu-comparison.json; no compatible or semantic inference changed",
+  "public_repository": "https://github.com/damsleth/wallace",
+  "public_commit": "55f116dd0e0f28d1412c6be728a101f7d861c473",
+  "dtsi_sha256": "b1fe832c3586da3f8e2e614af579d2b686e07ea42c7bbb76f08c74fee52ff6f8",
+  "table_comparison": [
+    {
+      "table": "voltage-states1-sram",
+      "states": 7,
+      "public_frequency_sequence_matches_this_adt": true,
+      "public_opp_levels": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "indexing_on_this_machine": "UNTESTED"
+    },
+    {
+      "table": "voltage-states5-sram",
+      "states": 19,
+      "public_frequency_sequence_matches_this_adt": true,
+      "public_opp_levels": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19
+      ],
+      "indexing_on_this_machine": "UNTESTED"
+    },
+    {
+      "table": "voltage-states13-sram",
+      "states": 19,
+      "public_frequency_sequence_matches_this_adt": true,
+      "public_opp_levels": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19
+      ],
+      "indexing_on_this_machine": "UNTESTED"
+    }
+  ],
+  "compared_frequency_records": 45,
+  "cpu_count_difference": "Public DTS has14CPU consumers; this machine has12. Public consumer topology cannot be copied.",
+  "overflow_repair_already_in_candidate": true,
+  "candidate_source": "5cbc8c64748b480f7da4dac87b92450b80124594",
+  "candidate_cpufreq_source_sha256": "e4efe79b653dc07c18a2bacc607fe69f8144ead11bf10cd4ef9407396ca808d2",
+  "runtime_cpufreq": "UNTESTED; disabled in exact current boot config",
+  "no_runtime_change": true,
+  "missing_before_writable_driver": [
+    "Current-machine CPM read/access and status semantics qualification",
+    "PMP/CLPC retained ownership",
+    "Thermal limits and transition/rollback qualification"
+  ],
+  "upstream_refs": {
+    "GravityLinux/linux gravity-m4": "4fc326f6c25ccceb7515e2635c22e01fde5d3bac",
+    "GravityLinux/mesa HEAD": "87ac51d411f0e58a9433567ec2666f457be89e1d",
+    "changed_since_previous_checkpoint": false
+  },
+  "target_access": false,
+  "raw_adt_exported": false
+}

@@ -749,3 +749,154 @@ No proxy code execution, target allocation/write, watchdog/core/PMU change,
 Fingerbot, boot or protected write occurred. Physical recovery availability is
 still unanswered. The current work made offline code/build progress; overall
 native accelerated persistent Omarchy is incomplete.
+
+## Supervised RAM boot01: executed; USB configuration failure isolated
+
+User explicitly returned and authorized supervised RAM boot/hardware tests,
+physical power fallback, webcam monitoring and no Fingerbot/protected changes.
+Initial screen black/USB absent; user power-cycled. Fresh proxyUSB66 returned.
+A new startup helper's first attempt failed before CPU changes because it
+omitted protocol feature negotiation after the observer's sentinel mode. Failed
+source/result retained privately. Explicit feature0 negotiation keeps real
+transfer checksums enabled; second invocation starts eleven resident secondaries
+with exact ADT MPIDRs, idle slots/WFEtrue and zero exceptions. No payload upload
+or watchdog action belongs to that startup step.
+
+Fresh CPU and bounded staging captures bind new BA/ADT identities. Actual
+session DT and19,414,811-byte native container55f46da9 assembled/independently
+verified. Separate clear64MiB child passed reviewed nonwriting-advance contract;
+reserved gaps were skipped, never made writable. Actual allocator instruction
+bytes/high-water and resident release slots rechecked. Container/BA read back
+twice, caches maintained, vector acknowledged. A code review caught duplicate
+state-attempt, durability and stale-DT linkage gaps before staging; process
+lock, fsync/atomic intent and full current-capture canonical-DT revalidation
+resolve them. Only copied BA top_of_kernel_data changes; all padding retained.
+See qualification/supervised-ram-boot-01.json.
+
+Linux reached diagnostic init and exposed the exact RAM-probe gadget descriptor.
+Host SET_CONFIGURATION1 timed out-110; no ACM interfaces/tty, so no framed
+status or Linux online-mask observation. NO storage probe command was issued.
+The webcam showed Linux messages then the installed proxy again. Host timeline
+has gadget disconnect about63s after original proxy disconnect; USB71 returned.
+User confirms no further power action. This establishes one automatic recovery
+cycle for this exact diagnostic, not all kernels. Read-only PMU count is1;
+loader's existing zero-health guard remains. Separate exact one-byte clear
+operation is prepared/mock-tested and awaits explicit user approval; no clear
+or policy write has occurred.
+
+Root measured USB1 DART PARAMS3 at both actual ADT-bound banks:0x2a2a0202,
+version2.2,42-bit PA/VA, zero exceptions, no DART write. The previously working
+4ff source has v2.2 command/IRQ handling absent from8f2. USB topology matches;
+EP0 differences are formatting only; gadget/core/f_acm/u_serial/configfs match.
+Build lane is porting the narrow versioned command/exception path, preserving
+legacy behavior and mapping/locked-root/display code. Hardware causality remains
+a hypothesis until the next test. Integration lane prepares exact new kernel
+probe bindings without changing init/collector behavior. Original artifacts and
+unrelated working-tree omarchy/j614s_preflight.py edit remain untouched.
+
+## USB DART v2 candidate: prepared, awaiting one-byte approval
+
+Integrated USB lane63af59c. Source5cbc8c64 changes only apple-dart.c above8f2;
+measured2.2 command/exception regression controls pass under both fatal-sanitizer
+compilers, legacy/mapping code preserved. One full Image+18module build passes;
+root independently verifies artifact integrity, exact config and source bindings.
+Image09a52425; all18modules unchanged. This is not a hardware USB fix claim.
+Probe6311976c changes embedded metadata only; init/collector/modules unchanged.
+
+Root updates DT/bundle/stager hashes deliberately;65 DT and30 native-bundle
+host controls pass with new artifacts and no skips. Actual USB71 CPU-ready and
+staging captures bind session BA/ADT and resident slots. Initial DT invocation
+omitted storage-diagnostic flag; bundle refused before output. Preserved failed
+inputs/report, regenerated a separate correct storage template, then assembled
+and independently verified19,414,812-byte container40bec115. Reviewed separate
+64MiB geometry remains clear; pure plan opened no target interface. New candidate
+NOT staged/vector-executed. Webcam shows installed proxy after11core startup.
+
+Exactly one PMU diagnostic-byte clear1->0 still awaits the explicit question's
+answer. No clear has occurred. The loader's zero-health check remains intact.
+Once approved, root uses only clear_supervised_health.py with current USB71 and
+new private result; then rechecks session/slots and executes the single-use
+RAM-only stage/vector. Establish fully framed status first, qualify Linux masks
+and empty module state, then at most one separately framed diagnostic probe.
+Do not repeat a health clear from this one grant, weaken guards, touch protected
+boot/disk state, or use Fingerbot. Candidate hardware result remains UNTESTED.
+
+Independent fresh source/build02 at exact5cbc reproduces Image and all18modules,
+plus seven supplemental artifacts. All24manifest entries compared; rawlog alone
+differs, with path-normalized line-multiset equality. Integrated lane8ebf952.
+Root independently verifies23artifact pairs, distinct inodes and two clean source
+checkouts; qualification/usb-dart-reproduction-root.json. No hardware action.
+Exact5cbc branch codex/j614s-usb-dart-v22 is published under the authorized
+garethpaul/omarchy-m4pro-linux fork; remote SHA verified. Pending one-byte clear
+approval still prevents next handoff. No diagnostic-byte write has occurred.
+
+User reported power-cycle. Fresh14:29UTC observation still sees USB71, identical
+BA/ADT/slots,11resident flags/WFEtrue/idle,0exceptions. Webcam Running proxy;
+MJPEG decoder diagnostics preserved. Do not infer another reset from this state.
+Read-only PMU counter remains1; power-cycle report does not grant its clear.
+The precise one-byte approval question was clarified; no write/stage/vector.
+Fresh actual inputs/template/container39564332 verify; pure plan matches the
+reviewed64MiB geometry. Initial host diagnostics path was inside capture parent;
+guard refused. Exact unchanged capture copied to its own evidence directory,
+input pathname corrected, validation passes; no guard weakened or target write.
+See qualification/supervised-powercycle-check-03.json. Latest private context
+is supervised-ram-03/context.json; supersedes02 only for a later approved test.
+
+## Independent continuation while PMU approval is pending
+
+Previous turn is PROGRESS: fresh actual observations, canonical template/container
+and plan verified, saved asbb629e0. It did not grant or perform the byte clear.
+Current kernel/mesa upstream refs remain4fc326f6/87ac51d. Public same-board
+Wallace55f116dd compared to this fresh ADT: all45OPP frequency candidates match
+its7/19/19tables, but14vs12CPU topology and current-machine power semantics
+remain distinct. Its32-bit rate overflow fix is already present in5cbc; no
+duplicate patch or guessed cpufreq alias was introduced. Exact source/evidence
+hashes recorded in cpu/power/evidence/wallace-source-comparison.json.
+
+Two independently safe source lanes resumed: C tests the remaining actual full
+LazyVim/Mason startup gap in the isolated ARM runtime; D implements the host-only
+canonical preparation step of the requested automated test loop after the two
+observed ad-hoc packaging refusals. Both have no physical target authority.
+The hardware-ready5cbc artifact/pins are frozen; stage/vector and byte clear
+remain root-only, pending the unanswered exact approval. No new target action.
+
+## Host preparation and full packaged editor: root-completed continuation
+
+Both source workers hit a service-capacity error after leaving complete code
+and runtime observations. They are terminal, not silently running. Root took
+over without model change: reviewed/frozeff50dcb host helper, integrated529d074,
+replayed15unit controls then performed the first full actual-input canonical
+generator/assemble/verify/PLAN run. Context0b5642c6, new container revalidated;
+independent old/new geometry and original/final BA comparison agrees. Two full
+CLI negative cases refuse a false storage-diagnostic flag or mismatched USB before
+output. No stage state/target interface. See qualification/preparation-root-04.
+Root's initial local cherry-pick preceded fetching the separate clone; no helper
+executed in that failed integration attempt. Exact branch fetch resolved it.
+
+Full packaged52spec LazyVim, actual Mason setup and stock Conform shell/Lua
+commands pass in lane12 and independent root13. Signed native ARM64 formatter
+bytes produce expected edits and idempotent second passes. Existing kernel
+binfmt PF handler permits implicit QEMU dispatch; registry unchanged before/after,
+current interpreter pathname hash verified, but registered F FD bytes unobserved.
+No native Mac/performance claim. Missing Git/parser inputs in the minimal test
+root were supplied from declared signed/sealed sources; no production defect
+survived. Sealed-baseline Curl8.22 closure is verified; actual DNS/registry
+lookup exits6 in unshared network. No8.23 download,151model change, install or
+Mason registry pass. Frozen104103a integrated6404535,10,023member manifest rows
+identical. Earlier failures retained; final checker refuses optimized Python.
+
+Main hardware gate is unchanged: PMU byte1, exact one-byte clear unanswered,
+new5cbc never staged/vector-executed. Protected boot/storage and Fingerbot
+untouched. Latest host-prepared private context is preparation-root-04/context.
+Live rechecks and concrete approval remain mandatory before its use.
+
+Bounded nvim6 build prerequisite probe: the upstream starter main803bc181
+archive still exactly matches pinned d865d502 (7570bytes). No source checksum
+was bypassed. Host dependency query reports shfmt/stylua/nodejs/npm absent; no
+host install. Existing Docker socket denies access; no escalation. Sealed ABI
+extraction deliberately omits executable modes/root aliases/non-ABI files; it
+is not a runnable rootfs. Three disposable namespace probes retain mountpoint,
+mode and loader failures; only tmp-overlay metadata changed, original hash/mode
+unchanged. No source build/package ran. qualification/nvim-build-prerequisites-01
+records this honestly; a complete disposable build environment remains needed.
+The5cbc hardware candidate is unaffected; pending PMU clear is still unanswered.

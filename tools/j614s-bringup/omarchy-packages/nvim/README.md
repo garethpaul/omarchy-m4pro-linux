@@ -7,10 +7,8 @@ The packaging investigation below retains its original scope. Subsequent
 and [real Conform integration](runtime/conform/README.md) now execute both signed
 ARM formatters inside a read-only isolated userspace environment. Root independently
 replayed automatic filetype selection, real subprocesses, buffer edits, idempotence
-and unavailable-command refusal. An explicit QEMU prefix is required by this x86
-test host. This supersedes the earlier runtime/command-lookup UNTESTED statements
-only for that scope. Full LazyVim/Mason, native target execution, unsigned source6
-package build/signing, existing-user migration and installation remain UNTESTED.
+and unavailable-command refusal. The earlier test used an explicit QEMU prefix. A later [full-loader check](runtime/lazyvim/README.md) now passes52 packaged specs, real Mason setup and stock Conform commands under the host’s existing binfmt handler, with independent root replay. This supersedes the earlier runtime/command-lookup UNTESTED statements
+only for that scope. Full Mason registry/install, native target execution, unsigned source6 package build/signing, existing-user migration and installation remain unqualified. Earlier statements below retain their original historical scope.
 
 **PARTIAL:** the packaging defect is reproduced and fixed at the actual `package()` seam. A new signed package, native formatter runtime, and Neovim integration remain **UNTESTED**. Nothing was installed, no existing account was changed, and the frozen 117-package plans are unchanged.
 

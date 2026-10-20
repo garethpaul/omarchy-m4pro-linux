@@ -1,10 +1,9 @@
 # Offline native RAM diagnostic DT template
 
-**PARTIAL:** 12-CPU synthetic fixtures compile and pass host validation.
+**PARTIAL:** 12-CPU synthetic fixtures and an actual USB71 session template compile and pass host validation.
 **BLOCKED for frozen input03:** its secondary slots are not idle and WFE is
 false, so generation refuses before creating an output directory.
-**UNTESTED:** hardware operation, live freshness, child placement, final RAM
-ownership, watchdog recovery and execution of this new loader/kernel pair.
+**UNTESTED:** execution of the newly pinned DART v2 kernel. The preceding8f2 pair reached diagnostic Linux in supervised boot01, failed USB configuration, and returned automatically once; that result does not qualify this candidate. See [boot01](../../qualification/supervised-ram-boot-01.json) and [new preparation](../../qualification/supervised-ram-02-preparation.json).
 No target access, staging, boot or publication is performed by these tools.
 
 `generate.py` consumes a private observer capture, explicit expected capture /
@@ -18,7 +17,7 @@ an observation, not authorization or proof that state is still current.
 hash-bound by the generator. No arbitrary previous DTS or caller bootargs are
 accepted. The profile binds:
 
-- Kernel source `8f2f3d13600aacadd93d577855b7e212b8ae57ff`, Image `f9d7b637…4604`,
+- Kernel source `5cbc8c64748b480f7da4dac87b92450b80124594`, Image `09a52425…db8e8`,
   config `6c5aba…6516`, and ten relevant driver/platform source hashes.
 - Reproduced loader source `6249e0ecdb7677b6afa01989c23344962253e954` and flat
   binary `2309dfbb…21a0e00`; the exact native helper source is checked.

@@ -37,7 +37,9 @@
         "line": 15
       }
     ],
-    "source_commit": "8f2f3d13600aacadd93d577855b7e212b8ae57ff"
+    "source_commit": "5cbc8c64748b480f7da4dac87b92450b80124594",
+    "transition_scope": "Descriptor source bytes and USB matching identity unchanged; kernel source pin updated for DART v2.2 fix. Serial is a fixed profile string, not a kernel-version assertion.",
+    "unchanged_from_source_commit": "8f2f3d13600aacadd93d577855b7e212b8ae57ff"
   },
   "hardware": "UNTESTED",
   "host": {

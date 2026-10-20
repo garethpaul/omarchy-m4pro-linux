@@ -1,69 +1,44 @@
 # Next supervised RAM test
 
-**BLOCKED on current operator availability.** Remote recovery remains unverified;
-manual power-cycle is the only proven fallback. The overnight mission forbids
-an unattended reboot in this state. The unrelated KVM Fingerbot must never be used.
-No new loader/kernel/initrd has been staged or executed.
+**PARTIAL: host preparation complete; pending exact one-byte PMU clear approval.**
+The operator explicitly authorized supervised RAM boot/testing and can power-cycle.
+Boot01 reached diagnostic Linux and then returned automatically once, confirmed
+by the operator taking no further power action. That is not general recovery
+qualification. Never touch Fingerbot or protected boot/storage configuration.
 
-Inputs prepared and independently verified:
+| Component | Candidate / evidence |
+| --- | --- |
+| Preserved resident |8e0cf28, flatfb31c765; current USB71,11idle resident secondary flags/WFEtrue,0exceptions |
+| RAM loader |6249e0ec, flat2309dfbb, unchanged; independent reproducibility proof in infra/native-loader |
+| Kernel |5cbc8c64, Image09a52425, exact6c config; narrow measured DART2.2 command/exception port |
+| Initrd |6311976c, only metadata differs from earlier8fd6 archive; init/collector/module bytes unchanged |
+| Session template / container |Actual USB71 storage template, container39564332,19,414,812bytes; independently verified |
+| Host checks |65DT controls,30native-bundle controls, new components independently verified; no skips |
+| Placement |Separate clear64MiB child, reviewed nonwriting heap advance; pure plan only, candidate not staged |
 
-| Component | Exact candidate | Evidence |
-| --- | --- | --- |
-| Resident object, preserved |8e0cf28, flat SHAfb31c765…f3afb | `resident-cpu-observation-03.json`; paired local ELF, live identity, zero exceptions |
-| Unappended RAM loader | source6249e0ec; flat SHA2309dfbb…a0e00 | `../infra/native-loader/repro-after.json`; seven artifact pairs match |
-| Kernel/Image | source8f2f3d1; Image SHAf9d7b637…4604 | `../infra/gravity-combined-reproducibility.json`; Image+18 module pairs match |
-| Offline initrd | SHA8fd6f861…d16be1 | `../integration/boot-probe/artifact-manifest.json`; two archives match,75 tests; root rebuild matches |
+See [boot01 evidence](../qualification/supervised-ram-boot-01.json),
+[preparation](../qualification/supervised-ram-02-preparation.json),
+[fresh recheck](../qualification/supervised-powercycle-check-03.json) and
+[DART source/build evidence](../infra/usb-configuration/README.md). Private
+context contains exact paths/hashes and dynamic addresses; do not publish it.
+Historical USB63/66 captures and addresses cannot substitute for current checks.
 
-The [versioned offline DT generator](../infra/native-dt/README.md) binds exact source, ELF, capture/ADT/bootargs and resource profiles. All65 root-replayed controls pass; frozen input03 correctly refuses before output. Its synthetic positive templates are **UNRELOCATED**, with memory/initrd/reservation placeholders that only the future loader patches. They are not current-session or runtime DTs.
+Root-only continuation:
 
-The [offline native container tool](../integration/native-bundle/README.md) now
-passes30 independent root-replayed file/format/refusal controls. It verifies the
-paired ELF payload offset, exact components and C-compatible CRCs, then delegates
-to the pinned DT checks. Current input03 refuses end to end before output; only
-synthetic codec fixtures are positive. It does not stage, preserve live resident
-memory, boot, or qualify recovery.
+1. Await the already asked exact PMU diagnostic-byte clear1->0 decision. If
+   approved, use only clear_supervised_health.py, currentUSB71 and a new private
+   result. Preserve write intent and readback. No watchdog reset helper or retry.
+2. Recheck webcam/USB/resident identity and all live data/allocator/idle slots.
+   Run supervised_child.py stage with the explicitly hashed private context;
+   complete full readbacks and cache maintenance. Then its single-use vector.
+3. Watch webcam and physicalUSB1-9.3. Obtain one complete framed status response,
+   validate Linux online/present masks and no NVMe modules before proceeding.
+4. If eligible, issue at most one exact framed diagnostic probe, collect results
+   and logs; no mount/data workload/reset/reprobe or weakening ownership checks.
+5. Observe automatic return; if it fails use the available operator. Do not infer
+   successful recovery from a countdown. Preserve every failure and uncertain
+   vector state; no automatic second attempt or repeated health clear.
 
-These separate artifacts are **not yet a complete boot bundle**. Before any
-staging, the primary agent must bind a fresh DT and CPU-release table to the same
-live session and verify all appended sizes/CRCs/addresses. The current readonly
-observation is USB63 with zero secondary flags/WFEfalse. Old USB45 addresses and
-old package/chainload scripts cannot substitute for new session checks.
-
-The first safe continuation command is the read-only observer with an absolute
-qualified development Python path, the retained m1n1 source and a new private
-output filename. It performs no watchdog/core/release-slot changes.
-
-Once the operator confirms physical recovery availability, primary-only work is:
-
-1. Recheck webcam and pinned proxy/ELF identity. Qualify resident secondary startup
-   and idle slots under supervision using the earlier proven CPU framework.
-   Existing helpers that start cores or arm timers require this supervised scope.
-   Do not call the legacy capture helper as a read-only operation.
-2. Generate/validate the session DT from live ADT and qualified resident slots.
-   Keep the restricted4GiB owned RAM, exact USB2 peripheral path and strict ANS
-   diagnostic topology. No firmware/cache address can be copied across sessions.
-3. Bind the reproduced loader/Image and current initrd, preserving every original
-   object. Do not use the legacy chainloader's PMU `--reset` path. A nonzero PMU
-   health byte must refuse; no health counter clear is authorized by this plan.
-4. Review the concrete RAM-only staging/vector plan and its carveout/size/CRC
-   checks before executing. Preserve resident code/stacks/spin table in a separate
-   child allocation. The generic `proxyclient/tools/chainload.py` copies back to
-   resident `u.base` and is incompatible with preserving these release pointers;
-   see [source audit](staging-source-hazard.json). The historical separate PIC
-   test52 approach is a reference only: its unchanged helper clears PMU state
-   and cannot be reused. No disk, protected container, persistent entry,
-   firmware flash or security policy change belongs to this test.
-5. Establish the new physical ACM channel and collect one fully framed `status`
-   response before considering the separately gated single-shot `probe`. The
-   host collector must match the exact physical port and gadget identity; the
-   current proxy correctly fails discovery before any tty open.
-   Record CPU masks, watchdog state, module/admission logs and RO block counters.
-   Strict ownership refusal is a PARTIAL/blocked result; do not weaken admission.
-6. If USB or the kernel fails, use the physically available operator. Do not infer
-   recovery from a countdown or reuse another machine's Fingerbot.
-
-The kernel may alter watchdog timing. Init neither arms nor feeds it; this does
-not prove a reset deadline. The RO guardian is a50ms poll, not atomic media
-protection. No data workload, mount, reset or reprobe is exposed in this init.
-GPU INIT/body capture, XNU/macOS staging/boot and persistent installation remain
-separate later gates. This plan grants none of their protected authority.
+The watchdog may be reprogrammed by the kernel. Init neither arms nor feeds it.
+The50ms read-only guardian is non-atomic, not a write-proof guarantee. GPU INIT,
+XNU capture and persistent installation remain separately gated later work.

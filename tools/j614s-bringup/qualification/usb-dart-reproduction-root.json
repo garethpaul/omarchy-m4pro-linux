@@ -1,0 +1,147 @@
+{
+  "status": "WORKS_OFFLINE_REPRODUCTION",
+  "scope": "Root independent comparison of two completed fresh builds; root did not invoke a third build",
+  "files": [
+    {
+      "file": "Image",
+      "sha256": "09a5242571bef87b5d7c4c64df6210a87571156430e7013d3f556b4db33db8e8",
+      "bytes": 14772232,
+      "identical": true
+    },
+    {
+      "file": ".config",
+      "sha256": "6c5aba7745d918c528300c5a395fcd7db0c2b718acda7d1467af2816a8d56516",
+      "bytes": 89198,
+      "identical": true
+    },
+    {
+      "file": "contract.json",
+      "sha256": "782d5db0276147a31f27308142988cb3f727d3e5e87b87e963867d1bd391fd18",
+      "bytes": 2811,
+      "identical": true
+    },
+    {
+      "file": "kernel.release",
+      "sha256": "abc88b2829b4b243b9ca3565f4bce6b0a532ca7cad8b4c2e9081a37a96a00e79",
+      "bytes": 32,
+      "identical": true
+    },
+    {
+      "file": "layout-evidence.json",
+      "sha256": "2a31522fcc873d0decb94c5fe93734a292d21673fd18143220969c97e4c1a793",
+      "bytes": 432,
+      "identical": true
+    },
+    {
+      "file": "modules/drivers/gpio/gpio-macsmc.ko",
+      "sha256": "8f0f127fda8d4583915f820fa69a7b0a5c0c5dbe693545b6a16357b826f26d65",
+      "bytes": 12528,
+      "identical": true
+    },
+    {
+      "file": "modules/drivers/gpio/gpio-shared-proxy.ko",
+      "sha256": "fdf135041a409a3595ca5f5ac6617e3dd31c880035553727217236787be8562b",
+      "bytes": 9864,
+      "identical": true
+    },
+    {
+      "file": "modules/drivers/gpu/drm/apple/appledrm.ko",
+      "sha256": "351764054badf7873a5a868056efb2c2522f4b50b054f17edd61faa4512cb51c",
+      "bytes": 252376,
+      "identical": true
+    },
+    {
+      "file": "modules/drivers/gpu/drm/asahi/asahi.ko",
+      "sha256": "8e0d6530552c312d71d4c4b5412087294f1349511ac1114fae6c0394bdaad061",
+      "bytes": 3697184,
+      "identical": true
+    },
+    {
+      "file": "modules/drivers/gpu/drm/asahi/asahi_m4.ko",
+      "sha256": "6039b5499888a8ce4d32385136316c63db7ab42818898c60fe2a82f1e319b957",
+      "bytes": 683952,
+      "identical": true
+    },
+    {
+      "file": "modules/drivers/gpu/drm/asahi/g16-bootstrap.ko",
+      "sha256": "b2491be9cc0c6b20a93c420d6c0dfeabf77505414528d1b1a740f34c468586af",
+      "bytes": 13136,
+      "identical": true
+    },
+    {
+      "file": "modules/drivers/gpu/drm/drm_dma_helper.ko",
+      "sha256": "d72b1a78f242dac9d796e8f2ec7709d9476bcb76e28287da79caaf69b5ebe241",
+      "bytes": 26976,
+      "identical": true
+    },
+    {
+      "file": "modules/drivers/hid/dockchannel-hid/dockchannel-hid.ko",
+      "sha256": "42646788b8254ba7dfd4188631e85c4962c018221cfa6e322bdcd6d0b5cc93d6",
+      "bytes": 30264,
+      "identical": true
+    },
+    {
+      "file": "modules/drivers/hid/hid-apple.ko",
+      "sha256": "2e7b040da97df0c44de59638628f664d39217385cef0836fb062c6dbf3c9ce5e",
+      "bytes": 37312,
+      "identical": true
+    },
+    {
+      "file": "modules/drivers/hid/hid-magicmouse.ko",
+      "sha256": "70f01b7c375cae65acbd32c24c99b9db76852b66eee71151e38124fa495af297",
+      "bytes": 26536,
+      "identical": true
+    },
+    {
+      "file": "modules/drivers/mfd/macsmc.ko",
+      "sha256": "6ae7b902b581f4fba86785a0b8a9a49d81a3f32c6c4ac718b35c8acca7679ad8",
+      "bytes": 20344,
+      "identical": true
+    },
+    {
+      "file": "modules/drivers/mfd/mfd-core.ko",
+      "sha256": "c8d1b8f942bf52d069cab51b0d94d8f6e16f99da8c081654973fe5ed4478642f",
+      "bytes": 11688,
+      "identical": true
+    },
+    {
+      "file": "modules/drivers/nvme/host/nvme-apple.ko",
+      "sha256": "8bf6fc6b1369bcbeadefbcbeb0197376803090c6b4776d230be36b039d53bcef",
+      "bytes": 55928,
+      "identical": true
+    },
+    {
+      "file": "modules/drivers/nvme/host/nvme-core.ko",
+      "sha256": "b4cfc0d9e84e34cc12f89f85fd01a3fa02b7e34223455825799bf9bc72993a51",
+      "bytes": 139736,
+      "identical": true
+    },
+    {
+      "file": "modules/drivers/phy/apple/usb2-j614s-host-diagnostic.ko",
+      "sha256": "2de407768f7a29795a6613280d2269037544fcbb888e6785247fc95906a91aba",
+      "bytes": 9760,
+      "identical": true
+    },
+    {
+      "file": "modules/drivers/power/supply/macsmc-power.ko",
+      "sha256": "9e1adb709a2540cc5a2e2ae9da5d758751705bf6961dfedec1e9c8fcb9eebcb6",
+      "bytes": 21728,
+      "identical": true
+    },
+    {
+      "file": "modules/drivers/soc/apple/apple-dockchannel.ko",
+      "sha256": "cbdef65ce4d50954fca3875bf4c7fe2d3ae7631399f77e62eb2ee53151c030d5",
+      "bytes": 16120,
+      "identical": true
+    },
+    {
+      "file": "modules/drivers/soc/apple/apple-rtkit-helper.ko",
+      "sha256": "c8d58e112c726cb88fad01b3a0a4d09128415d9121e289033ef0b596def53911",
+      "bytes": 8824,
+      "identical": true
+    }
+  ],
+  "source_clean": true,
+  "distinct_inodes": true,
+  "hardware": "UNTESTED"
+}

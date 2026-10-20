@@ -1,0 +1,473 @@
+{
+  "capabilities_dropped": true,
+  "curl_inputs": [
+    {
+      "bytes": 264544,
+      "member": "usr/bin/curl",
+      "mode": "0o755",
+      "origin": "verified-baseline:usr/bin/curl",
+      "sha256": "b37a55a6b4e6450a2fa995905cdd98a7747d9fa046a7b75da2d7e3c361d2fef1"
+    },
+    {
+      "member": "usr/lib/libcurl.so.4",
+      "origin": "verified-baseline",
+      "symlink": "libcurl.so.4.8.0"
+    },
+    {
+      "bytes": 1185104,
+      "member": "usr/lib/libcurl.so.4.8.0",
+      "mode": "0o644",
+      "origin": "verified-baseline:usr/lib/libcurl.so.4.8.0",
+      "sha256": "5fe1afa1ca8300d325f8691d215630869f13b9e5fbb8469e6550df7fb5832329"
+    },
+    {
+      "bytes": 1853736,
+      "member": "usr/lib/libc.so.6",
+      "origin": "verified-baseline-reused",
+      "sha256": "6ab264fb4e8df9942b0fb75b48fcd5c30b2f081d8dfaa6c25d7be1d3fce5b2ab"
+    },
+    {
+      "bytes": 201832,
+      "member": "usr/lib/ld-linux-aarch64.so.1",
+      "origin": "verified-baseline-reused",
+      "sha256": "b1f2738bdb51e6419d7062f96c8a44bd68853698dc5ac624fa6ca9f9b03d456d"
+    },
+    {
+      "member": "usr/lib/libnghttp3.so.9",
+      "origin": "verified-baseline",
+      "symlink": "libnghttp3.so.9.9.0"
+    },
+    {
+      "bytes": 205824,
+      "member": "usr/lib/libnghttp3.so.9.9.0",
+      "mode": "0o644",
+      "origin": "verified-baseline:usr/lib/libnghttp3.so.9.9.0",
+      "sha256": "ffea4971ecf9ea9acdfff697b33a906022fd47c9b7864e567382af325cc50730"
+    },
+    {
+      "member": "usr/lib/libngtcp2_crypto_ossl.so.0",
+      "origin": "verified-baseline",
+      "symlink": "libngtcp2_crypto_ossl.so.0.3.1"
+    },
+    {
+      "bytes": 67568,
+      "member": "usr/lib/libngtcp2_crypto_ossl.so.0.3.1",
+      "mode": "0o644",
+      "origin": "verified-baseline:usr/lib/libngtcp2_crypto_ossl.so.0.3.1",
+      "sha256": "1f065ec78dad91aa5e8656341f3ffae34216d03366ca574c58f03f5b9a0647f5"
+    },
+    {
+      "member": "usr/lib/libngtcp2.so.16",
+      "origin": "verified-baseline",
+      "symlink": "libngtcp2.so.16.11.0"
+    },
+    {
+      "bytes": 395280,
+      "member": "usr/lib/libngtcp2.so.16.11.0",
+      "mode": "0o644",
+      "origin": "verified-baseline:usr/lib/libngtcp2.so.16.11.0",
+      "sha256": "b5d13800d86e5305318ea24c9841004129f169586481db6621a54f6200a2fb01"
+    },
+    {
+      "member": "usr/lib/libnghttp2.so.14",
+      "origin": "verified-baseline",
+      "symlink": "libnghttp2.so.14.29.5"
+    },
+    {
+      "bytes": 198712,
+      "member": "usr/lib/libnghttp2.so.14.29.5",
+      "mode": "0o644",
+      "origin": "verified-baseline:usr/lib/libnghttp2.so.14.29.5",
+      "sha256": "3e2fe8ca94248d8d159e86085be4f1e76c1b6742956a7e60a645c2670f57bfdc"
+    },
+    {
+      "member": "usr/lib/libidn2.so.0",
+      "origin": "verified-baseline",
+      "symlink": "libidn2.so.0.4.0"
+    },
+    {
+      "bytes": 198680,
+      "member": "usr/lib/libidn2.so.0.4.0",
+      "mode": "0o644",
+      "origin": "verified-baseline:usr/lib/libidn2.so.0.4.0",
+      "sha256": "5dee65d8352d02fccc0513e25ebf30219ebe762fc94a3a25df8bcf36280a7109"
+    },
+    {
+      "member": "usr/lib/libssh2.so.1",
+      "origin": "verified-baseline",
+      "symlink": "libssh2.so.1.0.1"
+    },
+    {
+      "bytes": 330264,
+      "member": "usr/lib/libssh2.so.1.0.1",
+      "mode": "0o644",
+      "origin": "verified-baseline:usr/lib/libssh2.so.1.0.1",
+      "sha256": "d4f17dcf082edc006ba751dde368da76c584d2bc9ee81a579682c412e2436ff3"
+    },
+    {
+      "member": "usr/lib/libpsl.so.5",
+      "origin": "verified-baseline",
+      "symlink": "libpsl.so.5.3.5"
+    },
+    {
+      "bytes": 132912,
+      "member": "usr/lib/libpsl.so.5.3.5",
+      "mode": "0o644",
+      "origin": "verified-baseline:usr/lib/libpsl.so.5.3.5",
+      "sha256": "8898566abb931fde7d4814a18d2d4ee1048208c3749fd0dfb00181eb6158e892"
+    },
+    {
+      "bytes": 1195992,
+      "member": "usr/lib/libssl.so.3",
+      "mode": "0o644",
+      "origin": "verified-baseline:usr/lib/libssl.so.3",
+      "sha256": "c5e4360f17619f14a6e1049f8a9fb04657c122f7677177254d8537a37cc14ce2"
+    },
+    {
+      "bytes": 6564088,
+      "member": "usr/lib/libcrypto.so.3",
+      "mode": "0o644",
+      "origin": "verified-baseline:usr/lib/libcrypto.so.3",
+      "sha256": "306c9340fedaa177cde4a5aada1d5928cbecb0d5f1316a62a3c90f5930683ff9"
+    },
+    {
+      "member": "usr/lib/libgssapi_krb5.so.2",
+      "origin": "verified-baseline",
+      "symlink": "libgssapi_krb5.so.2.2"
+    },
+    {
+      "bytes": 397584,
+      "member": "usr/lib/libgssapi_krb5.so.2.2",
+      "mode": "0o644",
+      "origin": "verified-baseline:usr/lib/libgssapi_krb5.so.2.2",
+      "sha256": "4052b927a040e67a9a7716ea1f19cde350a3f3260bbe3e72624cfd9866c2f3c9"
+    },
+    {
+      "member": "usr/lib/libzstd.so.1",
+      "origin": "verified-baseline",
+      "symlink": "libzstd.so.1.5.7"
+    },
+    {
+      "bytes": 854104,
+      "member": "usr/lib/libzstd.so.1.5.7",
+      "mode": "0o644",
+      "origin": "verified-baseline:usr/lib/libzstd.so.1.5.7",
+      "sha256": "14d907be630eb1670d14fc104a0982cca01feac5bc75f1846e54f6278c5ee2e2"
+    },
+    {
+      "member": "usr/lib/libbrotlidec.so.1",
+      "origin": "verified-baseline",
+      "symlink": "libbrotlidec.so.1.2.0"
+    },
+    {
+      "bytes": 67376,
+      "member": "usr/lib/libbrotlidec.so.1.2.0",
+      "mode": "0o644",
+      "origin": "verified-baseline:usr/lib/libbrotlidec.so.1.2.0",
+      "sha256": "393cd16c4a9b5fc17961c8ac1f4bc5c7b0f3fe5b587bbbddd81f78a14b50462d"
+    },
+    {
+      "member": "usr/lib/libz.so.1",
+      "origin": "verified-baseline",
+      "symlink": "libz.so.1.3.2"
+    },
+    {
+      "bytes": 133128,
+      "member": "usr/lib/libz.so.1.3.2",
+      "mode": "0o644",
+      "origin": "verified-baseline:usr/lib/libz.so.1.3.2",
+      "sha256": "f8d5729601ca8fb86a8d9d048eff241a0e349342da7a5cea11389d0e33ed0a43"
+    },
+    {
+      "member": "usr/lib/libunistring.so.5",
+      "origin": "verified-baseline",
+      "symlink": "libunistring.so.5.2.1"
+    },
+    {
+      "bytes": 2033736,
+      "member": "usr/lib/libunistring.so.5.2.1",
+      "mode": "0o644",
+      "origin": "verified-baseline:usr/lib/libunistring.so.5.2.1",
+      "sha256": "ac7c4523c7a8567f6a0e3eeadc5999a9f9a70889c9d47e4c041655c9f3984509"
+    },
+    {
+      "member": "usr/lib/libbrotlienc.so.1",
+      "origin": "verified-baseline",
+      "symlink": "libbrotlienc.so.1.2.0"
+    },
+    {
+      "bytes": 854328,
+      "member": "usr/lib/libbrotlienc.so.1.2.0",
+      "mode": "0o644",
+      "origin": "verified-baseline:usr/lib/libbrotlienc.so.1.2.0",
+      "sha256": "bebe45b1a9d93208788aec03c13a04350d8da5ad3870ebbbf864e943ce0c11e7"
+    },
+    {
+      "member": "usr/lib/libkrb5.so.3",
+      "origin": "verified-baseline",
+      "symlink": "libkrb5.so.3.3"
+    },
+    {
+      "bytes": 1054752,
+      "member": "usr/lib/libkrb5.so.3.3",
+      "mode": "0o644",
+      "origin": "verified-baseline:usr/lib/libkrb5.so.3.3",
+      "sha256": "4ca6b2605d63224962dfb4db6887952849f64a2c46b1d18463613a99a8c9bd4b"
+    },
+    {
+      "member": "usr/lib/libk5crypto.so.3",
+      "origin": "verified-baseline",
+      "symlink": "libk5crypto.so.3.1"
+    },
+    {
+      "bytes": 198840,
+      "member": "usr/lib/libk5crypto.so.3.1",
+      "mode": "0o644",
+      "origin": "verified-baseline:usr/lib/libk5crypto.so.3.1",
+      "sha256": "47639a505e412978bf76a92e2cc24e3bc6518f905d97724035b511ae4f123ed4"
+    },
+    {
+      "member": "usr/lib/libcom_err.so.2",
+      "origin": "verified-baseline",
+      "symlink": "libcom_err.so.2.1"
+    },
+    {
+      "bytes": 67576,
+      "member": "usr/lib/libcom_err.so.2.1",
+      "mode": "0o644",
+      "origin": "verified-baseline:usr/lib/libcom_err.so.2.1",
+      "sha256": "e00d7e9f917da09261087bda0b421f1749c8f1536e9ee13f6f0361177243e788"
+    },
+    {
+      "member": "usr/lib/libkrb5support.so.0",
+      "origin": "verified-baseline",
+      "symlink": "libkrb5support.so.0.1"
+    },
+    {
+      "bytes": 67824,
+      "member": "usr/lib/libkrb5support.so.0.1",
+      "mode": "0o644",
+      "origin": "verified-baseline:usr/lib/libkrb5support.so.0.1",
+      "sha256": "9dd40bdbe926e0ed663e8c4f449d7f4a99ce2e648b2f0cd3dab7ed17081e4b91"
+    },
+    {
+      "member": "usr/lib/libkeyutils.so.1",
+      "origin": "verified-baseline",
+      "symlink": "libkeyutils.so.1.10"
+    },
+    {
+      "bytes": 67576,
+      "member": "usr/lib/libkeyutils.so.1.10",
+      "mode": "0o644",
+      "origin": "verified-baseline:usr/lib/libkeyutils.so.1.10",
+      "sha256": "e6a891119ae81f300411e51e41f450d89e518d572aaeef5f8c6de6bb45166d11"
+    },
+    {
+      "bytes": 67952,
+      "member": "usr/lib/libresolv.so.2",
+      "mode": "0o644",
+      "origin": "verified-baseline:usr/lib/libresolv.so.2",
+      "sha256": "40f2f2f1049378e1757c1f09813a8bea3a404dfcca73c9a4bbba4a28a713e68e"
+    },
+    {
+      "member": "usr/lib/libbrotlicommon.so.1",
+      "origin": "verified-baseline",
+      "symlink": "libbrotlicommon.so.1.2.0"
+    },
+    {
+      "bytes": 198528,
+      "member": "usr/lib/libbrotlicommon.so.1.2.0",
+      "mode": "0o644",
+      "origin": "verified-baseline:usr/lib/libbrotlicommon.so.1.2.0",
+      "sha256": "93d374c121f516fe27c7f52f1ac75443bfc221979999cf931ac4145f51d03424"
+    },
+    {
+      "bytes": 788960,
+      "member": "usr/lib/libm.so.6",
+      "origin": "verified-baseline-reused",
+      "sha256": "71ed8de709c40acd4fd0177258fc71251a5acdb1d075122409ad42529d6c7a4e"
+    }
+  ],
+  "excluded_symlinks": [
+    {
+      "kind": "symlink",
+      "member": "etc/skel/.config/nvim/lua/plugins/theme.lua",
+      "target": "../../../../.local/state/omarchy/current/theme/neovim.lua"
+    },
+    {
+      "kind": "symlink",
+      "member": "etc/skel/.local/share/nvim/lazy/nvim-lint/.github/linters/.luacheckrc",
+      "target": "../../.luacheckrc"
+    }
+  ],
+  "exit": 0,
+  "formatter_ELF_machine": 183,
+  "formatter_files": {
+    "shfmt": "ebe5ee1d142c2dac3efff9adced24c8f491734e724d0316141bcecae1a684108",
+    "stylua": "3618e5a684446a15ae15bc18b1168ed1564eec037f82295de80e5e0176679007"
+  },
+  "frozen151_modified": false,
+  "git_inputs": [
+    {
+      "bytes": 4929408,
+      "member": "usr/bin/git",
+      "mode": "0o755",
+      "origin": "signed-git",
+      "sha256": "4703c5c86a74fe14781a83fd372a7317d7915eb64990f1b0ff5371208293b7ea"
+    },
+    {
+      "bytes": 657720,
+      "member": "usr/lib/libpcre2-8.so.0",
+      "mode": "0o644",
+      "origin": "verified-baseline:usr/lib/libpcre2-8.so.0.16.0",
+      "sha256": "9743c89f9b3b7b4aa28049880086ebe85936d7259f87cf82fe52d60dd0f56650"
+    },
+    {
+      "bytes": 133176,
+      "member": "usr/lib/libz-ng.so.2",
+      "mode": "0o644",
+      "origin": "verified-baseline:usr/lib/libz-ng.so.2.3.3",
+      "sha256": "e48c0558812d9e45cbfde553212eef4e1d87a21b38bf0c4fecfa6c8f0af07139"
+    },
+    {
+      "bytes": 657248,
+      "member": "usr/lib/libtree-sitter-c.so.15.0",
+      "mode": "0o644",
+      "origin": "verified-baseline:usr/lib/libtree-sitter-c.so.15.0",
+      "sha256": "fa55ffff5edd785f2d67f7a3222f0ff9f951d2fcbf9b7855271f2d71138775c8"
+    },
+    {
+      "bytes": 67576,
+      "member": "usr/lib/libtree-sitter-lua.so.15.0",
+      "mode": "0o644",
+      "origin": "verified-baseline:usr/lib/libtree-sitter-lua.so.15.0",
+      "sha256": "4f6626fc6ca529569a54f59792f8a61a335a250b64fc417c21bb85e648c40a1a"
+    },
+    {
+      "bytes": 395256,
+      "member": "usr/lib/libtree-sitter-markdown.so.14.0",
+      "mode": "0o644",
+      "origin": "verified-baseline:usr/lib/libtree-sitter-markdown.so.14.0",
+      "sha256": "23f060be4f49024e4bc84f5de97cbea8ff249870760fd1b89ef8bb2f7391cb1b"
+    },
+    {
+      "bytes": 395256,
+      "member": "usr/lib/libtree-sitter-markdown-inline.so.14.0",
+      "mode": "0o644",
+      "origin": "verified-baseline:usr/lib/libtree-sitter-markdown-inline.so.14.0",
+      "sha256": "6d64f5f1736e70c72485a1ff38dbb9c0dffaf35ffdfe86d39ff801ecef37db36"
+    },
+    {
+      "bytes": 67424,
+      "member": "usr/lib/libtree-sitter-query.so.15.0",
+      "mode": "0o644",
+      "origin": "verified-baseline:usr/lib/libtree-sitter-query.so.15.0",
+      "sha256": "0cdd7ba7fa6ea69d54dcce79328e908efaa70196524d9ba16514f376eb18b70f"
+    },
+    {
+      "bytes": 1249552,
+      "member": "usr/lib/libtree-sitter-vim.so",
+      "mode": "0o644",
+      "origin": "verified-baseline:usr/lib/libtree-sitter-vim.so",
+      "sha256": "eaa1e1866e57389f2ac6dd2fd13dfc18c7c75ae5dc2c9fc349812851d71fed59"
+    },
+    {
+      "bytes": 264032,
+      "member": "usr/lib/libtree-sitter-vimdoc.so.4.1",
+      "mode": "0o644",
+      "origin": "verified-baseline:usr/lib/libtree-sitter-vimdoc.so.4.1",
+      "sha256": "9e44313d37ec5936a049fce856f4e7d6ba79db15c1b5c91fb57289b512e74e8c"
+    }
+  ],
+  "hardware": "UNTESTED",
+  "host_binfmt_sha256": "168ce17d31a1e037423374603d6ad378bbef0275cb54b031e3689cfe884b6888",
+  "host_binfmt_unchanged": true,
+  "host_home_exposed": false,
+  "host_interpreter_path_sha256": "66bdc286fd30970a1c3d2029b460605a3dc843ed6b397f4cd9825f9c19551507",
+  "members": 10023,
+  "members_manifest_sha256": "11cd5e8d06445433c5d97c5164782bd6edc856bf83874150c10f26d2453b9da3",
+  "network_unshared": true,
+  "omitted_mason_cache": "Matches reviewed source candidate; no Mason binary or receipt extracted",
+  "options_sha256": "ee1c37fef7f501807d87b6700ffb6fc40da69982afd302f9b88333b78593feee",
+  "package_installation": false,
+  "parser_links": [
+    {
+      "path": "usr/lib/tree_sitter/c.so",
+      "target": "/usr/lib/libtree-sitter-c.so"
+    },
+    {
+      "path": "usr/lib/libtree-sitter-c.so",
+      "target": "libtree-sitter-c.so.15"
+    },
+    {
+      "path": "usr/lib/libtree-sitter-c.so.15",
+      "target": "libtree-sitter-c.so.15.0"
+    },
+    {
+      "path": "usr/lib/tree_sitter/lua.so",
+      "target": "/usr/lib/libtree-sitter-lua.so"
+    },
+    {
+      "path": "usr/lib/libtree-sitter-lua.so",
+      "target": "libtree-sitter-lua.so.15"
+    },
+    {
+      "path": "usr/lib/libtree-sitter-lua.so.15",
+      "target": "libtree-sitter-lua.so.15.0"
+    },
+    {
+      "path": "usr/lib/tree_sitter/markdown.so",
+      "target": "/usr/lib/libtree-sitter-markdown.so"
+    },
+    {
+      "path": "usr/lib/libtree-sitter-markdown.so",
+      "target": "libtree-sitter-markdown.so.14.0"
+    },
+    {
+      "path": "usr/lib/tree_sitter/markdown_inline.so",
+      "target": "/usr/lib/libtree-sitter-markdown-inline.so"
+    },
+    {
+      "path": "usr/lib/libtree-sitter-markdown-inline.so",
+      "target": "libtree-sitter-markdown-inline.so.14.0"
+    },
+    {
+      "path": "usr/lib/tree_sitter/query.so",
+      "target": "/usr/lib/libtree-sitter-query.so"
+    },
+    {
+      "path": "usr/lib/libtree-sitter-query.so",
+      "target": "libtree-sitter-query.so.15"
+    },
+    {
+      "path": "usr/lib/libtree-sitter-query.so.15",
+      "target": "libtree-sitter-query.so.15.0"
+    },
+    {
+      "path": "usr/lib/tree_sitter/vim.so",
+      "target": "/usr/lib/libtree-sitter-vim.so"
+    },
+    {
+      "path": "usr/lib/tree_sitter/vimdoc.so",
+      "target": "/usr/lib/libtree-sitter-vimdoc.so"
+    },
+    {
+      "path": "usr/lib/libtree-sitter-vimdoc.so",
+      "target": "libtree-sitter-vimdoc.so.4"
+    },
+    {
+      "path": "usr/lib/libtree-sitter-vimdoc.so.4",
+      "target": "libtree-sitter-vimdoc.so.4.1"
+    }
+  ],
+  "probe_sha256": "50bfddeb58a9518b011494d150e34146b986dc65925989285e5004b2e916fb1d",
+  "proof_sha256": "000030a40d99f83c61afb0c94b665690ff68e1ad49879a541ef32fffe03f484f",
+  "qemu_sha256": "66bdc286fd30970a1c3d2029b460605a3dc843ed6b397f4cd9825f9c19551507",
+  "qualification_sha256": "30ce53399b1029787133348e2c0074d4ac85a76d3c867dc744a71f3b2b2ade2c",
+  "runner_sha256": "0919314afbf7160aa39377847571ac826abcbe4f386d52cce2224829d8be4f8b",
+  "runtime_root_read_only": true,
+  "schema": 1,
+  "status": "OBSERVATION_ONLY",
+  "target_access": false,
+  "timed_out": false
+}

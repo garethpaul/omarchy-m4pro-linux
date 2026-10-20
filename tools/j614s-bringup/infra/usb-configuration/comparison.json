@@ -1,0 +1,131 @@
+{
+  "filtered_config_differences": {
+    "CONFIG_DRM_GEM_DMA_HELPER": {
+      "new": "CONFIG_DRM_GEM_DMA_HELPER=m",
+      "old": null
+    },
+    "CONFIG_FB_DMAMEM_HELPERS": {
+      "new": "CONFIG_FB_DMAMEM_HELPERS=y",
+      "old": null
+    },
+    "CONFIG_FB_DMAMEM_HELPERS_DEFERRED": {
+      "new": "CONFIG_FB_DMAMEM_HELPERS_DEFERRED=y",
+      "old": null
+    }
+  },
+  "hardware": "UNTESTED",
+  "new_dtb_sha256": "f3e8f3c4f6ba5f6a7105e133eea48fb44807a7c97cfc36ce2180390428d924e3",
+  "nodes": {
+    "/interrupt-controller@502400000": {
+      "#address-cells": "00000000",
+      "#interrupt-cells": "00000003",
+      "compatible": "6170706c652c74363034302d61696333006170706c652c74383132322d6169633300",
+      "interrupt-controller": "",
+      "phandle": "/interrupt-controller@502400000",
+      "reg": "000000050240000000000000001cc00000000005024400000000000000000004",
+      "reg-names": "636f7265006576656e7400"
+    },
+    "/iommu@38af00000": {
+      "#iommu-cells": "00000001",
+      "apple,dma-range": "00000000000000000000000100000000",
+      "compatible": "6170706c652c74383131302d6461727400",
+      "interrupt-parent": [
+        "/interrupt-controller@502400000"
+      ],
+      "interrupts": "000000000000067700000004",
+      "phandle": "/iommu@38af00000",
+      "reg": "000000038af00000000000000000c000"
+    },
+    "/iommu@38af80000": {
+      "#iommu-cells": "00000001",
+      "apple,dma-range": "00000000000000000000000100000000",
+      "compatible": "6170706c652c74383131302d6461727400",
+      "interrupt-parent": [
+        "/interrupt-controller@502400000"
+      ],
+      "interrupts": "000000000000067700000004",
+      "phandle": "/iommu@38af80000",
+      "reg": "000000038af80000000000000000c000"
+    },
+    "/phy@38aa90000": {
+      "#phy-cells": "00000000",
+      "apple,inherited-handoff": "",
+      "compatible": "6170706c652c74363034302d757362322d696e6865726974656400",
+      "phandle": "/phy@38aa90000",
+      "reg": "000000038aa900000000000000004000000000038aa840000000000000004000",
+      "reg-names": "75736232706879007069706568616e646c657200"
+    },
+    "/usb@38a280000": {
+      "compatible": "736e70732c6477633300",
+      "dr_mode": "7065726970686572616c00",
+      "interrupt-parent": [
+        "/interrupt-controller@502400000"
+      ],
+      "interrupts": "000000000000067300000004",
+      "iommus": [
+        [
+          "/iommu@38af00000",
+          0
+        ],
+        [
+          "/iommu@38af80000",
+          1
+        ]
+      ],
+      "maximum-speed": "686967682d737065656400",
+      "phy-names": "757362322d70687900",
+      "phys": [
+        "/phy@38aa90000"
+      ],
+      "reg": "000000038a2800000000000000011800",
+      "snps,dis_enblslpm_quirk": "",
+      "snps,dis_u2_susphy_quirk": ""
+    }
+  },
+  "old_dtb_sha256": "fd971752e6a4cf8c0217c21f8b3db75df2af8022dad7d69f42638313d1c3760a",
+  "schema": 1,
+  "scope": "Static USB1/PHY/DART/AIC properties only; phandle IDs normalized; no runtime capture addresses emitted",
+  "source_files": {
+    "drivers/iommu/apple-dart.c": {
+      "identical": false,
+      "new_sha256": "c3cae72eacf30c5a0592bda4490a6f6e5e850aca7342b2a93f3a68e0cb37d4c5",
+      "old_sha256": "e3befe0b737fafd5f46c9b38a286b9dbf79e6ce1730c11f8740af3305126e11d"
+    },
+    "drivers/phy/apple/usb2-t6040-inherited.c": {
+      "identical": true,
+      "new_sha256": "3336440c840efab83eab479ab1e0665014bc26753b81e6e3a0f3317c617b5f03",
+      "old_sha256": "3336440c840efab83eab479ab1e0665014bc26753b81e6e3a0f3317c617b5f03"
+    },
+    "drivers/usb/dwc3/core.c": {
+      "identical": true,
+      "new_sha256": "8a5f5f6abc50c2340d73ef72ec4b9f1c2fdc66be2ec32b85b26bd51a2cb32252",
+      "old_sha256": "8a5f5f6abc50c2340d73ef72ec4b9f1c2fdc66be2ec32b85b26bd51a2cb32252"
+    },
+    "drivers/usb/dwc3/ep0.c": {
+      "identical": false,
+      "new_sha256": "da375cf7c8801f0d3ac3d3784fc1a68d0a6e5403f01679038b53459167d774b9",
+      "old_sha256": "4142353e86ba0df9197ee1efc7af495ff347f042ea991fe21fbb13606265c4f5"
+    },
+    "drivers/usb/dwc3/gadget.c": {
+      "identical": true,
+      "new_sha256": "8b8f9a7e96e1d09e13242f75849cfd997ee8a4ee88243f6d4803627119c2e4e6",
+      "old_sha256": "8b8f9a7e96e1d09e13242f75849cfd997ee8a4ee88243f6d4803627119c2e4e6"
+    },
+    "drivers/usb/gadget/configfs.c": {
+      "identical": true,
+      "new_sha256": "71ad6b12bf36d969d72d0b4f752b4fecf0dd1df7f6c5f719c6a75b4486264fdc",
+      "old_sha256": "71ad6b12bf36d969d72d0b4f752b4fecf0dd1df7f6c5f719c6a75b4486264fdc"
+    },
+    "drivers/usb/gadget/function/f_acm.c": {
+      "identical": true,
+      "new_sha256": "976f3d8c7bca3836cdd586944d137cfcb280dbf13d53e2887744810a8fdf5d9d",
+      "old_sha256": "976f3d8c7bca3836cdd586944d137cfcb280dbf13d53e2887744810a8fdf5d9d"
+    },
+    "drivers/usb/gadget/function/u_serial.c": {
+      "identical": true,
+      "new_sha256": "3f22d0b037943e09951bc2e403627172319fce8d4eea348064f623f288c760eb",
+      "old_sha256": "3f22d0b037943e09951bc2e403627172319fce8d4eea348064f623f288c760eb"
+    }
+  },
+  "status": "USB_DT_SEMANTIC_MATCH"
+}

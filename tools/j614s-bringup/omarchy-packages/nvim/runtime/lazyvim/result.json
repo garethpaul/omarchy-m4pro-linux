@@ -1,0 +1,52 @@
+{
+  "schema": 1,
+  "status": "WORKS_SCOPED_FULL_LOADER_AND_STOCK_FORMATTING",
+  "passed": [
+    "52 packaged LazyVim specs loaded",
+    "Actual Mason command/setup and ensure_installed empty resolved through real LazyVim",
+    "Real shell/Lua file buffers automatically select stock shfmt/stylua",
+    "Signed ARM64 formatter bytes executed with exact expected edits",
+    "Second formatting pass is idempotent",
+    "Read-only sandbox root, zero capabilities, no host home, empty IPv4 routes",
+    "Existing host binfmt registry unchanged before and after"
+  ],
+  "dispatch": "Stock Conform commands; existing kernel AArch64 binfmt handler implicitly invokes QEMU",
+  "limits": [
+    "Native target execution/performance untested",
+    "PF registered interpreter FD bytes unobserved; current interpreter pathname hash checked separately",
+    "Mason registry/cache absent in isolated network/DNS environment: actual Curl exit6; no package install qualified",
+    "Unsigned rebuilt nvim package and whole151 transaction not tested",
+    "No new production package defect found; production source unchanged"
+  ],
+  "root_replay": true,
+  "sources": {
+    "run_startup.py": "0919314afbf7160aa39377847571ac826abcbe4f386d52cce2224829d8be4f8b",
+    "probe.lua": "50bfddeb58a9518b011494d150e34146b986dc65925989285e5004b2e916fb1d",
+    "check_result.py": "6ff20988bb003330e364dc745009a3095af20dffe82f363701dc9cdbdafe09c6"
+  },
+  "members_manifest_sha256": "11cd5e8d06445433c5d97c5164782bd6edc856bf83874150c10f26d2453b9da3",
+  "records": {
+    "lane-12": {
+      "conform.log": "b51607b3e51d4adec3dcdbfbf3d9e02e76d774d2f8df2694e23071ac977df6ea",
+      "host-binfmt-after.json": "168ce17d31a1e037423374603d6ad378bbef0275cb54b031e3689cfe884b6888",
+      "host-binfmt-before.json": "168ce17d31a1e037423374603d6ad378bbef0275cb54b031e3689cfe884b6888",
+      "mason.log": "c8590b9c35013e37c2d0375662ebd3ac5003eaf57539e60916e58907567e721c",
+      "observations.json": "0a13184cb9190478fd9b5e2460b9a547ef0044bb403dda637dad5127dac221e4",
+      "result.json": "b573f8c684e47aee96e0ee30b7d71260573b37886dd7e00b67e81e7807f6a583",
+      "stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "root-13": {
+      "conform.log": "fde4ea5d98c8b599952f6c7cde3ca345a0e8ed098a9303562ce090f107a6a270",
+      "host-binfmt-after.json": "168ce17d31a1e037423374603d6ad378bbef0275cb54b031e3689cfe884b6888",
+      "host-binfmt-before.json": "168ce17d31a1e037423374603d6ad378bbef0275cb54b031e3689cfe884b6888",
+      "mason.log": "d5c0c8494ddff4c1ae6b19adefefe983b1504ac429c23e7ec076683848458f2f",
+      "observations.json": "ceef4885e0fae84736f098b1acd41b3f7576a98506a9247cf0671a20e33bdd9e",
+      "result.json": "b573f8c684e47aee96e0ee30b7d71260573b37886dd7e00b67e81e7807f6a583",
+      "stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "target_access": false,
+  "host_binfmt_configuration_changed": false
+}

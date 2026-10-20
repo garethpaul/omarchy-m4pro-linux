@@ -1,5 +1,5 @@
 {
-  "Image_sha256": "f9d7b637bc70fcab77b5806c43c39ae333e633fcc63fa6ccaa77cd22c91d4604",
+  "Image_sha256": "09a5242571bef87b5d7c4c64df6210a87571156430e7013d3f556b4db33db8e8",
   "comparison_index_sha256": "c17cbc93b3c8f885f5dce3797a84cdc8d334d5c882dd99bc59cf81b1dbfc522f",
   "config_sha256": "6c5aba7745d918c528300c5a395fcd7db0c2b718acda7d1467af2816a8d56516",
   "cpus": [
@@ -64,11 +64,11 @@
       "apple,everest"
     ]
   ],
-  "kernel_commit": "8f2f3d13600aacadd93d577855b7e212b8ae57ff",
+  "kernel_commit": "5cbc8c64748b480f7da4dac87b92450b80124594",
   "kernel_files": {
     "arch/arm64/kernel/cpufeature.c": "bed48464d12a55aada988819778b95b639322e5ee1bbda9743f6c61076b1df26",
     "arch/arm64/kernel/smp_spin_table.c": "20071a155b1df92d8f8d55b17cbd0e149a05a5a685283f5d955bd78126697aeb",
-    "drivers/iommu/apple-dart.c": "c3cae72eacf30c5a0592bda4490a6f6e5e850aca7342b2a93f3a68e0cb37d4c5",
+    "drivers/iommu/apple-dart.c": "d8900ed1c37e04f0d74d4d0c0f81a491cde15e87eccc3805b74450e01281ec40",
     "drivers/irqchip/irq-apple-aic.c": "d52ff497371f81b94af730792c9ea9fb2bf24d99cf7df6e8985351dd331c2287",
     "drivers/nvme/host/apple.c": "3837e270e802debf3364fb7b210df4ad058e8bbc429758950cd187d3ca5b9c13",
     "drivers/phy/apple/usb2-t6040-inherited.c": "3336440c840efab83eab479ab1e0665014bc26753b81e6e3a0f3317c617b5f03",

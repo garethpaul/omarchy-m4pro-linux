@@ -1,12 +1,12 @@
 # J614s RAM-only NVMe probe — prepared offline
 
-**PARTIAL:** a concrete initramfs is packaged and validated offline for the exact combined source `8f2f3d13600aacadd93d577855b7e212b8ae57ff`, config `6c5aba77…56516`, release `7.1.13-j614s-gravity-candidate+`. This is preparation for primary review and a future supervised test. It grants no boot, USB, watchdog, reset, loader, disk, partition or boot-policy authority.
+**PARTIAL:** a concrete initramfs is packaged and validated offline for the exact DART-fix source `5cbc8c64748b480f7da4dac87b92450b80124594`, config `6c5aba77…56516`, release `7.1.13-j614s-gravity-candidate+`. This is preparation for primary review and a future supervised test. It grants no boot, USB, watchdog, reset, loader, disk, partition or boot-policy authority.
 
-**UNTESTED:** this init has never run. The new CDC-ACM function, console routing, serial reconnect, asynchronous module-load control, read-only guardian and all kernel/hardware behavior remain unqualified. Kernel build/reproducibility evidence is independent of hardware correctness. Root's previously qualified loader, old test52/56 and existing build outputs were not changed.
+**UNTESTED on this new kernel:** this lane has not executed init or accessed the target. The primary reported that the previous 8f2/8fd6 RAM boot reached init but USB SET_CONFIGURATION timed out (-110). That observation does not qualify CDC-ACM control, framing, serial reconnect, asynchronous module loading, the read-only guardian or the new DART kernel. Those runtime behaviors remain unqualified. Kernel build/reproducibility evidence is independent of hardware correctness. Root's previously qualified loader, old test52/56 and existing build outputs were not changed.
 
 ## Inputs and validation
 
-`pins.json` locks the full build02 manifest, build contract, exact source, clean-source state, config, Image and both module hashes. `build_probe.py` first verifies the manifest/contract/helper digests, then compiles and executes exactly those hash-verified verifier source bytes in a fresh module, bypassing cached bytecode and creating no cache beside the read-only helper. That verifier checks every original artifact, AArch64 Image magic/16KiB flags, embedded IKCONFIG and all module ELF/vermagic. This operation only reads the bundle; its private build log is never copied into the initramfs. Additional checks enforce built-in gadget/pseudo-filesystem support, modular NVMe and exact module dependencies.
+`pins.json` locks the full DART-build01 manifest, build contract, exact source, clean-source state, config, Image and both module hashes. `build_probe.py` first verifies the manifest/contract/helper digests, then compiles and executes exactly those hash-verified verifier source bytes in a fresh module, bypassing cached bytecode and creating no cache beside the read-only helper. That verifier checks every original artifact, AArch64 Image magic/16KiB flags, embedded IKCONFIG and all module ELF/vermagic. This operation only reads the bundle; its private build log is never copied into the initramfs. Additional checks enforce built-in gadget/pseudo-filesystem support, modular NVMe and exact module dependencies.
 
 Only these kernel modules are packaged:
 
@@ -21,7 +21,7 @@ The static ARM64 BusyBox is Debian `busybox-static` version `1:1.38.0-3+b1`, bin
 
 The builder runs only that qualified BusyBox's `--list` and `sh -n init`, under an explicitly supplied existing emulator. It never runs init or chroots. A deterministic gzip/newc archive is parsed back with bounded entries and compared byte-for-byte with the expected payload map. It rejects escapes, duplicate/unexpected entries, set-ID files, extra modules, arbitrary links and all device nodes except the exact console/null pair. Those nodes exist only in archive headers; no host `mknod` occurs.
 
-## Prepared runtime sequence (not executed)
+## Prepared runtime sequence (not executed by this lane)
 
 1. Mount only devtmpfs, proc, sysfs, tmpfs and configfs; log to the inherited console and bounded RAM filesystem. No storage filesystem is mounted, even read-only.
 2. Check AArch64, exact release/config, and exact J614s + T6040 compatible strings before gadget setup. Require the single previously observed UDC `38a280000.usb`. Create one ACM function using the built-in gadget code. This function differs from old gserial diagnostics and is **UNTESTED**.
@@ -41,12 +41,12 @@ Run from this lane's repository. These commands read the existing bundle and wri
 ```sh
 python3 integration/boot-probe/verify_busybox_provenance.py --cache integration/boot-probe/.private
 python3 integration/boot-probe/build_probe.py \
-  --bundle ../overnight-infra-gravity-combined-build-02 \
+  --bundle ../overnight-infra-gravity-usb-v22-build-01 \
   --verifier ../overnight-infra/infra/kernel_build.py \
   --busybox integration/boot-probe/.private/busybox \
   --emulator /usr/bin/qemu-aarch64-static \
   --output integration/boot-probe/.private/new-build
-J614S_KERNEL_BUNDLE=../overnight-infra-gravity-combined-build-02 \
+J614S_KERNEL_BUNDLE=../overnight-infra-gravity-usb-v22-build-01 \
 J614S_KERNEL_VERIFIER=../overnight-infra/infra/kernel_build.py \
   python3 integration/boot-probe/test_probe.py
 sh -n integration/boot-probe/init
@@ -54,9 +54,9 @@ sh -n integration/boot-probe/init
 
 The cache and generated initrd are deliberately ignored. Retain the historical signed metadata and package locally to rerun provenance verification; the current moving sid URL may later contain different metadata. A changed input requires a separately reviewed new pin set, not an override or skipped check. Build output must be a fresh directory; it cannot be placed inside the kernel bundle. Tests use copies of artifact inputs, never modify the original bundle and never run init. Without the two environment paths, the portable archive tests run and real-bundle input tests explicitly skip.
 
-`evidence.json` and `artifact-manifest.json` record the actual offline results: 36 tests (the previous32 archive/ELF/classification/input controls plus4 watchdog source/fixture controls). The pure classification helper and extracted actual read-only file helper are executed only against isolated host fixtures. The init body is only parsed; real sysfs and device nodes are never accessed by tests. Guardian scheduling/acknowledgement and serial EOF behavior remain runtime UNTESTED. No DT freshness, loader/boot entry, firmware state, inherited memory/cache ownership, durable storage, live USB control, target recovery or permission to boot is provided. The strict kernel ownership predicates may refuse a session whose boot handoff does not satisfy them; this package does not weaken them.
+`evidence.json` and `artifact-manifest.json` record the current offline results: 75 tests (37 probe/input controls and 38 transport/parser controls), with no skips. The pure classification helper and extracted actual read-only file helper are executed only against isolated host fixtures. The init body is only parsed; real sysfs and device nodes are never accessed by tests. Guardian scheduling/acknowledgement and serial EOF behavior remain runtime UNTESTED. No DT freshness, loader/boot entry, firmware state, inherited memory/cache ownership, durable storage, live USB control, target recovery or permission to boot is provided. The strict kernel ownership predicates may refuse a session whose boot handoff does not satisfy them; this package does not weaken them.
 
-The watchdog-report revision produces a separate `fresh-03`/`fresh-04` private archive pair. The earlier `frozen-01`/`frozen-02` pair remains byte-for-byte preserved at SHA256 `a3a01204b0310877dd41fd24c6f6ce803344cb48c4e9ef49a9bc4c994f1c39e8`. Neither version has been booted or run.
+The watchdog-report revision produces a separate `fresh-03`/`fresh-04` private archive pair. The earlier `frozen-01`/`frozen-02` pair remains byte-for-byte preserved at SHA256 `a3a01204b0310877dd41fd24c6f6ce803344cb48c4e9ef49a9bc4c994f1c39e8`. Those statements describe the original offline evidence; the primary's subsequent 8f2/8fd6 init-reached/USB-timeout observation is separate.
 
 ## Framed host collection — offline prepared, hardware UNTESTED
 
@@ -89,3 +89,32 @@ There are 75 checks across the two suites: previous 36, one verifier-cache integ
 The framing revision uses private `framed-07`/`framed-08` outputs. Earlier framed05/06 outputs are also preserved and byte-identical; the final packager additionally bypasses helper bytecode caches. Both the older a3a012 frozen pair and d9fac watchdog-report pair remain unchanged; their recorded byte hashes are preserved in `evidence.json`. No kernel/config/loader/firmware/DT or existing artifact was modified.
 
 A controlled copied-helper regression showed that a timestamp-valid unverified `.pyc` could bypass the source hash under the old import mechanism. The new packager compiles the verified source bytes directly; the same actual copied-bundle regression now passes without consulting or modifying that cache. No other lane helper/source file was changed.
+
+
+## DART v2.2 kernel transition
+
+Current pins select source `5cbc8c64748b480f7da4dac87b92450b80124594`,
+Image SHA256 `09a5242571bef87b5d7c4c64df6210a87571156430e7013d3f556b4db33db8e8`,
+and unchanged config `6c5aba77…56516`. The full bundle's exact source contract,
+manifest, Image, modules, embedded config, AArch64 architecture and vermagic
+checks passed through the hash-checked kernel verifier. Both packaged NVMe
+module hashes remain exactly as shown above. The build lane's complete-kernel
+qualification is separate from hardware correctness.
+
+Fresh private outputs `usb-v22-09` and `usb-v22-10` are byte-identical, distinct
+files: SHA256 `6311976c24c8e8bf8740dd6b382acb5bf99a10055b7756d2b2c7857c9b937a6f`,
+1,098,566 bytes. Against preserved `framed-07`, the only changed canonical CPIO
+entry is `etc/probe-manifest.json`, which embeds the new kernel pins. The init,
+state/framing helpers, collector, builder, tests and BusyBox provenance bytes
+are unchanged. Descriptor source files were hash-compared in the new source;
+only their commit provenance metadata changed. The fixed serial string still
+contains `8F2F3D13`; it is a profile matcher, not an assertion of kernel version.
+Changing it would unnecessarily alter the isolated USB test.
+
+`history/8f2-framed/` preserves exact prior pins, artifact manifest, transport
+contract and evidence with their original digests. All eight prior frozen,
+watchdog and framed archives were rehashed unchanged. Their historical status
+statements are not rewritten into claims about later hardware tests.
+No USB/PMU/watchdog/target operation was performed by this lane. New-kernel
+runtime USB behavior, storage, recovery and framing remain **UNTESTED** pending
+the primary's separately supervised test.

@@ -1,0 +1,34 @@
+{
+  "status": "PARTIAL_PREPARED_NOT_BOOTED",
+  "kernel_commit": "5cbc8c64748b480f7da4dac87b92450b80124594",
+  "Image_sha256": "09a5242571bef87b5d7c4c64df6210a87571156430e7013d3f556b4db33db8e8",
+  "initrd_sha256": "6311976c24c8e8bf8740dd6b382acb5bf99a10055b7756d2b2c7857c9b937a6f",
+  "container_sha256": "40bec1152f9726d454228962d7d82ca589f6b956f7d843de37d74af1ceb8cecf",
+  "container_bytes": 19414812,
+  "native_bundle_controls": {
+    "passed": 30,
+    "skipped": 0,
+    "scope": "Host controls with exact new artifacts and preserved frozen03 refusal inputs"
+  },
+  "dt_controls": {
+    "passed": 65,
+    "scope": "Host-only, including synthetic positive templates and frozen03 refusal"
+  },
+  "actual_session_dt": "UNRELOCATED_STORAGE_TEMPLATE_VERIFIED",
+  "separate_child_plan": "64MiB clear child; original resident preserved; no target allocation yet",
+  "secondary_observation": "Eleven resident flags, matching MPIDRs, idle slots, WFE true, zero exceptions; not a Linux online-mask test",
+  "watchdog_byte_clear": "PENDING_EXPLICIT_APPROVAL; not executed",
+  "hardware": "UNTESTED for candidate5cbc",
+  "target_actions_for_candidate": false,
+  "protected_boot_or_disk_actions": false,
+  "fingerbot_used": false,
+  "retained_host_failure": "Initial host DT invocation omitted storage-diagnostic flag; bundle rejected before output. Inputs corrected, separate template generated, then complete assembly/verification passed. Prior files preserved.",
+  "evidence_sha256": {
+    "context": "d368ca69683360d3b51fea0c905f3d8c4cc123c69652f3531cd6c720fb1a462e",
+    "bundle_verification": "18008725bafe90afc6248cba3c4328d7f3b7745c0d98049ec71335eb4084a12c",
+    "plan": "ef86ba02d462f2b891e49dba714a038c51538479a81d13a579756f2e2d29a444",
+    "resident_ready": "ef1e6a83681d846416e7eea8967665a3d7e5cc2961f92fa23f92b2e02275c621",
+    "staging_capture": "22a070100e02bfdb4ea5a4048a02e77a588ce3c1e764ee3e83202ff554d1d102",
+    "dt_host_result": "409cfbb81b9700898eb45a86569c19356880d88c8050e168bcb6f658d9a03b1b"
+  }
+}

@@ -1,0 +1,419 @@
+{
+  "busybox_provenance_sha256": "c2b0a015d15512dc9cbc59baa3227fbff334a32460a1ae258d42f08ed7d9238b",
+  "checks": [
+    "full pinned kernel bundle verification",
+    "two exact AArch64 modules/vermagic/dependencies",
+    "pinned static AArch64 BusyBox and required applets",
+    "BusyBox sh -n only",
+    "bounded canonical newc archive with exact payload equality",
+    "gzip round-trip"
+  ],
+  "cpio_bytes": 2197896,
+  "cpio_sha256": "e8a070b9a6a4d6cb1ccbddb8cef003da14b5003b0ca85356f82f274555f016a4",
+  "emulator_sha256": "66bdc286fd30970a1c3d2029b460605a3dc843ed6b397f4cd9825f9c19551507",
+  "entries": {
+    "bin": {
+      "bytes": 0,
+      "mode": "0o40755",
+      "rdev": [
+        0,
+        0
+      ],
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "bin/blockdev": {
+      "bytes": 7,
+      "mode": "0o120777",
+      "rdev": [
+        0,
+        0
+      ],
+      "sha256": "9d75f0d7c398df565d7ac04c6819b62d6d8f9560f5eb4672596ecd8f7e96ae91"
+    },
+    "bin/busybox": {
+      "bytes": 1980720,
+      "mode": "0o100755",
+      "rdev": [
+        0,
+        0
+      ],
+      "sha256": "f10ec6f1c3b41b6015cc0f15c11a4ce4e06fff158e20bdbe9a527a3ed3ea752a"
+    },
+    "bin/cat": {
+      "bytes": 7,
+      "mode": "0o120777",
+      "rdev": [
+        0,
+        0
+      ],
+      "sha256": "9d75f0d7c398df565d7ac04c6819b62d6d8f9560f5eb4672596ecd8f7e96ae91"
+    },
+    "bin/dmesg": {
+      "bytes": 7,
+      "mode": "0o120777",
+      "rdev": [
+        0,
+        0
+      ],
+      "sha256": "9d75f0d7c398df565d7ac04c6819b62d6d8f9560f5eb4672596ecd8f7e96ae91"
+    },
+    "bin/grep": {
+      "bytes": 7,
+      "mode": "0o120777",
+      "rdev": [
+        0,
+        0
+      ],
+      "sha256": "9d75f0d7c398df565d7ac04c6819b62d6d8f9560f5eb4672596ecd8f7e96ae91"
+    },
+    "bin/gzip": {
+      "bytes": 7,
+      "mode": "0o120777",
+      "rdev": [
+        0,
+        0
+      ],
+      "sha256": "9d75f0d7c398df565d7ac04c6819b62d6d8f9560f5eb4672596ecd8f7e96ae91"
+    },
+    "bin/head": {
+      "bytes": 7,
+      "mode": "0o120777",
+      "rdev": [
+        0,
+        0
+      ],
+      "sha256": "9d75f0d7c398df565d7ac04c6819b62d6d8f9560f5eb4672596ecd8f7e96ae91"
+    },
+    "bin/insmod": {
+      "bytes": 7,
+      "mode": "0o120777",
+      "rdev": [
+        0,
+        0
+      ],
+      "sha256": "9d75f0d7c398df565d7ac04c6819b62d6d8f9560f5eb4672596ecd8f7e96ae91"
+    },
+    "bin/kill": {
+      "bytes": 7,
+      "mode": "0o120777",
+      "rdev": [
+        0,
+        0
+      ],
+      "sha256": "9d75f0d7c398df565d7ac04c6819b62d6d8f9560f5eb4672596ecd8f7e96ae91"
+    },
+    "bin/ln": {
+      "bytes": 7,
+      "mode": "0o120777",
+      "rdev": [
+        0,
+        0
+      ],
+      "sha256": "9d75f0d7c398df565d7ac04c6819b62d6d8f9560f5eb4672596ecd8f7e96ae91"
+    },
+    "bin/ls": {
+      "bytes": 7,
+      "mode": "0o120777",
+      "rdev": [
+        0,
+        0
+      ],
+      "sha256": "9d75f0d7c398df565d7ac04c6819b62d6d8f9560f5eb4672596ecd8f7e96ae91"
+    },
+    "bin/mkdir": {
+      "bytes": 7,
+      "mode": "0o120777",
+      "rdev": [
+        0,
+        0
+      ],
+      "sha256": "9d75f0d7c398df565d7ac04c6819b62d6d8f9560f5eb4672596ecd8f7e96ae91"
+    },
+    "bin/mount": {
+      "bytes": 7,
+      "mode": "0o120777",
+      "rdev": [
+        0,
+        0
+      ],
+      "sha256": "9d75f0d7c398df565d7ac04c6819b62d6d8f9560f5eb4672596ecd8f7e96ae91"
+    },
+    "bin/mv": {
+      "bytes": 7,
+      "mode": "0o120777",
+      "rdev": [
+        0,
+        0
+      ],
+      "sha256": "9d75f0d7c398df565d7ac04c6819b62d6d8f9560f5eb4672596ecd8f7e96ae91"
+    },
+    "bin/printf": {
+      "bytes": 7,
+      "mode": "0o120777",
+      "rdev": [
+        0,
+        0
+      ],
+      "sha256": "9d75f0d7c398df565d7ac04c6819b62d6d8f9560f5eb4672596ecd8f7e96ae91"
+    },
+    "bin/sh": {
+      "bytes": 7,
+      "mode": "0o120777",
+      "rdev": [
+        0,
+        0
+      ],
+      "sha256": "9d75f0d7c398df565d7ac04c6819b62d6d8f9560f5eb4672596ecd8f7e96ae91"
+    },
+    "bin/sha256sum": {
+      "bytes": 7,
+      "mode": "0o120777",
+      "rdev": [
+        0,
+        0
+      ],
+      "sha256": "9d75f0d7c398df565d7ac04c6819b62d6d8f9560f5eb4672596ecd8f7e96ae91"
+    },
+    "bin/sleep": {
+      "bytes": 7,
+      "mode": "0o120777",
+      "rdev": [
+        0,
+        0
+      ],
+      "sha256": "9d75f0d7c398df565d7ac04c6819b62d6d8f9560f5eb4672596ecd8f7e96ae91"
+    },
+    "bin/stty": {
+      "bytes": 7,
+      "mode": "0o120777",
+      "rdev": [
+        0,
+        0
+      ],
+      "sha256": "9d75f0d7c398df565d7ac04c6819b62d6d8f9560f5eb4672596ecd8f7e96ae91"
+    },
+    "bin/timeout": {
+      "bytes": 7,
+      "mode": "0o120777",
+      "rdev": [
+        0,
+        0
+      ],
+      "sha256": "9d75f0d7c398df565d7ac04c6819b62d6d8f9560f5eb4672596ecd8f7e96ae91"
+    },
+    "bin/tr": {
+      "bytes": 7,
+      "mode": "0o120777",
+      "rdev": [
+        0,
+        0
+      ],
+      "sha256": "9d75f0d7c398df565d7ac04c6819b62d6d8f9560f5eb4672596ecd8f7e96ae91"
+    },
+    "bin/uname": {
+      "bytes": 7,
+      "mode": "0o120777",
+      "rdev": [
+        0,
+        0
+      ],
+      "sha256": "9d75f0d7c398df565d7ac04c6819b62d6d8f9560f5eb4672596ecd8f7e96ae91"
+    },
+    "bin/usleep": {
+      "bytes": 7,
+      "mode": "0o120777",
+      "rdev": [
+        0,
+        0
+      ],
+      "sha256": "9d75f0d7c398df565d7ac04c6819b62d6d8f9560f5eb4672596ecd8f7e96ae91"
+    },
+    "bin/wc": {
+      "bytes": 7,
+      "mode": "0o120777",
+      "rdev": [
+        0,
+        0
+      ],
+      "sha256": "9d75f0d7c398df565d7ac04c6819b62d6d8f9560f5eb4672596ecd8f7e96ae91"
+    },
+    "dev": {
+      "bytes": 0,
+      "mode": "0o40755",
+      "rdev": [
+        0,
+        0
+      ],
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "dev/console": {
+      "bytes": 0,
+      "mode": "0o20600",
+      "rdev": [
+        5,
+        1
+      ],
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "dev/null": {
+      "bytes": 0,
+      "mode": "0o20600",
+      "rdev": [
+        1,
+        3
+      ],
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "etc": {
+      "bytes": 0,
+      "mode": "0o40755",
+      "rdev": [
+        0,
+        0
+      ],
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "etc/expected-config-sha256": {
+      "bytes": 65,
+      "mode": "0o100644",
+      "rdev": [
+        0,
+        0
+      ],
+      "sha256": "352bc6acb773ccc9bc566af10ef34985787170b0aa9f8a7c9376797bb39462bd"
+    },
+    "etc/expected-release": {
+      "bytes": 32,
+      "mode": "0o100644",
+      "rdev": [
+        0,
+        0
+      ],
+      "sha256": "abc88b2829b4b243b9ca3565f4bce6b0a532ca7cad8b4c2e9081a37a96a00e79"
+    },
+    "etc/probe-manifest.json": {
+      "bytes": 1532,
+      "mode": "0o100644",
+      "rdev": [
+        0,
+        0
+      ],
+      "sha256": "69ee7380fad425d1ddc705ba5f25b963da3e06436c3119686741669c33a8624a"
+    },
+    "init": {
+      "bytes": 11763,
+      "mode": "0o100755",
+      "rdev": [
+        0,
+        0
+      ],
+      "sha256": "ae8f47151664b9b116ddb0f293a83bd2c2eec899afdad669ff32003a14d2c01d"
+    },
+    "lib": {
+      "bytes": 0,
+      "mode": "0o40755",
+      "rdev": [
+        0,
+        0
+      ],
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "lib/modules": {
+      "bytes": 0,
+      "mode": "0o40755",
+      "rdev": [
+        0,
+        0
+      ],
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "lib/modules/nvme-apple.ko": {
+      "bytes": 55928,
+      "mode": "0o100644",
+      "rdev": [
+        0,
+        0
+      ],
+      "sha256": "8bf6fc6b1369bcbeadefbcbeb0197376803090c6b4776d230be36b039d53bcef"
+    },
+    "lib/modules/nvme-core.ko": {
+      "bytes": 139736,
+      "mode": "0o100644",
+      "rdev": [
+        0,
+        0
+      ],
+      "sha256": "b4cfc0d9e84e34cc12f89f85fd01a3fa02b7e34223455825799bf9bc72993a51"
+    },
+    "lib/probe-frame.sh": {
+      "bytes": 1896,
+      "mode": "0o100644",
+      "rdev": [
+        0,
+        0
+      ],
+      "sha256": "496a58c7caa9fcc316cfbbaf12fac62e6fcd8af92a52bdf60deab91201182900"
+    },
+    "lib/probe-state.sh": {
+      "bytes": 509,
+      "mode": "0o100644",
+      "rdev": [
+        0,
+        0
+      ],
+      "sha256": "87ae6117307bdc67dbbb9996229f9229c5fce7e9d2614615acb495ba93f2d099"
+    },
+    "proc": {
+      "bytes": 0,
+      "mode": "0o40755",
+      "rdev": [
+        0,
+        0
+      ],
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "run": {
+      "bytes": 0,
+      "mode": "0o40755",
+      "rdev": [
+        0,
+        0
+      ],
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "sys": {
+      "bytes": 0,
+      "mode": "0o40755",
+      "rdev": [
+        0,
+        0
+      ],
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "sys/kernel": {
+      "bytes": 0,
+      "mode": "0o40755",
+      "rdev": [
+        0,
+        0
+      ],
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "sys/kernel/config": {
+      "bytes": 0,
+      "mode": "0o40755",
+      "rdev": [
+        0,
+        0
+      ],
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "hardware": "UNTESTED",
+  "initrd_bytes": 1098565,
+  "initrd_sha256": "8fd6f861c42e4585156ff747ef657fbdba04b8bc307d0f4a0c2c226b20d16be1",
+  "kernel_image_sha256": "f9d7b637bc70fcab77b5806c43c39ae333e633fcc63fa6ccaa77cd22c91d4604",
+  "kernel_source": "8f2f3d13600aacadd93d577855b7e212b8ae57ff",
+  "schema": 1,
+  "status": "OFFLINE_VALIDATED"
+}

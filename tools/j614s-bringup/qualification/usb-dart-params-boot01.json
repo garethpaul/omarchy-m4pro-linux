@@ -1,0 +1,27 @@
+{
+  "status": "READONLY_PARAMS_OBSERVED",
+  "usb_session": "71",
+  "banks": [
+    {
+      "bank": 0,
+      "params3": 707396098,
+      "version": 514,
+      "version_hex": "0x202",
+      "pa_bits": 42,
+      "va_bits": 42
+    },
+    {
+      "bank": 1,
+      "params3": 707396098,
+      "version": 514,
+      "version_hex": "0x202",
+      "pa_bits": 42,
+      "va_bits": 42
+    }
+  ],
+  "target_register_written": false,
+  "watchdog_action": "unchanged",
+  "pmu_action": "none",
+  "exceptions": 0,
+  "scope": "Immutable USB1 PARAMS3 reads in installed proxy after return; no DART command or register write"
+}

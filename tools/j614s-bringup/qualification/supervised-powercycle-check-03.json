@@ -1,0 +1,30 @@
+{
+  "status": "PARTIAL_REACHABLE_PROXY_PENDING_BYTE_CLEAR",
+  "observation_utc": "2026-10-20T14:29:28.240376+00:00",
+  "usb_session": "71",
+  "new_enumeration_observed": false,
+  "resident_flags": 11,
+  "resident_idle": true,
+  "resident_wfe": true,
+  "exceptions": 0,
+  "pmu_error_count_byte": 1,
+  "pmu_written": false,
+  "candidate_staged": false,
+  "candidate_vector_attempted": false,
+  "host_container_sha256": "39564332b6378c84e0c73990780fed5a9463603ef13c3b6fa4b62a1224182521",
+  "fresh_template_container_verified": true,
+  "clear_child_geometry_unchanged": true,
+  "approval": "Pending; power-cycle report is not interpreted as approval of PMU write",
+  "protected_actions": false,
+  "fingerbot_used": false,
+  "camera": "Installed Running proxy screen viewed; decoder diagnostics retained privately",
+  "retained_host_refusal": "Initial fresh capture pathname made diagnostics a child of the capture directory. Output guard refused. Copied exact unmodified capture bytes into its own evidence directory and corrected only the input pathname; separate validation/assembly then passed. No guard changed.",
+  "evidence_sha256": {
+    "pmu_read": "38494152881b0c1843df659ff93e07b8d445ee45e31f72b1eaf2b932f2dfa31e",
+    "cpu_capture": "464bbf885c914e9f9add32b77527c67ed7bcb459e7a8207d7539935937018eda",
+    "staging_capture": "5404ec7b18397e307c71e56542c2f1ad1e5bfecd134dfde8371f06114385893e",
+    "context": "50e73c85f4dd182642de8035c7167aba3c5e5ee63ad8fcc04b2246150ccf2cf2",
+    "verification": "8e09e0f9688706ca411661baccdecf948a4f3c7ad214b0d21e7b10cb15c41a75",
+    "plan": "cefb914623f96ded609663586001111ab607a556bd47bd8404ed36491d8dc46a"
+  }
+}

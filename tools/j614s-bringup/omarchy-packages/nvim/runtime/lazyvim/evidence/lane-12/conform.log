@@ -1,0 +1,20 @@
+2026-10-20 14:49:58[DEBUG] Running formatters on /work/fixture.sh: { "shfmt" }
+2026-10-20 14:49:58[INFO] Run shfmt on /work/fixture.sh
+2026-10-20 14:49:58[DEBUG] Run command: { "/usr/bin/shfmt", "-filename", "/work/fixture.sh", "-i", 2 }
+2026-10-20 14:49:58[DEBUG] Run default CWD: /work
+2026-10-20 14:49:58[DEBUG] shfmt exited with code 0
+2026-10-20 14:49:58[DEBUG] Running formatters on /work/fixture.sh: { "shfmt" }
+2026-10-20 14:49:58[INFO] Run shfmt on /work/fixture.sh
+2026-10-20 14:49:58[DEBUG] Run command: { "/usr/bin/shfmt", "-filename", "/work/fixture.sh", "-i", 2 }
+2026-10-20 14:49:58[DEBUG] Run default CWD: /work
+2026-10-20 14:49:58[DEBUG] shfmt exited with code 0
+2026-10-20 14:49:58[DEBUG] Running formatters on /work/fixture.lua: { "stylua" }
+2026-10-20 14:49:58[INFO] Run stylua on /work/fixture.lua
+2026-10-20 14:49:58[DEBUG] Run command: { "/usr/bin/stylua", "--search-parent-directories", "--respect-ignores", "--stdin-filepath", "/work/fixture.lua", "-" }
+2026-10-20 14:49:58[DEBUG] Run default CWD: /work
+2026-10-20 14:49:59[DEBUG] stylua exited with code 0
+2026-10-20 14:49:59[DEBUG] Running formatters on /work/fixture.lua: { "stylua" }
+2026-10-20 14:49:59[INFO] Run stylua on /work/fixture.lua
+2026-10-20 14:49:59[DEBUG] Run command: { "/usr/bin/stylua", "--search-parent-directories", "--respect-ignores", "--stdin-filepath", "/work/fixture.lua", "-" }
+2026-10-20 14:49:59[DEBUG] Run default CWD: /work
+2026-10-20 14:49:59[DEBUG] stylua exited with code 0

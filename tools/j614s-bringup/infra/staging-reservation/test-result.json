@@ -1,0 +1,45 @@
+{
+  "actual_placement_emitted": false,
+  "actual_source_cases_per_compiler": 63,
+  "bootargs_contract": "Original session bytes pinned; required single top_of_kernel_data delta proposed; final payload construction/hash/delta verification belongs to caller",
+  "compilers": [
+    "gcc",
+    "clang"
+  ],
+  "flags": [
+    "-std=c11",
+    "-O1",
+    "-g",
+    "-Wall",
+    "-Wextra",
+    "-Werror",
+    "-fsanitize=address,undefined",
+    "-fno-sanitize-recover=all"
+  ],
+  "hardware": "UNTESTED",
+  "intentional_writing_failures_per_compiler": 1,
+  "mock_arena_unchanged": true,
+  "mock_heap_limit_unchanged": true,
+  "prior_host_check_failure": {
+    "cause": "Initial section lookup also admitted nonallocated debug sections with zero virtual addresses",
+    "check": "ELF_CODE_EXTENT_AMBIGUOUS",
+    "checks_disabled": false,
+    "correction": "Require SHT_PROGBITS with both SHF_ALLOC and SHF_EXECINSTR before matching function virtual extents"
+  },
+  "remaining": [
+    "No real container accepted or verified",
+    "No real placement result emitted",
+    "Live allocator exclusivity/freshness unqualified",
+    "Recovery and all hardware operation untested"
+  ],
+  "schema": 1,
+  "source_sha256": {
+    "reservation.py": "8388b68a1afd6a71829b2a3f5e9ce2924649b301e474dce4fee20ada7b9e6017",
+    "test_reservation.py": "bba226119fc2fc124e6bf4d8fdac126f70ad8f2a581b746fd5e132293a973b6f"
+  },
+  "status": "PASS (offline contract and synthetic geometry only)",
+  "strict_default_unchanged": true,
+  "target_actions": false,
+  "test_methods": 5,
+  "test_output": ".....\n----------------------------------------------------------------------\nRan 5 tests in 0.564s\n\nOK"
+}

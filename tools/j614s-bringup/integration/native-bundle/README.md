@@ -9,13 +9,13 @@ It has no target, USB, serial, staging, chainload, reboot or watchdog interface.
 | Pinned loader/paired ELF, Image and framed initrd identities | WORKS (file checks only) | Five actual-input controls included in the 30-test run; hashes in `pins.json` and `evidence.json` |
 | Bounded format codec | PARTIAL | Synthetic non-bootable roundtrip and corruption controls; native C checksum comparison over six small vectors |
 | Current capture03 full assembly | BLOCKED | Secondary flags are zero; idle/WFE conditions are false. Both API and CLI refuse before reading DT evidence or creating output/diagnostics |
-| Future actual validated DT/container | UNTESTED | Current capture has no qualifying DT. No real candidate container was produced |
-| Live placement, resident preservation, firmware handoff, recovery and boot | UNTESTED | No target operation; file validity grants no boot authority |
+| Actual USB71 DT/container | WORKS offline | New session storage template and19,414,812-byte container independently verify; candidate not staged or booted |
+| Prior supervised boot01 | PARTIAL | Earlier8f2 container reached Linux and USB descriptors, configuration failed; one automatic proxy return observed. New candidate remains UNTESTED |
 
 ## Inputs and format
 
-`pins.json` binds loader commit `6249e0ec`, kernel commit `8f2f3d13`, Image
-`f9d7b637…`, framed initrd `8fd6f861…`, exact source helpers and host tools.
+`pins.json` binds loader commit `6249e0ec`, kernel commit `5cbc8c64`, Image
+`09a52425…`, framed initrd `6311976c…`, exact source helpers and host tools.
 `bundle.py` pins the pinset itself, then compiles hash-verified helper bytes;
 timestamp-valid Python caches cannot replace those helper bytes. Source and
 pinset changes require review and deliberate digest updates.
@@ -32,7 +32,7 @@ The pinned linker declares a 64 MiB maximum payload.
 `native_format.py` checks bounded component sizes, Image header, exact prefix,
 lengths, CRCs and SHA256 identities. Its FDT envelope check is **not** a DT
 validation. Production validation executes the exact pinned
-`infra/native-dt/generate.py` bytes from commit `66557cd6`. Its `verify_inputs`
+`infra/native-dt/generate.py` bytes bound by the current pinset. Its `verify_inputs`
 binds the capture/session/observer/ADT/bootargs, sources and artifacts;
 `verify_dtb` independently renders and compiles the canonical DT, compares
 exact bytes, and performs its semantic checks. Compiler diagnostics are retained
@@ -72,7 +72,7 @@ future-report fixture also establishes no validated DT.
 
 ## Separate live gate
 
-There is no staging or placement qualification. In particular, the generic
+The separate primary-owned `recovery/supervised_child.py` handled boot01 and now plans the new candidate; see [preparation](../../qualification/supervised-ram-02-preparation.json). This offline tool supplies no live qualification. In particular, the generic
 pinned `proxyclient/tools/chainload.py` path uses the resident base and a copy
 stub; it must not be inferred safe for preserved resident release pointers.
 The primary's staging-source hazard record remains a separate gate. A child

@@ -1,24 +1,34 @@
 {
-  "busybox_provenance": "Both official Debian archive signatures and complete digest/extraction chain reverified offline",
+  "busybox_provenance": "Official retained archive signatures and complete payload chain reverified offline; same qualified ARM64 binary",
   "current_host_usb_sysfs_enumerated": false,
   "explicit_probe_transport_invoked": false,
-  "framed_05_06_pre_cache_fix": {
-    "archive_byte_identical": true,
-    "bytes": 1098565,
-    "distinct_inodes": true,
-    "fresh_outputs": 2,
-    "private_output_names": [
-      "framed-05",
-      "framed-06"
-    ],
-    "sha256": "8fd6f861c42e4585156ff747ef657fbdba04b8bc307d0f4a0c2c226b20d16be1"
-  },
-  "framing_helper_execution": "Actual protocol helper executed only with ordinary temporary RAM-file fixtures, host shell and qualified native BusyBox head/wc/sha256sum/cat under existing qemu; no init body",
   "hardware": "UNTESTED",
+  "history": {
+    "directory": "history/8f2-framed",
+    "metadata_byte_copies_verified": true,
+    "note": "Historical evidence unchanged; primary subsequently reported old8f2 boot reached init with SET_CONFIGURATION timeout-110. This lane does not claim independently observed hardware.",
+    "source_commit": "944f64386f527f074808405322a986eec44b0317"
+  },
   "init_executed": false,
   "input_bundle_modified": false,
   "physical_tty_opened": false,
   "preserved_prior_archives": {
+    "framed-05": {
+      "sha256": "8fd6f861c42e4585156ff747ef657fbdba04b8bc307d0f4a0c2c226b20d16be1",
+      "unchanged": true
+    },
+    "framed-06": {
+      "sha256": "8fd6f861c42e4585156ff747ef657fbdba04b8bc307d0f4a0c2c226b20d16be1",
+      "unchanged": true
+    },
+    "framed-07": {
+      "sha256": "8fd6f861c42e4585156ff747ef657fbdba04b8bc307d0f4a0c2c226b20d16be1",
+      "unchanged": true
+    },
+    "framed-08": {
+      "sha256": "8fd6f861c42e4585156ff747ef657fbdba04b8bc307d0f4a0c2c226b20d16be1",
+      "unchanged": true
+    },
     "fresh-03": {
       "sha256": "d9fac843a55e2ea5e7f955704b3e8f5bfe9f16c49e38c7bdb747a8ca7831b52f",
       "unchanged": true
@@ -36,51 +46,18 @@
       "unchanged": true
     }
   },
-  "prior_reproducibility_at_2adadf8": {
-    "archive_byte_identical": true,
-    "bytes": 1097147,
-    "distinct_inodes": true,
-    "fresh_outputs": 2,
-    "sha256": "a3a01204b0310877dd41fd24c6f6ce803344cb48c4e9ef49a9bc4c994f1c39e8"
-  },
-  "prior_reproducibility_at_5c96ab8": {
-    "archive_byte_identical": true,
-    "bytes": 1097496,
-    "distinct_inodes": true,
-    "fresh_outputs": 2,
-    "private_output_names": [
-      "fresh-03",
-      "fresh-04"
-    ],
-    "sha256": "d9fac843a55e2ea5e7f955704b3e8f5bfe9f16c49e38c7bdb747a8ca7831b52f"
-  },
-  "pure_helper_execution": "Only probe-state.sh classification function executed in isolated host sh; init only parsed",
-  "qualified_kernel_reproducibility_reference": "infra gravity-combined-reproducibility.json at evidence commit8fc52f5; independent kernel build not repeated by this lane",
-  "read_helper_execution": "Only extracted actual read_status_file function executed against isolated temporary ordinary files/directory/missing path; no init body or real sysfs/device interface executed",
+  "qualification_scope": "Exact verified full kernel bundle + matching probe archive; no new hardware, recovery, storage or USB functionality claim",
   "reproducibility": {
     "archive_byte_identical": true,
-    "bytes": 1098565,
+    "bytes": 1098566,
     "distinct_inodes": true,
     "fresh_outputs": 2,
     "private_output_names": [
-      "framed-07",
-      "framed-08"
+      "usb-v22-09",
+      "usb-v22-10"
     ],
-    "sha256": "8fd6f861c42e4585156ff747ef657fbdba04b8bc307d0f4a0c2c226b20d16be1"
+    "sha256": "6311976c24c8e8bf8740dd6b382acb5bf99a10055b7756d2b2c7857c9b937a6f"
   },
-  "review_corrections": [
-    "Sticky monotonic RO error classification; first/latest details in status, first error in logs",
-    "Asynchronous module loader waits for first actual guardian scan acknowledgement; missing ack/error refuses all loads",
-    "Serial read EOF backs off100ms",
-    "All prior generated initrds retained privately; final artifact separately named frozen-01/02",
-    "Corrected global no-watchdog wording; predecessor/kernel may leave watchdog armed; read-only snapshot of six existing attributes and actual two module parameters with ABSENT/UNREADABLE reporting",
-    "Length+SHA256+nonce footer over a frozen RAM response file; no unsolicited serial frames",
-    "Atomic snapshot publication prevents copying in-progress after/status files; baseline failure refuses NVMe load",
-    "Exact USB identity/interface/physical-port matching with before/after-open identity checks",
-    "Private raw RX/TX retained on parser rejection; bounded frames reject stale/extra/truncated data; no retries",
-    "Default status-only diagnostics; separate deliberate primary-gated probe CLI and transport API, never invoked",
-    "Verifier source pin now covers exact executed bytes; cached pyc bypass reproduced then fixed; no helper cache read/write"
-  ],
   "runtime_limits": [
     "USB ACM function/reconnect UNTESTED",
     "NVMe runtime/admission/concurrency UNTESTED",
@@ -100,60 +77,66 @@
   ],
   "schema": 1,
   "source_sha256": {
+    "artifact-manifest.json": "03fb8191989ce735465bf7eebb5fb17ebdacd9c8087bd7c6f389360aa02a07a9",
     "build_probe.py": "c5486d6eea39a7ec680396899969c2bb086f18bce21dc02031d338ea13343a1f",
     "busybox-provenance.json": "c2b0a015d15512dc9cbc59baa3227fbff334a32460a1ae258d42f08ed7d9238b",
     "collect_probe.py": "e01485e4842eb942e0a93d1217df95f913bf615aa8c1aa52ae278c745ea600d7",
     "init": "ae8f47151664b9b116ddb0f293a83bd2c2eec899afdad669ff32003a14d2c01d",
-    "pins.json": "98612d92cfbd2af5c4cac6c94741d49b6ea2ff31459053db1139af53423217e2",
+    "pins.json": "63c6fed3c9b37a4bfab6b06583103121d29cde0df7cbedccc59e6673bab2c846",
     "probe-frame.sh": "496a58c7caa9fcc316cfbbaf12fac62e6fcd8af92a52bdf60deab91201182900",
     "probe-state.sh": "87ae6117307bdc67dbbb9996229f9229c5fce7e9d2614615acb495ba93f2d099",
     "test_probe.py": "ff57074e3717319bb0737393bb372aa6e96476aed4e469ab9ebd6ebc88b9ccf3",
     "test_transport.py": "db1e272265b46b439d4d27f5e1100dc802d897eb55da9d8032f8832ec9ba6682",
-    "transport-contract.json": "93ced32dd2b3284f00f067ff9c8f0edd1ca61b664c7149dae2ba6dea6a4743c3",
+    "transport-contract.json": "095fb82ebc4bdffd2dc8a4429994fe71032a9b81fd7cc24a4e8f2ac70256dd19",
     "verify_busybox_provenance.py": "c0cd19a620d9d17c20c9ef25b8b33e53b950ad7405ce64ad388790f5fff859a8"
   },
   "status": "OFFLINE_VALIDATED",
   "syntax": {
     "host_sh_n": "PASS",
     "init_executed": false,
-    "qualified_aarch64_busybox_sh_n_under_existing_qemu": "PASS"
+    "qualified_aarch64_busybox_sh_n_under_existing_qemu": "PASS",
+    "scripts": [
+      "init",
+      "probe-state.sh",
+      "probe-frame.sh"
+    ]
   },
   "target_access": false,
   "tests": {
-    "command": [
-      "J614S_KERNEL_BUNDLE=<qualified-build02> J614S_KERNEL_VERIFIER=<pinned-verifier> python3 test_probe.py",
-      "J614S_BUSYBOX=<qualified-busybox> J614S_QEMU=<existing-emulator> python3 test_transport.py"
+    "commands": [
+      "J614S_KERNEL_BUNDLE=../overnight-infra-gravity-usb-v22-build-01 J614S_KERNEL_VERIFIER=../overnight-infra/infra/kernel_build.py python3 integration/boot-probe/test_probe.py",
+      "J614S_BUSYBOX=integration/boot-probe/.private/busybox J614S_QEMU=/usr/bin/qemu-aarch64-static python3 integration/boot-probe/test_transport.py"
     ],
     "passed": 75,
-    "scope": "Previous36 +1 verifier-cache integrity regression +38 transport/parser/fake sysfs/shell helper controls",
-    "skipped": 0
+    "probe_controls": 37,
+    "scope": "Actual new kernel input controls; archive/ELF/source-cache controls; isolated parser/fake transport/sysfs/shell fixture controls only",
+    "skipped": 0,
+    "transport_controls": 38
   },
-  "verifier_cache_regression": {
-    "baseline": "Controlled timestamp-valid pyc fixture executed and raised RuntimeError despite pinned source; actual original SourceFileLoader path failed the new regression",
-    "candidate": "Actual copied-bundle test PASS; controlled pyc untouched and no new verifier cache created",
-    "correction": "Compile and execute exactly the already hash-verified source bytes in a fresh module, without consulting or writing verifier pyc",
-    "scope": "Private ordinary temporary fixtures only; no external source helper was modified"
-  },
-  "watchdog_source_evidence": {
-    "config": {
-      "CONFIG_APPLE_WATCHDOG": "y",
-      "CONFIG_WATCHDOG_HANDLE_BOOT_ENABLED": "not set",
-      "CONFIG_WATCHDOG_NOWAYOUT": "y",
-      "CONFIG_WATCHDOG_OPEN_TIMEOUT": "15"
-    },
+  "transition": {
+    "all18_kernel_modules_unchanged": "Primary build lane verified; both packaged modules independently hash-checked here",
     "config_sha256": "6c5aba7745d918c528300c5a395fcd7db0c2b718acda7d1467af2816a8d56516",
-    "contracts": [
-      "apple_wdt_probe observes existing RESET_EN, calls watchdog_init_timeout then apple_wdt_set_timeout; set_timeout resets counter and writes bite deadline",
-      "watchdog core defaults handle_boot_enabled/open_timeout from config but module parameters may override; actual values must be observed",
-      "watchdog composite object name is watchdog; selected module parameter paths are /sys/module/watchdog/parameters/{handle_boot_enabled,open_timeout}",
-      "apple_wdt_get_timeleft uses readl_relaxed only; no watchdog device open or sysfs write added"
+    "config_unchanged": true,
+    "kernel_image_sha256": "09a5242571bef87b5d7c4c64df6210a87571156430e7013d3f556b4db33db8e8",
+    "kernel_source": "5cbc8c64748b480f7da4dac87b92450b80124594",
+    "only_changed_cpio_entry": [
+      "etc/probe-manifest.json"
     ],
-    "scope": "Source/config facts only; no actual runtime watchdog state or reliable reset/recovery qualification",
-    "source_commit": "8f2f3d13600aacadd93d577855b7e212b8ae57ff",
-    "source_files": {
-      "drivers/watchdog/Makefile": "aa4ea667cf51cd2a04cc106cfe111db3ec01b7f605fe9eb0573dbdcce8a161e6",
-      "drivers/watchdog/apple_wdt.c": "937beceb5183621e9241c3a9c1b7c63877b0d5f2da383759390593fd420a22ec",
-      "drivers/watchdog/watchdog_dev.c": "0b6958a598045e4c64b54632a98efb8bbc87a3783b93ae865ed0ea0a5cfc7932"
+    "packaged_module_hashes": {
+      "nvme-apple.ko": "8bf6fc6b1369bcbeadefbcbeb0197376803090c6b4776d230be36b039d53bcef",
+      "nvme-core.ko": "b4cfc0d9e84e34cc12f89f85fd01a3fa02b7e34223455825799bf9bc72993a51"
+    },
+    "scope": "Only exact kernel metadata/pins changed; init, descriptors, gadget identity, dispatcher and collector unchanged",
+    "unchanged_source_sha256": {
+      "build_probe.py": "c5486d6eea39a7ec680396899969c2bb086f18bce21dc02031d338ea13343a1f",
+      "busybox-provenance.json": "c2b0a015d15512dc9cbc59baa3227fbff334a32460a1ae258d42f08ed7d9238b",
+      "collect_probe.py": "e01485e4842eb942e0a93d1217df95f913bf615aa8c1aa52ae278c745ea600d7",
+      "init": "ae8f47151664b9b116ddb0f293a83bd2c2eec899afdad669ff32003a14d2c01d",
+      "probe-frame.sh": "496a58c7caa9fcc316cfbbaf12fac62e6fcd8af92a52bdf60deab91201182900",
+      "probe-state.sh": "87ae6117307bdc67dbbb9996229f9229c5fce7e9d2614615acb495ba93f2d099",
+      "test_probe.py": "ff57074e3717319bb0737393bb372aa6e96476aed4e469ab9ebd6ebc88b9ccf3",
+      "test_transport.py": "db1e272265b46b439d4d27f5e1100dc802d897eb55da9d8032f8832ec9ba6682",
+      "verify_busybox_provenance.py": "c0cd19a620d9d17c20c9ef25b8b33e53b950ad7405ce64ad388790f5fff859a8"
     }
   }
 }

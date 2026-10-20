@@ -13,7 +13,7 @@ import tempfile
 import types
 
 HERE = Path(__file__).resolve().parent
-PROFILE_SHA = '4ad1e0c76532744bb9c424930c8fc0f1158c40389f26f03dc6e7e53ebc8448bc'
+PROFILE_SHA = '040a4e39048bc0da1963a1d622f3bc3c600c1c7a253e4e28c0fd33dfa341f425'
 U64 = 1 << 64
 
 

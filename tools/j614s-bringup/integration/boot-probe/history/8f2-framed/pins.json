@@ -1,0 +1,15 @@
+{
+  "busybox_sha256": "f10ec6f1c3b41b6015cc0f15c11a4ce4e06fff158e20bdbe9a527a3ed3ea752a",
+  "config_sha256": "6c5aba7745d918c528300c5a395fcd7db0c2b718acda7d1467af2816a8d56516",
+  "contract_sha256": "0fce64ecf0685564cfac0fb357633f6d5561d900d2320c7c557542ca4d616165",
+  "image_sha256": "f9d7b637bc70fcab77b5806c43c39ae333e633fcc63fa6ccaa77cd22c91d4604",
+  "manifest_sha256": "a407b1454ceb2a1de13026a3041fee208fc27d8a145b7244ff640fc18022fb1a",
+  "modules": {
+    "nvme-apple.ko": "8bf6fc6b1369bcbeadefbcbeb0197376803090c6b4776d230be36b039d53bcef",
+    "nvme-core.ko": "b4cfc0d9e84e34cc12f89f85fd01a3fa02b7e34223455825799bf9bc72993a51"
+  },
+  "release": "7.1.13-j614s-gravity-candidate+",
+  "schema": 1,
+  "source": "8f2f3d13600aacadd93d577855b7e212b8ae57ff",
+  "verifier_sha256": "c84ae596247f9f08eff693d8234917fa0f90bea69659da20db2a5a047a6508eb"
+}

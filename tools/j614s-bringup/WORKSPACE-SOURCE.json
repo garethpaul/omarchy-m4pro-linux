@@ -1,7 +1,8 @@
 {
-  "workspace_commit": "9be25641638b1354a847fcffae411ed4a49c7ab2",
-  "source_archive_sha256": "94ed6b8f39294cde93a406d8ef06be2f5466d5f11ca0a7c87a6e14368cd55f49",
-  "status": "experimental tooling; no deployment or production qualification",
+  "workspace_commit": "5c3329120124f3674bddac64f2b10e0d3d650b35",
+  "source_archive_sha256": "26b70fe219e8d7f7bea7d9a9fb68c5ac5a17b462a84d6bf4b6fc84c823c60e7b",
+  "status": "Experimental source/evidence; no deployment or production qualification",
+  "export_scope": "Committed archive only; unrelated working-tree edit excluded",
   "files": [
     {
       "file": "AGENTS.md",
@@ -9,7 +10,7 @@
     },
     {
       "file": "PROGRESS.md",
-      "sha256": "ac8a0f79db7ba3bc7ff81227891060d7213c028ee6def706d81d016c217db364"
+      "sha256": "ff5a34a7fd30dbeb8348028c4dbd5468ba1bc5459bb7596f5ab6e3acf1ef82bc"
     },
     {
       "file": "capture/.gitignore",
@@ -173,7 +174,7 @@
     },
     {
       "file": "cpu/power/README.md",
-      "sha256": "5bf0536a58d218cbad3dafbce782f44cc9de0687f6db326fcef84a54d0da84eb"
+      "sha256": "76e43e59c6413d4db4757d953c43acb0858bb7067318737b0c49150dcc965b33"
     },
     {
       "file": "cpu/power/crosscheck_adt.py",
@@ -202,6 +203,10 @@
     {
       "file": "cpu/power/evidence/test56-clock-evidence.txt",
       "sha256": "cf1095babef576641310298755ef4f4df4acc7313a5d4a5605e4d635f36e3855"
+    },
+    {
+      "file": "cpu/power/evidence/wallace-source-comparison.json",
+      "sha256": "c6611b752aef9f3a140871e54ec137ce0fff66d4a0d68920ee7acf05caf1c252"
     },
     {
       "file": "cpu/power/layout.py",
@@ -749,7 +754,7 @@
     },
     {
       "file": "infra/native-dt/README.md",
-      "sha256": "0ed7c0c1769307b0f12cf0b02c99a387afe721c8b25bb07d2ab9920a75e21f75"
+      "sha256": "4d2cdb3eee59a75b0cf1aebd85043bfe38435a2f0a318c1748b41456a2826463"
     },
     {
       "file": "infra/native-dt/ans-v1.dts.in",
@@ -769,7 +774,7 @@
     },
     {
       "file": "infra/native-dt/generate.py",
-      "sha256": "f37e9cc51538abae0fffc407d768561456843055799e25ce9940c89afb8c7c5c"
+      "sha256": "b29110da5799e994238076a864a8e9f4ab98275225d7264ec51f6dd6683715c4"
     },
     {
       "file": "infra/native-dt/minimal-v1.dts.in",
@@ -781,7 +786,7 @@
     },
     {
       "file": "infra/native-dt/source-profile-v1.json",
-      "sha256": "4ad1e0c76532744bb9c424930c8fc0f1158c40389f26f03dc6e7e53ebc8448bc"
+      "sha256": "040a4e39048bc0da1963a1d622f3bc3c600c1c7a253e4e28c0fd33dfa341f425"
     },
     {
       "file": "infra/native-dt/synthetic-capture.json",
@@ -944,6 +949,26 @@
       "sha256": "ac32cb4dd47fa17fbdff04eb2bc5ba3b0a6c53cd7962ba877cf0b8e3a2f42826"
     },
     {
+      "file": "infra/staging-reservation/README.md",
+      "sha256": "0e300987f18831008b93e229d38770dd6600798b8f8f844a43854669378bdf65"
+    },
+    {
+      "file": "infra/staging-reservation/binary-contract-result.json",
+      "sha256": "c2404cded57f9d239ddb39c84b19e4dbb1330e9f2879472bb9e901792c8d5ae1"
+    },
+    {
+      "file": "infra/staging-reservation/reservation.py",
+      "sha256": "8388b68a1afd6a71829b2a3f5e9ce2924649b301e474dce4fee20ada7b9e6017"
+    },
+    {
+      "file": "infra/staging-reservation/test-result.json",
+      "sha256": "a599eafb85d99b862b57c803fa15e89969d9eff63f2903cf59b66e86b44739f0"
+    },
+    {
+      "file": "infra/staging-reservation/test_reservation.py",
+      "sha256": "bba226119fc2fc124e6bf4d8fdac126f70ad8f2a581b746fd5e132293a973b6f"
+    },
+    {
       "file": "infra/test_dcp_prime.py",
       "sha256": "d8e560c9497a01a086ee688e78de2c69a29f5b85aa297b18c1e3252dd5482255"
     },
@@ -958,6 +983,70 @@
     {
       "file": "infra/tool-versions.json",
       "sha256": "b4910e9c59832c2bc8cdfa4ee3df9cebe9ca5fcc149a76445e1138cd553fad8d"
+    },
+    {
+      "file": "infra/usb-configuration/README.md",
+      "sha256": "4479f617ce964153d1f7b94054977265a13e7cde3aeca82434f6a0a3f7649726"
+    },
+    {
+      "file": "infra/usb-configuration/build-repro-result.json",
+      "sha256": "10d26f5afc75c1be1785bcf64040d21f1605f9b3e69afcbef63ba367f1a5d3ff"
+    },
+    {
+      "file": "infra/usb-configuration/build-result.json",
+      "sha256": "3730c1671342d616d2ee8fa4abecc5ca1342e49cf0ec1f1c1a51be6db012aa32"
+    },
+    {
+      "file": "infra/usb-configuration/checkpatch-final.json",
+      "sha256": "84f14528e0d5bc288fced5c15b1e0dcb183537947cb1f769c643f86a98b3e9ea"
+    },
+    {
+      "file": "infra/usb-configuration/checkpatch-result.json",
+      "sha256": "8bd1d93fb15bf26bea04fbf641454d0fdfa3d9ab68023ddecb59e1f6ce736eb9"
+    },
+    {
+      "file": "infra/usb-configuration/compare.py",
+      "sha256": "a84ab87baa54a8a6658d13600ce4eda4fd75f23c004094d26e2d73a92dbf3f54"
+    },
+    {
+      "file": "infra/usb-configuration/comparison.json",
+      "sha256": "b07f37d52681fe4e6f58454a6064a196d7bbc62cde38a100803919cdef22cfc7"
+    },
+    {
+      "file": "infra/usb-configuration/evidence-hashes.json",
+      "sha256": "e99c6b032926d03dfb0122867a8da1b6b0614a84f86c2aa5f97b72308a8df38f"
+    },
+    {
+      "file": "infra/usb-configuration/harness-failure-history.json",
+      "sha256": "840009695fd82e7c8eb5451995a04ebc13d9650cc220e6c3783ace8a432cc96d"
+    },
+    {
+      "file": "infra/usb-configuration/host-result.compile-failure.json",
+      "sha256": "0b16e70bc0ead716c67026daae5c97d8c1ea78fdc56cc6111cd6bd20fd4cc54b"
+    },
+    {
+      "file": "infra/usb-configuration/host-result.json",
+      "sha256": "4d90d825aec014349b24411d627a8e3593eb1748ff33e06f73c7362f51597b12"
+    },
+    {
+      "file": "infra/usb-configuration/port.py",
+      "sha256": "e55fd79a03ef17971a3e8e6c17ff4edd0050991dbefb2940e7f031b5359cb596"
+    },
+    {
+      "file": "infra/usb-configuration/repro-comparison.json",
+      "sha256": "33442d8d8738e92b1ea7bac10edd76cbfa2228f78229d165fa3355ebea95e72e"
+    },
+    {
+      "file": "infra/usb-configuration/reproducibility.json",
+      "sha256": "98ede63b6019fd32827b3896d2ed0d891a1c2555cc46e0d7b752b1faeaa96429"
+    },
+    {
+      "file": "infra/usb-configuration/source-proof.json",
+      "sha256": "07ff668f50d64a89398795d00dd8d11dd78d8040a3df066d11c0865534428c11"
+    },
+    {
+      "file": "infra/usb-configuration/test_dart.py",
+      "sha256": "e04b063bf07f6d61f97fcab73a458d6ccbd243cf34d4831699ec780eb8789deb"
     },
     {
       "file": "infra/watchdog-handoff-source.json",
@@ -977,11 +1066,11 @@
     },
     {
       "file": "integration/boot-probe/README.md",
-      "sha256": "5e773922b7748d6db58f95a0e93e3db690083e473193539511d46f72acfb093a"
+      "sha256": "a9d0e0da0c4886e7f0b8475958e57fa7792a7679106243b308458bd4c2d909d1"
     },
     {
       "file": "integration/boot-probe/artifact-manifest.json",
-      "sha256": "b26d326c0448e03a18a2f73e7b2d5e5171276aff9c22f1a9a7ca5f94d8427d7d"
+      "sha256": "03fb8191989ce735465bf7eebb5fb17ebdacd9c8087bd7c6f389360aa02a07a9"
     },
     {
       "file": "integration/boot-probe/build_probe.py",
@@ -997,7 +1086,31 @@
     },
     {
       "file": "integration/boot-probe/evidence.json",
+      "sha256": "c674c8201adbeea41cdec0ca23845bb2ac8c28159ca13c5e20d7a107c223ae21"
+    },
+    {
+      "file": "integration/boot-probe/history/8f2-framed/README.md",
+      "sha256": "cba9ac19bebaa9ebd5dee6f952a605c80a4e306a661cff9ec1e1f0db8cc787f8"
+    },
+    {
+      "file": "integration/boot-probe/history/8f2-framed/artifact-manifest.json",
+      "sha256": "b26d326c0448e03a18a2f73e7b2d5e5171276aff9c22f1a9a7ca5f94d8427d7d"
+    },
+    {
+      "file": "integration/boot-probe/history/8f2-framed/evidence.json",
       "sha256": "866f2777191e2a87287438516aad80f3441652def3c8e77233a186b3f1e2e4c1"
+    },
+    {
+      "file": "integration/boot-probe/history/8f2-framed/history.json",
+      "sha256": "23cfb7805a8690904741f5d00c725b32cc62b6a132a25cc461a87f104cf01da9"
+    },
+    {
+      "file": "integration/boot-probe/history/8f2-framed/pins.json",
+      "sha256": "98612d92cfbd2af5c4cac6c94741d49b6ea2ff31459053db1139af53423217e2"
+    },
+    {
+      "file": "integration/boot-probe/history/8f2-framed/transport-contract.json",
+      "sha256": "93ced32dd2b3284f00f067ff9c8f0edd1ca61b664c7149dae2ba6dea6a4743c3"
     },
     {
       "file": "integration/boot-probe/init",
@@ -1005,7 +1118,7 @@
     },
     {
       "file": "integration/boot-probe/pins.json",
-      "sha256": "98612d92cfbd2af5c4cac6c94741d49b6ea2ff31459053db1139af53423217e2"
+      "sha256": "63c6fed3c9b37a4bfab6b06583103121d29cde0df7cbedccc59e6673bab2c846"
     },
     {
       "file": "integration/boot-probe/probe-frame.sh",
@@ -1029,7 +1142,7 @@
     },
     {
       "file": "integration/boot-probe/transport-contract.json",
-      "sha256": "93ced32dd2b3284f00f067ff9c8f0edd1ca61b664c7149dae2ba6dea6a4743c3"
+      "sha256": "095fb82ebc4bdffd2dc8a4429994fe71032a9b81fd7cc24a4e8f2ac70256dd19"
     },
     {
       "file": "integration/boot-probe/verify_busybox_provenance.py",
@@ -1093,11 +1206,11 @@
     },
     {
       "file": "integration/native-bundle/README.md",
-      "sha256": "88f63ff355a287334623a115f516a2d0ca1e498ea880d9dde1528357cfc6a127"
+      "sha256": "96e2ffcbb971018cd341f6517affe76a5fb7c988046a7633c8b6e86dd04fb58d"
     },
     {
       "file": "integration/native-bundle/bundle.py",
-      "sha256": "02a4e8be1f34206b8107ad9289de238dbd76cd7582aa2d87731740cda777028d"
+      "sha256": "6e67500997fffbd19da35254bd1d2bd4f908ada0ddadf45d328bcd2401e8d0da"
     },
     {
       "file": "integration/native-bundle/evidence.json",
@@ -1109,7 +1222,7 @@
     },
     {
       "file": "integration/native-bundle/pins.json",
-      "sha256": "a27b5252c6c9bab9d6ca9b833ec49bd1e26eccafac599e54417134155bfaa64f"
+      "sha256": "24786b18734ddd9858d2276c1c490fd9d24aa7faa764af400136068bba451bc9"
     },
     {
       "file": "integration/native-bundle/test_bundle.py",
@@ -1521,7 +1634,7 @@
     },
     {
       "file": "omarchy-packages/nvim/README.md",
-      "sha256": "04165f03f711bc1d266e3dd570f2e8d32f5532e47b0bda5b43da075b99caa79e"
+      "sha256": "b44d156074fce8a87d1eeb016ff183074ff3fe63e9e519b1dc47ae0091fbdfa1"
     },
     {
       "file": "omarchy-packages/nvim/SOURCE.json",
@@ -1762,6 +1875,106 @@
     {
       "file": "omarchy-packages/nvim/runtime/exercise_native.py",
       "sha256": "5932963047e86324cdecbba124c646d438b9d6e9786d0fa261404cd03bc9c427"
+    },
+    {
+      "file": "omarchy-packages/nvim/runtime/lazyvim/.gitignore",
+      "sha256": "0090a854cd9b906751909c1f21e1454e3de0f601a7f300f05246ef49dca5a770"
+    },
+    {
+      "file": "omarchy-packages/nvim/runtime/lazyvim/README.md",
+      "sha256": "8ad75b6688e0b41e2d87fcae815f42b76473d94f967f1fb9dcdde6940e436c6c"
+    },
+    {
+      "file": "omarchy-packages/nvim/runtime/lazyvim/attempt-history.json",
+      "sha256": "86855fa5154c9b4db5b5a1aaf5ff9de81f44a04e569e4e987e486b76c2ee2312"
+    },
+    {
+      "file": "omarchy-packages/nvim/runtime/lazyvim/check_result.py",
+      "sha256": "6ff20988bb003330e364dc745009a3095af20dffe82f363701dc9cdbdafe09c6"
+    },
+    {
+      "file": "omarchy-packages/nvim/runtime/lazyvim/evidence/lane-12/conform.log",
+      "sha256": "b51607b3e51d4adec3dcdbfbf3d9e02e76d774d2f8df2694e23071ac977df6ea"
+    },
+    {
+      "file": "omarchy-packages/nvim/runtime/lazyvim/evidence/lane-12/host-binfmt-after.json",
+      "sha256": "168ce17d31a1e037423374603d6ad378bbef0275cb54b031e3689cfe884b6888"
+    },
+    {
+      "file": "omarchy-packages/nvim/runtime/lazyvim/evidence/lane-12/host-binfmt-before.json",
+      "sha256": "168ce17d31a1e037423374603d6ad378bbef0275cb54b031e3689cfe884b6888"
+    },
+    {
+      "file": "omarchy-packages/nvim/runtime/lazyvim/evidence/lane-12/mason.log",
+      "sha256": "c8590b9c35013e37c2d0375662ebd3ac5003eaf57539e60916e58907567e721c"
+    },
+    {
+      "file": "omarchy-packages/nvim/runtime/lazyvim/evidence/lane-12/observations.json",
+      "sha256": "0a13184cb9190478fd9b5e2460b9a547ef0044bb403dda637dad5127dac221e4"
+    },
+    {
+      "file": "omarchy-packages/nvim/runtime/lazyvim/evidence/lane-12/result.json",
+      "sha256": "b573f8c684e47aee96e0ee30b7d71260573b37886dd7e00b67e81e7807f6a583"
+    },
+    {
+      "file": "omarchy-packages/nvim/runtime/lazyvim/evidence/lane-12/stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "omarchy-packages/nvim/runtime/lazyvim/evidence/lane-12/stdout.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "omarchy-packages/nvim/runtime/lazyvim/evidence/members.jsonl",
+      "sha256": "11cd5e8d06445433c5d97c5164782bd6edc856bf83874150c10f26d2453b9da3"
+    },
+    {
+      "file": "omarchy-packages/nvim/runtime/lazyvim/evidence/root-13/conform.log",
+      "sha256": "fde4ea5d98c8b599952f6c7cde3ca345a0e8ed098a9303562ce090f107a6a270"
+    },
+    {
+      "file": "omarchy-packages/nvim/runtime/lazyvim/evidence/root-13/host-binfmt-after.json",
+      "sha256": "168ce17d31a1e037423374603d6ad378bbef0275cb54b031e3689cfe884b6888"
+    },
+    {
+      "file": "omarchy-packages/nvim/runtime/lazyvim/evidence/root-13/host-binfmt-before.json",
+      "sha256": "168ce17d31a1e037423374603d6ad378bbef0275cb54b031e3689cfe884b6888"
+    },
+    {
+      "file": "omarchy-packages/nvim/runtime/lazyvim/evidence/root-13/mason.log",
+      "sha256": "d5c0c8494ddff4c1ae6b19adefefe983b1504ac429c23e7ec076683848458f2f"
+    },
+    {
+      "file": "omarchy-packages/nvim/runtime/lazyvim/evidence/root-13/observations.json",
+      "sha256": "ceef4885e0fae84736f098b1acd41b3f7576a98506a9247cf0671a20e33bdd9e"
+    },
+    {
+      "file": "omarchy-packages/nvim/runtime/lazyvim/evidence/root-13/result.json",
+      "sha256": "b573f8c684e47aee96e0ee30b7d71260573b37886dd7e00b67e81e7807f6a583"
+    },
+    {
+      "file": "omarchy-packages/nvim/runtime/lazyvim/evidence/root-13/stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "omarchy-packages/nvim/runtime/lazyvim/evidence/root-13/stdout.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "omarchy-packages/nvim/runtime/lazyvim/preparation-failure-01.json",
+      "sha256": "0b81fc7fac6e3117f4eb1fe34648e63088b07fee2ea7b889995b1dfd24a7f43b"
+    },
+    {
+      "file": "omarchy-packages/nvim/runtime/lazyvim/probe.lua",
+      "sha256": "50bfddeb58a9518b011494d150e34146b986dc65925989285e5004b2e916fb1d"
+    },
+    {
+      "file": "omarchy-packages/nvim/runtime/lazyvim/result.json",
+      "sha256": "71a75f3a4078a1e7ec3357a3232778eaa0f01522126ab06c9634459c9b685372"
+    },
+    {
+      "file": "omarchy-packages/nvim/runtime/lazyvim/run_startup.py",
+      "sha256": "0919314afbf7160aa39377847571ac826abcbe4f386d52cce2224829d8be4f8b"
     },
     {
       "file": "omarchy-packages/nvim/runtime/preparation-failure-01.json",
@@ -2397,7 +2610,7 @@
     },
     {
       "file": "qualification/STATUS.md",
-      "sha256": "c2e60a83d77d648a9de518403345c30b7988c881f997795cb756234bfe08caaf"
+      "sha256": "eaf356e03f8cbb673d56faaeb1667266b6891ab28e171e91e9ff8a3d3845dc56"
     },
     {
       "file": "qualification/adt-node-comparison.json",
@@ -2440,6 +2653,14 @@
       "sha256": "409cfbb81b9700898eb45a86569c19356880d88c8050e168bcb6f658d9a03b1b"
     },
     {
+      "file": "qualification/nvim-build-prerequisites-01.json",
+      "sha256": "0023a2fd1a8f8e5cfdeb2603ae1b3d2bb0823bfc97c9dd045e2922a6cf4bb559"
+    },
+    {
+      "file": "qualification/preparation-root-04.json",
+      "sha256": "f877c83069ad4bdac3d4ff87885dbcd45c198ff8dfc1508d4708b1183a143a18"
+    },
+    {
       "file": "qualification/proxy-checkpoint-0745.json",
       "sha256": "61d04e17235b75d2e8da4884a6dbade88ff97b1c761b49a00268fcb9059f3727"
     },
@@ -2452,6 +2673,10 @@
       "sha256": "8b539e1eefae24001682f4ca5871ac94011b7274d881a30380d8597ee5297867"
     },
     {
+      "file": "qualification/publication-preflight-20261020.json",
+      "sha256": "c52d3009488bba9ecfe753eb07fb3af35ab346cb8f95765705212ac02064bbd8"
+    },
+    {
       "file": "qualification/staging-plan-root.json",
       "sha256": "13303a05d4b17ab9c8158859e75ba52d0022de4700e86b110f07161043b51578"
     },
@@ -2462,6 +2687,26 @@
     {
       "file": "qualification/storage-test52.txt",
       "sha256": "dce1ff075a999b7d56e527d36bfa2e19a1635c0927f433d2379483df34cb860b"
+    },
+    {
+      "file": "qualification/supervised-powercycle-check-03.json",
+      "sha256": "d23fa98c246fe43ac213ffc1f06eb2cdd7a28edef7872ae06d12efe7d3ad1feb"
+    },
+    {
+      "file": "qualification/supervised-ram-02-preparation.json",
+      "sha256": "1849a5407b18182b42e7ddca48325275444e24f3a1bae7cb273d6b3529ea55aa"
+    },
+    {
+      "file": "qualification/supervised-ram-boot-01.json",
+      "sha256": "ea48eac27beb42571a388859159e6ff63943f0d1f14b2172f44367d0de6c8098"
+    },
+    {
+      "file": "qualification/usb-dart-params-boot01.json",
+      "sha256": "a61a90d8943ff98129b613f52b8648854ae97157babc86c63fb0437aada430ba"
+    },
+    {
+      "file": "qualification/usb-dart-reproduction-root.json",
+      "sha256": "1e8f0c4b6fda5cdc296648ec5c33bb2d75070915e92d1b219e917cfb926e48af"
     },
     {
       "file": "qualification/userspace-child-runtime-root.json",
@@ -2481,7 +2726,7 @@
     },
     {
       "file": "recovery/NEXT-TEST.md",
-      "sha256": "d5b1b81e0f815454098608115c9a6fba871bc3ff1038875f18d2c53afb2dc460"
+      "sha256": "89979e12164ccde6484f12538ced23cea8182a5ad68efa7b5cc54f7d5c2105ba"
     },
     {
       "file": "recovery/README.md",
@@ -2494,6 +2739,10 @@
     {
       "file": "recovery/allocator-instructions.json",
       "sha256": "f6108800b09d763c76d19749119c91eea47e3532275ecea1d6e699bc5e55a201"
+    },
+    {
+      "file": "recovery/clear_supervised_health.py",
+      "sha256": "ce3614f7442abd3be1e682b7c8ad8d34b3d0f6bfb793c3ed5cb574533720a183"
     },
     {
       "file": "recovery/collector-proxy-rejection.json",
@@ -2514,6 +2763,22 @@
     {
       "file": "recovery/observe.py",
       "sha256": "e5f3a1107047453064c53a4f89beabfe5e57395a70a40903546ab08b174ff9c9"
+    },
+    {
+      "file": "recovery/preparation/README.md",
+      "sha256": "25246169a0a19924cb9c5e4db8594d336e376d4895bf7a2df5685bde6826f3dd"
+    },
+    {
+      "file": "recovery/preparation/prepare_supervised.py",
+      "sha256": "32e6e5abf5ed86405aeb9ae6c518309ce711d6aed005596b5463775ac51d1728"
+    },
+    {
+      "file": "recovery/preparation/test-result.json",
+      "sha256": "2186cfdccc8d42560a8390a0603a99db00e80725625175ecbb33a65d6e27f5ec"
+    },
+    {
+      "file": "recovery/preparation/test_preparation.py",
+      "sha256": "fef4e7076089209970194fd5986ec228c5b01af350db0f767ddc11755f0e2ea5"
     },
     {
       "file": "recovery/read_pmu_counter.py",
@@ -2550,6 +2815,14 @@
     {
       "file": "recovery/staging_memory.py",
       "sha256": "42860b7b024cb14dfcfd0c81dcaa460cba79f0f121f03a750ee14da76f464a8a"
+    },
+    {
+      "file": "recovery/supervised_child.py",
+      "sha256": "f08c570a7757163569ce48e828484fa731c59a3d95b8cbd8f6bc1a4284779308"
+    },
+    {
+      "file": "recovery/supervised_start_resident.py",
+      "sha256": "8465cf6a4bc007e1a5a452a4772f15e7b4e9b1039f1e2bf3c5903c3fedc9007b"
     },
     {
       "file": "recovery/test_observe.py",

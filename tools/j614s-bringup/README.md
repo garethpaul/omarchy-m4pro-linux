@@ -1,28 +1,25 @@
-# J614s native Omarchy bring-up tools
+# Experimental J614s / M4 Pro Omarchy bring-up
 
-Experimental tools for Mac16,8 / T6040. The installed boot object and protected
-volumes are not modified by these tools. Native GPU rendering and persistent
-default boot remain incomplete. Read PROGRESS.md before running any experiment.
+The requested native accelerated persistent installation is incomplete.
 
-- cpu/: guarded12-core qualification, performance evidence and read-only power-layout decoding.
-- graphics/: exact-build G16S initialization capture decoders, bounded UAT reads and actual-driver crash regression. These do not construct or send INIT.
-- omarchy/: native renderer qualification, signed ARM package inspection and print-only dependency planning. No package installation or desktop changes.
-- mesa/: source-built first-compute fixture, architecture comparison and explicit unqualified-model rejection. No GPU submission.
-- packages/: pinned payload signature and boot-hook audit, including unavailable-pin evidence. Actual static ELF audit plus normal libalpm dependency/conflict preparation against all986 frozen package descriptions; only explicit hypothetical removals, separate151 signed candidate with zero new bounded ELF issue edges; no transaction commit or installation.
-- integration/: immutable consolidated J614s source/config ledgers and patch replay evidence. Strict ANS admission/lifetime source, host regressions and a pinned offline USB/read-only initramfs probe; init has never run, and real hardware/cache ownership remain unqualified.
-- omarchy-packages/: architecture-independent Neovim seed repair with actual packaging fixtures; signed package build and full editor integration remain untested; isolated ARM formatter/options checks pass.
-- infra/: isolated kernel and RAM-loader builds with tool/source/config/artifact integrity checks, independent artifact comparisons and retained failures.
-- capture/: gated minimal Metal workload, validated on a separate M1 Pro builder; M4 capture remains untested.
-- qualification/: all-phase status matrix and selected captured hardware evidence.
-- recovery/: USB/webcam observation, resident CPU-slot reads and PMU counter read without core, counter or watchdog changes.
+Supervised RAM boot01 reached Linux PID1 and USB descriptors, then host USB
+configuration timed out. It returned automatically to the preserved proxy once;
+general recovery is unqualified. The measured DART2.2 correction builds twice
+with byte-identical Image and18modules but is hardware UNTESTED.
 
-Run component commands from this directory, with explicit external source/build
-paths for this workspace. Examples showing sibling development trees describe
-the original layout; adapt those arguments to retained qualified sources.
+[All-phase status](qualification/STATUS.md), [committed ledger](PROGRESS.md),
+[next supervised test](recovery/NEXT-TEST.md), [DART source/build](infra/usb-configuration/README.md),
+[host-only preparation](recovery/preparation/README.md), and
+[full isolated ARM editor checks](omarchy-packages/nvim/runtime/lazyvim/README.md).
 
-Host tests, cross-compilation, firmware transport, actual acceleration and
-persistent boot are separate evidence levels. Synthetic fixtures are labeled
-and never establish hardware support. Raw ADTs, vendor firmware, credentials
-and private screen captures are excluded. WORKSPACE-SOURCE.json fingerprints
-the integrated source checkpoint. New experimental builds must not replace
-the last qualified payload or bypass the independently verified recovery gate.
+The host preparation command passes15controls, actual canonical assembly/verify/plan
+and two full-CLI refusal cases. It cannot upload, boot or establish supervision.
+The52spec LazyVim loader, real Mason setup and stock Conform ARM formatter commands
+pass in independent isolated runs through an existing host QEMU binfmt handler.
+Mason registry/install, native target execution and performance remain unqualified.
+
+The next RAM test awaits the owner's exact one-byte PMU diagnostic clear approval.
+No protected boot/storage change or Fingerbot action occurred. Raw ADTs, vendor
+firmware, credentials, private hosts, generated ASLR-bearing artifacts and user
+working-tree edits are excluded. WORKSPACE-SOURCE.json binds this exact source
+archive and every exported file.
