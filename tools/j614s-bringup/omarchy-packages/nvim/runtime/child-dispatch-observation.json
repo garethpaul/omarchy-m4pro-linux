@@ -1,0 +1,12 @@
+{
+  "status": "BLOCKED (isolated child dispatcher only)",
+  "neovim_qemu_executable": 0,
+  "neovim_qemu_exepath": "",
+  "neovim_shfmt_executable": 1,
+  "qemu_mode": "0o755",
+  "qemu_uid_in_namespace": 0,
+  "qemu_bytes": 7271256,
+  "observed_error": "E475: Invalid value for argument cmd: '/qemu' is not executable",
+  "root_cause": "Neovim rejects the x86-64 QEMU dispatcher in this ARM64 process. The underlying executable-check reason was not established; changing ownership did not repair it.",
+  "forbidden_workarounds_used": false
+}

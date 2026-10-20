@@ -1,0 +1,19 @@
+{
+  "binary_sha256": {
+    "build/m1n1-raw.elf": "2e24bc92885ac68970eb88847edfd2c2766ef8da3ac55759b0fb0ad6f7843392",
+    "build/m1n1.bin": "7536a712fcdfc3fcb71f134b21c9665598ddc45cb7aec3e4e5b4e2e003d139a5",
+    "build/m1n1.elf": "6a6c5ce90f9cf203792b8f0259ac4b10af607e0e56e8b4c93e7e45f36edc0126",
+    "build/m1n1.macho": "f937b36214aded767ad5a470a40a11644a56f5b12bc2f368e2ac78b027400a8e"
+  },
+  "binding_old_binary_to_archived_source": "UNPROVEN; identities preserved independently",
+  "config_unchanged": true,
+  "head": "b3df851fb5f1d32bdff085b10049cb20e535c1a3",
+  "rechecked_after_independent_reproduction_builds": true,
+  "source_files_checked": 674,
+  "source_manifest_sha256": "11429a82e57eab539ce161ec92ba5fc19b8254457dc14b084efa03c0d8808ca9",
+  "status": "UNCHANGED",
+  "tag_unchanged": true,
+  "target_actions": false,
+  "tracked_diff_sha256": "3b7d69ee70980b3e3cba8f4774e885b6fdcd068e56aa05c167115d58a40d8ef6",
+  "untracked_names_and_hashes_unchanged": true
+}

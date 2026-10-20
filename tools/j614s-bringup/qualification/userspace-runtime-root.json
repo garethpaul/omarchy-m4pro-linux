@@ -1,0 +1,25 @@
+{
+  "status": "WORKS within isolated userspace scope",
+  "hardware": "UNTESTED",
+  "source_evidence_commit": "cae2768",
+  "harness_sha256": "5932963047e86324cdecbba124c646d438b9d6e9786d0fa261404cd03bc9c427",
+  "qualification_sha256": "30ce53399b1029787133348e2c0074d4ac85a76d3c867dc744a71f3b2b2ade2c",
+  "probe_sha256": "7ae5fc00d4144e0f4fce23bf89275f1d3d40326e75ca7369de851bb600eec710",
+  "successful_commands": 8,
+  "checks": {
+    "host_home_absent": true,
+    "scratch_writable": true,
+    "only_sandbox_commands": true,
+    "other_options_preserved": true,
+    "no_network_routes": true,
+    "no_capabilities": true,
+    "input_read_only": true,
+    "empty_options_work": true,
+    "home_env_absent": true,
+    "default_tools_removed": true
+  },
+  "full_LazyVim_Conform": "UNTESTED",
+  "editor_child_execution": "BLOCKED in separate QEMU dispatch experiment; failure preserved",
+  "root_replay_result_sha256": "b235b80bcadd8d786cf88cc5114c8c83789ca93e659213f2cdccfaff3cdd237f",
+  "actions_on_target": []
+}

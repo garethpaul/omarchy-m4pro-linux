@@ -1,0 +1,12 @@
+{
+  "status": "WORKS: actual reused ELF mutation refused before readelf",
+  "actions": [],
+  "deployable": false,
+  "execution_ready": false,
+  "command_source_sha256": "37890d3c8c2f23eddad4946284d9865aa644885934c6be72a36033ed4ddc1b8e",
+  "original_provider_sha256": "0ea89ddfe117b46e185b5821b59354acb880aaf2f269e6b8db0a2e04ee15a42e",
+  "mutated_provider_sha256": "c58d195da605b18a8507cac4fa196c74348f17d2be0aaec3d5559ab668c61ef9",
+  "exit": 1,
+  "reason": "reused provider bytes differ from exact archive member",
+  "original_restored": true
+}

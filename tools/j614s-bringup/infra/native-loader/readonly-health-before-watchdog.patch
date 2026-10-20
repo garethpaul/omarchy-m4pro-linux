@@ -1,0 +1,20 @@
+diff --git a/src/j614s_native.c b/src/j614s_native.c
+index daeeffe..05a8e6a 100644
+--- a/src/j614s_native.c
++++ b/src/j614s_native.c
+@@ -134 +134 @@ static int prepare_mtp_memory(void *dt, int node, u64 start, u64 end)
+-static int clear_health_counter(void)
++static int require_zero_health_counter(void)
+@@ -164 +164 @@ static int clear_health_counter(void)
+-    u8 value, zero = 0;
++    u8 value;
+@@ -165,0 +166 @@ static int clear_health_counter(void)
++    /* Refuse a nonzero health byte; this handoff must never clear PMU state. */
+@@ -167 +168 @@ static int clear_health_counter(void)
+-        ret = spmi_ext_write_long(dev, 14, 0xf802, &zero, 1);
++        ret = -1;
+@@ -209 +210,3 @@ int j614s_native_run(void)
+-    if (wdt_arm_seconds(60) || clear_health_counter())
++    if (require_zero_health_counter())
++        return -1;
++    if (wdt_arm_seconds(60))

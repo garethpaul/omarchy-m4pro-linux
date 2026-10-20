@@ -1,0 +1,849 @@
+{
+  "schema": 1,
+  "libalpm_version": "16.0.1",
+  "prepared": true,
+  "prepare_exit": 0,
+  "committed": false,
+  "flags": 139264,
+  "dependency_checks": true,
+  "conflict_checks": true,
+  "unexpected_question": false,
+  "fetch_attempts": 0,
+  "protected_changed": false,
+  "error": null,
+  "add": [
+    {
+      "name": "avahi",
+      "version": "1:0.9rc5-2",
+      "repository": "extra"
+    },
+    {
+      "name": "jbigkit",
+      "version": "2.2-1",
+      "repository": "extra"
+    },
+    {
+      "name": "libtiff",
+      "version": "4.7.2-2",
+      "repository": "extra"
+    },
+    {
+      "name": "libsecret",
+      "version": "0.21.8.2-1",
+      "repository": "core"
+    },
+    {
+      "name": "noto-fonts",
+      "version": "1:2026.10.01-1",
+      "repository": "extra"
+    },
+    {
+      "name": "aether",
+      "version": "4.32.0-2",
+      "repository": "omarchy"
+    },
+    {
+      "name": "asdcontrol",
+      "version": "1:0.6.0-2",
+      "repository": "omarchy"
+    },
+    {
+      "name": "bat",
+      "version": "0.26.1-3",
+      "repository": "extra"
+    },
+    {
+      "name": "chromium",
+      "version": "153.0.8010.36-1",
+      "repository": "extra"
+    },
+    {
+      "name": "ffmpeg",
+      "version": "2:9.0.2-2",
+      "repository": "extra"
+    },
+    {
+      "name": "cliamp",
+      "version": "2.3.0-3",
+      "repository": "omarchy"
+    },
+    {
+      "name": "cups-filters",
+      "version": "2.0.1-3",
+      "repository": "extra"
+    },
+    {
+      "name": "cups",
+      "version": "2:2.4.20-1",
+      "repository": "extra"
+    },
+    {
+      "name": "ddcutil",
+      "version": "3.0.2-1",
+      "repository": "extra"
+    },
+    {
+      "name": "disktree-bin",
+      "version": "0.11.0-3",
+      "repository": "omarchy"
+    },
+    {
+      "name": "docker",
+      "version": "1:29.9.1-1",
+      "repository": "extra"
+    },
+    {
+      "name": "docker-buildx",
+      "version": "0.38.0-1",
+      "repository": "extra"
+    },
+    {
+      "name": "docker-compose",
+      "version": "5.6.0-1",
+      "repository": "extra"
+    },
+    {
+      "name": "dotnet-host-bin",
+      "version": "10.0.402-1",
+      "repository": "omarchy"
+    },
+    {
+      "name": "dotnet-runtime-bin",
+      "version": "10.0.402-1",
+      "repository": "omarchy"
+    },
+    {
+      "name": "gnome-desktop-common",
+      "version": "1:51.0-1",
+      "repository": "extra"
+    },
+    {
+      "name": "gnome-desktop",
+      "version": "1:51.0-1",
+      "repository": "extra"
+    },
+    {
+      "name": "gvfs",
+      "version": "1.62.0-3",
+      "repository": "extra"
+    },
+    {
+      "name": "evince",
+      "version": "1:48.4-2",
+      "repository": "extra"
+    },
+    {
+      "name": "fastfetch",
+      "version": "2.70.0-1",
+      "repository": "extra"
+    },
+    {
+      "name": "fcitx5",
+      "version": "5.1.23-1",
+      "repository": "extra"
+    },
+    {
+      "name": "libchewing",
+      "version": "0.13.1-1",
+      "repository": "extra"
+    },
+    {
+      "name": "fcitx5-chewing",
+      "version": "5.1.13-1",
+      "repository": "extra"
+    },
+    {
+      "name": "qt6-translations",
+      "version": "6.12.0-1",
+      "repository": "extra"
+    },
+    {
+      "name": "qt6-base",
+      "version": "6.12.0-3",
+      "repository": "extra"
+    },
+    {
+      "name": "fcitx5-qt",
+      "version": "5.1.16-2",
+      "repository": "extra"
+    },
+    {
+      "name": "libime",
+      "version": "1.1.17-1",
+      "repository": "extra"
+    },
+    {
+      "name": "marisa",
+      "version": "0.3.1-2",
+      "repository": "extra"
+    },
+    {
+      "name": "opencc",
+      "version": "1.4.1-1",
+      "repository": "extra"
+    },
+    {
+      "name": "qt6-declarative",
+      "version": "6.12.0-1",
+      "repository": "extra"
+    },
+    {
+      "name": "qt6-positioning",
+      "version": "6.12.0-1",
+      "repository": "extra"
+    },
+    {
+      "name": "qt6-webchannel",
+      "version": "6.12.0-1",
+      "repository": "extra"
+    },
+    {
+      "name": "qt6-webengine",
+      "version": "6.11.2-2",
+      "repository": "extra"
+    },
+    {
+      "name": "fcitx5-chinese-addons",
+      "version": "5.1.15-2",
+      "repository": "extra"
+    },
+    {
+      "name": "libhangul",
+      "version": "0.2.0-1",
+      "repository": "extra"
+    },
+    {
+      "name": "fcitx5-hangul",
+      "version": "5.1.11-1",
+      "repository": "extra"
+    },
+    {
+      "name": "fcitx5-mozc",
+      "version": "3.35.6354.2-1",
+      "repository": "extra"
+    },
+    {
+      "name": "fcitx5-table-extra",
+      "version": "5.1.13-1",
+      "repository": "extra"
+    },
+    {
+      "name": "fzf",
+      "version": "0.74.5-1",
+      "repository": "extra"
+    },
+    {
+      "name": "git",
+      "version": "2.56.0-1",
+      "repository": "extra"
+    },
+    {
+      "name": "xdg-desktop-portal-gtk",
+      "version": "1.15.3-2",
+      "repository": "extra"
+    },
+    {
+      "name": "openjph",
+      "version": "0.32.0-1",
+      "repository": "extra"
+    },
+    {
+      "name": "openexr",
+      "version": "3.5.2-1",
+      "repository": "extra"
+    },
+    {
+      "name": "libvips",
+      "version": "8.18.7-1",
+      "repository": "extra"
+    },
+    {
+      "name": "gliff",
+      "version": "0.4.0-1",
+      "repository": "omarchy"
+    },
+    {
+      "name": "gnome-keyring",
+      "version": "1:51.1-1",
+      "repository": "extra"
+    },
+    {
+      "name": "gpu-screen-recorder",
+      "version": "6.1.4-1",
+      "repository": "extra"
+    },
+    {
+      "name": "gum",
+      "version": "2.0.2-1",
+      "repository": "extra"
+    },
+    {
+      "name": "gvfs-mtp",
+      "version": "1.62.0-3",
+      "repository": "extra"
+    },
+    {
+      "name": "libnfs",
+      "version": "7.0.2-2",
+      "repository": "extra"
+    },
+    {
+      "name": "gvfs-nfs",
+      "version": "1.62.0-3",
+      "repository": "extra"
+    },
+    {
+      "name": "gvfs-smb",
+      "version": "1.62.0-3",
+      "repository": "extra"
+    },
+    {
+      "name": "herdr",
+      "version": "0.9.1-2",
+      "repository": "omarchy"
+    },
+    {
+      "name": "qt6-multimedia",
+      "version": "6.12.0-1",
+      "repository": "extra"
+    },
+    {
+      "name": "qt6-multimedia-ffmpeg",
+      "version": "6.12.0-1",
+      "repository": "extra"
+    },
+    {
+      "name": "qt6-imageformats",
+      "version": "6.12.0-1",
+      "repository": "extra"
+    },
+    {
+      "name": "qt6-svg",
+      "version": "6.12.0-1",
+      "repository": "extra"
+    },
+    {
+      "name": "hype",
+      "version": "0.6.0-1",
+      "repository": "omarchy"
+    },
+    {
+      "name": "hyprtoolkit",
+      "version": "0.6.0-1",
+      "repository": "extra"
+    },
+    {
+      "name": "hyprland-guiutils",
+      "version": "0.2.2-4",
+      "repository": "extra"
+    },
+    {
+      "name": "hyprland",
+      "version": "0.56.2-7",
+      "repository": "omarchy"
+    },
+    {
+      "name": "hyprland-preview-share-picker",
+      "version": "0.2.1-3",
+      "repository": "omarchy"
+    },
+    {
+      "name": "imagemagick",
+      "version": "7.1.2.34-2",
+      "repository": "extra"
+    },
+    {
+      "name": "inotify-tools",
+      "version": "4.26.270-1",
+      "repository": "extra"
+    },
+    {
+      "name": "networkmanager",
+      "version": "1.58.1-2",
+      "repository": "extra"
+    },
+    {
+      "name": "lazygit",
+      "version": "0.66.2-1",
+      "repository": "extra"
+    },
+    {
+      "name": "less",
+      "version": "1:710-1",
+      "repository": "core"
+    },
+    {
+      "name": "libreoffice-fresh",
+      "version": "26.8.1-1",
+      "repository": "extra"
+    },
+    {
+      "name": "mariadb-libs",
+      "version": "13.0.2-2",
+      "repository": "extra"
+    },
+    {
+      "name": "mise-bin",
+      "version": "2026.10.14-1",
+      "repository": "omarchy"
+    },
+    {
+      "name": "monologue",
+      "version": "0.3.1-1",
+      "repository": "omarchy"
+    },
+    {
+      "name": "moonlight-qt",
+      "version": "6.2.0-1",
+      "repository": "extra"
+    },
+    {
+      "name": "mpv-mpris",
+      "version": "1.3-1",
+      "repository": "extra"
+    },
+    {
+      "name": "gnome-desktop-4",
+      "version": "1:51.0-1",
+      "repository": "extra"
+    },
+    {
+      "name": "nautilus",
+      "version": "51.1-1",
+      "repository": "extra"
+    },
+    {
+      "name": "python-gobject",
+      "version": "3.58.1-1",
+      "repository": "extra"
+    },
+    {
+      "name": "nautilus-python",
+      "version": "4.2.0-1",
+      "repository": "extra"
+    },
+    {
+      "name": "nss-mdns",
+      "version": "0.15.1-3",
+      "repository": "extra"
+    },
+    {
+      "name": "neovim",
+      "version": "0.12.6-1",
+      "repository": "extra"
+    },
+    {
+      "name": "obsidian",
+      "version": "1.14.4-2",
+      "repository": "omarchy"
+    },
+    {
+      "name": "omacalc",
+      "version": "0.3.1-1",
+      "repository": "omarchy"
+    },
+    {
+      "name": "omacut",
+      "version": "0.7.2-1",
+      "repository": "omarchy"
+    },
+    {
+      "name": "omawrite",
+      "version": "0.7.2-1",
+      "repository": "omarchy"
+    },
+    {
+      "name": "omarchy-nvim",
+      "version": "2026.9.21-5",
+      "repository": "omarchy"
+    },
+    {
+      "name": "omarchy-hyprland-titlebars",
+      "version": "0.2.2-2",
+      "repository": "omarchy"
+    },
+    {
+      "name": "layer-shell-qt",
+      "version": "6.8.0-1",
+      "repository": "extra"
+    },
+    {
+      "name": "omasnap",
+      "version": "1.21.0-2",
+      "repository": "omarchy"
+    },
+    {
+      "name": "owe",
+      "version": "0.2.11-1",
+      "repository": "omarchy"
+    },
+    {
+      "name": "owe-lockfeed",
+      "version": "0.2.11-1",
+      "repository": "omarchy"
+    },
+    {
+      "name": "pinta",
+      "version": "3.1.2-1",
+      "repository": "omarchy"
+    },
+    {
+      "name": "plymouth",
+      "version": "26.134.222-3",
+      "repository": "extra"
+    },
+    {
+      "name": "postgresql-libs",
+      "version": "18.6-4",
+      "repository": "extra"
+    },
+    {
+      "name": "python-poetry-core",
+      "version": "2.5.0-1",
+      "repository": "extra"
+    },
+    {
+      "name": "qt6-wayland",
+      "version": "6.12.0-1",
+      "repository": "extra"
+    },
+    {
+      "name": "ttfx",
+      "version": "0.5.0-3",
+      "repository": "omarchy"
+    },
+    {
+      "name": "qemu-user-static-binfmt",
+      "version": "1:1.11.1.2+ds.3-1",
+      "repository": "omarchy"
+    },
+    {
+      "name": "quickshell",
+      "version": "0.3.2.r7.g2b4501a-1",
+      "repository": "omarchy"
+    },
+    {
+      "name": "signed",
+      "version": "0.3.1-1",
+      "repository": "omarchy"
+    },
+    {
+      "name": "starship",
+      "version": "1.27.0-1",
+      "repository": "extra"
+    },
+    {
+      "name": "libwireplumber",
+      "version": "0.5.18-1",
+      "repository": "extra"
+    },
+    {
+      "name": "wireplumber",
+      "version": "0.5.18-1",
+      "repository": "extra"
+    },
+    {
+      "name": "superwhisper-bin",
+      "version": "1.0.2-1",
+      "repository": "omarchy"
+    },
+    {
+      "name": "gtksourceview5",
+      "version": "5.22.0-1",
+      "repository": "extra"
+    },
+    {
+      "name": "libspelling",
+      "version": "0.4.10-2",
+      "repository": "extra"
+    },
+    {
+      "name": "papers",
+      "version": "51.1-1",
+      "repository": "extra"
+    },
+    {
+      "name": "sushi",
+      "version": "51.2-1",
+      "repository": "extra"
+    },
+    {
+      "name": "tmux",
+      "version": "3.8-1",
+      "repository": "extra"
+    },
+    {
+      "name": "tobi-try",
+      "version": "1.10.1-3",
+      "repository": "omarchy"
+    },
+    {
+      "name": "ttf-ia-writer",
+      "version": "20261002.r63-3",
+      "repository": "omarchy"
+    },
+    {
+      "name": "ttf-jetbrains-mono-nerd-basic",
+      "version": "3.5.1-2",
+      "repository": "omarchy"
+    },
+    {
+      "name": "tzupdate",
+      "version": "3.1.0-2",
+      "repository": "omarchy"
+    },
+    {
+      "name": "ufw-docker",
+      "version": "251123-2",
+      "repository": "omarchy"
+    },
+    {
+      "name": "usage",
+      "version": "6.12.1-1",
+      "repository": "extra"
+    },
+    {
+      "name": "uwsm",
+      "version": "0.27.1-1",
+      "repository": "extra"
+    },
+    {
+      "name": "vim-runtime",
+      "version": "9.2.1178-1",
+      "repository": "extra"
+    },
+    {
+      "name": "vim",
+      "version": "9.2.1178-1",
+      "repository": "extra"
+    },
+    {
+      "name": "ex-vi-compat",
+      "version": "3-1",
+      "repository": "extra"
+    },
+    {
+      "name": "xdg-terminal-exec",
+      "version": "0.14.3-2",
+      "repository": "extra"
+    },
+    {
+      "name": "yaru-icon-theme",
+      "version": "26.10.3-3",
+      "repository": "omarchy"
+    },
+    {
+      "name": "graphicsmagick",
+      "version": "1.3.49-3",
+      "repository": "extra"
+    },
+    {
+      "name": "zbar",
+      "version": "0.23.95-1",
+      "repository": "extra"
+    },
+    {
+      "name": "zram-generator",
+      "version": "1.2.1-1",
+      "repository": "extra"
+    },
+    {
+      "name": "rtkit",
+      "version": "0.14-2",
+      "repository": "extra"
+    },
+    {
+      "name": "libva-v4l2_request-avd",
+      "version": "1.3.r11.r169.gc653eaa-1",
+      "repository": "omarchy"
+    },
+    {
+      "name": "wf-recorder",
+      "version": "0.6.0-2",
+      "repository": "extra"
+    },
+    {
+      "name": "qt6-shadertools",
+      "version": "6.12.0-1",
+      "repository": "extra"
+    },
+    {
+      "name": "qt6-5compat",
+      "version": "6.12.0-1",
+      "repository": "extra"
+    },
+    {
+      "name": "qt6-networkauth",
+      "version": "6.12.0-1",
+      "repository": "extra"
+    },
+    {
+      "name": "qt6-speech",
+      "version": "6.12.0-1",
+      "repository": "extra"
+    },
+    {
+      "name": "libwmf",
+      "version": "0.2.17-1",
+      "repository": "extra"
+    },
+    {
+      "name": "qt5-translations",
+      "version": "5.15.19-1",
+      "repository": "extra"
+    },
+    {
+      "name": "qt5-base",
+      "version": "5.15.19+kde+r96-1",
+      "repository": "extra"
+    },
+    {
+      "name": "jsoncpp",
+      "version": "1.9.8-1",
+      "repository": "extra"
+    },
+    {
+      "name": "openxr",
+      "version": "1.1.60-2",
+      "repository": "extra"
+    },
+    {
+      "name": "qt6-quicktimeline",
+      "version": "6.12.0-1",
+      "repository": "extra"
+    },
+    {
+      "name": "qt6-quick3d",
+      "version": "6.12.0-1",
+      "repository": "extra"
+    },
+    {
+      "name": "webkitgtk-6.0",
+      "version": "2.54.1-1",
+      "repository": "extra"
+    },
+    {
+      "name": "numactl",
+      "version": "2.0.19-1",
+      "repository": "extra"
+    },
+    {
+      "name": "liburcu",
+      "version": "0.15.7-1",
+      "repository": "extra"
+    },
+    {
+      "name": "lttng-ust2.12",
+      "version": "2.12.10-2",
+      "repository": "extra"
+    },
+    {
+      "name": "shfmt",
+      "version": "3.14.1-1",
+      "repository": "extra"
+    },
+    {
+      "name": "stylua",
+      "version": "2.6.0-1",
+      "repository": "extra"
+    },
+    {
+      "name": "opencv",
+      "version": "5.0.0-13",
+      "repository": "extra"
+    },
+    {
+      "name": "unixodbc",
+      "version": "2.3.14-1",
+      "repository": "core"
+    },
+    {
+      "name": "freetds",
+      "version": "1.5.19-1",
+      "repository": "extra"
+    },
+    {
+      "name": "assimp",
+      "version": "6.0.5-1",
+      "repository": "extra"
+    }
+  ],
+  "remove": [
+    {
+      "name": "quickshell-git",
+      "version": "0.3.0.r20.g28771c7-2",
+      "repository": "local"
+    },
+    {
+      "name": "mise",
+      "version": "2026.9.4-1",
+      "repository": "local"
+    },
+    {
+      "name": "dotnet-runtime",
+      "version": "10.0.11.sdk400-1",
+      "repository": "local"
+    },
+    {
+      "name": "dotnet-host",
+      "version": "10.0.11.sdk400-1",
+      "repository": "local"
+    }
+  ],
+  "questions": [
+    {
+      "type": 4,
+      "answer": 1,
+      "incoming": "dotnet-host-bin",
+      "retained": "dotnet-host"
+    },
+    {
+      "type": 4,
+      "answer": 1,
+      "incoming": "dotnet-runtime-bin",
+      "retained": "dotnet-runtime"
+    },
+    {
+      "type": 4,
+      "answer": 1,
+      "incoming": "mise-bin",
+      "retained": "mise"
+    },
+    {
+      "type": 4,
+      "answer": 1,
+      "incoming": "quickshell",
+      "retained": "quickshell-git"
+    }
+  ],
+  "details": [],
+  "status": "PARTIAL",
+  "deployable": false,
+  "execution_ready": false,
+  "actions": [],
+  "proposal_sha256": "f3f6e8ec7723db5b1baaa882ee2dded1331c97893787493c43eb344f0e0f20e4",
+  "qualification_sha256": "30ce53399b1029787133348e2c0074d4ac85a76d3c867dc744a71f3b2b2ade2c",
+  "scenario_sha256": "da32c93fc079f1be66fc02c655bc58a2d01f128d09fc7d582e903ef5735bd33e",
+  "helper_source_sha256": "db37b588924b5ee6c162e216c4b035007944c41f9586eb2601e099ea58580fe5",
+  "helper_binary_sha256": "0f38cba2fc39160d44e2331bffd6687cae39a57f24ca82fd10ed72e303ce80b0",
+  "wrapper_sha256": "aad1cd974003400277740a8cb5e9d11e0477e4bedf67395315e823ed09792230",
+  "header_sha256": "c959bb93bc24bf96c1432d0b12cc0453a796259076a28f91ba9a4cbcb3102d44",
+  "binary_imports_sha256": "391f1932078069ec10df85de802e418d41c5896c89a108ddcd2648a4300f6b30",
+  "protected_installed_pin_count": 20,
+  "held_request_count": 4,
+  "protected_names_ignored": 130,
+  "local_db_before_after_entries_sha256": "ab9895e57c965c6ddaa3cebb1d20393f2e340b65c861786296a10c3119c67ad3",
+  "baseline_description_digest": "05592373e5f03cfcfeb32ea3dcf0fb835b307e9e1eae75540e670db36e5e1e7e",
+  "baseline_description_count": 986,
+  "baseline_qualification_sha256": "d63559fc4cad4c7e3974cbc71acaee9ddfc9d1b4b6d67b6eff13e44a17d16eb7",
+  "baseline_identity_helper_sha256": "ca3de64f4e7304c0b1d0d26bb26b511a7c45775d023f3b42547972f993b463b4",
+  "target_set_matches_qualified_plan": true,
+  "extra_targets": [],
+  "missing_targets": [],
+  "signature_policy": "Required DatabaseOptional; frozen DBs and externally qualified signed payload identities; no signature bypass/key import",
+  "limits": [
+    "Metadata dependency/conflict preparation only; no alpm_trans_commit, sysupgrade, payload loading, downloads, package execution or host/target changes.",
+    "File conflicts, hooks, actual install and runtime ABI remain unqualified.",
+    "Allowed answers are a separate hypothetical removal scenario, not authorization for real removal."
+  ]
+}

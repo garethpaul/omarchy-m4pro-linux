@@ -5,12 +5,12 @@
   "actions": [],
   "tests": {
     "status": "WORKS",
-    "count": 29,
+    "count": 34,
     "red_before_implementation": [
       "5 initial ELF parser/contract tests failed with explicit NotImplementedError (9 subcase errors), not import errors",
       "Separate real compiled dependency-scope regression failed with explicit NotImplementedError before scope implementation"
     ],
-    "green": "29 actual ELF, graph, virtual-root, provenance, complete-baseline and normal libalpm regressions pass; 6 prepare controls also pass ASan+UBSan",
+    "green": "34 actual ELF, graph, virtual-root, provenance, complete-baseline, normal libalpm and separate-candidate regressions pass; prior 6 prepare controls also passed ASan+UBSan",
     "note": "Two own scope audit runs were interrupted to remove repeated export-set work; preserved private failure logs. Final indexed run retains all checks.",
     "provenance_controls": "Actual archived old function accepts changed restore; actual current CLI rejects changed sealed file, exact bytes restored, cached real117 replay byte-identical; actual reused provider mutation refused."
   },
@@ -18,10 +18,10 @@
   "runtime_ABI": "UNTESTED",
   "filesystem_model": "PARTIAL: initial same-name overlay retained separately; new transaction model includes four exact normally prepared hypothetical removals",
   "blocked": [
-    "8 exact untouched Qt consumers lose12 Qt_6_PRIVATE_API imports",
-    "16 new/incoming direct SONAME edges unresolved in bounded model",
-    "Name-changing conflicts/removals need actual transaction preparation",
-    "Original held boot requests, boot hooks, target and recovery remain blocked"
+    "Original117:8 exact untouched Qt consumers lose12 Qt_6_PRIVATE_API imports and16 new/incoming direct SONAME edges remain unresolved; preserved historical findings.",
+    "Separate151: zero new bounded static edges;57 preserved baseline issue edges,344 Guile VM parse gaps and one dormant foreign Mason asset remain visible.",
+    "Normal hypothetical dependency/conflict preparation completed for117/145/151; real removals, install-time file conflicts, removal hooks and runtime ABI remain unqualified.",
+    "Original held boot requests, boot hooks, target and recovery remain blocked; unsigned nvim6 source candidate remains outside all signed models."
   ],
   "files": {
     ".gitignore": "0090a854cd9b906751909c1f21e1454e3de0f601a7f300f05246ef49dca5a770",
@@ -30,6 +30,39 @@
     "audit_plan.py": "21be9986ede57f06818c8ab70ebddd1dc1e20650e989e871176c43c31c670060",
     "baseline.py": "ca3de64f4e7304c0b1d0d26bb26b511a7c45775d023f3b42547972f993b463b4",
     "classify_findings.py": "94de265ece376f8e4c87df67aa82e115908b998e13317c883f8b4136bfcba3d9",
+    "coherent-candidate/EVIDENCE.json": "af9b5583dcd9a5f32c5b2d73b03ac33c803746a9ee3fc91eeda9e23e15ed5626",
+    "coherent-candidate/README.md": "495941c801a905648cd0f74cc4941d8724f3e25152cdbffd29f789970e3633ea",
+    "coherent-candidate/attempt-01-failure.json": "7ea22536c5b5a6d85e9c952a5589e9b37f3f7b91d275a21e9e7ed32fe5d56a4b",
+    "coherent-candidate/attempt-02/configured-current-payload-qualification.json": "cabac446a7aec17d1a464b8c9b43f2e9b60e5b66264aada8058012807e8b868b",
+    "coherent-candidate/attempt-02/configured-current-proposal.json": "b7afcfc08133ac4dd8af0496ced743518a30d8d004bf6cc44366160908abc28b",
+    "coherent-candidate/attempt-02/configured-current-repositories.json": "c2f061d4947022d926bcca60cd96fdaee4744cfb918ba8a3431e43fd04f3f0e4",
+    "coherent-candidate/attempt-02/configured-current-request-review.json": "2402f7840c6d6f200c2c8898403101d53567ce4919b8664048d9e07fa0926ca8",
+    "coherent-candidate/attempt-02/filesystem-model.json": "f93ae55815a693db87fe27af3a48ae206b847bd179334c36a668ddf5b998e99b",
+    "coherent-candidate/attempt-02/preparation.json": "7c6f8013d591e24fa1844bf979914d8d2223ba52e9d26cf6e13392f2967cb6ce",
+    "coherent-candidate/attempt-02/proposal.json": "b7afcfc08133ac4dd8af0496ced743518a30d8d004bf6cc44366160908abc28b",
+    "coherent-candidate/attempt-02/removal-scenario.json": "da32c93fc079f1be66fc02c655bc58a2d01f128d09fc7d582e903ef5735bd33e",
+    "coherent-candidate/attempt-02/repositories.json": "c2f061d4947022d926bcca60cd96fdaee4744cfb918ba8a3431e43fd04f3f0e4",
+    "coherent-candidate/attempt-02/request-review.json": "2402f7840c6d6f200c2c8898403101d53567ce4919b8664048d9e07fa0926ca8",
+    "coherent-candidate/attempt-03/cache-replay.json": "e0f556d78bcb369f31dd3a81fdf18911cc416624220445c0d1925a90cb3a4e53",
+    "coherent-candidate/attempt-03/configured-current-payload-qualification.json": "30ce53399b1029787133348e2c0074d4ac85a76d3c867dc744a71f3b2b2ade2c",
+    "coherent-candidate/attempt-03/configured-current-proposal.json": "f3f6e8ec7723db5b1baaa882ee2dded1331c97893787493c43eb344f0e0f20e4",
+    "coherent-candidate/attempt-03/configured-current-repositories.json": "c2f061d4947022d926bcca60cd96fdaee4744cfb918ba8a3431e43fd04f3f0e4",
+    "coherent-candidate/attempt-03/configured-current-request-review.json": "2c4de3dbd759473d019fa66bf2497cbd923caa6fbcca80f191f4ff0741a5f7c7",
+    "coherent-candidate/attempt-03/filesystem-model.json": "3907fb5620b0dbd270a7557c957a9b426d3b7bfa41425fbb8947fdc9773e4663",
+    "coherent-candidate/attempt-03/preparation.json": "a697e9dee636b2ae2c305e307a97a01e9ebd564018e61ff529b7100dcaf8c7a6",
+    "coherent-candidate/attempt-03/proposal.json": "f3f6e8ec7723db5b1baaa882ee2dded1331c97893787493c43eb344f0e0f20e4",
+    "coherent-candidate/attempt-03/provider-mutation-refusal.json": "504594822641038320e83074516457cf085a2db56075f733d2065aba0a237ca7",
+    "coherent-candidate/attempt-03/readelf-crosscheck.json": "8fa1aa5128a9435e5cb4d726a59b0b62eb9c162e5bfb275b84fe9196d336e418",
+    "coherent-candidate/attempt-03/removal-scenario.json": "da32c93fc079f1be66fc02c655bc58a2d01f128d09fc7d582e903ef5735bd33e",
+    "coherent-candidate/attempt-03/repositories.json": "c2f061d4947022d926bcca60cd96fdaee4744cfb918ba8a3431e43fd04f3f0e4",
+    "coherent-candidate/attempt-03/request-review.json": "2c4de3dbd759473d019fa66bf2497cbd923caa6fbcca80f191f4ff0741a5f7c7",
+    "coherent-candidate/crosscheck_closure.py": "37890d3c8c2f23eddad4946284d9865aa644885934c6be72a36033ed4ddc1b8e",
+    "coherent-candidate/evidence/proposal.json": "787e8579a7d09afaf1454bafa7e71cbf7135de87bbb259e0ec33e2d0bf4d1e39",
+    "coherent-candidate/evidence/repositories.json": "c2f061d4947022d926bcca60cd96fdaee4744cfb918ba8a3431e43fd04f3f0e4",
+    "coherent-candidate/evidence/request-review.json": "b43dd663f388f434ade945a781382fccf4a590199add4b4813f931215f05cd82",
+    "coherent-candidate/propose_candidate.py": "6de784955872f5cd197400a14415fb25b3b6f6fc294896ef81fcb0f068935119",
+    "coherent-candidate/provenance.json": "6064819a1413194fb0a3523df3225e141b6bc3cbdfc3a466fc579cf92f31ef4e",
+    "coherent-candidate/tests.log": "255938fe43cf9e7604d88a8070a88f805c2927d342f8fe33f2d69632d0637f04",
     "crosscheck_readelf.py": "b9594aaad35b653b3fc6b9f6e8aea8686e00f1f003793bd3f12ab3021e29c0a3",
     "evidence/cache-before-fix.json": "884dac771844043d49dfd78709b0830933f3274a9cc798216329ad1ef8abe35f",
     "evidence/cache-mutation-refusal.json": "7f6c503f0561e863b043c7ce1b06f0c40cbc6f4a7e181224be504ce6720f74e0",
@@ -44,6 +77,7 @@
     "prove_qt_break.py": "ee8fa6ef38d778aca9e70bd4fb87f8d1c0d36beeeecf57c08795defd287dd39c",
     "restore_image.py": "2c240f7cc41ea38a44502121b23f0da924ed398200ba5a024ae0167e77094bd0",
     "tests/test_baseline.py": "8b91449112fbf2cf49d7e9b5d0bbbcc3482ab9f8cdaf43c881e8cfd89ef27073",
+    "tests/test_candidate.py": "48bd4faa6a5fa24b5d6898e00fe81cdabd153e1eed2d6343d30543d925ecc0c6",
     "tests/test_elf.py": "faa3f0dbbf30d85a7b64ead560d1460e62046c69aa165028ce30b4ee1709e948",
     "tests/test_prepare.py": "7f5817520eacda83f48b0bb1d0f1ad4bd653806ceb87d1aca68693901a3e64d2",
     "tests/test_provenance.py": "82ab84c8388271c84259bf3936db7907cfdc14e50323c987e3eb1c4df0401d17",
@@ -66,5 +100,13 @@
     "transaction/sanitizer-tests.log": "b2d7f9a605a4b6bec84526ae2cb8c2aba3b933139e930a7f93a0acc9721941f0",
     "transaction/scenario-current117-01.json": "2e9f7aa7454611a58891849dd77b46f475db9479f68960044bef6a427b8433e9",
     "transaction/scenario-current117-aliases.json": "da32c93fc079f1be66fc02c655bc58a2d01f128d09fc7d582e903ef5735bd33e"
+  },
+  "separate_candidate": {
+    "status": "PARTIAL",
+    "selected_signed": 151,
+    "qualification": "coherent-candidate/attempt-03/configured-current-payload-qualification.json",
+    "model": "coherent-candidate/attempt-03/filesystem-model.json",
+    "new_bounded_static_issue_edges": 0,
+    "source_only_nvim_not_selected": true
   }
 }

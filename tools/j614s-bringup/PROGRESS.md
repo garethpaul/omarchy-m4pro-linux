@@ -11,12 +11,13 @@ Goal: native accelerated, responsive, persistently bootable Omarchy. Overall INC
   This source is hardware UNTESTED, not an installable boot bundle.
 - Native GPU INIT/rendering, native DCP and persistent default boot are incomplete.
   Prior12-core and GPU-transport hardware passes remain separately evidenced.
-- ARM package signatures pass117/117, but exact Qt/SONAME ABI defects block the
-  proposed transaction. Sealed replay rejects changed evidence. Normal libalpm preparation now binds all986
-  baseline descriptions and models four exact hypothetical removals;29 root-rerun
-  tests pass. A separate145-package coherent dependency closure is under audit.
-- Source fixes are reviewable in kernel draft PR6 and nvim package draft PR1.
-  Minimal USB/RO probe is packaged and32 host tests pass; init is unexecuted; protected boot/disk changes
+- A separate151 signed-package candidate closes all24 newly introduced bounded
+  ELF issue edges, preserving original117 rows and protected holds. Root verifies
+  all151 archive hashes and34 tests. Normal preparation binds all986 descriptions;
+  four removals remain hypothetical. Runtime, native nvim and boot hooks are unqualified.
+- Source fixes are reviewable in kernel draft PR6, nvim package draft PR1 and
+  m1n1 RAM-loader draft PR1.
+  Minimal USB/RO probe is packaged and36 host tests pass; init is unexecuted; protected boot/disk changes
   remain outside current authorization.
 
 ## Baseline
@@ -489,3 +490,53 @@ debug writes and replace PMU counter clearing with a read-only zero requirement.
 Original dirty loader source and qualified binary remain preserved. A new
 loader build, any replacement DT and the actual combined kernel boot are
 UNTESTED; supervised availability remains pending.
+
+## Signed dependency closure and read-only probe revision
+
+Integrated c84b863 as13ce34b: a separate151 signed-package closure preserves
+all original117 rows and all holds. Root reran34 tests, verified76+17+32
+evidence-file hashes and all151 actual cached archives. Normal preparation
+accepts151 additions/four hypothetical removals with all986 descriptions fixed.
+Static model reports zero newly introduced edges across14,734 direct edges and
+310 untouched consumers, with57 old issues/344 Guile gaps/foreign dormant Mason
+asset retained explicitly. GNU readelf independently checks12 actual ELF files.
+The unsigned nvim6 source remains outside the signed model; no install occurred.
+
+Probe source5c96ab8 (centralb52f4a5) now correctly says only this init avoids
+arming/feeding watchdogs; predecessor/kernel behavior is separate. It reads
+existing watchdog state and actual parameters, with absence/unreadability
+explicit. Root reran36 tests; init never executed. Fresh03/04 archives match
+d9fac843a55e2ea5e7f955704b3e8f5bfe9f16c49e38c7bdb747a8ca7831b52f
+(1,097,496 bytes); earlier frozena3a012 pair remains unchanged.
+
+Loader source6249e0ec removes debug framebuffer writes and changes PMU health
+clearing into read-only zero admission before watchdog arm. Root reran26 PMU
+and27 ordering cases under both fatal-sanitized GCC/Clang. First full compile
+passes; its independent repeat exposed real path-dependent Rust/C strings.
+Both failed reproduction artifacts remain preserved while the map precedence
+fix is validated. This source has never run on the Mac. Webcam at06:49:52UTC
+still shows Running proxy, unchangedUSB enumeration63. No new boot or target
+write occurred.
+
+## Final safe preparation checkpoint
+
+Loader recipe2 fixes actual path-map precedence. Root directly compared all
+seven distinct artifact pairs from two fresh clean6249 source checkouts: exact
+bytes/SHA match, including both complete ELF files. Current flat loader SHA
+2309dfbb368c5feadfc0ae70e0fbb11ac8e28132c815ab1c3eb63a66821a0e00.
+The earlier failed pair remains preserved. Original source/binary are unchanged.
+Draft source: https://github.com/garethpaul/omarchy-m4pro-m1n1/pull/1
+No loader, kernel or initrd has been staged/executed on the Mac this turn.
+
+Integrated isolated runtime sourcecae2768 as7303d8e. Root reran eight actual
+ARM userspace commands in an empty read-only bwrap root: signed formatters
+produce correct/idempotent fixtures and actual Neovim executes the unchanged
+options callback; ten isolation/behavior checks pass. Scope uses eleven verified
+baseline libraries, not the whole151 overlay. Optional editor-to-QEMU child
+dispatch fails; no full LazyVim/Mason/Conform or target performance pass is claimed.
+No host installation/trust/binfmt change occurred.
+
+Remaining critical-path hardware work requires supervised physical recovery.
+The pending availability request is unanswered; manual restart is the only
+proven fallback. XNU/macOS staging/boot and protected persistence need separately
+scoped authority. These are external gates, not reasons to mark the goal complete.

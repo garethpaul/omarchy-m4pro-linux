@@ -1,0 +1,23 @@
+{
+  "status": "PARTIAL: isolated ARM userspace checks pass; editor subprocess/full LazyVim/hardware unqualified",
+  "files": {
+    "README.md": "4350c6187801e1c42f582fba088780ad97c21be56e89c633800411fc0a927f8f",
+    "attempt-02.json": "9606566a36e6e3d3fb9865c45836c8e21d8ce862ea256cbac1818f70a82ef3c2",
+    "attempt-03.json": "d5a4205ff083d5ffc0f1bb14a024977a482a81364b0c3da766db3342e41ad186",
+    "attempt-04.json": "a9c440a9fbf5c79b07b3e6c0a66d5b6bcf1f46462ada818c3c43a88c6f63a78a",
+    "attempt-05.json": "04b471d515f8d0b0836bfe4b4f476b187ca85012e5259b16edd9a216b284bc85",
+    "attempt-06.json": "ea3ba5feb0d033bbc9587ca9535a268081b78bf38cdc28afa1306920464e5cf1",
+    "attempt-07.json": "d0eb4906d6c833866737a6607b7ad6107ffa87a6016c1dc3e95e61f51d42b2a8",
+    "attempt-08.json": "d0eb4906d6c833866737a6607b7ad6107ffa87a6016c1dc3e95e61f51d42b2a8",
+    "attempt-09.json": "c71f248102114c8c420d5b9b9061c7c20a57245c3f25684930cc0c46374ca111",
+    "attempt-10.json": "000030a40d99f83c61afb0c94b665690ff68e1ad49879a541ef32fffe03f484f",
+    "child-dispatch-observation.json": "4d217ea359be6874ab85477f0166e074305e9087c7a065d2aa4916e56777e991",
+    "exercise_native.py": "5932963047e86324cdecbba124c646d438b9d6e9786d0fa261404cd03bc9c427",
+    "preparation-failure-01.json": "2c30326ab55d7a6ad464e92f5a7182285fb341b83d26ec7c3f6c64396249b175",
+    "probe-child-dispatch.lua": "e565b8be5d2462144606deb7f4143f80b1be94cd434dc703ea0146102fa85152",
+    "probe.lua": "7ae5fc00d4144e0f4fce23bf89275f1d3d40326e75ca7369de851bb600eec710"
+  },
+  "final_evidence": "attempt-10.json",
+  "all_failed_attempts_retained": true,
+  "publication_performed": false
+}

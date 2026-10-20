@@ -1,0 +1,89 @@
+{
+  "additional_flags_equal": true,
+  "artifacts": [
+    {
+      "equal": false,
+      "first_sha256": "2be8e00074e3fd71940107a66c90abbf919dfd5fb6d32fc8e5ca7b53a73434de",
+      "independent_inodes": true,
+      "path": "build/m1n1.bin",
+      "second_sha256": "3072d9fcf34fa78a888473b1e86e856bf49bc00ef38ff729f8ec45d552123d9e"
+    },
+    {
+      "equal": false,
+      "first_sha256": "8a9ef3786bb9ca61ee588ea2678a3f97f0980d608e9497efd5354ca920fd0047",
+      "independent_inodes": true,
+      "path": "build/m1n1.macho",
+      "second_sha256": "185bc976f00586427fe71b8cfb2acb8470fac1e609d348d4b9da36e5a87eeed0"
+    },
+    {
+      "equal": false,
+      "first_sha256": "578fcbeaf9f7ff1cdccd7bc59b4b6a3169f11ab050c36f6953b8bd2ac7155fa9",
+      "independent_inodes": true,
+      "path": "build/j614s_native.o",
+      "second_sha256": "f405065adf88c338838b19617a019fb26a63c5c71f87e7fcbbad0f1ee17fe85d"
+    },
+    {
+      "equal": false,
+      "first_sha256": "e51e8de669981eeceec0a07db14b80133114cef552c1cfff4bbdac969fcc3d0f",
+      "independent_inodes": true,
+      "path": "build/m1n1.elf",
+      "second_sha256": "310aa333bd7a654de00709e3e4d789c392628b7307b0da4fb73c472debbcdcba"
+    },
+    {
+      "equal": false,
+      "first_sha256": "02657408649616e66ed7bd13bbe46cfa37307e743aebf37c5c4e8263b09118ce",
+      "independent_inodes": true,
+      "path": "build/m1n1-raw.elf",
+      "second_sha256": "25d70762167c32d8b568927ea02e6e458e2ea4f4968273c09f582947210f19c0"
+    },
+    {
+      "equal": true,
+      "first_sha256": "b883f2923a92981aa567ab6ca89b971a2f7a755b43291f7ff4bfc921cdd8081b",
+      "independent_inodes": true,
+      "path": "build/build_cfg.h",
+      "second_sha256": "b883f2923a92981aa567ab6ca89b971a2f7a755b43291f7ff4bfc921cdd8081b"
+    },
+    {
+      "equal": true,
+      "first_sha256": "9e70b6be2f3fbbdc02d675c2dfb7ba559726ebefd5599f3a68159ff861fe6029",
+      "independent_inodes": true,
+      "path": "build/build_tag.h",
+      "second_sha256": "9e70b6be2f3fbbdc02d675c2dfb7ba559726ebefd5599f3a68159ff861fe6029"
+    }
+  ],
+  "cause": "Broad HOME remap applied after specific SOURCE remap, leaving checkout-specific sanitized paths",
+  "config_arguments_equal": true,
+  "flat_path_evidence": [
+    {
+      "affected_suffixes": [
+        "fatfs/src/dir.rs",
+        "fatfs/src/dir_entry.rs",
+        "fatfs/src/file.rs",
+        "fatfs/src/fs.rs",
+        "fatfs/src/io.rs"
+      ],
+      "checkout_specific_strings": 5,
+      "label": "first",
+      "literal_host_home_prefix_matches": 0
+    },
+    {
+      "affected_suffixes": [
+        "fatfs/src/dir.rs",
+        "fatfs/src/dir_entry.rs",
+        "fatfs/src/file.rs",
+        "fatfs/src/fs.rs",
+        "fatfs/src/io.rs"
+      ],
+      "checkout_specific_strings": 5,
+      "label": "second",
+      "literal_host_home_prefix_matches": 0
+    }
+  ],
+  "hardware": "UNTESTED",
+  "source_clean_after_both": true,
+  "source_commit": "6249e0ecdb7677b6afa01989c23344962253e954",
+  "source_manifest_sha256": "bdbd0186bbfd9200086f69b94b01127e56930dcddcd85e70e2b6fdc64ba51877",
+  "source_tree": "fc934d29eed1f3dd18324daf76b95e6d203b9926",
+  "status": "DIFFERENT",
+  "tools_equal": true
+}

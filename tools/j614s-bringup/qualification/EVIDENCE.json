@@ -13,7 +13,7 @@
   "files": [
     {
       "file": "STATUS.md",
-      "sha256": "723a6134b3a5e7696e1d7abc4f4ca86e2617b45ef71917edef1b6e5152516a95"
+      "sha256": "f2c53b375914d03dac6f34ece144941bc16aafdf00ec268c24ee8fd624b5cddf"
     },
     {
       "file": "adt-node-comparison.json",
@@ -50,6 +50,10 @@
     {
       "file": "storage-device-test52.txt",
       "sha256": "162b4643193ebe58a9f6b873bc7ae97d5f7ce26d8e5b99dda256525583caa797"
+    },
+    {
+      "file": "userspace-runtime-root.json",
+      "sha256": "da3e4d08b2550be32c666800c49f87c26b6bad3880a1f01b7746a8291856211e"
     }
   ]
 }

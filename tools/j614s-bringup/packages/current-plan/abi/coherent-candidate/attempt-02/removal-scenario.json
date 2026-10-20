@@ -1,0 +1,25 @@
+{
+  "schema": 1,
+  "deployable": false,
+  "actions": [],
+  "scope": "hypothetical conflict-removal answers for metadata preparation only; no real removal/install authorization",
+  "allow_conflict_removals": [
+    {
+      "incoming": "dotnet-host-bin",
+      "retained": "dotnet-host"
+    },
+    {
+      "incoming": "dotnet-runtime-bin",
+      "retained": "dotnet-runtime",
+      "evidence": "signed conflict dotnet-runtime-10.0 matches retained image PROVIDES; exact version/conflict checks stay enabled in libalpm"
+    },
+    {
+      "incoming": "mise-bin",
+      "retained": "mise"
+    },
+    {
+      "incoming": "quickshell",
+      "retained": "quickshell-git"
+    }
+  ]
+}

@@ -8,10 +8,10 @@ default boot remain incomplete. Read PROGRESS.md before running any experiment.
 - graphics/: exact-build G16S initialization capture decoders, bounded UAT reads and actual-driver crash regression. These do not construct or send INIT.
 - omarchy/: native renderer qualification, signed ARM package inspection and print-only dependency planning. No package installation or desktop changes.
 - mesa/: source-built first-compute fixture, architecture comparison and explicit unqualified-model rejection. No GPU submission.
-- packages/: pinned payload signature and boot-hook audit, including unavailable-pin evidence. Actual static ELF audit plus normal libalpm dependency/conflict preparation against all986 frozen package descriptions; only explicit hypothetical removals, no transaction commit or installation.
+- packages/: pinned payload signature and boot-hook audit, including unavailable-pin evidence. Actual static ELF audit plus normal libalpm dependency/conflict preparation against all986 frozen package descriptions; only explicit hypothetical removals, separate151 signed candidate with zero new bounded ELF issue edges; no transaction commit or installation.
 - integration/: immutable consolidated J614s source/config ledgers and patch replay evidence. Strict ANS admission/lifetime source, host regressions and a pinned offline USB/read-only initramfs probe; init has never run, and real hardware/cache ownership remain unqualified.
-- omarchy-packages/: architecture-independent Neovim seed repair with actual packaging fixtures; signed build/runtime remain untested.
-- infra/: isolated kernel builds with tool/source/config/artifact integrity checks.
+- omarchy-packages/: architecture-independent Neovim seed repair with actual packaging fixtures; signed package build and full editor integration remain untested; isolated ARM formatter/options checks pass.
+- infra/: isolated kernel and RAM-loader builds with tool/source/config/artifact integrity checks, independent artifact comparisons and retained failures.
 - capture/: gated minimal Metal workload, validated on a separate M1 Pro builder; M4 capture remains untested.
 - qualification/: all-phase status matrix and selected captured hardware evidence.
 - recovery/: USB/webcam observation and PMU counter read without counter or watchdog changes.

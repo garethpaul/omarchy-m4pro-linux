@@ -1,0 +1,122 @@
+{
+  "additional_flags": {
+    "C": "-ffile-prefix-map=HOME=home -ffile-prefix-map=SOURCE=source",
+    "Rust": "--remap-path-prefix=HOME=home --remap-path-prefix=SOURCE=source"
+  },
+  "artifacts": [
+    {
+      "byte_identical": true,
+      "first_sha256": "2309dfbb368c5feadfc0ae70e0fbb11ac8e28132c815ab1c3eb63a66821a0e00",
+      "independent_inodes": true,
+      "path": "build/m1n1.bin",
+      "second_sha256": "2309dfbb368c5feadfc0ae70e0fbb11ac8e28132c815ab1c3eb63a66821a0e00"
+    },
+    {
+      "byte_identical": true,
+      "first_sha256": "f93a406564e30e0131ec9e5c74eb39b99e24a894088a0aab33915e4f55352a63",
+      "independent_inodes": true,
+      "path": "build/m1n1.macho",
+      "second_sha256": "f93a406564e30e0131ec9e5c74eb39b99e24a894088a0aab33915e4f55352a63"
+    },
+    {
+      "byte_identical": true,
+      "first_sha256": "b2b1038dac01d2f2eb9346a92c037e50dd0c191c095ccae246097adf91ced18d",
+      "independent_inodes": true,
+      "path": "build/j614s_native.o",
+      "second_sha256": "b2b1038dac01d2f2eb9346a92c037e50dd0c191c095ccae246097adf91ced18d"
+    },
+    {
+      "byte_identical": true,
+      "first_sha256": "52217d285ec455459cd69451e0a970dcc3dea38d43432ffda2ce4be8bee4afd6",
+      "independent_inodes": true,
+      "path": "build/m1n1.elf",
+      "second_sha256": "52217d285ec455459cd69451e0a970dcc3dea38d43432ffda2ce4be8bee4afd6"
+    },
+    {
+      "byte_identical": true,
+      "first_sha256": "0ea9ac6ddaf850260a3b26fe55763f2a30459afcf9d0d6e0b685cd1784765f84",
+      "independent_inodes": true,
+      "path": "build/m1n1-raw.elf",
+      "second_sha256": "0ea9ac6ddaf850260a3b26fe55763f2a30459afcf9d0d6e0b685cd1784765f84"
+    },
+    {
+      "byte_identical": true,
+      "first_sha256": "b883f2923a92981aa567ab6ca89b971a2f7a755b43291f7ff4bfc921cdd8081b",
+      "independent_inodes": true,
+      "path": "build/build_cfg.h",
+      "second_sha256": "b883f2923a92981aa567ab6ca89b971a2f7a755b43291f7ff4bfc921cdd8081b"
+    },
+    {
+      "byte_identical": true,
+      "first_sha256": "9e70b6be2f3fbbdc02d675c2dfb7ba559726ebefd5599f3a68159ff861fe6029",
+      "independent_inodes": true,
+      "path": "build/build_tag.h",
+      "second_sha256": "9e70b6be2f3fbbdc02d675c2dfb7ba559726ebefd5599f3a68159ff861fe6029"
+    }
+  ],
+  "config_arguments": [
+    "USE_CLANG=1",
+    "ARCH=aarch64-linux-gnu-",
+    "CHAINLOADING=1",
+    "T6040_STAGE1_CDC=1",
+    "J614S_NATIVE=1",
+    "BUILTIN_LOGO=aurora"
+  ],
+  "deployment_authorized": false,
+  "flat_path_audit": {
+    "checkout_name_matches": 0,
+    "home_prefix_matches": 0
+  },
+  "hardware": "UNTESTED",
+  "independence": {
+    "fresh_output_trees": true,
+    "fresh_source_checkouts": true,
+    "no_artifact_inode_shared": true,
+    "source_clean_after_both": true
+  },
+  "native_object_dwarf_comp_dirs": [
+    "source",
+    "source"
+  ],
+  "path_remap_recipe": 2,
+  "scope": "Same-host/toolchain two-build byte comparison; full ELF differences reported honestly; no target execution or recovery qualification",
+  "source_commit": "6249e0ecdb7677b6afa01989c23344962253e954",
+  "source_manifest_sha256": "bdbd0186bbfd9200086f69b94b01127e56930dcddcd85e70e2b6fdc64ba51877",
+  "source_tree": "fc934d29eed1f3dd18324daf76b95e6d203b9926",
+  "status": "BYTE_IDENTICAL",
+  "tools": {
+    "cargo": {
+      "sha256": "e60b4010303c19a131c058e3f054b4b3311433c4b2ee94ba8e09e165ff2a3b3b",
+      "version": "cargo 1.91.1 (ea2d97820 2025-10-10)"
+    },
+    "clang": {
+      "sha256": "6acc6d2f0fdbae93e4d3b622b7a0d42cd05b036146e14193d9df40d1c0977066",
+      "version": "clang version 23.1.3"
+    },
+    "ld.lld": {
+      "sha256": "a2aef2573bc0409403747456072c373523ebfea0d03a832520331a17e8ec65a5",
+      "version": "LLD 21.1.2 (/checkout/src/llvm-project/llvm 8c30b9c5098bdff1d3d9a2d460ee091cd1171e60) (compatible with GNU linkers)"
+    },
+    "llvm-nm": {
+      "sha256": "943a52c986ca4d0e429b523efcf6b4bdd8c9bd90616f5781ede4ab32124f7227",
+      "version": "llvm-nm, compatible with GNU nm"
+    },
+    "llvm-objcopy": {
+      "sha256": "c03c694462c48b4f6f84d62dfff530cef3b539583dddf62681fb318e2f9ef151",
+      "version": "llvm-objcopy, compatible with GNU objcopy"
+    },
+    "llvm-readelf": {
+      "sha256": "c1d5d7261aa2b25ba5ec4060dd873a6a9808d2912221f97aaf3478f00f3af743",
+      "version": "LLVM (http://llvm.org/):"
+    },
+    "make": {
+      "sha256": "9018663161af324a74326c035cfd05408cba13a26c1f6b801cf5f3195f2bee40",
+      "version": "GNU Make 4.4.1"
+    },
+    "rustc": {
+      "sha256": "5eadaaf4fe086d76547b17dc3c1ba880d0082b93f7d8bc65612770da8e79fe8e",
+      "version": "rustc 1.91.1 (ed61e7d7e 2025-11-07)"
+    }
+  },
+  "version_tag": "j614s-native-readonly-6249e0ecdb76"
+}

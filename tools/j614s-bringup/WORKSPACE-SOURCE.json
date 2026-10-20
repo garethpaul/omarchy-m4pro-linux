@@ -1,6 +1,6 @@
 {
-  "workspace_commit": "b43135ac24a521fbf7b26e094fd473950abd2a3f",
-  "source_archive_sha256": "eb66c0ad01fd3b65e13740561a996015eaac36bc10ccda0e90194ad3c85998ce",
+  "workspace_commit": "6c0b65f944d3d7819a87044f1cab115bed55ecd2",
+  "source_archive_sha256": "7da93772971538365ad8c1df64a8f562f52e5b5566e5d220ea85fe73f97c5369",
   "status": "experimental tooling; no deployment or production qualification",
   "files": [
     {
@@ -9,7 +9,7 @@
     },
     {
       "file": "PROGRESS.md",
-      "sha256": "cc9287160e71fe5d8399ed37d6dba4926675cc4618ab16ba7648988e89be81a7"
+      "sha256": "cbc723e8af022b33b7b3ef8dffe585f5a5943d30e8d8053c0f4343443dac01d7"
     },
     {
       "file": "capture/.gitignore",
@@ -716,6 +716,86 @@
       "sha256": "7ad5ac16357b27f05a1bd2a12aedba229590dcad8d5e307575577b85942de237"
     },
     {
+      "file": "infra/native-loader/README.md",
+      "sha256": "e0fb7358636d8800bed49d03013a1c8bf17ad98f0d1da616327b70e62d15ace1"
+    },
+    {
+      "file": "infra/native-loader/archive/j614s_native.c",
+      "sha256": "de791476e9a95fb6738218a77349022ca6e8c9f43dd2ca6926e56a665a36d34e"
+    },
+    {
+      "file": "infra/native-loader/archive/j614s_native.h",
+      "sha256": "3440b556119cd9d24ace0be2e15c245799920c8bc2e7462382d6a0a52db47cf4"
+    },
+    {
+      "file": "infra/native-loader/archive/original-tracked.patch",
+      "sha256": "e8c37ee8216732435e7c03c2f37009708904180ecb8dc9b0db43b299fe5618a9"
+    },
+    {
+      "file": "infra/native-loader/build-result-remapped.json",
+      "sha256": "3fadd719024af0e9d96dae43ca0203092d3c3b9c0fb8d7c93d665a8887a50d42"
+    },
+    {
+      "file": "infra/native-loader/build-result.json",
+      "sha256": "d21780bb6e7fe79fabeace3e7f7bc012463c82472ae4fca29e89e3f8f537e6e8"
+    },
+    {
+      "file": "infra/native-loader/build_loader.py",
+      "sha256": "c326cf51096f535631eaf93f9155ea15c0b9b9483025ed137cb7f00f54d1165c"
+    },
+    {
+      "file": "infra/native-loader/intended-kernel.json",
+      "sha256": "d761e42ee7f5f48f0f14eb09fb0a7122ac9ef7ad97370ed3fbb16539f9168782"
+    },
+    {
+      "file": "infra/native-loader/ordering-after.json",
+      "sha256": "d8c7370ea75b68a3a973849b19883347edc333fe822918c3b627eb0f26964f23"
+    },
+    {
+      "file": "infra/native-loader/ordering-before.json",
+      "sha256": "6a0015a62fa3df49b4d008a95140d55cc5a266fc20205f2661bb480d4ec33f21"
+    },
+    {
+      "file": "infra/native-loader/original-after.json",
+      "sha256": "ab990810928e15ec76c51a8587b292b27db68545327e4e2c74350543fd1cb782"
+    },
+    {
+      "file": "infra/native-loader/original-before.json",
+      "sha256": "357915a5bf203f9cbed2a819a84b1ee8c217cdfaae85a152c54181f4643c1ee1"
+    },
+    {
+      "file": "infra/native-loader/pmu-after.json",
+      "sha256": "8fccf64048e6ec5a5af9bdf11c755741214545659162f0ddd10aef6e22396a8c"
+    },
+    {
+      "file": "infra/native-loader/pmu-before.json",
+      "sha256": "dc768aa7aaab3c2102160375308e42dd50ed046778d62aca9bf59154b87a89fe"
+    },
+    {
+      "file": "infra/native-loader/readonly-health-before-watchdog.patch",
+      "sha256": "0129c04a2fa3028e85559b25aaa1547d9fbb9d804ed91308ceef3747797727eb"
+    },
+    {
+      "file": "infra/native-loader/remove-framebuffer-debug.patch",
+      "sha256": "19f324eb586b67d7f627e80c71465ca7a45c692dcdc5837d5ea47974c3020f8a"
+    },
+    {
+      "file": "infra/native-loader/repro-after.json",
+      "sha256": "f44361b3edc8ca7c73e6ce2547b21ee7be2eb6752e5e9bebc1c8a8be8bc9c083"
+    },
+    {
+      "file": "infra/native-loader/repro-before.json",
+      "sha256": "483d17145febc301b02e5cd69b00d1428e6fbb817d4d0d4eec32d168580bd710"
+    },
+    {
+      "file": "infra/native-loader/source-checks.json",
+      "sha256": "a349e91c0d4320e867b23eeaab38c58b087ed9905b6cb5c92caaf8889f921a04"
+    },
+    {
+      "file": "infra/native-loader/test_pmu.py",
+      "sha256": "602e344fff57328abc87a9071872058020ab83ca9149a03f8f3b0f390c548e45"
+    },
+    {
       "file": "infra/patches/g16-runtime-mmio.patch",
       "sha256": "bf94db36a06f5164f43a8c47bf5cf3ae0786cc090ecd898c848df74b74fe16fc"
     },
@@ -777,11 +857,11 @@
     },
     {
       "file": "integration/boot-probe/README.md",
-      "sha256": "a42c9b197f7e96424091262a449b43d0ba1bab11d6ceea0599f29a750720b325"
+      "sha256": "14a0253af777c2c51e3a1510fed8966d511cc09c3a3a981691aefc47c7b1ad77"
     },
     {
       "file": "integration/boot-probe/artifact-manifest.json",
-      "sha256": "40745445aced711f4f181d708f749901c04f590caa642ba2d3b76af2f0c0466d"
+      "sha256": "2622bb2c852055725d7ee397709c6a4de3822094f8ed7a0d015ba8d252480a92"
     },
     {
       "file": "integration/boot-probe/build_probe.py",
@@ -793,11 +873,11 @@
     },
     {
       "file": "integration/boot-probe/evidence.json",
-      "sha256": "5f6043686e65367aa178715b3de1be2523590f068e1c455a117134bb5bae4c85"
+      "sha256": "ae3e7baac7ac9464ae3ccea99be1ea381a345fccc311c331a03033d038a83f91"
     },
     {
       "file": "integration/boot-probe/init",
-      "sha256": "77880015104e73f367869f545e30495d65c358aad82cee6ecd1afcaeb6a1c280"
+      "sha256": "72759a846707a14e997f28c9aceef901942d85d303c75ca31e9a894e0666e232"
     },
     {
       "file": "integration/boot-probe/pins.json",
@@ -813,7 +893,7 @@
     },
     {
       "file": "integration/boot-probe/test_probe.py",
-      "sha256": "0fdc4b3400a13ceff36e4fd2467bb106f41b24f22ebc42bf02996b794c21cc68"
+      "sha256": "09463d6bc084645ad800dcf3ce20841b5410c68a9e78e12ac6d4cedf4846e7f0"
     },
     {
       "file": "integration/boot-probe/verify_busybox_provenance.py",
@@ -1296,6 +1376,70 @@
       "sha256": "5288a179cdcf41930bd4efec8fdbe6943e2eda93bcc6da0505b00deaaeb85b02"
     },
     {
+      "file": "omarchy-packages/nvim/runtime/EVIDENCE.json",
+      "sha256": "a54b29b53772d1aa4cb86f42b09e77a7c6e1c8a59452e35d46ff5c3cc81e7c23"
+    },
+    {
+      "file": "omarchy-packages/nvim/runtime/README.md",
+      "sha256": "4350c6187801e1c42f582fba088780ad97c21be56e89c633800411fc0a927f8f"
+    },
+    {
+      "file": "omarchy-packages/nvim/runtime/attempt-02.json",
+      "sha256": "9606566a36e6e3d3fb9865c45836c8e21d8ce862ea256cbac1818f70a82ef3c2"
+    },
+    {
+      "file": "omarchy-packages/nvim/runtime/attempt-03.json",
+      "sha256": "d5a4205ff083d5ffc0f1bb14a024977a482a81364b0c3da766db3342e41ad186"
+    },
+    {
+      "file": "omarchy-packages/nvim/runtime/attempt-04.json",
+      "sha256": "a9c440a9fbf5c79b07b3e6c0a66d5b6bcf1f46462ada818c3c43a88c6f63a78a"
+    },
+    {
+      "file": "omarchy-packages/nvim/runtime/attempt-05.json",
+      "sha256": "04b471d515f8d0b0836bfe4b4f476b187ca85012e5259b16edd9a216b284bc85"
+    },
+    {
+      "file": "omarchy-packages/nvim/runtime/attempt-06.json",
+      "sha256": "ea3ba5feb0d033bbc9587ca9535a268081b78bf38cdc28afa1306920464e5cf1"
+    },
+    {
+      "file": "omarchy-packages/nvim/runtime/attempt-07.json",
+      "sha256": "d0eb4906d6c833866737a6607b7ad6107ffa87a6016c1dc3e95e61f51d42b2a8"
+    },
+    {
+      "file": "omarchy-packages/nvim/runtime/attempt-08.json",
+      "sha256": "d0eb4906d6c833866737a6607b7ad6107ffa87a6016c1dc3e95e61f51d42b2a8"
+    },
+    {
+      "file": "omarchy-packages/nvim/runtime/attempt-09.json",
+      "sha256": "c71f248102114c8c420d5b9b9061c7c20a57245c3f25684930cc0c46374ca111"
+    },
+    {
+      "file": "omarchy-packages/nvim/runtime/attempt-10.json",
+      "sha256": "000030a40d99f83c61afb0c94b665690ff68e1ad49879a541ef32fffe03f484f"
+    },
+    {
+      "file": "omarchy-packages/nvim/runtime/child-dispatch-observation.json",
+      "sha256": "4d217ea359be6874ab85477f0166e074305e9087c7a065d2aa4916e56777e991"
+    },
+    {
+      "file": "omarchy-packages/nvim/runtime/exercise_native.py",
+      "sha256": "5932963047e86324cdecbba124c646d438b9d6e9786d0fa261404cd03bc9c427"
+    },
+    {
+      "file": "omarchy-packages/nvim/runtime/preparation-failure-01.json",
+      "sha256": "2c30326ab55d7a6ad464e92f5a7182285fb341b83d26ec7c3f6c64396249b175"
+    },
+    {
+      "file": "omarchy-packages/nvim/runtime/probe-child-dispatch.lua",
+      "sha256": "e565b8be5d2462144606deb7f4143f80b1be94cd434dc703ea0146102fa85152"
+    },
+    {
+      "file": "omarchy-packages/nvim/runtime/probe.lua",
+      "sha256": "7ae5fc00d4144e0f4fce23bf89275f1d3d40326e75ca7369de851bb600eec710"
+    },
+    {
       "file": "omarchy-packages/nvim/source/LICENSE",
       "sha256": "717ba1949502290f8e47688ae2e323acd06c8ca47aec9f7596b15f678c1af4a2"
     },
@@ -1493,7 +1637,7 @@
     },
     {
       "file": "packages/current-plan/abi/EVIDENCE.json",
-      "sha256": "4eab3ad847f33217d411fd989688c7285e08f6d21f6008a276a72a98e15da228"
+      "sha256": "2045e9be309e8c41be7c1fcc1a528881d4875cf39523a06ce77234724d4da223"
     },
     {
       "file": "packages/current-plan/abi/README.md",
@@ -1514,6 +1658,138 @@
     {
       "file": "packages/current-plan/abi/classify_findings.py",
       "sha256": "94de265ece376f8e4c87df67aa82e115908b998e13317c883f8b4136bfcba3d9"
+    },
+    {
+      "file": "packages/current-plan/abi/coherent-candidate/EVIDENCE.json",
+      "sha256": "af9b5583dcd9a5f32c5b2d73b03ac33c803746a9ee3fc91eeda9e23e15ed5626"
+    },
+    {
+      "file": "packages/current-plan/abi/coherent-candidate/README.md",
+      "sha256": "495941c801a905648cd0f74cc4941d8724f3e25152cdbffd29f789970e3633ea"
+    },
+    {
+      "file": "packages/current-plan/abi/coherent-candidate/attempt-01-failure.json",
+      "sha256": "7ea22536c5b5a6d85e9c952a5589e9b37f3f7b91d275a21e9e7ed32fe5d56a4b"
+    },
+    {
+      "file": "packages/current-plan/abi/coherent-candidate/attempt-02/configured-current-payload-qualification.json",
+      "sha256": "cabac446a7aec17d1a464b8c9b43f2e9b60e5b66264aada8058012807e8b868b"
+    },
+    {
+      "file": "packages/current-plan/abi/coherent-candidate/attempt-02/configured-current-proposal.json",
+      "sha256": "b7afcfc08133ac4dd8af0496ced743518a30d8d004bf6cc44366160908abc28b"
+    },
+    {
+      "file": "packages/current-plan/abi/coherent-candidate/attempt-02/configured-current-repositories.json",
+      "sha256": "c2f061d4947022d926bcca60cd96fdaee4744cfb918ba8a3431e43fd04f3f0e4"
+    },
+    {
+      "file": "packages/current-plan/abi/coherent-candidate/attempt-02/configured-current-request-review.json",
+      "sha256": "2402f7840c6d6f200c2c8898403101d53567ce4919b8664048d9e07fa0926ca8"
+    },
+    {
+      "file": "packages/current-plan/abi/coherent-candidate/attempt-02/filesystem-model.json",
+      "sha256": "f93ae55815a693db87fe27af3a48ae206b847bd179334c36a668ddf5b998e99b"
+    },
+    {
+      "file": "packages/current-plan/abi/coherent-candidate/attempt-02/preparation.json",
+      "sha256": "7c6f8013d591e24fa1844bf979914d8d2223ba52e9d26cf6e13392f2967cb6ce"
+    },
+    {
+      "file": "packages/current-plan/abi/coherent-candidate/attempt-02/proposal.json",
+      "sha256": "b7afcfc08133ac4dd8af0496ced743518a30d8d004bf6cc44366160908abc28b"
+    },
+    {
+      "file": "packages/current-plan/abi/coherent-candidate/attempt-02/removal-scenario.json",
+      "sha256": "da32c93fc079f1be66fc02c655bc58a2d01f128d09fc7d582e903ef5735bd33e"
+    },
+    {
+      "file": "packages/current-plan/abi/coherent-candidate/attempt-02/repositories.json",
+      "sha256": "c2f061d4947022d926bcca60cd96fdaee4744cfb918ba8a3431e43fd04f3f0e4"
+    },
+    {
+      "file": "packages/current-plan/abi/coherent-candidate/attempt-02/request-review.json",
+      "sha256": "2402f7840c6d6f200c2c8898403101d53567ce4919b8664048d9e07fa0926ca8"
+    },
+    {
+      "file": "packages/current-plan/abi/coherent-candidate/attempt-03/cache-replay.json",
+      "sha256": "e0f556d78bcb369f31dd3a81fdf18911cc416624220445c0d1925a90cb3a4e53"
+    },
+    {
+      "file": "packages/current-plan/abi/coherent-candidate/attempt-03/configured-current-payload-qualification.json",
+      "sha256": "30ce53399b1029787133348e2c0074d4ac85a76d3c867dc744a71f3b2b2ade2c"
+    },
+    {
+      "file": "packages/current-plan/abi/coherent-candidate/attempt-03/configured-current-proposal.json",
+      "sha256": "f3f6e8ec7723db5b1baaa882ee2dded1331c97893787493c43eb344f0e0f20e4"
+    },
+    {
+      "file": "packages/current-plan/abi/coherent-candidate/attempt-03/configured-current-repositories.json",
+      "sha256": "c2f061d4947022d926bcca60cd96fdaee4744cfb918ba8a3431e43fd04f3f0e4"
+    },
+    {
+      "file": "packages/current-plan/abi/coherent-candidate/attempt-03/configured-current-request-review.json",
+      "sha256": "2c4de3dbd759473d019fa66bf2497cbd923caa6fbcca80f191f4ff0741a5f7c7"
+    },
+    {
+      "file": "packages/current-plan/abi/coherent-candidate/attempt-03/filesystem-model.json",
+      "sha256": "3907fb5620b0dbd270a7557c957a9b426d3b7bfa41425fbb8947fdc9773e4663"
+    },
+    {
+      "file": "packages/current-plan/abi/coherent-candidate/attempt-03/preparation.json",
+      "sha256": "a697e9dee636b2ae2c305e307a97a01e9ebd564018e61ff529b7100dcaf8c7a6"
+    },
+    {
+      "file": "packages/current-plan/abi/coherent-candidate/attempt-03/proposal.json",
+      "sha256": "f3f6e8ec7723db5b1baaa882ee2dded1331c97893787493c43eb344f0e0f20e4"
+    },
+    {
+      "file": "packages/current-plan/abi/coherent-candidate/attempt-03/provider-mutation-refusal.json",
+      "sha256": "504594822641038320e83074516457cf085a2db56075f733d2065aba0a237ca7"
+    },
+    {
+      "file": "packages/current-plan/abi/coherent-candidate/attempt-03/readelf-crosscheck.json",
+      "sha256": "8fa1aa5128a9435e5cb4d726a59b0b62eb9c162e5bfb275b84fe9196d336e418"
+    },
+    {
+      "file": "packages/current-plan/abi/coherent-candidate/attempt-03/removal-scenario.json",
+      "sha256": "da32c93fc079f1be66fc02c655bc58a2d01f128d09fc7d582e903ef5735bd33e"
+    },
+    {
+      "file": "packages/current-plan/abi/coherent-candidate/attempt-03/repositories.json",
+      "sha256": "c2f061d4947022d926bcca60cd96fdaee4744cfb918ba8a3431e43fd04f3f0e4"
+    },
+    {
+      "file": "packages/current-plan/abi/coherent-candidate/attempt-03/request-review.json",
+      "sha256": "2c4de3dbd759473d019fa66bf2497cbd923caa6fbcca80f191f4ff0741a5f7c7"
+    },
+    {
+      "file": "packages/current-plan/abi/coherent-candidate/crosscheck_closure.py",
+      "sha256": "37890d3c8c2f23eddad4946284d9865aa644885934c6be72a36033ed4ddc1b8e"
+    },
+    {
+      "file": "packages/current-plan/abi/coherent-candidate/evidence/proposal.json",
+      "sha256": "787e8579a7d09afaf1454bafa7e71cbf7135de87bbb259e0ec33e2d0bf4d1e39"
+    },
+    {
+      "file": "packages/current-plan/abi/coherent-candidate/evidence/repositories.json",
+      "sha256": "c2f061d4947022d926bcca60cd96fdaee4744cfb918ba8a3431e43fd04f3f0e4"
+    },
+    {
+      "file": "packages/current-plan/abi/coherent-candidate/evidence/request-review.json",
+      "sha256": "b43dd663f388f434ade945a781382fccf4a590199add4b4813f931215f05cd82"
+    },
+    {
+      "file": "packages/current-plan/abi/coherent-candidate/propose_candidate.py",
+      "sha256": "6de784955872f5cd197400a14415fb25b3b6f6fc294896ef81fcb0f068935119"
+    },
+    {
+      "file": "packages/current-plan/abi/coherent-candidate/provenance.json",
+      "sha256": "6064819a1413194fb0a3523df3225e141b6bc3cbdfc3a466fc579cf92f31ef4e"
+    },
+    {
+      "file": "packages/current-plan/abi/coherent-candidate/tests.log",
+      "sha256": "255938fe43cf9e7604d88a8070a88f805c2927d342f8fe33f2d69632d0637f04"
     },
     {
       "file": "packages/current-plan/abi/crosscheck_readelf.py",
@@ -1570,6 +1846,10 @@
     {
       "file": "packages/current-plan/abi/tests/test_baseline.py",
       "sha256": "8b91449112fbf2cf49d7e9b5d0bbbcc3482ab9f8cdaf43c881e8cfd89ef27073"
+    },
+    {
+      "file": "packages/current-plan/abi/tests/test_candidate.py",
+      "sha256": "48bd4faa6a5fa24b5d6898e00fe81cdabd153e1eed2d6343d30543d925ecc0c6"
     },
     {
       "file": "packages/current-plan/abi/tests/test_elf.py",
@@ -1777,11 +2057,11 @@
     },
     {
       "file": "qualification/EVIDENCE.json",
-      "sha256": "2973a25f47ea8364bb1e48d84f7f8eff022d028abd4cdaa01a2058681f334d85"
+      "sha256": "316ef522f58a734932bc2c5d7200eda9a5bfab1b40d73370b865a21ac4a18e48"
     },
     {
       "file": "qualification/STATUS.md",
-      "sha256": "723a6134b3a5e7696e1d7abc4f4ca86e2617b45ef71917edef1b6e5152516a95"
+      "sha256": "f2c53b375914d03dac6f34ece144941bc16aafdf00ec268c24ee8fd624b5cddf"
     },
     {
       "file": "qualification/adt-node-comparison.json",
@@ -1818,6 +2098,10 @@
     {
       "file": "qualification/storage-test52.txt",
       "sha256": "dce1ff075a999b7d56e527d36bfa2e19a1635c0927f433d2379483df34cb860b"
+    },
+    {
+      "file": "qualification/userspace-runtime-root.json",
+      "sha256": "da3e4d08b2550be32c666800c49f87c26b6bad3880a1f01b7746a8291856211e"
     },
     {
       "file": "recovery/.gitignore",

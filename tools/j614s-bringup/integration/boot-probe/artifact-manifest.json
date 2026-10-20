@@ -8,8 +8,8 @@
     "bounded canonical newc archive with exact payload equality",
     "gzip round-trip"
   ],
-  "cpio_bytes": 2193720,
-  "cpio_sha256": "f0a135def3593770bf8b0cbdd0e861dac8ce0d1b16a206680e90ce664eacddf4",
+  "cpio_bytes": 2194740,
+  "cpio_sha256": "3ef184c68685e6e025820c58869342b5a07799afa988546e214260d0f65b9235",
   "emulator_sha256": "66bdc286fd30970a1c3d2029b460605a3dc843ed6b397f4cd9825f9c19551507",
   "entries": {
     "bin": {
@@ -292,13 +292,13 @@
       "sha256": "70a90c26f0f19f01e9e392ade5ca339467e04accba0304eb33086449988eb06b"
     },
     "init": {
-      "bytes": 9881,
+      "bytes": 10901,
       "mode": "0o100755",
       "rdev": [
         0,
         0
       ],
-      "sha256": "77880015104e73f367869f545e30495d65c358aad82cee6ecd1afcaeb6a1c280"
+      "sha256": "72759a846707a14e997f28c9aceef901942d85d303c75ca31e9a894e0666e232"
     },
     "lib": {
       "bytes": 0,
@@ -392,8 +392,8 @@
     }
   },
   "hardware": "UNTESTED",
-  "initrd_bytes": 1097147,
-  "initrd_sha256": "a3a01204b0310877dd41fd24c6f6ce803344cb48c4e9ef49a9bc4c994f1c39e8",
+  "initrd_bytes": 1097496,
+  "initrd_sha256": "d9fac843a55e2ea5e7f955704b3e8f5bfe9f16c49e38c7bdb747a8ca7831b52f",
   "kernel_image_sha256": "f9d7b637bc70fcab77b5806c43c39ae333e633fcc63fa6ccaa77cd22c91d4604",
   "kernel_source": "8f2f3d13600aacadd93d577855b7e212b8ae57ff",
   "schema": 1,

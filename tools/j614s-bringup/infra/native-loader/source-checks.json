@@ -1,0 +1,9 @@
+{
+  "assembly_entry_file_matches_original_upstream": true,
+  "candidate_commit": "6249e0ecdb7677b6afa01989c23344962253e954",
+  "debug_writers_and_calls_absent": true,
+  "pmu_write_reference_in_native_object": false,
+  "scope": "Removal and object-reference checks; not target or behavioral qualification of other loader paths",
+  "source_clean": true,
+  "status": "PASS"
+}

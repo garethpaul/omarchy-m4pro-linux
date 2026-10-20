@@ -1,0 +1,256 @@
+{
+  "schema": 1,
+  "status": "WORKS (isolated ARM64 userspace checks only)",
+  "scope": "Native formatter binaries and Neovim options callback under QEMU, not full LazyVim or target hardware",
+  "qualification_sha256": "30ce53399b1029787133348e2c0074d4ac85a76d3c867dc744a71f3b2b2ade2c",
+  "baseline_manifest_sha256": "30a72f4608f94d7a4487e3529e7343bdf962a412d9c961b637a7bf196b54b947",
+  "baseline_image_sha256": "f6ceb11ef79914eaa10cc07637c929a99afe5982d216d8b89905c86e863b2491",
+  "options_sha256": "ee1c37fef7f501807d87b6700ffb6fc40da69982afd302f9b88333b78593feee",
+  "probe_sha256": "7ae5fc00d4144e0f4fce23bf89275f1d3d40326e75ca7369de851bb600eec710",
+  "emulator_sha256": "66bdc286fd30970a1c3d2029b460605a3dc843ed6b397f4cd9825f9c19551507",
+  "packages": [
+    {
+      "name": "neovim",
+      "version": "0.12.6-1",
+      "sha256": "19d5b20499f038b51d32bd068c34a08238804f7253fa20002103a8d55627260d",
+      "filename": "neovim-0.12.6-1-aarch64.pkg.tar.xz",
+      "architecture": "aarch64",
+      "signing_fingerprint": "68B3537F39A313B3E574D06777193F152BDBE6A6"
+    },
+    {
+      "name": "shfmt",
+      "version": "3.14.1-1",
+      "sha256": "7e5ca0a69c2cbeda1e654c389aa8c987e89951d366272b0621a39693b6f08225",
+      "filename": "shfmt-3.14.1-1-aarch64.pkg.tar.xz",
+      "architecture": "aarch64",
+      "signing_fingerprint": "68B3537F39A313B3E574D06777193F152BDBE6A6"
+    },
+    {
+      "name": "stylua",
+      "version": "2.6.0-1",
+      "sha256": "9c1c747699782a05f89556d43c68211e5c58beac8d1cbca513350b490af52174",
+      "filename": "stylua-2.6.0-1-aarch64.pkg.tar.xz",
+      "architecture": "aarch64",
+      "signing_fingerprint": "68B3537F39A313B3E574D06777193F152BDBE6A6"
+    }
+  ],
+  "input_files": [
+    {
+      "path": "usr/bin/nvim",
+      "sha256": "d56f2e783ba9734dcba3184f134378ed5c2d3b7787c4862fef90d75d47cfbee3",
+      "origin": "neovim-0.12.6-1-aarch64.pkg.tar.xz"
+    },
+    {
+      "path": "usr/bin/shfmt",
+      "sha256": "ebe5ee1d142c2dac3efff9adced24c8f491734e724d0316141bcecae1a684108",
+      "origin": "shfmt-3.14.1-1-aarch64.pkg.tar.xz"
+    },
+    {
+      "path": "usr/bin/stylua",
+      "sha256": "3618e5a684446a15ae15bc18b1168ed1564eec037f82295de80e5e0176679007",
+      "origin": "stylua-2.6.0-1-aarch64.pkg.tar.xz"
+    },
+    {
+      "path": "usr/lib/ld-linux-aarch64.so.1",
+      "sha256": "b1f2738bdb51e6419d7062f96c8a44bd68853698dc5ac624fa6ca9f9b03d456d",
+      "origin": "verified baseline image: usr/lib/ld-linux-aarch64.so.1"
+    },
+    {
+      "path": "usr/lib/libc.so.6",
+      "sha256": "6ab264fb4e8df9942b0fb75b48fcd5c30b2f081d8dfaa6c25d7be1d3fce5b2ab",
+      "origin": "verified baseline image: usr/lib/libc.so.6"
+    },
+    {
+      "path": "usr/lib/libgcc_s.so.1",
+      "sha256": "ac598673a4bf67c0295b6609e46b1fafd0d4adf3f80a513d61ac49ecff772e48",
+      "origin": "verified baseline image: usr/lib/libgcc_s.so.1"
+    },
+    {
+      "path": "usr/lib/libluajit-5.1.so.2",
+      "sha256": "8c99af7655cc96a703025c949259340f3aedbdd33b4c15b4f30e404a13f0292e",
+      "origin": "verified baseline image: usr/lib/libluajit-5.1.so.2.1.1788856981"
+    },
+    {
+      "path": "usr/lib/libluv.so.1",
+      "sha256": "69bb04ece0d3057c104b837c1f31eb7d2ed49f18b4fd9db299e8e5a8e3abdf74",
+      "origin": "verified baseline image: usr/lib/libluv.so.1.52.1"
+    },
+    {
+      "path": "usr/lib/libm.so.6",
+      "sha256": "71ed8de709c40acd4fd0177258fc71251a5acdb1d075122409ad42529d6c7a4e",
+      "origin": "verified baseline image: usr/lib/libm.so.6"
+    },
+    {
+      "path": "usr/lib/libtree-sitter.so.0.26",
+      "sha256": "acfba81b5f479d68d3cd62f5a48e7fd6020f731347e8c3e330b8faf09b5dd5bd",
+      "origin": "verified baseline image: usr/lib/libtree-sitter.so.0.26"
+    },
+    {
+      "path": "usr/lib/libunibilium.so.4",
+      "sha256": "f35c833866f914398530a784e5306ab74368091da353d559abf9a3024677cb25",
+      "origin": "verified baseline image: usr/lib/libunibilium.so.4.0.2"
+    },
+    {
+      "path": "usr/lib/libutf8proc.so.3",
+      "sha256": "4f5857b51c129ba640d0207ccab97e691b6bef128b5d7984f8f35e1b5b744141",
+      "origin": "verified baseline image: usr/lib/libutf8proc.so.3.2.3"
+    },
+    {
+      "path": "usr/lib/libuv.so.1",
+      "sha256": "b236d5eab531d3e219fab3e9e66e5aaf87184adf18f0caf59d3cdc455f697f9d",
+      "origin": "verified baseline image: usr/lib/libuv.so.1.0.0"
+    },
+    {
+      "path": "usr/lib/lua/5.1/lpeg.so",
+      "sha256": "21c7118bcd83c5c890fef3a84e51356b37d8062a3e7f9a1f89945f204437ef3e",
+      "origin": "verified baseline image: usr/lib/lua/5.1/lpeg.so"
+    }
+  ],
+  "cases": [
+    {
+      "case": "shfmt-version",
+      "argv": [
+        "/qemu",
+        "-L",
+        "/",
+        "/usr/bin/shfmt",
+        "--version"
+      ],
+      "exit": 0,
+      "stdout": "v3.14.1\n",
+      "stderr": ""
+    },
+    {
+      "case": "stylua-version",
+      "argv": [
+        "/qemu",
+        "-L",
+        "/",
+        "/usr/bin/stylua",
+        "--version"
+      ],
+      "exit": 0,
+      "stdout": "stylua 2.6.0\n",
+      "stderr": ""
+    },
+    {
+      "case": "nvim-version",
+      "argv": [
+        "/qemu",
+        "-L",
+        "/",
+        "/usr/bin/nvim",
+        "--version"
+      ],
+      "exit": 0,
+      "stdout": "NVIM v0.12.6\nBuild type: RelWithDebInfo\nLuaJIT 2.1.1788856981\nRun \"nvim -V1 -v\" for more info\n",
+      "stderr": ""
+    },
+    {
+      "case": "shfmt-format",
+      "argv": [
+        "/qemu",
+        "-L",
+        "/",
+        "/usr/bin/shfmt",
+        "-i",
+        "2"
+      ],
+      "exit": 0,
+      "stdout": "if true; then echo \"arm64\"; fi\n",
+      "stderr": ""
+    },
+    {
+      "case": "shfmt-idempotent",
+      "argv": [
+        "/qemu",
+        "-L",
+        "/",
+        "/usr/bin/shfmt",
+        "-i",
+        "2"
+      ],
+      "exit": 0,
+      "stdout": "if true; then echo \"arm64\"; fi\n",
+      "stderr": ""
+    },
+    {
+      "case": "stylua-format",
+      "argv": [
+        "/qemu",
+        "-L",
+        "/",
+        "/usr/bin/stylua",
+        "--indent-type",
+        "Spaces",
+        "--indent-width",
+        "2",
+        "-"
+      ],
+      "exit": 0,
+      "stdout": "local x = { 1, 2 }\nreturn x\n",
+      "stderr": ""
+    },
+    {
+      "case": "stylua-idempotent",
+      "argv": [
+        "/qemu",
+        "-L",
+        "/",
+        "/usr/bin/stylua",
+        "--indent-type",
+        "Spaces",
+        "--indent-width",
+        "2",
+        "-"
+      ],
+      "exit": 0,
+      "stdout": "local x = { 1, 2 }\nreturn x\n",
+      "stderr": ""
+    },
+    {
+      "case": "neovim-native-options-and-isolation",
+      "argv": [
+        "/qemu",
+        "-L",
+        "/",
+        "/usr/bin/nvim",
+        "--headless",
+        "-u",
+        "NONE",
+        "-i",
+        "NONE",
+        "-n",
+        "-l",
+        "/probe.lua"
+      ],
+      "exit": 0,
+      "stdout": "",
+      "stderr": ""
+    }
+  ],
+  "neovim_probe": {
+    "readonly_error": "EROFS: read-only file system: /native-formatters.lua",
+    "route_table": "Iface\tDestination\tGateway \tFlags\tRefCnt\tUse\tMetric\tMask\t\tMTU\tWindow\tIRTT                                                       \n",
+    "home_lookup": "/work/home",
+    "scope": "Actual ARM Neovim Lua options callback only; no Mason, Conform or LazyVim loader",
+    "checks": {
+      "no_network_routes": true,
+      "no_capabilities": true,
+      "input_read_only": true,
+      "home_env_absent": true,
+      "host_home_absent": true,
+      "scratch_writable": true,
+      "default_tools_removed": true,
+      "only_sandbox_commands": true,
+      "other_options_preserved": true,
+      "empty_options_work": true
+    }
+  },
+  "HOME_env_overridden": false,
+  "host_installation": false,
+  "target_access": false,
+  "network_namespace": true,
+  "full_lazyvim": "UNTESTED",
+  "hardware": "UNTESTED"
+}

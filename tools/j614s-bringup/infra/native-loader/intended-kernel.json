@@ -1,0 +1,12 @@
+{
+  "Image": {
+    "bytes": 14772232,
+    "path": "Image",
+    "sha256": "f9d7b637bc70fcab77b5806c43c39ae333e633fcc63fa6ccaa77cd22c91d4604"
+  },
+  "config_sha256": "6c5aba7745d918c528300c5a395fcd7db0c2b718acda7d1467af2816a8d56516",
+  "release": "7.1.13-j614s-gravity-candidate+",
+  "scope": "Pairing metadata only; loader compatibility with this Image/initramfs/DT untested",
+  "source_commit": "8f2f3d13600aacadd93d577855b7e212b8ae57ff",
+  "status": "SEPARATE COMPILE-QUALIFIED ARTIFACT; NOT APPENDED OR EXECUTED"
+}

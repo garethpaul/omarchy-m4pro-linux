@@ -1,0 +1,12 @@
+{
+  "status": "BLOCKED",
+  "deployable": false,
+  "execution_ready": false,
+  "actions": [],
+  "proposal_sha256": "787e8579a7d09afaf1454bafa7e71cbf7135de87bbb259e0ec33e2d0bf4d1e39",
+  "diagnostic_stdout_sha256": "6e0801abf5d5971ef88709838485bd86f5aeff8ba292558f5988633f703e464c",
+  "actual_diagnostic": ":: installing gnome-desktop-common (1:51.0-1) breaks dependency 'gnome-desktop-common=1:44.5-1' required by gnome-desktop-4",
+  "next_bounded_request": "gnome-desktop-4 to maintain its exact gnome-desktop-common dependency; separate attempt02, not modifying failed inputs",
+  "payloads_fetched": 0,
+  "install_executed": false
+}

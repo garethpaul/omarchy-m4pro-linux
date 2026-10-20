@@ -1,0 +1,29 @@
+{
+  "status": "PARTIAL",
+  "actions": [],
+  "deployable": false,
+  "execution_ready": false,
+  "qualifier_source": "packages/current-plan/qualify_payloads.py",
+  "qualifier_source_sha256": "3ead8136ee7dbdb10fc32081565a304bea8053b6c7dfe071105800d99badda94",
+  "proposal_builder_sha256": "6de784955872f5cd197400a14415fb25b3b6f6fc294896ef81fcb0f068935119",
+  "baseline_identity_helper_sha256": "ca3de64f4e7304c0b1d0d26bb26b511a7c45775d023f3b42547972f993b463b4",
+  "prepare_wrapper_sha256": "aad1cd974003400277740a8cb5e9d11e0477e4bedf67395315e823ed09792230",
+  "prepare_helper_sha256": "db37b588924b5ee6c162e216c4b035007944c41f9586eb2601e099ea58580fe5",
+  "model_sha256": "d4cdb356509c4a52f241490b9a2f6e1a3d15636ed011882d5faf7525075f2e7d",
+  "elf_parser_sha256": "bb29a7e7efbd32272dee5570179bb0f17104fdee7e3affeb7132753351122767",
+  "filesystem_identity_sha256": "1b7f2b45764787feab935321e9310d08b280dd269c45752b24ebd338ca77fbba",
+  "final_qualification_sha256": "30ce53399b1029787133348e2c0074d4ac85a76d3c867dc744a71f3b2b2ade2c",
+  "original117_qualification_sha256": "468862b06d7f38c41c2c030e5f8fea796563b64ec3af0342c14925450093f1e0",
+  "source_candidate": "Unsigned nvim6 placeholder is outside signed151 model; no build/signature or existing-user migration pass claimed.",
+  "signature_checks": "All151 individual payloads passed retained-image-keyring PGP and exact signed PKGINFO; no signature bypass/key import.",
+  "metadata_authentication": {
+    "omarchy": "UNSIGNED (DatabaseOptional; TLS origin only)",
+    "asahi-alarm": "WORKS",
+    "core": "UNSIGNED (DatabaseOptional; TLS origin only)",
+    "extra": "UNSIGNED (DatabaseOptional; TLS origin only)",
+    "alarm": "UNSIGNED (DatabaseOptional; TLS origin only)",
+    "aur": "UNSIGNED (DatabaseOptional; TLS origin only)"
+  },
+  "original_image_sha256": "6cc03fb9b7e2868325ade68d4e003651fcf3058534f2e49b56501740cb5b68e3",
+  "private_input_preservation": "Original image, captured DBs, sourcebaseline, trustanchors and allqualifiedvendorbytes retained unchanged; own ignored scratch only."
+}

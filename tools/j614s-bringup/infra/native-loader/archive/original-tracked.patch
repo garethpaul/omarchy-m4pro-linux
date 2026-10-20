@@ -1,0 +1,349 @@
+diff --git c/Makefile w/Makefile
+index cd2ac03..7d02380 100644
+--- c/Makefile
++++ w/Makefile
+@@ -105,0 +106,7 @@ endif
++ifeq ($(J614S_NATIVE),1)
++ifneq ($(T6040_STAGE1_CDC),1)
++$(error J614S_NATIVE requires T6040_STAGE1_CDC=1)
++endif
++CFG += J614S_NATIVE
++endif
++
+@@ -232,0 +240 @@ OBJECTS := \
++	j614s_native.o \
+diff --git c/src/main.c w/src/main.c
+index 6a74da6..1a2798e 100644
+--- c/src/main.c
++++ w/src/main.c
+@@ -20,0 +21 @@
++#include "j614s_native.h"
+@@ -83,0 +85,3 @@ void run_actions(void)
++#ifdef J614S_NATIVE
++    j614s_native_note("USB_START");
++#endif
+@@ -84,0 +89,3 @@ void run_actions(void)
++#ifdef J614S_NATIVE
++    j614s_native_note("USB_PHY_OK");
++#endif
+@@ -85,0 +93,3 @@ void run_actions(void)
++#ifdef J614S_NATIVE
++    j614s_native_note("USB_READY");
++#endif
+@@ -86,0 +97,5 @@ void run_actions(void)
++#ifdef J614S_NATIVE
++    if (j614s_native_run() == 0)
++        return;
++    printf("J614s native handoff refused; retaining proxy recovery\n");
++#endif
+@@ -232 +247,7 @@ static bool prepare_next_stage(void)
+-    if (usb_dwc3_shutdown_failed())
++#ifdef J614S_NATIVE
++    j614s_native_note("PREPARE_ENTER");
++#endif
++    if (usb_dwc3_shutdown_failed()) {
++#ifdef J614S_NATIVE
++        j614s_native_note("USB_ALREADY_UNSAFE");
++#endif
+@@ -233,0 +255 @@ static bool prepare_next_stage(void)
++    }
+@@ -239,0 +262,3 @@ static bool prepare_next_stage(void)
++#ifdef J614S_NATIVE
++    j614s_native_note("NVME_QUIET");
++#endif
+@@ -242 +267,5 @@ static bool prepare_next_stage(void)
+-        if (!usb_iodev_shutdown())
++#ifdef J614S_NATIVE
++        j614s_native_note("USB_QUIESCE");
++#endif
++        if (!usb_iodev_shutdown()) {
++            /* Preserve the per-controller diagnostic label on failure. */
+@@ -243,0 +273,4 @@ static bool prepare_next_stage(void)
++        }
++#ifdef J614S_NATIVE
++        j614s_native_note("USB_QUIET");
++#endif
+@@ -247,0 +281,3 @@ static bool prepare_next_stage(void)
++#endif
++#ifdef J614S_NATIVE
++    j614s_native_note("MMU_OFF_START");
+@@ -249,0 +286,3 @@ static bool prepare_next_stage(void)
++#ifdef J614S_NATIVE
++    j614s_native_note("MMU_OFF");
++#endif
+@@ -279,0 +319,3 @@ void m1n1_main(void)
++#ifdef J614S_NATIVE
++    j614s_native_mark(0x3ff003ff);
++#endif
+@@ -281,0 +324,3 @@ void m1n1_main(void)
++#ifdef J614S_NATIVE
++    j614s_native_mark(0x3ff7fc00);
++#endif
+@@ -282,0 +328,4 @@ void m1n1_main(void)
++#ifdef J614S_NATIVE
++    j614s_native_mark(0x000fffff);
++    j614s_native_note("SMP_OK");
++#endif
+@@ -284,0 +334,8 @@ void m1n1_main(void)
++#ifdef J614S_NATIVE
++    /* Preserve recovery throughout the remaining experimental initialization. */
++    j614s_native_mark(0x3ff00000);
++    if (wdt_arm_seconds(60))
++        panic("J614s candidate watchdog could not be rearmed\n");
++    j614s_native_mark(0x3ffffc00);
++    j614s_native_note("WATCHDOG_OK");
++#endif
+@@ -294,0 +352,4 @@ void m1n1_main(void)
++#ifdef J614S_NATIVE
++    j614s_native_mark(0x000003ff);
++    j614s_native_note("PMGR_OK");
++#endif
+@@ -299,0 +361,4 @@ void m1n1_main(void)
++#ifdef J614S_NATIVE
++    j614s_native_mark(0x3fffffff);
++    j614s_native_note("DISPLAY_OK");
++#endif
+@@ -303,0 +369,7 @@ void m1n1_main(void)
++#ifdef J614S_NATIVE
++    j614s_native_mark(0x3ff7fc00);
++    /* Keep direct diagnostic labels visible instead of restoring the console's
++     * buffered copy of the inherited pixels. This is diagnostic-only. */
++    iodev_set_usage(IODEV_FB, 0);
++    j614s_native_note("CONSOLE_SKIPPED");
++#else
+@@ -310,0 +383 @@ void m1n1_main(void)
++#endif /* J614S_NATIVE */
+@@ -313,0 +387,3 @@ void m1n1_main(void)
++#ifdef J614S_NATIVE
++    j614s_native_note("CPUFREQ_OK");
++#endif
+@@ -314,0 +391,3 @@ void m1n1_main(void)
++#ifdef J614S_NATIVE
++    j614s_native_note("SEP_OK");
++#endif
+@@ -326,0 +406,3 @@ next_stage:
++#ifdef J614S_NATIVE
++    j614s_native_note("MAIN_HANDOFF");
++#endif
+@@ -335,0 +418,3 @@ next_stage:
++#ifdef J614S_NATIVE
++    j614s_native_note("LINUX_VECTOR");
++#endif
+diff --git c/src/memory.c w/src/memory.c
+index 75b338d..2de3f53 100644
+--- c/src/memory.c
++++ w/src/memory.c
+@@ -15,0 +16,2 @@
++#include "../build/build_cfg.h"
++#include "j614s_native.h"
+@@ -697,0 +700,3 @@ void mmu_init(void)
++#ifdef J614S_NATIVE
++    j614s_native_mark(0x3ff00000);
++#endif
+@@ -698,0 +704,3 @@ void mmu_init(void)
++#ifdef J614S_NATIVE
++    j614s_native_mark(0x3ffffc00);
++#endif
+@@ -699,0 +708,3 @@ void mmu_init(void)
++#ifdef J614S_NATIVE
++    j614s_native_mark(0x000003ff);
++#endif
+@@ -714,0 +726,3 @@ void mmu_init(void)
++#ifdef J614S_NATIVE
++    j614s_native_mark(0x000ffc00);
++#endif
+@@ -715,0 +730,3 @@ void mmu_init(void)
++#ifdef J614S_NATIVE
++    j614s_native_mark(0x3fffffff);
++#endif
+diff --git c/src/start.S w/src/start.S
+index 73d88bb..7f9d840 100644
+--- c/src/start.S
++++ w/src/start.S
+@@ -4,0 +5 @@
++#include "../build/build_cfg.h"
+@@ -70,0 +72,5 @@ _start:
++#ifdef J614S_NATIVE
++    /* [DEBUG-J614S-NATIVE] Exact captured framebuffer; no stack required. */
++    ldr w0, =0x3ff00000
++    bl j614s_entry_mark
++#endif
+@@ -92,0 +99,4 @@ _start:
++#ifdef J614S_NATIVE
++    ldr w0, =0x3ffffc00
++    bl j614s_entry_mark
++#endif
+@@ -110,0 +121,23 @@ _start:
++#ifdef J614S_NATIVE
++j614s_entry_mark:
++    ldr x9, [x19, #40]
++    ldr x10, =1124735713280
++    cmp x9, x10
++    b.ne 9f
++    mov x11, #64
++    mov x14, #12096
++7:
++    mov x12, x9
++    mov x13, #128
++8:
++    str w0, [x12], #4
++    subs x13, x13, #1
++    b.ne 8b
++    add x9, x9, x14
++    subs x11, x11, #1
++    b.ne 7b
++    dsb sy
++9:
++    ret
++#endif
++
+diff --git c/src/startup.c w/src/startup.c
+index ebff124..90a8f56 100644
+--- c/src/startup.c
++++ w/src/startup.c
+@@ -13,0 +14,2 @@
++#include "j614s_native.h"
++#include "../build/build_cfg.h"
+@@ -169,0 +172,3 @@ void _start_c(void *boot_args, void *base)
++#ifdef J614S_NATIVE
++    j614s_native_mark(0x000003ff);
++#endif
+@@ -206,0 +212,3 @@ void _start_c(void *boot_args, void *base)
++#ifdef J614S_NATIVE
++    j614s_native_mark(0x000ffc00);
++#endif
+diff --git c/src/usb_dwc3.c w/src/usb_dwc3.c
+index f0e7829..a8e2ea5 100644
+--- c/src/usb_dwc3.c
++++ w/src/usb_dwc3.c
+@@ -29,0 +30,3 @@
++#ifdef J614S_NATIVE
++#include "j614s_native.h"
++#endif
+@@ -179,0 +183,17 @@ typedef struct dwc3_dev {
++#ifdef J614S_NATIVE
++/* [DEBUG-J614S-NATIVE] Direct display diagnostics survive a USB shutdown fault. */
++static void native_usb_step(dwc3_dev_t *dev, const char *phase)
++{
++    unsigned port = 9;
++    if (dev->regs >= 0x382280000UL && dev->regs <= 0x392280000UL &&
++        !((dev->regs - 0x382280000UL) % 0x8000000UL))
++        port = (dev->regs - 0x382280000UL) / 0x8000000UL;
++    char text[24];
++    snprintf(text, sizeof(text), "USB%u_%s", port, phase);
++    j614s_native_note(text);
++}
++#define NATIVE_USB_STEP(dev, phase) native_usb_step(dev, phase)
++#else
++#define NATIVE_USB_STEP(dev, phase) do { } while (0)
++#endif
++
+@@ -1896,0 +1917,49 @@ bool usb_dwc3_shutdown_failed(void)
++#ifdef J614S_NATIVE
++static int usb_dwc3_quiet_control(dwc3_dev_t *dev)
++{
++    u64 deadline = timeout_calculate(2000000), quiet_deadline = 0;
++    do {
++        u32 count = read32(dev->regs + DWC3_GEVNTCOUNT(0)) & DWC3_GEVNTCOUNT_MASK;
++        if (count > DWC3_EVENT_BUFFERS_SIZE || count % sizeof(union dwc3_event))
++            return -1;
++        usb_dwc3_handle_events(dev);
++        if (dev->failed || dev->dma_unsafe)
++            return -1;
++        bool setup = dev->ep0_state == USB_DWC3_EP0_STATE_SETUP_HANDLE ||
++                     (dev->ep0_state == USB_DWC3_EP0_STATE_IDLE &&
++                      !dev->endpoints[USB_LEP_CTRL_OUT].xfer_in_progress);
++        count = read32(dev->regs + DWC3_GEVNTCOUNT(0)) & DWC3_GEVNTCOUNT_MASK;
++        if (setup && !dev->endpoints[USB_LEP_CTRL_IN].xfer_in_progress && !count) {
++            if (!quiet_deadline)
++                quiet_deadline = timeout_calculate(100000);
++            if (timeout_expired(quiet_deadline))
++                return 0;
++        } else {
++            quiet_deadline = 0;
++        }
++        udelay(100);
++    } while (!timeout_expired(deadline));
++    return -1;
++}
++
++static int usb_dwc3_wait_halted(dwc3_dev_t *dev, u32 timeout)
++{
++    u64 deadline = timeout_calculate(timeout);
++    do {
++        if (dev->failed || dev->dma_unsafe)
++            return -1;
++        if (read32(dev->regs + DWC3_DSTS) & DWC3_DSTS_DEVCTRLHLT)
++            return 0;
++        u32 count = read32(dev->regs + DWC3_GEVNTCOUNT(0)) & DWC3_GEVNTCOUNT_MASK;
++        if (count > DWC3_EVENT_BUFFERS_SIZE || count % sizeof(union dwc3_event))
++            return -1;
++        /* DWC3 cannot halt with unacknowledged events. shutting_down prevents
++         * event handling from restarting transfers or handling bus resets. */
++        if (count)
++            usb_dwc3_handle_events(dev);
++        udelay(1);
++    } while (!timeout_expired(deadline));
++    return -1;
++}
++#endif
++
+@@ -1901 +1970,2 @@ bool usb_dwc3_shutdown(dwc3_dev_t *dev)
+-    if (usb_shutdown_failed || dev->failed || dev->dma_unsafe)
++    if (usb_shutdown_failed || dev->failed || dev->dma_unsafe) {
++        NATIVE_USB_STEP(dev, "BAD_STATE");
+@@ -1902,0 +1973,11 @@ bool usb_dwc3_shutdown(dwc3_dev_t *dev)
++    }
++    NATIVE_USB_STEP(dev, "STOP_BEGIN");
++#ifdef J614S_NATIVE
++    /* Complete control requests before entering the no-rearm shutdown path. */
++    NATIVE_USB_STEP(dev, "CONTROL_DRAIN");
++    if (usb_dwc3_quiet_control(dev)) {
++        NATIVE_USB_STEP(dev, "CONTROL_BUSY");
++        goto unsafe;
++    }
++    NATIVE_USB_STEP(dev, "CONTROL_QUIET");
++#endif
+@@ -1910,0 +1992,5 @@ bool usb_dwc3_shutdown(dwc3_dev_t *dev)
++#ifdef J614S_NATIVE
++        char phase[16];
++        snprintf(phase, sizeof(phase), "EP%d_END", i);
++        NATIVE_USB_STEP(dev, phase);
++#endif
+@@ -1916,0 +2003 @@ bool usb_dwc3_shutdown(dwc3_dev_t *dev)
++    NATIVE_USB_STEP(dev, "HALT");
+@@ -1922 +2009,16 @@ bool usb_dwc3_shutdown(dwc3_dev_t *dev)
+-    if (poll32(dev->regs + DWC3_DSTS, DWC3_DSTS_DEVCTRLHLT, DWC3_DSTS_DEVCTRLHLT, 1000))
++    if (poll32(dev->regs + DWC3_DSTS, DWC3_DSTS_DEVCTRLHLT, DWC3_DSTS_DEVCTRLHLT, 1000)) {
++#ifdef J614S_NATIVE
++        /* [DEBUG-J614S-NATIVE] Record pending events before servicing them. */
++        char pending[20];
++        snprintf(pending, sizeof(pending), "E%08xC%08x",
++                 read32(dev->regs + DWC3_GEVNTCOUNT(0)), read32(dev->regs + DWC3_DCTL));
++        NATIVE_USB_STEP(dev, pending);
++        if (usb_dwc3_wait_halted(dev, 4000000)) {
++            char phase[20];
++            snprintf(phase, sizeof(phase), "H%08xP%08x",
++                     read32(dev->regs + DWC3_DSTS), read32(dev->regs + DWC3_GUSB2PHYCFG(0)));
++            NATIVE_USB_STEP(dev, phase);
++            goto unsafe;
++        }
++        NATIVE_USB_STEP(dev, "HALTED_DRAIN");
++#else
+@@ -1923,0 +2026,2 @@ bool usb_dwc3_shutdown(dwc3_dev_t *dev)
++#endif
++    }
+@@ -1925,0 +2030 @@ bool usb_dwc3_shutdown(dwc3_dev_t *dev)
++    NATIVE_USB_STEP(dev, "RESET");
+@@ -1930,0 +2036 @@ bool usb_dwc3_shutdown(dwc3_dev_t *dev)
++    NATIVE_USB_STEP(dev, "UNMAP_TRB");
+@@ -1933,0 +2040 @@ bool usb_dwc3_shutdown(dwc3_dev_t *dev)
++    NATIVE_USB_STEP(dev, "UNMAP_XFER");
+@@ -1936,0 +2044 @@ bool usb_dwc3_shutdown(dwc3_dev_t *dev)
++    NATIVE_USB_STEP(dev, "UNMAP_SCRATCH");
+@@ -1939,0 +2048 @@ bool usb_dwc3_shutdown(dwc3_dev_t *dev)
++    NATIVE_USB_STEP(dev, "UNMAP_EVENT");
+@@ -1943,0 +2053 @@ bool usb_dwc3_shutdown(dwc3_dev_t *dev)
++    NATIVE_USB_STEP(dev, "DART_STOP");
+@@ -1946,0 +2057 @@ bool usb_dwc3_shutdown(dwc3_dev_t *dev)
++    NATIVE_USB_STEP(dev, "FREE");

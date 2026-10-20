@@ -1,0 +1,6 @@
+{
+  "status": "PREPARATION FAILED BEFORE EXECUTION",
+  "root_cause": "The initial dependency copier assumed every DT_NEEDED entry was a bare SONAME. Signed Neovim requires the absolute path /usr/lib/lua/5.1/lpeg.so.",
+  "repair": "Accept paths restricted to /usr/lib/, retain their relative subdirectories, reject traversal, and continue verifying each copied canonical file against the sealed baseline manifest.",
+  "packaged_payload_execution": false
+}

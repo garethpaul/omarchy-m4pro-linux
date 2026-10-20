@@ -130,6 +130,46 @@ class ClassificationTests(unittest.TestCase):
         self.assertEqual(self.classify('oops', '0', '0'), 'BLOCKED')
 
 
+
+class WatchdogSnapshotTests(unittest.TestCase):
+    @staticmethod
+    def function(name):
+        # Extract only this actual read-only helper; never source or run init.
+        source = (probe.HERE / 'init').read_text()
+        return name + '() {' + source.split(name + '() {', 1)[1].split('\n}', 1)[0] + '\n}\n'
+
+    def read_fixture(self, path):
+        source = self.function('read_status_file')
+        return subprocess.run(['sh', '-c', source + 'read_status_file "$1"', 'check', str(path)], capture_output=True, text=True, check=True).stdout
+
+    def test_existing_fixture_contents_and_bytes_unchanged(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / 'timeout'; path.write_bytes(b'60\n')
+            self.assertEqual(self.read_fixture(path), str(path) + '=60\n')
+            self.assertEqual(path.read_bytes(), b'60\n')
+
+    def test_absent_fixture_explicit(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / 'missing'
+            self.assertEqual(self.read_fixture(path), str(path) + '=ABSENT\n')
+            self.assertFalse(path.exists())
+
+    def test_unreadable_fixture_explicit(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / 'not-a-file'; path.mkdir()
+            self.assertEqual(self.read_fixture(path), str(path) + '=UNREADABLE\n')
+
+    def test_snapshot_source_contains_requested_paths_and_fields(self):
+        source = self.function('watchdog_snapshot')
+        self.assertIn('/sys/class/watchdog/watchdog*', source)
+        self.assertIn('identity state timeout timeleft nowayout bootstatus', source)
+        self.assertIn('handle_boot_enabled open_timeout', source)
+        self.assertIn('/sys/module/watchdog/parameters/$parameter', source)
+        self.assertIn('/sys/class/watchdog/watchdog*=ABSENT', source)
+        self.assertNotIn('/dev/watchdog', (probe.HERE / 'init').read_text())
+        self.assertIn('this init does not arm/feed watchdogs; recovery remains unverified', (probe.HERE / 'init').read_text())
+
+
 @unittest.skipUnless(os.environ.get('J614S_KERNEL_BUNDLE') and os.environ.get('J614S_KERNEL_VERIFIER'), 'Set pinned bundle and verifier paths for actual input negative controls')
 class QualifiedInputTests(unittest.TestCase):
     @classmethod

@@ -1,0 +1,39 @@
+test_actual_nonheld_description_mutation_rejected (test_baseline.CompleteBaseline.test_actual_nonheld_description_mutation_rejected) ... ok
+test_added_and_removed_description_rejected (test_baseline.CompleteBaseline.test_added_and_removed_description_rejected) ... ok
+test_symlink_description_refused (test_baseline.CompleteBaseline.test_symlink_description_refused) ... ok
+test_actual_graph_keeps_gaps_visible (test_candidate.SeparateCandidate.test_actual_graph_keeps_gaps_visible) ... ok
+test_independent_actual_readelf_proves_coupled_rebuilds (test_candidate.SeparateCandidate.test_independent_actual_readelf_proves_coupled_rebuilds) ... ok
+test_normal_prepare_retains_fixed986_and_exact_four_removals (test_candidate.SeparateCandidate.test_normal_prepare_retains_fixed986_and_exact_four_removals) ... ok
+test_original_signed117_and_all_holds_preserved (test_candidate.SeparateCandidate.test_original_signed117_and_all_holds_preserved) ... ok
+test_unsigned_source_never_substitutes_signed_nvim (test_candidate.SeparateCandidate.test_unsigned_source_never_substitutes_signed_nvim) ... ok
+test_actual_file_graph_forwarding_and_wrong_version (test_elf.ActualElf.test_actual_file_graph_forwarding_and_wrong_version) ... ok
+test_machine_mismatch (test_elf.ActualElf.test_machine_mismatch) ... ok
+test_real_versioned_dependency (test_elf.ActualElf.test_real_versioned_dependency) ... ok
+test_same_soname_missing_version_and_symbol_contract (test_elf.ActualElf.test_same_soname_missing_version_and_symbol_contract) ... ok
+test_section_out_of_bounds_rejected (test_elf.ActualElf.test_section_out_of_bounds_rejected) ... ok
+test_symbol_moved_to_loaded_dependency_scope (test_elf.ActualElf.test_symbol_moved_to_loaded_dependency_scope) ... ok
+test_truncated_rejected (test_elf.ActualElf.test_truncated_rejected) ... ok
+test_actual_aarch64_object_and_independent_readelf (test_elf.CrossReadOnly.test_actual_aarch64_object_and_independent_readelf) ... ok
+test_actual_libalpm_declines_unlisted_removal (test_prepare.PrepareOnly.test_actual_libalpm_declines_unlisted_removal) ... ok
+test_actual_libalpm_protects_held_removal (test_prepare.PrepareOnly.test_actual_libalpm_protects_held_removal) ... ok
+test_actual_libalpm_rejects_broken_reverse_dependency (test_prepare.PrepareOnly.test_actual_libalpm_rejects_broken_reverse_dependency) ... ok
+test_actual_libalpm_rejects_wrong_architecture (test_prepare.PrepareOnly.test_actual_libalpm_rejects_wrong_architecture) ... ok
+test_actual_libalpm_scenario_removes_only_exact_conflict (test_prepare.PrepareOnly.test_actual_libalpm_scenario_removes_only_exact_conflict) ... ok
+test_helper_has_no_commit_or_sysupgrade_import (test_prepare.PrepareOnly.test_helper_has_no_commit_or_sysupgrade_import) ... ok
+test_actual_cache_mutation_rejected_before_decode (test_provenance.Provenance.test_actual_cache_mutation_rejected_before_decode) ... ok
+test_actual_file_mutation_rejected (test_provenance.Provenance.test_actual_file_mutation_rejected) ... ok
+test_actual_link_mutation_rejected (test_provenance.Provenance.test_actual_link_mutation_rejected) ... ok
+test_immutable_cache_cannot_be_overwritten (test_provenance.Provenance.test_immutable_cache_cannot_be_overwritten) ... ok
+test_new_file_and_provenance_change_rejected (test_provenance.Provenance.test_new_file_and_provenance_change_rejected) ... ok
+test_provider_reuse_checks_exact_bytes (test_provenance.Provenance.test_provider_reuse_checks_exact_bytes) ... ok
+test_image_absolute_and_relative_links_stay_virtual (test_resolution.VirtualFilesystem.test_image_absolute_and_relative_links_stay_virtual) ... ok
+test_no_archive_traversal (test_resolution.VirtualFilesystem.test_no_archive_traversal) ... ok
+test_origin_runpath_precedes_default (test_resolution.VirtualFilesystem.test_origin_runpath_precedes_default) ... ok
+test_symlink_escape_rejected (test_resolution.VirtualFilesystem.test_symlink_escape_rejected) ... ok
+test_symlink_loop_rejected (test_resolution.VirtualFilesystem.test_symlink_loop_rejected) ... ok
+test_unsupported_token_does_not_fall_through (test_resolution.VirtualFilesystem.test_unsupported_token_does_not_fall_through) ... ok
+
+----------------------------------------------------------------------
+Ran 34 tests in 0.247s
+
+OK

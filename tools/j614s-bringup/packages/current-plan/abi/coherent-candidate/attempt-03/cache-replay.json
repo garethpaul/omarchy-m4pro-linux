@@ -1,0 +1,10 @@
+{
+  "status": "WORKS: exact151 cached real-model replay byte-identical",
+  "deployable": false,
+  "execution_ready": false,
+  "actions": [],
+  "model_sha256": "3907fb5620b0dbd270a7557c957a9b426d3b7bfa41425fbb8947fdc9773e4663",
+  "byte_identical": true,
+  "image_and_restore_and_all151_payloads_revalidated": true,
+  "baseline_description_count": 986
+}

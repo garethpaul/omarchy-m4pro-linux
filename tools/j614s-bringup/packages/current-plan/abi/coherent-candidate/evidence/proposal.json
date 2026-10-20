@@ -1,0 +1,620 @@
+{
+  "schema": 1,
+  "status": "BLOCKED",
+  "deployable": false,
+  "actions": [],
+  "scope": "pacman metadata print resolution of non-protected requests against an immutable image baseline",
+  "print_exit": 1,
+  "metadata_resolution": "BLOCKED",
+  "requested_candidate_count": 187,
+  "ignored_packages": [
+    "alsa-firmware",
+    "asahi-bless",
+    "asahi-fwextract",
+    "asus-proart-p14-speaker-firmware",
+    "aura",
+    "avd-fw",
+    "dracut",
+    "dracut-brltty",
+    "dracut-tpm2-totp",
+    "firmware-dragonboard410c",
+    "firmware-gru",
+    "firmware-oak",
+    "firmware-raspberrypi",
+    "gnome-firmware",
+    "grub",
+    "grub-btrfs",
+    "grub-theme-vimix",
+    "ipw2100-fw",
+    "ipw2200-fw",
+    "libdrm",
+    "limine",
+    "limine-mkinitcpio-hook",
+    "limine-snapper-sync",
+    "linux-aarch64",
+    "linux-aarch64-chromebook",
+    "linux-aarch64-headers",
+    "linux-aarch64-pkgbase-shim",
+    "linux-aarch64-rc",
+    "linux-aarch64-rc-chromebook",
+    "linux-aarch64-rc-headers",
+    "linux-apfs-rw-dkms",
+    "linux-api-headers",
+    "linux-asahi",
+    "linux-asahi-headers",
+    "linux-atm",
+    "linux-aurora",
+    "linux-aurora-headers",
+    "linux-espressobin",
+    "linux-espressobin-headers",
+    "linux-firmware",
+    "linux-firmware-amd",
+    "linux-firmware-amdgpu",
+    "linux-firmware-atheros",
+    "linux-firmware-broadcom",
+    "linux-firmware-cirrus",
+    "linux-firmware-intel",
+    "linux-firmware-liquidio",
+    "linux-firmware-marvell",
+    "linux-firmware-mediatek",
+    "linux-firmware-mellanox",
+    "linux-firmware-nfp",
+    "linux-firmware-nvidia",
+    "linux-firmware-other",
+    "linux-firmware-qcom",
+    "linux-firmware-qlogic",
+    "linux-firmware-radeon",
+    "linux-firmware-realtek",
+    "linux-firmware-ti",
+    "linux-firmware-whence",
+    "linux-gru",
+    "linux-gru-headers",
+    "linux-n1x",
+    "linux-n1x-headers",
+    "linux-oak",
+    "linux-oak-headers",
+    "linux-odroid-c2",
+    "linux-odroid-c2-headers",
+    "linux-odroid-n2",
+    "linux-odroid-n2-headers",
+    "linux-omarchy",
+    "linux-omarchy-headers",
+    "linux-rpi",
+    "linux-rpi-16k",
+    "linux-rpi-16k-headers",
+    "linux-rpi-headers",
+    "linux-tools-meta",
+    "m1n1",
+    "m1n1-aurora",
+    "mesa",
+    "mkinitcpio",
+    "mkinitcpio-archiso",
+    "mkinitcpio-busybox",
+    "mkinitcpio-dropbear",
+    "mkinitcpio-netconf",
+    "mkinitcpio-nfs-utils",
+    "mkinitcpio-systemd-tool",
+    "mkinitcpio-tinyssh",
+    "mkinitcpio-tpm2-totp",
+    "mkinitcpio-utils",
+    "omarchy-aurora-firmware",
+    "omarchy-mac",
+    "omarchy-mac-boot",
+    "omarchy-mac-ml",
+    "qcom-firmware-extract",
+    "qemu-system-alpha-firmware",
+    "qemu-system-arm-firmware",
+    "qemu-system-hppa-firmware",
+    "qemu-system-microblaze-firmware",
+    "qemu-system-ppc-firmware",
+    "qemu-system-riscv-firmware",
+    "qemu-system-s390x-firmware",
+    "qemu-system-sparc-firmware",
+    "qemu-system-x86-firmware",
+    "sane-gt68xx-firmware",
+    "sigrok-firmware-fx2lafw",
+    "sof-firmware",
+    "systemd",
+    "systemd-bootchart",
+    "systemd-libs",
+    "systemd-lsp",
+    "systemd-resolvconf",
+    "systemd-sysvcompat",
+    "systemd-tests",
+    "systemd-ui",
+    "systemd-ukify",
+    "uboot-asahi",
+    "uboot-aurora",
+    "uboot-dragonboard410c",
+    "uboot-espressobin",
+    "uboot-macchiatobin",
+    "uboot-odroid-c2",
+    "uboot-odroid-c2-mainline",
+    "uboot-odroid-m1",
+    "uboot-odroid-n2",
+    "uboot-pine64",
+    "uboot-raspberrypi",
+    "uboot-rock64",
+    "uboot-tools",
+    "virt-firmware",
+    "vulkan-asahi"
+  ],
+  "resolver": {
+    "binary_sha256": "590759eddb4c0cac6c5ad66f0f9bc093e15529675c0aa909eea396af5b07459d",
+    "version": ".--.                  Pacman v7.1.0 - libalpm v16.0.1"
+  },
+  "request_review_sha256": "a10cb1ceb91d52098b82bc001f84c9d7649cdf2c6e23d1f9401a4ac32afdc017",
+  "stdout_sha256": "6e0801abf5d5971ef88709838485bd86f5aeff8ba292558f5988633f703e464c",
+  "stderr_sha256": "e81ed03eb6163e6b895a0bde04123453e9c06014f6c2edb29d606491f0ef6501",
+  "unresolved_original_requests": [],
+  "held_original_requests": [
+    {
+      "requested": "omarchy-mac",
+      "reason": "boot/firmware/system/graphics ABI identity is protected",
+      "installed_pin": null
+    },
+    {
+      "requested": "omarchy-mac-boot",
+      "reason": "boot/firmware/system/graphics ABI identity is protected",
+      "installed_pin": {
+        "version": "20260921-9",
+        "architecture": "aarch64",
+        "description_sha256": "f5a03272ce20e0ff00110f72e49d294a652ff1815a572eddf33ecc277f0afae8"
+      }
+    },
+    {
+      "requested": "asahi-bless",
+      "reason": "boot/firmware/system/graphics ABI identity is protected",
+      "installed_pin": {
+        "version": "0.4.2-1",
+        "architecture": "aarch64",
+        "description_sha256": "5b0a03e7b7cdfa885721177dbc233d377b24d415847ff70672477a3051f66075"
+      }
+    },
+    {
+      "requested": "avd-fw",
+      "reason": "boot/firmware/system/graphics ABI identity is protected",
+      "installed_pin": null
+    }
+  ],
+  "protected_installed_pins": {
+    "asahi-bless": {
+      "version": "0.4.2-1",
+      "architecture": "aarch64",
+      "description_sha256": "5b0a03e7b7cdfa885721177dbc233d377b24d415847ff70672477a3051f66075"
+    },
+    "asahi-fwextract": {
+      "version": "0.8.4-1",
+      "architecture": "any",
+      "description_sha256": "156f4c0bacfd907a70b8c290ae1bfdc25cf673bb6e25b6601a5aa6640a740163"
+    },
+    "grub": {
+      "version": "2:2.14-1.1",
+      "architecture": "aarch64",
+      "description_sha256": "aa204a456a1ff122d69fd614bbe1f1b11d980898aaa0b90d0867cf028fefb711"
+    },
+    "libdrm": {
+      "version": "2.4.134-1",
+      "architecture": "aarch64",
+      "description_sha256": "c613a04694b68afdc31a8db731dd0fa455d8bf03f0bbced6f04c7a5dcbbf9847"
+    },
+    "limine": {
+      "version": "12.8.0-1",
+      "architecture": "aarch64",
+      "description_sha256": "e926f49ec1b0e3e9f4ec0d5d9b34dd8c7db2ee0ba4dbe3a23cef27c78bce0ac9"
+    },
+    "limine-mkinitcpio-hook": {
+      "version": "1.36.0-3",
+      "architecture": "aarch64",
+      "description_sha256": "5dbf1af955e78b1a9979cf9486516cb0bffedca9d76db77ef7e3a48f054b7422"
+    },
+    "limine-snapper-sync": {
+      "version": "1.30.1-1",
+      "architecture": "aarch64",
+      "description_sha256": "096c032bd9e5c3fc04fe0bcbcb4549c74e38455ab5c11ccc0034a7f53e624910"
+    },
+    "linux-api-headers": {
+      "version": "7.2-1",
+      "architecture": "aarch64",
+      "description_sha256": "4b54147feb61b457ecd2df0ec32da9bfebc3f8803b8b7e3d12cfd592255a26aa"
+    },
+    "linux-aurora": {
+      "version": "7.1.12.aurora2-7",
+      "architecture": "aarch64",
+      "description_sha256": "d963e3fd625c277ed5cdb707daed805bc22fe719af83e8ca37b56af78c807d3d"
+    },
+    "linux-aurora-headers": {
+      "version": "7.1.12.aurora2-7",
+      "architecture": "aarch64",
+      "description_sha256": "3e55c3befedbeb4e11d006c0d7ef9cb016d2357b31f0e49023a099dfd697f996"
+    },
+    "m1n1-aurora": {
+      "version": "1.6.1.aurora1-2",
+      "architecture": "aarch64",
+      "description_sha256": "8ef38d00163eb42ae92283b536970b5bfa4117fe9b94ed50c380e73258bee6ed"
+    },
+    "mesa": {
+      "version": "1:26.2.2-1",
+      "architecture": "aarch64",
+      "description_sha256": "42c5840794d66e6286755f877e27ea2f27982dfea1a286663439cd041f16d2eb"
+    },
+    "mkinitcpio": {
+      "version": "41.1-1",
+      "architecture": "any",
+      "description_sha256": "b47ba4e5b5ad9f5ffa75f015d904eafb6db598af92e3bf033d2472e8824c6d3a"
+    },
+    "mkinitcpio-busybox": {
+      "version": "1.36.1-1",
+      "architecture": "aarch64",
+      "description_sha256": "19db7fc5c6903ceb35adcbc26f8bf8d4e54624506c37a72ee257d2d9285c4584"
+    },
+    "omarchy-mac-boot": {
+      "version": "20260921-9",
+      "architecture": "aarch64",
+      "description_sha256": "f5a03272ce20e0ff00110f72e49d294a652ff1815a572eddf33ecc277f0afae8"
+    },
+    "systemd": {
+      "version": "261.2-1",
+      "architecture": "aarch64",
+      "description_sha256": "7a736cb1b0717ba19514d2d1775a6459e3cf50561fa0e392d8523af3ace24868"
+    },
+    "systemd-libs": {
+      "version": "261.2-1",
+      "architecture": "aarch64",
+      "description_sha256": "6e3e1f9104ac0677398c939270649d9057b4de3874f6c141fe428b781bc8b13e"
+    },
+    "systemd-sysvcompat": {
+      "version": "261.2-1",
+      "architecture": "aarch64",
+      "description_sha256": "e1b86d32b2e0b5625e629abbcb2e0164d95a4912b9271ab2934c5e229aea9bb2"
+    },
+    "uboot-asahi": {
+      "version": "2026.07.asahi2-3",
+      "architecture": "aarch64",
+      "description_sha256": "3b73368890274043660b93f30ac0a15a593ab6abdd7cdbe92c8f7c08afa47513"
+    },
+    "vulkan-asahi": {
+      "version": "1:26.2.2-1",
+      "architecture": "aarch64",
+      "description_sha256": "ece7179c504918728c4bf82ad8c90d27e2a65d69624f848ca8af6a61a815fdff"
+    }
+  },
+  "repositories": [
+    {
+      "name": "omarchy",
+      "sha256": "748e0b4b9278eb755aa4503c2e123ae35a7a8f8c163037d7c0cbeeabb0e38f60",
+      "excluded_metadata_entries": []
+    },
+    {
+      "name": "asahi-alarm",
+      "sha256": "090c55084cbc969bce3cdd925f25d5594f06e45b882e873b6791e2d3efc3c8e8",
+      "excluded_metadata_entries": []
+    },
+    {
+      "name": "core",
+      "sha256": "61085ad583bc8419803d2fb6617ec0fc10cec7138df606e33586e58cedc372c5",
+      "excluded_metadata_entries": []
+    },
+    {
+      "name": "extra",
+      "sha256": "433ab786421ab07d6dca3f8f4e2279bb32cde7d4497171df6ae94c3287e9416e",
+      "excluded_metadata_entries": [
+        {
+          "entry": "findnewest-0.3-4",
+          "reason": "missing desc identity; excluded from candidates"
+        }
+      ]
+    },
+    {
+      "name": "alarm",
+      "sha256": "101b41ca6e76b4ec43c2104ed285e094796855a8bae69ec6ccbf147bdb4ac56b",
+      "excluded_metadata_entries": []
+    },
+    {
+      "name": "aur",
+      "sha256": "263b04baaf9e27f6bc7840455a2bf65bf9b7f9cad0be5efce0ca3650eb634024",
+      "excluded_metadata_entries": []
+    }
+  ],
+  "remaining_deployment_gates": [
+    "boot/firmware requests held",
+    "complete transaction package signatures and installed hooks unverified",
+    "live target hardware, active experimental driver ABI and tested recovery unverified"
+  ],
+  "install_command": null,
+  "full_upgrade_authorized": false,
+  "resolver_error": "error: failed to prepare transaction (could not satisfy dependencies)\n",
+  "execution_ready": false,
+  "proposal_variant": "coherent-qt-soname-native-formatters-01",
+  "historical_snapshot_replaced": false,
+  "current117_snapshot_replaced": false,
+  "original117_proposal_sha256": "fbe2e7fde7b82be9bb51011ec4b67a5ce2c333d3437bd13e1c6cc45cb619df5e",
+  "original117_qualification_sha256": "468862b06d7f38c41c2c030e5f8fea796563b64ec3af0342c14925450093f1e0",
+  "original_request_review_sha256": "60cf22150225eea9a8d1ea737f7e1ea4831abd7c22da8fbe0ae91bdb4ac06020",
+  "extra_canonical_requests": [
+    {
+      "name": "qt6-5compat",
+      "reason": "existing Qt family coherence",
+      "candidate": {
+        "repository": "extra",
+        "name": "qt6-5compat",
+        "version": "6.12.0-1",
+        "architecture": "aarch64",
+        "filename": "qt6-5compat-6.12.0-1-aarch64.pkg.tar.xz",
+        "sha256": "4ddd2d43878105265fa546cde58495a87c09a62a600ad6ca6ab95a29f3850fa8"
+      }
+    },
+    {
+      "name": "qt6-multimedia-ffmpeg",
+      "reason": "lost private Qt imports",
+      "candidate": {
+        "repository": "extra",
+        "name": "qt6-multimedia-ffmpeg",
+        "version": "6.12.0-1",
+        "architecture": "aarch64",
+        "filename": "qt6-multimedia-ffmpeg-6.12.0-1-aarch64.pkg.tar.xz",
+        "sha256": "03648c191e265fb085eb5c1e23800540611939a41e8f26195060bae7f6e308a9"
+      }
+    },
+    {
+      "name": "qt6-networkauth",
+      "reason": "lost private Qt imports",
+      "candidate": {
+        "repository": "extra",
+        "name": "qt6-networkauth",
+        "version": "6.12.0-1",
+        "architecture": "aarch64",
+        "filename": "qt6-networkauth-6.12.0-1-aarch64.pkg.tar.xz",
+        "sha256": "8c203d44bf71d760056a60cd365a742312fb0fea63cfdb50f7330a501ea7009b"
+      }
+    },
+    {
+      "name": "qt6-positioning",
+      "reason": "lost private Qt imports",
+      "candidate": {
+        "repository": "extra",
+        "name": "qt6-positioning",
+        "version": "6.12.0-1",
+        "architecture": "aarch64",
+        "filename": "qt6-positioning-6.12.0-1-aarch64.pkg.tar.xz",
+        "sha256": "f40e144c96bb65641b06de4de8cffc10ddcc6cc3c8d108ce0a81ecaadf41db38"
+      }
+    },
+    {
+      "name": "qt6-shadertools",
+      "reason": "existing Qt family coherence",
+      "candidate": {
+        "repository": "extra",
+        "name": "qt6-shadertools",
+        "version": "6.12.0-1",
+        "architecture": "aarch64",
+        "filename": "qt6-shadertools-6.12.0-1-aarch64.pkg.tar.xz",
+        "sha256": "d06d62e5e98e7d16f062387b17176962df5b09941f7f11f3cfc4a99150578bc8"
+      }
+    },
+    {
+      "name": "qt6-speech",
+      "reason": "lost private Qt imports",
+      "candidate": {
+        "repository": "extra",
+        "name": "qt6-speech",
+        "version": "6.12.0-1",
+        "architecture": "aarch64",
+        "filename": "qt6-speech-6.12.0-1-aarch64.pkg.tar.xz",
+        "sha256": "30fdf078602668db97a85b98cd75b44cc3fb969ec327aa609984e3dec5a241c1"
+      }
+    },
+    {
+      "name": "qt6-translations",
+      "reason": "existing Qt family coherence",
+      "candidate": {
+        "repository": "extra",
+        "name": "qt6-translations",
+        "version": "6.12.0-1",
+        "architecture": "any",
+        "filename": "qt6-translations-6.12.0-1-any.pkg.tar.xz",
+        "sha256": "51c3b96236aa9cccd06d27a79d62f76fb9921710ecc30db9612fcb280165bbc2"
+      }
+    },
+    {
+      "name": "qt6-webchannel",
+      "reason": "lost private Qt imports",
+      "candidate": {
+        "repository": "extra",
+        "name": "qt6-webchannel",
+        "version": "6.12.0-1",
+        "architecture": "aarch64",
+        "filename": "qt6-webchannel-6.12.0-1-aarch64.pkg.tar.xz",
+        "sha256": "28747dcd7eb95ff25909c8ec2f145987c7573fe5193c7abb09da6790f6ffd8dc"
+      }
+    },
+    {
+      "name": "qt6-webengine",
+      "reason": "existing Qt family coherence",
+      "candidate": {
+        "repository": "extra",
+        "name": "qt6-webengine",
+        "version": "6.11.2-2",
+        "architecture": "aarch64",
+        "filename": "qt6-webengine-6.11.2-2-aarch64.pkg.tar.xz",
+        "sha256": "362f623db5302d1e8ecaa9d9c48cfaa45574d0d70a5b273d76fc7a0891572189"
+      }
+    },
+    {
+      "name": "gnome-desktop",
+      "reason": "incoming Evince requires libgnome-desktop-3.so.21",
+      "candidate": {
+        "repository": "extra",
+        "name": "gnome-desktop",
+        "version": "1:51.0-1",
+        "architecture": "aarch64",
+        "filename": "gnome-desktop-1:51.0-1-aarch64.pkg.tar.xz",
+        "sha256": "ae442794e0498515cdb437a9617327d1fab41ef3cf5df476196ea565156ad179"
+      }
+    },
+    {
+      "name": "libnfs",
+      "reason": "incoming gvfsd-nfs requires libnfs.so.17",
+      "candidate": {
+        "repository": "extra",
+        "name": "libnfs",
+        "version": "7.0.2-2",
+        "architecture": "aarch64",
+        "filename": "libnfs-7.0.2-2-aarch64.pkg.tar.xz",
+        "sha256": "c46ce8e26869b09ae06a6de492390fb6b2206fa112039c16373481d78f031d2b"
+      }
+    },
+    {
+      "name": "openexr",
+      "reason": "incoming libvips/ImageMagick require OpenEXR3_5.so.34",
+      "candidate": {
+        "repository": "extra",
+        "name": "openexr",
+        "version": "3.5.2-1",
+        "architecture": "aarch64",
+        "filename": "openexr-3.5.2-1-aarch64.pkg.tar.xz",
+        "sha256": "1d64875173724faf61f47fa60e289b70d2dfd9fbb77fecbf323dbef0f882c1de"
+      }
+    },
+    {
+      "name": "jbigkit",
+      "reason": "incoming GraphicsMagick/ImageMagick JBIG modules require libjbig.so.2.2",
+      "candidate": {
+        "repository": "extra",
+        "name": "jbigkit",
+        "version": "2.2-1",
+        "architecture": "aarch64",
+        "filename": "jbigkit-2.2-1-aarch64.pkg.tar.xz",
+        "sha256": "1be37e2dc4b2029668838e9dc7068c5674199a883ca5a0f4c11c7d8005f626ba"
+      }
+    },
+    {
+      "name": "libwmf",
+      "reason": "incoming GraphicsMagick WMF module requires libwmflite-0.2.so.7",
+      "candidate": {
+        "repository": "extra",
+        "name": "libwmf",
+        "version": "0.2.17-1",
+        "architecture": "aarch64",
+        "filename": "libwmf-0.2.17-1-aarch64.pkg.tar.xz",
+        "sha256": "95a01009623590c6e1df75b94bf3a756505553cfe4ee301ae7cd6a3b6b5cc617"
+      }
+    },
+    {
+      "name": "qt5-base",
+      "reason": "incoming fcitx5 Qt5 modules require Qt5 Core/DBus/Gui/Widgets",
+      "candidate": {
+        "repository": "extra",
+        "name": "qt5-base",
+        "version": "5.15.19+kde+r96-1",
+        "architecture": "aarch64",
+        "filename": "qt5-base-5.15.19+kde+r96-1-aarch64.pkg.tar.xz",
+        "sha256": "7fa36a16bd268ad8f071d65b9c98376fd2c86c059211b98295cba99fddc21b74"
+      }
+    },
+    {
+      "name": "qt6-quick3d",
+      "reason": "incoming optional Qt6Quick3DSpatialAudio module requires Qt6Quick3D",
+      "candidate": {
+        "repository": "extra",
+        "name": "qt6-quick3d",
+        "version": "6.12.0-1",
+        "architecture": "aarch64",
+        "filename": "qt6-quick3d-6.12.0-1-aarch64.pkg.tar.xz",
+        "sha256": "32d7ba341aca29cd0f42a3cff1b346c0daae2de7b0227c92016430c9e013d267"
+      }
+    },
+    {
+      "name": "webkitgtk-6.0",
+      "reason": "incoming Sushi extension requires libwebkitgtk-6.0.so.4",
+      "candidate": {
+        "repository": "extra",
+        "name": "webkitgtk-6.0",
+        "version": "2.54.1-1",
+        "architecture": "aarch64",
+        "filename": "webkitgtk-6.0-2.54.1-1-aarch64.pkg.tar.xz",
+        "sha256": "c5cffcbfcc55c4ce521b4530f610ca2783db66ad18b5e6c985c7b603af1776b4"
+      }
+    },
+    {
+      "name": "lttng-ust2.12",
+      "reason": "incoming optional CoreCLR tracing provider requires liblttng-ust.so.0",
+      "candidate": {
+        "repository": "extra",
+        "name": "lttng-ust2.12",
+        "version": "2.12.10-2",
+        "architecture": "aarch64",
+        "filename": "lttng-ust2.12-2.12.10-2-aarch64.pkg.tar.xz",
+        "sha256": "fad543eac62ce92fbc38003aa19ffa0c2915fe8b4923eca60ede45b9fd7f3284"
+      }
+    },
+    {
+      "name": "shfmt",
+      "reason": "explicit unsigned omarchy-nvim source-candidate dependency",
+      "candidate": {
+        "repository": "extra",
+        "name": "shfmt",
+        "version": "3.14.1-1",
+        "architecture": "aarch64",
+        "filename": "shfmt-3.14.1-1-aarch64.pkg.tar.xz",
+        "sha256": "7e5ca0a69c2cbeda1e654c389aa8c987e89951d366272b0621a39693b6f08225"
+      }
+    },
+    {
+      "name": "stylua",
+      "reason": "explicit unsigned omarchy-nvim source-candidate dependency",
+      "candidate": {
+        "repository": "extra",
+        "name": "stylua",
+        "version": "2.6.0-1",
+        "architecture": "aarch64",
+        "filename": "stylua-2.6.0-1-aarch64.pkg.tar.xz",
+        "sha256": "9c1c747699782a05f89556d43c68211e5c58beac8d1cbca513350b490af52174"
+      }
+    }
+  ],
+  "recorded_original_request_count": 167,
+  "extended_request_count": 187,
+  "baseline_description_identity": {
+    "count": 986,
+    "digest": "05592373e5f03cfcfeb32ea3dcf0fb835b307e9e1eae75540e670db36e5e1e7e"
+  },
+  "baseline_qualification_sha256": "d63559fc4cad4c7e3974cbc71acaee9ddfc9d1b4b6d67b6eff13e44a17d16eb7",
+  "metadata_authentication": {
+    "omarchy": "UNSIGNED (DatabaseOptional; TLS origin only)",
+    "asahi-alarm": "WORKS",
+    "core": "UNSIGNED (DatabaseOptional; TLS origin only)",
+    "extra": "UNSIGNED (DatabaseOptional; TLS origin only)",
+    "alarm": "UNSIGNED (DatabaseOptional; TLS origin only)",
+    "aur": "UNSIGNED (DatabaseOptional; TLS origin only)"
+  },
+  "metadata_freshness_completeness": "UNPROVEN; same previously frozen metadata, no refresh",
+  "transaction_differences": null,
+  "source_candidate": {
+    "name": "omarchy-nvim",
+    "source_commit": "e8f5edeabdaa0efe30760f47bc5c93467ac45490",
+    "pkgbuild_sha256": "4a03f84d600c70e5b74893ee5d2ec461701ae9e07d470f97daaa4e59b13cd4c8",
+    "source_version": "2026.9.21-6",
+    "status": "BLOCKED: unsigned source placeholder; not built, signed, released or selected instead of official row",
+    "native_dependencies": [
+      "shfmt",
+      "stylua"
+    ],
+    "official_frozen_row_remains": {
+      "repository": "omarchy",
+      "name": "omarchy-nvim",
+      "version": "2026.9.21-5",
+      "filename": "omarchy-nvim-2026.9.21-5-any.pkg.tar.zst",
+      "sha256": "b46d41973cacfcf2d8be371351336a3f689e2eb7b9bacdb7ca81939354cbcbc9",
+      "architecture": "any"
+    },
+    "existing_user_migration": "UNTESTED; source fix only affects new template homes"
+  },
+  "remaining_closure_gates": [
+    "Complete exact payload PGP/signed metadata qualification for new frozen rows",
+    "Normal dependency/conflict preparation with explicit hypothetical removals",
+    "Re-run sealed-image ELF/ABI graph including newly replaced-library reverse consumers",
+    "Unsigned source-candidate build/signature/static/runtime gates; original signed nvim row retains foreign asset",
+    "Original protected20/fourholds, boot effects, removal hooks, target, recovery and runtime remain blocked"
+  ]
+}
