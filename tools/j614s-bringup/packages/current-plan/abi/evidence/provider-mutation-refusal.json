@@ -1,0 +1,9 @@
+{
+  "status": "WORKS (negative control)",
+  "method": "Copy actual previously extracted selected qt6-base provider, flip final byte, run actual prove_qt_break.py against unchanged hash-verified signed payload",
+  "expected": "reject reused provider bytes before readelf proof output",
+  "exit_code": 1,
+  "observed": "ValueError: reused provider bytes differ from exact archive member",
+  "proof_output_created": false,
+  "payload_executed": false
+}

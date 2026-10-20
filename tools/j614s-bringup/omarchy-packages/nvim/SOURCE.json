@@ -1,0 +1,59 @@
+{
+  "repository": "https://github.com/omacom/omarchy-pkgs",
+  "upstream_commit": "b412ff5bfb3b364498f935fffaedcc2070dfc3eb",
+  "patched_commit": "e8f5edeabdaa0efe30760f47bc5c93467ac45490",
+  "branch": "codex/nvim-native-formatters",
+  "source_files": {
+    "LICENSE": "717ba1949502290f8e47688ae2e323acd06c8ca47aec9f7596b15f678c1af4a2",
+    "pkgbuilds/omarchy-nvim/.omarchy/package.json": "5a1f7783227b40fc074b2be24c1e10c6182bbcfa95708b313c03c78ba87bb4d5",
+    "pkgbuilds/omarchy-nvim/PKGBUILD": "4a03f84d600c70e5b74893ee5d2ec461701ae9e07d470f97daaa4e59b13cd4c8",
+    "pkgbuilds/omarchy-nvim/lazyvim.json": "e11b5459b4ab8c5dfd9f5fab67a5242ec9c475838fe777a7a9a2199b4b9e56f2",
+    "pkgbuilds/omarchy-nvim/lua/config/options.lua": "7c924d2eb9e707fba115ccc660082a8920901b25d28af338df0f9db14934dd25",
+    "pkgbuilds/omarchy-nvim/lua/config/remote_clipboard.lua": "749a7106b5a8092e2a29724d8fc6c663ad3510447d0174a16330ac7a9a93c1e7",
+    "pkgbuilds/omarchy-nvim/lua/plugins/all-themes.lua": "5747b94480c3688ac5bdde70b9aa3e3a04491acf1b1f38ea756ee64cb9995ad0",
+    "pkgbuilds/omarchy-nvim/lua/plugins/disable-news-alert.lua": "5e27ebfe77359f9a42a478fb01671962801fbba6846cc72c19c7313ccd8333be",
+    "pkgbuilds/omarchy-nvim/lua/plugins/lualine-transparent.lua": "d59f78b55f99ced1423db44b84b97f855daa49e7ba8b9ce9a432aab73075bcb7",
+    "pkgbuilds/omarchy-nvim/lua/plugins/native-formatters.lua": "ee1c37fef7f501807d87b6700ffb6fc40da69982afd302f9b88333b78593feee",
+    "pkgbuilds/omarchy-nvim/lua/plugins/omarchy-theme-hotreload.lua": "d4f74ba06eec038006daf7ac509ac4102270c634c6b5a80babce037503a8e2a1",
+    "pkgbuilds/omarchy-nvim/lua/plugins/snacks-animated-scrolling-off.lua": "e3dc59bf119a30f3e4a712c048902350dad188e4ebfd9a718820d3145e43d57a",
+    "pkgbuilds/omarchy-nvim/omarchy-nvim-setup": "5f9dd390dc0ad5d42d9f3c857064ffb74f5ef27304e15395d0db09684f24630f",
+    "pkgbuilds/omarchy-nvim/plugin/after/transparency.lua": "2f4ab7aa4ddf3ee57a6ab9fdd4fd467659b0843703989a977f3735dc324418cc",
+    "tests/test_omarchy_nvim_package.py": "faf72251f33f1d87f196a6ac435c144893e0eee40ced85a24978a2d0972dfdca"
+  },
+  "tests": {
+    "before": {
+      "source": "b412ff5bfb3b364498f935fffaedcc2070dfc3eb",
+      "exit_code": 1,
+      "log": "before.txt"
+    },
+    "after": {
+      "source": "e8f5edeabdaa0efe30760f47bc5c93467ac45490",
+      "exit_code": 0,
+      "log": "after.txt"
+    }
+  },
+  "package_function_only": true,
+  "packaged_elf_executions": 0,
+  "neovim_plugin_executions": 0,
+  "build_executed": false,
+  "HOME_overridden": false,
+  "source_pkgrel": "2026.9.21-6",
+  "runtime_status": "UNTESTED",
+  "deployment_ready": false,
+  "signed_plans_mutated": false,
+  "bash_syntax_exit": 0,
+  "diff_check_exit": 0,
+  "patch_replay": {
+    "command": "git apply 0001-native-formatters.patch",
+    "all_exported_package_and_test_files_byte_identical": true,
+    "patch_sha256": "b3584564d9d7bc790851af26aa5b43fbb3059371fe9905cdbfa2c4dc00aa5d4d",
+    "blank_context_prefix_normalization": "single-space empty context lines normalized; replayed bytes unchanged"
+  },
+  "tools": {
+    "python3": "Python 3.14.8",
+    "clang": "clang version 23.1.3",
+    "lua": "Lua 5.5.1  Copyright (C) 1994-2026 Lua.org, PUC-Rio",
+    "bash": "GNU bash, version 5.3.20(1)-release (x86_64-pc-linux-gnu)",
+    "git": "git version 2.56.0"
+  }
+}

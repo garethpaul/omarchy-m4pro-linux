@@ -1,6 +1,6 @@
 {
-  "workspace_commit": "7aa8f7cee9a64f8795fbf4ef993956a0e57e7cab",
-  "source_archive_sha256": "d24ce05aa8dfbb3de7f3e65c48dc55e1918b976115e1a4dbdd2fa91ca4796991",
+  "workspace_commit": "ba73010de16e1ce08399598bab8f2a34975e55ab",
+  "source_archive_sha256": "36a3a69fb5dbe42c66438c9a0a3ea330a712d99fed5a6ed61f1e39ac7049eb2d",
   "status": "experimental tooling; no deployment or production qualification",
   "files": [
     {
@@ -9,7 +9,7 @@
     },
     {
       "file": "PROGRESS.md",
-      "sha256": "74a93ea0ee0220966aefea2927bf967bb0758017be35199a0265852ca424a1bc"
+      "sha256": "fe52258f8ae30493f1eb687816e95f8398e718524eb192175b6132d6cc6f2a7f"
     },
     {
       "file": "capture/.gitignore",
@@ -501,7 +501,7 @@
     },
     {
       "file": "infra/README.md",
-      "sha256": "858890a6ca42f68eadd4076c8935c77d6a03dba02311f1b180a7440e3ca5b70e"
+      "sha256": "51695cab8d63a79d8a415d8b6323b0bd2c47ea292d4e09c14db99fdf93113c9b"
     },
     {
       "file": "infra/baseline-contract.json",
@@ -614,6 +614,22 @@
     {
       "file": "infra/gravity-combined-attempt-01-failure.json",
       "sha256": "db91eb91bbfb2ed8560f7c4e4d2ad26413996fcc8ec02ce25563c2b41e9c9bfd"
+    },
+    {
+      "file": "infra/gravity-combined-fua-build-01.json",
+      "sha256": "600595da81ef1fa66906c27107942d6b9dc1df4edaf3437e69e775d5aa1adebb"
+    },
+    {
+      "file": "infra/gravity-combined-fua-build-02.json",
+      "sha256": "70f195485d2181c23fd94f379785bf3dac017a10fd496ba2f5f149f87139c88a"
+    },
+    {
+      "file": "infra/gravity-combined-fua-source.json",
+      "sha256": "86729b3e2ed069a1ee19981c6097c95aee408a6488b7c8223f96493718ecf54a"
+    },
+    {
+      "file": "infra/gravity-combined-reproducibility.json",
+      "sha256": "8e9f316d4b6768d893a30271bc4e776e428e22a3e5a658d91f83290152a811fc"
     },
     {
       "file": "infra/gravity-combined-source.json",
@@ -904,6 +920,46 @@
       "sha256": "4212f925f1f793ec69797b3f4308e7a0a43096111d6459fac3eaa78e0980b136"
     },
     {
+      "file": "integration/nvme/handoff-contract/README.md",
+      "sha256": "fdf916c11bbb4813396f0988317975cf16f4ad4e3665812df821e383672bacce"
+    },
+    {
+      "file": "integration/nvme/handoff-contract/adt-property-notes.md",
+      "sha256": "791fa511369e4fb0cd6613caa8edf6966eb5ad42187850fd299e58e425324683"
+    },
+    {
+      "file": "integration/nvme/handoff-contract/adt-property-provenance.json",
+      "sha256": "738966577da0cd8538d012e339c9d9a52f8a0b238bc8d532eae93a5e47b915fc"
+    },
+    {
+      "file": "integration/nvme/handoff-contract/audit_cached_handoff.py",
+      "sha256": "8757c56ea9baf8c821251d75a5bc4a8caf685dfc1eff7d04ea03e98e74757b9a"
+    },
+    {
+      "file": "integration/nvme/handoff-contract/cached-source-evidence.json",
+      "sha256": "132cb41447e711554dde21a864525534daff92bbb49f9cf3ff8c7f41ef7d40c9"
+    },
+    {
+      "file": "integration/nvme/handoff-contract/comment-only-evidence.json",
+      "sha256": "b9f972d65e749c10b535ddfcaa17f0fd2707604951aca34cd9429c14c62b53fe"
+    },
+    {
+      "file": "integration/nvme/handoff-contract/comment-only.patch",
+      "sha256": "1b1ab65296d82e6b43a0fdeaa669d402d7afa025c7d7310ac9fda4d902ab351c"
+    },
+    {
+      "file": "integration/nvme/handoff-contract/inventory_adt_names.py",
+      "sha256": "bc4e3e9cfd9f8fdcfd099d51e0ccaea14ac355e989ca722eaa912658ac77c280"
+    },
+    {
+      "file": "integration/nvme/handoff-contract/observation-capability-evidence.json",
+      "sha256": "1d20caafe4a7f83b8b94f0e7bc9ea66a2a3a88131b476d183c5744a453b563e4"
+    },
+    {
+      "file": "integration/nvme/handoff-contract/symbol-capability-evidence.json",
+      "sha256": "275c3b99bd137ff0c4d1352334cb2bc3c353db9d233bdcb8d0ea2972211a714f"
+    },
+    {
       "file": "integration/nvme/lifetime-host-harness.c",
       "sha256": "c44115f0bbe59ecae40ddc855530c67baba4d1609cbf6e120d1c9ceefae02270"
     },
@@ -1160,6 +1216,94 @@
       "sha256": "16c973a210ff6f1c2b070073e5a35682cc60c909b05f582d1b7b24534deb9e26"
     },
     {
+      "file": "omarchy-packages/nvim/0001-native-formatters.patch",
+      "sha256": "b3584564d9d7bc790851af26aa5b43fbb3059371fe9905cdbfa2c4dc00aa5d4d"
+    },
+    {
+      "file": "omarchy-packages/nvim/README.md",
+      "sha256": "de71c68209c593de300f4a4f3b77c30b57f78637c4f3def94b8e5c639540b09f"
+    },
+    {
+      "file": "omarchy-packages/nvim/SOURCE.json",
+      "sha256": "d41a4cdfedd6fea656bda7c6630d717e21b84686a5687efc53377d04c24a2a6b"
+    },
+    {
+      "file": "omarchy-packages/nvim/after.txt",
+      "sha256": "67020cd34ea5466ee739c858d2222fd14f78cb3a74b7e3eb2850af6793ab074e"
+    },
+    {
+      "file": "omarchy-packages/nvim/archive-inspection.json",
+      "sha256": "927592fe14af2853f31b72300375f31b89e28e2ac1a354aeb89d7f5678369c81"
+    },
+    {
+      "file": "omarchy-packages/nvim/before.txt",
+      "sha256": "332102c0507d0feaed8bd6c8cd9c85875d02f21a8f241b51b4836bad2074365e"
+    },
+    {
+      "file": "omarchy-packages/nvim/native-dependency-metadata.json",
+      "sha256": "5288a179cdcf41930bd4efec8fdbe6943e2eda93bcc6da0505b00deaaeb85b02"
+    },
+    {
+      "file": "omarchy-packages/nvim/source/LICENSE",
+      "sha256": "717ba1949502290f8e47688ae2e323acd06c8ca47aec9f7596b15f678c1af4a2"
+    },
+    {
+      "file": "omarchy-packages/nvim/source/pkgbuilds/omarchy-nvim/.omarchy/package.json",
+      "sha256": "5a1f7783227b40fc074b2be24c1e10c6182bbcfa95708b313c03c78ba87bb4d5"
+    },
+    {
+      "file": "omarchy-packages/nvim/source/pkgbuilds/omarchy-nvim/PKGBUILD",
+      "sha256": "4a03f84d600c70e5b74893ee5d2ec461701ae9e07d470f97daaa4e59b13cd4c8"
+    },
+    {
+      "file": "omarchy-packages/nvim/source/pkgbuilds/omarchy-nvim/lazyvim.json",
+      "sha256": "e11b5459b4ab8c5dfd9f5fab67a5242ec9c475838fe777a7a9a2199b4b9e56f2"
+    },
+    {
+      "file": "omarchy-packages/nvim/source/pkgbuilds/omarchy-nvim/lua/config/options.lua",
+      "sha256": "7c924d2eb9e707fba115ccc660082a8920901b25d28af338df0f9db14934dd25"
+    },
+    {
+      "file": "omarchy-packages/nvim/source/pkgbuilds/omarchy-nvim/lua/config/remote_clipboard.lua",
+      "sha256": "749a7106b5a8092e2a29724d8fc6c663ad3510447d0174a16330ac7a9a93c1e7"
+    },
+    {
+      "file": "omarchy-packages/nvim/source/pkgbuilds/omarchy-nvim/lua/plugins/all-themes.lua",
+      "sha256": "5747b94480c3688ac5bdde70b9aa3e3a04491acf1b1f38ea756ee64cb9995ad0"
+    },
+    {
+      "file": "omarchy-packages/nvim/source/pkgbuilds/omarchy-nvim/lua/plugins/disable-news-alert.lua",
+      "sha256": "5e27ebfe77359f9a42a478fb01671962801fbba6846cc72c19c7313ccd8333be"
+    },
+    {
+      "file": "omarchy-packages/nvim/source/pkgbuilds/omarchy-nvim/lua/plugins/lualine-transparent.lua",
+      "sha256": "d59f78b55f99ced1423db44b84b97f855daa49e7ba8b9ce9a432aab73075bcb7"
+    },
+    {
+      "file": "omarchy-packages/nvim/source/pkgbuilds/omarchy-nvim/lua/plugins/native-formatters.lua",
+      "sha256": "ee1c37fef7f501807d87b6700ffb6fc40da69982afd302f9b88333b78593feee"
+    },
+    {
+      "file": "omarchy-packages/nvim/source/pkgbuilds/omarchy-nvim/lua/plugins/omarchy-theme-hotreload.lua",
+      "sha256": "d4f74ba06eec038006daf7ac509ac4102270c634c6b5a80babce037503a8e2a1"
+    },
+    {
+      "file": "omarchy-packages/nvim/source/pkgbuilds/omarchy-nvim/lua/plugins/snacks-animated-scrolling-off.lua",
+      "sha256": "e3dc59bf119a30f3e4a712c048902350dad188e4ebfd9a718820d3145e43d57a"
+    },
+    {
+      "file": "omarchy-packages/nvim/source/pkgbuilds/omarchy-nvim/omarchy-nvim-setup",
+      "sha256": "5f9dd390dc0ad5d42d9f3c857064ffb74f5ef27304e15395d0db09684f24630f"
+    },
+    {
+      "file": "omarchy-packages/nvim/source/pkgbuilds/omarchy-nvim/plugin/after/transparency.lua",
+      "sha256": "2f4ab7aa4ddf3ee57a6ab9fdd4fd467659b0843703989a977f3735dc324418cc"
+    },
+    {
+      "file": "omarchy-packages/nvim/source/tests/test_omarchy_nvim_package.py",
+      "sha256": "faf72251f33f1d87f196a6ac435c144893e0eee40ced85a24978a2d0972dfdca"
+    },
+    {
       "file": "omarchy/.gitignore",
       "sha256": "f7404f45e5da08c01b46e24a6d5c2a234b716316b93efa3fd4861ceec82c81af"
     },
@@ -1297,11 +1441,11 @@
     },
     {
       "file": "packages/current-plan/abi/EVIDENCE.json",
-      "sha256": "6268bfda1cab76505e2e41d026aa34946ee447806adc132d5e211f7efcfa3812"
+      "sha256": "8087296acf667ce889e4879d2bc4b5f23bed1b9f9127d84242e1ab0612dbbe9a"
     },
     {
       "file": "packages/current-plan/abi/README.md",
-      "sha256": "72db710fe3645b7ed1827a64b5b3e66292314c24f7bded02a224b08ae1595775"
+      "sha256": "6bc64521caec2002e7b4afde19f6b49630a62a2ff29a75d9e015b635ffb684f4"
     },
     {
       "file": "packages/current-plan/abi/audit_elf.py",
@@ -1309,23 +1453,39 @@
     },
     {
       "file": "packages/current-plan/abi/audit_plan.py",
-      "sha256": "f0e0c0c68cf7cf5291a7973b4bd46bc05dc1b16c9fa88d34897a8f6cbd98af0c"
+      "sha256": "21be9986ede57f06818c8ab70ebddd1dc1e20650e989e871176c43c31c670060"
     },
     {
       "file": "packages/current-plan/abi/classify_findings.py",
-      "sha256": "799c247244a5ded4e9449ef71cb917bdbe30bf7deeca6f60713f0cdeeebe379e"
+      "sha256": "94de265ece376f8e4c87df67aa82e115908b998e13317c883f8b4136bfcba3d9"
     },
     {
       "file": "packages/current-plan/abi/crosscheck_readelf.py",
       "sha256": "b9594aaad35b653b3fc6b9f6e8aea8686e00f1f003793bd3f12ab3021e29c0a3"
     },
     {
+      "file": "packages/current-plan/abi/evidence/cache-before-fix.json",
+      "sha256": "884dac771844043d49dfd78709b0830933f3274a9cc798216329ad1ef8abe35f"
+    },
+    {
+      "file": "packages/current-plan/abi/evidence/cache-mutation-refusal.json",
+      "sha256": "7f6c503f0561e863b043c7ce1b06f0c40cbc6f4a7e181224be504ce6720f74e0"
+    },
+    {
+      "file": "packages/current-plan/abi/evidence/cache-replay.json",
+      "sha256": "d9c56a4928681d971705a89cbea9238ba7bc3172655b629eadac0632b5421276"
+    },
+    {
       "file": "packages/current-plan/abi/evidence/classification.json",
-      "sha256": "c9e2e766224dcaf43e404debdb866565bde9ca398a0d596c8dad7d21679af1a0"
+      "sha256": "2896d619d3ed077e256f2e8f6181141bfe35c946b5c37b182ac32c7b214766fe"
+    },
+    {
+      "file": "packages/current-plan/abi/evidence/provider-mutation-refusal.json",
+      "sha256": "433a785f3ddf5457624378a2d9378b0885eda3739e91a9eee24a44e48c5fba17"
     },
     {
       "file": "packages/current-plan/abi/evidence/qt-private-abi.json",
-      "sha256": "5ff0dc12c3f23a6ce9922fa3605a2d90cd36288041dab2889e5f8ac8a61d4afe"
+      "sha256": "43fbfa02b68ad1b47e59afdc815be0eaff5e0a9a9bea6c99e7e315e352378b87"
     },
     {
       "file": "packages/current-plan/abi/evidence/readelf-crosscheck.json",
@@ -1333,23 +1493,31 @@
     },
     {
       "file": "packages/current-plan/abi/evidence/static-abi.json",
-      "sha256": "dc46c76802ceec0f3f5ef13b72930fc3ff7075025f852891b5e5cc17beec7b2b"
+      "sha256": "197027bf6426aa90fe1d8836d039c9b2f0f169a7498597e146ed674bd1004dc9"
     },
     {
       "file": "packages/current-plan/abi/evidence/tests.log",
-      "sha256": "b292e9107c0f75acc2cecc6335283593c89860cb01b5924da53dff319e8636e4"
+      "sha256": "bfd5ce1ae4743981f1b6a703c5290cc4236270e6c0cf844859338fed5ce3281a"
+    },
+    {
+      "file": "packages/current-plan/abi/filesystem.py",
+      "sha256": "1b7f2b45764787feab935321e9310d08b280dd269c45752b24ebd338ca77fbba"
     },
     {
       "file": "packages/current-plan/abi/prove_qt_break.py",
-      "sha256": "6827f302b2fe42ae2e3b1ac0f15b5031de2cda91f34227df2b37f23dfc1a7efb"
+      "sha256": "ee8fa6ef38d778aca9e70bd4fb87f8d1c0d36beeeecf57c08795defd287dd39c"
     },
     {
       "file": "packages/current-plan/abi/restore_image.py",
-      "sha256": "77fbd06e4b9a25ce2c189c85d3865cd005b19dfa842dfcd42409733d2ae8dc41"
+      "sha256": "2c240f7cc41ea38a44502121b23f0da924ed398200ba5a024ae0167e77094bd0"
     },
     {
       "file": "packages/current-plan/abi/tests/test_elf.py",
       "sha256": "faa3f0dbbf30d85a7b64ead560d1460e62046c69aa165028ce30b4ee1709e948"
+    },
+    {
+      "file": "packages/current-plan/abi/tests/test_provenance.py",
+      "sha256": "82ab84c8388271c84259bf3936db7907cfdc14e50323c987e3eb1c4df0401d17"
     },
     {
       "file": "packages/current-plan/abi/tests/test_resolution.py",
@@ -1473,11 +1641,11 @@
     },
     {
       "file": "qualification/EVIDENCE.json",
-      "sha256": "a8f71abf0a6a3b82bad0ed1e7ca57374d6f877dffc42d59c3fe3beb42817502a"
+      "sha256": "76ab828b1f81aad56005e5e9b7545a46669468c13baf523e3eb376de8becc2ef"
     },
     {
       "file": "qualification/STATUS.md",
-      "sha256": "b738ab2a2a389acf2273838f114778e24cff0aa19ebb33dde778595ce9cad13d"
+      "sha256": "ab3f78db87bf02a2b59857668cb201fa1c5157857605fca0f2c622250bc269dd"
     },
     {
       "file": "qualification/adt-node-comparison.json",

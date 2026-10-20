@@ -35,6 +35,16 @@ account runs foreign code. It remains an ARM compatibility defect candidate.
 
 ## Method and boundaries
 
+The provenance repair re-extracted a fresh restore after review found the
+initial cache key omitted restore identities and auditor source. An actual
+archived-code replay reproduced a stale cached SHA after modifying a separate
+restore copy. The current CLI refuses a one-byte mutation in its own sealed
+QtCore file; restoring the exact original bytes and replaying gives a
+byte-identical static report. A changed reused Qt provider is also refused
+before generating proof. See `cache-before-fix.json`,
+`cache-mutation-refusal.json`, `cache-replay.json` and
+`provider-mutation-refusal.json` in evidence.
+
 The image SHA is
 `f6ceb11ef79914eaa10cc07637c929a99afe5982d216d8b89905c86e863b2491`,
 14344519680bytes, Btrfs root256. `btrfs restore` reads only `usr/bin`, `usr/lib`,
@@ -90,14 +100,19 @@ programs, ld.so, ldd or QEMU are used.
 Use the existing frozen current-plan qualification and payload cache. The paths
 below are relative to this lane worktree and name sibling read-only evidence.
 The restore destination must be new; do not overwrite a retained snapshot.
+An old unsealed restore is deliberately refused. The extractor seals every
+regular file byte identity, directory and link with its source/helper hashes.
+Each replay rehashes that actual tree and the original image. Parse caches
+are data-only gzip JSON with independent integrity checks; immutable keys
+bind parser, auditor, sealed manifest, tree and qualification identities.
 
 ```sh
 python3 packages/current-plan/abi/restore_image.py \
   --image ../omarchy-arm-payload/root.img \
-  --output packages/current-plan/abi/.private/image
+  --output packages/current-plan/abi/.private/image-verified-01
 python3 packages/current-plan/abi/audit_plan.py \
   --image ../omarchy-arm-payload/root.img \
-  --restore packages/current-plan/abi/.private/image \
+  --restore packages/current-plan/abi/.private/image-verified-01 \
   --qualification ../overnight-cpu/packages/current-plan/evidence/configured-current-payload-qualification.json \
   --payload-cache ../overnight-cpu/packages/current-plan/.private/payload-cache \
   --private packages/current-plan/abi/.private \
@@ -108,6 +123,11 @@ python3 -m unittest discover -s packages/current-plan/abi/tests -v
 The optional independent `crosscheck_readelf.py`, `prove_qt_break.py` and
 `classify_findings.py` CLIs accept the same private restore/cache and public
 evidence inputs (`--help` describes paths). They only run the trusted host's
-readelf against data files. No package code is executed. Cached parser objects
-are own locally generated ignored data, bound to parser/qualification hashes;
-the original image and payload bytes are still SHA-checked on replay.
+readelf against data files. No package code is executed. Cached parser data
+stays ignored and cannot be silently overwritten. Sidecar SHA checks run
+before JSON decoding. Baseline and incoming cache keys include auditor and
+parser hashes; the baseline also binds the validated sealed restore. The
+original image, actual restore contents and all payload bytes are checked on
+replay. This detects accidental changes while the recorded seal is retained;
+it is not an authenticated defense against someone replacing both data and
+all local provenance records.

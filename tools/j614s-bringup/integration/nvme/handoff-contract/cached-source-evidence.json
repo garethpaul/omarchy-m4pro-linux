@@ -1,0 +1,111 @@
+{
+  "status": "BLOCKED (borrowed-buffer cache/ownership handoff unqualified)",
+  "mode": "read-only cached source/artifacts",
+  "files": [
+    {
+      "path": "m1n1-native/src/j614s_native.c",
+      "sha256": "de791476e9a95fb6738218a77349022ca6e8c9f43dd2ca6926e56a665a36d34e"
+    },
+    {
+      "path": "m1n1-native/src/kboot.c",
+      "sha256": "3f2d21000ed5169fac6a307d3e07834a31c30055c984a0c6badd1b3529430c9b"
+    },
+    {
+      "path": "m1n1-native/src/memory.c",
+      "sha256": "afc4de6328eb894ab22357645e7dd4119c8d4b75b258cdbd367650ecc7e63f66"
+    },
+    {
+      "path": "m1n1-native/src/memory.h",
+      "sha256": "7436bfd6ecd0e01555e661804250426117304c4fbd6b627e74a70a369e7dff60"
+    },
+    {
+      "path": "m1n1-native/src/rtkit.c",
+      "sha256": "9653f482c9e914c732d8769564da457726e6e986d38745b97e135f391d2c47fe"
+    },
+    {
+      "path": "hardware-private/test56-archive-source-manifest.json",
+      "sha256": "1c3926695ab78649d1917e42060518fbe1a3f1f5dec087b35256c5e41fb4c58e"
+    },
+    {
+      "path": "overnight-test56-archive/drivers/nvme/host/apple.c",
+      "sha256": "32cfd7797be60250210f70783021eaf1a8fb9517c1c79fb3b4465ecb402f3dae"
+    }
+  ],
+  "firmware_or_runtime_addresses_exported": false,
+  "target_access": false,
+  "source_contract": {
+    "native_ram_size_bytes": 4294967296,
+    "native_replaces_memory_reg_with_only_owned_ram": true,
+    "native_reserved_node_allowlist": [
+      "ramoops",
+      "retention-control",
+      "mtp-firmware"
+    ],
+    "native_reserves_predecessor_prefix": false,
+    "generic_kboot_retained_heap_guard_t8140": true,
+    "generic_kboot_warns_whole_dram_linear_mapping_breaks_ioremap": true,
+    "source_maps_ram_normal_wb_then_unmaps_mcc_carveouts": true,
+    "source_contains_normal_nc_firmware_or_framebuffer_mappings": true,
+    "rtkit_owned_buffers_are_heap_allocations": true,
+    "per_actual_ans_buffer_cache_attributes_proven": false,
+    "loaded_binary_source_binding_proven_by_this_audit": false
+  },
+  "saved_boots": [
+    {
+      "test": 52,
+      "files": [
+        {
+          "path": "hardware-private/native-test-52/m1n1-native-test52-candidate.json",
+          "sha256": "d7d7526c2b509c38e4aee31ae28dfc2583b23630416c6ba10a0f0f32989b710b"
+        },
+        {
+          "path": "hardware-private/native-test-52/final-live-evidence.txt",
+          "sha256": "0eed22a48098226588db8d7390f583b29d884399dafb959660ccdcf16952eedb"
+        },
+        {
+          "path": "hardware-private/native-test-52/j614s-ramtest.dts",
+          "sha256": "4b5c9848874994ee9b49a615dc3744b5a5064144be087f7346f915322b7fa18f"
+        }
+      ],
+      "current_qualified_base_matches_manifest": true,
+      "linux_total_ram_kib": [
+        4194304
+      ],
+      "reserved_node_dmesg_count": 3,
+      "nvme_hello_initialization_log_count": 1,
+      "explicit_borrowed_buffer_mapping_success_log_count": 0,
+      "saved_dts_memory_node_count": 1,
+      "saved_dts_has_inherited_buffer_bank": false,
+      "interpretation": "old boot/storage evidence does not establish execution or cache safety of borrowed-buffer mapping path"
+    },
+    {
+      "test": 56,
+      "files": [
+        {
+          "path": "hardware-private/native-test-56/m1n1-native-test56-candidate.json",
+          "sha256": "9bd16699d33d4d24acfbaa520ae790f2770c635f8032ad39a3ece2eec235e3c0"
+        },
+        {
+          "path": "hardware-private/native-test-56/final-evidence.txt",
+          "sha256": "d442a6053b4f85849db6a353b19dad19d72fd42f298ec853d25d82a61e5dc592"
+        },
+        {
+          "path": "hardware-private/native-test-56/j614s-ramtest.dts",
+          "sha256": "9bd10558c58186cd883604d601abfb58359bf806d149260d48dba20bb2e6b0c5"
+        }
+      ],
+      "current_qualified_base_matches_manifest": true,
+      "linux_total_ram_kib": [
+        4194304
+      ],
+      "reserved_node_dmesg_count": 3,
+      "nvme_hello_initialization_log_count": 1,
+      "explicit_borrowed_buffer_mapping_success_log_count": 0,
+      "saved_dts_memory_node_count": 1,
+      "saved_dts_has_inherited_buffer_bank": false,
+      "interpretation": "old boot/storage evidence does not establish execution or cache safety of borrowed-buffer mapping path"
+    }
+  ],
+  "old_storage_source_matches_archival_manifest": true,
+  "claim_limit": "The native source excludes predecessor RAM; this is a conditional mapping gap, not evidence the new probe must fail. ACK-only inherited logging may require no borrowed mapping."
+}

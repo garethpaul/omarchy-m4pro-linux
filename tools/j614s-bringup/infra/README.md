@@ -315,6 +315,26 @@ new builds. This lane performed no physical target access or deployment.
 
 ## Combined storage, MMIO and PRIME qualification
 
+**PARTIAL (full host build/link PASS, hardware UNTESTED):** clean combined
+`8f2f3d13600aacadd93d577855b7e212b8ae57ff` adds the exact nine-line FUA core
+dependency correction to the reviewed storage source, then reapplies the exact
+MMIO and PRIME fixes. `gravity-combined-fua-source.json` records source/file/patch
+provenance. `gravity-combined-fua-build-01.json` records Image SHA-256
+`f9d7b637bc70fcab77b5806c43c39ae333e633fcc63fa6ccaa77cd22c91d4604` and
+all 18 modules passing full compile/link and artifact checks, with unchanged
+config `6c5aba7745d918c528300c5a395fcd7db0c2b718acda7d1467af2816a8d56516`.
+All 3,174 bindgen layout blocks and 16,413 field-offset checks remain enabled.
+`gravity-combined-fua-build-02.json` records the second independent full build.
+`gravity-combined-reproducibility.json` compares the actual two new artifact
+sets: **BYTE_IDENTICAL**, Image plus all 18 modules (19 artifacts), zero
+differences. Source checkouts and output directories are separate; every
+compared artifact has a distinct inode. Both source checkouts remain clean,
+contracts match, and config normalization changes zero bytes. This is same-host
+reproducibility; cross-machine toolchain hermeticity and hardware operation
+remain untested.
+
+The following is retained failure history, before that correction.
+
 `gravity-combined-source.json` freezes reviewed storage source `05af581d3`
 plus the checked G16 MMIO and owned-pool PRIME fixes at clean combined commit
 `a652cf765b6749b268af16ddbcf29ce314dfab85`. The three changed files exactly match
@@ -333,3 +353,37 @@ actual combined artifacts; the earlier Aurora reproduction does not do that.
 Hardware and storage concurrency remain **UNTESTED**. Module-owned-pool PRIME
 restriction also blocks foreign AGX-to-DCP zero-copy presentation. This source
 checkpoint has no deployment authority.
+
+Reproduce the combined build using the pinned tools and source branch
+`codex/j614s-gravity-combined-fua` at full commit
+`8f2f3d13600aacadd93d577855b7e212b8ae57ff`. From this tooling repository,
+with the workspace's `work/` layout and a **new output directory**:
+
+```sh
+python3 infra/qualify_gravity.py \
+  --source ../overnight-infra-gravity-combined-source-03 \
+  --commit 8f2f3d13600aacadd93d577855b7e212b8ae57ff \
+  --config ../overnight-integration/integration/configs/j614s-gravity-candidate.config \
+  --config-sha256 6c5aba7745d918c528300c5a395fcd7db0c2b718acda7d1467af2816a8d56516 \
+  --localversion=-j614s-gravity-candidate --full-kernel --display \
+  --object drivers/nvme/host/apple.o --object drivers/nvme/host/core.o \
+  --object drivers/soc/apple/rtkit.o --object drivers/soc/apple/sart.o \
+  --bindgen ../toolchains/aurora-bindgen-qualified/rust-bindgen-0.73.2/target/release/bindgen \
+  --tool-dir ../build-tools --tool-contract infra/baseline-contract.json \
+  --output ../gravity-combined-next-fresh-build --jobs 8
+```
+
+Then run the same command with a separate clean checkout at that exact commit
+and another new output directory. Compare the two actual bundles:
+
+```sh
+python3 infra/kernel_build.py compare \
+  --output ../gravity-combined-next-fresh-build \
+  --against ../gravity-combined-next-independent-build
+```
+
+The helper rejects wrong tools/config/source and existing output directories;
+comparison independently verifies artifact integrity and contract equality.
+The qualified builds in this workspace are `overnight-infra-gravity-combined-build-02`
+and `overnight-infra-gravity-combined-build-03`. Raw logs/build directories are
+private intermediates; public bundles contain only reviewed artifacts/metadata.

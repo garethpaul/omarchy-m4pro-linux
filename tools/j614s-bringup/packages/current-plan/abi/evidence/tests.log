@@ -6,6 +6,12 @@ test_section_out_of_bounds_rejected (test_elf.ActualElf.test_section_out_of_boun
 test_symbol_moved_to_loaded_dependency_scope (test_elf.ActualElf.test_symbol_moved_to_loaded_dependency_scope) ... ok
 test_truncated_rejected (test_elf.ActualElf.test_truncated_rejected) ... ok
 test_actual_aarch64_object_and_independent_readelf (test_elf.CrossReadOnly.test_actual_aarch64_object_and_independent_readelf) ... ok
+test_actual_cache_mutation_rejected_before_decode (test_provenance.Provenance.test_actual_cache_mutation_rejected_before_decode) ... ok
+test_actual_file_mutation_rejected (test_provenance.Provenance.test_actual_file_mutation_rejected) ... ok
+test_actual_link_mutation_rejected (test_provenance.Provenance.test_actual_link_mutation_rejected) ... ok
+test_immutable_cache_cannot_be_overwritten (test_provenance.Provenance.test_immutable_cache_cannot_be_overwritten) ... ok
+test_new_file_and_provenance_change_rejected (test_provenance.Provenance.test_new_file_and_provenance_change_rejected) ... ok
+test_provider_reuse_checks_exact_bytes (test_provenance.Provenance.test_provider_reuse_checks_exact_bytes) ... ok
 test_image_absolute_and_relative_links_stay_virtual (test_resolution.VirtualFilesystem.test_image_absolute_and_relative_links_stay_virtual) ... ok
 test_no_archive_traversal (test_resolution.VirtualFilesystem.test_no_archive_traversal) ... ok
 test_origin_runpath_precedes_default (test_resolution.VirtualFilesystem.test_origin_runpath_precedes_default) ... ok
@@ -14,6 +20,6 @@ test_symlink_loop_rejected (test_resolution.VirtualFilesystem.test_symlink_loop_
 test_unsupported_token_does_not_fall_through (test_resolution.VirtualFilesystem.test_unsupported_token_does_not_fall_through) ... ok
 
 ----------------------------------------------------------------------
-Ran 14 tests in 0.091s
+Ran 20 tests in 0.087s
 
 OK

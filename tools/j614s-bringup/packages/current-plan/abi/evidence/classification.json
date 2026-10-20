@@ -48,75 +48,7 @@
       "status": "UNTESTED removal/replacement transaction: retained name differs; signed conflicts do not by themselves prove an accepted removal"
     },
     {
-      "path": "usr/lib/libhostfxr.so",
-      "retained_owner": "dotnet-host",
-      "incoming_owner": "dotnet-host-bin",
-      "incoming_signed_conflicts": [
-        "dotnet-host"
-      ],
-      "incoming_signed_provides": [
-        "dotnet-host",
-        "dotnet-host=10.0.13"
-      ],
-      "incoming_signed_replaces": [],
-      "status": "UNTESTED removal/replacement transaction: retained name differs; signed conflicts do not by themselves prove an accepted removal"
-    },
-    {
-      "path": "usr/share/dotnet/dnx",
-      "retained_owner": "dotnet-host",
-      "incoming_owner": "dotnet-host-bin",
-      "incoming_signed_conflicts": [
-        "dotnet-host"
-      ],
-      "incoming_signed_provides": [
-        "dotnet-host",
-        "dotnet-host=10.0.13"
-      ],
-      "incoming_signed_replaces": [],
-      "status": "UNTESTED removal/replacement transaction: retained name differs; signed conflicts do not by themselves prove an accepted removal"
-    },
-    {
-      "path": "usr/share/dotnet/dotnet",
-      "retained_owner": "dotnet-host",
-      "incoming_owner": "dotnet-host-bin",
-      "incoming_signed_conflicts": [
-        "dotnet-host"
-      ],
-      "incoming_signed_provides": [
-        "dotnet-host",
-        "dotnet-host=10.0.13"
-      ],
-      "incoming_signed_replaces": [],
-      "status": "UNTESTED removal/replacement transaction: retained name differs; signed conflicts do not by themselves prove an accepted removal"
-    },
-    {
       "path": "usr/bin/mise",
-      "retained_owner": "mise",
-      "incoming_owner": "mise-bin",
-      "incoming_signed_conflicts": [
-        "mise"
-      ],
-      "incoming_signed_provides": [
-        "mise"
-      ],
-      "incoming_signed_replaces": [],
-      "status": "UNTESTED removal/replacement transaction: retained name differs; signed conflicts do not by themselves prove an accepted removal"
-    },
-    {
-      "path": "usr/share/fish/vendor_conf.d/mise-activate.fish",
-      "retained_owner": "mise",
-      "incoming_owner": "mise-bin",
-      "incoming_signed_conflicts": [
-        "mise"
-      ],
-      "incoming_signed_provides": [
-        "mise"
-      ],
-      "incoming_signed_replaces": [],
-      "status": "UNTESTED removal/replacement transaction: retained name differs; signed conflicts do not by themselves prove an accepted removal"
-    },
-    {
-      "path": "usr/share/man/man1/mise.1.gz",
       "retained_owner": "mise",
       "incoming_owner": "mise-bin",
       "incoming_signed_conflicts": [
@@ -150,6 +82,20 @@
       ],
       "incoming_signed_provides": [
         "quickshell"
+      ],
+      "incoming_signed_replaces": [],
+      "status": "UNTESTED removal/replacement transaction: retained name differs; signed conflicts do not by themselves prove an accepted removal"
+    },
+    {
+      "path": "usr/lib/libhostfxr.so",
+      "retained_owner": "dotnet-host",
+      "incoming_owner": "dotnet-host-bin",
+      "incoming_signed_conflicts": [
+        "dotnet-host"
+      ],
+      "incoming_signed_provides": [
+        "dotnet-host",
+        "dotnet-host=10.0.13"
       ],
       "incoming_signed_replaces": [],
       "status": "UNTESTED removal/replacement transaction: retained name differs; signed conflicts do not by themselves prove an accepted removal"
@@ -1104,6 +1050,47 @@
       "status": "UNTESTED removal/replacement transaction: retained name differs; signed conflicts do not by themselves prove an accepted removal"
     },
     {
+      "path": "usr/share/dotnet/dnx",
+      "retained_owner": "dotnet-host",
+      "incoming_owner": "dotnet-host-bin",
+      "incoming_signed_conflicts": [
+        "dotnet-host"
+      ],
+      "incoming_signed_provides": [
+        "dotnet-host",
+        "dotnet-host=10.0.13"
+      ],
+      "incoming_signed_replaces": [],
+      "status": "UNTESTED removal/replacement transaction: retained name differs; signed conflicts do not by themselves prove an accepted removal"
+    },
+    {
+      "path": "usr/share/dotnet/dotnet",
+      "retained_owner": "dotnet-host",
+      "incoming_owner": "dotnet-host-bin",
+      "incoming_signed_conflicts": [
+        "dotnet-host"
+      ],
+      "incoming_signed_provides": [
+        "dotnet-host",
+        "dotnet-host=10.0.13"
+      ],
+      "incoming_signed_replaces": [],
+      "status": "UNTESTED removal/replacement transaction: retained name differs; signed conflicts do not by themselves prove an accepted removal"
+    },
+    {
+      "path": "usr/share/fish/vendor_conf.d/mise-activate.fish",
+      "retained_owner": "mise",
+      "incoming_owner": "mise-bin",
+      "incoming_signed_conflicts": [
+        "mise"
+      ],
+      "incoming_signed_provides": [
+        "mise"
+      ],
+      "incoming_signed_replaces": [],
+      "status": "UNTESTED removal/replacement transaction: retained name differs; signed conflicts do not by themselves prove an accepted removal"
+    },
+    {
       "path": "usr/share/icons/hicolor/scalable/apps/org.quickshell.svg",
       "retained_owner": "quickshell-git",
       "incoming_owner": "quickshell",
@@ -1141,13 +1128,26 @@
       ],
       "incoming_signed_replaces": [],
       "status": "UNTESTED removal/replacement transaction: retained name differs; signed conflicts do not by themselves prove an accepted removal"
+    },
+    {
+      "path": "usr/share/man/man1/mise.1.gz",
+      "retained_owner": "mise",
+      "incoming_owner": "mise-bin",
+      "incoming_signed_conflicts": [
+        "mise"
+      ],
+      "incoming_signed_provides": [
+        "mise"
+      ],
+      "incoming_signed_replaces": [],
+      "status": "UNTESTED removal/replacement transaction: retained name differs; signed conflicts do not by themselves prove an accepted removal"
     }
   ],
   "own_parser_cache_sha256": {
-    "baseline": "df114e41bdf27e32b53ce4888cc5ca37ffc34c5370626e466c22c251be00882a",
-    "incoming": "4d83f5cadbf3ddc066f4959e44701c48f2f0cd38d3383d1ad73c91ea28d36f01"
+    "baseline": "b5a5ed4d50ae41a931544eae10cac12734f8b7e4b92c3beaa41fa6902f8639fe",
+    "incoming": "5dda7baa69bb0a66b0bc4bfbf95ef37cfcda628c8bc7b6ea593d1e3ace8103dc"
   },
-  "static_report_sha256": "dc46c76802ceec0f3f5ef13b72930fc3ff7075025f852891b5e5cc17beec7b2b",
+  "static_report_sha256": "197027bf6426aa90fe1d8836d039c9b2f0f169a7498597e146ed674bd1004dc9",
   "qualification_sha256": "468862b06d7f38c41c2c030e5f8fea796563b64ec3af0342c14925450093f1e0",
   "parse_gap_classification": {
     "count": 344,

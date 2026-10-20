@@ -1,0 +1,14 @@
+{
+  "status": "WORKS (comment-only source proof)",
+  "parent": "dd3f608d60ed503b87a9400255286d1c8fe5ac2d",
+  "source_commit": "de1231473a4682cd465397a6e9ed519560ce0893",
+  "file": "drivers/nvme/host/apple.c",
+  "before_sha256": "3837e270e802debf3364fb7b210df4ad058e8bbc429758950cd187d3ca5b9c13",
+  "after_sha256": "329d8b27f4024dbe66b58a5d0c027440cf5c93ddffbb3420e874f114b18f0780",
+  "noncomment_source_identical": true,
+  "line_count_identical": true,
+  "patch_sha256": "1b1ab65296d82e6b43a0fdeaa669d402d7afa025c7d7310ac9fda4d902ab351c",
+  "hardware_tests_rerun": false,
+  "reason": "No executable source, ownership predicate or cache logic changed",
+  "target_access": false
+}

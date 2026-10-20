@@ -4,11 +4,11 @@ import argparse
 from collections import Counter
 import hashlib
 import json
-import pickle
 from pathlib import Path
 import subprocess
 import tarfile
 from audit_plan import sha
+from filesystem import read_cache
 
 def main():
     p=argparse.ArgumentParser(description=__doc__);p.add_argument('--report',type=Path,required=True);p.add_argument('--qualification',type=Path,required=True);p.add_argument('--cache',type=Path,required=True);p.add_argument('--restore',type=Path,required=True);p.add_argument('--private',type=Path,required=True);p.add_argument('--output',type=Path,required=True);a=p.parse_args();a.private.mkdir(parents=True,exist_ok=True)
@@ -45,8 +45,12 @@ def main():
         direct.append({**row,'declared_dependencies':info.get('depend',[]),'declared_optional_dependencies':info.get('optdepend',[]),'qualification':'PARTIAL: required direct ELF lookup unresolved in modeled filesystem; plugin/optional feature use and runtime context are not inferred'})
     # Own parser caches contain no vendor code and stay ignored; input hashes are
     # recorded so this cross-owner check is reproducible after the static audit.
-    baseline_cache=a.private/'baseline.pickle';incoming_cache=a.private/'incoming.pickle'
-    baseline=pickle.loads(baseline_cache.read_bytes());incoming=pickle.loads(incoming_cache.read_bytes())['data'][0]
+    provenance=report['cache_provenance']
+    names=[provenance[key]['filename'] for key in ('baseline','incoming')]
+    if any(Path(name).name!=name for name in names):raise ValueError('unsafe cache name')
+    baseline_cache,incoming_cache=[a.private/name for name in names]
+    if sha(baseline_cache)!=provenance['baseline']['sha256'] or sha(incoming_cache)!=provenance['incoming']['sha256']:raise ValueError('report cache identity differs')
+    baseline=read_cache(baseline_cache);incoming=read_cache(incoming_cache)['data'][0]
     selected={r['name'] for r in q['packages']};owner_conflicts=[]
     for path,entry in incoming.items():
         owner=baseline['owners'].get(path)

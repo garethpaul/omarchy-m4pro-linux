@@ -8,6 +8,7 @@ import re
 import subprocess
 import tarfile
 from audit_plan import sha
+from filesystem import verify_or_write
 
 def symbols(path):
     run=subprocess.run(['readelf','--wide','--dyn-syms',str(path)],check=True,capture_output=True,text=True)
@@ -28,11 +29,11 @@ def main():
         package=packages[row['provider_owner']];payload=a.cache/'payloads'/package['sha256']/package['filename']
         if sha(payload)!=package['sha256']:raise ValueError('payload identity changed')
         target=a.private/(package['sha256']+'-'+Path(row['provider']).name)
-        if not target.exists():
-            with tarfile.open(payload) as archive:
-                member=archive.getmember(row['provider'])
-                if not member.isfile() or member.size>128*1024*1024:raise ValueError('provider is not bounded regular data')
-                target.write_bytes(archive.extractfile(member).read())
+        with tarfile.open(payload) as archive:
+            member=archive.getmember(row['provider'])
+            if not member.isfile() or member.size>128*1024*1024:raise ValueError('provider is not bounded regular data')
+            data=archive.extractfile(member).read()
+        verify_or_write(target,data)
         consumer=a.restore/row['consumer'];old=a.restore/old_provider
         if consumer.is_symlink() or old.is_symlink():raise ValueError('proof must name physical regular data')
         for path in (consumer,old,target):

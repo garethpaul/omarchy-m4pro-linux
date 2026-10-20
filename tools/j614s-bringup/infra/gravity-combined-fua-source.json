@@ -1,0 +1,49 @@
+{
+  "combined_commit": "8f2f3d13600aacadd93d577855b7e212b8ae57ff",
+  "config_sha256": "6c5aba7745d918c528300c5a395fcd7db0c2b718acda7d1467af2816a8d56516",
+  "deployment_authorized": false,
+  "file_provenance": [
+    {
+      "applied_commit": "0c986a7dd642422754281c23238bccfecc67e121",
+      "byte_identical_to_reviewed_source": true,
+      "origin_commit": "6340620747e221ea415ddee944afccacff3953ee",
+      "path": "drivers/gpu/drm/asahi/g16.rs",
+      "sha256": "48e6723ef0a7d656e59b806871e03cf6e3612e773b1ea0d44938f17a7476c39f",
+      "stable_patch_id": "0e8bba278e3253e75aec676a7465999d039d23cc"
+    },
+    {
+      "applied_commit": "8f2f3d13600aacadd93d577855b7e212b8ae57ff",
+      "byte_identical_to_reviewed_source": true,
+      "origin_commit": "cf9836359cb60e7e53324b922fb44bd6c5c6ec21",
+      "path": "drivers/gpu/drm/apple/apple_drv.c",
+      "sha256": "9bf9aa87727ce90d8734743ceae533b571ed146dcc37da92ed0a22da32a16b74",
+      "stable_patch_id": "2262fed4f5bf58e342c6ff9718dea709e8474eee"
+    },
+    {
+      "applied_commit": "8f2f3d13600aacadd93d577855b7e212b8ae57ff",
+      "byte_identical_to_reviewed_source": true,
+      "origin_commit": "cf9836359cb60e7e53324b922fb44bd6c5c6ec21",
+      "path": "drivers/gpu/drm/apple/Kconfig",
+      "sha256": "9e88b78ada76aabaf2213f0af7a41a9124fdc5eed2876b3203cc946b4eb35ed7",
+      "stable_patch_id": "2262fed4f5bf58e342c6ff9718dea709e8474eee"
+    }
+  ],
+  "hardware": "UNTESTED",
+  "localversion": "-j614s-gravity-candidate",
+  "only_changed_files_vs_failed_combined": [
+    "drivers/nvme/host/core.c",
+    "drivers/nvme/host/nvme.h"
+  ],
+  "only_changed_files_vs_storage_base": [
+    "drivers/gpu/drm/apple/Kconfig",
+    "drivers/gpu/drm/apple/apple_drv.c",
+    "drivers/gpu/drm/asahi/g16.rs"
+  ],
+  "prior_failed_combined_commit": "a652cf765b6749b268af16ddbcf29ce314dfab85",
+  "repair": "NVME broken-FUA dependency matches existing f93 semantics; actual block-layer proof recorded by storage lane",
+  "scope": "Build-only source checkpoint; storage concurrency and hardware behavior untested; foreign AGX-to-DCP PRIME imports rejected in module profile",
+  "source_clean": true,
+  "status": "SOURCE_COMBINED",
+  "storage_base": "dd3f608d60ed503b87a9400255286d1c8fe5ac2d",
+  "storage_evidence_commit": "841d2ff"
+}

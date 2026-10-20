@@ -1,0 +1,103 @@
+{
+  "file": "omarchy-nvim-2026.9.21-5-any.pkg.tar.zst",
+  "sha256": "b46d41973cacfcf2d8be371351336a3f689e2eb7b9bacdb7ca81939354cbcbc9",
+  "objects": [
+    {
+      "path": "etc/skel/.local/share/nvim/lazy/LazyVim/lua/lazyvim/plugins/formatting.lua",
+      "sha256": "14408afcb86140292dd26fde5dcae45c8d5264965f9148c9fd664cb9cbd0ecda",
+      "observed_default_tools": [
+        "stylua",
+        "shfmt"
+      ]
+    },
+    {
+      "path": "etc/skel/.local/share/nvim/lazy/LazyVim/lua/lazyvim/plugins/lsp/init.lua",
+      "sha256": "dc8cf6425f41c10994ef66ec5d7284beba4debafada07118ccfd7178fe62f47b",
+      "observed_default_tools": [
+        "stylua",
+        "shfmt"
+      ]
+    },
+    {
+      "path": "etc/skel/.local/share/nvim/mason/bin/shfmt",
+      "symlink": "../packages/shfmt/shfmt_v3.14.1_linux_amd64"
+    },
+    {
+      "path": "etc/skel/.local/share/nvim/mason/packages/shfmt/mason-receipt.json",
+      "sha256": "4a822ddb547e87830ae13f09b0cfe4df66df54a008883bb6172efda339805285",
+      "mode": "0o644",
+      "content": {
+        "links": {
+          "opt": {},
+          "share": {},
+          "bin": {
+            "shfmt": "shfmt_v3.14.1_linux_amd64"
+          }
+        },
+        "registry": {
+          "proto": "github",
+          "name": "mason-registry",
+          "version": "2026-10-11-imaginary-lark",
+          "checksums": {
+            "registry.json": "5f236afbd30f569715fbe73a974d70921c02eea7c7e50bb4a3f1c594b14290b6",
+            "registry.json.zip": "64b36bfff9ea763bcef273a35e72d3ca846dbfe501ee2651bfcda71d161fabaf"
+          },
+          "namespace": "mason-org"
+        },
+        "metrics": {
+          "start_time": 1791725008672,
+          "completion_time": 1791725008949
+        },
+        "install_options": {
+          "force": false,
+          "strict": false,
+          "debug": false
+        },
+        "schema_version": "2.0",
+        "source": {
+          "id": "pkg:github/mvdan/sh@v3.14.1",
+          "raw": {
+            "id": "pkg:github/mvdan/sh@v3.14.1",
+            "asset": [
+              {
+                "file": "shfmt_{{version}}_darwin_arm64",
+                "target": "darwin_arm64"
+              },
+              {
+                "file": "shfmt_{{version}}_darwin_amd64",
+                "target": "darwin_x64"
+              },
+              {
+                "file": "shfmt_{{version}}_linux_arm64",
+                "target": "linux_arm64"
+              },
+              {
+                "file": "shfmt_{{version}}_linux_amd64",
+                "target": "linux_x64"
+              },
+              {
+                "file": "shfmt_{{version}}_windows_386.exe",
+                "target": "win_x86"
+              },
+              {
+                "file": "shfmt_{{version}}_windows_amd64.exe",
+                "target": "win_x64"
+              }
+            ]
+          },
+          "type": "registry+v1"
+        },
+        "name": "shfmt"
+      }
+    }
+  ],
+  "elf_objects": [
+    {
+      "path": "etc/skel/.local/share/nvim/mason/packages/shfmt/shfmt_v3.14.1_linux_amd64",
+      "sha256": "0822976586a20db68cade654fb68a03ef0816959c5a776f1744aad0aa97606c6",
+      "elf_machine": 62,
+      "mode": "0o644",
+      "size": 3570072
+    }
+  ]
+}

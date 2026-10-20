@@ -1,0 +1,147 @@
+{
+  "status": "PARTIAL (offline property provenance only)",
+  "artifact": "hardware-private/j614s-live-graphics-adt.bin",
+  "artifact_sha256": "6062d596dcc71879b8e1917885700a3ef45eafe2bca6cf7281281b55e5a9d172",
+  "values_or_addresses_exported": false,
+  "target_access": false,
+  "nodes": [
+    {
+      "node": "/arm-io/ans",
+      "properties": [
+        {
+          "name": "nvme-queue-entries",
+          "encoded_bytes": 4
+        },
+        {
+          "name": "AAPL,phandle",
+          "encoded_bytes": 4
+        },
+        {
+          "name": "nvme-linear-sq",
+          "encoded_bytes": 0
+        },
+        {
+          "name": "iommu-parent",
+          "encoded_bytes": 4
+        },
+        {
+          "name": "interrupts",
+          "encoded_bytes": 20
+        },
+        {
+          "name": "nvme-secure-bar",
+          "encoded_bytes": 0
+        },
+        {
+          "name": "reg",
+          "encoded_bytes": 160
+        }
+      ]
+    },
+    {
+      "node": "/arm-io/ans/iop-ans-nub",
+      "properties": [
+        {
+          "name": "shutdown-sleep",
+          "encoded_bytes": 0
+        },
+        {
+          "name": "quiesced",
+          "encoded_bytes": 0
+        },
+        {
+          "name": "AAPL,phandle",
+          "encoded_bytes": 4
+        },
+        {
+          "name": "region-base",
+          "encoded_bytes": 8
+        },
+        {
+          "name": "power-managed",
+          "encoded_bytes": 4
+        },
+        {
+          "name": "region-size",
+          "encoded_bytes": 8
+        },
+        {
+          "name": "segment-names",
+          "encoded_bytes": 14
+        },
+        {
+          "name": "segment-ranges",
+          "encoded_bytes": 64
+        },
+        {
+          "name": "pre-loaded",
+          "encoded_bytes": 4
+        },
+        {
+          "name": "running",
+          "encoded_bytes": 4
+        }
+      ]
+    },
+    {
+      "node": "/arm-io/sart-ans",
+      "properties": [
+        {
+          "name": "compatible",
+          "encoded_bytes": 16
+        },
+        {
+          "name": "AAPL,phandle",
+          "encoded_bytes": 4
+        },
+        {
+          "name": "reg",
+          "encoded_bytes": 48
+        }
+      ]
+    },
+    {
+      "node": "/chosen/memory-map",
+      "properties": [
+        {
+          "name": "RTBuddySeg",
+          "encoded_bytes": 16
+        }
+      ]
+    },
+    {
+      "node": "/defaults",
+      "properties": [
+        {
+          "name": "pmap-io-ranges",
+          "encoded_bytes": 4752
+        }
+      ]
+    }
+  ],
+  "ans_iommu_parent_resolves_to_sart_ans": true,
+  "nub_segment_record_bytes": 32,
+  "nub_segment_count": 2,
+  "segment_attribute_inferences": [
+    {
+      "ordinal": 0,
+      "source_intended_identity_override_classes": [
+        "not classified by current pmap mapper"
+      ],
+      "inside_rtbuddy_envelope": false,
+      "actual_shared_buffer_or_cache_ownership_proven": false
+    },
+    {
+      "ordinal": 1,
+      "source_intended_identity_override_classes": [],
+      "inside_rtbuddy_envelope": false,
+      "actual_shared_buffer_or_cache_ownership_proven": false
+    }
+  ],
+  "limits": [
+    "nub region/segments identify firmware allocations, not per-endpoint RTKit host buffers",
+    "RTBuddySeg is an allocation envelope, not a cache or ownership certificate",
+    "pmap overlap classes describe this captured input under current source, not active page-table or EL2 proof",
+    "properties running/pre-loaded/quiesced are cached descriptors, not a current live state check"
+  ]
+}

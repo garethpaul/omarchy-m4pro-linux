@@ -6,11 +6,11 @@ import hashlib
 import json
 import os
 from pathlib import Path, PurePosixPath
-import pickle
 import posixpath
 import re
 import tarfile
 from audit_elf import parse_elf,check_edge,check_scope
+from filesystem import validate_tree,read_cache,write_cache,cache_path
 
 IMAGE_SHA='f6ceb11ef79914eaa10cc07637c929a99afe5982d216d8b89905c86e863b2491'
 IMAGE_SIZE=14344519680
@@ -57,14 +57,22 @@ def resolve(entries,path):
         if not changed:return (path,entries.get(path))
     raise ValueError('virtual symlink loop')
 
-def snapshot(image,root,cache):
-    # Cache is ignored private parser output, always bound to image and parser bytes.
-    parser_sha=sha(Path(__file__).with_name('audit_elf.py'))
-    key={'image_sha256':IMAGE_SHA,'parser_sha256':parser_sha}
+def restore_metadata():
+    return {'image_sha256':IMAGE_SHA,'image_bytes':IMAGE_SIZE,'root':256,
+            'extractor_sha256':sha(Path(__file__).with_name('restore_image.py')),
+            'identity_helper_sha256':sha(Path(__file__).with_name('filesystem.py'))}
+
+def snapshot(image,root,private):
     if image.stat().st_size!=IMAGE_SIZE or sha(image)!=IMAGE_SHA:raise ValueError('immutable image identity differs')
+    seal,manifest_sha=validate_tree(root,restore_metadata())
+    key={'image_sha256':IMAGE_SHA,'parser_sha256':sha(Path(__file__).with_name('audit_elf.py')),
+         'auditor_sha256':sha(Path(__file__)),'restore_manifest_sha256':manifest_sha,
+         'tree_entries_sha256':seal['tree']['entries_sha256']}
+    cache=cache_path(private,'baseline',key)
     if cache.exists():
-        result=pickle.loads(cache.read_bytes())
-        if result['key']==key:return result
+        result=read_cache(cache)
+        if result['key']!=key:raise ValueError('baseline cache key changed')
+        return result,cache,seal
     owners={};installed={}
     for folder in sorted((root/'var/lib/pacman/local').iterdir()):
         if not folder.is_dir():continue
@@ -87,7 +95,8 @@ def snapshot(image,root,cache):
                         errors.append({'path':relative,'reason':type(error).__name__+': '+str(error)});continue
                     entries[relative]=entry
     result={'key':key,'entries':entries,'owners':owners,'installed':installed,'errors':errors}
-    cache.write_bytes(pickle.dumps(result));return result
+    validate_tree(root,restore_metadata())
+    write_cache(cache,result);return result,cache,seal
 
 def incoming(qualification,cache):
     entries={};package_files={};errors=[];architectures=Counter();collisions=[]
@@ -180,17 +189,20 @@ def main():
     a=p.parse_args();a.private.mkdir(parents=True,exist_ok=True);a.output.mkdir(parents=True,exist_ok=True)
     q=json.loads(a.qualification.read_text())
     if q['counts']!={'selected':117,'payloads_qualified':117,'failed':0} or q['deployable'] is not False or q['execution_ready'] is not False or q['actions']!=[]:raise ValueError('not exact blocked117 proposal')
-    baseline=snapshot(a.image,a.restore,a.private/'baseline.pickle');old=baseline['entries']
-    cache=a.private/'incoming.pickle';cachekey={'qualification':sha(a.qualification),'parser':sha(Path(__file__).with_name('audit_elf.py'))}
-    if cache.exists() and pickle.loads(cache.read_bytes())['key']==cachekey:
-        new,files,errors,architectures,collisions=pickle.loads(cache.read_bytes())['data']
-        # Even cached parsing must not waive exact signed source-byte checks.
+    baseline,baseline_cache,seal=snapshot(a.image,a.restore,a.private);old=baseline['entries']
+    cachekey={'qualification':sha(a.qualification),'parser':sha(Path(__file__).with_name('audit_elf.py')),
+              'auditor':sha(Path(__file__)),'identity_helper':sha(Path(__file__).with_name('filesystem.py'))}
+    cache=cache_path(a.private,'incoming',cachekey)
+    if cache.exists():
+        cached=read_cache(cache)
+        if cached['key']!=cachekey:raise ValueError('incoming cache key changed')
+        new,files,errors,architectures,collisions=cached['data']
         for row in q['packages']:
             payload=a.payload_cache/'payloads'/row['sha256']/row['filename']
             if payload.stat().st_size!=row['expected_bytes'] or sha(payload)!=row['sha256']:raise ValueError('qualified payload changed')
     else:
         new,files,errors,architectures,collisions=incoming(q,a.payload_cache)
-        cache.write_bytes(pickle.dumps({'key':cachekey,'data':(new,files,errors,architectures,collisions)}))
+        write_cache(cache,{'key':cachekey,'data':[new,files,errors,architectures,collisions]})
     selected=set(files)
     resulting={path:entry for path,entry in old.items() if entry.get('owner') not in selected};resulting.update(new)
     changed_sonames={e['elf']['soname'] for e in old.values() if e.get('owner') in selected and 'elf' in e and e['elf']['soname']}
@@ -224,6 +236,8 @@ def main():
                     if child.is_file() and not child.is_symlink():configs[child.relative_to(a.restore).as_posix()]=child.read_text()
     report={'schema':1,'status':'PARTIAL','deployable':False,'execution_ready':False,'actions':[],
         'scope':'static versioned contracts for all incoming ELFs and bounded retained usr/bin, usr/lib, usr/libexec and opt reverse consumers; direct version nodes plus recursive dependency symbol scope; no code execution',
+        'cache_provenance':{'baseline':{'filename':baseline_cache.name,'sha256':sha(baseline_cache)},'incoming':{'filename':cache.name,'sha256':sha(cache)}},
+        'sealed_restore':{'manifest_sha256':baseline['key']['restore_manifest_sha256'],'tree_entries_sha256':seal['tree']['entries_sha256'],'entry_count':seal['tree']['entry_count'],'extractor_sha256':seal['extractor_sha256'],'identity_helper_sha256':seal['identity_helper_sha256']},
         'image':{'sha256':IMAGE_SHA,'bytes':IMAGE_SIZE,'root':256,'extraction':'read-only btrfs restore -S -r256; no mount'},
         'qualification_sha256':sha(a.qualification),'proposal_sha256':q['proposal_sha256'],'parser_sha256':sha(Path(__file__).with_name('audit_elf.py')),'auditor_sha256':sha(Path(__file__)),
         'counts':{'installed_packages':len(baseline['installed']),'selected_packages':len(selected),'replaced_installed_packages':len(selected & set(baseline['installed'])),'incoming_ELFs':len(incoming_paths),'incoming_ELF_machines':dict(architectures),'baseline_ELFs':sum('elf' in e for e in old.values()),'resulting_ELFs':sum('elf' in e for e in resulting.values()),'untouched_reverse_consumers':len(reverse),'changed_SONAMEs':len(changed_sonames),'direct_edges_checked':len(after),'new_or_incoming_issues':len(newly),'preserved_issue_edges':len(preserved),'parse_gaps':len(errors)+len(baseline['errors']),'resolution_gaps':len(gaps),'removed_export_name_candidates':len(removed),'file_collisions':len(collisions)},

@@ -1,0 +1,55 @@
+{
+  "database": "extra.db",
+  "sha256": "433ab786421ab07d6dca3f8f4e2279bb32cde7d4497171df6ae94c3287e9416e",
+  "status": "METADATA ONLY: payload signatures and runtime not tested in this lane",
+  "packages": [
+    {
+      "entry": "shfmt-3.14.1-1/desc",
+      "desc_sha256": "4e65b309d1295db897ca11a53d10b0777a9c6d97debbd5b4d3b9ee5b35c5ac41",
+      "NAME": [
+        "shfmt"
+      ],
+      "VERSION": [
+        "3.14.1-1"
+      ],
+      "ARCH": [
+        "aarch64"
+      ],
+      "FILENAME": [
+        "shfmt-3.14.1-1-aarch64.pkg.tar.xz"
+      ],
+      "CSIZE": [
+        "1097196"
+      ],
+      "SHA256SUM": [
+        "7e5ca0a69c2cbeda1e654c389aa8c987e89951d366272b0621a39693b6f08225"
+      ],
+      "DEPENDS": [],
+      "OPTDEPENDS": []
+    },
+    {
+      "entry": "stylua-2.6.0-1/desc",
+      "desc_sha256": "ceb18e849904a40daaaeafb32d42535fe675714ae16faf7cf13bc8d8541e18d1",
+      "NAME": [
+        "stylua"
+      ],
+      "VERSION": [
+        "2.6.0-1"
+      ],
+      "ARCH": [
+        "aarch64"
+      ],
+      "FILENAME": [
+        "stylua-2.6.0-1-aarch64.pkg.tar.xz"
+      ],
+      "CSIZE": [
+        "1781884"
+      ],
+      "SHA256SUM": [
+        "9c1c747699782a05f89556d43c68211e5c58beac8d1cbca513350b490af52174"
+      ],
+      "DEPENDS": [],
+      "OPTDEPENDS": []
+    }
+  ]
+}

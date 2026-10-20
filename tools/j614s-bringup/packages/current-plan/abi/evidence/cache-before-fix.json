@@ -1,0 +1,10 @@
+{
+  "status": "REPRODUCED",
+  "archived_source_commit": "3c094e4",
+  "method": "Actual archived snapshot() over real immutable image and original private parsed cache, with a separate private copy of one actual image ELF whose last byte was flipped; no payload execution",
+  "image_sha256": "f6ceb11ef79914eaa10cc07637c929a99afe5982d216d8b89905c86e863b2491",
+  "path": "usr/lib/libQt6Core.so.6.11.2",
+  "returned_stale_cached_sha256": "ecf92f8b40cf7bcb601785314ff0fced520a14a42e0edcf059f72f18661db68e",
+  "actual_mutated_restore_file_sha256": "ae8059be082c46e898ea3d29b2febbee2815471ec791b70b95938e2ef36f92a0",
+  "failure": "Old function accepted cached metadata despite changed restore bytes; current sealed tree validation must refuse this mutation."
+}

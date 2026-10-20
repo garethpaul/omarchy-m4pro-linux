@@ -1,0 +1,13 @@
+{
+  "status": "WORKS (actual CLI negative control)",
+  "method": "Flip final byte of actual QtCore ELF in own newly sealed read-only restore, rerun unchanged audit_plan.py with existing data-only caches, restore exact original bytes in finally block",
+  "path": "usr/lib/libQt6Core.so.6.11.2",
+  "original_sha256": "ecf92f8b40cf7bcb601785314ff0fced520a14a42e0edcf059f72f18661db68e",
+  "mutated_sha256": "ae8059be082c46e898ea3d29b2febbee2815471ec791b70b95938e2ef36f92a0",
+  "observed": "ValueError: restore file/link identities changed after extraction",
+  "exit_code": 1,
+  "new_static_report_created": false,
+  "original_bytes_restored": true,
+  "image_unchanged": true,
+  "payload_executed": false
+}

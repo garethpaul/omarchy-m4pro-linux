@@ -1,0 +1,52 @@
+test_lua_keeps_custom_mason_tools_without_redownloading_native_defaults (__main__.PackageTests.test_lua_keeps_custom_mason_tools_without_redownloading_native_defaults) ... ERROR
+test_native_formatters_are_dependencies (__main__.PackageTests.test_native_formatters_are_dependencies) ... FAIL
+test_seed_drops_machine_specific_mason_on_both_build_architectures (__main__.PackageTests.test_seed_drops_machine_specific_mason_on_both_build_architectures) ...
+  test_seed_drops_machine_specific_mason_on_both_build_architectures (__main__.PackageTests.test_seed_drops_machine_specific_mason_on_both_build_architectures) (target='x86_64-linux-gnu') ... FAIL
+  test_seed_drops_machine_specific_mason_on_both_build_architectures (__main__.PackageTests.test_seed_drops_machine_specific_mason_on_both_build_architectures) (target='aarch64-linux-gnu') ... FAIL
+
+======================================================================
+ERROR: test_lua_keeps_custom_mason_tools_without_redownloading_native_defaults (__main__.PackageTests.test_lua_keeps_custom_mason_tools_without_redownloading_native_defaults)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<checkout>/tests/test_omarchy_nvim_package.py", line 106, in test_lua_keeps_custom_mason_tools_without_redownloading_native_defaults
+    run('lua', str(path), str(PACKAGE / 'lua/plugins/native-formatters.lua'))
+    ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<checkout>/tests/test_omarchy_nvim_package.py", line 18, in run
+    return subprocess.run(args, check=True, capture_output=True, text=True, **kwargs)
+           ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.14/subprocess.py", line 578, in run
+    raise CalledProcessError(retcode, process.args,
+                             output=stdout, stderr=stderr)
+subprocess.CalledProcessError: Command '('lua', '<fixture>/test.lua', '<checkout>/pkgbuilds/omarchy-nvim/lua/plugins/native-formatters.lua')' returned non-zero exit status 1.
+
+======================================================================
+FAIL: test_native_formatters_are_dependencies (__main__.PackageTests.test_native_formatters_are_dependencies)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<checkout>/tests/test_omarchy_nvim_package.py", line 81, in test_native_formatters_are_dependencies
+    self.assertIn('shfmt', result.stdout.splitlines())
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'shfmt' not found in ['neovim>=0.9.0', 'git']
+
+======================================================================
+FAIL: test_seed_drops_machine_specific_mason_on_both_build_architectures (__main__.PackageTests.test_seed_drops_machine_specific_mason_on_both_build_architectures) (target='x86_64-linux-gnu')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<checkout>/tests/test_omarchy_nvim_package.py", line 62, in test_seed_drops_machine_specific_mason_on_both_build_architectures
+    self.assertFalse((seed / 'mason').exists(), 'arch=any seed retains builder Mason binary/receipt/symlink')
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: True is not false : arch=any seed retains builder Mason binary/receipt/symlink
+
+======================================================================
+FAIL: test_seed_drops_machine_specific_mason_on_both_build_architectures (__main__.PackageTests.test_seed_drops_machine_specific_mason_on_both_build_architectures) (target='aarch64-linux-gnu')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<checkout>/tests/test_omarchy_nvim_package.py", line 62, in test_seed_drops_machine_specific_mason_on_both_build_architectures
+    self.assertFalse((seed / 'mason').exists(), 'arch=any seed retains builder Mason binary/receipt/symlink')
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: True is not false : arch=any seed retains builder Mason binary/receipt/symlink
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.113s
+
+FAILED (failures=3, errors=1)

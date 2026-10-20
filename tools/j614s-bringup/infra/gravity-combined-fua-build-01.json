@@ -1,0 +1,387 @@
+{
+  "binding_layouts": {
+    "compiled_bindings_object_bytes": 249528,
+    "compiled_bindings_object_sha256": "fdc39ec6456600f02dbb4b99f531a752a9b3f388c8eef8787c7849fcde17bc69",
+    "const_layout_blocks": 3174,
+    "field_offset_checks": 16413,
+    "generated_bindings_sha256": "5d1e225739b16aa27415cf1be1c090fd73261dc49e53855ef59d85da6a9956e9",
+    "hardware_executed": false,
+    "layout_checks_disabled": false,
+    "status": "PASS",
+    "target": "aarch64-linux-gnu"
+  },
+  "config_mode": "exact reviewed input",
+  "config_sha256": "6c5aba7745d918c528300c5a395fcd7db0c2b718acda7d1467af2816a8d56516",
+  "display_objects": [
+    {
+      "bytes": 10744,
+      "path": "build/drivers/gpu/drm/apple/iomfb.o",
+      "sha256": "4642a81d654544833a49858909a1782cc3ed3186a15b67d2ce00855080f79789"
+    },
+    {
+      "bytes": 249952,
+      "path": "build/drivers/gpu/drm/apple/appledrm.o",
+      "sha256": "805518c6309ed1a39f6a4a97fb369eee3f7e2eea5da92da68056b40369e97f79"
+    }
+  ],
+  "hardware": "UNTESTED",
+  "image": {
+    "bytes": 14772232,
+    "path": "Image",
+    "sha256": "f9d7b637bc70fcab77b5806c43c39ae333e633fcc63fa6ccaa77cd22c91d4604"
+  },
+  "independent_reproduction": "PENDING: fresh source04/build03 underway",
+  "layout_overlay_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "layout_policy": "enabled in committed source",
+  "module_link": "PASS",
+  "modules": [
+    {
+      "bytes": 12528,
+      "path": "modules/drivers/gpio/gpio-macsmc.ko",
+      "sha256": "8f0f127fda8d4583915f820fa69a7b0a5c0c5dbe693545b6a16357b826f26d65"
+    },
+    {
+      "bytes": 9864,
+      "path": "modules/drivers/gpio/gpio-shared-proxy.ko",
+      "sha256": "fdf135041a409a3595ca5f5ac6617e3dd31c880035553727217236787be8562b"
+    },
+    {
+      "bytes": 252376,
+      "path": "modules/drivers/gpu/drm/apple/appledrm.ko",
+      "sha256": "351764054badf7873a5a868056efb2c2522f4b50b054f17edd61faa4512cb51c"
+    },
+    {
+      "bytes": 3697184,
+      "path": "modules/drivers/gpu/drm/asahi/asahi.ko",
+      "sha256": "8e0d6530552c312d71d4c4b5412087294f1349511ac1114fae6c0394bdaad061"
+    },
+    {
+      "bytes": 683952,
+      "path": "modules/drivers/gpu/drm/asahi/asahi_m4.ko",
+      "sha256": "6039b5499888a8ce4d32385136316c63db7ab42818898c60fe2a82f1e319b957"
+    },
+    {
+      "bytes": 13136,
+      "path": "modules/drivers/gpu/drm/asahi/g16-bootstrap.ko",
+      "sha256": "b2491be9cc0c6b20a93c420d6c0dfeabf77505414528d1b1a740f34c468586af"
+    },
+    {
+      "bytes": 26976,
+      "path": "modules/drivers/gpu/drm/drm_dma_helper.ko",
+      "sha256": "d72b1a78f242dac9d796e8f2ec7709d9476bcb76e28287da79caaf69b5ebe241"
+    },
+    {
+      "bytes": 30264,
+      "path": "modules/drivers/hid/dockchannel-hid/dockchannel-hid.ko",
+      "sha256": "42646788b8254ba7dfd4188631e85c4962c018221cfa6e322bdcd6d0b5cc93d6"
+    },
+    {
+      "bytes": 37312,
+      "path": "modules/drivers/hid/hid-apple.ko",
+      "sha256": "2e7b040da97df0c44de59638628f664d39217385cef0836fb062c6dbf3c9ce5e"
+    },
+    {
+      "bytes": 26536,
+      "path": "modules/drivers/hid/hid-magicmouse.ko",
+      "sha256": "70f01b7c375cae65acbd32c24c99b9db76852b66eee71151e38124fa495af297"
+    },
+    {
+      "bytes": 20344,
+      "path": "modules/drivers/mfd/macsmc.ko",
+      "sha256": "6ae7b902b581f4fba86785a0b8a9a49d81a3f32c6c4ac718b35c8acca7679ad8"
+    },
+    {
+      "bytes": 11688,
+      "path": "modules/drivers/mfd/mfd-core.ko",
+      "sha256": "c8d1b8f942bf52d069cab51b0d94d8f6e16f99da8c081654973fe5ed4478642f"
+    },
+    {
+      "bytes": 55928,
+      "path": "modules/drivers/nvme/host/nvme-apple.ko",
+      "sha256": "8bf6fc6b1369bcbeadefbcbeb0197376803090c6b4776d230be36b039d53bcef"
+    },
+    {
+      "bytes": 139736,
+      "path": "modules/drivers/nvme/host/nvme-core.ko",
+      "sha256": "b4cfc0d9e84e34cc12f89f85fd01a3fa02b7e34223455825799bf9bc72993a51"
+    },
+    {
+      "bytes": 9760,
+      "path": "modules/drivers/phy/apple/usb2-j614s-host-diagnostic.ko",
+      "sha256": "2de407768f7a29795a6613280d2269037544fcbb888e6785247fc95906a91aba"
+    },
+    {
+      "bytes": 21728,
+      "path": "modules/drivers/power/supply/macsmc-power.ko",
+      "sha256": "9e1adb709a2540cc5a2e2ae9da5d758751705bf6961dfedec1e9c8fcb9eebcb6"
+    },
+    {
+      "bytes": 16120,
+      "path": "modules/drivers/soc/apple/apple-dockchannel.ko",
+      "sha256": "cbdef65ce4d50954fca3875bf4c7fe2d3ae7631399f77e62eb2ee53151c030d5"
+    },
+    {
+      "bytes": 8824,
+      "path": "modules/drivers/soc/apple/apple-rtkit-helper.ko",
+      "sha256": "c8d58e112c726cb88fad01b3a0a4d09128415d9121e289033ef0b596def53911"
+    }
+  ],
+  "no_target_actions": true,
+  "normalization_diff_bytes": 0,
+  "object": {
+    "bytes": 681624,
+    "path": "build/drivers/gpu/drm/asahi/asahi_m4.o",
+    "sha256": "8893c2ec23673f5b8b8ed9e3e2b218e95b971622d584fe98a8e62894b8c4880d"
+  },
+  "path_audit": {
+    "artifacts": [
+      {
+        "path": "Image",
+        "private_prefix_matches": {
+          "build_directory": 0,
+          "home_directory": 0
+        }
+      },
+      {
+        "path": "modules/drivers/gpio/gpio-macsmc.ko",
+        "private_prefix_matches": {
+          "build_directory": 0,
+          "home_directory": 0
+        }
+      },
+      {
+        "path": "modules/drivers/gpio/gpio-shared-proxy.ko",
+        "private_prefix_matches": {
+          "build_directory": 0,
+          "home_directory": 0
+        }
+      },
+      {
+        "path": "modules/drivers/gpu/drm/apple/appledrm.ko",
+        "private_prefix_matches": {
+          "build_directory": 0,
+          "home_directory": 0
+        }
+      },
+      {
+        "path": "modules/drivers/gpu/drm/asahi/asahi.ko",
+        "private_prefix_matches": {
+          "build_directory": 0,
+          "home_directory": 0
+        }
+      },
+      {
+        "path": "modules/drivers/gpu/drm/asahi/asahi_m4.ko",
+        "private_prefix_matches": {
+          "build_directory": 0,
+          "home_directory": 0
+        }
+      },
+      {
+        "path": "modules/drivers/gpu/drm/asahi/g16-bootstrap.ko",
+        "private_prefix_matches": {
+          "build_directory": 0,
+          "home_directory": 0
+        }
+      },
+      {
+        "path": "modules/drivers/gpu/drm/drm_dma_helper.ko",
+        "private_prefix_matches": {
+          "build_directory": 0,
+          "home_directory": 0
+        }
+      },
+      {
+        "path": "modules/drivers/hid/dockchannel-hid/dockchannel-hid.ko",
+        "private_prefix_matches": {
+          "build_directory": 0,
+          "home_directory": 0
+        }
+      },
+      {
+        "path": "modules/drivers/hid/hid-apple.ko",
+        "private_prefix_matches": {
+          "build_directory": 0,
+          "home_directory": 0
+        }
+      },
+      {
+        "path": "modules/drivers/hid/hid-magicmouse.ko",
+        "private_prefix_matches": {
+          "build_directory": 0,
+          "home_directory": 0
+        }
+      },
+      {
+        "path": "modules/drivers/mfd/macsmc.ko",
+        "private_prefix_matches": {
+          "build_directory": 0,
+          "home_directory": 0
+        }
+      },
+      {
+        "path": "modules/drivers/mfd/mfd-core.ko",
+        "private_prefix_matches": {
+          "build_directory": 0,
+          "home_directory": 0
+        }
+      },
+      {
+        "path": "modules/drivers/nvme/host/nvme-apple.ko",
+        "private_prefix_matches": {
+          "build_directory": 0,
+          "home_directory": 0
+        }
+      },
+      {
+        "path": "modules/drivers/nvme/host/nvme-core.ko",
+        "private_prefix_matches": {
+          "build_directory": 0,
+          "home_directory": 0
+        }
+      },
+      {
+        "path": "modules/drivers/phy/apple/usb2-j614s-host-diagnostic.ko",
+        "private_prefix_matches": {
+          "build_directory": 0,
+          "home_directory": 0
+        }
+      },
+      {
+        "path": "modules/drivers/power/supply/macsmc-power.ko",
+        "private_prefix_matches": {
+          "build_directory": 0,
+          "home_directory": 0
+        }
+      },
+      {
+        "path": "modules/drivers/soc/apple/apple-dockchannel.ko",
+        "private_prefix_matches": {
+          "build_directory": 0,
+          "home_directory": 0
+        }
+      },
+      {
+        "path": "modules/drivers/soc/apple/apple-rtkit-helper.ko",
+        "private_prefix_matches": {
+          "build_directory": 0,
+          "home_directory": 0
+        }
+      }
+    ],
+    "scope": "Actual host home and build directory prefixes",
+    "status": "PASS"
+  },
+  "platform_objects": [
+    {
+      "bytes": 52720,
+      "path": "build/drivers/nvme/host/apple.o",
+      "sha256": "ff358701a8997162fbbab5b5858ebaae00061797bbd8039ccc6357a634c95a99"
+    },
+    {
+      "bytes": 97552,
+      "path": "build/drivers/nvme/host/core.o",
+      "sha256": "a13ec1ab70e2f2632ae406cd26ab8652529f311f9141a22702721c26bcbf568e"
+    },
+    {
+      "bytes": 23664,
+      "path": "build/drivers/soc/apple/rtkit.o",
+      "sha256": "ded9b5c85eda342826995653ae85c9cbf2a5f8a12b809d8e3e0a8b0f4b11135e"
+    },
+    {
+      "bytes": 10072,
+      "path": "build/drivers/soc/apple/sart.o",
+      "sha256": "21c6015f9b51fb3524259d174f8f89c241494d5e930a827a751fa25ae6be8178"
+    }
+  ],
+  "recipe": {
+    "build_host": "builder",
+    "build_timestamp": "Mon Oct 19 00:00:00 UTC 2026",
+    "build_user": "j614s",
+    "build_version": "1",
+    "c_path_remapping": {
+      "output": "build",
+      "source": "src"
+    },
+    "localversion_suffix": "+",
+    "rust_path_remapping": [
+      "source/",
+      "output/",
+      "rust-sysroot/"
+    ],
+    "rust_sysroot_replacement": "rust-toolchain/",
+    "version": 2
+  },
+  "release": "7.1.13-j614s-gravity-candidate+",
+  "required_config": {
+    "CONFIG_APPLE_MAILBOX": "y",
+    "CONFIG_APPLE_RTKIT": "y",
+    "CONFIG_ARCH_APPLE": "y",
+    "CONFIG_ARM64": "y",
+    "CONFIG_ARM64_16K_PAGES": "y",
+    "CONFIG_BACKLIGHT_CLASS_DEVICE": "y",
+    "CONFIG_DRM": "y",
+    "CONFIG_DRM_APPLE": "m",
+    "CONFIG_DRM_ASAHI_M4": "m",
+    "CONFIG_IKCONFIG": "y",
+    "CONFIG_IKCONFIG_PROC": "y",
+    "CONFIG_LOCALVERSION": "\"-j614s-gravity-candidate\"",
+    "CONFIG_MODULES": "y",
+    "CONFIG_NR_CPUS": "16",
+    "CONFIG_PM": "y",
+    "CONFIG_RUST": "y"
+  },
+  "rust_build_assert_unresolved": false,
+  "scope": "Complete asahi_m4 AArch64 crate; no firmware execution, target boot, or GPU capability claim; complete Apple DCP composite and IOMFB object also compiled",
+  "source": {
+    "dirty_diff_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "head": "8f2f3d13600aacadd93d577855b7e212b8ae57ff",
+    "untracked": {}
+  },
+  "source_provenance": "infra/gravity-combined-fua-source.json",
+  "status": "KERNEL_AND_MODULES_COMPILED",
+  "tools": {
+    "bc": {
+      "sha256": "7ae95c260622412ceba6eb9f45d68f616cdc091a1d71d6c0a08b5875bb2c31dd"
+    },
+    "bindgen": {
+      "sha256": "7fdf32940891781eb742fb4a69775a0b39de4a48d0a168dfb3f740fb547fceda"
+    },
+    "clang": {
+      "sha256": "6acc6d2f0fdbae93e4d3b622b7a0d42cd05b036146e14193d9df40d1c0977066"
+    },
+    "clang++": {
+      "sha256": "6acc6d2f0fdbae93e4d3b622b7a0d42cd05b036146e14193d9df40d1c0977066"
+    },
+    "ld.lld": {
+      "sha256": "a2aef2573bc0409403747456072c373523ebfea0d03a832520331a17e8ec65a5"
+    },
+    "llvm-ar": {
+      "sha256": "4a21fd61e18a1168dc449e1b5c495925c446775860d0d042b57dac1925e6f7ef"
+    },
+    "llvm-nm": {
+      "sha256": "943a52c986ca4d0e429b523efcf6b4bdd8c9bd90616f5781ede4ab32124f7227"
+    },
+    "llvm-objcopy": {
+      "sha256": "c03c694462c48b4f6f84d62dfff530cef3b539583dddf62681fb318e2f9ef151"
+    },
+    "llvm-objdump": {
+      "sha256": "5096b8e9b6937b7451891cb820f867e77bce1628fdd077ed95c55cb2145fb2eb"
+    },
+    "llvm-readelf": {
+      "sha256": "c1d5d7261aa2b25ba5ec4060dd873a6a9808d2912221f97aaf3478f00f3af743"
+    },
+    "llvm-strip": {
+      "sha256": "c03c694462c48b4f6f84d62dfff530cef3b539583dddf62681fb318e2f9ef151"
+    },
+    "make": {
+      "sha256": "9018663161af324a74326c035cfd05408cba13a26c1f6b801cf5f3195f2bee40"
+    },
+    "rustc": {
+      "sha256": "5eadaaf4fe086d76547b17dc3c1ba880d0082b93f7d8bc65612770da8e79fe8e"
+    },
+    "rustdoc": {
+      "sha256": "f22c571ca4f921e0ac7c2c466de30da574b9018690a3878167cb0ea72249ed7f"
+    }
+  }
+}

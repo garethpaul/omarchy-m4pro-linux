@@ -5,7 +5,8 @@ import json
 from pathlib import Path
 import re
 import subprocess
-from audit_plan import IMAGE_SHA,IMAGE_SIZE,sha
+from audit_plan import IMAGE_SHA,IMAGE_SIZE,sha,restore_metadata
+from filesystem import seal_tree
 
 def main():
     p=argparse.ArgumentParser(description=__doc__);p.add_argument('--image',type=Path,required=True);p.add_argument('--output',type=Path,required=True);a=p.parse_args()
@@ -19,5 +20,5 @@ def main():
     a.output.mkdir(parents=True)
     command=['btrfs','restore','-S','-r256','--path-regex',regex,str(a.image),str(a.output)]
     subprocess.run(command,check=True,capture_output=True,text=True)
-    (a.output.parent/'restore-manifest.json').write_text(json.dumps({'image_sha256':IMAGE_SHA,'bytes':IMAGE_SIZE,'root':256,'trees':list(trees),'file':'etc/ld.so.conf','method':'btrfs restore -S -r256 into new private destination; no mount or package execution'},indent=2)+'\n')
+    seal_tree(a.output,{**restore_metadata(),'trees':list(trees),'file':'etc/ld.so.conf','method':'btrfs restore -S -r256 into new private destination; no mount or package execution'})
 if __name__=='__main__':main()

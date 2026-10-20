@@ -1,0 +1,14 @@
+{
+  "status": "PARTIAL (offline symbols and exact raw-binary binding only)",
+  "raw_elf_sha256": "2e24bc92885ac68970eb88847edfd2c2766ef8da3ac55759b0fb0ad6f7843392",
+  "objcopy_raw_matches_qualified_base": true,
+  "named_symbols": {
+    "nvme_rtkit": true,
+    "mmu_pt_L0": true,
+    "cur_boot_args": true,
+    "hv_Ltop": true
+  },
+  "target_access": false,
+  "actual_running_image_and_load_bias_proven": false,
+  "addresses_exported": false
+}

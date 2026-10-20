@@ -1,0 +1,181 @@
+{
+  "builds": [
+    {
+      "config_diff_bytes": 0,
+      "contract_sha256": "0fce64ecf0685564cfac0fb357633f6d5561d900d2320c7c557542ca4d616165",
+      "label": "fresh-build-01",
+      "layout_checks": {
+        "compiled_bindings_object_bytes": 249528,
+        "compiled_bindings_object_sha256": "fdc39ec6456600f02dbb4b99f531a752a9b3f388c8eef8787c7849fcde17bc69",
+        "const_layout_blocks": 3174,
+        "field_offset_checks": 16413,
+        "generated_bindings_sha256": "5d1e225739b16aa27415cf1be1c090fd73261dc49e53855ef59d85da6a9956e9",
+        "hardware_executed": false,
+        "layout_checks_disabled": false,
+        "status": "PASS",
+        "target": "aarch64-linux-gnu"
+      },
+      "manifest_sha256": "a407b1454ceb2a1de13026a3041fee208fc27d8a145b7244ff640fc18022fb1a",
+      "path_audit_status": "PASS"
+    },
+    {
+      "config_diff_bytes": 0,
+      "contract_sha256": "0fce64ecf0685564cfac0fb357633f6d5561d900d2320c7c557542ca4d616165",
+      "label": "independent-fresh-build-02",
+      "layout_checks": {
+        "compiled_bindings_object_bytes": 249528,
+        "compiled_bindings_object_sha256": "fdc39ec6456600f02dbb4b99f531a752a9b3f388c8eef8787c7849fcde17bc69",
+        "const_layout_blocks": 3174,
+        "field_offset_checks": 16413,
+        "generated_bindings_sha256": "5d1e225739b16aa27415cf1be1c090fd73261dc49e53855ef59d85da6a9956e9",
+        "hardware_executed": false,
+        "layout_checks_disabled": false,
+        "status": "PASS",
+        "target": "aarch64-linux-gnu"
+      },
+      "manifest_sha256": "da6874abfc1cb9d762adb7e28c9f9a795ad62bf47121432c3f6d9642f69b0584",
+      "path_audit_status": "PASS"
+    }
+  ],
+  "compared_artifacts": 19,
+  "config_sha256": "6c5aba7745d918c528300c5a395fcd7db0c2b718acda7d1467af2816a8d56516",
+  "deployment_authorized": false,
+  "differences": [],
+  "hardware": "UNTESTED",
+  "image": {
+    "bytes": 14772232,
+    "path": "Image",
+    "sha256": "f9d7b637bc70fcab77b5806c43c39ae333e633fcc63fa6ccaa77cd22c91d4604"
+  },
+  "independence": {
+    "all_19_artifact_inodes_distinct": true,
+    "build_outputs_reused": false,
+    "separate_output_directories": true,
+    "separate_source_apple_c_inodes": true,
+    "separate_source_checkouts": true,
+    "source_clean_before_and_after": true
+  },
+  "limitations": [
+    "Same host/toolchain reproducibility only; dynamic libraries/sysroot are not a fully hermetic cross-machine toolchain",
+    "Native hardware, storage concurrency and persistent boot untested",
+    "Module owned-pool PRIME restriction prevents foreign AGX-to-DCP zero-copy presentation"
+  ],
+  "modules": [
+    {
+      "bytes": 12528,
+      "path": "modules/drivers/gpio/gpio-macsmc.ko",
+      "sha256": "8f0f127fda8d4583915f820fa69a7b0a5c0c5dbe693545b6a16357b826f26d65"
+    },
+    {
+      "bytes": 9864,
+      "path": "modules/drivers/gpio/gpio-shared-proxy.ko",
+      "sha256": "fdf135041a409a3595ca5f5ac6617e3dd31c880035553727217236787be8562b"
+    },
+    {
+      "bytes": 252376,
+      "path": "modules/drivers/gpu/drm/apple/appledrm.ko",
+      "sha256": "351764054badf7873a5a868056efb2c2522f4b50b054f17edd61faa4512cb51c"
+    },
+    {
+      "bytes": 3697184,
+      "path": "modules/drivers/gpu/drm/asahi/asahi.ko",
+      "sha256": "8e0d6530552c312d71d4c4b5412087294f1349511ac1114fae6c0394bdaad061"
+    },
+    {
+      "bytes": 683952,
+      "path": "modules/drivers/gpu/drm/asahi/asahi_m4.ko",
+      "sha256": "6039b5499888a8ce4d32385136316c63db7ab42818898c60fe2a82f1e319b957"
+    },
+    {
+      "bytes": 13136,
+      "path": "modules/drivers/gpu/drm/asahi/g16-bootstrap.ko",
+      "sha256": "b2491be9cc0c6b20a93c420d6c0dfeabf77505414528d1b1a740f34c468586af"
+    },
+    {
+      "bytes": 26976,
+      "path": "modules/drivers/gpu/drm/drm_dma_helper.ko",
+      "sha256": "d72b1a78f242dac9d796e8f2ec7709d9476bcb76e28287da79caaf69b5ebe241"
+    },
+    {
+      "bytes": 30264,
+      "path": "modules/drivers/hid/dockchannel-hid/dockchannel-hid.ko",
+      "sha256": "42646788b8254ba7dfd4188631e85c4962c018221cfa6e322bdcd6d0b5cc93d6"
+    },
+    {
+      "bytes": 37312,
+      "path": "modules/drivers/hid/hid-apple.ko",
+      "sha256": "2e7b040da97df0c44de59638628f664d39217385cef0836fb062c6dbf3c9ce5e"
+    },
+    {
+      "bytes": 26536,
+      "path": "modules/drivers/hid/hid-magicmouse.ko",
+      "sha256": "70f01b7c375cae65acbd32c24c99b9db76852b66eee71151e38124fa495af297"
+    },
+    {
+      "bytes": 20344,
+      "path": "modules/drivers/mfd/macsmc.ko",
+      "sha256": "6ae7b902b581f4fba86785a0b8a9a49d81a3f32c6c4ac718b35c8acca7679ad8"
+    },
+    {
+      "bytes": 11688,
+      "path": "modules/drivers/mfd/mfd-core.ko",
+      "sha256": "c8d1b8f942bf52d069cab51b0d94d8f6e16f99da8c081654973fe5ed4478642f"
+    },
+    {
+      "bytes": 55928,
+      "path": "modules/drivers/nvme/host/nvme-apple.ko",
+      "sha256": "8bf6fc6b1369bcbeadefbcbeb0197376803090c6b4776d230be36b039d53bcef"
+    },
+    {
+      "bytes": 139736,
+      "path": "modules/drivers/nvme/host/nvme-core.ko",
+      "sha256": "b4cfc0d9e84e34cc12f89f85fd01a3fa02b7e34223455825799bf9bc72993a51"
+    },
+    {
+      "bytes": 9760,
+      "path": "modules/drivers/phy/apple/usb2-j614s-host-diagnostic.ko",
+      "sha256": "2de407768f7a29795a6613280d2269037544fcbb888e6785247fc95906a91aba"
+    },
+    {
+      "bytes": 21728,
+      "path": "modules/drivers/power/supply/macsmc-power.ko",
+      "sha256": "9e1adb709a2540cc5a2e2ae9da5d758751705bf6961dfedec1e9c8fcb9eebcb6"
+    },
+    {
+      "bytes": 16120,
+      "path": "modules/drivers/soc/apple/apple-dockchannel.ko",
+      "sha256": "cbdef65ce4d50954fca3875bf4c7fe2d3ae7631399f77e62eb2ee53151c030d5"
+    },
+    {
+      "bytes": 8824,
+      "path": "modules/drivers/soc/apple/apple-rtkit-helper.ko",
+      "sha256": "c8d58e112c726cb88fad01b3a0a4d09128415d9121e289033ef0b596def53911"
+    }
+  ],
+  "recipe": {
+    "build_host": "builder",
+    "build_timestamp": "Mon Oct 19 00:00:00 UTC 2026",
+    "build_user": "j614s",
+    "build_version": "1",
+    "c_path_remapping": {
+      "output": "build",
+      "source": "src"
+    },
+    "localversion_suffix": "+",
+    "rust_path_remapping": [
+      "source/",
+      "output/",
+      "rust-sysroot/"
+    ],
+    "rust_sysroot_replacement": "rust-toolchain/",
+    "version": 2
+  },
+  "release": "7.1.13-j614s-gravity-candidate+",
+  "scope": "Image and every matching module; logs and build directory paths excluded",
+  "source": {
+    "dirty_diff_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "head": "8f2f3d13600aacadd93d577855b7e212b8ae57ff",
+    "untracked": {}
+  },
+  "status": "BYTE_IDENTICAL"
+}

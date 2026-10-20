@@ -1,0 +1,12 @@
+{
+  "status": "WORKS (cached real117 replay)",
+  "image_sha256": "f6ceb11ef79914eaa10cc07637c929a99afe5982d216d8b89905c86e863b2491",
+  "first_static_report_sha256": "197027bf6426aa90fe1d8836d039c9b2f0f169a7498597e146ed674bd1004dc9",
+  "replayed_static_report_sha256": "197027bf6426aa90fe1d8836d039c9b2f0f169a7498597e146ed674bd1004dc9",
+  "reports_byte_identical": true,
+  "actual_restore_tree_rehashed": true,
+  "all117_payloads_rehashed": true,
+  "pickle_decoding_used": false,
+  "payload_executed": false,
+  "scope": "same-name overlay only; removal transaction model remains separate"
+}

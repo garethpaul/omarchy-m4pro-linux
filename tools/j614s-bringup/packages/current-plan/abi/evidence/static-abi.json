@@ -1,6 +1,16 @@
 {
   "actions": [],
-  "auditor_sha256": "f0e0c0c68cf7cf5291a7973b4bd46bc05dc1b16c9fa88d34897a8f6cbd98af0c",
+  "auditor_sha256": "21be9986ede57f06818c8ab70ebddd1dc1e20650e989e871176c43c31c670060",
+  "cache_provenance": {
+    "baseline": {
+      "filename": "baseline-f0d90cfc372081264bc3eda9e17fd9b8159c94d786ea6b1a34eaf53813fc0862.json.gz",
+      "sha256": "b5a5ed4d50ae41a931544eae10cac12734f8b7e4b92c3beaa41fa6902f8639fe"
+    },
+    "incoming": {
+      "filename": "incoming-f1d176f29bcb7bdf3493e0eee95b43a0540a978ffd36c25123b549de9f70d39b.json.gz",
+      "sha256": "5dda7baa69bb0a66b0bc4bfbf95ef37cfcda628c8bc7b6ea593d1e3ace8103dc"
+    }
+  },
   "changed_shared_SONAMEs": [
     "aai.so",
     "analyze.so",
@@ -3042,6 +3052,13 @@
   "runtime_ABI": "UNTESTED",
   "schema": 1,
   "scope": "static versioned contracts for all incoming ELFs and bounded retained usr/bin, usr/lib, usr/libexec and opt reverse consumers; direct version nodes plus recursive dependency symbol scope; no code execution",
+  "sealed_restore": {
+    "entry_count": 70825,
+    "extractor_sha256": "2c240f7cc41ea38a44502121b23f0da924ed398200ba5a024ae0167e77094bd0",
+    "identity_helper_sha256": "1b7f2b45764787feab935321e9310d08b280dd269c45752b24ebd338ca77fbba",
+    "manifest_sha256": "30a72f4608f94d7a4487e3529e7343bdf962a412d9c961b637a7bf196b54b947",
+    "tree_entries_sha256": "1f8bb4fa1aacf37242eca9030e4b684754df203022a61ea907d6523570f8c068"
+  },
   "selected_installed_versions": {
     "aether": {
       "baseline": "4.29.9-1",

@@ -5,13 +5,14 @@
   "actions": [],
   "tests": {
     "status": "WORKS",
-    "count": 14,
+    "count": 20,
     "red_before_implementation": [
       "5 initial ELF parser/contract tests failed with explicit NotImplementedError (9 subcase errors), not import errors",
       "Separate real compiled dependency-scope regression failed with explicit NotImplementedError before scope implementation"
     ],
-    "green": "14 real compiled host/AArch64 ELF and virtual-filesystem regressions pass",
-    "note": "Two own scope audit runs were interrupted to remove repeated export-set work; preserved private failure logs. Final indexed run retains all checks."
+    "green": "20 real ELF, graph, virtual-root and provenance regressions pass",
+    "note": "Two own scope audit runs were interrupted to remove repeated export-set work; preserved private failure logs. Final indexed run retains all checks.",
+    "provenance_controls": "Actual archived old function accepts changed restore; actual current CLI rejects changed sealed file, exact bytes restored, cached real117 replay byte-identical; actual reused provider mutation refused."
   },
   "hardware": "UNTESTED; no target access",
   "runtime_ABI": "UNTESTED",
@@ -24,19 +25,25 @@
   ],
   "files": {
     ".gitignore": "0090a854cd9b906751909c1f21e1454e3de0f601a7f300f05246ef49dca5a770",
-    "README.md": "72db710fe3645b7ed1827a64b5b3e66292314c24f7bded02a224b08ae1595775",
+    "README.md": "6bc64521caec2002e7b4afde19f6b49630a62a2ff29a75d9e015b635ffb684f4",
     "audit_elf.py": "bb29a7e7efbd32272dee5570179bb0f17104fdee7e3affeb7132753351122767",
-    "audit_plan.py": "f0e0c0c68cf7cf5291a7973b4bd46bc05dc1b16c9fa88d34897a8f6cbd98af0c",
-    "classify_findings.py": "799c247244a5ded4e9449ef71cb917bdbe30bf7deeca6f60713f0cdeeebe379e",
+    "audit_plan.py": "21be9986ede57f06818c8ab70ebddd1dc1e20650e989e871176c43c31c670060",
+    "classify_findings.py": "94de265ece376f8e4c87df67aa82e115908b998e13317c883f8b4136bfcba3d9",
     "crosscheck_readelf.py": "b9594aaad35b653b3fc6b9f6e8aea8686e00f1f003793bd3f12ab3021e29c0a3",
-    "evidence/classification.json": "c9e2e766224dcaf43e404debdb866565bde9ca398a0d596c8dad7d21679af1a0",
-    "evidence/qt-private-abi.json": "5ff0dc12c3f23a6ce9922fa3605a2d90cd36288041dab2889e5f8ac8a61d4afe",
+    "evidence/cache-before-fix.json": "884dac771844043d49dfd78709b0830933f3274a9cc798216329ad1ef8abe35f",
+    "evidence/cache-mutation-refusal.json": "7f6c503f0561e863b043c7ce1b06f0c40cbc6f4a7e181224be504ce6720f74e0",
+    "evidence/cache-replay.json": "d9c56a4928681d971705a89cbea9238ba7bc3172655b629eadac0632b5421276",
+    "evidence/classification.json": "2896d619d3ed077e256f2e8f6181141bfe35c946b5c37b182ac32c7b214766fe",
+    "evidence/provider-mutation-refusal.json": "433a785f3ddf5457624378a2d9378b0885eda3739e91a9eee24a44e48c5fba17",
+    "evidence/qt-private-abi.json": "43fbfa02b68ad1b47e59afdc815be0eaff5e0a9a9bea6c99e7e315e352378b87",
     "evidence/readelf-crosscheck.json": "b5c9989be623d71be207d93e4ad14faf653cb520230562a8e00dc932ba2bffea",
-    "evidence/static-abi.json": "dc46c76802ceec0f3f5ef13b72930fc3ff7075025f852891b5e5cc17beec7b2b",
-    "evidence/tests.log": "b292e9107c0f75acc2cecc6335283593c89860cb01b5924da53dff319e8636e4",
-    "prove_qt_break.py": "6827f302b2fe42ae2e3b1ac0f15b5031de2cda91f34227df2b37f23dfc1a7efb",
-    "restore_image.py": "77fbd06e4b9a25ce2c189c85d3865cd005b19dfa842dfcd42409733d2ae8dc41",
+    "evidence/static-abi.json": "197027bf6426aa90fe1d8836d039c9b2f0f169a7498597e146ed674bd1004dc9",
+    "evidence/tests.log": "bfd5ce1ae4743981f1b6a703c5290cc4236270e6c0cf844859338fed5ce3281a",
+    "filesystem.py": "1b7f2b45764787feab935321e9310d08b280dd269c45752b24ebd338ca77fbba",
+    "prove_qt_break.py": "ee8fa6ef38d778aca9e70bd4fb87f8d1c0d36beeeecf57c08795defd287dd39c",
+    "restore_image.py": "2c240f7cc41ea38a44502121b23f0da924ed398200ba5a024ae0167e77094bd0",
     "tests/test_elf.py": "faa3f0dbbf30d85a7b64ead560d1460e62046c69aa165028ce30b4ee1709e948",
+    "tests/test_provenance.py": "82ab84c8388271c84259bf3936db7907cfdc14e50323c987e3eb1c4df0401d17",
     "tests/test_resolution.py": "99d0f2c820ff3e74759372a84bd22751ac4c0ad62f9c38ed9b0021528054df8a"
   }
 }

@@ -1,0 +1,37 @@
+{
+  "status": "PARTIAL (source capability inspection only)",
+  "files": [
+    {
+      "path": "m1n1-native/src/proxy.c",
+      "sha256": "fd5d467d1c8b51efab7c5f6bee4dacba472d18504c106029a2ccb3fb99f0782a"
+    },
+    {
+      "path": "m1n1-native/proxyclient/m1n1/proxyutils.py",
+      "sha256": "7c923b1b6c25efcbf895662e01c6a233bbf6d9f231c42c8a8ab49a5b226325f5"
+    },
+    {
+      "path": "m1n1-native/src/hv/hv_vm.c",
+      "sha256": "e2f036033a98e123a125f9ffb07798ec79f38d390f82149244a3fb9fd2f5991c"
+    },
+    {
+      "path": "m1n1-native/src/rtkit.c",
+      "sha256": "9653f482c9e914c732d8769564da457726e6e986d38745b97e135f391d2c47fe"
+    },
+    {
+      "path": "m1n1-native/src/rtkit.h",
+      "sha256": "3129589f4ad9a4b1097c7043acf8af1eb8d580df2b5c67d5f024050ac37fa8a3"
+    },
+    {
+      "path": "m1n1-native/src/adt.h",
+      "sha256": "c9f5b3cc057723098194fa7d2c08d55dea74f3a5eaf972cefd5d283622ebbc26"
+    }
+  ],
+  "plain_guarded_ram_read_primitive": "P_READ64",
+  "mrs_helper_writes_and_executes_scratch_code": true,
+  "hv_translate_executes_AT_and_restores_PAR": true,
+  "hv_pt_walk_block_result_strips_lower_attributes": true,
+  "cache_register_or_active_table_snapshot_available_in_this_evidence": false,
+  "source_adapter_generated": false,
+  "target_access": false,
+  "addresses_exported": false
+}

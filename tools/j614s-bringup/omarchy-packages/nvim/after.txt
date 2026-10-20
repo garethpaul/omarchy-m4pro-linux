@@ -1,0 +1,8 @@
+test_lua_keeps_custom_mason_tools_without_redownloading_native_defaults (__main__.PackageTests.test_lua_keeps_custom_mason_tools_without_redownloading_native_defaults) ... ok
+test_native_formatters_are_dependencies (__main__.PackageTests.test_native_formatters_are_dependencies) ... ok
+test_seed_drops_machine_specific_mason_on_both_build_architectures (__main__.PackageTests.test_seed_drops_machine_specific_mason_on_both_build_architectures) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.111s
+
+OK

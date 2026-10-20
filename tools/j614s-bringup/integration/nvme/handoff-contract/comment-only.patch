@@ -1,0 +1,19 @@
+From de1231473a4682cd465397a6e9ed519560ce0893 Mon Sep 17 00:00:00 2001
+From: gareth jones <gareth@garethpaul.com>
+Date: Mon, 19 Oct 2026 23:24:57 -0700
+Subject: [PATCH] nvme: state inherited RAM reservation as a required producer
+ contract
+
+---
+ drivers/nvme/host/apple.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/nvme/host/apple.c b/drivers/nvme/host/apple.c
+index 6368cd8a6..2b77c1a90 100644
+--- a/drivers/nvme/host/apple.c
++++ b/drivers/nvme/host/apple.c
+@@ -420,2 +420,2 @@ static bool apple_nvme_in_inherited_rtkit_range(struct apple_nvme *anv,
+-	 * Native m1n1 reserves the predecessor's inherited allocation prefix.
+-	 * RAM excluded by a resident EL2 stage needs a separate cache contract.
++	 * A producer must prove reserved RAM and compatible WB cache ownership.
++	 * Excluded predecessor RAM needs a separately validated mapping contract.

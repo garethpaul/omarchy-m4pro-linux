@@ -2,6 +2,22 @@
 
 Goal: native accelerated, responsive, persistently bootable Omarchy. Overall INCOMPLETE.
 
+## Current engineering checkpoint
+
+- Hardware remains at m1n1 Running proxy; no target boot after manual recovery.
+  Supervised availability is pending; remote recovery remains unverified.
+- Combined Gravity source8f2f3d1 builds Image+18 modules twice independently,
+  byte-identical across all19 artifacts. Exact6c config/layout checks retained.
+  This source is hardware UNTESTED, not an installable boot bundle.
+- Native GPU INIT/rendering, native DCP and persistent default boot are incomplete.
+  Prior12-core and GPU-transport hardware passes remain separately evidenced.
+- ARM package signatures pass117/117, but exact Qt/SONAME ABI defects block the
+  proposed transaction. Sealed replay rejects changed evidence; conflict/removal
+  preparation and a separate coherent dependency closure are ongoing.
+- Source fixes are reviewable in kernel draft PR6 and nvim package draft PR1.
+  Minimal USB/RO probe preparation is offline only; protected boot/disk changes
+  remain outside current authorization.
+
 ## Baseline
 
 Mac16,8 / J614sAP / T6040 M4 Pro, 4 efficiency and 8 performance cores, 24 GiB RAM. ADT is the hardware source of truth. macOS firmware 26.6.2 / 25G83, mBoot-18000.161.10. Installed custom boot object remains m1n1 8e0cf28. Experimental payloads use RAM chainloading with a restricted 4 GiB Linux allocation and read-only SSD plus RAM overlays.
@@ -350,3 +366,77 @@ have changed. Installation, hooks, protected holds and runtime remain blocked.
 
 A fresh webcam observation at2026-10-20T06:20:25Z still shows Running proxy,
 USB1209:316d installed8e0cf28, enumeration63. No boot/reset action occurred.
+
+## FUA correction and boot-preparation contract
+
+Separate source dd3f608d60ed503b87a9400255286d1c8fe5ac2d adds the missing FUA
+core enum/name and clears only BLK_FEAT_FUA while retaining WRITE_CACHE. Actual
+namespace/block-flush functions pass16 literal scenarios and queue POSTFLUSH
+after simulated DATA completion. Root reran the fixture successfully. This
+does not qualify physical I/O or durability. New combined source
+8f2f3d13600aacadd93d577855b7e212b8ae57ff is building with exact6c configuration;
+a652 and its failed build remain intact. No target action occurred.
+
+Root inspected the qualified private native-loader source during preparation:
+it publishes only the newly owned4GiB as Linux memory, excluding predecessor
+allocations. The new borrowed-RTKit guard requires SystemRAM, valid reserved
+pages and linear mapping. The comment about predecessor-prefix reservation
+is not established by that loader. The integration lane is checking old captured
+buffer evidence and a minimal explicit RAM/reservation/cache contract. Do not
+weaken the guard or reuse old firmware addresses to conceal the mismatch.
+
+Reviewed source/evidence checkpoint7aa8f7c is published on the experimental
+tooling branch at9f43a9f0f. All387 publication paths match its manifest and
+passed classified secret/private-data checks. Local outputs carry the same
+committed source; old artifact directories remain distinct.
+
+## Complete combined kernel link
+
+Combined8f2f3d13600aacadd93d577855b7e212b8ae57ff now passes full Image and18
+matching modules with exact6c5aba configuration and zero normalization drift.
+Image SHA256 f9d7b637bc70fcab77b5806c43c39ae333e633fcc63fa6ccaa77cd22c91d4604,
+release7.1.13-j614s-gravity-candidate+. All3174 layout blocks/16413 offsets,
+embedded config, AArch64 ELF/module version, assertions and private-path checks
+pass. A fresh independent source/output build is running; no reproducibility
+claim yet for8f2. Source published on codex/j614s-gravity-combined-fua; the
+separate inherited-ANS source branch includes the comment-only correction
+de1231473a4682cd465397a6e9ed519560ce0893. New artifacts exported separately as
+outputs/m4-overnight-enablement/kernel-gravity-combined with complete file hashes.
+
+This is compile-only and hardware UNTESTED, with no matching boot bundle or
+permission to deploy. Old borrowed-buffer execution/cache ownership is not
+proven by52/56: the saved logs show HELLO and storage activity, which can work
+without borrowed mapping. The strict mapping gate remains unchanged. No target
+boot, firmware action or protected-volume modification occurred.
+
+## ARM seed fix and evidence replay correction
+
+Sourcee8f5edeabdaa0efe30760f47bc5c93467ac45490 fixes the actual Omarchy nvim
+packaging seam: remove builder Mason data, add native shfmt/stylua dependencies,
+and filter only those Mason defaults. Root reran all3 package/Lua regressions
+with real x86/ARM ELF fixtures, bash syntax and all15 portable-source hashes.
+A missing unchanged metadata export was added explicitly. Draft source is
+https://github.com/garethpaul/omarchy-pkgs/pull/1; signed build, runtime, existing
+user migration and installation remain unqualified. No original117-plan change.
+
+Inherited ANS is reviewable as draft kernel PR6,8 scoped files, based on a
+source-tree-equivalent pinned checkpoint; the default branch is unchanged. Both
+created PRs are attached. No final independent review acceptance is claimed.
+
+Package audit replay now seals every restored file/link/directory and binds
+auditor/parser/extractor identities, with integrity-checked data-only JSON
+caches. The original stale-tree acceptance was actually reproduced; a one-byte
+QtCore change and changed reused-provider file are now rejected by the real CLI.
+After exact bytes were restored, the117-payload replay is byte-identical and
+retains24 new/incoming issue edges. Root reran20 tests and verified all public
+evidence hashes. Actual normal libalpm conflict/removal preparation is a
+separate ongoing step; print-only results did not establish removals.
+
+## Combined build reproducibility passes
+
+Two fresh source/output builds of8f2f3d13600aacadd93d577855b7e212b8ae57ff have
+identical Image and all18 modules,19 independent artifact inodes, zero differences.
+Both exact configurations/critical tools/contracts match; layout assertions and
+strict verification/path audits pass. The new artifact export includes the
+comparison and refreshed hashes. Same-host reproducibility does not establish
+hermetic or cross-machine builds, hardware behavior, storage durability or boot.
