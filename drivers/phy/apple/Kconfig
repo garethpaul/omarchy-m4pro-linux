@@ -31,3 +31,11 @@ config PHY_APPLE_DPTX
 	  such as the M2.
 	  This driver provides support for DisplayPort and is used on the
 	  Mac mini (M2 and M2 Pro, 2023).
+
+config PHY_APPLE_J614S_USB2_HOST_DIAGNOSTIC
+ tristate "Private J614s inherited USB2 host diagnostic"
+ depends on ARCH_APPLE && OF
+ select GENERIC_PHY
+ help
+   Board-gated, watchdog-supervised experiment for USB0 or USB2 on J614s.
+   Not a supported hardware driver and not suitable for automatic loading.

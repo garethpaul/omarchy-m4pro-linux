@@ -193,6 +193,8 @@ struct apple_nvme_iod {
 };
 
 struct apple_nvme_hw {
+	/* [DEBUG-J614S-STORAGE] Explicitly selected RAM diagnostic only. */
+	bool j614s_diagnostic;
 	bool has_lsq_nvmmu;
 	bool has_queue_count;
 	bool has_separate_nvmmu;
@@ -1737,8 +1739,9 @@ rtkit_ready:
 		 * Enable NVMMU and linear submission queues which is required
 		 * since T6000.
 		 */
-		writel(APPLE_ANS_LINEAR_SQ_EN,
-			anv->mmio_nvme + APPLE_ANS_LINEAR_SQ_CTRL);
+		if (!anv->hw->j614s_diagnostic)
+			writel(APPLE_ANS_LINEAR_SQ_EN,
+				anv->mmio_nvme + APPLE_ANS_LINEAR_SQ_CTRL);
 		if (anv->hw->needs_ioq_registers) {
 			u32 lsq_ctrl = readl(anv->mmio_nvme +
 					     APPLE_ANS_LINEAR_SQ_CTRL);
@@ -2275,6 +2278,12 @@ static struct apple_nvme *apple_nvme_alloc(struct platform_device *pdev)
 		ret = -ENODEV;
 		goto out_detach_genpd;
 	}
+	if (anv->hw->j614s_diagnostic &&
+	    (!of_machine_is_compatible("apple,j614s") ||
+	     resource->start != 0x44dcc0000ULL || resource_size(resource) != 0x30000)) {
+		ret = -EINVAL;
+		goto out_detach_genpd;
+	}
 
 	ret = apple_nvme_attach_genpd(anv);
 	if (ret < 0) {
@@ -2342,7 +2351,11 @@ static struct apple_nvme *apple_nvme_alloc(struct platform_device *pdev)
 		goto out_detach_genpd;
 	}
 
-	anv->reset = devm_reset_control_array_get_exclusive(anv->dev);
+	/* This diagnostic preserves the inherited powered link; it never resets ANS. */
+	if (anv->hw->j614s_diagnostic)
+		anv->reset = devm_reset_control_array_get_optional_exclusive(anv->dev);
+	else
+		anv->reset = devm_reset_control_array_get_exclusive(anv->dev);
 	if (IS_ERR(anv->reset)) {
 		ret = dev_err_probe(dev, PTR_ERR(anv->reset),
 				    "Failed to get reset control");
@@ -2662,6 +2675,16 @@ static const struct apple_nvme_hw apple_nvme_t8132_hw = {
 	.max_queue_depth = 64,
 };
 
+/* [DEBUG-J614S-STORAGE] Upstream v2 secure alias layout; not an installer profile. */
+static const struct apple_nvme_hw apple_nvme_j614s_diagnostic_hw = {
+	.j614s_diagnostic = true,
+	.has_lsq_nvmmu = true,
+	.needs_ioq_registers = true,
+	.max_queue_depth = 64,
+	/* Require explicit flushes while qualifying this board's write durability. */
+	.quirks = NVME_QUIRK_BROKEN_FUA,
+};
+
 static const struct apple_nvme_hw apple_nvme_t8140_hw = {
 	.has_lsq_nvmmu = true,
 	.has_separate_nvmmu = true,
@@ -2676,6 +2699,7 @@ static const struct apple_nvme_hw apple_nvme_t8140_hw = {
 };
 
 static const struct of_device_id apple_nvme_of_match[] = {
+	{ .compatible = "apple,j614s-nvme-diagnostic", .data = &apple_nvme_j614s_diagnostic_hw },
 	{ .compatible = "apple,t8015-nvme-ans2", .data = &apple_nvme_t8015_hw },
 	{ .compatible = "apple,t8103-nvme-ans2", .data = &apple_nvme_t8103_hw },
 	{ .compatible = "apple,t8132-nvme-ans2", .data = &apple_nvme_t8132_hw },

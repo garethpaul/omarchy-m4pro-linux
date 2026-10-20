@@ -66,6 +66,11 @@
 #define MACSMC_MAX_BATT_PROPS		50
 #define MACSMC_MAX_AC_PROPS		10
 
+/* Bring-up mode: expose telemetry without changing firmware charge policy. */
+static bool read_only;
+module_param(read_only, bool, 0444);
+MODULE_PARM_DESC(read_only, "Expose battery telemetry without changing charging controls");
+
 struct macsmc_power {
 	struct device *dev;
 	struct apple_smc *smc;
@@ -632,6 +637,9 @@ static int macsmc_battery_set_property(struct power_supply *psy,
 {
 	struct macsmc_power *power = power_supply_get_drvdata(psy);
 
+	if (read_only)
+		return -EPERM;
+
 	switch (psp) {
 	case POWER_SUPPLY_PROP_CHARGE_BEHAVIOUR:
 		return macsmc_battery_set_charge_behaviour(power, val->intval);
@@ -666,6 +674,9 @@ static int macsmc_battery_property_is_writeable(struct power_supply *psy,
 						enum power_supply_property psp)
 {
 	struct macsmc_power *power = power_supply_get_drvdata(psy);
+
+	if (read_only)
+		return false;
 
 	switch (psp) {
 	case POWER_SUPPLY_PROP_CHARGE_BEHAVIOUR:
@@ -962,17 +973,19 @@ static int macsmc_power_probe(struct platform_device *pdev)
 				     of_machine_is_compatible("apple,j700");
 		power->status_from_current = of_machine_is_compatible("apple,j700");
 
-		/* Reset "Optimised Battery Charging" flags to default state */
-		if (power->has_chte)
-			apple_smc_write_u32(smc, SMC_KEY(CHTE), 0);
-		else if (power->has_ch0c)
-			apple_smc_write_u8(smc, SMC_KEY(CH0C), 0);
+		if (!read_only) {
+			/* Reset "Optimised Battery Charging" flags to default state */
+			if (power->has_chte)
+				apple_smc_write_u32(smc, SMC_KEY(CHTE), 0);
+			else if (power->has_ch0c)
+				apple_smc_write_u8(smc, SMC_KEY(CH0C), 0);
 
-		if (power->has_ch0i)
-			apple_smc_write_u8(smc, SMC_KEY(CH0I), 0);
+			if (power->has_ch0i)
+				apple_smc_write_u8(smc, SMC_KEY(CH0I), 0);
 
-		apple_smc_write_u8(smc, SMC_KEY(CH0K), 0);
-		apple_smc_write_u8(smc, SMC_KEY(CH0B), 0);
+			apple_smc_write_u8(smc, SMC_KEY(CH0K), 0);
+			apple_smc_write_u8(smc, SMC_KEY(CH0B), 0);
+		}
 
 		/* Configure charge behaviour if supported */
 		if (power->has_ch0i || power->has_ch0c || power->has_chte) {

@@ -575,9 +575,10 @@ static int dchid_request_gpio(struct dchid_iface *iface)
 
 static int dchid_start_interface(struct dchid_iface *iface)
 {
-	void *fw;
-	size_t size;
+	void *fw = NULL;
+	size_t size = 0;
 	int ret;
+	int step = 0;
 
 	if (iface->starting) {
 		dev_warn(iface->dchid->dev, "Interface %s is already starting", iface->name);
@@ -589,12 +590,14 @@ static int dchid_start_interface(struct dchid_iface *iface)
 	iface->starting = true;
 
 	/* Look to see if we need firmware */
+	step = 1;
 	ret = dchid_get_firmware(iface, &fw, &size);
 	if (ret < 0)
 		goto err;
 
 	/* If we need a GPIO, make sure we have it. */
 	if (iface->gpio_announced) {
+		step = 2;
 		ret = dchid_request_gpio(iface);
 		if (ret < 0)
 			goto err;
@@ -604,6 +607,7 @@ static int dchid_start_interface(struct dchid_iface *iface)
 	if (fw && size) {
 
 		/* Send firmware to the device */
+		step = 3;
 		dev_info(iface->dchid->dev, "Sending firmware for %s\n", iface->name);
 		ret = dchid_send_firmware(iface, fw, size);
 		if (ret < 0) {
@@ -614,6 +618,7 @@ static int dchid_start_interface(struct dchid_iface *iface)
 		/* After loading firmware, multi-touch needs a reset */
 		dev_info(iface->dchid->dev, "Resetting %s\n", iface->name);
 		if (iface->power_method == DCHID_POWER_METHOD_2) {
+			step = 4;
 			ret = dchid_pm2_set_power(iface, DCHID_POWER_STATE_OFF);
 			if (ret < 0)
 				goto err;
@@ -621,6 +626,7 @@ static int dchid_start_interface(struct dchid_iface *iface)
 			if (ret < 0)
 				goto err;
 		} else {
+			step = 5;
 			dchid_reset_interface(iface, DCHID_POWER_STATE_OFF);
 			dchid_reset_interface(iface, DCHID_POWER_STATE_ON);
 		}
@@ -629,6 +635,10 @@ static int dchid_start_interface(struct dchid_iface *iface)
 	return 0;
 
 err:
+	dev_err(iface->dchid->dev,
+		"[J614S diagnostic] interface %s start step %d failed: %d (gpio=%d, power=%u, fw=%zu)\n",
+		iface->name, step, ret, iface->gpio_announced, iface->power_method,
+		size);
 	iface->starting = false;
 	return ret;
 }

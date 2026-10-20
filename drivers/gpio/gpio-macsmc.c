@@ -17,6 +17,10 @@
 
 #define MAX_GPIO 64
 
+/* J614s ADT: pKW4("gp1c", 0x10000), with the level in bit 0. */
+#define MACSMC_J614S_AFE_RESET_GPIO 28
+#define MACSMC_J614S_AFE_RESET_CMD 0x10000
+
 /*
  * J700 resets its trackpad analog front end through the SMC "pcIO" key
  * rather than a gPxx GPIO key. The Apple device tree describes the reset as
@@ -94,6 +98,9 @@ struct macsmc_gpio {
 	int first_index;
 	smc_key base_key;
 
+	bool j614s_afe_reset;
+	bool j614s_reset_known;
+	bool j614s_reset_level;
 	bool j700_pcio;
 	DECLARE_BITMAP(j700_pcio_level, MAX_GPIO);
 };
@@ -176,6 +183,10 @@ static int macsmc_gpio_get_direction(struct gpio_chip *gc, unsigned int offset)
 	u32 val;
 	int ret;
 
+	if (smcgp->j614s_afe_reset)
+		return offset == MACSMC_J614S_AFE_RESET_GPIO ?
+			GPIO_LINE_DIRECTION_OUT : -EINVAL;
+
 	if (macsmc_gpio_is_j700_pcio(smcgp, offset))
 		return GPIO_LINE_DIRECTION_OUT;
 
@@ -198,6 +209,12 @@ static int macsmc_gpio_get(struct gpio_chip *gc, unsigned int offset)
 	smc_key key = macsmc_gpio_key(smcgp->base_key, offset);
 	u32 cmd, val;
 	int ret;
+
+	if (smcgp->j614s_afe_reset) {
+		if (offset != MACSMC_J614S_AFE_RESET_GPIO)
+			return -EINVAL;
+		return smcgp->j614s_reset_known ? smcgp->j614s_reset_level : -EAGAIN;
+	}
 
 	/* pcIO cannot be read back; report the last level written. */
 	if (macsmc_gpio_is_j700_pcio(smcgp, offset))
@@ -224,6 +241,18 @@ static int macsmc_gpio_set(struct gpio_chip *gc, unsigned int offset, int value)
 	struct macsmc_gpio *smcgp = gpiochip_get_data(gc);
 	smc_key key = macsmc_gpio_key(smcgp->base_key, offset);
 	int ret;
+
+	if (smcgp->j614s_afe_reset) {
+		if (offset != MACSMC_J614S_AFE_RESET_GPIO)
+			return -EINVAL;
+		ret = apple_smc_write_u32(smcgp->smc, key,
+					MACSMC_J614S_AFE_RESET_CMD | !!value);
+		if (ret < 0)
+			return ret;
+		smcgp->j614s_reset_level = !!value;
+		smcgp->j614s_reset_known = true;
+		return 0;
+	}
 
 	if (macsmc_gpio_is_j700_pcio(smcgp, offset)) {
 		u32 lo, hi;
@@ -264,6 +293,12 @@ static int macsmc_gpio_init_valid_mask(struct gpio_chip *gc,
 	struct macsmc_gpio *smcgp = gpiochip_get_data(gc);
 	int count;
 	int i;
+
+	if (smcgp->j614s_afe_reset) {
+		bitmap_zero(valid_mask, ngpios);
+		set_bit(MACSMC_J614S_AFE_RESET_GPIO, valid_mask);
+		return 0;
+	}
 
 	count = min(smcgp->smc->key_count, MAX_GPIO);
 
@@ -317,6 +352,21 @@ static int macsmc_gpio_probe(struct platform_device *pdev)
 	smcgp->base_key = data ? data->base_key : _SMC_KEY("gP\0\0");
 	smcgp->j700_pcio = of_machine_is_compatible("apple,j700") &&
 				device_is_compatible(&pdev->dev, "apple,smc-gpio");
+
+	if (device_is_compatible(&pdev->dev, "apple,j614s-trackpad-reset")) {
+		struct apple_smc_key_info info;
+
+		if (!of_machine_is_compatible("apple,j614s") ||
+		    smcgp->base_key != _SMC_KEY("gp\0\0"))
+			return -EINVAL;
+		ret = apple_smc_get_key_info(smc, SMC_KEY(gp1c), &info);
+		if (ret < 0)
+			return ret;
+		if (info.size != sizeof(u32))
+			return -EINVAL;
+		smcgp->j614s_afe_reset = true;
+		dev_info(&pdev->dev, "J614s gp1c reset: 4-byte ADT command, pin 28 only\n");
+	}
 
 	smcgp->first_index = macsmc_gpio_find_first_gpio_index(smcgp);
 	if (smcgp->first_index < 0)

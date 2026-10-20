@@ -1,0 +1,17 @@
+{
+  "source_base": "4ff8816df8c4bc81b1652eca17fc8c0e9e1928cc",
+  "status": "archival experimental source, not production",
+  "files": {
+    "arch/arm64/kernel/head.S": "ca7d312cd171825fd27804131da698b4d6aebd6c4701378c09bb390ecf5a52c5",
+    "drivers/gpio/gpio-macsmc.c": "7f581053b62c061a3f75a8c0d34d13bd9ccdff6cdf10970efdd111424e2f2f1b",
+    "drivers/hid/dockchannel-hid/dockchannel-hid.c": "11cf9849a65d330bfd77d81797633cb18f973ddde881c7decea829fda9d24906",
+    "drivers/nvme/host/apple.c": "32cfd7797be60250210f70783021eaf1a8fb9517c1c79fb3b4465ecb402f3dae",
+    "drivers/phy/apple/Kconfig": "addb2ccf6105afa35ee3767cc4daa6bf9c20c131d0dedeeba92592e017410212",
+    "drivers/phy/apple/Makefile": "ce1490b83eeac1c6ef76f1d7dc26e0625e0d5e74f4159dcb610a2a074b822742",
+    "drivers/power/supply/macsmc-power.c": "6884d90afbb7b353370de270f0ed9c3ef1bbaf64aad27fa76245378429160b12",
+    "drivers/tty/serial/Kconfig": "b4314741b43f04109dddec57e9a2fd278d3b7b910f140a8c22ca06aea6acbce3",
+    "drivers/tty/serial/Makefile": "ae8240e0b50582dc767d217f02837bc9fed956a500fe883cbe98194dd3c6f718",
+    "drivers/phy/apple/usb2-j614s-host-diagnostic.c": "9b9666b7dc1967e3568ff07d0698bf88e11942f36829d47995c34ef3d445cd81",
+    "drivers/tty/serial/j614s_earlyfb.c": "ada07dedbef3132dd05bf92cca8eb4b1b14b919bb1bdea8cd8265bafb1b95206"
+  }
+}
