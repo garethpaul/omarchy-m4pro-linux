@@ -138,6 +138,14 @@ def check(args, expected):
     return actual
 
 
+def rust_assertion_state(obj, nm):
+    """Reject the deliberate unresolved Rust compile-time assertion trap."""
+    undefined = run([str(nm), '--undefined-only', str(obj)])
+    if any(line.split() and line.split()[-1] == b'rust_build_error' for line in undefined.splitlines()):
+        raise ValueError('Unresolved Rust compile-time assertion in driver object')
+    return {'status': 'PASS', 'unresolved_build_assertion': False}
+
+
 def artifact_record(path, root):
     return {'path': str(path.relative_to(root)), 'sha256': digest(path),
             'bytes': path.stat().st_size}

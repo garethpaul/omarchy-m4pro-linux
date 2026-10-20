@@ -28,7 +28,10 @@ ap.add_argument('--config', type=Path, help='Reviewed exact config; normalizatio
 ap.add_argument('--config-sha256', help='Required immutable checksum when --config is supplied')
 ap.add_argument('--localversion', default='-gravity-g16s-compile')
 ap.add_argument('--object', action='append', default=[], help='Additional reviewed driver/platform object to compile before full build')
+ap.add_argument('--platform-only', action='store_true', help='Qualify only requested C/ASM platform objects and generated Rust bindings')
 a = ap.parse_args()
+if a.platform_only and (not a.object or a.full_kernel or a.display):
+    raise SystemExit('FAIL: platform-only requires objects and cannot claim full kernel/display compilation')
 for target in a.object:
     path = Path(target)
     if path.is_absolute() or '..' in path.parts or path.suffix != '.o' or path.parts[0] not in ('arch', 'drivers', 'kernel'):
@@ -102,6 +105,19 @@ def execute(targets, log):
 
 
 obj_name = 'drivers/gpu/drm/asahi/asahi_m4.o'
+
+
+def check_rust_assertions():
+    obj = out / obj_name
+    try:
+        kb.rust_assertion_state(obj, paths['llvm-nm'])
+    except ValueError:
+        kb.write_json(dest / 'rust-build-assert-failure.json', {
+            'status': 'BLOCKED (Rust build assertion)', 'hardware': 'UNTESTED',
+            'source': state, 'config_sha256': kb.digest(out / '.config'),
+            'object': kb.artifact_record(obj, dest), 'binding_layouts': kb.layout_state(out)})
+        raise SystemExit('FAIL: Rust compile-time assertion remains unresolved in driver object')
+
 with (dest / 'build.log').open('wb') as log:
     execute(['olddefconfig'], log)
     normalized = (out / '.config').read_text()
@@ -124,21 +140,25 @@ with (dest / 'build.log').open('wb') as log:
     targets_list = [['-j' + str(a.jobs), 'modules_prepare']]
     if a.object:
         targets_list.append(['-j' + str(a.jobs), *a.object])
-    targets_list.append(['-j' + str(a.jobs), obj_name])
+    if not a.platform_only:
+        targets_list.append(['-j' + str(a.jobs), obj_name])
     if a.display:
         targets_list.append(['-j' + str(a.jobs), 'drivers/gpu/drm/apple/iomfb.o', 'drivers/gpu/drm/apple/appledrm.o'])
     if a.full_kernel:
         targets_list.append(['-j' + str(a.jobs), 'Image', 'modules'])
     for targets in targets_list:
         execute(targets, log)
+        if obj_name in targets:
+            check_rust_assertions()
 if a.config and kb.digest(a.config) != a.config_sha256:
     raise SystemExit('FAIL: reviewed input config drift during qualification')
 if kb.source_state(source)[0] != state or kb.tool_state(kb.tool_paths(a)) != tools:
     raise SystemExit('FAIL: source/tool drift during qualification')
 obj = out / obj_name
-header = obj.read_bytes()[:20]
-if header[:6] != b'\x7fELF\x02\x01' or header[18:20] != b'\xb7\x00':
-    raise SystemExit('FAIL: complete crate is not ELF64 little-endian AArch64')
+if not a.platform_only:
+    header = obj.read_bytes()[:20]
+    if header[:6] != b'\x7fELF\x02\x01' or header[18:20] != b'\xb7\x00':
+        raise SystemExit('FAIL: complete crate is not ELF64 little-endian AArch64')
 report = {'status': 'CRATE_COMPILED', 'hardware': 'UNTESTED', 'module_link': 'UNTESTED',
           'source': state, 'tools': tools, 'recipe': {**kb.RECIPE,
               'c_path_remapping': {'source': 'src', 'output': 'build'}},
@@ -146,8 +166,14 @@ report = {'status': 'CRATE_COMPILED', 'hardware': 'UNTESTED', 'module_link': 'UN
           'config_sha256': kb.digest(out / '.config'), 'required_config': required,
           'config_mode': 'exact reviewed input' if a.config else 'generated compile-only profile',
           'layout_policy': 'isolated overlay' if layout_options else 'enabled in committed source',
-          'object': kb.artifact_record(obj, dest), 'binding_layouts': kb.layout_state(out),
+          'binding_layouts': kb.layout_state(out),
           'scope': 'Complete asahi_m4 AArch64 crate; no firmware execution, target boot, or GPU capability claim'}
+if a.platform_only:
+    report.update(status='PLATFORM_OBJECTS_COMPILED',
+                  scope='Requested platform objects and binding prerequisites only; GPU/kernel/module linking untested')
+else:
+    report['object'] = kb.artifact_record(obj, dest)
+    report['rust_build_assert_unresolved'] = False
 if a.object:
     for name in a.object:
         header = (out / name).read_bytes()[:20]

@@ -1,0 +1,2376 @@
+{
+  "schema": 1,
+  "status": "BLOCKED",
+  "deployable": false,
+  "actions": [],
+  "scope": "exact requested-package review pins, not a solved pacman transaction or target mutation",
+  "architecture": "aarch64",
+  "sources": [
+    {
+      "list": "omarchy-base.packages",
+      "sha256": "c92533f1836028d4f68b30cf86744a2fd90ad3fcd4e39ed0dd67f00d4d68336b"
+    },
+    {
+      "list": "omarchy-aarch64.packages",
+      "sha256": "19b28ebec7885ce94e55352a6eeb55a0e862f163afceeb5052b953f13fbe8f65"
+    },
+    {
+      "list": "omarchy-aarch64-apple.packages",
+      "sha256": "0b171083c475c1f3c666910b641bc7974d66fd75c85661cac030700b2054a116"
+    }
+  ],
+  "repositories": [
+    {
+      "name": "omarchy",
+      "sha256": "748e0b4b9278eb755aa4503c2e123ae35a7a8f8c163037d7c0cbeeabb0e38f60",
+      "excluded_metadata_entries": []
+    },
+    {
+      "name": "asahi-alarm",
+      "sha256": "090c55084cbc969bce3cdd925f25d5594f06e45b882e873b6791e2d3efc3c8e8",
+      "excluded_metadata_entries": []
+    },
+    {
+      "name": "core",
+      "sha256": "61085ad583bc8419803d2fb6617ec0fc10cec7138df606e33586e58cedc372c5",
+      "excluded_metadata_entries": []
+    },
+    {
+      "name": "extra",
+      "sha256": "433ab786421ab07d6dca3f8f4e2279bb32cde7d4497171df6ae94c3287e9416e",
+      "excluded_metadata_entries": [
+        {
+          "entry": "findnewest-0.3-4",
+          "reason": "missing desc identity; excluded from candidates"
+        }
+      ]
+    },
+    {
+      "name": "alarm",
+      "sha256": "101b41ca6e76b4ec43c2104ed285e094796855a8bae69ec6ccbf147bdb4ac56b",
+      "excluded_metadata_entries": []
+    },
+    {
+      "name": "aur",
+      "sha256": "263b04baaf9e27f6bc7840455a2bf65bf9b7f9cad0be5efce0ca3650eb634024",
+      "excluded_metadata_entries": []
+    }
+  ],
+  "editor_proof_sha256": "e41d963e85a72781ea8f2d057472801d7f2ce2a45365aab7dfe3f9b5a7033f6f",
+  "vi_execution_sha256": "5e93eac39088a58285e8f8e727f09f7e13b890b98058f2767a6cda73a0dc0d6d",
+  "resolved_requests": [
+    {
+      "requested": "aether",
+      "resolved": "aether",
+      "candidate": {
+        "repository": "omarchy",
+        "name": "aether",
+        "version": "4.32.0-2",
+        "architecture": "aarch64",
+        "filename": "aether-4.32.0-2-aarch64.pkg.tar.zst",
+        "sha256": "7d72a696019af0086fde7d37e8d76ca57f96f625256a9162a84ef1ea9effd245"
+      },
+      "resolution_evidence": "current metadata candidate for the explicitly recorded canonical compatibility mapping; signed alias proof still required"
+    },
+    {
+      "requested": "alsa-utils",
+      "resolved": "alsa-utils",
+      "candidate": {
+        "repository": "extra",
+        "name": "alsa-utils",
+        "version": "1.2.16-1",
+        "architecture": "aarch64",
+        "filename": "alsa-utils-1.2.16-1-aarch64.pkg.tar.xz",
+        "sha256": "ba6875257005961276b969f12cea44ccd828841254b009d9f4a3eba4c44df9d6"
+      },
+      "resolution_evidence": "current metadata candidate for the explicitly recorded canonical compatibility mapping; signed alias proof still required"
+    },
+    {
+      "requested": "asdcontrol",
+      "resolved": "asdcontrol",
+      "candidate": {
+        "repository": "omarchy",
+        "name": "asdcontrol",
+        "version": "1:0.6.0-2",
+        "architecture": "aarch64",
+        "filename": "asdcontrol-1:0.6.0-2-aarch64.pkg.tar.zst",
+        "sha256": "0dd708ccc4ceefdcf233a19460344ec3b809fff24446614d34666562a73737e9"
+      },
+      "resolution_evidence": "current metadata candidate for the explicitly recorded canonical compatibility mapping; signed alias proof still required"
+    },
+    {
+      "requested": "avahi",
+      "resolved": "avahi",
+      "candidate": {
+        "repository": "extra",
+        "name": "avahi",
+        "version": "1:0.9rc5-2",
+        "architecture": "aarch64",
+        "filename": "avahi-1:0.9rc5-2-aarch64.pkg.tar.xz",
+        "sha256": "ef808937dd227d0edca14cd59b6618270f9b7fbedff529eb1df5b89799db2da8"
+      },
+      "resolution_evidence": "current metadata candidate for the explicitly recorded canonical compatibility mapping; signed alias proof still required"
+    },
+    {
+      "requested": "base-devel",
+      "resolved": "base-devel",
+      "candidate": {
+        "repository": "core",
+        "name": "base-devel",
+        "version": "1-2",
+        "architecture": "any",
+        "filename": "base-devel-1-2-any.pkg.tar.xz",
+        "sha256": "b6c4d21b8fbea0d5c31d4aceefa7e9593f433b702c3e419678065a4856ea0b38"
+      },
+      "resolution_evidence": "current metadata candidate for the explicitly recorded canonical compatibility mapping; signed alias proof still required"
+    },
+    {
+      "requested": "bash-completion",
+      "resolved": "bash-completion",
+      "candidate": {
+        "repository": "extra",
+        "name": "bash-completion",
+        "version": "2.18.0-1",
+        "architecture": "any",
+        "filename": "bash-completion-2.18.0-1-any.pkg.tar.xz",
+        "sha256": "82716e3508156d038fe80af85bb4693b6eb80e14fb3766e726d8ff689af0d593"
+      },
+      "resolution_evidence": "current metadata candidate for the explicitly recorded canonical compatibility mapping; signed alias proof still required"
+    },
+    {
+      "requested": "bat",
+      "resolved": "bat",
+      "candidate": {
+        "repository": "extra",
+        "name": "bat",
+        "version": "0.26.1-3",
+        "architecture": "aarch64",
+        "filename": "bat-0.26.1-3-aarch64.pkg.tar.xz",
+        "sha256": "f795fe698a5b48f50994185bc75878838dde831f3a8181db6178dc54557db910"
+      },
+      "resolution_evidence": "current metadata candidate for the explicitly recorded canonical compatibility mapping; signed alias proof still required"
+    },
+    {
+      "requested": "bluez",
+      "resolved": "bluez",
+      "candidate": {
+        "repository": "extra",
+        "name": "bluez",
+        "version": "5.87-2",
+        "architecture": "aarch64",
+        "filename": "bluez-5.87-2-aarch64.pkg.tar.xz",
+        "sha256": "432c08e4a54eadc521b8dac10e4e4031e3fa4a4e2fd4eb4ac947ca89bc58cd40"
+      },
+      "resolution_evidence": "current metadata candidate for the explicitly recorded canonical compatibility mapping; signed alias proof still required"
+    },
+    {
+      "requested": "bluez-tools",
+      "resolved": "bluez-tools",
+      "candidate": {
+        "repository": "extra",
+        "name": "bluez-tools",
+        "version": "0.2.0-6",
+        "architecture": "aarch64",
+        "filename": "bluez-tools-0.2.0-6-aarch64.pkg.tar.xz",
+        "sha256": "293c2a9cefc23ca18e4ef373b04f838a383af5704883f2647a85c60d7f1250ab"
+      },
+      "resolution_evidence": "current metadata candidate for the explicitly recorded canonical compatibility mapping; signed alias proof still required"
+    },
+    {
+      "requested": "bluez-utils",
+      "resolved": "bluez-utils",
+      "candidate": {
+        "repository": "extra",
+        "name": "bluez-utils",
+        "version": "5.87-2",
+        "architecture": "aarch64",
+        "filename": "bluez-utils-5.87-2-aarch64.pkg.tar.xz",
+        "sha256": "87bcd79e63ad7867a5ca19fa53b7b7989efc90657ddafb67c82a6359a2429d3b"
+      },
+      "resolution_evidence": "current metadata candidate for the explicitly recorded canonical compatibility mapping; signed alias proof still required"
+    },
+    {
+      "requested": "bolt",
+      "resolved": "bolt",
+      "candidate": {
+        "repository": "extra",
+        "name": "bolt",
+        "version": "0.9.11-3",
+        "architecture": "aarch64",
+        "filename": "bolt-0.9.11-3-aarch64.pkg.tar.xz",
+        "sha256": "1ff10615a51a4b427af1599770c587dba1400e2ca0ceaecb11598f415b1d5afd"
+      },
+      "resolution_evidence": "current metadata candidate for the explicitly recorded canonical compatibility mapping; signed alias proof still required"
+    },
+    {
+      "requested": "brightnessctl",
+      "resolved": "brightnessctl",
+      "candidate": {
+        "repository": "extra",
+        "name": "brightnessctl",
+        "version": "0.5.1-3",
+        "architecture": "aarch64",
+        "filename": "brightnessctl-0.5.1-3-aarch64.pkg.tar.xz",
+        "sha256": "f2a4f173cc826dc2917402e4ea40dac4ae0d44557dfdd6a59a2e1a45b88edb48"
+      },
+      "resolution_evidence": "current metadata candidate for the explicitly recorded canonical compatibility mapping; signed alias proof still required"
+    },
+    {
+      "requested": "btop",
+      "resolved": "btop",
+      "candidate": {
+        "repository": "extra",
+        "name": "btop",
+        "version": "1.4.7-1",
+        "architecture": "aarch64",
+        "filename": "btop-1.4.7-1-aarch64.pkg.tar.xz",
+        "sha256": "3b936e337ddb726c2606e229bdbe77cbdd0d099f83ac88f28dc90e44edeb8007"
+      },
+      "resolution_evidence": "current metadata candidate for the explicitly recorded canonical compatibility mapping; signed alias proof still required"
+    },
+    {
+      "requested": "chromium",
+      "resolved": "chromium",
+      "candidate": {
+        "repository": "extra",
+        "name": "chromium",
+        "version": "153.0.8010.36-1",
+        "architecture": "aarch64",
+        "filename": "chromium-153.0.8010.36-1-aarch64.pkg.tar.xz",
+        "sha256": "9ce0132a90ab76641e79a8fc07207fde472daab51a1a2702e982f96a35dcf228"
+      },
+      "resolution_evidence": "current metadata candidate for the explicitly recorded canonical compatibility mapping; signed alias proof still required"
+    },
+    {
+      "requested": "cliamp",
+      "resolved": "cliamp",
+      "candidate": {
+        "repository": "omarchy",
+        "name": "cliamp",
+        "version": "2.3.0-3",
+        "architecture": "aarch64",
+        "filename": "cliamp-2.3.0-3-aarch64.pkg.tar.zst",
+        "sha256": "05b1b5d7caf9a1ff70d9c04f7b9d2f0e044f72b09d6e300d10279b837943ef7a"
+      },
+      "resolution_evidence": "current metadata candidate for the explicitly recorded canonical compatibility mapping; signed alias proof still required"
+    },
+    {
+      "requested": "cups",
+      "resolved": "cups",
+      "candidate": {
+        "repository": "extra",
+        "name": "cups",
+        "version": "2:2.4.20-1",
+        "architecture": "aarch64",
+        "filename": "cups-2:2.4.20-1-aarch64.pkg.tar.xz",
+        "sha256": "81353a84719ffc851659006e2c858d96ce24b20f3e225e22495ac1a7d802969f"
+      },
+      "resolution_evidence": "current metadata candidate for the explicitly recorded canonical compatibility mapping; signed alias proof still required"
+    },
+    {
+      "requested": "cups-filters",
+      "resolved": "cups-filters",
+      "candidate": {
+        "repository": "extra",
+        "name": "cups-filters",
+        "version": "2.0.1-3",
+        "architecture": "aarch64",
+        "filename": "cups-filters-2.0.1-3-aarch64.pkg.tar.xz",
+        "sha256": "f700e57990c2c8d7be5e4e0d2c3e1015fab980098ee32c565d2ac4ae628a89dc"
+      },
+      "resolution_evidence": "current metadata candidate for the explicitly recorded canonical compatibility mapping; signed alias proof still required"
+    },
+    {
+      "requested": "cups-pk-helper",
+      "resolved": "cups-pk-helper",
+      "candidate": {
+        "repository": "extra",
+        "name": "cups-pk-helper",
+        "version": "0.2.7-2",
+        "architecture": "aarch64",
+        "filename": "cups-pk-helper-0.2.7-2-aarch64.pkg.tar.xz",
+        "sha256": "df8e68590fc2a4e0ab4eaea39b09245e0eb9ab3d4af7187ab2653d4e26acfcfd"
+      },
+      "resolution_evidence": "current metadata candidate for the explicitly recorded canonical compatibility mapping; signed alias proof still required"
+    },
+    {
+      "requested": "ddcutil",
+      "resolved": "ddcutil",
+      "candidate": {
+        "repository": "extra",
+        "name": "ddcutil",
+        "version": "3.0.2-1",
+        "architecture": "aarch64",
+        "filename": "ddcutil-3.0.2-1-aarch64.pkg.tar.xz",
+        "sha256": "8f5d3c32263b1f97778cd209264d65a5b6e02009202b36b7ca8dbc90bd138dfb"
+      },
+      "resolution_evidence": "current metadata candidate for the explicitly recorded canonical compatibility mapping; signed alias proof still required"
+    },
+    {
+      "requested": "disktree-bin",
+      "resolved": "disktree-bin",
+      "candidate": {
+        "repository": "omarchy",
+        "name": "disktree-bin",
+        "version": "0.11.0-3",
+        "architecture": "aarch64",
+        "filename": "disktree-bin-0.11.0-3-aarch64.pkg.tar.zst",
+        "sha256": "48863e4a0e3918ce8cd7560965dd8806a8830804306cf5e3f41a18c6541c9c9c"
+      },
+      "resolution_evidence": "current metadata candidate for the explicitly recorded canonical compatibility mapping; signed alias proof still required"
+    },
+    {
+      "requested": "docker",
+      "resolved": "docker",
+      "candidate": {
+        "repository": "extra",
+        "name": "docker",
+        "version": "1:29.9.1-1",
+        "architecture": "aarch64",
+        "filename": "docker-1:29.9.1-1-aarch64.pkg.tar.xz",
+        "sha256": "251adcdad9d3080109d6f611d0308863fedaab67595e4dc16f61aaed113f3a83"
+      },
+      "resolution_evidence": "current metadata candidate for the explicitly recorded canonical compatibility mapping; signed alias proof still required"
+    },
+    {
+      "requested": "docker-buildx",
+      "resolved": "docker-buildx",
+      "candidate": {
+        "repository": "extra",
+        "name": "docker-buildx",
+        "version": "0.38.0-1",
+        "architecture": "aarch64",
+        "filename": "docker-buildx-0.38.0-1-aarch64.pkg.tar.xz",
+        "sha256": "bf52258748b7d162b761f09f5e70265e35734268ccf36d49446d2831de340b03"
+      },
+      "resolution_evidence": "current metadata candidate for the explicitly recorded canonical compatibility mapping; signed alias proof still required"
+    },
+    {
+      "requested": "docker-compose",
+      "resolved": "docker-compose",
+      "candidate": {
+        "repository": "extra",
+        "name": "docker-compose",
+        "version": "5.6.0-1",
+        "architecture": "aarch64",
+        "filename": "docker-compose-5.6.0-1-aarch64.pkg.tar.xz",
+        "sha256": "fe915128f308326cab724b73555df21d00b8797f75be6f5e360c7faa84594964"
+      },
+      "resolution_evidence": "current metadata candidate for the explicitly recorded canonical compatibility mapping; signed alias proof still required"
+    },
+    {
+      "requested": "dosfstools",
+      "resolved": "dosfstools",
+      "candidate": {
+        "repository": "core",
+        "name": "dosfstools",
+        "version": "4.2-5",
+        "architecture": "aarch64",
+        "filename": "dosfstools-4.2-5-aarch64.pkg.tar.xz",
+        "sha256": "c41120c6c89469f259d5248ea2ed0a7bea19f8a38d493682f7ff82037a862c21"
+      },
+      "resolution_evidence": "current metadata candidate for the explicitly recorded canonical compatibility mapping; signed alias proof still required"
+    },
+    {
+      "requested": "dotnet-runtime",
+      "resolved": "dotnet-runtime",
+      "candidate": {
+        "repository": "omarchy",
+        "name": "dotnet-runtime-bin",
+        "version": "10.0.402-1",
+        "architecture": "aarch64",
+        "filename": "dotnet-runtime-bin-10.0.402-1-aarch64.pkg.tar.zst",
+        "sha256": "899ba64a276beaac92ca22ba09d99558b2f5c0e4d7e0d9e6fd7c135fa56ffab2"
+      },
+      "resolution_evidence": "current metadata candidate for the explicitly recorded canonical compatibility mapping; signed alias proof still required"
+    },
+    {
+      "requested": "evince",
+      "resolved": "evince",
+      "candidate": {
+        "repository": "extra",
+        "name": "evince",
+        "version": "1:48.4-2",
+        "architecture": "aarch64",
+        "filename": "evince-1:48.4-2-aarch64.pkg.tar.xz",
+        "sha256": "37640e038a92bf1bcce42e08b871f859dc7dc69bef1748a21f999a3c3404a9ff"
+      },
+      "resolution_evidence": "current metadata candidate for the explicitly recorded canonical compatibility mapping; signed alias proof still required"
+    },
+    {
+      "requested": "exfatprogs",
+      "resolved": "exfatprogs",
+      "candidate": {
+        "repository": "extra",
+        "name": "exfatprogs",
+        "version": "1.4.3-1",
+        "architecture": "aarch64",
+        "filename": "exfatprogs-1.4.3-1-aarch64.pkg.tar.xz",
+        "sha256": "6a7d316912d41a351c8be60f28f113c832f1ebabf59cf7ae0d7c3ae889636496"
+      },
+      "resolution_evidence": "current metadata candidate for the explicitly recorded canonical compatibility mapping; signed alias proof still required"
+    },
+    {
+      "requested": "expac",
+      "resolved": "expac",
+      "candidate": {
+        "repository": "extra",
+        "name": "expac",
+        "version": "10-13",
+        "architecture": "aarch64",
+        "filename": "expac-10-13-aarch64.pkg.tar.xz",
+        "sha256": "a232c0147ae36876841bf4f2cb71fcf6ab6b7f515ed9ec6afcdf20bb82b70e74"
+      },
+      "resolution_evidence": "current metadata candidate for the explicitly recorded canonical compatibility mapping; signed alias proof still required"
+    },
+    {
+      "requested": "eza",
+      "resolved": "eza",
+      "candidate": {
+        "repository": "extra",
+        "name": "eza",
+        "version": "0.23.5-2",
+        "architecture": "aarch64",
+        "filename": "eza-0.23.5-2-aarch64.pkg.tar.xz",
+        "sha256": "007328c2870c274b6a2124e07a71cfca80ac33006fa4edd36b3abe78b8f1516c"
+      },
+      "resolution_evidence": "current metadata candidate for the explicitly recorded canonical compatibility mapping; signed alias proof still required"
+    },
+    {
+      "requested": "fakeroot",
+      "resolved": "fakeroot",
+      "candidate": {
+        "repository": "core",
+        "name": "fakeroot",
+        "version": "1:1.37.2-3",
+        "architecture": "aarch64",
+        "filename": "fakeroot-1:1.37.2-3-aarch64.pkg.tar.xz",
+        "sha256": "ae7a1e0df8abd196f5d54f8206db363e3f9ad0b7157fca026729698ccf866ad0"
+      },
+      "resolution_evidence": "current metadata candidate for the explicitly recorded canonical compatibility mapping; signed alias proof still required"
+    },
+    {
+      "requested": "fastfetch",
+      "resolved": "fastfetch",
+      "candidate": {
+        "repository": "extra",
+        "name": "fastfetch",
+        "version": "2.70.0-1",
+        "architecture": "aarch64",
+        "filename": "fastfetch-2.70.0-1-aarch64.pkg.tar.xz",
+        "sha256": "03f0b073631e08e1fd93041907a36bb5d9a8caa83095262980a394017dd3eeb1"
+      },
+      "resolution_evidence": "current metadata candidate for the explicitly recorded canonical compatibility mapping; signed alias proof still required"
+    },
+    {
+      "requested": "fcitx5",
+      "resolved": "fcitx5",
+      "candidate": {
+        "repository": "extra",
+        "name": "fcitx5",
+        "version": "5.1.23-1",
+        "architecture": "aarch64",
+        "filename": "fcitx5-5.1.23-1-aarch64.pkg.tar.xz",
+        "sha256": "193ed425324cc6fa52a8a718aee9f3060b9d45b36312693e42507fd028510bf8"
+      },
+      "resolution_evidence": "current metadata candidate for the explicitly recorded canonical compatibility mapping; signed alias proof still required"
+    },
+    {
+      "requested": "fcitx5-chewing",
+      "resolved": "fcitx5-chewing",
+      "candidate": {
+        "repository": "extra",
+        "name": "fcitx5-chewing",
+        "version": "5.1.13-1",
+        "architecture": "aarch64",
+        "filename": "fcitx5-chewing-5.1.13-1-aarch64.pkg.tar.xz",
+        "sha256": "9e99dcc87253420fbe44116f71faee9722f0a6479f38de439051409813ebbc42"
+      },
+      "resolution_evidence": "current metadata candidate for the explicitly recorded canonical compatibility mapping; signed alias proof still required"
+    },
+    {
+      "requested": "fcitx5-chinese-addons",
+      "resolved": "fcitx5-chinese-addons",
+      "candidate": {
+        "repository": "extra",
+        "name": "fcitx5-chinese-addons",
+        "version": "5.1.15-2",
+        "architecture": "aarch64",
+        "filename": "fcitx5-chinese-addons-5.1.15-2-aarch64.pkg.tar.xz",
+        "sha256": "a186eb547f8c9c30d2ec902f7d3d79758d8ddefeab16bac099095c980ec785cf"
+      },
+      "resolution_evidence": "current metadata candidate for the explicitly recorded canonical compatibility mapping; signed alias proof still required"
+    },
+    {
+      "requested": "fcitx5-gtk",
+      "resolved": "fcitx5-gtk",
+      "candidate": {
+        "repository": "extra",
+        "name": "fcitx5-gtk",
+        "version": "5.1.7-1",
+        "architecture": "aarch64",
+        "filename": "fcitx5-gtk-5.1.7-1-aarch64.pkg.tar.xz",
+        "sha256": "385425465f3d44fb92d46ffc522b00d96ab31bdb342f94b48a25f946fd140dab"
+      },
+      "resolution_evidence": "current metadata candidate for the explicitly recorded canonical compatibility mapping; signed alias proof still required"
+    },
+    {
+      "requested": "fcitx5-hangul",
+      "resolved": "fcitx5-hangul",
+      "candidate": {
+        "repository": "extra",
+        "name": "fcitx5-hangul",
+        "version": "5.1.11-1",
+        "architecture": "aarch64",
+        "filename": "fcitx5-hangul-5.1.11-1-aarch64.pkg.tar.xz",
+        "sha256": "27c2f6b871b1af910162cbbba4fc4b67b2cb380d5ffe29ab035aed4e886c8647"
+      },
+      "resolution_evidence": "current metadata candidate for the explicitly recorded canonical compatibility mapping; signed alias proof still required"
+    },
+    {
+      "requested": "fcitx5-mozc",
+      "resolved": "fcitx5-mozc",
+      "candidate": {
+        "repository": "extra",
+        "name": "fcitx5-mozc",
+        "version": "3.35.6354.2-1",
+        "architecture": "aarch64",
+        "filename": "fcitx5-mozc-3.35.6354.2-1-aarch64.pkg.tar.xz",
+        "sha256": "334ecc42bd4de5d4ee341fbc4db8efbc7de645d91aeadc7a37d25ae7ae38be1a"
+      },
+      "resolution_evidence": "current metadata candidate for the explicitly recorded canonical compatibility mapping; signed alias proof still required"
+    },
+    {
+      "requested": "fcitx5-qt",
+      "resolved": "fcitx5-qt",
+      "candidate": {
+        "repository": "extra",
+        "name": "fcitx5-qt",
+        "version": "5.1.16-2",
+        "architecture": "aarch64",
+        "filename": "fcitx5-qt-5.1.16-2-aarch64.pkg.tar.xz",
+        "sha256": "d4f5e71d02eef007b6c85d82abcedd3269852a4c6ce8cac25e5de935135f2aff"
+      },
+      "resolution_evidence": "current metadata candidate for the explicitly recorded canonical compatibility mapping; signed alias proof still required"
+    },
+    {
+      "requested": "fcitx5-table-extra",
+      "resolved": "fcitx5-table-extra",
+      "candidate": {
+        "repository": "extra",
+        "name": "fcitx5-table-extra",
+        "version": "5.1.13-1",
+        "architecture": "any",
+        "filename": "fcitx5-table-extra-5.1.13-1-any.pkg.tar.xz",
+        "sha256": "7eceda31f97a12248fe41e14b9a652de187f9fc29ed74e31c0298c12d7775460"
+      },
+      "resolution_evidence": "current metadata candidate for the explicitly recorded canonical compatibility mapping; signed alias proof still required"
+    },
+    {
+      "requested": "fd",
+      "resolved": "fd",
+      "candidate": {
+        "repository": "extra",
+        "name": "fd",
+        "version": "10.5.0-3",
+        "architecture": "aarch64",
+        "filename": "fd-10.5.0-3-aarch64.pkg.tar.xz",
+        "sha256": "2bfd85ad6f6331f5537c7afbf3ff18440e2dd71442707e2be1ec4a8bd4787d7d"
+      },
+      "resolution_evidence": "current metadata candidate for the explicitly recorded canonical compatibility mapping; signed alias proof still required"
+    },
+    {
+      "requested": "ffmpeg",
+      "resolved": "ffmpeg",
+      "candidate": {
+        "repository": "extra",
+        "name": "ffmpeg",
+        "version": "2:9.0.2-2",
+        "architecture": "aarch64",
+        "filename": "ffmpeg-2:9.0.2-2-aarch64.pkg.tar.xz",
+        "sha256": "086828ab8ceb02bcc94fcaf8cecfe3e78c62f3b7c41026e5b712dff57992c832"
+      },
+      "resolution_evidence": "current metadata candidate for the explicitly recorded canonical compatibility mapping; signed alias proof still required"
+    },
+    {
+      "requested": "ffmpegthumbnailer",
+      "resolved": "ffmpegthumbnailer",
+      "candidate": {
+        "repository": "extra",
+        "name": "ffmpegthumbnailer",
+        "version": "2.3.1-1",
+        "architecture": "aarch64",
+        "filename": "ffmpegthumbnailer-2.3.1-1-aarch64.pkg.tar.xz",
+        "sha256": "1a56f501c889a02601e22bcddf726b91d748355a7a11450832e86c2f1de9d22d"
+      },
+      "resolution_evidence": "current metadata candidate for the explicitly recorded canonical compatibility mapping; signed alias proof still required"
+    },
+    {
+      "requested": "fontconfig",
+      "resolved": "fontconfig",
+      "candidate": {
+        "repository": "extra",
+        "name": "fontconfig",
+        "version": "2:2.18.3-2",
+        "architecture": "aarch64",
+        "filename": "fontconfig-2:2.18.3-2-aarch64.pkg.tar.xz",
+        "sha256": "8f3bf0609eb73b15526179357e139441bf1a9a502c3b948f0925e9b1b586129a"
+      },
+      "resolution_evidence": "current metadata candidate for the explicitly recorded canonical compatibility mapping; signed alias proof still required"
+    },
+    {
+      "requested": "foot",
+      "resolved": "foot",
+      "candidate": {
+        "repository": "extra",
+        "name": "foot",
+        "version": "1.28.0-2",
+        "architecture": "aarch64",
+        "filename": "foot-1.28.0-2-aarch64.pkg.tar.xz",
+        "sha256": "f941e7955c4ac814e99c3f2f91179c64c9de0c8fe26e3ab341e911e8cdbd83b6"
+      },
+      "resolution_evidence": "current metadata candidate for the explicitly recorded canonical compatibility mapping; signed alias proof still required"
+    },
+    {
+      "requested": "fzf",
+      "resolved": "fzf",
+      "candidate": {
+        "repository": "extra",
+        "name": "fzf",
+        "version": "0.74.5-1",
+        "architecture": "aarch64",
+        "filename": "fzf-0.74.5-1-aarch64.pkg.tar.xz",
+        "sha256": "aff23702325a7160d08b34f4022790322af47ec8c18d04204a1d27ac361eeb09"
+      },
+      "resolution_evidence": "current metadata candidate for the explicitly recorded canonical compatibility mapping; signed alias proof still required"
+    },
+    {
+      "requested": "git",
+      "resolved": "git",
+      "candidate": {
+        "repository": "extra",
+        "name": "git",
+        "version": "2.56.0-1",
+        "architecture": "aarch64",
+        "filename": "git-2.56.0-1-aarch64.pkg.tar.xz",
+        "sha256": "b152a20edb215e98cada4b2dfbd02a9e925bda0b2de6ac1441e9e60b6698d3b5"
+      },
+      "resolution_evidence": "current metadata candidate for the explicitly recorded canonical compatibility mapping; signed alias proof still required"
+    },
+    {
+      "requested": "gliff",
+      "resolved": "gliff",
+      "candidate": {
+        "repository": "omarchy",
+        "name": "gliff",
+        "version": "0.4.0-1",
+        "architecture": "aarch64",
+        "filename": "gliff-0.4.0-1-aarch64.pkg.tar.zst",
+        "sha256": "6dbd938c9d9691711c13d63261745f296b34767cf21ad819ee0f3d5b59170b1f"
+      },
+      "resolution_evidence": "current metadata candidate for the explicitly recorded canonical compatibility mapping; signed alias proof still required"
+    },
+    {
+      "requested": "gnome-keyring",
+      "resolved": "gnome-keyring",
+      "candidate": {
+        "repository": "extra",
+        "name": "gnome-keyring",
+        "version": "1:51.1-1",
+        "architecture": "aarch64",
+        "filename": "gnome-keyring-1:51.1-1-aarch64.pkg.tar.xz",
+        "sha256": "b452dbe568dbdf7661f9239ec3cf54a157c0f18b750a0f5e4393c5b8ee3dfc22"
+      },
+      "resolution_evidence": "current metadata candidate for the explicitly recorded canonical compatibility mapping; signed alias proof still required"
+    },
+    {
+      "requested": "gnome-themes-extra",
+      "resolved": "gnome-themes-extra",
+      "candidate": {
+        "repository": "extra",
+        "name": "gnome-themes-extra",
+        "version": "1:3.28-1",
+        "architecture": "any",
+        "filename": "gnome-themes-extra-1:3.28-1-any.pkg.tar.xz",
+        "sha256": "e776b2489af4ace17ba4b343b51892cfbc8babde8e03d5a569b68a0b0e65fd01"
+      },
+      "resolution_evidence": "current metadata candidate for the explicitly recorded canonical compatibility mapping; signed alias proof still required"
+    },
+    {
+      "requested": "grim",
+      "resolved": "grim",
+      "candidate": {
+        "repository": "extra",
+        "name": "grim",
+        "version": "1.5.0-2",
+        "architecture": "aarch64",
+        "filename": "grim-1.5.0-2-aarch64.pkg.tar.xz",
+        "sha256": "d4acbdb9a4001587f6edb5f8019908cc8ea3290926862509b445b46286d24b77"
+      },
+      "resolution_evidence": "current metadata candidate for the explicitly recorded canonical compatibility mapping; signed alias proof still required"
+    },
+    {
+      "requested": "gpu-screen-recorder",
+      "resolved": "gpu-screen-recorder",
+      "candidate": {
+        "repository": "extra",
+        "name": "gpu-screen-recorder",
+        "version": "6.1.4-1",
+        "architecture": "aarch64",
+        "filename": "gpu-screen-recorder-6.1.4-1-aarch64.pkg.tar.xz",
+        "sha256": "fdd94e7d29118e367ef9864416517a0a74cf31f6da687a69940e787745f8a999"
+      },
+      "resolution_evidence": "current metadata candidate for the explicitly recorded canonical compatibility mapping; signed alias proof still required"
+    },
+    {
+      "requested": "gum",
+      "resolved": "gum",
+      "candidate": {
+        "repository": "extra",
+        "name": "gum",
+        "version": "2.0.2-1",
+        "architecture": "aarch64",
+        "filename": "gum-2.0.2-1-aarch64.pkg.tar.xz",
+        "sha256": "fa8784c1bf3b740fcd68df559fae4ba2ff44cf9008b5b27a1777890118f71322"
+      },
+      "resolution_evidence": "current metadata candidate for the explicitly recorded canonical compatibility mapping; signed alias proof still required"
+    },
+    {
+      "requested": "gvfs-mtp",
+      "resolved": "gvfs-mtp",
+      "candidate": {
+        "repository": "extra",
+        "name": "gvfs-mtp",
+        "version": "1.62.0-3",
+        "architecture": "aarch64",
+        "filename": "gvfs-mtp-1.62.0-3-aarch64.pkg.tar.xz",
+        "sha256": "a7064adaa665cfaac073505e52b0ef748725d78ba8aea177ca35a2235620bb02"
+      },
+      "resolution_evidence": "current metadata candidate for the explicitly recorded canonical compatibility mapping; signed alias proof still required"
+    },
+    {
+      "requested": "gvfs-nfs",
+      "resolved": "gvfs-nfs",
+      "candidate": {
+        "repository": "extra",
+        "name": "gvfs-nfs",
+        "version": "1.62.0-3",
+        "architecture": "aarch64",
+        "filename": "gvfs-nfs-1.62.0-3-aarch64.pkg.tar.xz",
+        "sha256": "df0a1c5b77d44f31d434f94c1faec337c4e6e6b49b677b4eccb8f2908717b617"
+      },
+      "resolution_evidence": "current metadata candidate for the explicitly recorded canonical compatibility mapping; signed alias proof still required"
+    },
+    {
+      "requested": "gvfs-smb",
+      "resolved": "gvfs-smb",
+      "candidate": {
+        "repository": "extra",
+        "name": "gvfs-smb",
+        "version": "1.62.0-3",
+        "architecture": "aarch64",
+        "filename": "gvfs-smb-1.62.0-3-aarch64.pkg.tar.xz",
+        "sha256": "b7fb590eebb0eabe6466d41dea3066f708a2473c413bf4d459e967799e2e7ed3"
+      },
+      "resolution_evidence": "current metadata candidate for the explicitly recorded canonical compatibility mapping; signed alias proof still required"
+    },
+    {
+      "requested": "herdr",
+      "resolved": "herdr",
+      "candidate": {
+        "repository": "omarchy",
+        "name": "herdr",
+        "version": "0.9.1-2",
+        "architecture": "aarch64",
+        "filename": "herdr-0.9.1-2-aarch64.pkg.tar.zst",
+        "sha256": "5a41e119f34c8d6d187328097fceaf54738587618a26ce76f417d958d73f866c"
+      },
+      "resolution_evidence": "current metadata candidate for the explicitly recorded canonical compatibility mapping; signed alias proof still required"
+    },
+    {
+      "requested": "hype",
+      "resolved": "hype",
+      "candidate": {
+        "repository": "omarchy",
+        "name": "hype",
+        "version": "0.6.0-1",
+        "architecture": "aarch64",
+        "filename": "hype-0.6.0-1-aarch64.pkg.tar.zst",
+        "sha256": "8135e21c1cbc5660a186bfbb2264017c5367671a03d157d329f4988d00d67945"
+      },
+      "resolution_evidence": "current metadata candidate for the explicitly recorded canonical compatibility mapping; signed alias proof still required"
+    },
+    {
+      "requested": "hyprland",
+      "resolved": "hyprland",
+      "candidate": {
+        "repository": "omarchy",
+        "name": "hyprland",
+        "version": "0.56.2-7",
+        "architecture": "aarch64",
+        "filename": "hyprland-0.56.2-7-aarch64.pkg.tar.zst",
+        "sha256": "e803467584537b9e1c5dfdac80b71c2e4bb4829ed23c084c143dcfe93f1dbce5"
+      },
+      "resolution_evidence": "current metadata candidate for the explicitly recorded canonical compatibility mapping; signed alias proof still required"
+    },
+    {
+      "requested": "hyprland-guiutils",
+      "resolved": "hyprland-guiutils",
+      "candidate": {
+        "repository": "extra",
+        "name": "hyprland-guiutils",
+        "version": "0.2.2-4",
+        "architecture": "aarch64",
+        "filename": "hyprland-guiutils-0.2.2-4-aarch64.pkg.tar.xz",
+        "sha256": "cd0aae46488b7948d7d4fb10adca67b00987f93279a0fad3131de01e3c550362"
+      },
+      "resolution_evidence": "current metadata candidate for the explicitly recorded canonical compatibility mapping; signed alias proof still required"
+    },
+    {
+      "requested": "hyprland-preview-share-picker",
+      "resolved": "hyprland-preview-share-picker",
+      "candidate": {
+        "repository": "omarchy",
+        "name": "hyprland-preview-share-picker",
+        "version": "0.2.1-3",
+        "architecture": "aarch64",
+        "filename": "hyprland-preview-share-picker-0.2.1-3-aarch64.pkg.tar.zst",
+        "sha256": "ab3202f26a387fa1a0901df81eddf890dcae20765d0e6cadc7dc811019c3be76"
+      },
+      "resolution_evidence": "current metadata candidate for the explicitly recorded canonical compatibility mapping; signed alias proof still required"
+    },
+    {
+      "requested": "hyprpicker",
+      "resolved": "hyprpicker",
+      "candidate": {
+        "repository": "extra",
+        "name": "hyprpicker",
+        "version": "0.4.7-4",
+        "architecture": "aarch64",
+        "filename": "hyprpicker-0.4.7-4-aarch64.pkg.tar.xz",
+        "sha256": "0a5b8792cd28e91b08f3a37a1b26ca4588c722e0e9d5250effe0f435a793bccf"
+      },
+      "resolution_evidence": "current metadata candidate for the explicitly recorded canonical compatibility mapping; signed alias proof still required"
+    },
+    {
+      "requested": "hyprsunset",
+      "resolved": "hyprsunset",
+      "candidate": {
+        "repository": "extra",
+        "name": "hyprsunset",
+        "version": "0.4.0-3",
+        "architecture": "aarch64",
+        "filename": "hyprsunset-0.4.0-3-aarch64.pkg.tar.xz",
+        "sha256": "115707a577a76ed8b0b24e47c3dae86d85faa80c605b7708e798d3ca5b6b9067"
+      },
+      "resolution_evidence": "current metadata candidate for the explicitly recorded canonical compatibility mapping; signed alias proof still required"
+    },
+    {
+      "requested": "imagemagick",
+      "resolved": "imagemagick",
+      "candidate": {
+        "repository": "extra",
+        "name": "imagemagick",
+        "version": "7.1.2.34-2",
+        "architecture": "aarch64",
+        "filename": "imagemagick-7.1.2.34-2-aarch64.pkg.tar.xz",
+        "sha256": "7a3975f8b7838e8c5e383a3e00ffce58692e452213f3f600cab0767714dd5888"
+      },
+      "resolution_evidence": "current metadata candidate for the explicitly recorded canonical compatibility mapping; signed alias proof still required"
+    },
+    {
+      "requested": "imv",
+      "resolved": "imv",
+      "candidate": {
+        "repository": "extra",
+        "name": "imv",
+        "version": "5.0.1-2",
+        "architecture": "aarch64",
+        "filename": "imv-5.0.1-2-aarch64.pkg.tar.xz",
+        "sha256": "4fa4de032dd0bc6cdce9f30db2f182fb5f6d7099a3317639153515aa003a53ee"
+      },
+      "resolution_evidence": "current metadata candidate for the explicitly recorded canonical compatibility mapping; signed alias proof still required"
+    },
+    {
+      "requested": "inetutils",
+      "resolved": "inetutils",
+      "candidate": {
+        "repository": "core",
+        "name": "inetutils",
+        "version": "2.8-1",
+        "architecture": "aarch64",
+        "filename": "inetutils-2.8-1-aarch64.pkg.tar.xz",
+        "sha256": "1a9411fd81582e4ae004ea2fb813742ce9cffd0a93565645c52143b9a2777729"
+      },
+      "resolution_evidence": "current metadata candidate for the explicitly recorded canonical compatibility mapping; signed alias proof still required"
+    },
+    {
+      "requested": "inotify-tools",
+      "resolved": "inotify-tools",
+      "candidate": {
+        "repository": "extra",
+        "name": "inotify-tools",
+        "version": "4.26.270-1",
+        "architecture": "aarch64",
+        "filename": "inotify-tools-4.26.270-1-aarch64.pkg.tar.xz",
+        "sha256": "9df157eeb79c0bd43951881e82cefb4f12ff62d51250357fe2badf570bb1aef2"
+      },
+      "resolution_evidence": "current metadata candidate for the explicitly recorded canonical compatibility mapping; signed alias proof still required"
+    },
+    {
+      "requested": "inxi",
+      "resolved": "inxi",
+      "candidate": {
+        "repository": "extra",
+        "name": "inxi",
+        "version": "3.3.41.1-1",
+        "architecture": "any",
+        "filename": "inxi-3.3.41.1-1-any.pkg.tar.xz",
+        "sha256": "9e27869ad78593f9b709d45deff7213cbb21ba8e70f2e8e8b5babca588caaaf5"
+      },
+      "resolution_evidence": "current metadata candidate for the explicitly recorded canonical compatibility mapping; signed alias proof still required"
+    },
+    {
+      "requested": "networkmanager",
+      "resolved": "networkmanager",
+      "candidate": {
+        "repository": "extra",
+        "name": "networkmanager",
+        "version": "1.58.1-2",
+        "architecture": "aarch64",
+        "filename": "networkmanager-1.58.1-2-aarch64.pkg.tar.xz",
+        "sha256": "f33cae0f6f19f33eea879cec1db3fe7c90d0b80931e8f5b67b9391adf7185754"
+      },
+      "resolution_evidence": "current metadata candidate for the explicitly recorded canonical compatibility mapping; signed alias proof still required"
+    },
+    {
+      "requested": "jq",
+      "resolved": "jq",
+      "candidate": {
+        "repository": "extra",
+        "name": "jq",
+        "version": "1.8.2-1",
+        "architecture": "aarch64",
+        "filename": "jq-1.8.2-1-aarch64.pkg.tar.xz",
+        "sha256": "a785a170c28f88b03c1190bd8898c4b2f2ca97839d5b277396e86f2cb107041a"
+      },
+      "resolution_evidence": "current metadata candidate for the explicitly recorded canonical compatibility mapping; signed alias proof still required"
+    },
+    {
+      "requested": "kernel-modules-hook",
+      "resolved": "kernel-modules-hook",
+      "candidate": {
+        "repository": "extra",
+        "name": "kernel-modules-hook",
+        "version": "0.1.7-3",
+        "architecture": "any",
+        "filename": "kernel-modules-hook-0.1.7-3-any.pkg.tar.xz",
+        "sha256": "4afbb26c3b3013d697975c842fe621a987ae5873b9cd73d4a03c33aac754d612"
+      },
+      "resolution_evidence": "current metadata candidate for the explicitly recorded canonical compatibility mapping; signed alias proof still required"
+    },
+    {
+      "requested": "lazygit",
+      "resolved": "lazygit",
+      "candidate": {
+        "repository": "extra",
+        "name": "lazygit",
+        "version": "0.66.2-1",
+        "architecture": "aarch64",
+        "filename": "lazygit-0.66.2-1-aarch64.pkg.tar.xz",
+        "sha256": "7b44b6b8ca00f17bceade492fdd2ea4f42572020bc852b785259a0b06f1002f3"
+      },
+      "resolution_evidence": "current metadata candidate for the explicitly recorded canonical compatibility mapping; signed alias proof still required"
+    },
+    {
+      "requested": "less",
+      "resolved": "less",
+      "candidate": {
+        "repository": "core",
+        "name": "less",
+        "version": "1:710-1",
+        "architecture": "aarch64",
+        "filename": "less-1:710-1-aarch64.pkg.tar.xz",
+        "sha256": "8e1d4cbecf6d2ae734cfc1c5495367c0a9245f92dfd2bc03d4d0ab14f8b26ff2"
+      },
+      "resolution_evidence": "current metadata candidate for the explicitly recorded canonical compatibility mapping; signed alias proof still required"
+    },
+    {
+      "requested": "libsecret",
+      "resolved": "libsecret",
+      "candidate": {
+        "repository": "core",
+        "name": "libsecret",
+        "version": "0.21.8.2-1",
+        "architecture": "aarch64",
+        "filename": "libsecret-0.21.8.2-1-aarch64.pkg.tar.xz",
+        "sha256": "90006857bbbaa837cf4482dc16cba37bc20df9d7a8d62768716474f9eb031135"
+      },
+      "resolution_evidence": "current metadata candidate for the explicitly recorded canonical compatibility mapping; signed alias proof still required"
+    },
+    {
+      "requested": "libvips",
+      "resolved": "libvips",
+      "candidate": {
+        "repository": "extra",
+        "name": "libvips",
+        "version": "8.18.7-1",
+        "architecture": "aarch64",
+        "filename": "libvips-8.18.7-1-aarch64.pkg.tar.xz",
+        "sha256": "e8e4eebc1e878409f99a62eb9977149bcd0b76f93f26dfa685c7a05c6d818d9d"
+      },
+      "resolution_evidence": "current metadata candidate for the explicitly recorded canonical compatibility mapping; signed alias proof still required"
+    },
+    {
+      "requested": "libyaml",
+      "resolved": "libyaml",
+      "candidate": {
+        "repository": "extra",
+        "name": "libyaml",
+        "version": "0.2.5-3",
+        "architecture": "aarch64",
+        "filename": "libyaml-0.2.5-3-aarch64.pkg.tar.xz",
+        "sha256": "f96d25c8898b27d3364034336630363bcf48eb968c90d5d5c240e4b237ae153b"
+      },
+      "resolution_evidence": "current metadata candidate for the explicitly recorded canonical compatibility mapping; signed alias proof still required"
+    },
+    {
+      "requested": "libreoffice-fresh",
+      "resolved": "libreoffice-fresh",
+      "candidate": {
+        "repository": "extra",
+        "name": "libreoffice-fresh",
+        "version": "26.8.1-1",
+        "architecture": "aarch64",
+        "filename": "libreoffice-fresh-26.8.1-1-aarch64.pkg.tar.xz",
+        "sha256": "1b4476d2bc6eeffac805dcabcf1857e6f52abc802a0c6ee8c347f0d1a491b8ca"
+      },
+      "resolution_evidence": "current metadata candidate for the explicitly recorded canonical compatibility mapping; signed alias proof still required"
+    },
+    {
+      "requested": "localsend",
+      "resolved": "localsend",
+      "candidate": {
+        "repository": "omarchy",
+        "name": "localsend",
+        "version": "1.18.2-1",
+        "architecture": "aarch64",
+        "filename": "localsend-1.18.2-1-aarch64.pkg.tar.zst",
+        "sha256": "8a41fde552b79e2e269afce3f199af58e4d970ee79bf1fb79075c203d890bd65"
+      },
+      "resolution_evidence": "current metadata candidate for the explicitly recorded canonical compatibility mapping; signed alias proof still required"
+    },
+    {
+      "requested": "lua51",
+      "resolved": "lua51",
+      "candidate": {
+        "repository": "extra",
+        "name": "lua51",
+        "version": "5.1.5-13",
+        "architecture": "aarch64",
+        "filename": "lua51-5.1.5-13-aarch64.pkg.tar.xz",
+        "sha256": "d0159f00c22560df847bed5a63d323031523ee5c1c8878f10ffae822178b63ed"
+      },
+      "resolution_evidence": "current metadata candidate for the explicitly recorded canonical compatibility mapping; signed alias proof still required"
+    },
+    {
+      "requested": "luarocks",
+      "resolved": "luarocks",
+      "candidate": {
+        "repository": "extra",
+        "name": "luarocks",
+        "version": "3.13.0-5",
+        "architecture": "any",
+        "filename": "luarocks-3.13.0-5-any.pkg.tar.xz",
+        "sha256": "b71b7a0b6573f165edf5ef0bffa1f50c6e5085f152e5127ca341982a34766c97"
+      },
+      "resolution_evidence": "current metadata candidate for the explicitly recorded canonical compatibility mapping; signed alias proof still required"
+    },
+    {
+      "requested": "man-db",
+      "resolved": "man-db",
+      "candidate": {
+        "repository": "core",
+        "name": "man-db",
+        "version": "2.13.1-2",
+        "architecture": "aarch64",
+        "filename": "man-db-2.13.1-2-aarch64.pkg.tar.xz",
+        "sha256": "67515751f848717e1f6d3470f57ad2ea6900ee07618fd2726b6fcaa695687e80"
+      },
+      "resolution_evidence": "current metadata candidate for the explicitly recorded canonical compatibility mapping; signed alias proof still required"
+    },
+    {
+      "requested": "mariadb-libs",
+      "resolved": "mariadb-libs",
+      "candidate": {
+        "repository": "extra",
+        "name": "mariadb-libs",
+        "version": "13.0.2-2",
+        "architecture": "aarch64",
+        "filename": "mariadb-libs-13.0.2-2-aarch64.pkg.tar.xz",
+        "sha256": "d46dbb2c87e81fa527c0ac06848704ceed0d4a67f15f3677bad94600f5fec5b6"
+      },
+      "resolution_evidence": "current metadata candidate for the explicitly recorded canonical compatibility mapping; signed alias proof still required"
+    },
+    {
+      "requested": "mise-bin",
+      "resolved": "mise-bin",
+      "candidate": {
+        "repository": "omarchy",
+        "name": "mise-bin",
+        "version": "2026.10.14-1",
+        "architecture": "aarch64",
+        "filename": "mise-bin-2026.10.14-1-aarch64.pkg.tar.zst",
+        "sha256": "64694b1b69143702b0b921351b94be74b80b500a4a12db4c22d1e7d5c97aae54"
+      },
+      "resolution_evidence": "current metadata candidate for the explicitly recorded canonical compatibility mapping; signed alias proof still required"
+    },
+    {
+      "requested": "monologue",
+      "resolved": "monologue",
+      "candidate": {
+        "repository": "omarchy",
+        "name": "monologue",
+        "version": "0.3.1-1",
+        "architecture": "aarch64",
+        "filename": "monologue-0.3.1-1-aarch64.pkg.tar.zst",
+        "sha256": "2f2de091d69b6e19360218004dff40f08961acac695058276d9dc1cd147cea79"
+      },
+      "resolution_evidence": "current metadata candidate for the explicitly recorded canonical compatibility mapping; signed alias proof still required"
+    },
+    {
+      "requested": "moonlight-qt",
+      "resolved": "moonlight-qt",
+      "candidate": {
+        "repository": "extra",
+        "name": "moonlight-qt",
+        "version": "6.2.0-1",
+        "architecture": "aarch64",
+        "filename": "moonlight-qt-6.2.0-1-aarch64.pkg.tar.xz",
+        "sha256": "6f519618c734bf29ebc84a12fbe74c23e0760201c3ec0b31863dcb27c0f58f6c"
+      },
+      "resolution_evidence": "current metadata candidate for the explicitly recorded canonical compatibility mapping; signed alias proof still required"
+    },
+    {
+      "requested": "mpv",
+      "resolved": "mpv",
+      "candidate": {
+        "repository": "extra",
+        "name": "mpv",
+        "version": "1:0.41.0-6",
+        "architecture": "aarch64",
+        "filename": "mpv-1:0.41.0-6-aarch64.pkg.tar.xz",
+        "sha256": "6c89d00736820210a3c7f32af4cf95d155191d463f9df8bd22137c45f30a554a"
+      },
+      "resolution_evidence": "current metadata candidate for the explicitly recorded canonical compatibility mapping; signed alias proof still required"
+    },
+    {
+      "requested": "mpv-mpris",
+      "resolved": "mpv-mpris",
+      "candidate": {
+        "repository": "extra",
+        "name": "mpv-mpris",
+        "version": "1.3-1",
+        "architecture": "aarch64",
+        "filename": "mpv-mpris-1.3-1-aarch64.pkg.tar.xz",
+        "sha256": "a40efa3b9c9114df707eac1596fc096ebe94ace093a851716fbb40a45e131014"
+      },
+      "resolution_evidence": "current metadata candidate for the explicitly recorded canonical compatibility mapping; signed alias proof still required"
+    },
+    {
+      "requested": "nautilus",
+      "resolved": "nautilus",
+      "candidate": {
+        "repository": "extra",
+        "name": "nautilus",
+        "version": "51.1-1",
+        "architecture": "aarch64",
+        "filename": "nautilus-51.1-1-aarch64.pkg.tar.xz",
+        "sha256": "39e7e6dfa6491c6ed7792d9a1a1eec7936adcd485116ad0be655875f4b14960d"
+      },
+      "resolution_evidence": "current metadata candidate for the explicitly recorded canonical compatibility mapping; signed alias proof still required"
+    },
+    {
+      "requested": "nautilus-python",
+      "resolved": "nautilus-python",
+      "candidate": {
+        "repository": "extra",
+        "name": "nautilus-python",
+        "version": "4.2.0-1",
+        "architecture": "aarch64",
+        "filename": "nautilus-python-4.2.0-1-aarch64.pkg.tar.xz",
+        "sha256": "fe167a30b6870b32e033988f066745afd5c69f291fcb6a95abd970010ed53a2f"
+      },
+      "resolution_evidence": "current metadata candidate for the explicitly recorded canonical compatibility mapping; signed alias proof still required"
+    },
+    {
+      "requested": "gnome-disk-utility",
+      "resolved": "gnome-disk-utility",
+      "candidate": {
+        "repository": "extra",
+        "name": "gnome-disk-utility",
+        "version": "46.1-3",
+        "architecture": "aarch64",
+        "filename": "gnome-disk-utility-46.1-3-aarch64.pkg.tar.xz",
+        "sha256": "2b37efb6e090d5272fec8706321cdfe667ac9166c93c302a597bdf2ce4eef18b"
+      },
+      "resolution_evidence": "current metadata candidate for the explicitly recorded canonical compatibility mapping; signed alias proof still required"
+    },
+    {
+      "requested": "noto-fonts",
+      "resolved": "noto-fonts",
+      "candidate": {
+        "repository": "extra",
+        "name": "noto-fonts",
+        "version": "1:2026.10.01-1",
+        "architecture": "any",
+        "filename": "noto-fonts-1:2026.10.01-1-any.pkg.tar.xz",
+        "sha256": "bdc5bc01c4c93c32bf7db68dc83643e95c26b2c2fcb36708a80b3bf33c02ac8c"
+      },
+      "resolution_evidence": "current metadata candidate for the explicitly recorded canonical compatibility mapping; signed alias proof still required"
+    },
+    {
+      "requested": "noto-fonts-cjk",
+      "resolved": "noto-fonts-cjk",
+      "candidate": {
+        "repository": "extra",
+        "name": "noto-fonts-cjk",
+        "version": "20240730-1",
+        "architecture": "any",
+        "filename": "noto-fonts-cjk-20240730-1-any.pkg.tar.xz",
+        "sha256": "e708a9a6cc94a6a5b8f297b47631e839e4217100cce5a097992e533628eb8f2c"
+      },
+      "resolution_evidence": "current metadata candidate for the explicitly recorded canonical compatibility mapping; signed alias proof still required"
+    },
+    {
+      "requested": "noto-fonts-emoji",
+      "resolved": "noto-fonts-emoji",
+      "candidate": {
+        "repository": "extra",
+        "name": "noto-fonts-emoji",
+        "version": "1:2.051-1",
+        "architecture": "any",
+        "filename": "noto-fonts-emoji-1:2.051-1-any.pkg.tar.xz",
+        "sha256": "082ff807f21b7dd55538a6b202eea32dc3fd0792ac78d908e30631cc7951e552"
+      },
+      "resolution_evidence": "current metadata candidate for the explicitly recorded canonical compatibility mapping; signed alias proof still required"
+    },
+    {
+      "requested": "nss-mdns",
+      "resolved": "nss-mdns",
+      "candidate": {
+        "repository": "extra",
+        "name": "nss-mdns",
+        "version": "0.15.1-3",
+        "architecture": "aarch64",
+        "filename": "nss-mdns-0.15.1-3-aarch64.pkg.tar.xz",
+        "sha256": "6b4a6c59f20d016da5101bcaa6a996dd9308670a4bdf16f7f6aef147648b1f0b"
+      },
+      "resolution_evidence": "current metadata candidate for the explicitly recorded canonical compatibility mapping; signed alias proof still required"
+    },
+    {
+      "requested": "nvim",
+      "resolved": "neovim",
+      "candidate": {
+        "repository": "extra",
+        "name": "neovim",
+        "version": "0.12.6-1",
+        "architecture": "aarch64",
+        "filename": "neovim-0.12.6-1-aarch64.pkg.tar.xz",
+        "sha256": "19d5b20499f038b51d32bd068c34a08238804f7253fa20002103a8d55627260d"
+      },
+      "resolution_evidence": "current metadata candidate for the explicitly recorded canonical compatibility mapping; signed alias proof still required"
+    },
+    {
+      "requested": "obsidian",
+      "resolved": "obsidian",
+      "candidate": {
+        "repository": "omarchy",
+        "name": "obsidian",
+        "version": "1.14.4-2",
+        "architecture": "aarch64",
+        "filename": "obsidian-1.14.4-2-aarch64.pkg.tar.zst",
+        "sha256": "7b5a3998d2776440b0cf180b58d49bf55cfa1dccec63b60f57233621805066fd"
+      },
+      "resolution_evidence": "current metadata candidate for the explicitly recorded canonical compatibility mapping; signed alias proof still required"
+    },
+    {
+      "requested": "omacalc",
+      "resolved": "omacalc",
+      "candidate": {
+        "repository": "omarchy",
+        "name": "omacalc",
+        "version": "0.3.1-1",
+        "architecture": "aarch64",
+        "filename": "omacalc-0.3.1-1-aarch64.pkg.tar.zst",
+        "sha256": "165c8fef7323db43ca47c5b933de6382c1020b4962c77b9e9d52e2be697b1618"
+      },
+      "resolution_evidence": "current metadata candidate for the explicitly recorded canonical compatibility mapping; signed alias proof still required"
+    },
+    {
+      "requested": "omacut",
+      "resolved": "omacut",
+      "candidate": {
+        "repository": "omarchy",
+        "name": "omacut",
+        "version": "0.7.2-1",
+        "architecture": "aarch64",
+        "filename": "omacut-0.7.2-1-aarch64.pkg.tar.zst",
+        "sha256": "098134fd6c11b14f127da288714f3de0604bc3125b57b232796972e06ac4dcfc"
+      },
+      "resolution_evidence": "current metadata candidate for the explicitly recorded canonical compatibility mapping; signed alias proof still required"
+    },
+    {
+      "requested": "omawrite",
+      "resolved": "omawrite",
+      "candidate": {
+        "repository": "omarchy",
+        "name": "omawrite",
+        "version": "0.7.2-1",
+        "architecture": "aarch64",
+        "filename": "omawrite-0.7.2-1-aarch64.pkg.tar.zst",
+        "sha256": "cfd0808d8e7c59d2c734f2cedd7c5b9888ab0c0c4513db9708bb68af0badd543"
+      },
+      "resolution_evidence": "current metadata candidate for the explicitly recorded canonical compatibility mapping; signed alias proof still required"
+    },
+    {
+      "requested": "omarchy-nvim",
+      "resolved": "omarchy-nvim",
+      "candidate": {
+        "repository": "omarchy",
+        "name": "omarchy-nvim",
+        "version": "2026.9.21-5",
+        "architecture": "any",
+        "filename": "omarchy-nvim-2026.9.21-5-any.pkg.tar.zst",
+        "sha256": "b46d41973cacfcf2d8be371351336a3f689e2eb7b9bacdb7ca81939354cbcbc9"
+      },
+      "resolution_evidence": "current metadata candidate for the explicitly recorded canonical compatibility mapping; signed alias proof still required"
+    },
+    {
+      "requested": "omarchy-hyprland-titlebars",
+      "resolved": "omarchy-hyprland-titlebars",
+      "candidate": {
+        "repository": "omarchy",
+        "name": "omarchy-hyprland-titlebars",
+        "version": "0.2.2-2",
+        "architecture": "aarch64",
+        "filename": "omarchy-hyprland-titlebars-0.2.2-2-aarch64.pkg.tar.zst",
+        "sha256": "b46cabe1a03a5b978cd3ee88430dc5a930747e701a6ce58cff76f87b32778695"
+      },
+      "resolution_evidence": "current metadata candidate for the explicitly recorded canonical compatibility mapping; signed alias proof still required"
+    },
+    {
+      "requested": "omasnap",
+      "resolved": "omasnap",
+      "candidate": {
+        "repository": "omarchy",
+        "name": "omasnap",
+        "version": "1.21.0-2",
+        "architecture": "aarch64",
+        "filename": "omasnap-1.21.0-2-aarch64.pkg.tar.zst",
+        "sha256": "658877a450a23409b0bd1a33201c6fd1bca4e22fdc9fe1cd12c58ec0861e450e"
+      },
+      "resolution_evidence": "current metadata candidate for the explicitly recorded canonical compatibility mapping; signed alias proof still required"
+    },
+    {
+      "requested": "owe",
+      "resolved": "owe",
+      "candidate": {
+        "repository": "omarchy",
+        "name": "owe",
+        "version": "0.2.11-1",
+        "architecture": "aarch64",
+        "filename": "owe-0.2.11-1-aarch64.pkg.tar.zst",
+        "sha256": "6e558a93118a13ea052296e733044c4665799b664688ab58e5fd552b55e72a95"
+      },
+      "resolution_evidence": "current metadata candidate for the explicitly recorded canonical compatibility mapping; signed alias proof still required"
+    },
+    {
+      "requested": "owe-lockfeed",
+      "resolved": "owe-lockfeed",
+      "candidate": {
+        "repository": "omarchy",
+        "name": "owe-lockfeed",
+        "version": "0.2.11-1",
+        "architecture": "aarch64",
+        "filename": "owe-lockfeed-0.2.11-1-aarch64.pkg.tar.zst",
+        "sha256": "cc6713221fc770c9fd7bb8a50a3f89a5fedddf2d69da33851040eff5b33c03cf"
+      },
+      "resolution_evidence": "current metadata candidate for the explicitly recorded canonical compatibility mapping; signed alias proof still required"
+    },
+    {
+      "requested": "pacman-contrib",
+      "resolved": "pacman-contrib",
+      "candidate": {
+        "repository": "extra",
+        "name": "pacman-contrib",
+        "version": "1.13.1-1",
+        "architecture": "aarch64",
+        "filename": "pacman-contrib-1.13.1-1-aarch64.pkg.tar.xz",
+        "sha256": "7f89d02bae727950f543ec969145212b93abea947675de27280c6978cfe9b946"
+      },
+      "resolution_evidence": "current metadata candidate for the explicitly recorded canonical compatibility mapping; signed alias proof still required"
+    },
+    {
+      "requested": "pamixer",
+      "resolved": "pamixer",
+      "candidate": {
+        "repository": "extra",
+        "name": "pamixer",
+        "version": "1.6-3",
+        "architecture": "aarch64",
+        "filename": "pamixer-1.6-3-aarch64.pkg.tar.xz",
+        "sha256": "b5acc44040cf7b55d32ec3be63139da11167201e544b93f570b807a486ae5486"
+      },
+      "resolution_evidence": "current metadata candidate for the explicitly recorded canonical compatibility mapping; signed alias proof still required"
+    },
+    {
+      "requested": "pinta",
+      "resolved": "pinta",
+      "candidate": {
+        "repository": "omarchy",
+        "name": "pinta",
+        "version": "3.1.2-1",
+        "architecture": "aarch64",
+        "filename": "pinta-3.1.2-1-aarch64.pkg.tar.zst",
+        "sha256": "ebdf1b4de706b67e955027fe5817baf0d5848cf65066ed6102dccbbd2b25892d"
+      },
+      "resolution_evidence": "current metadata candidate for the explicitly recorded canonical compatibility mapping; signed alias proof still required"
+    },
+    {
+      "requested": "plocate",
+      "resolved": "plocate",
+      "candidate": {
+        "repository": "extra",
+        "name": "plocate",
+        "version": "1.1.25-1",
+        "architecture": "aarch64",
+        "filename": "plocate-1.1.25-1-aarch64.pkg.tar.xz",
+        "sha256": "37e11fae8899905932d784c16607a95dcd6672de5297190dcb7d23956a220ac9"
+      },
+      "resolution_evidence": "current metadata candidate for the explicitly recorded canonical compatibility mapping; signed alias proof still required"
+    },
+    {
+      "requested": "plymouth",
+      "resolved": "plymouth",
+      "candidate": {
+        "repository": "extra",
+        "name": "plymouth",
+        "version": "26.134.222-3",
+        "architecture": "aarch64",
+        "filename": "plymouth-26.134.222-3-aarch64.pkg.tar.xz",
+        "sha256": "e0cca2deddd0af9557fa4686b1fc94180cfa34d14aed6b1c0d594b992f4666cf"
+      },
+      "resolution_evidence": "current metadata candidate for the explicitly recorded canonical compatibility mapping; signed alias proof still required"
+    },
+    {
+      "requested": "postgresql-libs",
+      "resolved": "postgresql-libs",
+      "candidate": {
+        "repository": "extra",
+        "name": "postgresql-libs",
+        "version": "18.6-4",
+        "architecture": "aarch64",
+        "filename": "postgresql-libs-18.6-4-aarch64.pkg.tar.xz",
+        "sha256": "aa0c51c3adb2b9eea23c5d31d74aac0e482cb9ec9aed3f3d6d66745c028fbd4f"
+      },
+      "resolution_evidence": "current metadata candidate for the explicitly recorded canonical compatibility mapping; signed alias proof still required"
+    },
+    {
+      "requested": "power-profiles-daemon",
+      "resolved": "power-profiles-daemon",
+      "candidate": {
+        "repository": "extra",
+        "name": "power-profiles-daemon",
+        "version": "0.30-1",
+        "architecture": "aarch64",
+        "filename": "power-profiles-daemon-0.30-1-aarch64.pkg.tar.xz",
+        "sha256": "c1fe5080a573c73ed200217bbde3e11ba115568f810e260f004476929b3c7e64"
+      },
+      "resolution_evidence": "current metadata candidate for the explicitly recorded canonical compatibility mapping; signed alias proof still required"
+    },
+    {
+      "requested": "python-gobject",
+      "resolved": "python-gobject",
+      "candidate": {
+        "repository": "extra",
+        "name": "python-gobject",
+        "version": "3.58.1-1",
+        "architecture": "aarch64",
+        "filename": "python-gobject-3.58.1-1-aarch64.pkg.tar.xz",
+        "sha256": "49b8991906522d676aafc7588c6a1760dfe5b2316e3c4168ac8a62ea01bf7d1f"
+      },
+      "resolution_evidence": "current metadata candidate for the explicitly recorded canonical compatibility mapping; signed alias proof still required"
+    },
+    {
+      "requested": "python-poetry-core",
+      "resolved": "python-poetry-core",
+      "candidate": {
+        "repository": "extra",
+        "name": "python-poetry-core",
+        "version": "2.5.0-1",
+        "architecture": "any",
+        "filename": "python-poetry-core-2.5.0-1-any.pkg.tar.xz",
+        "sha256": "2be1af178c54937fc9d15ee534d3728c9e96b4b0d38529f5c7bf4fc3d6e5e282"
+      },
+      "resolution_evidence": "current metadata candidate for the explicitly recorded canonical compatibility mapping; signed alias proof still required"
+    },
+    {
+      "requested": "qt6-base",
+      "resolved": "qt6-base",
+      "candidate": {
+        "repository": "extra",
+        "name": "qt6-base",
+        "version": "6.12.0-3",
+        "architecture": "aarch64",
+        "filename": "qt6-base-6.12.0-3-aarch64.pkg.tar.xz",
+        "sha256": "2777135b375ba82250896fa9a993926bf3c05b59dd22217f63d6a1391c1b4c31"
+      },
+      "resolution_evidence": "current metadata candidate for the explicitly recorded canonical compatibility mapping; signed alias proof still required"
+    },
+    {
+      "requested": "qt6-declarative",
+      "resolved": "qt6-declarative",
+      "candidate": {
+        "repository": "extra",
+        "name": "qt6-declarative",
+        "version": "6.12.0-1",
+        "architecture": "aarch64",
+        "filename": "qt6-declarative-6.12.0-1-aarch64.pkg.tar.xz",
+        "sha256": "410a29bc88fb004f4c1b5c8d2b08bf6d2d27c5028ebd13447e7ff67134c94940"
+      },
+      "resolution_evidence": "current metadata candidate for the explicitly recorded canonical compatibility mapping; signed alias proof still required"
+    },
+    {
+      "requested": "qt6-multimedia",
+      "resolved": "qt6-multimedia",
+      "candidate": {
+        "repository": "extra",
+        "name": "qt6-multimedia",
+        "version": "6.12.0-1",
+        "architecture": "aarch64",
+        "filename": "qt6-multimedia-6.12.0-1-aarch64.pkg.tar.xz",
+        "sha256": "e6b090815abc7777b2949ba5dcaa2e6eca5f3ef265fa8bf2fd33ff7e94701338"
+      },
+      "resolution_evidence": "current metadata candidate for the explicitly recorded canonical compatibility mapping; signed alias proof still required"
+    },
+    {
+      "requested": "qt6-svg",
+      "resolved": "qt6-svg",
+      "candidate": {
+        "repository": "extra",
+        "name": "qt6-svg",
+        "version": "6.12.0-1",
+        "architecture": "aarch64",
+        "filename": "qt6-svg-6.12.0-1-aarch64.pkg.tar.xz",
+        "sha256": "cd03acc2075a19cbfae8ae982954fcc92846855cb9e30ed04e90523f7fcc7cb3"
+      },
+      "resolution_evidence": "current metadata candidate for the explicitly recorded canonical compatibility mapping; signed alias proof still required"
+    },
+    {
+      "requested": "qt6-wayland",
+      "resolved": "qt6-wayland",
+      "candidate": {
+        "repository": "extra",
+        "name": "qt6-wayland",
+        "version": "6.12.0-1",
+        "architecture": "aarch64",
+        "filename": "qt6-wayland-6.12.0-1-aarch64.pkg.tar.xz",
+        "sha256": "37d8367518085adb00ccd533363e7a58310c6810fc97ca622270ef770dccdf2f"
+      },
+      "resolution_evidence": "current metadata candidate for the explicitly recorded canonical compatibility mapping; signed alias proof still required"
+    },
+    {
+      "requested": "ttfx",
+      "resolved": "ttfx",
+      "candidate": {
+        "repository": "omarchy",
+        "name": "ttfx",
+        "version": "0.5.0-3",
+        "architecture": "aarch64",
+        "filename": "ttfx-0.5.0-3-aarch64.pkg.tar.zst",
+        "sha256": "02fb4e6d166b3435764f7df235d5a24e53592faed550046597f0f4b4061bce00"
+      },
+      "resolution_evidence": "current metadata candidate for the explicitly recorded canonical compatibility mapping; signed alias proof still required"
+    },
+    {
+      "requested": "qemu-user-static-binfmt",
+      "resolved": "qemu-user-static-binfmt",
+      "candidate": {
+        "repository": "omarchy",
+        "name": "qemu-user-static-binfmt",
+        "version": "1:1.11.1.2+ds.3-1",
+        "architecture": "aarch64",
+        "filename": "qemu-user-static-binfmt-1:1.11.1.2+ds.3-1-aarch64.pkg.tar.zst",
+        "sha256": "a94ee1554a410bd11549920cb4862ebe79f39dbe209c0d1e7c14d0c997c318b3"
+      },
+      "resolution_evidence": "current metadata candidate for the explicitly recorded canonical compatibility mapping; signed alias proof still required"
+    },
+    {
+      "requested": "qrencode",
+      "resolved": "qrencode",
+      "candidate": {
+        "repository": "extra",
+        "name": "qrencode",
+        "version": "4.1.1-4",
+        "architecture": "aarch64",
+        "filename": "qrencode-4.1.1-4-aarch64.pkg.tar.xz",
+        "sha256": "dd4fdce79fc61dd0271714c5e2cac90bc4967121556fa4af132ee835f097713a"
+      },
+      "resolution_evidence": "current metadata candidate for the explicitly recorded canonical compatibility mapping; signed alias proof still required"
+    },
+    {
+      "requested": "qt6-imageformats",
+      "resolved": "qt6-imageformats",
+      "candidate": {
+        "repository": "extra",
+        "name": "qt6-imageformats",
+        "version": "6.12.0-1",
+        "architecture": "aarch64",
+        "filename": "qt6-imageformats-6.12.0-1-aarch64.pkg.tar.xz",
+        "sha256": "666f6c18c62b9a2787423ecc179cfa1ccaf6e322c9dab3cb8650d38fd1f910cd"
+      },
+      "resolution_evidence": "current metadata candidate for the explicitly recorded canonical compatibility mapping; signed alias proof still required"
+    },
+    {
+      "requested": "quickshell",
+      "resolved": "quickshell",
+      "candidate": {
+        "repository": "omarchy",
+        "name": "quickshell",
+        "version": "0.3.2.r7.g2b4501a-1",
+        "architecture": "aarch64",
+        "filename": "quickshell-0.3.2.r7.g2b4501a-1-aarch64.pkg.tar.zst",
+        "sha256": "e1227d2930f84b78284cdffab8331e6a47632b2f65ee64945d785da1eb659fef"
+      },
+      "resolution_evidence": "current metadata candidate for the explicitly recorded canonical compatibility mapping; signed alias proof still required"
+    },
+    {
+      "requested": "ripgrep",
+      "resolved": "ripgrep",
+      "candidate": {
+        "repository": "extra",
+        "name": "ripgrep",
+        "version": "15.2.0-1",
+        "architecture": "aarch64",
+        "filename": "ripgrep-15.2.0-1-aarch64.pkg.tar.xz",
+        "sha256": "458f1c725cc64502616bfeed1d795cbce4f5479321b06d4b8fd91fa3b125b628"
+      },
+      "resolution_evidence": "current metadata candidate for the explicitly recorded canonical compatibility mapping; signed alias proof still required"
+    },
+    {
+      "requested": "ruby",
+      "resolved": "ruby",
+      "candidate": {
+        "repository": "extra",
+        "name": "ruby",
+        "version": "3.4.10-1",
+        "architecture": "aarch64",
+        "filename": "ruby-3.4.10-1-aarch64.pkg.tar.xz",
+        "sha256": "f4dfaecadb625c52d390fcf0ddfb42c3b26c00151bf8016cc711d2973d8b5bbc"
+      },
+      "resolution_evidence": "current metadata candidate for the explicitly recorded canonical compatibility mapping; signed alias proof still required"
+    },
+    {
+      "requested": "sddm",
+      "resolved": "sddm",
+      "candidate": {
+        "repository": "extra",
+        "name": "sddm",
+        "version": "0.21.0-7",
+        "architecture": "aarch64",
+        "filename": "sddm-0.21.0-7-aarch64.pkg.tar.xz",
+        "sha256": "637f0b1dd727a695719b3e57102a9c071ce9eaf033a0fb0bb8f850bbec7e706c"
+      },
+      "resolution_evidence": "current metadata candidate for the explicitly recorded canonical compatibility mapping; signed alias proof still required"
+    },
+    {
+      "requested": "signed",
+      "resolved": "signed",
+      "candidate": {
+        "repository": "omarchy",
+        "name": "signed",
+        "version": "0.3.1-1",
+        "architecture": "aarch64",
+        "filename": "signed-0.3.1-1-aarch64.pkg.tar.zst",
+        "sha256": "2b419306f92c9df67dc28678231e86a475d645c4934787fdf0340fe8e4379e93"
+      },
+      "resolution_evidence": "current metadata candidate for the explicitly recorded canonical compatibility mapping; signed alias proof still required"
+    },
+    {
+      "requested": "slurp",
+      "resolved": "slurp",
+      "candidate": {
+        "repository": "extra",
+        "name": "slurp",
+        "version": "1.5.0-2",
+        "architecture": "aarch64",
+        "filename": "slurp-1.5.0-2-aarch64.pkg.tar.xz",
+        "sha256": "5e7e6703e417e21150a66bae292bf66a6b4a76a8b08e4c7ab7622fd9c26cda50"
+      },
+      "resolution_evidence": "current metadata candidate for the explicitly recorded canonical compatibility mapping; signed alias proof still required"
+    },
+    {
+      "requested": "socat",
+      "resolved": "socat",
+      "candidate": {
+        "repository": "extra",
+        "name": "socat",
+        "version": "1.8.1.3-1",
+        "architecture": "aarch64",
+        "filename": "socat-1.8.1.3-1-aarch64.pkg.tar.xz",
+        "sha256": "04da7ec6343f3497629e3774fe8ede99b06003ec319cae01c32348d17c839747"
+      },
+      "resolution_evidence": "current metadata candidate for the explicitly recorded canonical compatibility mapping; signed alias proof still required"
+    },
+    {
+      "requested": "starship",
+      "resolved": "starship",
+      "candidate": {
+        "repository": "extra",
+        "name": "starship",
+        "version": "1.27.0-1",
+        "architecture": "aarch64",
+        "filename": "starship-1.27.0-1-aarch64.pkg.tar.xz",
+        "sha256": "1749f9e221bceb1dee86cfb06344f67eacbc47cdd8bf7f1695cb32e36ff712ef"
+      },
+      "resolution_evidence": "current metadata candidate for the explicitly recorded canonical compatibility mapping; signed alias proof still required"
+    },
+    {
+      "requested": "superwhisper-bin",
+      "resolved": "superwhisper-bin",
+      "candidate": {
+        "repository": "omarchy",
+        "name": "superwhisper-bin",
+        "version": "1.0.2-1",
+        "architecture": "aarch64",
+        "filename": "superwhisper-bin-1.0.2-1-aarch64.pkg.tar.zst",
+        "sha256": "dc9abf8092250b8f95d34b4d538195c65673bd51865045a9748e221c1aabc942"
+      },
+      "resolution_evidence": "current metadata candidate for the explicitly recorded canonical compatibility mapping; signed alias proof still required"
+    },
+    {
+      "requested": "sushi",
+      "resolved": "sushi",
+      "candidate": {
+        "repository": "extra",
+        "name": "sushi",
+        "version": "51.2-1",
+        "architecture": "aarch64",
+        "filename": "sushi-51.2-1-aarch64.pkg.tar.xz",
+        "sha256": "7f1ef188433b4bbda8a88166d72681a938f0157d978a107afe28cfbf13fa2444"
+      },
+      "resolution_evidence": "current metadata candidate for the explicitly recorded canonical compatibility mapping; signed alias proof still required"
+    },
+    {
+      "requested": "system-config-printer",
+      "resolved": "system-config-printer",
+      "candidate": {
+        "repository": "extra",
+        "name": "system-config-printer",
+        "version": "1.5.18-7",
+        "architecture": "aarch64",
+        "filename": "system-config-printer-1.5.18-7-aarch64.pkg.tar.xz",
+        "sha256": "c99c6b8dfbcf2257cb1a362a78b46d6165cbfe8bcf968ecdea0ab0981ef87565"
+      },
+      "resolution_evidence": "current metadata candidate for the explicitly recorded canonical compatibility mapping; signed alias proof still required"
+    },
+    {
+      "requested": "tesseract",
+      "resolved": "tesseract",
+      "candidate": {
+        "repository": "extra",
+        "name": "tesseract",
+        "version": "5.5.3-1",
+        "architecture": "aarch64",
+        "filename": "tesseract-5.5.3-1-aarch64.pkg.tar.xz",
+        "sha256": "01c5b92363e92a1110123d49f166328ea15ffc2f05aa4d6152aee078986e0770"
+      },
+      "resolution_evidence": "current metadata candidate for the explicitly recorded canonical compatibility mapping; signed alias proof still required"
+    },
+    {
+      "requested": "tesseract-data-eng",
+      "resolved": "tesseract-data-eng",
+      "candidate": {
+        "repository": "extra",
+        "name": "tesseract-data-eng",
+        "version": "2:4.1.0-5",
+        "architecture": "any",
+        "filename": "tesseract-data-eng-2:4.1.0-5-any.pkg.tar.xz",
+        "sha256": "59b243e4d0400d10d1ebca4e065e2d62e8409e7ca9e29fcccf9577d42b5c23f4"
+      },
+      "resolution_evidence": "current metadata candidate for the explicitly recorded canonical compatibility mapping; signed alias proof still required"
+    },
+    {
+      "requested": "tldr",
+      "resolved": "tldr",
+      "candidate": {
+        "repository": "extra",
+        "name": "tldr",
+        "version": "3.4.4-1",
+        "architecture": "any",
+        "filename": "tldr-3.4.4-1-any.pkg.tar.xz",
+        "sha256": "bc1015b843eaa3e750b585ca76e602796a630604ea2be2c2e38fdcb0b8a66748"
+      },
+      "resolution_evidence": "current metadata candidate for the explicitly recorded canonical compatibility mapping; signed alias proof still required"
+    },
+    {
+      "requested": "tree-sitter-cli",
+      "resolved": "tree-sitter-cli",
+      "candidate": {
+        "repository": "extra",
+        "name": "tree-sitter-cli",
+        "version": "0.26.9-1",
+        "architecture": "aarch64",
+        "filename": "tree-sitter-cli-0.26.9-1-aarch64.pkg.tar.xz",
+        "sha256": "757d04113b1c7713760ae0cd45ad7c30d5d8e618cda7d961a3cdec15564c5c46"
+      },
+      "resolution_evidence": "current metadata candidate for the explicitly recorded canonical compatibility mapping; signed alias proof still required"
+    },
+    {
+      "requested": "tmux",
+      "resolved": "tmux",
+      "candidate": {
+        "repository": "extra",
+        "name": "tmux",
+        "version": "3.8-1",
+        "architecture": "aarch64",
+        "filename": "tmux-3.8-1-aarch64.pkg.tar.xz",
+        "sha256": "165e5e3996851f106ba8748c031b77bf858b6735e2f06530de1e8b08a89d99e7"
+      },
+      "resolution_evidence": "current metadata candidate for the explicitly recorded canonical compatibility mapping; signed alias proof still required"
+    },
+    {
+      "requested": "tobi-try",
+      "resolved": "tobi-try",
+      "candidate": {
+        "repository": "omarchy",
+        "name": "tobi-try",
+        "version": "1.10.1-3",
+        "architecture": "any",
+        "filename": "tobi-try-1.10.1-3-any.pkg.tar.zst",
+        "sha256": "bcaf19d1a6b271ac262e8ea794e2b49dcadb087516045a16f7bf7caf48a7568e"
+      },
+      "resolution_evidence": "current metadata candidate for the explicitly recorded canonical compatibility mapping; signed alias proof still required"
+    },
+    {
+      "requested": "ttf-ia-writer",
+      "resolved": "ttf-ia-writer",
+      "candidate": {
+        "repository": "omarchy",
+        "name": "ttf-ia-writer",
+        "version": "20261002.r63-3",
+        "architecture": "any",
+        "filename": "ttf-ia-writer-20261002.r63-3-any.pkg.tar.zst",
+        "sha256": "2070c61511f92f0753800125bd7b9c8e6f472e9d14efe640d10f1a9dd15519cc"
+      },
+      "resolution_evidence": "current metadata candidate for the explicitly recorded canonical compatibility mapping; signed alias proof still required"
+    },
+    {
+      "requested": "ttf-jetbrains-mono-nerd-basic",
+      "resolved": "ttf-jetbrains-mono-nerd-basic",
+      "candidate": {
+        "repository": "omarchy",
+        "name": "ttf-jetbrains-mono-nerd-basic",
+        "version": "3.5.1-2",
+        "architecture": "any",
+        "filename": "ttf-jetbrains-mono-nerd-basic-3.5.1-2-any.pkg.tar.zst",
+        "sha256": "c574e6266139fd24f668301d39d9faab386d7041ad3952b3012a2480e09cff0c"
+      },
+      "resolution_evidence": "current metadata candidate for the explicitly recorded canonical compatibility mapping; signed alias proof still required"
+    },
+    {
+      "requested": "tzupdate",
+      "resolved": "tzupdate",
+      "candidate": {
+        "repository": "omarchy",
+        "name": "tzupdate",
+        "version": "3.1.0-2",
+        "architecture": "aarch64",
+        "filename": "tzupdate-3.1.0-2-aarch64.pkg.tar.zst",
+        "sha256": "53855819ac1e6287bc2e48b8be6679642bee1448bf23156e4ea8027af7d550ee"
+      },
+      "resolution_evidence": "current metadata candidate for the explicitly recorded canonical compatibility mapping; signed alias proof still required"
+    },
+    {
+      "requested": "udiskie",
+      "resolved": "udiskie",
+      "candidate": {
+        "repository": "extra",
+        "name": "udiskie",
+        "version": "2.7.0-2",
+        "architecture": "any",
+        "filename": "udiskie-2.7.0-2-any.pkg.tar.xz",
+        "sha256": "d7b7d12ea1b4fab88dfe167b6d55830f5d964a318a630c4f379e1a7bf730a72c"
+      },
+      "resolution_evidence": "current metadata candidate for the explicitly recorded canonical compatibility mapping; signed alias proof still required"
+    },
+    {
+      "requested": "ufw",
+      "resolved": "ufw",
+      "candidate": {
+        "repository": "extra",
+        "name": "ufw",
+        "version": "0.36.2-7",
+        "architecture": "any",
+        "filename": "ufw-0.36.2-7-any.pkg.tar.xz",
+        "sha256": "aeba6b164cf9bc6eb265e996401880156b9c4f8344881a179f2ea87b7cecc0fb"
+      },
+      "resolution_evidence": "current metadata candidate for the explicitly recorded canonical compatibility mapping; signed alias proof still required"
+    },
+    {
+      "requested": "ufw-docker",
+      "resolved": "ufw-docker",
+      "candidate": {
+        "repository": "omarchy",
+        "name": "ufw-docker",
+        "version": "251123-2",
+        "architecture": "any",
+        "filename": "ufw-docker-251123-2-any.pkg.tar.zst",
+        "sha256": "e6f73e00d8dbccfbfd9e6f0bf49331b878e3632e1c17ce7ad88e9a79f7e8c9e7"
+      },
+      "resolution_evidence": "current metadata candidate for the explicitly recorded canonical compatibility mapping; signed alias proof still required"
+    },
+    {
+      "requested": "unzip",
+      "resolved": "unzip",
+      "candidate": {
+        "repository": "extra",
+        "name": "unzip",
+        "version": "6.0-23",
+        "architecture": "aarch64",
+        "filename": "unzip-6.0-23-aarch64.pkg.tar.xz",
+        "sha256": "edc91c7e4e400f20345439744262d1ceded104c78d940659a6b9876076ef33fc"
+      },
+      "resolution_evidence": "current metadata candidate for the explicitly recorded canonical compatibility mapping; signed alias proof still required"
+    },
+    {
+      "requested": "usage",
+      "resolved": "usage",
+      "candidate": {
+        "repository": "extra",
+        "name": "usage",
+        "version": "6.12.1-1",
+        "architecture": "aarch64",
+        "filename": "usage-6.12.1-1-aarch64.pkg.tar.xz",
+        "sha256": "a43e45f4180bb9825a3e940671ebbc487f5ad5bbbf2b0d084d489e03011e7f94"
+      },
+      "resolution_evidence": "current metadata candidate for the explicitly recorded canonical compatibility mapping; signed alias proof still required"
+    },
+    {
+      "requested": "uwsm",
+      "resolved": "uwsm",
+      "candidate": {
+        "repository": "extra",
+        "name": "uwsm",
+        "version": "0.27.1-1",
+        "architecture": "any",
+        "filename": "uwsm-0.27.1-1-any.pkg.tar.xz",
+        "sha256": "bc736d4c76557e3b920e93d01710ebd84c546abfb136f82b72a25304eff571e6"
+      },
+      "resolution_evidence": "current metadata candidate for the explicitly recorded canonical compatibility mapping; signed alias proof still required"
+    },
+    {
+      "requested": "vi",
+      "resolved": "ex-vi-compat",
+      "candidate": {
+        "repository": "extra",
+        "name": "ex-vi-compat",
+        "version": "3-1",
+        "architecture": "any",
+        "filename": "ex-vi-compat-3-1-any.pkg.tar.xz",
+        "sha256": "7d5d99f383a190485a868e61bf6522611f0148f805ab7d7f3cd55c17dc6ce8e5"
+      },
+      "resolution_evidence": "current metadata candidate for the explicitly recorded canonical compatibility mapping; signed alias proof still required"
+    },
+    {
+      "requested": "whois",
+      "resolved": "whois",
+      "candidate": {
+        "repository": "extra",
+        "name": "whois",
+        "version": "5.6.6-1",
+        "architecture": "aarch64",
+        "filename": "whois-5.6.6-1-aarch64.pkg.tar.xz",
+        "sha256": "6adbfbba76b1f1adebcd31b94ade38db1add859dbc697cbd0a0f1a56af14ce2c"
+      },
+      "resolution_evidence": "current metadata candidate for the explicitly recorded canonical compatibility mapping; signed alias proof still required"
+    },
+    {
+      "requested": "wireless-regdb",
+      "resolved": "wireless-regdb",
+      "candidate": {
+        "repository": "core",
+        "name": "wireless-regdb",
+        "version": "2026.09.03-1",
+        "architecture": "any",
+        "filename": "wireless-regdb-2026.09.03-1-any.pkg.tar.xz",
+        "sha256": "a9c4c44dc6aa478ef2b6e6d82a78934134d46df4ae7b66ba84e0cbf2ee06fd47"
+      },
+      "resolution_evidence": "current metadata candidate for the explicitly recorded canonical compatibility mapping; signed alias proof still required"
+    },
+    {
+      "requested": "wireplumber",
+      "resolved": "wireplumber",
+      "candidate": {
+        "repository": "extra",
+        "name": "wireplumber",
+        "version": "0.5.18-1",
+        "architecture": "aarch64",
+        "filename": "wireplumber-0.5.18-1-aarch64.pkg.tar.xz",
+        "sha256": "2410813c8b3eba26598b90b260171ac884af59f8dc1441112eee80f1873b628b"
+      },
+      "resolution_evidence": "current metadata candidate for the explicitly recorded canonical compatibility mapping; signed alias proof still required"
+    },
+    {
+      "requested": "wl-clipboard",
+      "resolved": "wl-clipboard",
+      "candidate": {
+        "repository": "extra",
+        "name": "wl-clipboard",
+        "version": "1:2.3.0-1",
+        "architecture": "aarch64",
+        "filename": "wl-clipboard-1:2.3.0-1-aarch64.pkg.tar.xz",
+        "sha256": "723a63b140e00085a533ebb1ec36fa9305b5e6cbd8fb80c0521fbeff77a72982"
+      },
+      "resolution_evidence": "current metadata candidate for the explicitly recorded canonical compatibility mapping; signed alias proof still required"
+    },
+    {
+      "requested": "wtype",
+      "resolved": "wtype",
+      "candidate": {
+        "repository": "extra",
+        "name": "wtype",
+        "version": "0.4-2",
+        "architecture": "aarch64",
+        "filename": "wtype-0.4-2-aarch64.pkg.tar.xz",
+        "sha256": "ceb69e175f46786e6e86d3b947eb482a150c19f3d68822b8b77b5dc02d470f79"
+      },
+      "resolution_evidence": "current metadata candidate for the explicitly recorded canonical compatibility mapping; signed alias proof still required"
+    },
+    {
+      "requested": "woff2-font-awesome",
+      "resolved": "woff2-font-awesome",
+      "candidate": {
+        "repository": "extra",
+        "name": "woff2-font-awesome",
+        "version": "7.3.1-1",
+        "architecture": "any",
+        "filename": "woff2-font-awesome-7.3.1-1-any.pkg.tar.xz",
+        "sha256": "6f491cad5b344b490315ce5a0e0eb409fc7e8f0a3066f9fbb73cd67968b26e65"
+      },
+      "resolution_evidence": "current metadata candidate for the explicitly recorded canonical compatibility mapping; signed alias proof still required"
+    },
+    {
+      "requested": "xdg-desktop-portal-gtk",
+      "resolved": "xdg-desktop-portal-gtk",
+      "candidate": {
+        "repository": "extra",
+        "name": "xdg-desktop-portal-gtk",
+        "version": "1.15.3-2",
+        "architecture": "aarch64",
+        "filename": "xdg-desktop-portal-gtk-1.15.3-2-aarch64.pkg.tar.xz",
+        "sha256": "5a0ceadd58044b892142bd01a7417759585839b8e438b5ac76c8b784aca4cffd"
+      },
+      "resolution_evidence": "current metadata candidate for the explicitly recorded canonical compatibility mapping; signed alias proof still required"
+    },
+    {
+      "requested": "xdg-desktop-portal-hyprland",
+      "resolved": "xdg-desktop-portal-hyprland",
+      "candidate": {
+        "repository": "extra",
+        "name": "xdg-desktop-portal-hyprland",
+        "version": "1.4.1-2",
+        "architecture": "aarch64",
+        "filename": "xdg-desktop-portal-hyprland-1.4.1-2-aarch64.pkg.tar.xz",
+        "sha256": "afbe5116a25a58093d72f20640ad81a10140e363f7caedd300d110e9232ab006"
+      },
+      "resolution_evidence": "current metadata candidate for the explicitly recorded canonical compatibility mapping; signed alias proof still required"
+    },
+    {
+      "requested": "xdg-terminal-exec",
+      "resolved": "xdg-terminal-exec",
+      "candidate": {
+        "repository": "extra",
+        "name": "xdg-terminal-exec",
+        "version": "0.14.3-2",
+        "architecture": "any",
+        "filename": "xdg-terminal-exec-0.14.3-2-any.pkg.tar.xz",
+        "sha256": "338bca705f0d68da8f9718c53872cf2b7c032cccfae1dcbed435c315eb42c4cf"
+      },
+      "resolution_evidence": "current metadata candidate for the explicitly recorded canonical compatibility mapping; signed alias proof still required"
+    },
+    {
+      "requested": "yaru-icon-theme",
+      "resolved": "yaru-icon-theme",
+      "candidate": {
+        "repository": "omarchy",
+        "name": "yaru-icon-theme",
+        "version": "26.10.3-3",
+        "architecture": "any",
+        "filename": "yaru-icon-theme-26.10.3-3-any.pkg.tar.zst",
+        "sha256": "3efc53db41713dd7a660a6ecb0ff5fc130ff9b88feb1251b7bcc35aa54288b0a"
+      },
+      "resolution_evidence": "current metadata candidate for the explicitly recorded canonical compatibility mapping; signed alias proof still required"
+    },
+    {
+      "requested": "yay",
+      "resolved": "yay",
+      "candidate": {
+        "repository": "omarchy",
+        "name": "yay",
+        "version": "13.0.1-1",
+        "architecture": "aarch64",
+        "filename": "yay-13.0.1-1-aarch64.pkg.tar.zst",
+        "sha256": "4b946395bf2dbf6462acb986c3dded67cb86bbeee6a44dbe9161aaac88b8fa9f"
+      },
+      "resolution_evidence": "current metadata candidate for the explicitly recorded canonical compatibility mapping; signed alias proof still required"
+    },
+    {
+      "requested": "yt-dlp",
+      "resolved": "yt-dlp",
+      "candidate": {
+        "repository": "extra",
+        "name": "yt-dlp",
+        "version": "2025.12.08-2",
+        "architecture": "any",
+        "filename": "yt-dlp-2025.12.08-2-any.pkg.tar.xz",
+        "sha256": "f966248f6e698a49cb30be5276f3dcb00e66f63e4662f6e127dbafb93ccef1b0"
+      },
+      "resolution_evidence": "current metadata candidate for the explicitly recorded canonical compatibility mapping; signed alias proof still required"
+    },
+    {
+      "requested": "zbar",
+      "resolved": "zbar",
+      "candidate": {
+        "repository": "extra",
+        "name": "zbar",
+        "version": "0.23.95-1",
+        "architecture": "aarch64",
+        "filename": "zbar-0.23.95-1-aarch64.pkg.tar.xz",
+        "sha256": "fcc6762a047983ddf786f3c19d695cf36292986cc7066c2939bdf5f65b60df6c"
+      },
+      "resolution_evidence": "current metadata candidate for the explicitly recorded canonical compatibility mapping; signed alias proof still required"
+    },
+    {
+      "requested": "zoxide",
+      "resolved": "zoxide",
+      "candidate": {
+        "repository": "extra",
+        "name": "zoxide",
+        "version": "0.10.0-1",
+        "architecture": "aarch64",
+        "filename": "zoxide-0.10.0-1-aarch64.pkg.tar.xz",
+        "sha256": "fbc929938564d0973942b0144b2bcbc7bd8f9a4f5ac23bb37f039e2006469ee7"
+      },
+      "resolution_evidence": "current metadata candidate for the explicitly recorded canonical compatibility mapping; signed alias proof still required"
+    },
+    {
+      "requested": "zram-generator",
+      "resolved": "zram-generator",
+      "candidate": {
+        "repository": "extra",
+        "name": "zram-generator",
+        "version": "1.2.1-1",
+        "architecture": "aarch64",
+        "filename": "zram-generator-1.2.1-1-aarch64.pkg.tar.xz",
+        "sha256": "b9eb8d3b2fd315d9848f33c80a6e84a25d63ee257ff8834762bfaf239df1f5a6"
+      },
+      "resolution_evidence": "current metadata candidate for the explicitly recorded canonical compatibility mapping; signed alias proof still required"
+    },
+    {
+      "requested": "rtkit",
+      "resolved": "rtkit",
+      "candidate": {
+        "repository": "extra",
+        "name": "rtkit",
+        "version": "0.14-2",
+        "architecture": "aarch64",
+        "filename": "rtkit-0.14-2-aarch64.pkg.tar.xz",
+        "sha256": "aa7662f5317fd96a596de952f0150459711a71f26b6478363e309e94f0b52208"
+      },
+      "resolution_evidence": "current metadata candidate for the explicitly recorded canonical compatibility mapping; signed alias proof still required"
+    },
+    {
+      "requested": "libva-v4l2_request-avd",
+      "resolved": "libva-v4l2_request-avd",
+      "candidate": {
+        "repository": "omarchy",
+        "name": "libva-v4l2_request-avd",
+        "version": "1.3.r11.r169.gc653eaa-1",
+        "architecture": "aarch64",
+        "filename": "libva-v4l2_request-avd-1.3.r11.r169.gc653eaa-1-aarch64.pkg.tar.zst",
+        "sha256": "90e3702ed3e4e6fc5a4a7eb81594b577d7f573848dac3ea58b51457341955bfb"
+      },
+      "resolution_evidence": "current metadata candidate for the explicitly recorded canonical compatibility mapping; signed alias proof still required"
+    },
+    {
+      "requested": "widevine",
+      "resolved": "widevine",
+      "candidate": {
+        "repository": "asahi-alarm",
+        "name": "widevine",
+        "version": "4.10.2891.0-1",
+        "architecture": "aarch64",
+        "filename": "widevine-4.10.2891.0-1-aarch64.pkg.tar.xz",
+        "sha256": "314e72e8320e412ce0ce43fe23de47c4413d2622a5670936c32bcaab7f128e11"
+      },
+      "resolution_evidence": "current metadata candidate for the explicitly recorded canonical compatibility mapping; signed alias proof still required"
+    },
+    {
+      "requested": "wf-recorder",
+      "resolved": "wf-recorder",
+      "candidate": {
+        "repository": "extra",
+        "name": "wf-recorder",
+        "version": "0.6.0-2",
+        "architecture": "aarch64",
+        "filename": "wf-recorder-0.6.0-2-aarch64.pkg.tar.xz",
+        "sha256": "29040b0144bcb297e0ad0ad46ba11360327ee89e6251b8849795f31b252a3c4b"
+      },
+      "resolution_evidence": "current metadata candidate for the explicitly recorded canonical compatibility mapping; signed alias proof still required"
+    }
+  ],
+  "unresolved_requests": [],
+  "held_requests": [
+    {
+      "requested": "omarchy-mac",
+      "reason": "boot/firmware/system/graphics ABI identity is protected",
+      "installed_pin": null
+    },
+    {
+      "requested": "omarchy-mac-boot",
+      "reason": "boot/firmware/system/graphics ABI identity is protected",
+      "installed_pin": {
+        "version": "20260921-9",
+        "architecture": "aarch64",
+        "description_sha256": "f5a03272ce20e0ff00110f72e49d294a652ff1815a572eddf33ecc277f0afae8"
+      }
+    },
+    {
+      "requested": "asahi-bless",
+      "reason": "boot/firmware/system/graphics ABI identity is protected",
+      "installed_pin": {
+        "version": "0.4.2-1",
+        "architecture": "aarch64",
+        "description_sha256": "5b0a03e7b7cdfa885721177dbc233d377b24d415847ff70672477a3051f66075"
+      }
+    },
+    {
+      "requested": "avd-fw",
+      "reason": "boot/firmware/system/graphics ABI identity is protected",
+      "installed_pin": null
+    }
+  ],
+  "protected_installed_pins": {
+    "asahi-bless": {
+      "version": "0.4.2-1",
+      "architecture": "aarch64",
+      "description_sha256": "5b0a03e7b7cdfa885721177dbc233d377b24d415847ff70672477a3051f66075"
+    },
+    "asahi-fwextract": {
+      "version": "0.8.4-1",
+      "architecture": "any",
+      "description_sha256": "156f4c0bacfd907a70b8c290ae1bfdc25cf673bb6e25b6601a5aa6640a740163"
+    },
+    "grub": {
+      "version": "2:2.14-1.1",
+      "architecture": "aarch64",
+      "description_sha256": "aa204a456a1ff122d69fd614bbe1f1b11d980898aaa0b90d0867cf028fefb711"
+    },
+    "libdrm": {
+      "version": "2.4.134-1",
+      "architecture": "aarch64",
+      "description_sha256": "c613a04694b68afdc31a8db731dd0fa455d8bf03f0bbced6f04c7a5dcbbf9847"
+    },
+    "limine": {
+      "version": "12.8.0-1",
+      "architecture": "aarch64",
+      "description_sha256": "e926f49ec1b0e3e9f4ec0d5d9b34dd8c7db2ee0ba4dbe3a23cef27c78bce0ac9"
+    },
+    "limine-mkinitcpio-hook": {
+      "version": "1.36.0-3",
+      "architecture": "aarch64",
+      "description_sha256": "5dbf1af955e78b1a9979cf9486516cb0bffedca9d76db77ef7e3a48f054b7422"
+    },
+    "limine-snapper-sync": {
+      "version": "1.30.1-1",
+      "architecture": "aarch64",
+      "description_sha256": "096c032bd9e5c3fc04fe0bcbcb4549c74e38455ab5c11ccc0034a7f53e624910"
+    },
+    "linux-api-headers": {
+      "version": "7.2-1",
+      "architecture": "aarch64",
+      "description_sha256": "4b54147feb61b457ecd2df0ec32da9bfebc3f8803b8b7e3d12cfd592255a26aa"
+    },
+    "linux-aurora": {
+      "version": "7.1.12.aurora2-7",
+      "architecture": "aarch64",
+      "description_sha256": "d963e3fd625c277ed5cdb707daed805bc22fe719af83e8ca37b56af78c807d3d"
+    },
+    "linux-aurora-headers": {
+      "version": "7.1.12.aurora2-7",
+      "architecture": "aarch64",
+      "description_sha256": "3e55c3befedbeb4e11d006c0d7ef9cb016d2357b31f0e49023a099dfd697f996"
+    },
+    "m1n1-aurora": {
+      "version": "1.6.1.aurora1-2",
+      "architecture": "aarch64",
+      "description_sha256": "8ef38d00163eb42ae92283b536970b5bfa4117fe9b94ed50c380e73258bee6ed"
+    },
+    "mesa": {
+      "version": "1:26.2.2-1",
+      "architecture": "aarch64",
+      "description_sha256": "42c5840794d66e6286755f877e27ea2f27982dfea1a286663439cd041f16d2eb"
+    },
+    "mkinitcpio": {
+      "version": "41.1-1",
+      "architecture": "any",
+      "description_sha256": "b47ba4e5b5ad9f5ffa75f015d904eafb6db598af92e3bf033d2472e8824c6d3a"
+    },
+    "mkinitcpio-busybox": {
+      "version": "1.36.1-1",
+      "architecture": "aarch64",
+      "description_sha256": "19db7fc5c6903ceb35adcbc26f8bf8d4e54624506c37a72ee257d2d9285c4584"
+    },
+    "omarchy-mac-boot": {
+      "version": "20260921-9",
+      "architecture": "aarch64",
+      "description_sha256": "f5a03272ce20e0ff00110f72e49d294a652ff1815a572eddf33ecc277f0afae8"
+    },
+    "systemd": {
+      "version": "261.2-1",
+      "architecture": "aarch64",
+      "description_sha256": "7a736cb1b0717ba19514d2d1775a6459e3cf50561fa0e392d8523af3ace24868"
+    },
+    "systemd-libs": {
+      "version": "261.2-1",
+      "architecture": "aarch64",
+      "description_sha256": "6e3e1f9104ac0677398c939270649d9057b4de3874f6c141fe428b781bc8b13e"
+    },
+    "systemd-sysvcompat": {
+      "version": "261.2-1",
+      "architecture": "aarch64",
+      "description_sha256": "e1b86d32b2e0b5625e629abbcb2e0164d95a4912b9271ab2934c5e229aea9bb2"
+    },
+    "uboot-asahi": {
+      "version": "2026.07.asahi2-3",
+      "architecture": "aarch64",
+      "description_sha256": "3b73368890274043660b93f30ac0a15a593ab6abdd7cdbe92c8f7c08afa47513"
+    },
+    "vulkan-asahi": {
+      "version": "1:26.2.2-1",
+      "architecture": "aarch64",
+      "description_sha256": "ece7179c504918728c4bf82ad8c90d27e2a65d69624f848ca8af6a61a815fdff"
+    }
+  },
+  "protected_name_rule": "^(linux($|-)|m1n1($|-)|aura($|-)|uboot($|-)|u-boot($|-)|limine($|-)|asahi-bless$|asahi-fwextract$|asahi-firmware($|-)|apple-firmware($|-)|omarchy-mac($|-)|mkinitcpio($|-)|dracut($|-)|grub($|-)|systemd($|-)|mesa$|vulkan-asahi$|libdrm$) OR (^|-)firmware($|-) OR -fw$",
+  "blocked_reasons": [
+    "dependency closure/conflicts/hooks and signatures for the complete transaction remain unverified",
+    "live target baseline and exact experimental kernel/firmware artifacts are not established by this image plan",
+    "protected packages and their reverse dependencies cannot be modified by this plan"
+  ],
+  "unattended_reboot_authorized": false,
+  "install_command": null,
+  "full_upgrade_authorized": false
+}

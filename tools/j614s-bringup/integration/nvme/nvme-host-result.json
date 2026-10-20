@@ -1,0 +1,17 @@
+{
+  "status": "WORKS (actual selected source host fake only)",
+  "source_commit": "9d9f94a00b6e4408cbfaf5051fc2caeb792f7260",
+  "source_bundle_sha256": "b7d2557a504315145b18a7684f6732a37d2e7369d0ab23475ee9919e90892512",
+  "harness_sha256": "6024bd880c157f33e7624f514d0b7279edbe2abc35db5bf9aabcfa8189525929",
+  "compiler": "clang version 23.1.3",
+  "compile_exit": 0,
+  "run_exit": 0,
+  "output": [
+    "PASS: 65597 actual NVMe admission/borrowed-buffer host checks; no controller writes; hardware UNTESTED"
+  ],
+  "scope": "fake MMIO reads, pages, SART, cache and DMA; no real hardware or concurrency",
+  "controller_writes": false,
+  "target_access": false,
+  "hardware": "UNTESTED",
+  "full_adopted_probe": "BLOCKED; initial J614s refusal remains active"
+}

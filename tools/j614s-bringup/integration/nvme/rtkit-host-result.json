@@ -1,0 +1,39 @@
+{
+  "status": "WORKS (baseline failure reproduced; candidate host invariants pass)",
+  "scope": "Actual selected RTKit functions with fake Linux types/mailbox/DMA; no real concurrency or device access",
+  "harness_sha256": "e579a71946443dc58e6b7794194de2d6d74c296dfb1a8a1ee6fe921b4767e584",
+  "candidate_type_bundle_sha256": "57d79985d062a54efc8679ac34c889d3f3a556a1283cdc9434d0534012195a20",
+  "compiler": "clang version 23.1.3",
+  "runs": [
+    {
+      "name": "baseline",
+      "source_commit": "cf7658de5dce4d89d5b8014df204cbbd77edb56e",
+      "function_bundle_sha256": "b4cf38046460ba80d243e81535c22bc15ea3eae215e84fcf4954a301f45f2b06",
+      "compile_exit": 0,
+      "run_exit": 0,
+      "fixed_invariant_failure": {
+        "exit": 1,
+        "output": [
+          "FAIL: changed live RTKit request replaced descriptor instead of -EBUSY"
+        ]
+      },
+      "output": [
+        "REPRODUCED: changed live RTKit request calls setup again and replaces descriptor"
+      ]
+    },
+    {
+      "name": "candidate",
+      "source_commit": "75667cb3d42683108db115c5f94b46d4df51a244",
+      "function_bundle_sha256": "c72846fbff6044f66483fe52e726788db33e6a2a85b471252aa8d3671c122fe6",
+      "compile_exit": 0,
+      "run_exit": 0,
+      "fixed_invariant_failure": null,
+      "output": [
+        "PASS: actual RTKit buffer identity, inherited pre-RX, ownership, teardown and failure-path host invariants"
+      ]
+    }
+  ],
+  "hardware": "UNTESTED",
+  "target_access": false,
+  "nvme_adoption": "UNTESTED; J614s refusal remains"
+}

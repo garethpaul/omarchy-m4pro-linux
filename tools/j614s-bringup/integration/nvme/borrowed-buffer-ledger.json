@@ -1,0 +1,52 @@
+{
+  "schema": 1,
+  "status": "PARTIAL (ANS admission/borrowed-buffer callbacks staged and host-tested; full probe/lifetime disabled)",
+  "base_commit": "fc995aee971942673e843194f2cc01f81e30ac6f",
+  "equivalent_base_commit": "ccb0647c779ec32f2549708ee3b57510700aaabb",
+  "equivalent_base_tree": "8af5762a40cd9510593fc0911fc2cc8a0ea90264",
+  "aurora_origin": "f93a3416c60f26c68084134dc6c1d205becd5753",
+  "candidate_commit": "9d9f94a00b6e4408cbfaf5051fc2caeb792f7260",
+  "source_commits": [
+    "cf7658de5dce4d89d5b8014df204cbbd77edb56e soc: apple: port protected inherited SART range query",
+    "9fa769e37271542531e73b88f454643d98c12e70 soc: apple: port guarded inherited RTKit initialization without replacing Gravity APIs",
+    "75667cb3d42683108db115c5f94b46d4df51a244 soc: apple: use size_t for inherited endpoint array iteration",
+    "9d9f94a00b6e4408cbfaf5051fc2caeb792f7260 nvme: apple: stage measured inherited-session and borrowed-buffer validation"
+  ],
+  "files": [
+    {
+      "path": "drivers/soc/apple/rtkit-internal.h",
+      "base_sha256": "3ff75c31d91e1413c92096c4c7820cade8bda77d06bdcf3bb331d944eec5476d",
+      "candidate_sha256": "3c2af1177140cd77536c90c1f0afae5edbb8c54de451e28c5a27ebc9018f64da"
+    },
+    {
+      "path": "drivers/soc/apple/rtkit.c",
+      "base_sha256": "05b47d29f3e066f250f103a8138e2cf64b55856e2a24dfa03b1a6b47e674927c",
+      "candidate_sha256": "da34a2e919d6ce390664ff40a6e3396461641922ca863e588454358f4cf28031"
+    },
+    {
+      "path": "drivers/soc/apple/sart.c",
+      "base_sha256": "9de8b3fc7116e1f6718b4272f61dca213d1e96f06c3f471b69248b8320f108ff",
+      "candidate_sha256": "313203e3d99a41f7398ba1bebdb2fd9dcbeea723c1a82fd475d2654a9e94a9ae"
+    },
+    {
+      "path": "include/linux/soc/apple/rtkit.h",
+      "base_sha256": "2ed2cb69f7222c2a0fc324bfd1b1fe2afb890512e991a02471121412cd5b27fb",
+      "candidate_sha256": "a556e6413760f6720191e38a911ddac7094f99d299036cf429d9e7b1fe2c917f"
+    },
+    {
+      "path": "include/linux/soc/apple/sart.h",
+      "base_sha256": "89c835c3082fb4290b32786363e4ea2b69cdc91a49f8437b92e159571419c181",
+      "candidate_sha256": "67e9ae897c8845ee229d47f5766aa29233d0c789e392eea796a9a090fa32f50e"
+    },
+    {
+      "path": "drivers/nvme/host/apple.c",
+      "base_sha256": "526a57fd5c249f80cba1e7754be7c7b8ff11b7f5a088204f76a004e1d40b814b",
+      "candidate_sha256": "984229fe1c8401d203ca832630019d1c253a0a89a8e72f554aa00e9febce7dd8"
+    }
+  ],
+  "hardware": "UNTESTED",
+  "nvme_probe": "BLOCKED: early J614s refusal still active",
+  "target_access": false,
+  "deployment_allowed": false,
+  "previous_checkpoint": "75667cb3d42683108db115c5f94b46d4df51a244"
+}

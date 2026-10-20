@@ -1,0 +1,113 @@
+{
+  "binding_layouts": {
+    "compiled_bindings_object_bytes": 249528,
+    "compiled_bindings_object_sha256": "fdc39ec6456600f02dbb4b99f531a752a9b3f388c8eef8787c7849fcde17bc69",
+    "const_layout_blocks": 3174,
+    "field_offset_checks": 16413,
+    "generated_bindings_sha256": "8b53789b60606011dc932d40761cac586e2c575c3274731fae83ff9b367fe635",
+    "hardware_executed": false,
+    "layout_checks_disabled": false,
+    "status": "PASS",
+    "target": "aarch64-linux-gnu"
+  },
+  "config_mode": "exact reviewed input",
+  "config_sha256": "6c5aba7745d918c528300c5a395fcd7db0c2b718acda7d1467af2816a8d56516",
+  "gpu_and_module_link": "BLOCKED independently by known uncorrected runtime-MMIO Rust build assertion in this source; not attempted in platform-only qualification",
+  "hardware": "UNTESTED",
+  "layout_overlay_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "layout_policy": "enabled in committed source",
+  "module_link": "UNTESTED",
+  "platform_objects": [
+    {
+      "bytes": 23368,
+      "path": "build/drivers/soc/apple/rtkit.o",
+      "sha256": "772448782dca4e47d7cb1a4f5d6570870c0be50cacfbc0292aca1f2692923786"
+    },
+    {
+      "bytes": 10072,
+      "path": "build/drivers/soc/apple/sart.o",
+      "sha256": "21c6015f9b51fb3524259d174f8f89c241494d5e930a827a751fa25ae6be8178"
+    }
+  ],
+  "recipe": {
+    "build_host": "builder",
+    "build_timestamp": "Mon Oct 19 00:00:00 UTC 2026",
+    "build_user": "j614s",
+    "build_version": "1",
+    "c_path_remapping": {
+      "output": "build",
+      "source": "src"
+    },
+    "localversion_suffix": "+",
+    "rust_path_remapping": [
+      "source/",
+      "output/",
+      "rust-sysroot/"
+    ],
+    "rust_sysroot_replacement": "rust-toolchain/",
+    "version": 2
+  },
+  "required_config": {
+    "CONFIG_ARCH_APPLE": "y",
+    "CONFIG_ARM64": "y",
+    "CONFIG_ARM64_16K_PAGES": "y",
+    "CONFIG_DRM": "y",
+    "CONFIG_DRM_ASAHI_M4": "m",
+    "CONFIG_LOCALVERSION": "\"-j614s-gravity-candidate\"",
+    "CONFIG_MODULES": "y",
+    "CONFIG_NR_CPUS": "16",
+    "CONFIG_PM": "y",
+    "CONFIG_RUST": "y"
+  },
+  "scope": "Requested platform objects and binding prerequisites only; GPU/kernel/module linking untested",
+  "source": {
+    "dirty_diff_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "head": "75667cb3d42683108db115c5f94b46d4df51a244",
+    "untracked": {}
+  },
+  "status": "PLATFORM_OBJECTS_COMPILED",
+  "tools": {
+    "bc": {
+      "sha256": "7ae95c260622412ceba6eb9f45d68f616cdc091a1d71d6c0a08b5875bb2c31dd"
+    },
+    "bindgen": {
+      "sha256": "7fdf32940891781eb742fb4a69775a0b39de4a48d0a168dfb3f740fb547fceda"
+    },
+    "clang": {
+      "sha256": "6acc6d2f0fdbae93e4d3b622b7a0d42cd05b036146e14193d9df40d1c0977066"
+    },
+    "clang++": {
+      "sha256": "6acc6d2f0fdbae93e4d3b622b7a0d42cd05b036146e14193d9df40d1c0977066"
+    },
+    "ld.lld": {
+      "sha256": "a2aef2573bc0409403747456072c373523ebfea0d03a832520331a17e8ec65a5"
+    },
+    "llvm-ar": {
+      "sha256": "4a21fd61e18a1168dc449e1b5c495925c446775860d0d042b57dac1925e6f7ef"
+    },
+    "llvm-nm": {
+      "sha256": "943a52c986ca4d0e429b523efcf6b4bdd8c9bd90616f5781ede4ab32124f7227"
+    },
+    "llvm-objcopy": {
+      "sha256": "c03c694462c48b4f6f84d62dfff530cef3b539583dddf62681fb318e2f9ef151"
+    },
+    "llvm-objdump": {
+      "sha256": "5096b8e9b6937b7451891cb820f867e77bce1628fdd077ed95c55cb2145fb2eb"
+    },
+    "llvm-readelf": {
+      "sha256": "c1d5d7261aa2b25ba5ec4060dd873a6a9808d2912221f97aaf3478f00f3af743"
+    },
+    "llvm-strip": {
+      "sha256": "c03c694462c48b4f6f84d62dfff530cef3b539583dddf62681fb318e2f9ef151"
+    },
+    "make": {
+      "sha256": "9018663161af324a74326c035cfd05408cba13a26c1f6b801cf5f3195f2bee40"
+    },
+    "rustc": {
+      "sha256": "5eadaaf4fe086d76547b17dc3c1ba880d0082b93f7d8bc65612770da8e79fe8e"
+    },
+    "rustdoc": {
+      "sha256": "f22c571ca4f921e0ac7c2c466de30da574b9018690a3878167cb0ea72249ed7f"
+    }
+  }
+}

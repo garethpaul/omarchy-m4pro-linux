@@ -1,0 +1,1315 @@
+{
+  "schema": 1,
+  "status": "PARTIAL (reviewable current proposal; installation and ABI unqualified)",
+  "historical_snapshot_replaced": false,
+  "historical_evidence_sha256": {
+    "transaction-audit.json": "d63559fc4cad4c7e3974cbc71acaee9ddfc9d1b4b6d67b6eff13e44a17d16eb7",
+    "official-mirror-checks.json": "93e7586ed4f1ff3f10caf0cf769fb72ff1deb496343dd3d704e5436b2868eba2",
+    "summary.json": "443546e77dfaaa4dbede4d9a1eb53dcc29057c19b040f65e8148f44563122277",
+    "exhaustive-official-mirror-checks.json": "618952ac5c2bba13316ec24b9731c5e7e12b5dccfba302095f194cf5fbea5a95"
+  },
+  "recorded_compatibility_requests": 167,
+  "current_print_transaction_packages": 117,
+  "version_changes": [
+    {
+      "name": "graphicsmagick",
+      "old": {
+        "repository": "extra",
+        "name": "graphicsmagick",
+        "version": "1.3.49-2",
+        "filename": "graphicsmagick-1.3.49-2-aarch64.pkg.tar.xz",
+        "sha256": "2600143a997b7b4f23e5bd6892042a58d0bf6bf37d9d066dd812aa4548362d3c",
+        "architecture": "aarch64"
+      },
+      "new": {
+        "repository": "extra",
+        "name": "graphicsmagick",
+        "version": "1.3.49-3",
+        "filename": "graphicsmagick-1.3.49-3-aarch64.pkg.tar.xz",
+        "sha256": "9750789a8c12396238bfddd359ebb69e7fbfc80530f371b513197657440267f9",
+        "architecture": "aarch64"
+      }
+    },
+    {
+      "name": "imagemagick",
+      "old": {
+        "repository": "extra",
+        "name": "imagemagick",
+        "version": "7.1.2.34-1",
+        "filename": "imagemagick-7.1.2.34-1-aarch64.pkg.tar.xz",
+        "sha256": "a0f2e18436bd7332b3a892adb2d7bc6ad7356aef2e572bcff4f05e64df5fdf8c",
+        "architecture": "aarch64"
+      },
+      "new": {
+        "repository": "extra",
+        "name": "imagemagick",
+        "version": "7.1.2.34-2",
+        "filename": "imagemagick-7.1.2.34-2-aarch64.pkg.tar.xz",
+        "sha256": "7a3975f8b7838e8c5e383a3e00ffce58692e452213f3f600cab0767714dd5888",
+        "architecture": "aarch64"
+      }
+    },
+    {
+      "name": "marisa",
+      "old": {
+        "repository": "extra",
+        "name": "marisa",
+        "version": "0.3.1-1",
+        "filename": "marisa-0.3.1-1-aarch64.pkg.tar.xz",
+        "sha256": "924114506e48e6a0730aaa3a76d11de710c6032ea3472d19204efa03e414e25f",
+        "architecture": "aarch64"
+      },
+      "new": {
+        "repository": "extra",
+        "name": "marisa",
+        "version": "0.3.1-2",
+        "filename": "marisa-0.3.1-2-aarch64.pkg.tar.xz",
+        "sha256": "0900bf5636315f4a0dd33b0f74533d18cb80ffece98ee6610f04701c4083d388",
+        "architecture": "aarch64"
+      }
+    },
+    {
+      "name": "postgresql-libs",
+      "old": {
+        "repository": "extra",
+        "name": "postgresql-libs",
+        "version": "18.6-2",
+        "filename": "postgresql-libs-18.6-2-aarch64.pkg.tar.xz",
+        "sha256": "0f49343d7770e2fb407876dce2fba374d801531d18b047345828dc310aebab5b",
+        "architecture": "aarch64"
+      },
+      "new": {
+        "repository": "extra",
+        "name": "postgresql-libs",
+        "version": "18.6-4",
+        "filename": "postgresql-libs-18.6-4-aarch64.pkg.tar.xz",
+        "sha256": "aa0c51c3adb2b9eea23c5d31d74aac0e482cb9ec9aed3f3d6d66745c028fbd4f",
+        "architecture": "aarch64"
+      }
+    }
+  ],
+  "added_packages": [],
+  "removed_packages": [],
+  "dependency_name_differences": {
+    "old_added_dependencies": [
+      "dotnet-host-bin",
+      "graphicsmagick",
+      "gtksourceview5",
+      "gvfs",
+      "hyprtoolkit",
+      "layer-shell-qt",
+      "libchewing",
+      "libhangul",
+      "libime",
+      "libspelling",
+      "libwireplumber",
+      "marisa",
+      "opencc",
+      "papers",
+      "vim",
+      "vim-runtime"
+    ],
+    "new_added_dependencies": [
+      "dotnet-host-bin",
+      "graphicsmagick",
+      "gtksourceview5",
+      "gvfs",
+      "hyprtoolkit",
+      "layer-shell-qt",
+      "libchewing",
+      "libhangul",
+      "libime",
+      "libspelling",
+      "libwireplumber",
+      "marisa",
+      "opencc",
+      "papers",
+      "vim",
+      "vim-runtime"
+    ]
+  },
+  "signed_dependency_metadata_differences": [
+    {
+      "name": "marisa",
+      "old_version": "0.3.1-1",
+      "new_version": "0.3.1-2",
+      "changes": {
+        "DEPENDS": {
+          "old": [
+            "gcc-libs"
+          ],
+          "new": [
+            "libgcc",
+            "libstdc++"
+          ]
+        }
+      },
+      "old_scope": "historical pinned repository metadata; missing old payloads are not newly authenticated"
+    }
+  ],
+  "payload_counts": {
+    "selected": 117,
+    "payloads_qualified": 117,
+    "failed": 0
+  },
+  "signer_counts": {
+    "68B3537F39A313B3E574D06777193F152BDBE6A6": 82,
+    "40DFB630FF42BCFFB047046CF0134EE680CAC571": 35
+  },
+  "repository_differences": [
+    {
+      "name": "omarchy",
+      "old_sha256": "021958f1f6c6297a6d92f773a0f2757f6ddfe9815c566187796715d34eae6949",
+      "current_sha256": "748e0b4b9278eb755aa4503c2e123ae35a7a8f8c163037d7c0cbeeabb0e38f60",
+      "source_url": "https://pkgs.omarchy.org/edge/aarch64/omarchy.db"
+    },
+    {
+      "name": "core",
+      "old_sha256": "3397088cfa622e7a140f29b1f7a15f2f1c2689246a962c2551670d301ff5805c",
+      "current_sha256": "61085ad583bc8419803d2fb6617ec0fc10cec7138df606e33586e58cedc372c5",
+      "source_url": "https://arm-mirror.omarchy.org/aarch64/core/core.db"
+    },
+    {
+      "name": "extra",
+      "old_sha256": "8f1f6fbcc3e397c8228de1d36f825ed445ef21483693d17e221741023beffff2",
+      "current_sha256": "433ab786421ab07d6dca3f8f4e2279bb32cde7d4497171df6ae94c3287e9416e",
+      "source_url": "https://arm-mirror.omarchy.org/aarch64/extra/extra.db"
+    }
+  ],
+  "metadata_authentication": {
+    "omarchy": "UNSIGNED (DatabaseOptional; TLS origin only)",
+    "asahi-alarm": "WORKS",
+    "core": "UNSIGNED (DatabaseOptional; TLS origin only)",
+    "extra": "UNSIGNED (DatabaseOptional; TLS origin only)",
+    "alarm": "UNSIGNED (DatabaseOptional; TLS origin only)",
+    "aur": "UNSIGNED (DatabaseOptional; TLS origin only)"
+  },
+  "metadata_freshness_completeness": "UNPROVEN",
+  "signature_policy": "Retained image: Required DatabaseOptional. Missing DB signatures do not waive required retained-key package PGP or signed .PKGINFO comparison.",
+  "variant_equivalence": {
+    "repository_bytes_equal": {
+      "omarchy": true,
+      "asahi-alarm": true,
+      "core": true,
+      "extra": true,
+      "alarm": true,
+      "aur": true
+    },
+    "selected_package_rows_equal": true,
+    "qualification_scope": "Same frozen DB/package bytes; source URLs and TLS provenance remain distinct",
+    "payload_proof_sha256": "468862b06d7f38c41c2c030e5f8fea796563b64ec3af0342c14925450093f1e0"
+  },
+  "actual_resolver_replay": {
+    "status": "WORKS (print only)",
+    "resolution_sha256": "452cbb9947786d1e48b143810ad6e3c9cc87cd410aa209e6fa750380ef2edbe6",
+    "resolver": {
+      "binary_sha256": "590759eddb4c0cac6c5ad66f0f9bc093e15529675c0aa909eea396af5b07459d",
+      "version": ".--.                  Pacman v7.1.0 - libalpm v16.0.1"
+    },
+    "selected_rows_equal": true
+  },
+  "compatibility_aliases": [
+    {
+      "requested": "dotnet-runtime",
+      "recorded_canonical": "dotnet-runtime-bin",
+      "status": "WORKS (signed provider/ownership evidence only)",
+      "runtime": "UNTESTED in this proposal; no payload execution",
+      "signed_provides": [
+        "dotnet-runtime=10.0.13",
+        "dotnet-runtime-10.0"
+      ],
+      "payload_sha256": "899ba64a276beaac92ca22ba09d99558b2f5c0e4d7e0d9e6fd7c135fa56ffab2"
+    },
+    {
+      "requested": "nvim",
+      "recorded_canonical": "neovim",
+      "status": "WORKS (signed provider/ownership evidence only)",
+      "runtime": "UNTESTED in this proposal; no payload execution",
+      "signed_provides": [
+        "nvim",
+        "vim-plugin-runtime"
+      ],
+      "payload_sha256": "19d5b20499f038b51d32bd068c34a08238804f7253fa20002103a8d55627260d",
+      "owned_executable": {
+        "path": "usr/bin/nvim",
+        "sha256": "d56f2e783ba9734dcba3184f134378ed5c2d3b7787c4862fef90d75d47cfbee3",
+        "bytes": 5557848
+      }
+    },
+    {
+      "requested": "vi",
+      "recorded_canonical": "ex-vi-compat",
+      "status": "WORKS (signed provider/ownership evidence only)",
+      "runtime": "UNTESTED in this proposal; no payload execution",
+      "signed_provides": [
+        "edit",
+        "ex",
+        "vedit",
+        "vi",
+        "view"
+      ],
+      "payload_sha256": "7d5d99f383a190485a868e61bf6522611f0148f805ab7d7f3cd55c17dc6ce8e5",
+      "owned_executable": {
+        "path": "usr/bin/vi",
+        "sha256": "1cda199eb23f3fbdd24c889d7f41fa376a412a044b37702535ccba968a91bbd2",
+        "bytes": 562
+      }
+    }
+  ],
+  "boot_effects": [
+    {
+      "effective_hook": "usr/share/libalpm/hooks/10-limine-snapper-lock.hook",
+      "hook_sha256": "4270416c84daa9b267be21a656bc98b6686b9155a8fdbc384b6b5871f5161c0b",
+      "exec": [
+        "/usr/share/libalpm/scripts/limine-snapper-lock"
+      ],
+      "effect": "boot_related_hook_requires_review",
+      "incoming_matches": [
+        {
+          "package": "avahi",
+          "operation": "Upgrade",
+          "type": "Package",
+          "matching_values": [
+            "avahi"
+          ]
+        },
+        {
+          "package": "libsecret",
+          "operation": "Upgrade",
+          "type": "Package",
+          "matching_values": [
+            "libsecret"
+          ]
+        },
+        {
+          "package": "noto-fonts",
+          "operation": "Upgrade",
+          "type": "Package",
+          "matching_values": [
+            "noto-fonts"
+          ]
+        },
+        {
+          "package": "aether",
+          "operation": "Upgrade",
+          "type": "Package",
+          "matching_values": [
+            "aether"
+          ]
+        },
+        {
+          "package": "asdcontrol",
+          "operation": "Upgrade",
+          "type": "Package",
+          "matching_values": [
+            "asdcontrol"
+          ]
+        },
+        {
+          "package": "bat",
+          "operation": "Upgrade",
+          "type": "Package",
+          "matching_values": [
+            "bat"
+          ]
+        },
+        {
+          "package": "chromium",
+          "operation": "Upgrade",
+          "type": "Package",
+          "matching_values": [
+            "chromium"
+          ]
+        },
+        {
+          "package": "ffmpeg",
+          "operation": "Upgrade",
+          "type": "Package",
+          "matching_values": [
+            "ffmpeg"
+          ]
+        },
+        {
+          "package": "cliamp",
+          "operation": "Upgrade",
+          "type": "Package",
+          "matching_values": [
+            "cliamp"
+          ]
+        },
+        {
+          "package": "cups-filters",
+          "operation": "Upgrade",
+          "type": "Package",
+          "matching_values": [
+            "cups-filters"
+          ]
+        },
+        {
+          "package": "cups",
+          "operation": "Upgrade",
+          "type": "Package",
+          "matching_values": [
+            "cups"
+          ]
+        },
+        {
+          "package": "ddcutil",
+          "operation": "Upgrade",
+          "type": "Package",
+          "matching_values": [
+            "ddcutil"
+          ]
+        },
+        {
+          "package": "disktree-bin",
+          "operation": "Install",
+          "type": "Package",
+          "matching_values": [
+            "disktree-bin"
+          ]
+        },
+        {
+          "package": "docker",
+          "operation": "Upgrade",
+          "type": "Package",
+          "matching_values": [
+            "docker"
+          ]
+        },
+        {
+          "package": "docker-buildx",
+          "operation": "Upgrade",
+          "type": "Package",
+          "matching_values": [
+            "docker-buildx"
+          ]
+        },
+        {
+          "package": "docker-compose",
+          "operation": "Upgrade",
+          "type": "Package",
+          "matching_values": [
+            "docker-compose"
+          ]
+        },
+        {
+          "package": "dotnet-host-bin",
+          "operation": "Install",
+          "type": "Package",
+          "matching_values": [
+            "dotnet-host-bin"
+          ]
+        },
+        {
+          "package": "dotnet-runtime-bin",
+          "operation": "Install",
+          "type": "Package",
+          "matching_values": [
+            "dotnet-runtime-bin"
+          ]
+        },
+        {
+          "package": "gvfs",
+          "operation": "Upgrade",
+          "type": "Package",
+          "matching_values": [
+            "gvfs"
+          ]
+        },
+        {
+          "package": "evince",
+          "operation": "Upgrade",
+          "type": "Package",
+          "matching_values": [
+            "evince"
+          ]
+        },
+        {
+          "package": "fastfetch",
+          "operation": "Upgrade",
+          "type": "Package",
+          "matching_values": [
+            "fastfetch"
+          ]
+        },
+        {
+          "package": "fcitx5",
+          "operation": "Upgrade",
+          "type": "Package",
+          "matching_values": [
+            "fcitx5"
+          ]
+        },
+        {
+          "package": "libchewing",
+          "operation": "Install",
+          "type": "Package",
+          "matching_values": [
+            "libchewing"
+          ]
+        },
+        {
+          "package": "fcitx5-chewing",
+          "operation": "Install",
+          "type": "Package",
+          "matching_values": [
+            "fcitx5-chewing"
+          ]
+        },
+        {
+          "package": "qt6-base",
+          "operation": "Upgrade",
+          "type": "Package",
+          "matching_values": [
+            "qt6-base"
+          ]
+        },
+        {
+          "package": "fcitx5-qt",
+          "operation": "Upgrade",
+          "type": "Package",
+          "matching_values": [
+            "fcitx5-qt"
+          ]
+        },
+        {
+          "package": "libime",
+          "operation": "Install",
+          "type": "Package",
+          "matching_values": [
+            "libime"
+          ]
+        },
+        {
+          "package": "marisa",
+          "operation": "Install",
+          "type": "Package",
+          "matching_values": [
+            "marisa"
+          ]
+        },
+        {
+          "package": "opencc",
+          "operation": "Install",
+          "type": "Package",
+          "matching_values": [
+            "opencc"
+          ]
+        },
+        {
+          "package": "qt6-declarative",
+          "operation": "Upgrade",
+          "type": "Package",
+          "matching_values": [
+            "qt6-declarative"
+          ]
+        },
+        {
+          "package": "fcitx5-chinese-addons",
+          "operation": "Install",
+          "type": "Package",
+          "matching_values": [
+            "fcitx5-chinese-addons"
+          ]
+        },
+        {
+          "package": "libhangul",
+          "operation": "Install",
+          "type": "Package",
+          "matching_values": [
+            "libhangul"
+          ]
+        },
+        {
+          "package": "fcitx5-hangul",
+          "operation": "Install",
+          "type": "Package",
+          "matching_values": [
+            "fcitx5-hangul"
+          ]
+        },
+        {
+          "package": "fcitx5-mozc",
+          "operation": "Install",
+          "type": "Package",
+          "matching_values": [
+            "fcitx5-mozc"
+          ]
+        },
+        {
+          "package": "fcitx5-table-extra",
+          "operation": "Install",
+          "type": "Package",
+          "matching_values": [
+            "fcitx5-table-extra"
+          ]
+        },
+        {
+          "package": "fzf",
+          "operation": "Upgrade",
+          "type": "Package",
+          "matching_values": [
+            "fzf"
+          ]
+        },
+        {
+          "package": "git",
+          "operation": "Upgrade",
+          "type": "Package",
+          "matching_values": [
+            "git"
+          ]
+        },
+        {
+          "package": "xdg-desktop-portal-gtk",
+          "operation": "Upgrade",
+          "type": "Package",
+          "matching_values": [
+            "xdg-desktop-portal-gtk"
+          ]
+        },
+        {
+          "package": "libvips",
+          "operation": "Upgrade",
+          "type": "Package",
+          "matching_values": [
+            "libvips"
+          ]
+        },
+        {
+          "package": "gliff",
+          "operation": "Install",
+          "type": "Package",
+          "matching_values": [
+            "gliff"
+          ]
+        },
+        {
+          "package": "gnome-keyring",
+          "operation": "Upgrade",
+          "type": "Package",
+          "matching_values": [
+            "gnome-keyring"
+          ]
+        },
+        {
+          "package": "gpu-screen-recorder",
+          "operation": "Upgrade",
+          "type": "Package",
+          "matching_values": [
+            "gpu-screen-recorder"
+          ]
+        },
+        {
+          "package": "gum",
+          "operation": "Upgrade",
+          "type": "Package",
+          "matching_values": [
+            "gum"
+          ]
+        },
+        {
+          "package": "gvfs-mtp",
+          "operation": "Upgrade",
+          "type": "Package",
+          "matching_values": [
+            "gvfs-mtp"
+          ]
+        },
+        {
+          "package": "gvfs-nfs",
+          "operation": "Upgrade",
+          "type": "Package",
+          "matching_values": [
+            "gvfs-nfs"
+          ]
+        },
+        {
+          "package": "gvfs-smb",
+          "operation": "Upgrade",
+          "type": "Package",
+          "matching_values": [
+            "gvfs-smb"
+          ]
+        },
+        {
+          "package": "herdr",
+          "operation": "Upgrade",
+          "type": "Package",
+          "matching_values": [
+            "herdr"
+          ]
+        },
+        {
+          "package": "qt6-multimedia",
+          "operation": "Upgrade",
+          "type": "Package",
+          "matching_values": [
+            "qt6-multimedia"
+          ]
+        },
+        {
+          "package": "qt6-imageformats",
+          "operation": "Upgrade",
+          "type": "Package",
+          "matching_values": [
+            "qt6-imageformats"
+          ]
+        },
+        {
+          "package": "qt6-svg",
+          "operation": "Upgrade",
+          "type": "Package",
+          "matching_values": [
+            "qt6-svg"
+          ]
+        },
+        {
+          "package": "hype",
+          "operation": "Install",
+          "type": "Package",
+          "matching_values": [
+            "hype"
+          ]
+        },
+        {
+          "package": "hyprtoolkit",
+          "operation": "Upgrade",
+          "type": "Package",
+          "matching_values": [
+            "hyprtoolkit"
+          ]
+        },
+        {
+          "package": "hyprland-guiutils",
+          "operation": "Upgrade",
+          "type": "Package",
+          "matching_values": [
+            "hyprland-guiutils"
+          ]
+        },
+        {
+          "package": "hyprland",
+          "operation": "Upgrade",
+          "type": "Package",
+          "matching_values": [
+            "hyprland"
+          ]
+        },
+        {
+          "package": "hyprland-preview-share-picker",
+          "operation": "Upgrade",
+          "type": "Package",
+          "matching_values": [
+            "hyprland-preview-share-picker"
+          ]
+        },
+        {
+          "package": "imagemagick",
+          "operation": "Upgrade",
+          "type": "Package",
+          "matching_values": [
+            "imagemagick"
+          ]
+        },
+        {
+          "package": "inotify-tools",
+          "operation": "Upgrade",
+          "type": "Package",
+          "matching_values": [
+            "inotify-tools"
+          ]
+        },
+        {
+          "package": "networkmanager",
+          "operation": "Upgrade",
+          "type": "Package",
+          "matching_values": [
+            "networkmanager"
+          ]
+        },
+        {
+          "package": "lazygit",
+          "operation": "Upgrade",
+          "type": "Package",
+          "matching_values": [
+            "lazygit"
+          ]
+        },
+        {
+          "package": "less",
+          "operation": "Upgrade",
+          "type": "Package",
+          "matching_values": [
+            "less"
+          ]
+        },
+        {
+          "package": "libreoffice-fresh",
+          "operation": "Upgrade",
+          "type": "Package",
+          "matching_values": [
+            "libreoffice-fresh"
+          ]
+        },
+        {
+          "package": "mariadb-libs",
+          "operation": "Upgrade",
+          "type": "Package",
+          "matching_values": [
+            "mariadb-libs"
+          ]
+        },
+        {
+          "package": "mise-bin",
+          "operation": "Install",
+          "type": "Package",
+          "matching_values": [
+            "mise-bin"
+          ]
+        },
+        {
+          "package": "monologue",
+          "operation": "Install",
+          "type": "Package",
+          "matching_values": [
+            "monologue"
+          ]
+        },
+        {
+          "package": "moonlight-qt",
+          "operation": "Upgrade",
+          "type": "Package",
+          "matching_values": [
+            "moonlight-qt"
+          ]
+        },
+        {
+          "package": "mpv-mpris",
+          "operation": "Upgrade",
+          "type": "Package",
+          "matching_values": [
+            "mpv-mpris"
+          ]
+        },
+        {
+          "package": "nautilus",
+          "operation": "Upgrade",
+          "type": "Package",
+          "matching_values": [
+            "nautilus"
+          ]
+        },
+        {
+          "package": "python-gobject",
+          "operation": "Upgrade",
+          "type": "Package",
+          "matching_values": [
+            "python-gobject"
+          ]
+        },
+        {
+          "package": "nautilus-python",
+          "operation": "Upgrade",
+          "type": "Package",
+          "matching_values": [
+            "nautilus-python"
+          ]
+        },
+        {
+          "package": "nss-mdns",
+          "operation": "Upgrade",
+          "type": "Package",
+          "matching_values": [
+            "nss-mdns"
+          ]
+        },
+        {
+          "package": "neovim",
+          "operation": "Upgrade",
+          "type": "Package",
+          "matching_values": [
+            "neovim"
+          ]
+        },
+        {
+          "package": "obsidian",
+          "operation": "Upgrade",
+          "type": "Package",
+          "matching_values": [
+            "obsidian"
+          ]
+        },
+        {
+          "package": "omacalc",
+          "operation": "Upgrade",
+          "type": "Package",
+          "matching_values": [
+            "omacalc"
+          ]
+        },
+        {
+          "package": "omacut",
+          "operation": "Upgrade",
+          "type": "Package",
+          "matching_values": [
+            "omacut"
+          ]
+        },
+        {
+          "package": "omawrite",
+          "operation": "Upgrade",
+          "type": "Package",
+          "matching_values": [
+            "omawrite"
+          ]
+        },
+        {
+          "package": "omarchy-nvim",
+          "operation": "Upgrade",
+          "type": "Package",
+          "matching_values": [
+            "omarchy-nvim"
+          ]
+        },
+        {
+          "package": "omarchy-hyprland-titlebars",
+          "operation": "Install",
+          "type": "Package",
+          "matching_values": [
+            "omarchy-hyprland-titlebars"
+          ]
+        },
+        {
+          "package": "layer-shell-qt",
+          "operation": "Install",
+          "type": "Package",
+          "matching_values": [
+            "layer-shell-qt"
+          ]
+        },
+        {
+          "package": "omasnap",
+          "operation": "Install",
+          "type": "Package",
+          "matching_values": [
+            "omasnap"
+          ]
+        },
+        {
+          "package": "owe",
+          "operation": "Install",
+          "type": "Package",
+          "matching_values": [
+            "owe"
+          ]
+        },
+        {
+          "package": "owe-lockfeed",
+          "operation": "Install",
+          "type": "Package",
+          "matching_values": [
+            "owe-lockfeed"
+          ]
+        },
+        {
+          "package": "pinta",
+          "operation": "Upgrade",
+          "type": "Package",
+          "matching_values": [
+            "pinta"
+          ]
+        },
+        {
+          "package": "plymouth",
+          "operation": "Upgrade",
+          "type": "Package",
+          "matching_values": [
+            "plymouth"
+          ]
+        },
+        {
+          "package": "postgresql-libs",
+          "operation": "Upgrade",
+          "type": "Package",
+          "matching_values": [
+            "postgresql-libs"
+          ]
+        },
+        {
+          "package": "python-poetry-core",
+          "operation": "Upgrade",
+          "type": "Package",
+          "matching_values": [
+            "python-poetry-core"
+          ]
+        },
+        {
+          "package": "qt6-wayland",
+          "operation": "Install",
+          "type": "Package",
+          "matching_values": [
+            "qt6-wayland"
+          ]
+        },
+        {
+          "package": "ttfx",
+          "operation": "Upgrade",
+          "type": "Package",
+          "matching_values": [
+            "ttfx"
+          ]
+        },
+        {
+          "package": "qemu-user-static-binfmt",
+          "operation": "Upgrade",
+          "type": "Package",
+          "matching_values": [
+            "qemu-user-static-binfmt"
+          ]
+        },
+        {
+          "package": "quickshell",
+          "operation": "Install",
+          "type": "Package",
+          "matching_values": [
+            "quickshell"
+          ]
+        },
+        {
+          "package": "signed",
+          "operation": "Install",
+          "type": "Package",
+          "matching_values": [
+            "signed"
+          ]
+        },
+        {
+          "package": "starship",
+          "operation": "Upgrade",
+          "type": "Package",
+          "matching_values": [
+            "starship"
+          ]
+        },
+        {
+          "package": "libwireplumber",
+          "operation": "Upgrade",
+          "type": "Package",
+          "matching_values": [
+            "libwireplumber"
+          ]
+        },
+        {
+          "package": "wireplumber",
+          "operation": "Upgrade",
+          "type": "Package",
+          "matching_values": [
+            "wireplumber"
+          ]
+        },
+        {
+          "package": "superwhisper-bin",
+          "operation": "Install",
+          "type": "Package",
+          "matching_values": [
+            "superwhisper-bin"
+          ]
+        },
+        {
+          "package": "gtksourceview5",
+          "operation": "Install",
+          "type": "Package",
+          "matching_values": [
+            "gtksourceview5"
+          ]
+        },
+        {
+          "package": "libspelling",
+          "operation": "Install",
+          "type": "Package",
+          "matching_values": [
+            "libspelling"
+          ]
+        },
+        {
+          "package": "papers",
+          "operation": "Install",
+          "type": "Package",
+          "matching_values": [
+            "papers"
+          ]
+        },
+        {
+          "package": "sushi",
+          "operation": "Upgrade",
+          "type": "Package",
+          "matching_values": [
+            "sushi"
+          ]
+        },
+        {
+          "package": "tmux",
+          "operation": "Upgrade",
+          "type": "Package",
+          "matching_values": [
+            "tmux"
+          ]
+        },
+        {
+          "package": "tobi-try",
+          "operation": "Upgrade",
+          "type": "Package",
+          "matching_values": [
+            "tobi-try"
+          ]
+        },
+        {
+          "package": "ttf-ia-writer",
+          "operation": "Upgrade",
+          "type": "Package",
+          "matching_values": [
+            "ttf-ia-writer"
+          ]
+        },
+        {
+          "package": "ttf-jetbrains-mono-nerd-basic",
+          "operation": "Upgrade",
+          "type": "Package",
+          "matching_values": [
+            "ttf-jetbrains-mono-nerd-basic"
+          ]
+        },
+        {
+          "package": "tzupdate",
+          "operation": "Upgrade",
+          "type": "Package",
+          "matching_values": [
+            "tzupdate"
+          ]
+        },
+        {
+          "package": "ufw-docker",
+          "operation": "Upgrade",
+          "type": "Package",
+          "matching_values": [
+            "ufw-docker"
+          ]
+        },
+        {
+          "package": "usage",
+          "operation": "Upgrade",
+          "type": "Package",
+          "matching_values": [
+            "usage"
+          ]
+        },
+        {
+          "package": "uwsm",
+          "operation": "Upgrade",
+          "type": "Package",
+          "matching_values": [
+            "uwsm"
+          ]
+        },
+        {
+          "package": "vim-runtime",
+          "operation": "Install",
+          "type": "Package",
+          "matching_values": [
+            "vim-runtime"
+          ]
+        },
+        {
+          "package": "vim",
+          "operation": "Install",
+          "type": "Package",
+          "matching_values": [
+            "vim"
+          ]
+        },
+        {
+          "package": "ex-vi-compat",
+          "operation": "Install",
+          "type": "Package",
+          "matching_values": [
+            "ex-vi-compat"
+          ]
+        },
+        {
+          "package": "xdg-terminal-exec",
+          "operation": "Upgrade",
+          "type": "Package",
+          "matching_values": [
+            "xdg-terminal-exec"
+          ]
+        },
+        {
+          "package": "yaru-icon-theme",
+          "operation": "Upgrade",
+          "type": "Package",
+          "matching_values": [
+            "yaru-icon-theme"
+          ]
+        },
+        {
+          "package": "graphicsmagick",
+          "operation": "Install",
+          "type": "Package",
+          "matching_values": [
+            "graphicsmagick"
+          ]
+        },
+        {
+          "package": "zbar",
+          "operation": "Upgrade",
+          "type": "Package",
+          "matching_values": [
+            "zbar"
+          ]
+        },
+        {
+          "package": "zram-generator",
+          "operation": "Install",
+          "type": "Package",
+          "matching_values": [
+            "zram-generator"
+          ]
+        },
+        {
+          "package": "rtkit",
+          "operation": "Upgrade",
+          "type": "Package",
+          "matching_values": [
+            "rtkit"
+          ]
+        },
+        {
+          "package": "libva-v4l2_request-avd",
+          "operation": "Install",
+          "type": "Package",
+          "matching_values": [
+            "libva-v4l2_request-avd"
+          ]
+        },
+        {
+          "package": "wf-recorder",
+          "operation": "Install",
+          "type": "Package",
+          "matching_values": [
+            "wf-recorder"
+          ]
+        }
+      ],
+      "execution": "UNTESTED; static retained-image evidence only"
+    },
+    {
+      "effective_hook": "etc/pacman.d/hooks/90-mkinitcpio-install.hook",
+      "hook_sha256": "97ae91e1309dd2e70458abc757233837e3919011f450cb69a7e8a8c8ec4c72c1",
+      "exec": [
+        "/usr/share/libalpm/scripts/limine-mkinitcpio-install"
+      ],
+      "effect": "boot_artifact_generation",
+      "incoming_matches": [
+        {
+          "package": "plymouth",
+          "operation": "Upgrade",
+          "type": "Path",
+          "matching_values": [
+            "usr/lib/initcpio/hooks",
+            "usr/lib/initcpio/hooks/plymouth",
+            "usr/lib/initcpio/install",
+            "usr/lib/initcpio/install/plymouth",
+            "usr/lib/initcpio/install/plymouth-shutdown"
+          ]
+        }
+      ],
+      "execution": "UNTESTED; static retained-image evidence only"
+    },
+    {
+      "effective_hook": "usr/share/libalpm/hooks/91-omarchy-mac-boot-initramfs.hook",
+      "hook_sha256": "564fe04b434e425d332e34b0d90391b2bd2c3be37b4afb112222a73ac785f825",
+      "exec": [
+        "/usr/share/libalpm/scripts/mkinitcpio install"
+      ],
+      "effect": "boot_artifact_generation",
+      "incoming_matches": [
+        {
+          "package": "plymouth",
+          "operation": "Upgrade",
+          "type": "Path",
+          "matching_values": [
+            "usr/lib/initcpio/install/plymouth",
+            "usr/lib/initcpio/install/plymouth-shutdown"
+          ]
+        }
+      ],
+      "execution": "UNTESTED; static retained-image evidence only"
+    }
+  ],
+  "protected_installed_pin_count": 20,
+  "held_original_requests": [
+    {
+      "requested": "omarchy-mac",
+      "reason": "boot/firmware/system/graphics ABI identity is protected",
+      "installed_pin": null
+    },
+    {
+      "requested": "omarchy-mac-boot",
+      "reason": "boot/firmware/system/graphics ABI identity is protected",
+      "installed_pin": {
+        "version": "20260921-9",
+        "architecture": "aarch64",
+        "description_sha256": "f5a03272ce20e0ff00110f72e49d294a652ff1815a572eddf33ecc277f0afae8"
+      }
+    },
+    {
+      "requested": "asahi-bless",
+      "reason": "boot/firmware/system/graphics ABI identity is protected",
+      "installed_pin": {
+        "version": "0.4.2-1",
+        "architecture": "aarch64",
+        "description_sha256": "5b0a03e7b7cdfa885721177dbc233d377b24d415847ff70672477a3051f66075"
+      }
+    },
+    {
+      "requested": "avd-fw",
+      "reason": "boot/firmware/system/graphics ABI identity is protected",
+      "installed_pin": null
+    }
+  ],
+  "reverse_dependency_ABI": "UNTESTED; current libraries may break untouched image consumers despite declared dependency solve and valid signatures",
+  "isolated_clone_validation": "Required before any real install: validate a disposable full-image clone and affected library/symbol/consumer ABI; no installation was attempted here",
+  "full_upgrade_authorized": false,
+  "deployable": false,
+  "execution_ready": false,
+  "actions": [],
+  "claims": [
+    {
+      "status": "WORKS",
+      "claim": "Same recorded167 requests print-resolve against frozen current metadata through unmodified C resolver; frozen replay agrees",
+      "evidence": "configured-current-proposal.json"
+    },
+    {
+      "status": "WORKS",
+      "claim": "117 selected payloads have exact SHA/size, retained-anchor PGP and matching signed identity/dependencies/metadata",
+      "evidence": "configured-current-payload-qualification.json"
+    },
+    {
+      "status": "PARTIAL",
+      "claim": "Five DBs unsigned; Asahi DB signature valid. TLS and package signatures do not prove DB newest state/completeness",
+      "evidence": "configured-current-repositories.json"
+    },
+    {
+      "status": "BLOCKED",
+      "claim": "Boot effects and held requests remain; no resulting system or rollback qualification",
+      "evidence": "configured-current-payload-qualification.json#/boot_effects"
+    },
+    {
+      "status": "UNTESTED",
+      "claim": "Untouched reverse-dependency binary compatibility, actual install, hooks, services and target hardware",
+      "evidence": "No payload execution or installation in this lane"
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "source_commit": "9d9f94a00b6e4408cbfaf5051fc2caeb792f7260",
+  "file": "drivers/soc/apple/mailbox.c",
+  "file_sha256": "88748e94ddb069967303187d4152d57ccaf8bbb3dc304af14bffaf6c43221331",
+  "start_function_sha256": "3070e6cada9676ec1e75590f66738086bde57b60ed75195b005a0106b425336b",
+  "findings": [
+    "Only error return is pm_runtime_resume_and_get before FIFO accesses/IRQ enable",
+    "IRQs requested with IRQF_NO_AUTOEN",
+    "After enable_irq start sets active and returns0 unconditionally",
+    "Already-active start returns0",
+    "Fresh failed start itself cannot queue RX through this IRQ path",
+    "Concurrent direct polling/other transport users still require caller exclusion"
+  ],
+  "source_changes": false,
+  "scope": "source ordering inspection only; not hardware/concurrency proof",
+  "target_access": false
+}

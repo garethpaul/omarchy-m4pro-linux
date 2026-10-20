@@ -1,6 +1,6 @@
 {
-  "workspace_commit": "78b3cb5b8a929d32bde6b0a73e54832399d90bd4",
-  "source_archive_sha256": "59a2f65da35d76474fd5afc790549614afa4920e99957d07b817bf3907ce8157",
+  "workspace_commit": "e8d92a2bd7b5ac555307e52f7c988eb573abfd84",
+  "source_archive_sha256": "211355c62aa02b5a7ea615819805ee75268e4f683b84eea07f2a5e37b0bb82aa",
   "status": "experimental tooling; no deployment or production qualification",
   "files": [
     {
@@ -9,7 +9,7 @@
     },
     {
       "file": "PROGRESS.md",
-      "sha256": "79889e0efed7bf1a83bd5165e37d95b7b6a19ef0c7ada65f1ba4f3dfe683b020"
+      "sha256": "2fc475b6c7a35c104017d6778c7c93e6f45af480318162c837a73e25bae9b787"
     },
     {
       "file": "capture/.gitignore",
@@ -297,7 +297,7 @@
     },
     {
       "file": "graphics/display/README.md",
-      "sha256": "41525ff434ea04aa8a496100dda8923592e83d79c6aa6f340d17eaff594505ac"
+      "sha256": "d554e4829b3b0a06ca1c1796cfa71055478c83c73423b8c83024e3707e481d89"
     },
     {
       "file": "graphics/display/dcp-transcript.py",
@@ -501,11 +501,15 @@
     },
     {
       "file": "infra/README.md",
-      "sha256": "5f64403cbddfd704402580a882132be5c74ee4e8c03b5cffaf2a6c3f3d38f644"
+      "sha256": "028ef0e45ae34863a72b8ddefaacf26520b2a0de4ed7a0de94cc4edfd3f206d6"
     },
     {
       "file": "infra/baseline-contract.json",
       "sha256": "97bbcb074a08bd72253d5ffa56ec411e26079c06936946bb2afdbd7339fea416"
+    },
+    {
+      "file": "infra/baseline-preservation-final.json",
+      "sha256": "3cba7e65ec61df71160ceb46544388d46986501fc71f3c44721dce85cb42c19e"
     },
     {
       "file": "infra/bindgen-test-results.json",
@@ -581,7 +585,15 @@
     },
     {
       "file": "infra/dcp-nomap-host-results.json",
-      "sha256": "82b825b66a623635164100c2b0db3390e120193e072f02ef43d684d9341b1cf3"
+      "sha256": "cdaf3382458d977ed786b3d11fa895a6dba097b825c3dd1c1c646a81320f1b2d"
+    },
+    {
+      "file": "infra/dcp-prime-host-results.json",
+      "sha256": "28d9fb890b42933988303e8ff01241b7e25f44ac51102f813b2784bf210a9c1c"
+    },
+    {
+      "file": "infra/g16-mmio-object-after.json",
+      "sha256": "818be8217a3c15bb138cf74e41bdc3f0a40a28c28b953fd1d34ab49194b63130"
     },
     {
       "file": "infra/g16-object-config.diff",
@@ -609,7 +621,7 @@
     },
     {
       "file": "infra/gravity-dcp-mapping-review.md",
-      "sha256": "4df3024b3b57f44bd327cf60db9cee670c0ff97d93b99e38b9e5048dfe3e7b2f"
+      "sha256": "ac30f63f8505402e61c6d32686127b9f9df70ba123d7b0f1b364b43f13f799a7"
     },
     {
       "file": "infra/gravity-dcp-module-failure.json",
@@ -618,6 +630,10 @@
     {
       "file": "infra/gravity-dcp-object-result.json",
       "sha256": "6a542a8bace7b6ffdb451c936adf6b3daae89cb67f327bb6cc02c600444e931a"
+    },
+    {
+      "file": "infra/gravity-dcp-prime-object-result.json",
+      "sha256": "f42575cdb3336d5ddedbb643ef1016368b1c079ced62203e49c745d188d6f661"
     },
     {
       "file": "infra/gravity-dcp-restricted-kernel-after.json",
@@ -644,16 +660,40 @@
       "sha256": "20f705e22f5ff4d27341a0934745fbbb659988387edc89bfa0fd2bc16e8f6176"
     },
     {
+      "file": "infra/j614s-gravity-ans-staged-objects.json",
+      "sha256": "1b9f3af65a47b016524556c9bcd1c347ca0bd56b5485898a872052577cfc8fe9"
+    },
+    {
+      "file": "infra/j614s-gravity-kernel-after-mmio.json",
+      "sha256": "2ff9c0ab78de31d2d20be226a246c6a215feac9213adf79c40372b12f1eba539"
+    },
+    {
+      "file": "infra/j614s-gravity-kernel-attempt-02-failure.json",
+      "sha256": "5141579e3121a83bbd174ecb8308817dd7364f81293ecf1ff521cc8d2927f869"
+    },
+    {
+      "file": "infra/j614s-gravity-nvme-objects.json",
+      "sha256": "57ae232c42a6ebd8fcc9af4c8aeed04b6d89702f2bfa67685a5476ab7cc65aac"
+    },
+    {
       "file": "infra/j614s-gravity-platform-attempt-01.json",
       "sha256": "596c65878cd0a4a3af9c5d70097bb5a01b949be3397723a810873ba730e17aa1"
     },
     {
+      "file": "infra/j614s-gravity-platform-attempt-02.json",
+      "sha256": "397bd1417c4dad1cbd8cc3155987615bee682637d5ce425b0817f5237a0f8c8c"
+    },
+    {
       "file": "infra/kernel_build.py",
-      "sha256": "4f356426ceb19ee16a4f0e0443dbe2f4a90082fe8bc36097ceb4471c23673cf9"
+      "sha256": "c84ae596247f9f08eff693d8234917fa0f90bea69659da20db2a5a047a6508eb"
     },
     {
       "file": "infra/layout-evidence.json",
       "sha256": "7ad5ac16357b27f05a1bd2a12aedba229590dcad8d5e307575577b85942de237"
+    },
+    {
+      "file": "infra/patches/g16-runtime-mmio.patch",
+      "sha256": "bf94db36a06f5164f43a8c47bf5cf3ae0786cc090ecd898c848df74b74fe16fc"
     },
     {
       "file": "infra/patches/gravity-enable-binding-layouts.patch",
@@ -661,7 +701,7 @@
     },
     {
       "file": "infra/qualify_gravity.py",
-      "sha256": "fa8a9d122a1fb9a42205b0223133ac9bb4731d583afd141f9f8b68da34e40ce7"
+      "sha256": "33383f372286b96c260a5f7bc506acb28d52b893e313c3ed929e0396f368570f"
     },
     {
       "file": "infra/regression-results.json",
@@ -676,12 +716,20 @@
       "sha256": "538c62318d9d8a2c816148959eac8a612d5623361e03d953d0d579cc74f62cd4"
     },
     {
+      "file": "infra/sanitizer-fatal-probe.json",
+      "sha256": "1b30983b40a448b530bef3664f1d496fb32f9483af699a2faea95a4fd6ec971a"
+    },
+    {
+      "file": "infra/test_dcp_prime.py",
+      "sha256": "d8e560c9497a01a086ee688e78de2c69a29f5b85aa297b18c1e3252dd5482255"
+    },
+    {
       "file": "infra/test_dcp_scanout.py",
-      "sha256": "8864d5cdceff9a78b2aed8a59075a2b9ee46723eb9f2d12ad3ac3002557b229c"
+      "sha256": "3bbee15fa6e5c4c6e9a3b732eb652146329d16788c2275bc41fdcd63a0445fac"
     },
     {
       "file": "infra/test_kernel_build.py",
-      "sha256": "19996e2915ba58d3d8609ed631bded5c3bcbfb4e71a15e694b4ce601765a8917"
+      "sha256": "51fcc92415929650daa14874374ca8b360dd816c52ba74e6894dbd2b85d286ad"
     },
     {
       "file": "infra/tool-versions.json",
@@ -693,7 +741,7 @@
     },
     {
       "file": "integration/README.md",
-      "sha256": "19d56710ef47477e89850df0f61462eab775d41d8f13f231a486b5eaf5d981f7"
+      "sha256": "35ee38de7abab47b67e04845d8d18e6d249fdbb73df0c74f90a82d74b50a5b1b"
     },
     {
       "file": "integration/config-normalization.diff",
@@ -720,6 +768,10 @@
       "sha256": "8e639256e9024d7117c5e452666989db588b2d7c839eb07b54a16bf59ba736fd"
     },
     {
+      "file": "integration/evidence/dcp-fixed-patch-roundtrip.json",
+      "sha256": "3fe498944b16886683254e13bc91766cbb0b1ca8f91269b807c1fc3039a84716"
+    },
+    {
       "file": "integration/evidence/dcp-fixed-source-config-check.json",
       "sha256": "31f408273cf2a52cd41ce960b5e41ca42d7afde66e29e1c483b2b99396df5b61"
     },
@@ -742,6 +794,98 @@
     {
       "file": "integration/evidence/unit-tests.txt",
       "sha256": "ce786ece424b2323cd710c9ac729416744e3d7c63b4aa1b54070ae78e6458f89"
+    },
+    {
+      "file": "integration/nvme/README.md",
+      "sha256": "521872027103bc597777d957d07f1b5e699d5bf76e90fe1b476ab088af5c23da"
+    },
+    {
+      "file": "integration/nvme/borrowed-buffer-ledger.json",
+      "sha256": "510e4f8018181cb0fc03ea985b5a375711f16efd7d1d542d3be0a98b4da6944e"
+    },
+    {
+      "file": "integration/nvme/lifetime-host-harness.c",
+      "sha256": "3620552c89118307d2934e9ab12813271614bc2e33ae705f7c449d6a42be7b0a"
+    },
+    {
+      "file": "integration/nvme/lifetime-host-result.json",
+      "sha256": "ea395127deaf36c366fde53aaf94bf9f76d8f8ed24f95ea717ba1fbc67310c64"
+    },
+    {
+      "file": "integration/nvme/lifetime-ledger.json",
+      "sha256": "dc64191348f8a57ef531b797ceec670e9d9cfb77e9ec4d8dfc02be0db807f09e"
+    },
+    {
+      "file": "integration/nvme/mailbox-start-review.json",
+      "sha256": "1873280c3fa1883744cb6d2e5800464224ffa64c43d2893b552508adc4104506"
+    },
+    {
+      "file": "integration/nvme/nvme-host-harness.c",
+      "sha256": "6024bd880c157f33e7624f514d0b7279edbe2abc35db5bf9aabcfa8189525929"
+    },
+    {
+      "file": "integration/nvme/nvme-host-result.json",
+      "sha256": "cbe07551dfe25c121a69232fca85611ca594826f985c448fa18375f50729867a"
+    },
+    {
+      "file": "integration/nvme/patch-roundtrip.json",
+      "sha256": "44373ac01e2a250f997ee7d45a3b1a71c7ae9e910b2f05607e953dac0f99507a"
+    },
+    {
+      "file": "integration/nvme/patches/0001-soc-apple-port-protected-inherited-SART-range-query.patch",
+      "sha256": "812cb3a809400dbf9595f4ba3e3d1702203270ed739ad32f941317aa832fd268"
+    },
+    {
+      "file": "integration/nvme/patches/0002-soc-apple-port-guarded-inherited-RTKit-initializatio.patch",
+      "sha256": "91bee2d1aa7a1bf4fd4a33d374bcb68c9238b5288d106d4d23b60e05c77d8500"
+    },
+    {
+      "file": "integration/nvme/patches/0003-soc-apple-use-size_t-for-inherited-endpoint-array-it.patch",
+      "sha256": "5ee28ee4bbfa8dd22f105d70acf2980d69f7054c9a6bc965453567df23188514"
+    },
+    {
+      "file": "integration/nvme/patches/0004-nvme-apple-stage-measured-inherited-session-and-borr.patch",
+      "sha256": "becd68dbd377a5e676f0d586d678eb5098ab6306fd0177e2f3d7223b1687582a"
+    },
+    {
+      "file": "integration/nvme/patches/0005-retained-controller-ownership.patch",
+      "sha256": "aabc6e4df0830ed9fc3ae6304f3469f0db19355bd0dab0ac22abb1fba682fe23"
+    },
+    {
+      "file": "integration/nvme/prerequisite-ledger.json",
+      "sha256": "24a72a3a7e8cfdca79bdc58e5de78e9e369b94bf040a2d43dad8c4587b3950aa"
+    },
+    {
+      "file": "integration/nvme/rtkit-host-harness.c",
+      "sha256": "e579a71946443dc58e6b7794194de2d6d74c296dfb1a8a1ee6fe921b4767e584"
+    },
+    {
+      "file": "integration/nvme/rtkit-host-result.json",
+      "sha256": "11213f08aa7bf21241a458b741925dca372bf6845ff332badc078f3fd44aa663"
+    },
+    {
+      "file": "integration/nvme/sart-host-harness.c",
+      "sha256": "a7059da00792134bfa2ffbd2e0ffafc75038461aa7bfa8160f47638fabea6166"
+    },
+    {
+      "file": "integration/nvme/sart-host-result.json",
+      "sha256": "83d03435762ca3f71757c5dc9ead03bc3591f3659b892cb3b8e866456e06b165"
+    },
+    {
+      "file": "integration/nvme/test_lifetime_source.py",
+      "sha256": "45d22502fc6ec5ee242aea5b209046f6c4f8719084bdbef04ba771e4a4fee107"
+    },
+    {
+      "file": "integration/nvme/test_nvme_source.py",
+      "sha256": "1bbb2a3063662cb3c8976a3d8e7568958c263f99793a8a7437518379d03a3728"
+    },
+    {
+      "file": "integration/nvme/test_rtkit_source.py",
+      "sha256": "13f78f800147a8a53f7565f04e783211a17f07747a6dd3d6b64ea18510468578"
+    },
+    {
+      "file": "integration/nvme/test_sart_source.py",
+      "sha256": "99cff41d30272a163dfde6d7b299c4be963dc6a4d9b4f6e7328106ad856a31a2"
     },
     {
       "file": "integration/patches-dcp/0005-drm-apple-validate-IOMFB-callback-envelopes-before-s.patch",
@@ -980,6 +1124,74 @@
       "sha256": "34f9f28f0103d9ce749e394c547b5f8b36623edb844a6099f78ec9ecf0234112"
     },
     {
+      "file": "packages/current-plan/.gitignore",
+      "sha256": "0090a854cd9b906751909c1f21e1454e3de0f601a7f300f05246ef49dca5a770"
+    },
+    {
+      "file": "packages/current-plan/README.md",
+      "sha256": "740b5b81ed7676efadc6f4bcf146f4715fdd0df1f0765ea5f3c04dc8a84a3d46"
+    },
+    {
+      "file": "packages/current-plan/evidence/configured-current-payload-qualification.json",
+      "sha256": "468862b06d7f38c41c2c030e5f8fea796563b64ec3af0342c14925450093f1e0"
+    },
+    {
+      "file": "packages/current-plan/evidence/configured-current-proposal.json",
+      "sha256": "fbe2e7fde7b82be9bb51011ec4b67a5ce2c333d3437bd13e1c6cc45cb619df5e"
+    },
+    {
+      "file": "packages/current-plan/evidence/configured-current-repositories.json",
+      "sha256": "c2f061d4947022d926bcca60cd96fdaee4744cfb918ba8a3431e43fd04f3f0e4"
+    },
+    {
+      "file": "packages/current-plan/evidence/configured-current-request-review.json",
+      "sha256": "60cf22150225eea9a8d1ea737f7e1ea4831abd7c22da8fbe0ae91bdb4ac06020"
+    },
+    {
+      "file": "packages/current-plan/evidence/current-tests.log",
+      "sha256": "c24760848aa3771d05faf51a913579f3a3b392cdd5c1207439956a3e1069238f"
+    },
+    {
+      "file": "packages/current-plan/evidence/frozen-policy.json",
+      "sha256": "c4c8ab909290cbca15acc8b1643fccab25fa80582f792a572f7cd81163dc7e83"
+    },
+    {
+      "file": "packages/current-plan/evidence/official-alarm-current-proposal.json",
+      "sha256": "534124b94ae2ecffb8d9bf9ef9ee502c0facd555af34d389254bf3355bbfe6d3"
+    },
+    {
+      "file": "packages/current-plan/evidence/official-alarm-current-repositories.json",
+      "sha256": "4d343a921f5aac433d41252c352d9e5d64fd5e492bb5c3a20dd8f8346c214fb9"
+    },
+    {
+      "file": "packages/current-plan/evidence/official-alarm-current-request-review.json",
+      "sha256": "60cf22150225eea9a8d1ea737f7e1ea4831abd7c22da8fbe0ae91bdb4ac06020"
+    },
+    {
+      "file": "packages/current-plan/evidence/public-checkout-tests.json",
+      "sha256": "f2ce169f75a21571cf4775e9c23429d45a5784f116a867b760f7daa2288f81e7"
+    },
+    {
+      "file": "packages/current-plan/evidence/summary.json",
+      "sha256": "b5faee63e0d70b027e2c87357477cd8a7a3760e0314a592d182e856bb72985f5"
+    },
+    {
+      "file": "packages/current-plan/propose.py",
+      "sha256": "b8c46961017a392d8bb7cb793de1add40aba8cc9137b41888b72ec3825fe4493"
+    },
+    {
+      "file": "packages/current-plan/qualify_payloads.py",
+      "sha256": "3ead8136ee7dbdb10fc32081565a304bea8053b6c7dfe071105800d99badda94"
+    },
+    {
+      "file": "packages/current-plan/summarize.py",
+      "sha256": "057a613b22dfc090408735611acbd20dea72a420b2cec30c69eee40008402007"
+    },
+    {
+      "file": "packages/current-plan/tests/test_current.py",
+      "sha256": "3f2dda07d830b8edd5dcbdd911790c21df0751d7a800a11197f2661dc0985140"
+    },
+    {
       "file": "packages/evidence/exhaustive-official-mirror-checks.json",
       "sha256": "618952ac5c2bba13316ec24b9731c5e7e12b5dccfba302095f194cf5fbea5a95"
     },
@@ -1037,11 +1249,11 @@
     },
     {
       "file": "qualification/EVIDENCE.json",
-      "sha256": "3f87e1bb43f34c221813e3a6f5d1042fe835565ccbd2e6f0aaf80bd07633ef87"
+      "sha256": "6d92378195eddef96e0f56f9c6422f4fb36596856f40b50b213cb9c212ce2c07"
     },
     {
       "file": "qualification/STATUS.md",
-      "sha256": "0b3dc95c88c564d8010f41420a713e441853b5144f12238aa38d070ba9666231"
+      "sha256": "c5e3006e84a7291cfde88900eb907453af1e3c22aec4f1d32bfcbef46ed91a36"
     },
     {
       "file": "qualification/adt-node-comparison.json",

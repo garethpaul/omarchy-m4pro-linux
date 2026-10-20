@@ -1,0 +1,14 @@
+{
+  "reference_config_sha256": "cfcc148e0c79f934ef23086598eaf630524ca0e3cc61821e0b5398ab7ee26da6",
+  "reference_image_sha256": "a114bb3a927918b54c25ed31b3ea102b9ac08d404fdd793a1f75d99845259883",
+  "scope": "Read-only preservation check after all new source/build qualifications; physical target never accessed by this lane",
+  "source": {
+    "dirty_diff_sha256": "27f7fa4753de9762d2ac6d25ec2ed099a9c5a624b8276e344dcad790834f8379",
+    "head": "4ff8816df8c4bc81b1652eca17fc8c0e9e1928cc",
+    "untracked": {
+      "drivers/phy/apple/usb2-j614s-host-diagnostic.c": "9b9666b7dc1967e3568ff07d0698bf88e11942f36829d47995c34ef3d445cd81",
+      "drivers/tty/serial/j614s_earlyfb.c": "ada07dedbef3132dd05bf92cca8eb4b1b14b919bb1bdea8cd8265bafb1b95206"
+    }
+  },
+  "status": "PASS"
+}

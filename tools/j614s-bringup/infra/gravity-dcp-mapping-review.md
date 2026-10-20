@@ -1,5 +1,24 @@
 # DCP modular link restriction
 
+Current status: **PARTIAL (restricted module compiles and links)**. Source
+`124fd0633bb8932bbf68845ecbe8a5ffc53dfb43` produces a full Image and ten modules,
+including `appledrm.ko`, with the exact same configuration as the failed attempt
+below. See `gravity-dcp-restricted-kernel-after.json`. No private arch exports
+were added; built-in fallback/restore remain unchanged. Native display remains
+**BLOCKED** on unverified live J614s no-map pool/DART handoff.
+
+A post-link audit found that default PRIME imports could bypass the dumb-buffer
+pool path. Separate source `cf9836359cb60e7e53324b922fb44bd6c5c6ec21` authenticates
+the real GEM exporter/device and the validated no-map allocation marker before
+import. Host actual-source regression reproduces foreign attach/map on the old
+source and verifies rejection before those calls on the candidate; owned-pool
+self-import retains the default refcount-only path. Kernel compilation is
+pending for this follow-up. Foreign AGX-to-DCP PRIME zero-copy presentation is
+therefore unsupported in this temporary owned-pool profile; it is not a final
+accelerated native desktop. A real DART import/mapping design is still required.
+
+## Historical failure and original mapping review
+
 Status: **BLOCKED (modular link)**. Source `be6225839fe98158ce677d9424ce255aeedbb406`
 compiles the complete DCP composite and all 12.3/13.3/26.6 translation units;
 modpost rejects four unresolved arch internals. Exact object/config/source proof

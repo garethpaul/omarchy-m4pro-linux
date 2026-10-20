@@ -1,0 +1,188 @@
+From 9d9f94a00b6e4408cbfaf5051fc2caeb792f7260 Mon Sep 17 00:00:00 2001
+From: gareth jones <gareth@garethpaul.com>
+Date: Mon, 19 Oct 2026 22:53:33 -0700
+Subject: [PATCH] nvme: apple: stage measured inherited-session and
+ borrowed-buffer validation
+
+Port f93 admission via RUN/BOOT_STATUS/CC/CSTS and explicit disabled-handoff contract, protected SART plus per-page reserved linear System RAM checks, and identity streaming DMA ownership with retained device references. Preserve rejection of borrowed memory for existing non-inherited profiles. Keep initial J614s refusal active: controller writes, actual adopted initialization, no-reset queue handoff and quarantine/lifetime integration are not enabled or claimed.
+---
+ drivers/nvme/host/apple.c | 163 +++++++++++++++++++++++++++++++++++++-
+ 1 file changed, 161 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/nvme/host/apple.c b/drivers/nvme/host/apple.c
+index 32561641c..a2bbe0e42 100644
+--- a/drivers/nvme/host/apple.c
++++ b/drivers/nvme/host/apple.c
+@@ -20,0 +21 @@
++#include <linux/ioport.h>
+@@ -23,0 +25,2 @@
++#include <linux/mm.h>
++#include <linux/overflow.h>
+@@ -191,0 +195,5 @@ struct apple_nvme {
++	/* Staged inherited-session port; J614s early refusal remains in force. */
++	bool inherited_rtkit;
++	bool handoff_disabled;
++	bool quarantined;
++	bool removing;
+@@ -229,0 +238,40 @@ static inline struct apple_nvme *ctrl_to_apple_nvme(struct nvme_ctrl *ctrl)
++static bool apple_nvme_can_adopt_rtkit(struct apple_nvme *anv)
++{
++	u32 cc, csts;
++
++	if (!anv->hw->needs_ioq_register ||
++	    !(readl(anv->mmio_coproc + APPLE_ANS_COPROC_CPU_CONTROL) &
++	      APPLE_ANS_COPROC_CPU_CONTROL_RUN) ||
++	    readl(anv->mmio_nvme + APPLE_ANS_BOOT_STATUS) != APPLE_ANS_BOOT_STATUS_OK)
++		return false;
++	cc = readl(anv->mmio_nvme + NVME_REG_CC);
++	csts = readl(anv->mmio_nvme + NVME_REG_CSTS);
++	if (csts & NVME_CSTS_CFS)
++		return false;
++
++	/*
++	 * CPU_RUN/BOOT_STATUS alone survive inactive sessions. A disabled
++	 * controller requires the producer's explicit live-session contract.
++	 * Borrowed buffers still require reserved RAM and protected SART ranges.
++	 */
++	if (anv->handoff_disabled)
++		return !(cc & NVME_CC_ENABLE) && !(csts & NVME_CSTS_RDY);
++	return (cc & NVME_CC_ENABLE) && (csts & NVME_CSTS_RDY);
++}
++
++static int apple_nvme_read_handoff(struct apple_nvme *anv)
++{
++	const char *handoff;
++	int ret;
++
++	ret = of_property_read_string(anv->dev->of_node, "apple,rtkit-handoff",
++				      &handoff);
++	if (ret == -EINVAL)
++		return 0;
++	if (ret || !anv->hw->needs_ioq_register ||
++	    strcmp(handoff, "nvme-disabled-v1"))
++		return -EINVAL;
++	anv->handoff_disabled = true;
++	return apple_nvme_can_adopt_rtkit(anv) ? 0 : -EIO;
++}
++
+@@ -255,0 +304,42 @@ static void apple_nvme_rtkit_crashed(void *cookie, const void *crashlog, size_t
++static bool apple_nvme_in_inherited_rtkit_range(struct apple_nvme *anv,
++						struct apple_rtkit_shmem *bfr)
++{
++	phys_addr_t last;
++	unsigned long pfn, last_pfn;
++
++	if (!anv->inherited_rtkit || !bfr->size ||
++	    check_add_overflow((phys_addr_t)bfr->iova,
++			       (phys_addr_t)bfr->size - 1, &last) ||
++	    !IS_ALIGNED(bfr->iova, dma_get_cache_alignment()) ||
++	    !IS_ALIGNED(bfr->size, dma_get_cache_alignment()) ||
++	    !apple_sart_is_inherited_region(anv->sart, bfr->iova, bfr->size))
++		return false;
++
++	/*
++	 * A range property or a partial System RAM intersection does not prove
++	 * ownership. Every page must be reserved and present in the linear map.
++	 * Native m1n1 reserves the predecessor's inherited allocation prefix.
++	 * RAM excluded by a resident EL2 stage needs a separate cache contract.
++	 */
++	if (region_intersects(bfr->iova, bfr->size, IORESOURCE_SYSTEM_RAM,
++			      IORES_DESC_NONE) != REGION_INTERSECTS)
++		return false;
++	last_pfn = PHYS_PFN(last);
++	for (pfn = PHYS_PFN(bfr->iova); pfn <= last_pfn; pfn++) {
++		struct page *page;
++
++		if (!pfn_valid(pfn))
++			return false;
++		page = pfn_to_page(pfn);
++		if (!PageReserved(page) || PageHighMem(page) ||
++		    !virt_addr_valid(page_to_virt(page)))
++			return false;
++	}
++	return true;
++}
++
++/* A retained DMA mapping must also retain its device context. */
++struct apple_nvme_rtkit_mapping {
++	struct device *dev;
++};
++
+@@ -262,2 +352,2 @@ static int apple_nvme_sart_dma_setup(void *cookie,
+-	if (bfr->iova)
+-		return -EINVAL;
++	if (READ_ONCE(anv->quarantined) || READ_ONCE(anv->removing))
++		return -ESHUTDOWN;
+@@ -265,0 +356,46 @@ static int apple_nvme_sart_dma_setup(void *cookie,
++	if (bfr->iova) {
++		struct apple_nvme_rtkit_mapping *mapping;
++		dma_addr_t dma;
++		void *buffer;
++
++		if (!apple_nvme_in_inherited_rtkit_range(anv, bfr))
++			return -EINVAL;
++		mapping = kzalloc_obj(*mapping);
++		if (!mapping)
++			return -ENOMEM;
++		buffer = memremap(bfr->iova, bfr->size, MEMREMAP_WB);
++		if (!buffer) {
++			kfree(mapping);
++			return -ENOMEM;
++		}
++
++		/*
++		 * Firmware keeps the old identity IOVA. A bounce/remapped address
++		 * cannot replace it. Skip synchronization until that is verified,
++		 * and never copy a rejected bounce buffer over the live data.
++		 */
++		dma = dma_map_single_attrs(anv->dev, buffer, bfr->size,
++					   DMA_FROM_DEVICE, DMA_ATTR_SKIP_CPU_SYNC);
++		if (dma_mapping_error(anv->dev, dma)) {
++			ret = -ENOMEM;
++			goto unmap_buffer;
++		}
++		if (dma != bfr->iova) {
++			dma_unmap_single_attrs(anv->dev, dma, bfr->size,
++					       DMA_FROM_DEVICE, DMA_ATTR_SKIP_CPU_SYNC);
++			ret = -EINVAL;
++			goto unmap_buffer;
++		}
++		dma_sync_single_for_device(anv->dev, dma, bfr->size, DMA_FROM_DEVICE);
++		mapping->dev = get_device(anv->dev);
++		bfr->buffer = buffer;
++		bfr->is_mapped = true;
++		bfr->needs_dma_sync = true;
++		bfr->private = mapping;
++		return 0;
++
++unmap_buffer:
++		memunmap(buffer);
++		kfree(mapping);
++		return ret;
++	}
+@@ -285,0 +422 @@ static void apple_nvme_sart_dma_destroy(void *cookie,
++	struct apple_nvme_rtkit_mapping *mapping = bfr->private;
+@@ -286,0 +424,7 @@ static void apple_nvme_sart_dma_destroy(void *cookie,
++	if (mapping) {
++		dma_unmap_single(mapping->dev, bfr->iova, bfr->size, DMA_FROM_DEVICE);
++		memunmap(bfr->buffer);
++		put_device(mapping->dev);
++		kfree(mapping);
++		return;
++	}
+@@ -1595,0 +1740,15 @@ static struct apple_nvme *apple_nvme_alloc(struct platform_device *pdev)
++	if (of_machine_is_compatible("apple,j614s")) {
++		/* The first branch in this allocator currently refuses this board.
++		 * Do not remove it until controller/DMA lifetime and teardown are
++		 * ported and the actual-source host regressions pass.
++		 */
++		ret = apple_nvme_read_handoff(anv);
++		if (ret)
++			goto put_dev;
++		anv->inherited_rtkit = apple_nvme_can_adopt_rtkit(anv);
++		if (!anv->inherited_rtkit) {
++			ret = -EOPNOTSUPP;
++			goto put_dev;
++		}
++	}
++

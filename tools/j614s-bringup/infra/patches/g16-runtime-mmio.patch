@@ -1,0 +1,8 @@
+diff --git a/drivers/gpu/drm/asahi/g16.rs b/drivers/gpu/drm/asahi/g16.rs
+index 46a7b78cf..0d1434f66 100644
+--- a/drivers/gpu/drm/asahi/g16.rs
++++ b/drivers/gpu/drm/asahi/g16.rs
+@@ -301 +301,2 @@ pub(crate) fn new(pdev: &platform::Device<Core>) -> Result<Self> {
+-            sgx_io.relaxed().write32(sgx_io.relaxed().read32(offset) | 1, offset);
++            let value = sgx_io.relaxed().try_read32(offset)?;
++            sgx_io.relaxed().try_write32(value | 1, offset)?;

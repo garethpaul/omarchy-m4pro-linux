@@ -1,0 +1,22 @@
+{
+  "image_sha256": "f6ceb11ef79914eaa10cc07637c929a99afe5982d216d8b89905c86e863b2491",
+  "image_bytes": 14344519680,
+  "root": 256,
+  "files": {
+    "etc/pacman.conf": {
+      "sha256": "ce6aed6d1317aa5439aabcc83fd3d48199e4067533a192b8c3c1b24ea5ebed9b",
+      "text": "[options]\nHoldPkg = pacman glibc\nArchitecture = aarch64\nCheckSpace\nParallelDownloads = 5\nDownloadUser = alpm\nSigLevel = Required DatabaseOptional\nLocalFileSigLevel = Optional\n\n# Aurora kernel and bootloader, kept on the qualified release by omarchy update\n[omarchy-aurora]\nSigLevel = Required DatabaseOptional\nServer = https://github.com/maralcbr/omarchy-pkgs/releases/download/aurora-packages-3caea4693df7c472d57809b5c6b05b07579c1f7a\n\n[omarchy]\nSigLevel = Required DatabaseOptional\nServer = https://github.com/maralcbr/omarchy-pkgs/releases/download/asahi-packages-stable-2949b88ccfc303e3c423106eafa68c9088ab6eea\n\n[asahi-alarm]\nSigLevel = Required DatabaseOptional\nServer = https://github.com/asahi-alarm/asahi-alarm/releases/download/aarch64\n\n[core]\nServer = https://ca.us.mirror.archlinuxarm.org/$arch/$repo\nServer = https://fl.us.mirror.archlinuxarm.org/$arch/$repo\n\n[extra]\nServer = https://ca.us.mirror.archlinuxarm.org/$arch/$repo\nServer = https://fl.us.mirror.archlinuxarm.org/$arch/$repo\n\n[alarm]\nServer = https://ca.us.mirror.archlinuxarm.org/$arch/$repo\nServer = https://fl.us.mirror.archlinuxarm.org/$arch/$repo\n\n[aur]\nServer = https://ca.us.mirror.archlinuxarm.org/$arch/$repo\nServer = https://fl.us.mirror.archlinuxarm.org/$arch/$repo\n"
+    },
+    "etc/pacman.d/mirrorlist": {
+      "sha256": "e25f0bc284287342b221377d2a0ca0203eaf13f52d369d6676c4730a8e2b1de1",
+      "text": "#\n# Arch Linux ARM repository mirrorlist\n# Generated on 2026-04-11\n#\n\n## Geo-IP based mirror selection and load balancing\nServer = http://mirror.archlinuxarm.org/$arch/$repo\n\n### Mirrors by country\n\n### Denmark\n## Aalborg\n# Server = http://dk.mirror.archlinuxarm.org/$arch/$repo\n\n### France\n## Paris\n# Server = http://fr.mirror.archlinuxarm.org/$arch/$repo\n\n### Germany\n## Aachen\n# Server = http://de3.mirror.archlinuxarm.org/$arch/$repo\n## Berlin\n# Server = http://de.mirror.archlinuxarm.org/$arch/$repo\n## Coburg\n# Server = http://de4.mirror.archlinuxarm.org/$arch/$repo\n\n### Greece\n## Athens\n# Server = http://gr.mirror.archlinuxarm.org/$arch/$repo\n\n### Hungary\n## Budapest\n# Server = http://hu.mirror.archlinuxarm.org/$arch/$repo\n\n### Taiwan\n## Hsinchu\n# Server = http://tw2.mirror.archlinuxarm.org/$arch/$repo\n## New Taipei City\n# Server = http://tw.mirror.archlinuxarm.org/$arch/$repo\n\n### United States\n## California\n# Server = http://ca.us.mirror.archlinuxarm.org/$arch/$repo\n## Florida\n# Server = http://fl.us.mirror.archlinuxarm.org/$arch/$repo\n## New Jersey\n# Server = http://nj.us.mirror.archlinuxarm.org/$arch/$repo\n"
+    }
+  },
+  "observed_siglevel_directives": [
+    "Required DatabaseOptional",
+    "Required DatabaseOptional",
+    "Required DatabaseOptional",
+    "Required DatabaseOptional"
+  ],
+  "scope": "retained immutable image configuration; not live target config"
+}

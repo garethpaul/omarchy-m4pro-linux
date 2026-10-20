@@ -1,0 +1,37 @@
+{
+  "causal_candidate_commit": "6340620747e221ea415ddee944afccacff3953ee",
+  "config_optimization": "CONFIG_CC_OPTIMIZE_FOR_SIZE=y; unchanged in candidate",
+  "config_sha256": "6c5aba7745d918c528300c5a395fcd7db0c2b718acda7d1467af2816a8d56516",
+  "exit_code": 2,
+  "failing_module": "drivers/gpu/drm/asahi/asahi_m4.ko",
+  "hardware": "UNTESTED",
+  "nearest_dynamic_access": "drivers/gpu/drm/asahi/g16.rs:300-302; infallible accessors receive loop-variable offsets",
+  "relocation": {
+    "assertion_message": "assertion failed: offset_valid::<U>(offset, Self::MIN_SIZE)",
+    "assertion_source": "rust/kernel/io.rs:795",
+    "function": "M4Gpu::probe +0x13ec",
+    "message_section_offset": ".rodata+0x920",
+    "offset": "0x27edc",
+    "section": ".text"
+  },
+  "scope": "Actual modpost failure and object relocation; no build assertion disabled, stubbed or exported",
+  "source_after": {
+    "dirty_diff_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "head": "ccb0647c779ec32f2549708ee3b57510700aaabb",
+    "untracked": {}
+  },
+  "source_before": {
+    "dirty_diff_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "head": "ccb0647c779ec32f2549708ee3b57510700aaabb",
+    "untracked": {}
+  },
+  "source_drift": false,
+  "status": "FAILED",
+  "targets": [
+    "-j8",
+    "Image",
+    "modules"
+  ],
+  "tools_unchanged": true,
+  "undefined_symbol": "rust_build_error"
+}

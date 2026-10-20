@@ -220,6 +220,15 @@ class IntegrityTests(unittest.TestCase):
             with self.assertRaisesRegex(ValueError, 'bindgen binary checksum'):
                 k.tool_paths(Args)
 
+    def test_unresolved_rust_build_assertion_rejected(self):
+        with patch.object(k, 'run', return_value=b'                 U rust_build_error\n'):
+            with self.assertRaisesRegex(ValueError, 'compile-time assertion'):
+                k.rust_assertion_state(Path('driver.o'), Path('llvm-nm'))
+
+    def test_resolved_rust_build_assertion_allowed(self):
+        with patch.object(k, 'run', return_value=b'                 U rust_helper_function\n'):
+            self.assertEqual(k.rust_assertion_state(Path('driver.o'), Path('llvm-nm'))['status'], 'PASS')
+
 
 if __name__ == '__main__':
     unittest.main(verbosity=2)

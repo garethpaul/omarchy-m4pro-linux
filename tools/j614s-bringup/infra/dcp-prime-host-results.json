@@ -1,0 +1,53 @@
+{
+  "baseline": "124fd0633bb8932bbf68845ecbe8a5ffc53dfb43",
+  "candidate_commit": "cf9836359cb60e7e53324b922fb44bd6c5c6ec21",
+  "drm_prime_source_sha256": "740c746439a9a94e5bff6dbbcd14cfa07447cdf63749bb23886cffe706236bd0",
+  "sanitizer_policy": "ASan/UBSan with -fno-sanitize-recover=all; every run also requires empty stderr",
+  "scope": "Actual DRM PRIME dispatch snippet, ownership helper and complete import functions with host DMA API stubs, plus actual no-map marker function. Not live dma-buf/DT/DART validation.",
+  "source_file_sha256": "9bf9aa87727ce90d8734743ceae533b571ed146dcc37da92ed0a22da32a16b74",
+  "status": "PASS (red baseline / green candidate)",
+  "variants": [
+    {
+      "candidate": false,
+      "compiler": "gcc",
+      "exit_code": 1,
+      "module": true,
+      "result": "FAIL: actual module PRIME dispatch reached attach=1 map=1 import=1"
+    },
+    {
+      "candidate": true,
+      "compiler": "gcc",
+      "exit_code": 0,
+      "module": true,
+      "result": "PASS: actual PRIME dispatch/core importer and no-map ownership cases (module=1)"
+    },
+    {
+      "candidate": true,
+      "compiler": "gcc",
+      "exit_code": 0,
+      "module": false,
+      "result": "PASS: actual PRIME dispatch/core importer and no-map ownership cases (module=0)"
+    },
+    {
+      "candidate": false,
+      "compiler": "clang",
+      "exit_code": 1,
+      "module": true,
+      "result": "FAIL: actual module PRIME dispatch reached attach=1 map=1 import=1"
+    },
+    {
+      "candidate": true,
+      "compiler": "clang",
+      "exit_code": 0,
+      "module": true,
+      "result": "PASS: actual PRIME dispatch/core importer and no-map ownership cases (module=1)"
+    },
+    {
+      "candidate": true,
+      "compiler": "clang",
+      "exit_code": 0,
+      "module": false,
+      "result": "PASS: actual PRIME dispatch/core importer and no-map ownership cases (module=0)"
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+From 75667cb3d42683108db115c5f94b46d4df51a244 Mon Sep 17 00:00:00 2001
+From: gareth jones <gareth@garethpaul.com>
+Date: Mon, 19 Oct 2026 22:48:49 -0700
+Subject: [PATCH 3/3] soc: apple: use size_t for inherited endpoint array
+ iteration
+
+---
+ drivers/soc/apple/rtkit.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/soc/apple/rtkit.c b/drivers/soc/apple/rtkit.c
+index 6a2c19f7f..3ec678c49 100644
+--- a/drivers/soc/apple/rtkit.c
++++ b/drivers/soc/apple/rtkit.c
+@@ -754 +754 @@ static void apple_rtkit_mark_system_running(struct apple_rtkit *rtk)
+-	int i;
++	size_t i;

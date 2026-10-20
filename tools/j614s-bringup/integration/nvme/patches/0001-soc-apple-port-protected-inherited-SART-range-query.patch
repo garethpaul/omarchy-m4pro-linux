@@ -1,0 +1,61 @@
+From cf7658de5dce4d89d5b8014df204cbbd77edb56e Mon Sep 17 00:00:00 2001
+From: gareth jones <gareth@garethpaul.com>
+Date: Mon, 19 Oct 2026 22:43:59 -0700
+Subject: [PATCH 1/3] soc: apple: port protected inherited SART range query
+
+Carry the f93 read-only ownership predicate without changing entry programming or shutdown. A protected allow entry must cover the whole nonzero nonoverflowing range. This is one prerequisite for inherited ANS buffers, not proof of RAM reservation or DMA coherency, and the J614s NVMe refusal remains active.
+---
+ drivers/soc/apple/sart.c       | 25 +++++++++++++++++++++++++
+ include/linux/soc/apple/sart.h | 14 ++++++++++++++
+ 2 files changed, 39 insertions(+)
+
+diff --git a/drivers/soc/apple/sart.c b/drivers/soc/apple/sart.c
+index 9eaf3febb..b0b208c92 100644
+--- a/drivers/soc/apple/sart.c
++++ b/drivers/soc/apple/sart.c
+@@ -19,0 +20 @@
++#include <linux/limits.h>
+@@ -247,0 +249,24 @@ EXPORT_SYMBOL_GPL(devm_apple_sart_get);
++bool apple_sart_is_inherited_region(struct apple_sart *sart, phys_addr_t paddr,
++				    size_t size)
++{
++	int i;
++
++	if (!size || paddr > PHYS_ADDR_MAX - (size - 1))
++		return false;
++	for (i = 0; i < APPLE_SART_MAX_ENTRIES; i++) {
++		phys_addr_t base;
++		size_t length;
++		u8 flags;
++
++		/* Linux never writes protected entries, including during shutdown. */
++		if (!test_bit(i, &sart->protected_entries))
++			continue;
++		sart->ops->get_entry(sart, i, &flags, &base, &length);
++		if (flags == sart->ops->flags_allow && paddr >= base &&
++		    size <= length && paddr - base <= length - size)
++			return true;
++	}
++	return false;
++}
++EXPORT_SYMBOL_GPL(apple_sart_is_inherited_region);
++
+diff --git a/include/linux/soc/apple/sart.h b/include/linux/soc/apple/sart.h
+index 2249bf6cd..f5d0db502 100644
+--- a/include/linux/soc/apple/sart.h
++++ b/include/linux/soc/apple/sart.h
+@@ -52,0 +53,14 @@ int apple_sart_remove_allowed_region(struct apple_sart *sart, phys_addr_t paddr,
++/**
++ * apple_sart_is_inherited_region - test whether a bootloader-protected SART
++ *                                  allow entry covers a physical region
++ * @sart: the SART instance
++ * @paddr: physical start of the region
++ * @size: size of the region in bytes, must be nonzero
++ *
++ * Returns true only when a protected entry (one Linux never writes, including
++ * at shutdown) with the allow flags covers the entire region. This says
++ * nothing about RAM ownership or cache coherency of the region.
++ */
++bool apple_sart_is_inherited_region(struct apple_sart *sart, phys_addr_t paddr,
++				    size_t size);
++

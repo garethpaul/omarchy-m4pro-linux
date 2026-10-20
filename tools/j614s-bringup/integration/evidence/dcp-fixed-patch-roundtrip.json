@@ -1,0 +1,8 @@
+{
+  "status": "WORKS (eight-patch source replay only)",
+  "source_commit": "ccb0647c779ec32f2549708ee3b57510700aaabb",
+  "patches": 8,
+  "verified_files": 42,
+  "hardware": "UNTESTED",
+  "target_access": false
+}

@@ -126,8 +126,10 @@ def main():
             for module in (0, 1):
                 src = root / 'test.c'; exe = root / 'test'
                 src.write_text('#define MODULE_TEST ' + str(module) + '\n' + PREFIX + actual + SUFFIX)
-                subprocess.run([compiler, '-std=gnu11', '-O1', '-g', '-Wall', '-Wextra', '-Werror', '-fsanitize=address,undefined', '-fno-omit-frame-pointer', str(src), '-o', str(exe)], check=True)
-                output = subprocess.check_output([str(exe)]).decode().strip()
+                subprocess.run([compiler, '-std=gnu11', '-O1', '-g', '-Wall', '-Wextra', '-Werror', '-fsanitize=address,undefined', '-fno-sanitize-recover=all', '-fno-omit-frame-pointer', str(src), '-o', str(exe)], check=True)
+                run = subprocess.run([str(exe)], capture_output=True, text=True, check=True)
+                assert not run.stderr.strip(), run.stderr
+                output = run.stdout.strip()
                 results.append({'compiler': compiler, 'module': bool(module), 'result': output})
             expanded = []
             for text in (baseline, current):

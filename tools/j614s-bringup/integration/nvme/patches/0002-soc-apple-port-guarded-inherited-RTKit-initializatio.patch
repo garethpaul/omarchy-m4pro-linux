@@ -1,0 +1,291 @@
+From 9fa769e37271542531e73b88f454643d98c12e70 Mon Sep 17 00:00:00 2001
+From: gareth jones <gareth@garethpaul.com>
+Date: Mon, 19 Oct 2026 22:46:53 -0700
+Subject: [PATCH 2/3] soc: apple: port guarded inherited RTKit initialization
+ without replacing Gravity APIs
+
+Prime inherited system endpoints before RX, ACK unknown syslog geometry without parsing, latch unmapped inherited crashes, claim mailbox ownership before publication and detach/drain on teardown. Retain DMA-visible buffers on failed shutdown. Carry f93 live-buffer identity and streaming cache synchronization while keeping Gravity endpoint7 replies, early G16 crashlog controls and public endpoint-list adoption API. J614s NVMe remains fail closed until its own full ownership/state path is qualified. Hardware untested.
+---
+ drivers/soc/apple/rtkit-internal.h |   4 +
+ drivers/soc/apple/rtkit.c          | 212 +++++++++++++++++++++++++----
+ include/linux/soc/apple/rtkit.h    |  17 +++
+ 3 files changed, 204 insertions(+), 29 deletions(-)
+
+diff --git a/drivers/soc/apple/rtkit-internal.h b/drivers/soc/apple/rtkit-internal.h
+index c6d0905db..757e446f9 100644
+--- a/drivers/soc/apple/rtkit-internal.h
++++ b/drivers/soc/apple/rtkit-internal.h
+@@ -44,0 +45,4 @@ struct apple_rtkit {
++	bool shutting_down;
++	/* Inherited ANS traffic has no locally observed SYSLOG_INIT geometry. */
++	bool syslog_inherited;
++	bool crashlog_inherited;
+diff --git a/drivers/soc/apple/rtkit.c b/drivers/soc/apple/rtkit.c
+index 3092cf141..6a2c19f7f 100644
+--- a/drivers/soc/apple/rtkit.c
++++ b/drivers/soc/apple/rtkit.c
+@@ -279,0 +280 @@ static int apple_rtkit_common_rx_get_buffer(struct apple_rtkit *rtk,
++	struct apple_rtkit_shmem request = {};
+@@ -285,2 +286,2 @@ static int apple_rtkit_common_rx_get_buffer(struct apple_rtkit *rtk,
+-		buffer->size = FIELD_GET(APPLE_RTKIT_OSLOG_SIZE, msg);
+-		buffer->iova = FIELD_GET(APPLE_RTKIT_OSLOG_IOVA, msg) << 12;
++		request.size = FIELD_GET(APPLE_RTKIT_OSLOG_SIZE, msg);
++		request.iova = FIELD_GET(APPLE_RTKIT_OSLOG_IOVA, msg) << 12;
+@@ -288,2 +289,6 @@ static int apple_rtkit_common_rx_get_buffer(struct apple_rtkit *rtk,
+-		buffer->size = FIELD_GET(APPLE_RTKIT_BUFFER_REQUEST_SIZE, msg) << 12;
+-		buffer->iova = FIELD_GET(APPLE_RTKIT_BUFFER_REQUEST_IOVA, msg);
++		request.size = FIELD_GET(APPLE_RTKIT_BUFFER_REQUEST_SIZE, msg) << 12;
++		request.iova = FIELD_GET(APPLE_RTKIT_BUFFER_REQUEST_IOVA, msg);
++	}
++	if (!request.size) {
++		err = -EINVAL;
++		goto error;
+@@ -292,3 +297,18 @@ static int apple_rtkit_common_rx_get_buffer(struct apple_rtkit *rtk,
+-	buffer->buffer = NULL;
+-	buffer->iomem = NULL;
+-	buffer->is_mapped = false;
++	/*
++	 * A repeated request must not retire a buffer the firmware may still be
++	 * using. Re-send the reply for an identical request and refuse a changed
++	 * one; a different geometry needs a confirmed firmware restart (reinit)
++	 * first.
++	 */
++	if (buffer->size) {
++		if (request.size != buffer->size ||
++		    (request.iova != buffer->iova &&
++		     (request.iova || buffer->is_mapped))) {
++			dev_err(rtk->dev,
++				"RTKit: buffer request for 0x%zx bytes at %pad while 0x%zx bytes at %pad are live\n",
++				request.size, &request.iova, buffer->size,
++				&buffer->iova);
++			return -EBUSY;
++		}
++		goto reply;
++	}
+@@ -297 +317 @@ static int apple_rtkit_common_rx_get_buffer(struct apple_rtkit *rtk,
+-		buffer->size, &buffer->iova);
++		request.size, &request.iova);
+@@ -299 +319 @@ static int apple_rtkit_common_rx_get_buffer(struct apple_rtkit *rtk,
+-	if (buffer->iova && !rtk->ops->shmem_setup) {
++	if (request.iova && !rtk->ops->shmem_setup) {
+@@ -305 +325 @@ static int apple_rtkit_common_rx_get_buffer(struct apple_rtkit *rtk,
+-		err = rtk->ops->shmem_setup(rtk->cookie, buffer);
++		err = rtk->ops->shmem_setup(rtk->cookie, &request);
+@@ -309,3 +329,3 @@ static int apple_rtkit_common_rx_get_buffer(struct apple_rtkit *rtk,
+-		buffer->buffer = dma_alloc_coherent(rtk->dev, buffer->size,
+-						    &buffer->iova, GFP_KERNEL);
+-		if (!buffer->buffer) {
++		request.buffer = dma_alloc_coherent(rtk->dev, request.size,
++						    &request.iova, GFP_KERNEL);
++		if (!request.buffer) {
+@@ -315,0 +336 @@ static int apple_rtkit_common_rx_get_buffer(struct apple_rtkit *rtk,
++	*buffer = request;
+@@ -316,0 +338 @@ static int apple_rtkit_common_rx_get_buffer(struct apple_rtkit *rtk,
++reply:
+@@ -336,0 +359 @@ static int apple_rtkit_common_rx_get_buffer(struct apple_rtkit *rtk,
++		/* acknowledge the co-processor's own buffer with its request */
+@@ -344,7 +367 @@ static int apple_rtkit_common_rx_get_buffer(struct apple_rtkit *rtk,
+-		buffer->size, err);
+-
+-	buffer->buffer = NULL;
+-	buffer->iomem = NULL;
+-	buffer->iova = 0;
+-	buffer->size = 0;
+-	buffer->is_mapped = false;
++		request.size, err);
+@@ -369,0 +387,2 @@ static void apple_rtkit_free_buffer(struct apple_rtkit *rtk,
++	bfr->needs_dma_sync = false;
++	bfr->private = NULL;
+@@ -375,0 +395,5 @@ static void apple_rtkit_memcpy(struct apple_rtkit *rtk, void *dst,
++	bool sync = bfr->needs_dma_sync && !WARN_ON_ONCE(bfr->iomem);
++
++	if (sync)
++		dma_sync_single_range_for_cpu(rtk->dev, bfr->iova, offset, len,
++					      DMA_FROM_DEVICE);
+@@ -379,0 +404,3 @@ static void apple_rtkit_memcpy(struct apple_rtkit *rtk, void *dst,
++	if (sync)
++		dma_sync_single_range_for_device(rtk->dev, bfr->iova, offset,
++						 len, DMA_FROM_DEVICE);
+@@ -393,0 +421,6 @@ static void apple_rtkit_crashlog_rx(struct apple_rtkit *rtk, u64 msg)
++		if (rtk->crashlog_inherited) {
++			rtk->crashed = true;
++			if (rtk->ops->crashed)
++				rtk->ops->crashed(rtk->cookie, NULL, 0);
++			return;
++		}
+@@ -481,0 +515,4 @@ static void apple_rtkit_syslog_rx_log(struct apple_rtkit *rtk, u64 msg)
++	/* Unknown inherited ring geometry: acknowledge, never parse it. */
++	if (rtk->syslog_inherited)
++		goto done;
++
+@@ -613,0 +651,3 @@ static void apple_rtkit_rx(struct apple_mbox *mbox, struct apple_mbox_msg msg,
++	if (READ_ONCE(rtk->shutting_down))
++		return;
++
+@@ -704,3 +744,79 @@ EXPORT_SYMBOL_GPL(apple_rtkit_start_ep);
+-struct apple_rtkit *apple_rtkit_init(struct device *dev, void *cookie,
+-					    const char *mbox_name, int mbox_idx,
+-					    const struct apple_rtkit_ops *ops)
++static void apple_rtkit_mark_system_running(struct apple_rtkit *rtk)
++{
++	static const u8 system_endpoints[] = {
++		APPLE_RTKIT_EP_CRASHLOG,
++		APPLE_RTKIT_EP_SYSLOG,
++		APPLE_RTKIT_EP_DEBUG,
++		APPLE_RTKIT_EP_IOREPORT,
++		APPLE_RTKIT_EP_OSLOG,
++		APPLE_RTKIT_EP_TRACEKIT,
++	};
++	int i;
++
++	/*
++	 * The previous owner already completed HELLO and acknowledged this
++	 * EPMAP; the firmware will not repeat either for this session.
++	 */
++	for (i = 0; i < ARRAY_SIZE(system_endpoints); i++)
++		set_bit(system_endpoints[i], rtk->endpoints);
++
++	rtk->iop_power_state = APPLE_RTKIT_PWR_STATE_ON;
++	rtk->ap_power_state = APPLE_RTKIT_PWR_STATE_ON;
++	rtk->syslog_inherited = true;
++	rtk->crashlog_inherited = true;
++}
++
++static int apple_rtkit_claim_rx(struct apple_rtkit *rtk)
++{
++	struct apple_mbox *mbox = rtk->mbox;
++	unsigned long flags;
++
++	spin_lock_irqsave(&mbox->rx_lock, flags);
++	if (mbox->rx || mbox->cookie) {
++		spin_unlock_irqrestore(&mbox->rx_lock, flags);
++		return -EBUSY;
++	}
++	mbox->cookie = rtk;
++	mbox->rx = apple_rtkit_rx;
++	spin_unlock_irqrestore(&mbox->rx_lock, flags);
++
++	return 0;
++}
++
++static void apple_rtkit_detach_rx(struct apple_rtkit *rtk)
++{
++	unsigned long flags;
++
++	WRITE_ONCE(rtk->shutting_down, true);
++	apple_mbox_stop(rtk->mbox);
++	/*
++	 * IRQ receive and explicit polling both hold rx_lock. Detach before
++	 * draining the queue, but keep the cookie as an ownership reservation
++	 * until all host/buffer teardown is complete.
++	 */
++	spin_lock_irqsave(&rtk->mbox->rx_lock, flags);
++	if (rtk->mbox->cookie == rtk)
++		rtk->mbox->rx = NULL;
++	spin_unlock_irqrestore(&rtk->mbox->rx_lock, flags);
++}
++
++static void apple_rtkit_stop_rx(struct apple_rtkit *rtk)
++{
++	apple_rtkit_detach_rx(rtk);
++	destroy_workqueue(rtk->wq);
++}
++
++static void apple_rtkit_release_rx(struct apple_rtkit *rtk)
++{
++	unsigned long flags;
++
++	spin_lock_irqsave(&rtk->mbox->rx_lock, flags);
++	if (rtk->mbox->cookie == rtk)
++		rtk->mbox->cookie = NULL;
++	spin_unlock_irqrestore(&rtk->mbox->rx_lock, flags);
++}
++
++static struct apple_rtkit *__apple_rtkit_init(struct device *dev, void *cookie,
++					      const char *mbox_name, int mbox_idx,
++					      const struct apple_rtkit_ops *ops,
++					      bool adopted)
+@@ -741,3 +856,0 @@ struct apple_rtkit *apple_rtkit_init(struct device *dev, void *cookie,
+-	rtk->mbox->rx = apple_rtkit_rx;
+-	rtk->mbox->cookie = rtk;
+-
+@@ -751 +864,4 @@ struct apple_rtkit *apple_rtkit_init(struct device *dev, void *cookie,
+-	ret = apple_mbox_start(rtk->mbox);
++	if (adopted)
++		apple_rtkit_mark_system_running(rtk);
++
++	ret = apple_rtkit_claim_rx(rtk);
+@@ -754,0 +871,4 @@ struct apple_rtkit *apple_rtkit_init(struct device *dev, void *cookie,
++	ret = apple_mbox_start(rtk->mbox);
++	if (ret)
++		goto stop_rx;
++
+@@ -756,0 +877,4 @@ struct apple_rtkit *apple_rtkit_init(struct device *dev, void *cookie,
++stop_rx:
++	apple_rtkit_stop_rx(rtk);
++	apple_rtkit_release_rx(rtk);
++	goto free_rtk;
+@@ -762,0 +887,7 @@ struct apple_rtkit *apple_rtkit_init(struct device *dev, void *cookie,
++
++struct apple_rtkit *apple_rtkit_init(struct device *dev, void *cookie,
++				    const char *mbox_name, int mbox_idx,
++				    const struct apple_rtkit_ops *ops)
++{
++	return __apple_rtkit_init(dev, cookie, mbox_name, mbox_idx, ops, false);
++}
+@@ -764,0 +896,8 @@ EXPORT_SYMBOL_GPL(apple_rtkit_init);
++struct apple_rtkit *apple_rtkit_init_adopted(struct device *dev, void *cookie,
++					 const char *mbox_name, int mbox_idx,
++					 const struct apple_rtkit_ops *ops)
++{
++	return __apple_rtkit_init(dev, cookie, mbox_name, mbox_idx, ops, true);
++}
++EXPORT_SYMBOL_GPL(apple_rtkit_init_adopted);
++
+@@ -805,0 +945,3 @@ int apple_rtkit_reinit(struct apple_rtkit *rtk)
++	rtk->shutting_down = false;
++	rtk->syslog_inherited = false;
++	rtk->crashlog_inherited = false;
+@@ -902,0 +1045 @@ int apple_rtkit_reuse_syslog_buffer(struct apple_rtkit *rtk, dma_addr_t iova,
++	rtk->syslog_inherited = false;
+@@ -1119,2 +1262 @@ void apple_rtkit_free(struct apple_rtkit *rtk)
+-	apple_mbox_stop(rtk->mbox);
+-	destroy_workqueue(rtk->wq);
++	apple_rtkit_stop_rx(rtk);
+@@ -1128,0 +1271 @@ void apple_rtkit_free(struct apple_rtkit *rtk)
++	apple_rtkit_release_rx(rtk);
+@@ -1132,0 +1276,11 @@ EXPORT_SYMBOL_GPL(apple_rtkit_free);
++void apple_rtkit_free_retaining_buffers(struct apple_rtkit *rtk)
++{
++	/* Caller has failed to stop DMA. Do not retire any shared mapping. */
++	apple_rtkit_stop_rx(rtk);
++	dev_warn(rtk->dev, "RTKit: retaining DMA-visible buffers until reboot\n");
++	kfree(rtk->syslog_msg_buffer);
++	apple_rtkit_release_rx(rtk);
++	kfree(rtk);
++}
++EXPORT_SYMBOL_GPL(apple_rtkit_free_retaining_buffers);
++
+diff --git a/include/linux/soc/apple/rtkit.h b/include/linux/soc/apple/rtkit.h
+index 4c9ac939f..8460d0fa0 100644
+--- a/include/linux/soc/apple/rtkit.h
++++ b/include/linux/soc/apple/rtkit.h
+@@ -33,0 +34,2 @@ struct apple_rtkit_shmem {
++	/* Streaming normal RAM only: synchronize before host reads, never iomem. */
++	bool needs_dma_sync;
+@@ -107,0 +110,15 @@ void apple_rtkit_free(struct apple_rtkit *rtk);
++/* Caller must first verify the device-specific inherited running/session state.
++ * System endpoints and unknown syslog geometry are marked BEFORE mailbox RX.
++ * No HELLO, EPMAP, application INIT or AP-power request is sent.
++ */
++struct apple_rtkit *apple_rtkit_init_adopted(struct device *dev, void *cookie,
++					 const char *mbox_name, int mbox_idx,
++					 const struct apple_rtkit_ops *ops);
++
++/* Failed firmware shutdown: detach/drain host callbacks but retain DMA-visible
++ * buffers and their allocation contexts until reboot. Caller must retain its
++ * independent buffers and prohibit reprobe; this is not successful quiescence.
++ */
++void apple_rtkit_free_retaining_buffers(struct apple_rtkit *rtk);
++
++

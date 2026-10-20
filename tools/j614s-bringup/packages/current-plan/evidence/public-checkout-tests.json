@@ -1,0 +1,15 @@
+{
+  "status": "WORKS (self-contained published-source host tests)",
+  "before": {
+    "exit": 1,
+    "cause": "FileNotFoundError on hard-coded sibling source before setUpClass tests"
+  },
+  "after": {
+    "exit": 0,
+    "tests": 10,
+    "source": "included omarchy/ with original pinned digests unchanged"
+  },
+  "scope": "git-archive export without sibling development source; actual parser/pacman print tests only",
+  "target_access": false,
+  "hardware": "UNTESTED"
+}

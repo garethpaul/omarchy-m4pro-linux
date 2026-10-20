@@ -1,0 +1,34 @@
+{
+  "flags": [
+    "-fsanitize=address,undefined",
+    "-fno-sanitize-recover=all"
+  ],
+  "runs": [
+    {
+      "compiler": "gcc",
+      "exit_code": 1,
+      "expected_sanitizer_diagnostic": true,
+      "fixture": "ubsan_signed_overflow"
+    },
+    {
+      "compiler": "gcc",
+      "exit_code": 1,
+      "expected_sanitizer_diagnostic": true,
+      "fixture": "asan_heap_use_after_free"
+    },
+    {
+      "compiler": "clang",
+      "exit_code": 1,
+      "expected_sanitizer_diagnostic": true,
+      "fixture": "ubsan_signed_overflow"
+    },
+    {
+      "compiler": "clang",
+      "exit_code": 1,
+      "expected_sanitizer_diagnostic": true,
+      "fixture": "asan_heap_use_after_free"
+    }
+  ],
+  "scope": "Deliberately invalid host fixtures must fail; no target access or driver functionality claim",
+  "status": "PASS"
+}

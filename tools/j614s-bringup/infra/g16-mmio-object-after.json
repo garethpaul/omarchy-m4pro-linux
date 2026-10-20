@@ -1,0 +1,34 @@
+{
+  "before_config_sha256": "6c5aba7745d918c528300c5a395fcd7db0c2b718acda7d1467af2816a8d56516",
+  "binding_layouts": {
+    "compiled_bindings_object_bytes": 249528,
+    "compiled_bindings_object_sha256": "fdc39ec6456600f02dbb4b99f531a752a9b3f388c8eef8787c7849fcde17bc69",
+    "const_layout_blocks": 3174,
+    "field_offset_checks": 16412,
+    "generated_bindings_sha256": "bcdf173207519674040e26876ebfe5040426e4cd830dddcda9a3d487ebfc8ad8",
+    "hardware_executed": false,
+    "layout_checks_disabled": false,
+    "status": "PASS",
+    "target": "aarch64-linux-gnu"
+  },
+  "config_sha256": "6c5aba7745d918c528300c5a395fcd7db0c2b718acda7d1467af2816a8d56516",
+  "full_kernel_and_module_link": "PENDING",
+  "hardware": "UNTESTED",
+  "object": {
+    "bytes": 681624,
+    "path": "drivers/gpu/drm/asahi/asahi_m4.o",
+    "sha256": "8893c2ec23673f5b8b8ed9e3e2b218e95b971622d584fe98a8e62894b8c4880d"
+  },
+  "rust_build_assertion": {
+    "status": "PASS",
+    "unresolved_build_assertion": false
+  },
+  "same_size_configuration": true,
+  "scope": "Only g16.rs runtime-offset read/write changed to checked operations with error propagation; no config/tool/assertion changes",
+  "source": {
+    "dirty_diff_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "head": "6340620747e221ea415ddee944afccacff3953ee",
+    "untracked": {}
+  },
+  "status": "WORKS (driver object compile and unresolved-assert audit)"
+}

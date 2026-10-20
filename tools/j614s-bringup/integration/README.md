@@ -125,7 +125,7 @@ python3 integration/validate_candidate.py --source /path/to/gravity-j614s-dcp \
   --ledger integration/dcp-port-ledger.json
 ```
 
-The first targeted strict compile of82b9 **failed** on DockChannel HID's new
+The first targeted strict compile of `82b9` **failed** on DockChannel HID's new
 error cleanup: Gravity's interface field was `const struct device_node *`,
 while `of_node_put()` takes the mutable owned reference returned by
 `of_get_child_by_name()`. Nine other requested platform objects compiled; a
@@ -135,4 +135,4 @@ without a cast or warning suppression. Patch8 and
 `dcp-fixed-port-ledger.json` record this next immutable checkpoint; its config
 is unchanged. `evidence/dcp-fixed-source-config-check.json` passes source/config
 invariants only. The build lane retains the failure and is compiling a separate
-snapshot atccb0, so later branch changes cannot alter its build inputs.
+snapshot at `ccb0`, so later branch changes cannot alter its build inputs.

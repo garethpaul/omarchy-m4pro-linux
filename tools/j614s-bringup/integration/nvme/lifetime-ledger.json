@@ -1,0 +1,26 @@
+{
+  "schema": 1,
+  "status": "PARTIAL (lifetime port staged; J614s refused)",
+  "previous_checkpoint": "9d9f94a00b6e4408cbfaf5051fc2caeb792f7260",
+  "candidate_commit": "8acc4f6f70fa4b6b3da347cc7b19eb6cd8cf24ac",
+  "aurora_origin": "f93a3416c60f26c68084134dc6c1d205becd5753",
+  "file": "drivers/nvme/host/apple.c",
+  "sha256": "4ad1b8ae7af1660872b05ae6a03b7483b3051bf76604b904792867a282f253e0",
+  "changes": [
+    "independent kref controller and devres owners",
+    "manual queue/pool/tag cleanup guarded by quarantine",
+    "IRQ/module/power-domain/list pin and reprobe exclusion",
+    "guarded crash callback scheduling and register access",
+    "inherited stop only cancels mappings after completed CC disable"
+  ],
+  "remaining": [
+    "all inherited timeout/recovery/reset/flush and MMIO callers",
+    "adopted initializer before RX/controller writes",
+    "paired register writes and full measured queue handoff",
+    "actual-source integrated negative/positive tests and peer review",
+    "AArch64 translation unit/full link qualification"
+  ],
+  "hardware": "UNTESTED",
+  "target_access": false,
+  "deployment_allowed": false
+}

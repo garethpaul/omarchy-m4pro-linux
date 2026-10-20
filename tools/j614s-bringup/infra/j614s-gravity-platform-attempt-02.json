@@ -1,0 +1,76 @@
+{
+  "binding_layouts": {
+    "compiled_bindings_object_bytes": 249528,
+    "compiled_bindings_object_sha256": "fdc39ec6456600f02dbb4b99f531a752a9b3f388c8eef8787c7849fcde17bc69",
+    "const_layout_blocks": 3174,
+    "field_offset_checks": 16412,
+    "generated_bindings_sha256": "bcdf173207519674040e26876ebfe5040426e4cd830dddcda9a3d487ebfc8ad8",
+    "hardware_executed": false,
+    "layout_checks_disabled": false,
+    "status": "PASS",
+    "target": "aarch64-linux-gnu"
+  },
+  "config_normalization_diff_bytes": 0,
+  "config_sha256": "6c5aba7745d918c528300c5a395fcd7db0c2b718acda7d1467af2816a8d56516",
+  "full_image_and_module_link": "PENDING",
+  "hardware": "UNTESTED",
+  "objects": [
+    {
+      "bytes": 3912,
+      "path": "arch/arm64/kernel/idle.o",
+      "sha256": "9d01b90c2548ad6d46fae40659f56faff32a81dc377426eb7b768dc6cf23c815"
+    },
+    {
+      "bytes": 584,
+      "path": "arch/arm64/kernel/idle-apple.o",
+      "sha256": "c3c5d7aefbc7b99355387512af38e919dc89b5ded76d9e501078c77d6d583ba3"
+    },
+    {
+      "bytes": 9504,
+      "path": "arch/arm64/kernel/pi/idreg-override.o",
+      "sha256": "006f00ade16f98936b3af79753482b7508950ac541ae7940a68b7f3b991562d9"
+    },
+    {
+      "bytes": 9656,
+      "path": "drivers/gpio/gpio-macsmc.o",
+      "sha256": "b6c1daa28bb8495ba266d507fe14f06ddeef309236cd57a9a4fa26bb1777b43a"
+    },
+    {
+      "bytes": 7488,
+      "path": "drivers/phy/apple/usb2-t6040-inherited.o",
+      "sha256": "a9fe2402f0a51c254b246fd5298d10ae8985ada67a23169965e2126f73b25ec6"
+    },
+    {
+      "bytes": 7184,
+      "path": "drivers/phy/apple/usb2-j614s-host-diagnostic.o",
+      "sha256": "1550e11bf934e65e15812c86163e4037ef0c2e9c25f6dd82627dc04326fd8351"
+    },
+    {
+      "bytes": 27984,
+      "path": "drivers/hid/dockchannel-hid/dockchannel-hid.o",
+      "sha256": "9b3715638c3d950f996d3e889983b09193289c6499c6f89ac8673acd6643d319"
+    },
+    {
+      "bytes": 19440,
+      "path": "drivers/power/supply/macsmc-power.o",
+      "sha256": "0cfcf06fbda72f1badf5bb675e1488d4edb85d19878157c6ad4ba22e6eb5c963"
+    },
+    {
+      "bytes": 10776,
+      "path": "drivers/gpu/drm/asahi/g16-bootstrap.o",
+      "sha256": "ada3b574c6173dd18d243041cdfe95cbc074032fbec149d6edd4ea4191d04aa7"
+    },
+    {
+      "bytes": 33416,
+      "path": "drivers/nvme/host/apple.o",
+      "sha256": "21d41f3e2028d013dd8da55f5457773041e1b6e358fee8ed7b2ccb51f3d82e1e"
+    }
+  ],
+  "scope": "All ten selected CPU/PHY/GPIO/MTP/battery/bootstrap/ANS objects compile as ELF64 AArch64. ANS remains fail-closed for J614s; no peripheral, power, GPU or storage functionality claim.",
+  "source": {
+    "dirty_diff_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "head": "ccb0647c779ec32f2549708ee3b57510700aaabb",
+    "untracked": {}
+  },
+  "status": "WORKS (platform object compilation only)"
+}

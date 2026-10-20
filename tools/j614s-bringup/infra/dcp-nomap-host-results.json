@@ -4,6 +4,7 @@
   "candidate_commit": "124fd0633bb8932bbf68845ecbe8a5ffc53dfb43",
   "cases_per_variant": 16,
   "module_private_arch_references": "absent from preprocessed actual fallback functions",
+  "sanitizer_policy": "ASan/UBSan with -fno-sanitize-recover=all; every run also requires empty stderr",
   "scope": "Host metadata/API stubs exercise actual source control flow; not live DT, DART or display validation",
   "source_file_sha256": "44f390924a0566834b839156746322eba1b20ed606a8d9eb22ffaef09dd63874",
   "status": "PASS",

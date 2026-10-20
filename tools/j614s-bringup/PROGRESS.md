@@ -236,3 +236,75 @@ Post-link source review identified a real remaining no-map ownership gap:
 foreign PRIME imports bypass the custom dumb-buffer pool path and can reach
 scanout through dma_addr. A separate import-boundary fix/regression is underway;
 124fd's link pass does not qualify module loading or all buffer ownership.
+
+
+## Published and independently rechecked checkpoint
+
+Tooling branchcodex/j614s-overnight-tooling now points to346dcc9c172d5e6d7337d272d687cd427cd4d423, exporting
+275 reviewed committed workspace files from78b3cb5 with an exact per-file
+manifest. Publication scan found only public hashes/source identifiers, public
+URLs, configuration assignments and package/system paths; no actual credential,
+private-host or private-path disclosure was found. All source patches are
+tracked explicitly despite the kernel repository's patch ignore rule.
+
+DCP receive/typed source8c93f2c is published as draft kernel PR4; actual-source
+host regressions/AArch64 compilation support its limited claims. It does not
+activate T6040 or qualify native modesetting. Root verified the PRIME followup
+uses the public GEM exporter ownership helper before private casts and keeps
+own pool self-import on the normal reference path. Foreign AGX/DCP buffer
+sharing remains unsupported in this temporary owned-pool module profile.
+
+Integrated host checks:38 Omarchy tests,27 capture transcript tests,20 payload
+audit tests and12 source/config tests pass. The newest ccb064 source/config
+validator also passes explicitly with deployment false. A fresh webcam capture
+at2026-10-20T05:48:18Z still shows Running proxy and USB enumeration63.
+No target boot/reset was performed.
+
+Full ccb064 linking then failed on rust_build_error in M4Gpu::probe. Relocation
+and message identify rust/kernel/io.rs offset_valid build assertion: g16.rs
+uses infallible MMIO operations with a runtime loop offset. The size config
+retains the assertion that the generic performance build optimized away. The
+build lane is changing those dynamic accesses to checked APIs and propagating
+errors, while retaining exact config and all assertions.
+
+
+## Complete consolidated build and current package proposal
+
+Source6340620747e221ea415ddee944afccacff3953ee now passes complete Image and18
+matching modules with the unchanged reviewed size config6c5aba. Image SHA
+8b09c3a584ab41d36c10e605d5b9e02acf1ace6abe07dde78ea5865bd5849dc4, release
+7.1.13-j614s-gravity-candidate+. All3174 layout blocks/16412 offsets and strict
+embedded-config/module/path audits pass. Earlier MTP and Rust assertion failures
+are retained. Exact source is draft kernel PR5, based on immutableccb checkpoint;
+no new hardware boot or independent full634 reproducibility claim.
+
+Verified Image/config/18module copy and curated manifests/checksums are in the
+user-facing kernel-gravity-compile output directory. Raw private build.log,
+build/bin trees and all firmware/DT/initramfs/boot entries are omitted. This is
+compile-only and explicitly not an installation bundle. It predates separate
+PRIME ownership correction and still refuses J614s NVMe before hardware access.
+
+PRIME sourcecf983 now authenticates same-device exported GEM ownership and
+validated pool provenance before module imports. Own pool self-import is kept;
+foreign AGX/DCP imports are refused. Actual AArch64 composite and causal host
+checks pass; native locked-DART mapping/import design remains missing. Root
+identified recoverable UBSan behavior in the first harness and required fatal
+sanitizers. Both host harnesses now use fatal checks plus empty-stderr checks;
+actual injected UB/UAF controls terminate, and root reran all variants/64cases
+successfully. No driver diagnostic or bound check was disabled.
+
+The separate current ARM proposal uses the same167 requests/117 selections.
+All117 payloads qualify exact size/SHA/retained-key PGP and signed PKGINFO vs DB
+metadata. Four versions change explicitly; marisa moves gcc-libs dependency to
+libgcc+libstdc++, with no package/dependency-name additions/removals. Root ran
+all ten actual parser/resolver tests successfully. Five DBs remain unsigned
+under the actual Required DatabaseOptional policy; Asahi DB signature qualifies.
+HTTPS/payload PGP do not prove metadata freshness/completeness/rollback absence.
+Plymouth boot effects, held boot pins and reverse-dependency ABI remain blockers;
+no install or hook executed. Original115/117 audit and26/26 HTTP404s are intact.
+
+NVMe SART/RTKit prerequisites75667 now compile AArch64 with3174/16413 actual
+layout/offset checks, plus actual-source host regressions independently rerun
+by root. Full ANS admission/lifetime integration is not yet wired; current
+refusal stays. An independent read-only review is tracing actual DMA/devres
+lifetime and mailbox contracts before any future test.

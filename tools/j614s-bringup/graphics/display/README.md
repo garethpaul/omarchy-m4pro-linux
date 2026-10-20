@@ -86,8 +86,14 @@ No private architecture helpers were exported. Actual source host tests cover
 the pool/IOVA bounds and early refusal, but no valid live J614s pool/DART handoff
 or panel modesetting has been demonstrated. The subsequent source audit found
 foreign PRIME imports can bypass the custom pool allocator and reach scanout.
-A separate ownership restriction and actual-source boundary regression are in
-progress; the successful link is not qualification to load this module.
+Sourcecf9836359cb60e7e53324b922fb44bd6c5c6ec21 authenticates actual same-device
+GEM ownership and a validated pool-allocation marker before accepting a module
+import. Foreign buffers are refused before attach/map; own pool self-import
+keeps the normal reference path. GCC/Clang actual-source tests pass with fatal
+ASan/UBSan and empty stderr; complete AArch64 Apple DRM composite compilation
+passes. The separate full module link is not claimed by that object result.
+This pool-only profile cannot import foreign AGX buffers for cross-device
+zero-copy accelerated presentation; native DART/import design remains missing.
 
 ## Reproduce the offline checks
 

@@ -1,0 +1,15 @@
+test_actual_c_pacman_print_resolves_dependency_in_disposable_state (test_current.CurrentTests.test_actual_c_pacman_print_resolves_dependency_in_disposable_state) ... ok
+test_actual_c_parser_rejects_unknown_and_protected_print_rows (test_current.CurrentTests.test_actual_c_parser_rejects_unknown_and_protected_print_rows) ... ok
+test_actual_c_resolver_refuses_protected_dependency (test_current.CurrentTests.test_actual_c_resolver_refuses_protected_dependency) ... ok
+test_actual_c_resolver_rejects_changed_db_before_print (test_current.CurrentTests.test_actual_c_resolver_rejects_changed_db_before_print) ... ok
+test_current_metadata_unresolved_authentication_cannot_qualify_payloads (test_current.CurrentTests.test_current_metadata_unresolved_authentication_cannot_qualify_payloads) ... ok
+test_diff_never_silently_replaces_historical_rows (test_current.CurrentTests.test_diff_never_silently_replaces_historical_rows) ... ok
+test_recorded_alias_requires_signed_provider_claim (test_current.CurrentTests.test_recorded_alias_requires_signed_provider_claim) ... ok
+test_recorded_mapping_never_silently_replaced_by_current_provider (test_current.CurrentTests.test_recorded_mapping_never_silently_replaced_by_current_provider) ... ok
+test_signed_dependency_and_metadata_mismatch_rejected (test_current.CurrentTests.test_signed_dependency_and_metadata_mismatch_rejected) ... ok
+test_signed_redirect_query_not_persisted_and_credentials_rejected (test_current.CurrentTests.test_signed_redirect_query_not_persisted_and_credentials_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 10 tests in 0.045s
+
+OK

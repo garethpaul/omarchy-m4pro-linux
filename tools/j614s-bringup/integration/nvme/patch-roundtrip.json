@@ -1,0 +1,10 @@
+{
+  "status": "WORKS (eleven-patch sequential source replay only)",
+  "gravity_base_commit": "b442be4b28f3720daff6c5f26fe8b1ab3aef28f1",
+  "candidate_commit": "75667cb3d42683108db115c5f94b46d4df51a244",
+  "patches": 11,
+  "application": "each patch checked and applied separately in series order with --unidiff-zero",
+  "verified_files": 45,
+  "target_access": false,
+  "hardware": "UNTESTED"
+}

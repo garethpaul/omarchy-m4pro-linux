@@ -255,3 +255,60 @@ A follow-up clean source fixes the owned field type; qualification uses a new
 pinned source snapshot and fresh output, leaving the failed build intact.
 The helper now also saves `build-request.json` before compilation and records
 source/tool/config state automatically in `failure.json` on make failure.
+
+`dcp-prime-host-results.json` adds a causal import regression. It runs the actual
+DRM ownership helper, full default import functions and the real FD-dispatch
+snippet against host DMA API stubs. Source124 reproduces a foreign buffer
+reaching attach/map; candidate `cf9836359cb60e7e53324b922fb44bd6c5c6ec21` refuses
+before either operation. Actual no-map allocation sets the ownership marker;
+authenticated exported pool BOs keep the default refcount-only self-import.
+Built-in foreign/default behavior stays intact. GCC and Clang pass ASan/UBSan.
+Run `test_dcp_prime.py --source ../overnight-infra-gravity-dcp-prime --baseline
+124fd0633bb8932bbf68845ecbe8a5ffc53dfb43` using Python3. This temporary module
+profile rejects foreign AGX-to-DCP PRIME buffers, so cross-device zero-copy
+accelerated presentation is unavailable until a real DART import design exists.
+
+The corrected MTP source passes all ten selected platform objects
+(`j614s-gravity-platform-attempt-02.json`), but its full size-config build fails
+modpost on `rust_build_error`. `j614s-gravity-kernel-attempt-02-failure.json`
+retains the exact failure, relocation and unchanged source/config/tool checks.
+The assertion is the MMIO compile-time offset check. `g16-mmio-object-after.json`
+records source fix `6340620747e221ea415ddee944afccacff3953ee` compiling without
+that unresolved trap under the exact same size configuration. Runtime loop
+accesses now use checked reads/writes with error propagation; constant accesses,
+features and assertions remain. A zero-context export is retained as
+`patches/g16-runtime-mmio.patch`; apply with `git apply --unidiff-zero`.
+`j614s-gravity-kernel-after-mmio.json` now records the complete Image and all
+18 modules linking under the exact same size config6c5aba. Image, embedded
+config, module versions and private-path audits pass. Hardware remains untested.
+
+`j614s-gravity-nvme-objects.json` qualifies actual RTKit/SART AArch64 objects at
+source75667 with exact reviewed config and compiled binding checks. Its
+`--platform-only` qualification does not compile or claim GPU/module linking;
+that source still carries the independent MMIO assertion issue. No runtime
+storage claim follows, and J614s ANS remains explicitly fail-closed. The helper
+now rejects unresolved Rust build assertions immediately after GPU compilation;
+22 host regressions pass, including that guard and the actual failed object.
+
+
+`gravity-dcp-prime-object-result.json` records the ownership callback compiling
+against real kernel headers in the full Apple DRM composite, including all
+12.3/13.3/26.6 translation units. Combined full-module verification remains a
+separate step; this does not establish cross-device zero-copy or hardware use.
+
+The two host sanitizer harnesses now make findings fatal with
+`-fno-sanitize-recover=all` and require empty stderr for every executed variant.
+Their results were rerun under that policy. `sanitizer-fatal-probe.json` verifies
+that deliberately injected signed overflow and heap use-after-free both terminate
+nonzero under GCC and Clang with the same flags. Earlier host result records did not establish that UBSan findings were fatal.
+The rerun replaces those records with enforced failure rules and empty stderr.
+
+
+`j614s-gravity-ans-staged-objects.json` records the staged source9d9 ANS object
+compiling as ELF64 AArch64 with the exact reviewed config and 3,174 binding
+layout blocks / 16,413 field-offset checks. This is parser/type/code-generation
+qualification of the selected object; staged callbacks remain behind the early
+J614s refusal. It establishes no admitted storage probe, devres quarantine or
+hardware operation. `baseline-preservation-final.json` confirms the original
+source fingerprint, known Image and original config remain unchanged after the
+new builds. This lane performed no physical target access or deployment.
