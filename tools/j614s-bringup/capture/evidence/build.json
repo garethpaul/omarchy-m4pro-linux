@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "status": "WORKS (builder compile/link only)",
+  "builder_model": "MacBookPro18,3",
+  "builder_architecture": "arm64",
+  "macos_version": "26.5.2",
+  "sdk_version": "26.5",
+  "compiler_version": "Apple clang version 21.0.0 (clang-2100.1.1.101)",
+  "compiler_command": "xcrun --sdk macosx clang -arch arm64 -mmacosx-version-min=13.0 -std=c11 -O2 -Wall -Wextra -Werror -fobjc-arc -fblocks -framework Metal -framework Foundation compute_trigger.m -o build/compute-trigger",
+  "source_sha256": "a1e0c4fb607715c89743ef919fd73abd142a59a880f6a7cfda464b64292685c3",
+  "binary_sha256": "a64db4ed42291db0b8829ffd1655099aa1c71f5aea8928b45edd74c01d4cf871",
+  "codesign_verify_exit": 0,
+  "target_execution": "UNTESTED",
+  "target_access": false,
+  "installation": false,
+  "codesign_verify_command": "codesign --verify --strict build/compute-trigger"
+}

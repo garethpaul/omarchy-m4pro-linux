@@ -92,3 +92,32 @@ builds bit-for-bit reproducible until the actual hashes match.
 Recipe2 build tooling is integrated, including stable Rust source/output/sysroot prefix mapping. Clean full kernel and independent repeat comparison are still running. Gravity kernel ABI and Mesa compute fixtures are being developed against the matching published stack; source-only envelope validation does not establish a successful firmware INIT or GPU job. Minimal Metal capture tooling is compiling on a separate Mac builder, not the M4 target.
 
 The publication worktree initially had an uninitialized sparse index showing unrelated kernel deletions. No such change was committed or pushed. Its index was restored to its base, missing sparse root files restored from HEAD, and status checked to contain only the new tools package.
+
+## Reproducible candidate and capture tooling
+
+Clean kernel f93a3416c60f26c68084134dc6c1d205becd5753 now has two independently
+built, byte-identical Images and all15 modules. Image SHA256
+7683e4f6254026370ceecf4e64a5e9905344df658dea5f5d3e6679aebaf068f1;
+release7.1.12-j614s-clean-candidate+. Both builds pass embedded config, AArch64
+module ABI and actual private-prefix audits. Hardware boot remains UNTESTED.
+Earlier recipe1 reproducibility failure is retained.
+
+Gravity kernel envelope candidate db9f2f8f00986e3ef03fddbdaad55a861e793123
+compiles/replays actual serializers with legacy output unchanged; no runtime
+caller activates it. Full Gravity module qualification is in progress with real
+layout assertions enabled, not disabled to accept a build.
+
+Capture source ba285fb664f8ca9920c0deb357ff7259c04b9f2c has builder-only
+validation on M1 Pro: three tiny Metal jobs across one/two-job cases, exact
+readback and causal START/COMMIT gates;14 host corruption tests pass. It has not
+run on the target or staged onto macOS.
+
+The bootstrap crash fix draft is https://github.com/garethpaul/omarchy-m4pro-linux/pull/1.
+A gh fork --fork-name attempt unexpectedly renamed the existing Linux fork.
+The original name was restored after verifying repository identity; commits,
+branches and the draft PR remain intact. No further naming changes are planned.
+
+Fresh webcam and cached proxy metadata still show Running proxy, USB63 and zero
+exceptions. No unattended boot, watchdog change or protected-volume action was
+performed. qualification/STATUS.md supersedes stale one-core and missing-battery
+claims in the initial audit.

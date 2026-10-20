@@ -8,6 +8,8 @@ default boot remain incomplete. Read PROGRESS.md before running any experiment.
 - graphics/: exact-build G16S initialization capture decoders, bounded UAT reads and actual-driver crash regression. These do not construct or send INIT.
 - omarchy/: native renderer qualification, signed ARM package inspection and print-only dependency planning. No package installation or desktop changes.
 - infra/: isolated kernel builds with tool/source/config/artifact integrity checks.
+- capture/: gated minimal Metal workload, validated on a separate M1 Pro builder; M4 capture remains untested.
+- qualification/: all-phase status matrix and selected captured hardware evidence.
 - recovery/: USB/webcam observation and PMU counter read without counter or watchdog changes.
 
 Run component commands from this directory, with explicit external source/build

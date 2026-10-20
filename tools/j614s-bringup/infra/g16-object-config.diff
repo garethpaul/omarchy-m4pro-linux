@@ -1,10 +1,4 @@
 --- baseline.config
 +++ candidate.config
-@@ -2732,7 +2732,6 @@
- # CONFIG_PHY_NXP_PTN3222 is not set
- CONFIG_PHY_APPLE_T6040_USB2_INHERITED=y
- # CONFIG_PHY_APPLE_DPTX is not set
+@@ -2735 +2734,0 @@
 -CONFIG_PHY_APPLE_J614S_USB2_HOST_DIAGNOSTIC=m
- 
- #
- # PHY drivers for Broadcom platforms

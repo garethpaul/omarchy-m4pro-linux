@@ -1,0 +1,11 @@
+{
+  "online": "0-11",
+  "pinned_sha256_processes": 12,
+  "shared_atomic_expected": 12000000,
+  "shared_atomic_actual": 12000000,
+  "boot_log_checks": "passed",
+  "nvme_enabled": false,
+  "simd_context_sleeps": 12000,
+  "ordinary_idle": true,
+  "automatic_wait_state_quirk": true
+}

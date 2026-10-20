@@ -1,0 +1,16 @@
+[
+  {
+    "repository": "https://github.com/ADevWithAnIdea/agx-re",
+    "commit": "c677ff970ca9d5ab98770100e790f8a62c60a2a0",
+    "path": "experiments/EXP-M4-03-cmdstream-pipeline/work/iohello_compute.m",
+    "sha256": "7e970c37091e87c72894cd9a4b149e881f23a0650973bb6f22e7f399bc0a7ab3",
+    "url": "https://github.com/ADevWithAnIdea/agx-re/blob/c677ff970ca9d5ab98770100e790f8a62c60a2a0/experiments/EXP-M4-03-cmdstream-pipeline/work/iohello_compute.m"
+  },
+  {
+    "repository": "https://github.com/niklassheth/agx-re",
+    "commit": "e25433b1d348a809ab86484ce149ff7d459e8cdf",
+    "path": "experiments/EXP-0058-m4-compute-render-transition-fixed/harness/probe.m",
+    "sha256": "85e3f8b83171ad8a284a69f0e270abd8d65d2b90f9d525c9544bab4806ea99eb",
+    "url": "https://github.com/niklassheth/agx-re/blob/e25433b1d348a809ab86484ce149ff7d459e8cdf/experiments/EXP-0058-m4-compute-render-transition-fixed/harness/probe.m"
+  }
+]

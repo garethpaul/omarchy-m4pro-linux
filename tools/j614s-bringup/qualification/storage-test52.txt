@@ -1,0 +1,10 @@
+Starting scrub on devid 1
+Scrub started:    Mon Oct 19 21:00:40 2026
+Status:           finished
+Duration:         0:00:15
+Total to scrub:   5.89GiB
+Rate:             402.17MiB/s
+Error summary:    no errors found
+0
+   20762    90460 14155088    16294        0        0        0        0        0     2808    16294        0        0        0        0        0        0
+1

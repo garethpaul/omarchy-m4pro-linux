@@ -1,0 +1,49 @@
+diff --git a/drivers/gpu/drm/asahi/g16-bootstrap.c b/drivers/gpu/drm/asahi/g16-bootstrap.c
+index 394e49f02..beed8d29e 100644
+--- a/drivers/gpu/drm/asahi/g16-bootstrap.c
++++ b/drivers/gpu/drm/asahi/g16-bootstrap.c
+@@ -2,0 +3 @@
++#include <linux/atomic.h>
+@@ -18,0 +20,6 @@
++enum j614s_gfx_state {
++	J614S_GFX_NOT_READY,
++	J614S_GFX_READY,
++	J614S_GFX_CRASHED,
++};
++
+@@ -24 +31 @@ struct j614s_gfx {
+-	bool ready;
++	atomic_t state;
+@@ -54 +61 @@ static void j614s_gfx_crashed(void *cookie, const void *log, size_t size)
+-	WRITE_ONCE(gfx->ready, false);
++	atomic_set(&gfx->state, J614S_GFX_CRASHED);
+@@ -67,0 +75,2 @@ static ssize_t bootstrap_state_show(struct device *dev,
++	int state = atomic_read(&gfx->state);
++	const char *name;
+@@ -68,0 +78,6 @@ static ssize_t bootstrap_state_show(struct device *dev,
++	if (state == J614S_GFX_CRASHED || apple_rtkit_is_crashed(gfx->rtk))
++		name = "CRASHED";
++	else if (state == J614S_GFX_READY && apple_rtkit_is_running(gfx->rtk))
++		name = "RTKIT_READY";
++	else
++		name = "NOT_READY";
+@@ -70 +85 @@ static ssize_t bootstrap_state_show(struct device *dev,
+-		READ_ONCE(gfx->ready) ? "RTKIT_READY" : "NOT_READY",
++		name,
+@@ -81 +96,2 @@ static void j614s_gfx_stop(struct j614s_gfx *gfx)
+-	WRITE_ONCE(gfx->ready, false);
++	/* A later stop must not erase the latched crash diagnosis. */
++	atomic_cmpxchg(&gfx->state, J614S_GFX_READY, J614S_GFX_NOT_READY);
+@@ -107,0 +124 @@ static int j614s_gfx_probe(struct platform_device *pdev)
++	atomic_set(&gfx->state, J614S_GFX_NOT_READY);
+@@ -155 +172,9 @@ static int j614s_gfx_probe(struct platform_device *pdev)
+-	WRITE_ONCE(gfx->ready, true);
++	/* The crash callback may run as wake completes. Publish readiness only
++	 * if it has not already latched a crash; later crashes remain terminal.
++	 */
++	if (!apple_rtkit_is_running(gfx->rtk) ||
++	    atomic_cmpxchg(&gfx->state, J614S_GFX_NOT_READY,
++			   J614S_GFX_READY) != J614S_GFX_NOT_READY) {
++		j614s_gfx_stop(gfx);
++		return dev_err_probe(dev, -EIO, "G16 firmware stopped during bootstrap\n");
++	}

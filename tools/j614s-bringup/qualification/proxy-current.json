@@ -1,0 +1,43 @@
+{
+  "boot_cpu": 4,
+  "mpidr": "0x80010100",
+  "aic_base": "0x502400000",
+  "usb_proxy_iodev": 5,
+  "usb_proxy_iodev_name": "USB1",
+  "aic": {
+    "version": 3,
+    "nr_irq": 2720,
+    "nr_die": 1,
+    "max_irq": 4096,
+    "max_die": 2,
+    "extintrcfg_stride": 18944,
+    "intmaskset_stride": 18944,
+    "intmaskclear_stride": 18944,
+    "cap0_offset": 4294967295,
+    "maxnumirq_offset": 4294967295
+  },
+  "aic_registers": {
+    "reg_size": "0x40004",
+    "event": "0x40000",
+    "target_cpu": "0x0",
+    "config": "0x10000",
+    "sw_set": "0x14000",
+    "sw_clr": "0x14200",
+    "mask_set": "0x14400",
+    "mask_clr": "0x14600"
+  },
+  "exceptions_before": 0,
+  "exceptions_after": 0,
+  "handoff_state": {
+    "nvme_initialized": false,
+    "nvme_reboot_required": false,
+    "has_dcp": false,
+    "display_is_external": false,
+    "usb_shutdown_failed": false,
+    "wfe_mode": false
+  },
+  "heap_state": {
+    "heap_base": "0x10008bdc000",
+    "heap_limit": "0x0"
+  }
+}

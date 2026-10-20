@@ -1,0 +1,50 @@
+{
+  "scope": "Captured hardware results from distinct test boots, not one current session. Current target is m1n1 proxy.",
+  "test_ids": {
+    "cpu-test51.json": 51,
+    "gpu-test56.json": 56,
+    "gpu-test56-dmesg.txt": 56,
+    "desktop-test52.json": 52,
+    "battery-test42.txt": 42,
+    "storage-test52.txt": 52
+  },
+  "storage_redaction": "Filesystem UUID line removed; original retained privately.",
+  "files": [
+    {
+      "file": "STATUS.md",
+      "sha256": "2b90a6a9b71ee780991a092f8136d12d793a5e47b0f532409f06a26ac27a4b85"
+    },
+    {
+      "file": "adt-node-comparison.json",
+      "sha256": "7ed6a7fc4eb02150094b44ad6792e96910f7510a7ba435dd0b9e34a74be00de8"
+    },
+    {
+      "file": "battery-test42.txt",
+      "sha256": "ba9bfd67084fa77b33738b37a74894b38604698f56879a09494c82468b401a15"
+    },
+    {
+      "file": "cpu-test51.json",
+      "sha256": "3433b053ab55abcdadeaeb723155866d93ebaac0d425dcedf98b7dac54db1967"
+    },
+    {
+      "file": "desktop-test52.json",
+      "sha256": "af570fb001c74576a4aacb6b683cd51e94d993527274857198f849aa8e6b3a46"
+    },
+    {
+      "file": "gpu-test56-dmesg.txt",
+      "sha256": "1d83c24a75eebabfd2a5a867d903701f25f07ba68bfcd87314bbb6593a33a172"
+    },
+    {
+      "file": "gpu-test56.json",
+      "sha256": "60de10591c48a5efd0b8ff315e44619ac5102df2caa2cab913aa87011744952c"
+    },
+    {
+      "file": "proxy-current.json",
+      "sha256": "8b539e1eefae24001682f4ca5871ac94011b7274d881a30380d8597ee5297867"
+    },
+    {
+      "file": "storage-test52.txt",
+      "sha256": "dce1ff075a999b7d56e527d36bfa2e19a1635c0927f433d2379483df34cb860b"
+    }
+  ]
+}

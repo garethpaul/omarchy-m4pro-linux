@@ -1,11 +1,5 @@
 --- baseline.config
 +++ clean-candidate.config
-@@ -40,7 +40,7 @@
- CONFIG_INIT_ENV_ARG_LIMIT=32
- # CONFIG_COMPILE_TEST is not set
- # CONFIG_WERROR is not set
+@@ -43 +43 @@
 -CONFIG_LOCALVERSION="-j614s-gpu-bringup"
 +CONFIG_LOCALVERSION="-j614s-clean-candidate"
- # CONFIG_LOCALVERSION_AUTO is not set
- CONFIG_BUILD_SALT=""
- CONFIG_DEFAULT_INIT=""

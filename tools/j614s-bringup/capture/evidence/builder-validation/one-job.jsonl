@@ -1,0 +1,18 @@
+{"buffer_bytes":64,"event":"PLAN","expected_device_prefix":"Apple M1 Pro","expected_first_output":["6145a55a","6145a55b","6145a558","6145a559","6145a55e","6145a55f","6145a55c","6145a55d","6145a552","6145a553","6145a550","6145a551","6145a556","6145a557","6145a554","6145a555"],"expected_model":"MacBookPro18,3","monotonic_ns":6783656739082000,"schema":1,"submissions":1,"timeout_ms":10000,"words":16,"xor_hex":"6145a55a"}
+{"event":"WAIT_START","expect_stdin":"START","monotonic_ns":6783656742300000,"schema":1,"submission":0}
+{"accepted_stdin":"START","event":"GATE_ACCEPTED","gate":"WAIT_START","monotonic_ns":6783656742339000,"schema":1,"submission":0}
+{"event":"BEFORE_DEVICE","monotonic_ns":6783656742348000,"schema":1}
+{"event":"DEVICE_READY","model":"MacBookPro18,3","monotonic_ns":6783656752620000,"name":"Apple M1 Pro","schema":1}
+{"event":"BEFORE_LIBRARY","monotonic_ns":6783656752639000,"schema":1}
+{"event":"BEFORE_PIPELINE","monotonic_ns":6783656753110000,"schema":1}
+{"event":"PIPELINE_READY","monotonic_ns":6783656753801000,"schema":1,"thread_execution_width":32}
+{"event":"BEFORE_BUFFER","monotonic_ns":6783656753813000,"schema":1}
+{"event":"BUFFER_READY","gpu_address_hex":"0000001500018000","gpu_address_le":"0080010015000000","input":["00000000","00000001","00000002","00000003","00000004","00000005","00000006","00000007","00000008","00000009","0000000a","0000000b","0000000c","0000000d","0000000e","0000000f"],"monotonic_ns":6783656753870000,"schema":1}
+{"event":"BEFORE_QUEUE","monotonic_ns":6783656753886000,"schema":1}
+{"event":"BEFORE_ENCODING","monotonic_ns":6783656754217000,"schema":1,"submission":0}
+{"event":"WAIT_COMMIT","expect_stdin":"COMMIT0","monotonic_ns":6783656754393000,"schema":1,"submission":0}
+{"accepted_stdin":"COMMIT0","event":"GATE_ACCEPTED","gate":"WAIT_COMMIT","monotonic_ns":6783656754405000,"schema":1,"submission":0}
+{"event":"BEFORE_COMMIT","monotonic_ns":6783656754415000,"schema":1,"submission":0}
+{"event":"COMMAND_COMPLETED","monotonic_ns":6783656755726000,"schema":1,"status":4,"submission":0}
+{"event":"READBACK","monotonic_ns":6783656755751000,"pass":true,"schema":1,"submission":0,"words":["6145a55a","6145a55b","6145a558","6145a559","6145a55e","6145a55f","6145a55c","6145a55d","6145a552","6145a553","6145a550","6145a551","6145a556","6145a557","6145a554","6145a555"]}
+{"event":"DONE","monotonic_ns":6783656755766000,"schema":1,"submissions":1,"verified_words_per_submission":16}

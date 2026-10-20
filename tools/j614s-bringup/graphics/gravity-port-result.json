@@ -1,0 +1,48 @@
+{
+  "status": "COMPILED_AND_REPLAYED_ENVELOPES_ONLY",
+  "hardware_tested": false,
+  "safe_to_publish_init": false,
+  "baseline_commit": "4fc326f6c25ccceb7515e2635c22e01fde5d3bac",
+  "candidate_commit": "db9f2f8f00986e3ef03fddbdaad55a861e793123",
+  "source": [
+    {
+      "name": "baseline",
+      "source_sha256": {
+        "g16_fw.rs": "507ef7a73541124ce249b21a1b26dafb245d069407acf5e2b81486c972527b20",
+        "g16_queue.rs": "167219617c4bae06f1ac8f3be9761b80eba66b8a5176de121601456a7975bcfd"
+      }
+    },
+    {
+      "name": "candidate",
+      "source_sha256": {
+        "g16_fw.rs": "999fdb28971f2df0fdaa96645f0f470e0860da1988b6d5cbbeb6b182ebb41051",
+        "g16_queue.rs": "167219617c4bae06f1ac8f3be9761b80eba66b8a5176de121601456a7975bcfd"
+      }
+    }
+  ],
+  "legacy_root_and_main_bit_identical": true,
+  "current_root_inspection": {
+    "status": "DECODED_OFFLINE",
+    "hardware_validated": false,
+    "root_size": 200,
+    "ias": 42,
+    "oas": 42,
+    "main_config": "0xfffffc20c04f5a40",
+    "status_a": "0xfffffc200003f180",
+    "status_b": "0xfffffc2000030000",
+    "opaque_b8": "0xfffffc200003eb00",
+    "opaque_c0": "0xfffffc20000f3440"
+  },
+  "current_main_inspection": {
+    "hardware_validated": false,
+    "safe_to_publish_init": false,
+    "pointer_check_error": 0,
+    "first_bad_offset": 0,
+    "hwdata": "0xfffffc20c04d8000",
+    "log_enable": 0,
+    "descriptor_2e0": "0xfffffc2000318000",
+    "descriptor_2f0": "0xfffffc200031c000",
+    "power_471": "0xfffffc2000320000"
+  },
+  "opaque_body": "UNIMPLEMENTED; synthetic explicit pointers do not qualify hardware/power data or application publication"
+}

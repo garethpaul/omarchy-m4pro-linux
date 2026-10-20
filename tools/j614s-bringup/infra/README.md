@@ -102,11 +102,11 @@ mixing/corruption against a retained manifest; they are not signatures.
 | --- | --- | --- |
 | Historical baseline full Image + 15 matching modules | WORKS (compile only) | `build-results.json`; exact and embedded config match |
 | Historical baseline byte reproducibility | BLOCKED in recipe 1: absolute Rust paths | `reproducibility-before.json`: Image and Asahi module differ; 14 C modules match |
-| Rust path-remap fix | PARTIAL | Real compiler probe passes; clean full build/rebuild comparison in progress |
+| Rust path-remap fix | WORKS (build reproducibility) | `clean-candidate-reproducibility.json`: independent full Image and 15 modules are byte-identical |
 | AArch64 unconditional Rust layout checks | WORKS (compile only) | `layout-evidence.json`, `bindgen-test-results.json` |
 | Wrong tool/config/corrupt/mixed artifact rejection | WORKS (host tests) | `check-results.json`, `regression-results.json`, `build-results.json` |
 | Reviewed standalone G16 crash-latch object | PARTIAL | `g16-object-result.json`; AArch64 object compiled; hardware UNTESTED |
-| Clean candidate full kernel | UNTESTED until build completes | New contract and normalized config captured |
+| Clean candidate full kernel | WORKS (compile only) | `clean-candidate-build-01.json`, `clean-candidate-build-02.json`; both pass complete verification |
 | Hardware/deployment/recovery | UNTESTED by this lane | Primary agent owns physical target operations |
 
 The original source tree and reference Image remain unchanged. Historical
@@ -126,3 +126,9 @@ and deployment remain unproven. Local build logs contain private paths and need
 sanitizing before publication. Never publish raw firmware, ADTs, credentials or
 unreviewed source snapshots. No unattended boot is permitted until the primary
 agent independently verifies recovery and the known-good fallback.
+
+The corrected full builds both produce Image SHA-256
+`7683e4f6254026370ceecf4e64a5e9905344df658dea5f5d3e6679aebaf068f1`,
+release `7.1.12-j614s-clean-candidate+`. All 15 modules also match byte-for-byte.
+This establishes same-toolchain reproducibility for this exact clean source and
+configuration; hardware behavior and cross-machine reproduction remain untested.

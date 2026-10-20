@@ -1,0 +1,79 @@
+diff --git a/drivers/gpu/drm/asahi/g16_fw.rs b/drivers/gpu/drm/asahi/g16_fw.rs
+index 9791951..3234d36 100644
+--- a/drivers/gpu/drm/asahi/g16_fw.rs
++++ b/drivers/gpu/drm/asahi/g16_fw.rs
+@@ -202,0 +203,60 @@ pub(crate) fn bootstrap(bundle: u64) -> Self {
++/// Serialized initialization interface, separate from SoC or GPU identity.
++/// 25G83 G16G and G16S consumers share the latter version. Selecting it does
++/// not qualify the hardware-data bundle, power tables or application startup.
++#[derive(Clone, Copy)]
++pub(crate) enum InitInterface {
++    /// Existing Gravity descriptor contract. Existing callers are unchanged.
++    Legacy,
++    /// Exact 26.6.2 / 25G83 descriptor envelope; runtime not enabled here.
++    V26_6_2,
++}
++
++/// Explicit pointer inputs for the measured G16S 25G83 main layout. No default
++/// converts the legacy bundle into a qualified graph: callers must supply
++/// all views and descriptor aliases from an independently established layout.
++pub(crate) struct G16SMainPointers26_6_2 {
++    pub(crate) views: [u64; 5],
++    pub(crate) zero_page: u64,
++    pub(crate) pb_low: u64,
++    pub(crate) pb_gpu: u64,
++    pub(crate) page_pool_low: u64,
++    pub(crate) page_pool_gpu: u64,
++    pub(crate) power: u64,
++    pub(crate) log_enable: u32,
++    pub(crate) opaque_300: u32,
++    pub(crate) opaque_3e0: u32,
++}
++
++impl MainConfig {
++    /// Serialize only the established current-format envelope. This method
++    /// deliberately has no runtime caller until T6040's complete body and
++    /// publication protocol are qualified. It cannot be sent as a graph by
++    /// itself. Untyped opaque bytes remain zero and unqualified.
++    pub(crate) fn encode_g16s_26_6_2(&self, pointers: &G16SMainPointers26_6_2) -> [u8; MAIN_SIZE] {
++        let legacy = self.encode();
++        let mut out = [0; MAIN_SIZE];
++        // Header and 17 four-pointer channel entries keep their positions.
++        out[..0x240].copy_from_slice(&legacy[..0x240]);
++        out[0x250..0x254].copy_from_slice(&pointers.log_enable.to_le_bytes());
++        for (i, pointer) in pointers.views.iter().enumerate() {
++            put64(&mut out, 0x254 + i * 8, *pointer);
++        }
++        for (offset, value) in [
++            (0x2d0, pointers.zero_page),
++            (0x2d8, pointers.pb_low),
++            (0x2e0, pointers.pb_gpu),
++            (0x2e8, pointers.page_pool_low),
++            (0x2f0, pointers.page_pool_gpu),
++            (0x471, pointers.power),
++        ] {
++            put64(&mut out, offset, value);
++        }
++        out[0x300..0x304].copy_from_slice(&pointers.opaque_300.to_le_bytes());
++        out[0x3e0..0x3e4].copy_from_slice(&pointers.opaque_3e0.to_le_bytes());
++        // Preserve the existing opening record's location; blindly shifting
++        // the entire old object by eight bytes would corrupt this boundary.
++        out[0x4c0..].copy_from_slice(&legacy[0x4c0..]);
++        out
++    }
++}
++
+@@ -227,0 +288,6 @@ pub(crate) const fn bootstrap() -> Self {
++        self.encode_interface(InitInterface::Legacy)
++    }
++
++    /// Select only the root envelope ABI; this does not rewrite another
++    /// object's layout or opt any board into firmware execution.
++    pub(crate) fn encode_interface(&self, interface: InitInterface) -> [u8; ROOT_SIZE] {
+@@ -229 +295,5 @@ pub(crate) const fn bootstrap() -> Self {
+-        for (i, value) in [0x04b8u16, 0x8392, 0xc357, 0x0c89].iter().enumerate() {
++        let version: [u16; 4] = match interface {
++            InitInterface::Legacy => [0x04b8, 0x8392, 0xc357, 0x0c89],
++            InitInterface::V26_6_2 => [0x04c0, 0x0396, 0xa322, 0x0c8a],
++        };
++        for (i, value) in version.iter().enumerate() {

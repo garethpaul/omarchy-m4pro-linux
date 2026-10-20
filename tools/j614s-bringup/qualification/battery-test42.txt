@@ -1,0 +1,28 @@
+status=Full
+present=1
+capacity=100
+voltage_now=13206000
+current_now=0
+power_now=0
+temp=287
+cycle_count=40
+health=Good
+charge_now=6463000
+charge_full=6479000
+charge_full_design=6249000
+energy_now=73678200
+energy_full=73860600
+energy_full_design=71238600
+charge_behaviour=[auto] inhibit-charge
+charge_control_end_threshold=100
+ac_online=1
+444 /sys/class/power_supply/macsmc-battery/charge_behaviour
+444 /sys/class/power_supply/macsmc-battery/charge_control_end_threshold
+444 /sys/class/power_supply/macsmc-battery/charge_control_start_threshold
+444 /sys/class/power_supply/macsmc-battery/charge_counter
+444 /sys/class/power_supply/macsmc-battery/charge_full
+444 /sys/class/power_supply/macsmc-battery/charge_full_design
+444 /sys/class/power_supply/macsmc-battery/charge_now
+444 /sys/class/power_supply/macsmc-battery/charge_term_current
+26
+/usr/bin/upower

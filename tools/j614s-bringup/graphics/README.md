@@ -136,3 +136,8 @@ The next application-layout step is implemented in [MAIN-CONFIG.md](MAIN-CONFIG.
 known MainConfig fields, actual upstream encoded pointer mismatches, and a staged
 read-only plan for the first hardware-data access. Its passing replay does not
 qualify a firmware graph or permit application INIT.
+
+[GRAVITY-PORT.md](GRAVITY-PORT.md) records the subsequent adaptation in the actual
+Gravity driver, the corrected same-build G16G/G16S comparison, and the first
+compute-job acceptance target. The original serializer mismatch remains a
+reproduced fact; it is not an end-to-end failure claim for all published stacks.

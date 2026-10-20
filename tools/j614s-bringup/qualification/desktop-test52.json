@@ -1,0 +1,12 @@
+{
+  "pid": 1098,
+  "sample_seconds": 10.002221823999975,
+  "cpu_percent_one_core": 8.39813408241407,
+  "online": "0-11",
+  "threads": 58,
+  "render_environment": {
+    "AQ_DRM_DEVICES": "/dev/dri/card1",
+    "GALLIUM_DRIVER": "llvmpipe",
+    "LIBGL_ALWAYS_SOFTWARE": "true"
+  }
+}

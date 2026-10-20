@@ -1,0 +1,118 @@
+{
+  "artifacts": [
+    {
+      "path": "Image",
+      "private_prefix_matches": {
+        "build_directory": 0,
+        "home_directory": 0
+      }
+    },
+    {
+      "path": "modules/drivers/gpio/gpio-macsmc.ko",
+      "private_prefix_matches": {
+        "build_directory": 0,
+        "home_directory": 0
+      }
+    },
+    {
+      "path": "modules/drivers/gpio/gpio-shared-proxy.ko",
+      "private_prefix_matches": {
+        "build_directory": 0,
+        "home_directory": 0
+      }
+    },
+    {
+      "path": "modules/drivers/gpu/drm/asahi/asahi.ko",
+      "private_prefix_matches": {
+        "build_directory": 0,
+        "home_directory": 0
+      }
+    },
+    {
+      "path": "modules/drivers/gpu/drm/asahi/g16-bootstrap.ko",
+      "private_prefix_matches": {
+        "build_directory": 0,
+        "home_directory": 0
+      }
+    },
+    {
+      "path": "modules/drivers/hid/dockchannel-hid/dockchannel-hid.ko",
+      "private_prefix_matches": {
+        "build_directory": 0,
+        "home_directory": 0
+      }
+    },
+    {
+      "path": "modules/drivers/hid/hid-apple.ko",
+      "private_prefix_matches": {
+        "build_directory": 0,
+        "home_directory": 0
+      }
+    },
+    {
+      "path": "modules/drivers/hid/hid-magicmouse.ko",
+      "private_prefix_matches": {
+        "build_directory": 0,
+        "home_directory": 0
+      }
+    },
+    {
+      "path": "modules/drivers/mfd/macsmc.ko",
+      "private_prefix_matches": {
+        "build_directory": 0,
+        "home_directory": 0
+      }
+    },
+    {
+      "path": "modules/drivers/mfd/mfd-core.ko",
+      "private_prefix_matches": {
+        "build_directory": 0,
+        "home_directory": 0
+      }
+    },
+    {
+      "path": "modules/drivers/nvme/host/nvme-apple.ko",
+      "private_prefix_matches": {
+        "build_directory": 0,
+        "home_directory": 0
+      }
+    },
+    {
+      "path": "modules/drivers/nvme/host/nvme-core.ko",
+      "private_prefix_matches": {
+        "build_directory": 0,
+        "home_directory": 0
+      }
+    },
+    {
+      "path": "modules/drivers/phy/apple/usb2-j614s-host-diagnostic.ko",
+      "private_prefix_matches": {
+        "build_directory": 0,
+        "home_directory": 0
+      }
+    },
+    {
+      "path": "modules/drivers/power/supply/macsmc-power.ko",
+      "private_prefix_matches": {
+        "build_directory": 0,
+        "home_directory": 0
+      }
+    },
+    {
+      "path": "modules/drivers/soc/apple/apple-dockchannel.ko",
+      "private_prefix_matches": {
+        "build_directory": 0,
+        "home_directory": 0
+      }
+    },
+    {
+      "path": "modules/drivers/soc/apple/apple-rtkit-helper.ko",
+      "private_prefix_matches": {
+        "build_directory": 0,
+        "home_directory": 0
+      }
+    }
+  ],
+  "scope": "Actual host home and build directory prefixes",
+  "status": "PASS"
+}

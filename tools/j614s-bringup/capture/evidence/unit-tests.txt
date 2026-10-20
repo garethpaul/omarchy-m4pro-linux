@@ -1,0 +1,19 @@
+test_acceptance_without_exact_start_or_commit_token_is_rejected (test_transcript.TranscriptTests.test_acceptance_without_exact_start_or_commit_token_is_rejected) ... ok
+test_actual_builder_first_job (test_transcript.TranscriptTests.test_actual_builder_first_job) ... ok
+test_actual_builder_two_jobs_restore_input (test_transcript.TranscriptTests.test_actual_builder_two_jobs_restore_input) ... ok
+test_default_mode_cannot_admit_two_submissions (test_transcript.TranscriptTests.test_default_mode_cannot_admit_two_submissions) ... ok
+test_failed_command_status_is_rejected (test_transcript.TranscriptTests.test_failed_command_status_is_rejected) ... ok
+test_failed_readback_cannot_pass_with_correct_words (test_transcript.TranscriptTests.test_failed_readback_cannot_pass_with_correct_words) ... ok
+test_inconsistent_buffer_identity_is_rejected (test_transcript.TranscriptTests.test_inconsistent_buffer_identity_is_rejected) ... ok
+test_negative_builder_cases_never_reached_device_marker (test_transcript.TranscriptTests.test_negative_builder_cases_never_reached_device_marker) ... ok
+test_nonmonotonic_time_is_rejected (test_transcript.TranscriptTests.test_nonmonotonic_time_is_rejected) ... ok
+test_refused_commit_never_submitted_user_job (test_transcript.TranscriptTests.test_refused_commit_never_submitted_user_job) ... ok
+test_reordered_or_missing_markers_are_rejected (test_transcript.TranscriptTests.test_reordered_or_missing_markers_are_rejected) ... ok
+test_success_boolean_cannot_hide_wrong_output (test_transcript.TranscriptTests.test_success_boolean_cannot_hide_wrong_output) ... ok
+test_ungated_second_submission_is_rejected (test_transcript.TranscriptTests.test_ungated_second_submission_is_rejected) ... ok
+test_wrong_commit_gate_is_rejected (test_transcript.TranscriptTests.test_wrong_commit_gate_is_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 14 tests in 0.004s
+
+OK

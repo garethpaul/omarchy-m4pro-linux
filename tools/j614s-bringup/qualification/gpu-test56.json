@@ -1,0 +1,13 @@
+{
+  "scope": "G16S firmware startup and quiesce, not rendering",
+  "status": "WORKS",
+  "rtkit_protocol": 12,
+  "linux_cpus_online": "0-11",
+  "quiesce_acknowledged": true,
+  "cpu_control_after_stop": "0x0",
+  "nvme_writes": 0,
+  "nvme_sectors_written": 0,
+  "kernel_fault_patterns": false,
+  "rendering": "UNIMPLEMENTED",
+  "default_boot": "UNCHANGED_PROXY"
+}

@@ -1,0 +1,5 @@
+[   22.979142] j614s-gfx-bootstrap 28a600000.gfx-bootstrap: RTKit: Initializing (protocol version 12)
+[   22.979247] j614s-gfx-bootstrap 28a600000.gfx-bootstrap: firmware crash buffer 0x0000010001dd4000 size 0x8000 mapped within ADT DATA
+[   22.979338] j614s-gfx-bootstrap 28a600000.gfx-bootstrap: G16S B1 RTKit ready, protocol 12; 16 cores; application INIT not sent
+[   23.124899] j614s-gfx-bootstrap 28a600000.gfx-bootstrap: G16 RTKit quiesced
+[   23.124910] j614s-gfx-bootstrap 28a600000.gfx-bootstrap: G16 CPU RUN cleared, control=0x0

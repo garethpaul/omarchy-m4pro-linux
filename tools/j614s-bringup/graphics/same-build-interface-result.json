@@ -1,0 +1,29 @@
+{
+  "status": "SAME_BUILD_ROOT_ABI_MATCH",
+  "hardware_tested": false,
+  "restore_build": "25G83",
+  "g16g_j700ap_b100": {
+    "view_sha256": "a444efbd42750c1b5b01229834cf9ffba9310549553ab52d406f76864a34d94b",
+    "constant_load_pc": "0xfffffc000001e8a8",
+    "interface": [
+      "0x04c0",
+      "0x0396",
+      "0xa322",
+      "0x0c8a"
+    ],
+    "image_sha256": "c1d35018d1226f8b7db374b0cc4332c6e43479ad7a0d001c5a7d0ecda1354412"
+  },
+  "g16s_j614sap_b000": {
+    "view_sha256": "13a07c31bdd7b2ec1b27a131bd21b7c5764e69f65e5fbf8d1eabc0f261457c40",
+    "constant_load_pc": "0xfffffc000002f254",
+    "interface": [
+      "0x04c0",
+      "0x0396",
+      "0xa322",
+      "0x0c8a"
+    ],
+    "image_sha256": "fac6e3430ba6d86785dc0cf31b177fb0758f0f075dfd7f9c659ef1345034ffa0"
+  },
+  "conclusion": "The legacy Gravity root mismatch is not a G16G-versus-G16S distinction. Root ABI equality does not establish hardware-data/power/job-format compatibility.",
+  "provenance": "This work used public source plus private vendor firmware analysis. No clean-room provenance is claimed."
+}

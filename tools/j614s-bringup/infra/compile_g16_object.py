@@ -70,7 +70,7 @@ if kb.tool_state(kb.tool_paths(a)) != baseline['tools'] or kb.source_state(sourc
     raise SystemExit('FAIL: source or tools drift after compilation')
 input_config = a.config.read_text().splitlines(keepends=True)
 output_config = (out / '.config').read_text().splitlines(keepends=True)
-config_diff = ''.join(difflib.unified_diff(input_config, output_config, fromfile='baseline.config', tofile='candidate.config'))
+config_diff = ''.join(difflib.unified_diff(input_config, output_config, fromfile='baseline.config', tofile='candidate.config', n=0))
 (dest / 'config.diff').write_text(config_diff)
 obj = out / object_name
 with obj.open('rb') as stream:
