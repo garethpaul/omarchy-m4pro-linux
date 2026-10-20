@@ -311,6 +311,9 @@ static bool apple_nvme_can_adopt_rtkit(struct apple_nvme *anv)
 	      APPLE_ANS_COPROC_CPU_CONTROL_RUN) ||
 	    readl(anv->mmio_nvme + APPLE_ANS_BOOT_STATUS) != APPLE_ANS_BOOT_STATUS_OK)
 		return false;
+	if (anv->hw->j614s_diagnostic &&
+	    !(readl(anv->mmio_nvme + APPLE_ANS_LINEAR_SQ_CTRL) & APPLE_ANS_LINEAR_SQ_EN))
+		return false;
 	cc = readl(anv->mmio_nvme + NVME_REG_CC);
 	csts = readl(anv->mmio_nvme + NVME_REG_CSTS);
 	if (csts & NVME_CSTS_CFS)
@@ -2531,7 +2534,10 @@ static struct apple_nvme *apple_nvme_alloc(struct platform_device *pdev)
 		}
 	}
 
-	anv->reset = devm_reset_control_array_get_exclusive(anv->dev);
+	if (anv->hw->j614s_diagnostic)
+		anv->reset = devm_reset_control_array_get_optional_exclusive(anv->dev);
+	else
+		anv->reset = devm_reset_control_array_get_exclusive(anv->dev);
 	if (IS_ERR(anv->reset)) {
 		ret = dev_err_probe(dev, PTR_ERR(anv->reset),
 				    "Failed to get reset control");
@@ -2604,7 +2610,8 @@ static struct apple_nvme *apple_nvme_alloc(struct platform_device *pdev)
 
 	ret = nvme_init_ctrl(&anv->ctrl, anv->dev, &nvme_ctrl_ops,
 			     NVME_QUIRK_SKIP_CID_GEN | NVME_QUIRK_IDENTIFY_CNS |
-			     NVME_QUIRK_ADMIN_PAGE_ALIGN);
+			     NVME_QUIRK_ADMIN_PAGE_ALIGN |
+			     (anv->inherited_rtkit ? NVME_QUIRK_BROKEN_FUA : 0));
 	if (ret) {
 		dev_err_probe(dev, ret, "Failed to initialize nvme_ctrl");
 		goto put_dev;
@@ -2762,7 +2769,16 @@ static const struct apple_nvme_hw apple_nvme_t8132_hw = {
 	.max_queue_depth = 64,
 };
 
+/* Explicit RAM-diagnostic profile only; measured inherited session required. */
+static const struct apple_nvme_hw apple_nvme_j614s_diagnostic_hw = {
+	.j614s_diagnostic = true,
+	.has_lsq_nvmmu = true,
+	.needs_ioq_register = true,
+	.max_queue_depth = 64,
+};
+
 static const struct of_device_id apple_nvme_of_match[] = {
+	{ .compatible = "apple,j614s-nvme-diagnostic", .data = &apple_nvme_j614s_diagnostic_hw },
 	{ .compatible = "apple,t8015-nvme-ans2", .data = &apple_nvme_t8015_hw },
 	{ .compatible = "apple,t8103-nvme-ans2", .data = &apple_nvme_t8103_hw },
 	{ .compatible = "apple,t8132-nvme-ans2", .data = &apple_nvme_t8132_hw },
