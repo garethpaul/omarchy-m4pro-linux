@@ -563,6 +563,12 @@ static int acm_notify_serial_state(struct f_acm *acm)
 	int			status;
 	__le16			serial_state;
 
+	/* J614s isolation control: no notification traffic, not ACM support. */
+	if (of_machine_is_compatible("apple,j614s")) {
+		j614s_usb_trace(&cdev->gadget->dev, "notify.suppressed", -EOPNOTSUPP);
+		return -EOPNOTSUPP;
+	}
+
 	spin_lock(&acm->lock);
 	if (acm->notify_req) {
 		dev_dbg(&cdev->gadget->dev, "acm ttyGS%d serial state %04x\n",
