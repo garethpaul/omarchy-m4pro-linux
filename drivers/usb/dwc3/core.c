@@ -2210,6 +2210,18 @@ static struct power_supply *dwc3_get_usb_power_supply(struct dwc3 *dwc)
 	return usb_psy;
 }
 
+static void dwc3_j614s_gadget_lpm_policy(struct dwc3 *dwc)
+{
+	if (!of_machine_is_compatible("apple,j614s") ||
+	    dwc->xhci_resources[0].start != 0x38a280000ULL ||
+	    !DWC3_VER_IS(DWC31, 190A) || dwc->dr_mode != USB_DR_MODE_PERIPHERAL)
+		return;
+
+	/* Experimental policy: keep hardware and descriptor LPM disabled. */
+	dwc->usb2_gadget_lpm_disable = true;
+	dev_info(dwc->dev, "J614S_USB: experimental gadget_lpm_disable=1\n");
+}
+
 int dwc3_core_probe(const struct dwc3_probe_data *data)
 {
 	struct dwc3		*dwc = data->dwc;
@@ -2336,6 +2348,8 @@ int dwc3_core_probe(const struct dwc3_probe_data *data)
 	ret = dwc3_get_dr_mode(dwc);
 	if (ret)
 		goto err_free_event_buffers;
+
+	dwc3_j614s_gadget_lpm_policy(dwc);
 
 	ret = dwc3_core_init(dwc);
 	if (ret) {
