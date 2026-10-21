@@ -630,6 +630,21 @@ static int dwc3_gadget_set_ep_config(struct dwc3_ep *dep, unsigned int action)
 	if (!usb_endpoint_xfer_control(desc))
 		params.param1 |= DWC3_DEPCFG_XFER_IN_PROGRESS_EN;
 
+	/* Diagnostic: isolate interrupt event mode on the measured J614s USB1. */
+	if (of_machine_is_compatible("apple,j614s") &&
+	    dwc->xhci_resources[0].start == 0x38a280000ULL &&
+	    dep->number == 5 && dep->direction && usb_endpoint_xfer_int(desc)) {
+		u32 before = params.param1;
+
+		if (!DWC3_VER_IS(DWC31, 190A) || dwc->do_fifo_resize ||
+		    DWC3_NUM_IN_EPS(&dwc->hwparams) != 16 || dwc->num_eps != 32)
+			return -ENODEV;
+		params.param1 |= DWC3_DEPCFG_XFER_COMPLETE_EN;
+		dev_info(dwc->dev,
+			 "J614S_USB: event.policy ep=%u before=%u after=%u\n",
+			 dep->number, before, params.param1);
+	}
+
 	/*
 	 * We are doing 1:1 mapping for endpoints, meaning
 	 * Physical Endpoints 2 maps to Logical Endpoint 2 and
