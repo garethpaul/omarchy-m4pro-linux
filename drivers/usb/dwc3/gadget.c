@@ -9,6 +9,7 @@
  */
 
 #include <linux/kernel.h>
+#include <linux/of.h>
 #include <linux/delay.h>
 #include <linux/slab.h>
 #include <linux/spinlock.h>
@@ -452,6 +453,12 @@ skip_status:
 		reg |= saved_config;
 		dwc3_writel(dwc, DWC3_GUSB2PHYCFG(0), reg);
 	}
+
+	/* Temporary J614s diagnostics: existing command results, no new writes. */
+	if (of_machine_is_compatible("apple,j614s") && dwc->gadget &&
+	    dwc->gadget->state >= USB_STATE_ADDRESS)
+		dev_info(dwc->dev, "J614S_USB: cmd ep=%u op=%u ret=%d res=%u\n",
+			 epnum, DWC3_DEPCMD_CMD(cmd), ret, dep->resource_index);
 
 	return ret;
 }

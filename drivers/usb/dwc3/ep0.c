@@ -676,6 +676,18 @@ static int dwc3_ep0_set_config(struct dwc3 *dwc, struct usb_ctrlrequest *ctrl)
 		j614s_usb_trace(dwc->dev, "fifo.enter", 0);
 		dwc3_gadget_clear_tx_fifos(dwc);
 		j614s_usb_trace(dwc->dev, "fifo.returned", 0);
+		/* Read-only allocation snapshot; never read status/ack registers. */
+		if (of_machine_is_compatible("apple,j614s")) {
+			j614s_usb_trace(dwc->dev, "fifo0.size",
+					dwc3_readl(dwc, DWC3_GTXFIFOSIZ(0)));
+			j614s_usb_trace(dwc->dev, "fifo1.size",
+					dwc3_readl(dwc, DWC3_GTXFIFOSIZ(1)));
+			j614s_usb_trace(dwc->dev, "fifo2.size",
+					dwc3_readl(dwc, DWC3_GTXFIFOSIZ(2)));
+			j614s_usb_trace(dwc->dev, "fifo3.size",
+					dwc3_readl(dwc, DWC3_GTXFIFOSIZ(3)));
+		}
+
 
 		j614s_usb_trace(dwc->dev, "delegate.enter", 0);
 		ret = dwc3_ep0_delegate_req(dwc, ctrl);
