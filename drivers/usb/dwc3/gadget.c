@@ -4730,12 +4730,6 @@ static void dwc_gadget_release(struct device *dev)
 	kfree(gadget);
 }
 
-/**
- * dwc3_gadget_init - initializes gadget related registers
- * @dwc: pointer to our controller context structure
- *
- * Returns 0 on success otherwise negative errno.
- */
 /* Compare only live coherent TRB bytes; this does not query hardware TLBs. */
 static const char *j614s_trb_audit(struct dwc3 *dwc, void *cpu, dma_addr_t dma,
 				   size_t bytes)
@@ -4849,9 +4843,14 @@ static void j614s_usb_snapshot(struct work_struct *work)
 			audit5 = "skipped-ring-index";
 		} else {
 			struct dwc3_trb *trb = &dep->trb_pool[dep->trb_dequeue];
+			dma_addr_t offset = (dma_addr_t)dep->trb_dequeue * sizeof(*trb);
+			dma_addr_t trb_dma;
 
-			audit5 = j614s_trb_audit(dwc, trb, dwc3_trb_dma_offset(dep, trb),
-						 sizeof(*trb));
+			if (dep->trb_pool_dma > DMA_BIT_MASK(32) ||
+			    check_add_overflow(dep->trb_pool_dma, offset, &trb_dma))
+				audit5 = "skipped-range";
+			else
+				audit5 = j614s_trb_audit(dwc, trb, trb_dma, sizeof(*trb));
 		}
 	}
 	for (i = 0; i < ARRAY_SIZE(epnums); i++) {
@@ -4894,6 +4893,12 @@ static void j614s_usb_snapshot(struct work_struct *work)
 	}
 }
 
+/**
+ * dwc3_gadget_init - initializes gadget related registers
+ * @dwc: pointer to our controller context structure
+ *
+ * Returns 0 on success otherwise negative errno.
+ */
 int dwc3_gadget_init(struct dwc3 *dwc)
 {
 	int ret;
