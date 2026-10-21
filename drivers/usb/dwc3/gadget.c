@@ -594,6 +594,9 @@ static int dwc3_gadget_set_ep_config(struct dwc3_ep *dep, unsigned int action)
 	const struct usb_endpoint_descriptor *desc;
 	struct dwc3_gadget_ep_cmd_params params;
 	struct dwc3 *dwc = dep->dwc;
+	u32 notification_fifo_before = 0;
+	bool notification_fifo_test = false;
+	int ret;
 
 	comp_desc = dep->endpoint.comp_desc;
 	desc = dep->endpoint.desc;
@@ -642,8 +645,28 @@ static int dwc3_gadget_set_ep_config(struct dwc3_ep *dep, unsigned int action)
 	 * We must use the lower 16 TX FIFOs even though
 	 * HW might have more
 	 */
-	if (dep->direction)
-		params.param0 |= DWC3_DEPCFG_FIFO_NUMBER(dep->number >> 1);
+	if (dep->direction) {
+		u32 fifo = dep->number >> 1;
+
+		/* Single-ACM experiment, not a general allocation policy. */
+		if (of_machine_is_compatible("apple,j614s") &&
+		    dwc->xhci_resources[0].start == 0x38a280000ULL &&
+		    usb_endpoint_xfer_int(desc) && dep->number == 5) {
+			if (!DWC3_IP_IS(DWC31) || dwc->do_fifo_resize ||
+			    DWC3_NUM_IN_EPS(&dwc->hwparams) != 16 || dwc->num_eps != 32)
+				return -ENODEV;
+			if (dwc->eps[7] && (dwc->eps[7]->flags & DWC3_EP_ENABLED))
+				return -EBUSY;
+			notification_fifo_before = dwc3_readl(dwc, DWC3_GTXFIFOSIZ(3));
+			if (!DWC31_GTXFIFOSIZ_TXFDEP(notification_fifo_before))
+				return -ENOSPC;
+			fifo = 3;
+			notification_fifo_test = true;
+			dev_info(dwc->dev, "J614S_USB: notification.fifo %u before=%08x\n",
+				 fifo, notification_fifo_before);
+		}
+		params.param0 |= DWC3_DEPCFG_FIFO_NUMBER(fifo);
+	}
 
 	if (desc->bInterval) {
 		u8 bInterval_m1;
@@ -667,7 +690,11 @@ static int dwc3_gadget_set_ep_config(struct dwc3_ep *dep, unsigned int action)
 		params.param1 |= DWC3_DEPCFG_BINTERVAL_M1(bInterval_m1);
 	}
 
-	return dwc3_send_gadget_ep_cmd(dep, DWC3_DEPCMD_SETEPCONFIG, &params);
+	ret = dwc3_send_gadget_ep_cmd(dep, DWC3_DEPCMD_SETEPCONFIG, &params);
+	if (notification_fifo_test)
+		dev_info(dwc->dev, "J614S_USB: notification.fifo.after %08x ret=%d\n",
+			 dwc3_readl(dwc, DWC3_GTXFIFOSIZ(3)), ret);
+	return ret;
 }
 
 /**
