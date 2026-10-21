@@ -1670,29 +1670,50 @@ static int apple_dart_parse_sid_remap(struct apple_dart *dart)
 	return 0;
 }
 
-/* Temporary J614s diagnostics: observe v2.2 without acknowledging faults. */
+/* Temporary J614s diagnostics: bounded reads, with no fault-record decoding. */
 static void j614s_dart_snapshot(struct work_struct *work)
 {
 	struct apple_dart *dart = container_of(to_delayed_work(work),
 					     struct apple_dart, j614s_snapshot_work);
-	u32 pending, sid0, sid1;
+	u32 params3, params4, pending_before, pending_after, tcr0, tcr1, enabled;
 	int active;
 
 	if (!dart->j614s_usb_diag)
 		return;
 	active = pm_runtime_get_if_active(dart->dev);
 	if (active <= 0) {
-		dev_info(dart->dev, "J614S_DMA: DART snapshot skipped pm=%d faults=%d\n",
+		dev_info(dart->dev, "J614S_DMA: DART snapshot skipped pm=%d handled_irqs=%d\n",
 			 active, atomic_read(&dart->j614s_fault_irqs));
 		return;
 	}
-	pending = readl(dart->regs + DART_T8110_EXCEPTION(0));
-	sid0 = readl(dart->regs + DART_T8110_ERR_SID_STATUS(0));
-	sid1 = readl(dart->regs + DART_T8110_ERR_SID_STATUS(1));
+	params3 = readl(dart->regs + DART_T8110_PARAMS3);
+	params4 = readl(dart->regs + DART_T8110_PARAMS4);
+	if ((params3 & GENMASK(15, 0)) != dart->version ||
+	    FIELD_GET(DART_T8110_PARAMS3_PA_WIDTH, params3) != dart->oas ||
+	    FIELD_GET(DART_T8110_PARAMS3_VA_WIDTH, params3) != dart->ias ||
+	    FIELD_GET(DART_T8110_PARAMS4_NUM_SIDS, params4) != dart->num_streams) {
+		pm_runtime_put_noidle(dart->dev);
+		dev_info(dart->dev,
+			 "J614S_DMA: DART snapshot skipped identity params3=%08x params4=%08x\n",
+			 params3, params4);
+		return;
+	}
+	pending_before = readl(dart->regs + DART_T8110_EXCEPTION(0));
+	tcr0 = readl(dart->regs + DART_TCR(dart, 0));
+	tcr1 = readl(dart->regs + DART_TCR(dart, 1));
+	enabled = readl(dart->regs + DART_T8110_ENABLE_STREAMS);
+	pending_after = readl(dart->regs + DART_T8110_EXCEPTION(0));
 	pm_runtime_put_noidle(dart->dev);
-	dev_info(dart->dev, "J614S_DMA: DART v=%04x faults=%d pending=%08x\n",
-		 dart->version, atomic_read(&dart->j614s_fault_irqs), pending);
-	dev_info(dart->dev, "J614S_DMA: DART sid0=%08x sid1=%08x\n", sid0, sid1);
+	dev_info(dart->dev,
+		 "J614S_DMA: DART v=%04x streams=%u handled_irqs=%d pending_layout=assumed-v22\n",
+		 dart->version, dart->num_streams, atomic_read(&dart->j614s_fault_irqs));
+	dev_info(dart->dev, "J614S_DMA: DART identity params3=%08x params4=%08x\n",
+		 params3, params4);
+	dev_info(dart->dev, "J614S_DMA: DART stream_control tcr0=%08x tcr1=%08x enabled=%08x\n",
+		 tcr0, tcr1, enabled);
+	dev_info(dart->dev,
+		 "J614S_DMA: DART pending before=%08x after=%08x fault_records=not-sampled\n",
+		 pending_before, pending_after);
 }
 
 static int apple_dart_probe(struct platform_device *pdev)
@@ -1811,7 +1832,7 @@ static int apple_dart_probe(struct platform_device *pdev)
 
 	dart->j614s_usb_diag = of_machine_is_compatible("apple,j614s") &&
 		dart->hw->type == DART_T8110 && dart->version == 0x0202 &&
-		dart->num_streams >= 2 && resource_size(res) >= 0xc000 &&
+		dart->num_streams == 16 && resource_size(res) == 0xc000 &&
 		(res->start == 0x38af00000ULL || res->start == 0x38af80000ULL);
 
 	ret = request_irq(dart->irq, apple_dart_irq, IRQF_SHARED,
