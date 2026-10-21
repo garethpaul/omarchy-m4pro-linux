@@ -433,6 +433,7 @@ static int acm_set_alt(struct usb_function *f, unsigned intf, unsigned alt)
 {
 	struct f_acm		*acm = func_to_acm(f);
 	struct usb_composite_dev *cdev = f->config->cdev;
+	int status;
 
 	j614s_usb_trace(&cdev->gadget->dev, "acm.interface", intf);
 
@@ -452,8 +453,10 @@ static int acm_set_alt(struct usb_function *f, unsigned intf, unsigned alt)
 				return -EINVAL;
 
 		j614s_usb_trace(&cdev->gadget->dev, "notify.enable.enter", 0);
-		j614s_usb_trace(&cdev->gadget->dev, "notify.enable.result",
-				usb_ep_enable(acm->notify));
+		status = usb_ep_enable(acm->notify);
+		j614s_usb_trace(&cdev->gadget->dev, "notify.enable.result", status);
+		if (status)
+			return status;
 		j614s_usb_trace(&cdev->gadget->dev, "notify.enable.returned", 0);
 
 	} else if (intf == acm->data_id) {
@@ -477,8 +480,10 @@ static int acm_set_alt(struct usb_function *f, unsigned intf, unsigned alt)
 			}
 		}
 		j614s_usb_trace(&cdev->gadget->dev, "serial.connect.enter", 0);
-		j614s_usb_trace(&cdev->gadget->dev, "serial.connect.result",
-				gserial_connect(&acm->port, acm->port_num));
+		status = gserial_connect(&acm->port, acm->port_num);
+		j614s_usb_trace(&cdev->gadget->dev, "serial.connect.result", status);
+		if (status)
+			return status;
 		j614s_usb_trace(&cdev->gadget->dev, "serial.connect.returned", 0);
 
 	} else
