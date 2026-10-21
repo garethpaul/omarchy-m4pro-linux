@@ -377,8 +377,10 @@ int dwc3_send_gadget_ep_cmd(struct dwc3_ep *dep, unsigned int cmd,
 	 * Control Endpoints. If anybody changes that assumption, this chunk
 	 * needs to be updated accordingly.
 	 */
+	/* J614s diagnostic: acknowledge interrupt updates before PHY restore. */
 	if (DWC3_DEPCMD_CMD(cmd) == DWC3_DEPCMD_UPDATETRANSFER &&
-			!usb_endpoint_xfer_isoc(desc))
+	    !usb_endpoint_xfer_isoc(desc) &&
+	    !(of_machine_is_compatible("apple,j614s") && usb_endpoint_xfer_int(desc)))
 		cmd &= ~(DWC3_DEPCMD_CMDIOC | DWC3_DEPCMD_CMDACT);
 	else
 		cmd |= DWC3_DEPCMD_CMDACT;
