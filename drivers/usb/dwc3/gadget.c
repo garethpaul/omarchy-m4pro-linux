@@ -4795,6 +4795,8 @@ static void j614s_usb_snapshot(struct work_struct *work)
 	u32 evflags = 0, event = 0, state, epstate, next, dsts, enabled;
 	u32 ctrl[2] = {}, size[2] = {};
 	const char *audit0 = "skipped-scope", *audit5 = "skipped-scope";
+	u32 config[6] = {};
+	bool config_valid = false;
 	unsigned long flags;
 	unsigned int i;
 	int active;
@@ -4835,6 +4837,13 @@ static void j614s_usb_snapshot(struct work_struct *work)
 	    DWC3_VER_IS(DWC31, 190A) && dwc->num_eps == 32) {
 		struct dwc3_ep *dep = dwc->eps[5];
 
+		config[0] = dwc3_readl(dwc, DWC3_GSBUSCFG0);
+		config[1] = dwc3_readl(dwc, DWC3_GCTL);
+		config[2] = dwc3_readl(dwc, DWC3_GUCTL1);
+		config[3] = dwc3_readl(dwc, DWC3_GUSB2PHYCFG(0));
+		config[4] = dwc3_readl(dwc, DWC3_GUSB3PIPECTL(0));
+		config[5] = dwc3_readl(dwc, DWC3_DCFG);
+		config_valid = true;
 		audit0 = j614s_trb_audit(dwc, dwc->ep0_trb, dwc->ep0_trb_addr,
 					 2 * sizeof(struct dwc3_trb));
 		if (!dep || !dep->trb_pool) {
@@ -4875,6 +4884,17 @@ static void j614s_usb_snapshot(struct work_struct *work)
 	spin_unlock_irqrestore(&dwc->lock, flags);
 	pm_runtime_put_noidle(dwc->dev);
 
+	if (config_valid) {
+		dev_info(dwc->dev, "J614S_CORE: config cached-ip=%04x cached-revision=%08x\n",
+			 dwc->ip, dwc->revision);
+		dev_info(dwc->dev, "J614S_CORE: GSBUSCFG0=%08x GCTL=%08x GUCTL1=%08x\n",
+			 config[0], config[1], config[2]);
+		dev_info(dwc->dev,
+			 "J614S_CORE: GUSB2PHYCFG0=%08x GUSB3PIPECTL0=%08x DCFG=%08x\n",
+			 config[3], config[4], config[5]);
+	} else {
+		dev_info(dwc->dev, "J614S_CORE: config skipped scope\n");
+	}
 	dev_info(dwc->dev, "J614S_DMA: coherent_audit software-only ep0=%s ep5=%s\n",
 		 audit0, audit5);
 	dev_info(dwc->dev, "J614S_DMA: state=%u ep0=%u next=%u dsts=%08x ena=%08x\n",
