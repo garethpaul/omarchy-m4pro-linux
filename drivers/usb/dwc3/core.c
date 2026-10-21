@@ -1064,7 +1064,13 @@ static void dwc3_core_setup_global_control(struct dwc3 *dwc)
 		 * REVISIT Enabling this bit so that host-mode hibernation
 		 * will work. Device-mode hibernation is not yet implemented.
 		 */
-		reg |= DWC3_GCTL_GBLHIBERNATIONEN;
+		/* Experimental J614s peripheral comparison with resident policy. */
+		if (of_machine_is_compatible("apple,j614s") &&
+		    dwc->xhci_resources[0].start == 0x38a280000ULL &&
+		    DWC3_VER_IS(DWC31, 190A) && dwc->dr_mode == USB_DR_MODE_PERIPHERAL)
+			reg &= ~DWC3_GCTL_GBLHIBERNATIONEN;
+		else
+			reg |= DWC3_GCTL_GBLHIBERNATIONEN;
 		break;
 	default:
 		/* nothing */
