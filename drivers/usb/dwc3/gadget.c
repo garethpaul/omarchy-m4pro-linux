@@ -594,8 +594,9 @@ static int dwc3_gadget_set_ep_config(struct dwc3_ep *dep, unsigned int action)
 	const struct usb_endpoint_descriptor *desc;
 	struct dwc3_gadget_ep_cmd_params params;
 	struct dwc3 *dwc = dep->dwc;
-	u32 notification_fifo_before = 0;
-	bool notification_fifo_test = false;
+	u32 apple_fifo_before = 0;
+	u32 apple_tx_fifo = 0;
+	bool apple_fifo_test = false;
 	int ret;
 
 	comp_desc = dep->endpoint.comp_desc;
@@ -648,22 +649,25 @@ static int dwc3_gadget_set_ep_config(struct dwc3_ep *dep, unsigned int action)
 	if (dep->direction) {
 		u32 fifo = dep->number >> 1;
 
-		/* Single-ACM experiment, not a general allocation policy. */
+		/* Diagnostic: compare the installed resident's physical EP map. */
 		if (of_machine_is_compatible("apple,j614s") &&
 		    dwc->xhci_resources[0].start == 0x38a280000ULL &&
-		    usb_endpoint_xfer_int(desc) && dep->number == 5) {
+		    !usb_endpoint_xfer_control(desc)) {
 			if (!DWC3_IP_IS(DWC31) || dwc->do_fifo_resize ||
 			    DWC3_NUM_IN_EPS(&dwc->hwparams) != 16 || dwc->num_eps != 32)
 				return -ENODEV;
-			if (dwc->eps[7] && (dwc->eps[7]->flags & DWC3_EP_ENABLED))
-				return -EBUSY;
-			notification_fifo_before = dwc3_readl(dwc, DWC3_GTXFIFOSIZ(3));
-			if (!DWC31_GTXFIFOSIZ_TXFDEP(notification_fifo_before))
+			if (dep->number >= 16)
 				return -ENOSPC;
-			fifo = 3;
-			notification_fifo_test = true;
-			dev_info(dwc->dev, "J614S_USB: notification.fifo %u before=%08x\n",
-				 fifo, notification_fifo_before);
+			fifo = dep->number;
+			apple_fifo_before = dwc3_readl(dwc, DWC3_GTXFIFOSIZ(fifo));
+			if (!DWC31_GTXFIFOSIZ_TXFDEP(apple_fifo_before))
+				return -ENOSPC;
+			apple_tx_fifo = fifo;
+			apple_fifo_test = true;
+			dev_info(dwc->dev,
+				 "J614S_USB: physical.fifo ep=%u fifo=%u word=%u framebit=%u\n",
+				 dep->number, fifo, apple_fifo_before,
+				 !!(apple_fifo_before & DWC31_GTXFIFOSIZ_TXFRAMNUM));
 		}
 		params.param0 |= DWC3_DEPCFG_FIFO_NUMBER(fifo);
 	}
@@ -691,9 +695,13 @@ static int dwc3_gadget_set_ep_config(struct dwc3_ep *dep, unsigned int action)
 	}
 
 	ret = dwc3_send_gadget_ep_cmd(dep, DWC3_DEPCMD_SETEPCONFIG, &params);
-	if (notification_fifo_test)
-		dev_info(dwc->dev, "J614S_USB: notification.fifo.after %08x ret=%d\n",
-			 dwc3_readl(dwc, DWC3_GTXFIFOSIZ(3)), ret);
+	if (apple_fifo_test) {
+		u32 after = dwc3_readl(dwc, DWC3_GTXFIFOSIZ(apple_tx_fifo));
+
+		dev_info(dwc->dev,
+			 "J614S_USB: physical.fifo.after ep=%u word=%u framebit=%u ret=%d\n",
+			 dep->number, after, !!(after & DWC31_GTXFIFOSIZ_TXFRAMNUM), ret);
+	}
 	return ret;
 }
 
