@@ -1004,6 +1004,7 @@ struct dwc3_glue_ops {
 
 /**
  * struct dwc3 - representation of our controller
+ * @j614s_snapshot_work: temporary one-shot USB diagnostics on J614s
  * @drd_work: workqueue used for role swapping
  * @ep0_trb: trb which is used for the ctrl_req
  * @bounce: address of bounce buffer
@@ -1187,6 +1188,7 @@ struct dwc3_glue_ops {
  *			 represents interface_id.
  */
 struct dwc3 {
+	struct delayed_work	j614s_snapshot_work;
 	struct work_struct	drd_work;
 	struct dwc3_trb		*ep0_trb;
 	void			*bounce;

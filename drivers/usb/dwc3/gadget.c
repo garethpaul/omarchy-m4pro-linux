@@ -4731,11 +4731,99 @@ static void dwc_gadget_release(struct device *dev)
  *
  * Returns 0 on success otherwise negative errno.
  */
+/* Temporary J614s snapshot: no register acknowledgements or power-up. */
+static void j614s_usb_snapshot(struct work_struct *work)
+{
+	static const unsigned int epnums[] = { 2, 3, 5 };
+	struct dwc3 *dwc = container_of(to_delayed_work(work), struct dwc3,
+				      j614s_snapshot_work);
+	struct dwc3_event_buffer *evt;
+	struct {
+		u32 flags, deq, enq, resource, ctrl, size, aligned, valid;
+	} ep[ARRAY_SIZE(epnums)] = {};
+	u32 valid = 0, count = 0, evsize = 0, lpos = 0, swcount = 0;
+	u32 evflags = 0, event = 0, state, epstate, next, dsts, enabled;
+	u32 ctrl[2] = {}, size[2] = {};
+	unsigned long flags;
+	unsigned int i;
+	int active;
+
+	active = pm_runtime_get_if_active(dwc->dev);
+	if (active <= 0) {
+		dev_info(dwc->dev, "J614S_DMA: snapshot skipped pm=%d\n", active);
+		return;
+	}
+
+	spin_lock_irqsave(&dwc->lock, flags);
+	state = dwc->gadget ? dwc->gadget->state : 0;
+	epstate = dwc->ep0state;
+	next = dwc->ep0_next_event;
+	dsts = dwc3_readl(dwc, DWC3_DSTS);
+	enabled = dwc3_readl(dwc, DWC3_DALEPENA);
+	count = dwc3_readl(dwc, DWC3_GEVNTCOUNT(0));
+	evsize = dwc3_readl(dwc, DWC3_GEVNTSIZ(0));
+	evt = dwc->ev_buf;
+	if (evt && evt->buf && evt->length >= 4 && evt->lpos % 4 == 0 &&
+	    evt->lpos <= evt->length - 4) {
+		valid |= BIT(0);
+		lpos = evt->lpos;
+		swcount = evt->count;
+		evflags = evt->flags;
+		event = READ_ONCE(*(u32 *)(evt->buf + lpos));
+	}
+	if (dwc->ep0_trb) {
+		valid |= BIT(1);
+		for (i = 0; i < 2; i++) {
+			ctrl[i] = READ_ONCE(dwc->ep0_trb[i].ctrl);
+			dma_rmb();
+			size[i] = READ_ONCE(dwc->ep0_trb[i].size);
+		}
+	}
+	for (i = 0; i < ARRAY_SIZE(epnums); i++) {
+		struct dwc3_ep *dep = dwc->eps[epnums[i]];
+		struct dwc3_trb *trb;
+
+		if (!dep)
+			continue;
+		ep[i].flags = dep->flags;
+		ep[i].deq = dep->trb_dequeue;
+		ep[i].enq = dep->trb_enqueue;
+		ep[i].resource = dep->resource_index;
+		if (!dep->trb_pool || dep->trb_dequeue >= DWC3_TRB_NUM)
+			continue;
+		trb = &dep->trb_pool[dep->trb_dequeue];
+		ep[i].valid = 1;
+		ep[i].ctrl = READ_ONCE(trb->ctrl);
+		dma_rmb();
+		ep[i].size = READ_ONCE(trb->size);
+		ep[i].aligned = !(READ_ONCE(trb->bpl) & 127);
+	}
+	spin_unlock_irqrestore(&dwc->lock, flags);
+	pm_runtime_put_noidle(dwc->dev);
+
+	dev_info(dwc->dev, "J614S_DMA: state=%u ep0=%u next=%u dsts=%08x ena=%08x\n",
+		 state, epstate, next, dsts, enabled);
+	dev_info(dwc->dev, "J614S_DMA: valid=%u hwcount=%08x evsize=%08x lpos=%u\n",
+		 valid, count, evsize, lpos);
+	dev_info(dwc->dev, "J614S_DMA: swcount=%u flags=%08x event=%08x\n",
+		 swcount, evflags, event);
+	dev_info(dwc->dev, "J614S_DMA: ep0 trb0=%08x/%08x trb1=%08x/%08x\n",
+		 ctrl[0], size[0], ctrl[1], size[1]);
+	for (i = 0; i < ARRAY_SIZE(epnums); i++) {
+		dev_info(dwc->dev, "J614S_DMA: ep%u flags=%08x dq=%u eq=%u res=%u\n",
+			 epnums[i], ep[i].flags, ep[i].deq, ep[i].enq, ep[i].resource);
+		dev_info(dwc->dev, "J614S_DMA: ep%u valid=%u trb=%08x/%08x align128=%u\n",
+			 epnums[i], ep[i].valid, ep[i].ctrl, ep[i].size, ep[i].aligned);
+	}
+}
+
 int dwc3_gadget_init(struct dwc3 *dwc)
 {
 	int ret;
 	int irq;
 	struct device *dev;
+
+	INIT_DELAYED_WORK(&dwc->j614s_snapshot_work, j614s_usb_snapshot);
 
 	irq = dwc3_gadget_get_irq(dwc);
 	if (irq < 0) {
@@ -4834,6 +4922,10 @@ int dwc3_gadget_init(struct dwc3 *dwc)
 	if (dwc->sys_wakeup)
 		device_wakeup_disable(dwc->sysdev);
 
+	if (of_machine_is_compatible("apple,j614s"))
+		schedule_delayed_work(&dwc->j614s_snapshot_work,
+				      msecs_to_jiffies(10000));
+
 	return 0;
 
 err5:
@@ -4863,6 +4955,8 @@ void dwc3_gadget_exit(struct dwc3 *dwc)
 {
 	if (!dwc->gadget)
 		return;
+
+	cancel_delayed_work_sync(&dwc->j614s_snapshot_work);
 
 	dwc3_enable_susphy(dwc, true);
 	usb_del_gadget(dwc->gadget);

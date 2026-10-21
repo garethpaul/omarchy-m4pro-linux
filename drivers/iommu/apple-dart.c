@@ -33,6 +33,7 @@
 #include <linux/slab.h>
 #include <linux/swab.h>
 #include <linux/types.h>
+#include <linux/workqueue.h>
 
 #include "dma-iommu.h"
 
@@ -220,6 +221,9 @@ struct apple_dart_hw {
  * @irq: interrupt number, can be shared with other DARTs
  * @clks: clocks associated with this DART
  * @num_clks: number of @clks
+ * @j614s_snapshot_work: temporary one-shot USB DART diagnostics
+ * @j614s_usb_diag: restrict diagnostics to qualified USB DARTs
+ * @j614s_fault_irqs: handled fault IRQs since registration
  * @lock: lock for hardware operations involving this dart
  * @pgsize: pagesize supported by this DART
  * @version: T8110 PARAMS3 hardware revision
@@ -230,6 +234,9 @@ struct apple_dart_hw {
  * @iommu: iommu core device
  */
 struct apple_dart {
+	struct delayed_work j614s_snapshot_work;
+	bool j614s_usb_diag;
+	atomic_t j614s_fault_irqs;
 	struct device *dev;
 	const struct apple_dart_hw *hw;
 
@@ -1596,6 +1603,8 @@ static irqreturn_t apple_dart_irq(int irq, void *dev)
 
 	WARN_ON(pm_runtime_get_sync(dart->dev) < 0);
 	ret = dart->hw->irq_handler(irq, dev);
+	if (dart->j614s_usb_diag && ret == IRQ_HANDLED)
+		atomic_inc(&dart->j614s_fault_irqs);
 	pm_runtime_put(dart->dev);
 	return ret;
 }
@@ -1661,6 +1670,31 @@ static int apple_dart_parse_sid_remap(struct apple_dart *dart)
 	return 0;
 }
 
+/* Temporary J614s diagnostics: observe v2.2 without acknowledging faults. */
+static void j614s_dart_snapshot(struct work_struct *work)
+{
+	struct apple_dart *dart = container_of(to_delayed_work(work),
+					     struct apple_dart, j614s_snapshot_work);
+	u32 pending, sid0, sid1;
+	int active;
+
+	if (!dart->j614s_usb_diag)
+		return;
+	active = pm_runtime_get_if_active(dart->dev);
+	if (active <= 0) {
+		dev_info(dart->dev, "J614S_DMA: DART snapshot skipped pm=%d faults=%d\n",
+			 active, atomic_read(&dart->j614s_fault_irqs));
+		return;
+	}
+	pending = readl(dart->regs + DART_T8110_EXCEPTION(0));
+	sid0 = readl(dart->regs + DART_T8110_ERR_SID_STATUS(0));
+	sid1 = readl(dart->regs + DART_T8110_ERR_SID_STATUS(1));
+	pm_runtime_put_noidle(dart->dev);
+	dev_info(dart->dev, "J614S_DMA: DART v=%04x faults=%d pending=%08x\n",
+		 dart->version, atomic_read(&dart->j614s_fault_irqs), pending);
+	dev_info(dart->dev, "J614S_DMA: DART sid0=%08x sid1=%08x\n", sid0, sid1);
+}
+
 static int apple_dart_probe(struct platform_device *pdev)
 {
 	int ret;
@@ -1675,6 +1709,8 @@ static int apple_dart_probe(struct platform_device *pdev)
 		return -ENOMEM;
 
 	dart->dev = dev;
+	INIT_DELAYED_WORK(&dart->j614s_snapshot_work, j614s_dart_snapshot);
+	atomic_set(&dart->j614s_fault_irqs, 0);
 	dart->hw = of_device_get_match_data(dev);
 	spin_lock_init(&dart->lock);
 
@@ -1773,6 +1809,11 @@ static int apple_dart_probe(struct platform_device *pdev)
 	if (dart->locked)
 		apple_dart_drain_stale_exceptions(dart);
 
+	dart->j614s_usb_diag = of_machine_is_compatible("apple,j614s") &&
+		dart->hw->type == DART_T8110 && dart->version == 0x0202 &&
+		dart->num_streams >= 2 && resource_size(res) >= 0xc000 &&
+		(res->start == 0x38af00000ULL || res->start == 0x38af80000ULL);
+
 	ret = request_irq(dart->irq, apple_dart_irq, IRQF_SHARED,
 			  "apple-dart fault handler", dart);
 	if (ret)
@@ -1796,6 +1837,9 @@ static int apple_dart_probe(struct platform_device *pdev)
 		"DART [pagesize %x, %d streams, bypass support: %d, bypass forced: %d, locked: %d, AS %d -> %d] initialized\n",
 		dart->pgsize, dart->num_streams, dart->supports_bypass,
 		dart->pgsize > PAGE_SIZE, dart->locked, dart->ias, dart->oas);
+	if (dart->j614s_usb_diag)
+		schedule_delayed_work(&dart->j614s_snapshot_work,
+				      msecs_to_jiffies(10000));
 	return 0;
 
 err_sysfs_remove:
@@ -1812,6 +1856,8 @@ err_clk_disable:
 static void apple_dart_remove(struct platform_device *pdev)
 {
 	struct apple_dart *dart = platform_get_drvdata(pdev);
+
+	cancel_delayed_work_sync(&dart->j614s_snapshot_work);
 
 	if (!dart->locked)
 		apple_dart_hw_reset(dart);
