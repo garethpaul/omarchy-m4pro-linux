@@ -12,6 +12,7 @@
 #include <linux/of.h>
 #include <linux/delay.h>
 #include <linux/slab.h>
+#include <linux/string.h>
 #include <linux/spinlock.h>
 #include <linux/platform_device.h>
 #include <linux/pm_runtime.h>
@@ -19,6 +20,7 @@
 #include <linux/io.h>
 #include <linux/list.h>
 #include <linux/dma-mapping.h>
+#include <linux/dma-map-ops.h>
 #include <linux/iommu.h>
 #include <linux/mm.h>
 #include <linux/overflow.h>
@@ -4781,6 +4783,90 @@ static const char *j614s_trb_audit(struct dwc3 *dwc, void *cpu, dma_addr_t dma,
 	return "software-match";
 }
 
+/* Owned device metadata only; CPU PTE attributes remain unmeasured. */
+struct j614s_dma_metadata {
+	bool valid, sysdev_is_parent, coherent, stream_mask_present;
+	bool name_truncated, iommu_mapped;
+	u64 stream_mask, coherent_mask, bus_limit;
+	char name[48];
+	const char *domain_state, *ep0_alias, *ep5_alias, *event_alias;
+	unsigned int domain_type;
+	unsigned long pgsize_bitmap;
+};
+
+static const char *j614s_dma_cpu_alias(const void *cpu)
+{
+	if (!cpu)
+		return "absent";
+	return is_vmalloc_addr(cpu) ? "vmalloc-range" : "other";
+}
+
+static void j614s_collect_dma_metadata(struct dwc3 *dwc,
+				       struct j614s_dma_metadata *meta)
+{
+	struct device *dev = dwc->sysdev;
+	struct iommu_domain *domain;
+	const char *name;
+
+	lockdep_assert_held(&dwc->lock);
+	if (!dev)
+		return;
+
+	meta->valid = true;
+	meta->sysdev_is_parent = dwc->sysdev_is_parent;
+	meta->coherent = dev_is_dma_coherent(dev);
+	meta->stream_mask_present = !!dev->dma_mask;
+	if (meta->stream_mask_present)
+		meta->stream_mask = dma_get_mask(dev);
+	meta->coherent_mask = READ_ONCE(dev->coherent_dma_mask);
+	meta->bus_limit = READ_ONCE(dev->bus_dma_limit);
+	name = dev_name(dev);
+	meta->name_truncated = strscpy(meta->name, name ? name : "<unnamed>",
+				       sizeof(meta->name)) < 0;
+	meta->iommu_mapped = device_iommu_mapped(dev);
+	meta->ep0_alias = j614s_dma_cpu_alias(dwc->ep0_trb);
+	meta->ep5_alias = j614s_dma_cpu_alias(dwc->eps[5] ?
+					     dwc->eps[5]->trb_pool : NULL);
+	meta->event_alias = j614s_dma_cpu_alias(dwc->ev_buf ?
+					       dwc->ev_buf->buf : NULL);
+	/* The public domain pointer contract requires a driver bound to dev. */
+	meta->domain_state = "not-owned-sysdev";
+	if (dev != dwc->dev)
+		return;
+	domain = iommu_get_domain_for_dev(dev);
+	meta->domain_state = domain ? "present" : "absent";
+	if (domain) {
+		meta->domain_type = READ_ONCE(domain->type);
+		meta->pgsize_bitmap = READ_ONCE(domain->pgsize_bitmap);
+	}
+}
+
+static void j614s_print_dma_metadata(struct dwc3 *dwc,
+				     const struct j614s_dma_metadata *meta)
+{
+	if (!meta->valid) {
+		dev_info(dwc->dev, "J614S_DMAMETA: skipped-sysdev\n");
+		return;
+	}
+	dev_info(dwc->dev,
+		 "J614S_DMAMETA: sysdev=%s parent=%u coherent=%u name_truncated=%u stream_present=%u stream_mask=%016llx coherent_mask=%016llx bus_limit=%016llx\n",
+		 meta->name, meta->sysdev_is_parent, meta->coherent,
+		 meta->name_truncated, meta->stream_mask_present,
+		 (unsigned long long)meta->stream_mask,
+		 (unsigned long long)meta->coherent_mask,
+		 (unsigned long long)meta->bus_limit);
+	if (!strcmp(meta->domain_state, "present"))
+		dev_info(dwc->dev,
+			 "J614S_DMAMETA: iommu_mapped=%u domain=present type=%u pgsize=%lx\n",
+			 meta->iommu_mapped, meta->domain_type, meta->pgsize_bitmap);
+	else
+		dev_info(dwc->dev, "J614S_DMAMETA: iommu_mapped=%u domain=%s\n",
+			 meta->iommu_mapped, meta->domain_state);
+	dev_info(dwc->dev,
+		 "J614S_DMAMETA: allocation=coherent-api cpu_attrs=unmeasured ep0=%s ep5=%s event=%s\n",
+		 meta->ep0_alias, meta->ep5_alias, meta->event_alias);
+}
+
 /* Temporary J614s snapshot: no register acknowledgements or power-up. */
 static void j614s_usb_snapshot(struct work_struct *work)
 {
@@ -4788,6 +4874,7 @@ static void j614s_usb_snapshot(struct work_struct *work)
 	struct dwc3 *dwc = container_of(to_delayed_work(work), struct dwc3,
 				      j614s_snapshot_work);
 	struct dwc3_event_buffer *evt;
+	struct j614s_dma_metadata metadata = {};
 	struct {
 		u32 flags, deq, enq, resource, ctrl, size, aligned, valid;
 	} ep[ARRAY_SIZE(epnums)] = {};
@@ -4844,6 +4931,7 @@ static void j614s_usb_snapshot(struct work_struct *work)
 		config[4] = dwc3_readl(dwc, DWC3_GUSB3PIPECTL(0));
 		config[5] = dwc3_readl(dwc, DWC3_DCFG);
 		config_valid = true;
+		j614s_collect_dma_metadata(dwc, &metadata);
 		audit0 = j614s_trb_audit(dwc, dwc->ep0_trb, dwc->ep0_trb_addr,
 					 2 * sizeof(struct dwc3_trb));
 		if (!dep || !dep->trb_pool) {
@@ -4885,6 +4973,7 @@ static void j614s_usb_snapshot(struct work_struct *work)
 	pm_runtime_put_noidle(dwc->dev);
 
 	if (config_valid) {
+		j614s_print_dma_metadata(dwc, &metadata);
 		dev_info(dwc->dev, "J614S_CORE: config cached-ip=%04x cached-revision=%08x\n",
 			 dwc->ip, dwc->revision);
 		dev_info(dwc->dev, "J614S_CORE: GSBUSCFG0=%08x GCTL=%08x GUCTL1=%08x\n",
