@@ -27,6 +27,7 @@
 #include "core.h"
 #include "gadget.h"
 #include "io.h"
+#include "apple-fifo.h"
 
 #define DWC3_ALIGN_FRAME(d, n)	(((d)->frame_number + ((d)->interval * (n))) \
 					& ~((d)->interval - 1))
@@ -588,15 +589,75 @@ int dwc3_gadget_start_config(struct dwc3 *dwc, unsigned int resource_index)
 	return 0;
 }
 
+static bool dwc3_apple_fifo_profile(struct dwc3 *dwc)
+{
+	return of_machine_is_compatible("apple,j614s") &&
+		dwc->xhci_resources[0].start == 0x38a280000ULL;
+}
+
+/* Caller holds the controller lock; reservations outlive endpoint disable. */
+static int dwc3_apple_select_tx_fifo(struct dwc3_ep *dep)
+{
+	struct dwc3 *dwc = dep->dwc;
+	const unsigned int held = DWC3_EP_RESOURCE_ALLOCATED | DWC3_EP_ENABLED |
+		DWC3_EP_TRANSFER_STARTED | DWC3_EP_END_TRANSFER_PENDING |
+		DWC3_EP_DELAY_STOP;
+	unsigned int num_in = DWC3_NUM_IN_EPS(&dwc->hwparams);
+	bool periodic = usb_endpoint_xfer_int(dep->endpoint.desc) ||
+		usb_endpoint_xfer_isoc(dep->endpoint.desc);
+	u32 eligible = 0, present = 0, busy = 0;
+	unsigned int fifo, n, owned = 0;
+
+	lockdep_assert_held(&dwc->lock);
+	if (!DWC3_IP_IS(DWC31) || dwc->do_fifo_resize || num_in != 16 ||
+	    dwc->num_eps != 32)
+		return -ENODEV;
+	for (n = 1; n < num_in; n++) {
+		u32 value = dwc3_readl(dwc, DWC3_GTXFIFOSIZ(n));
+
+		if (!DWC31_GTXFIFOSIZ_TXFDEP(value))
+			continue;
+		present |= BIT(n);
+		if (!!(value & DWC31_GTXFIFOSIZ_TXFRAMNUM) == periodic)
+			eligible |= BIT(n);
+	}
+	for (n = 3; n < dwc->num_eps; n += 2) {
+		struct dwc3_ep *other = dwc->eps[n];
+
+		if (!other || other == dep || !(other->flags & held))
+			continue;
+		if (!other->tx_fifo || other->tx_fifo >= num_in ||
+		    !(present & BIT(other->tx_fifo)))
+			return -EINVAL;
+		if (busy & BIT(other->tx_fifo))
+			return -EINVAL;
+		busy |= BIT(other->tx_fifo);
+	}
+	if (dep->flags & held) {
+		owned = dep->tx_fifo;
+		if (!owned || owned >= num_in)
+			return -EINVAL;
+	}
+	fifo = dwc3_apple_tx_fifo_select(eligible, busy, dep->number >> 1, owned);
+	if (!fifo)
+		return owned ? -EBUSY : -ENOSPC;
+	return fifo;
+}
+
 static int dwc3_gadget_set_ep_config(struct dwc3_ep *dep, unsigned int action)
 {
 	const struct usb_ss_ep_comp_descriptor *comp_desc;
 	const struct usb_endpoint_descriptor *desc;
 	struct dwc3_gadget_ep_cmd_params params;
 	struct dwc3 *dwc = dep->dwc;
+	unsigned int fifo = dep->number >> 1;
+	bool apple_fifo;
+	int ret;
 
 	comp_desc = dep->endpoint.comp_desc;
 	desc = dep->endpoint.desc;
+	apple_fifo = dep->direction && dep->number > 1 &&
+		dwc3_apple_fifo_profile(dwc);
 
 	memset(&params, 0x00, sizeof(params));
 
@@ -642,8 +703,18 @@ static int dwc3_gadget_set_ep_config(struct dwc3_ep *dep, unsigned int action)
 	 * We must use the lower 16 TX FIFOs even though
 	 * HW might have more
 	 */
-	if (dep->direction)
-		params.param0 |= DWC3_DEPCFG_FIFO_NUMBER(dep->number >> 1);
+	if (dep->direction) {
+		if (apple_fifo) {
+			ret = dwc3_apple_select_tx_fifo(dep);
+			if (ret < 0) {
+				dev_err(dwc->dev, "J614S_USB: FIFO refusal ep=%u ret=%d\n",
+					dep->number, ret);
+				return ret;
+			}
+			fifo = ret;
+		}
+		params.param0 |= DWC3_DEPCFG_FIFO_NUMBER(fifo);
+	}
 
 	if (desc->bInterval) {
 		u8 bInterval_m1;
@@ -667,7 +738,13 @@ static int dwc3_gadget_set_ep_config(struct dwc3_ep *dep, unsigned int action)
 		params.param1 |= DWC3_DEPCFG_BINTERVAL_M1(bInterval_m1);
 	}
 
-	return dwc3_send_gadget_ep_cmd(dep, DWC3_DEPCMD_SETEPCONFIG, &params);
+	ret = dwc3_send_gadget_ep_cmd(dep, DWC3_DEPCMD_SETEPCONFIG, &params);
+	if (!ret && apple_fifo) {
+		dep->tx_fifo = fifo;
+		dev_info(dwc->dev, "J614S_USB: FIFO ep=%u selected=%u\n",
+			 dep->number, fifo);
+	}
+	return ret;
 }
 
 /**
