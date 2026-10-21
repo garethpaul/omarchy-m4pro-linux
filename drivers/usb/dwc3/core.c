@@ -1484,6 +1484,12 @@ int dwc3_core_init(struct dwc3 *dwc)
 		if (!DWC3_VER_IS_PRIOR(DWC3, 300A))
 			reg |= DWC3_GUCTL1_DEV_DECOUPLE_L1L2_EVT;
 
+		/* Experimental J614s peripheral event-policy comparison. */
+		if (of_machine_is_compatible("apple,j614s") &&
+		    dwc->xhci_resources[0].start == 0x38a280000ULL &&
+		    DWC3_VER_IS(DWC31, 190A) && dwc->dr_mode == USB_DR_MODE_PERIPHERAL)
+			reg &= ~DWC3_GUCTL1_DEV_DECOUPLE_L1L2_EVT;
+
 		if (dwc->dis_tx_ipgap_linecheck_quirk)
 			reg |= DWC3_GUCTL1_TX_IPGAP_LINECHECK_DIS;
 
