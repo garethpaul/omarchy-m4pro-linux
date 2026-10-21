@@ -19,6 +19,11 @@
 #include <linux/io.h>
 #include <linux/list.h>
 #include <linux/dma-mapping.h>
+#include <linux/iommu.h>
+#include <linux/mm.h>
+#include <linux/overflow.h>
+#include <linux/soc/apple/dart.h>
+#include <linux/vmalloc.h>
 
 #include <linux/usb/ch9.h>
 #include <linux/usb/gadget.h>
@@ -4731,6 +4736,57 @@ static void dwc_gadget_release(struct device *dev)
  *
  * Returns 0 on success otherwise negative errno.
  */
+/* Compare only live coherent TRB bytes; this does not query hardware TLBs. */
+static const char *j614s_trb_audit(struct dwc3 *dwc, void *cpu, dma_addr_t dma,
+				   size_t bytes)
+{
+	struct iommu_domain *domain;
+	unsigned long address[2];
+	dma_addr_t iova[2];
+	unsigned int i;
+
+	lockdep_assert_held(&dwc->lock);
+	if (!dwc->sysdev)
+		return "skipped-device";
+	if (!cpu)
+		return "skipped-allocation";
+	address[0] = (unsigned long)cpu;
+	iova[0] = dma;
+	if (!bytes || bytes > 2 * sizeof(struct dwc3_trb) ||
+	    check_add_overflow(address[0], bytes - 1, &address[1]) ||
+	    check_add_overflow(dma, (dma_addr_t)bytes - 1, &iova[1]) ||
+	    iova[1] > DMA_BIT_MASK(32))
+		return "skipped-range";
+
+	domain = iommu_get_domain_for_dev(dwc->sysdev);
+	if (!domain)
+		return "skipped-no-domain";
+	if (!apple_dart_has_atomic_iova_query(domain))
+		return "skipped-domain";
+	for (i = 0; i < ARRAY_SIZE(address); i++) {
+		void *ptr = (void *)address[i];
+		phys_addr_t expected, translated;
+		struct page *page;
+
+		if (is_vmalloc_addr(ptr))
+			page = vmalloc_to_page(ptr);
+		else if (virt_addr_valid(ptr))
+			page = virt_to_page(ptr);
+		else
+			return "skipped-backing";
+		if (!page || !pfn_valid(page_to_pfn(page)) || is_zone_device_page(page) ||
+		    check_add_overflow(page_to_phys(page),
+				       (phys_addr_t)offset_in_page(ptr), &expected))
+			return "skipped-backing";
+		translated = iommu_iova_to_phys(domain, iova[i]);
+		if (!translated)
+			return "unmapped";
+		if (translated != expected)
+			return "mismatch";
+	}
+	return "software-match";
+}
+
 /* Temporary J614s snapshot: no register acknowledgements or power-up. */
 static void j614s_usb_snapshot(struct work_struct *work)
 {
@@ -4744,6 +4800,7 @@ static void j614s_usb_snapshot(struct work_struct *work)
 	u32 valid = 0, count = 0, evsize = 0, lpos = 0, swcount = 0;
 	u32 evflags = 0, event = 0, state, epstate, next, dsts, enabled;
 	u32 ctrl[2] = {}, size[2] = {};
+	const char *audit0 = "skipped-scope", *audit5 = "skipped-scope";
 	unsigned long flags;
 	unsigned int i;
 	int active;
@@ -4779,6 +4836,24 @@ static void j614s_usb_snapshot(struct work_struct *work)
 			size[i] = READ_ONCE(dwc->ep0_trb[i].size);
 		}
 	}
+	if (of_machine_is_compatible("apple,j614s") &&
+	    dwc->xhci_resources[0].start == 0x38a280000ULL &&
+	    DWC3_VER_IS(DWC31, 190A) && dwc->num_eps == 32) {
+		struct dwc3_ep *dep = dwc->eps[5];
+
+		audit0 = j614s_trb_audit(dwc, dwc->ep0_trb, dwc->ep0_trb_addr,
+					 2 * sizeof(struct dwc3_trb));
+		if (!dep || !dep->trb_pool) {
+			audit5 = "skipped-allocation";
+		} else if (dep->trb_dequeue >= DWC3_TRB_NUM) {
+			audit5 = "skipped-ring-index";
+		} else {
+			struct dwc3_trb *trb = &dep->trb_pool[dep->trb_dequeue];
+
+			audit5 = j614s_trb_audit(dwc, trb, dwc3_trb_dma_offset(dep, trb),
+						 sizeof(*trb));
+		}
+	}
 	for (i = 0; i < ARRAY_SIZE(epnums); i++) {
 		struct dwc3_ep *dep = dwc->eps[epnums[i]];
 		struct dwc3_trb *trb;
@@ -4801,6 +4876,8 @@ static void j614s_usb_snapshot(struct work_struct *work)
 	spin_unlock_irqrestore(&dwc->lock, flags);
 	pm_runtime_put_noidle(dwc->dev);
 
+	dev_info(dwc->dev, "J614S_DMA: coherent_audit software-only ep0=%s ep5=%s\n",
+		 audit0, audit5);
 	dev_info(dwc->dev, "J614S_DMA: state=%u ep0=%u next=%u dsts=%08x ena=%08x\n",
 		 state, epstate, next, dsts, enabled);
 	dev_info(dwc->dev, "J614S_DMA: valid=%u hwcount=%08x evsize=%08x lpos=%u\n",

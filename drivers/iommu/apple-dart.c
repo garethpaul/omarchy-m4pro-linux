@@ -31,6 +31,7 @@
 #include <linux/platform_device.h>
 #include <linux/pm_runtime.h>
 #include <linux/slab.h>
+#include <linux/soc/apple/dart.h>
 #include <linux/swab.h>
 #include <linux/types.h>
 #include <linux/workqueue.h>
@@ -1423,6 +1424,16 @@ static const struct iommu_ops apple_dart_iommu_ops = {
 		.free		= apple_dart_domain_free,
 	}
 };
+
+/* Qualify the RAM-only callback before a diagnostic queries under a spinlock. */
+bool apple_dart_has_atomic_iova_query(struct iommu_domain *domain)
+{
+	return domain &&
+		(domain->type == IOMMU_DOMAIN_DMA || domain->type == IOMMU_DOMAIN_DMA_FQ) &&
+		domain->owner == &apple_dart_iommu_ops && domain->ops &&
+		domain->ops->iova_to_phys == apple_dart_iova_to_phys;
+}
+EXPORT_SYMBOL_GPL(apple_dart_has_atomic_iova_query);
 
 static irqreturn_t apple_dart_t8020_irq(int irq, void *dev)
 {
