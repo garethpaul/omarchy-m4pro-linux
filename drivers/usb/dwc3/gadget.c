@@ -977,9 +977,11 @@ static int __dwc3_gadget_ep_enable(struct dwc3_ep *dep, unsigned int action)
 	/*
 	 * Issue StartTransfer here with no-op TRB so we can always rely on No
 	 * Response Update Transfer command.
+	 * J614s diagnostic: start interrupts on the first populated request instead.
 	 */
 	if (usb_endpoint_xfer_bulk(desc) ||
-			usb_endpoint_xfer_int(desc)) {
+	    (usb_endpoint_xfer_int(desc) &&
+	     !of_machine_is_compatible("apple,j614s"))) {
 		struct dwc3_gadget_ep_cmd_params params;
 		struct dwc3_trb	*trb;
 		dma_addr_t trb_dma;
