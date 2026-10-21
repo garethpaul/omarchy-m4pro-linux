@@ -12,6 +12,7 @@
 /* #define VERBOSE_DEBUG */
 
 #include <linux/cleanup.h>
+#include <linux/dma-mapping.h>
 #include <linux/slab.h>
 #include <linux/kernel.h>
 #include <linux/of.h>
@@ -640,6 +641,7 @@ acm_bind(struct usb_configuration *c, struct usb_function *f)
 	int			status;
 	struct usb_ep		*ep;
 	struct usb_request	*request __free(free_usb_request) = NULL;
+	unsigned int		notify_alloc_len;
 
 	/* REVISIT might want instance-specific strings to help
 	 * distinguish instances ...
@@ -693,11 +695,14 @@ acm_bind(struct usb_configuration *c, struct usb_function *f)
 	acm_control_interface_desc.bInterfaceProtocol = acm->bInterfaceProtocol;
 
 	/* allocate notification */
-	request = gs_alloc_req(ep,
-			       sizeof(struct usb_cdc_notification) + 2,
-			       GFP_KERNEL);
+	notify_alloc_len = sizeof(struct usb_cdc_notification) + 2;
+	if (of_machine_is_compatible("apple,j614s"))
+		notify_alloc_len = max_t(unsigned int, notify_alloc_len,
+					 dma_get_cache_alignment());
+	request = gs_alloc_req(ep, notify_alloc_len, GFP_KERNEL);
 	if (!request)
 		return -ENODEV;
+	j614s_usb_trace(&cdev->gadget->dev, "notify.alloc", notify_alloc_len);
 
 	request->complete = acm_cdc_notify_complete;
 	request->context = acm;
