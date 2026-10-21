@@ -18,6 +18,7 @@
 #include <linux/interrupt.h>
 #include <linux/io.h>
 #include <linux/list.h>
+#include <linux/limits.h>
 #include <linux/dma-mapping.h>
 #include <linux/iommu.h>
 #include <linux/mm.h>
@@ -289,34 +290,99 @@ int dwc3_send_gadget_generic_command(struct dwc3 *dwc, unsigned int cmd,
 	return ret;
 }
 
-/**
- * dwc3_send_gadget_ep_cmd - issue an endpoint command
- * @dep: the endpoint to which the command is going to be issued
- * @cmd: the command to be issued
- * @params: parameters to the command
- *
- * Caller should handle locking. This function will issue @cmd with given
- * @params to @dep and wait for its completion.
- *
- * According to the programming guide, if the link state is in L1/L2/U3,
- * then sending the Start Transfer command may not complete. The
- * programming guide suggested to bring the link state back to ON/U0 by
- * performing remote wakeup prior to sending the command. However, don't
- * initiate remote wakeup when the user/function does not send wakeup
- * request via wakeup ops. Send the command when it's allowed.
- *
- * Notes:
- * For L1 link state, issuing a command requires the clearing of
- * GUSB2PHYCFG.SUSPENDUSB2, which turns on the signal required to complete
- * the given command (usually within 50us). This should happen within the
- * command timeout set by driver. No additional step is needed.
- *
- * For L2 or U3 link state, the gadget is in USB suspend. Care should be
- * taken when sending Start Transfer command to ensure that it's done after
- * USB resume.
- */
-int dwc3_send_gadget_ep_cmd(struct dwc3_ep *dep, unsigned int cmd,
-		struct dwc3_gadget_ep_cmd_params *params)
+enum j614s_cmd_origin {
+	J614S_CMD_UNOBSERVED,
+	J614S_CMD_EMPTY_START,
+	J614S_CMD_REQUEST_START,
+	J614S_CMD_REQUEST_UPDATE,
+	J614S_CMD_NO_COMMAND,
+	J614S_CMD_ENDPOINT_CONFIG,
+	J614S_CMD_ENDPOINT_RESOURCE,
+	J614S_CMD_CONFIG_EPOCH,
+};
+
+enum j614s_cmd_reason {
+	J614S_CMD_ISSUED,
+	J614S_CMD_PREP_ERROR,
+	J614S_CMD_NO_NEW_TRB,
+	J614S_CMD_NO_STARTED_REQUEST,
+};
+
+static void j614s_record_cmd(struct dwc3_ep *dep, u32 cmd,
+			     const struct dwc3_gadget_ep_cmd_params *params, u8 origin,
+			     int status, int result, u32 timeout, bool issued, u8 reason)
+{
+	struct dwc3 *dwc = dep->dwc;
+	struct j614s_usb_cmd_record record = {};
+	u8 op = issued ? DWC3_DEPCMD_CMD(cmd) : 0;
+
+	if (origin == J614S_CMD_UNOBSERVED || origin > J614S_CMD_CONFIG_EPOCH)
+		return;
+	if (!of_machine_is_compatible("apple,j614s") ||
+	    dwc->xhci_resources[0].start != 0x38a280000ULL ||
+	    !DWC3_VER_IS(DWC31, 190A) ||
+	    dwc->dr_mode != USB_DR_MODE_PERIPHERAL || !dwc->gadget)
+		return;
+	if (dep->number > 5 || dep->number == 4 ||
+	    (op != DWC3_DEPCMD_DEPSTARTCFG &&
+	     dwc->gadget->state < USB_STATE_ADDRESS))
+		return;
+	if (issued && op != DWC3_DEPCMD_DEPSTARTCFG &&
+	    op != DWC3_DEPCMD_SETEPCONFIG &&
+	    op != DWC3_DEPCMD_SETTRANSFRESOURCE &&
+	    op != DWC3_DEPCMD_STARTTRANSFER &&
+	    op != DWC3_DEPCMD_UPDATETRANSFER)
+		return;
+	lockdep_assert_held(&dwc->lock);
+	if (dwc->j614s_cmd_count >= J614S_USB_CMD_CAP) {
+		if (dwc->j614s_cmd_dropped < U32_MAX)
+			dwc->j614s_cmd_dropped++;
+		return;
+	}
+	if (op == DWC3_DEPCMD_DEPSTARTCFG && !result)
+		dwc->j614s_cmd_epoch++;
+	record.epoch = dwc->j614s_cmd_epoch;
+	record.ep = dep->number;
+	record.origin = origin;
+	record.op = op;
+	record.issued = issued;
+	record.reason = reason;
+	record.parameter = issued ? cmd >> 16 : 0;
+	record.result = result;
+	record.polled = issued && (cmd & DWC3_DEPCMD_CMDACT);
+	record.status_valid = record.polled && timeout;
+	record.status = record.status_valid ? status : 0;
+	record.resource = dep->resource_index;
+	record.flags = dep->flags;
+	if (op == DWC3_DEPCMD_SETEPCONFIG) {
+		const struct usb_endpoint_descriptor *desc = dep->endpoint.desc;
+
+		record.action = params->param0 >> 30;
+		record.type = (params->param0 >> 1) & 3;
+		record.maxpacket = (params->param0 >> 3) & 0x7ff;
+		record.fifo = (params->param0 >> 17) & 0x1f;
+		record.burst = (params->param0 >> 22) & 0xf;
+		record.events = (params->param1 >> 8) & 0x3f;
+		record.binterval = (params->param1 >> 16) & 0xff;
+		record.encoded_ep = (params->param1 >> 25) & 0x1f;
+		record.interrupt_number = params->param1 & 0x1f;
+		record.streams = (params->param1 >> 24) & 1;
+		record.desc_valid = !!desc;
+		record.desc_interval = desc ? desc->bInterval : 0;
+		record.interval = dep->interval;
+		record.param2_zero = !params->param2;
+	} else if (op == DWC3_DEPCMD_SETTRANSFRESOURCE) {
+		record.parameter = params->param0 & 0xffff;
+	} else if (op == DWC3_DEPCMD_STARTTRANSFER) {
+		/* Params 0/1 contain DMA addresses and are never inspected. */
+		record.param2_zero = !params->param2;
+	}
+	/* Committed slots never change; delayed work captures count under lock. */
+	dwc->j614s_cmd[dwc->j614s_cmd_count++] = record;
+}
+
+static int dwc3_send_gadget_ep_cmd_origin(struct dwc3_ep *dep, unsigned int cmd,
+					  struct dwc3_gadget_ep_cmd_params *params, u8 origin)
 {
 	const struct usb_endpoint_descriptor *desc = dep->endpoint.desc;
 	struct dwc3		*dwc = dep->dwc;
@@ -465,7 +531,41 @@ skip_status:
 		dev_info(dwc->dev, "J614S_USB: cmd ep=%u op=%u ret=%d res=%u\n",
 			 epnum, DWC3_DEPCMD_CMD(cmd), ret, dep->resource_index);
 
+	j614s_record_cmd(dep, cmd, params, origin, cmd_status, ret, timeout,
+			 true, J614S_CMD_ISSUED);
 	return ret;
+}
+
+/**
+ * dwc3_send_gadget_ep_cmd - issue an endpoint command
+ * @dep: the endpoint to which the command is going to be issued
+ * @cmd: the command to be issued
+ * @params: parameters to the command
+ *
+ * Caller should handle locking. This function will issue @cmd with given
+ * @params to @dep and wait for its completion.
+ *
+ * According to the programming guide, if the link state is in L1/L2/U3,
+ * then sending the Start Transfer command may not complete. The
+ * programming guide suggested to bring the link state back to ON/U0 by
+ * performing remote wakeup prior to sending the command. However, don't
+ * initiate remote wakeup when the user/function does not send wakeup
+ * request via wakeup ops. Send the command when it's allowed.
+ *
+ * Notes:
+ * For L1 link state, issuing a command requires the clearing of
+ * GUSB2PHYCFG.SUSPENDUSB2, which turns on the signal required to complete
+ * the given command (usually within 50us). This should happen within the
+ * command timeout set by driver. No additional step is needed.
+ *
+ * For L2 or U3 link state, the gadget is in USB suspend. Care should be
+ * taken when sending Start Transfer command to ensure that it's done after
+ * USB resume.
+ */
+int dwc3_send_gadget_ep_cmd(struct dwc3_ep *dep, unsigned int cmd,
+			    struct dwc3_gadget_ep_cmd_params *params)
+{
+	return dwc3_send_gadget_ep_cmd_origin(dep, cmd, params, J614S_CMD_UNOBSERVED);
 }
 
 static int dwc3_send_clear_stall_ep_cmd(struct dwc3_ep *dep)
@@ -530,7 +630,7 @@ static void dwc3_free_trb_pool(struct dwc3_ep *dep)
 	dep->trb_pool_dma = 0;
 }
 
-static int dwc3_gadget_set_xfer_resource(struct dwc3_ep *dep)
+static int dwc3_gadget_set_xfer_resource(struct dwc3_ep *dep, bool observe)
 {
 	struct dwc3_gadget_ep_cmd_params params;
 	int ret;
@@ -542,12 +642,48 @@ static int dwc3_gadget_set_xfer_resource(struct dwc3_ep *dep)
 
 	params.param0 = DWC3_DEPXFERCFG_NUM_XFER_RES(1);
 
-	ret = dwc3_send_gadget_ep_cmd(dep, DWC3_DEPCMD_SETTRANSFRESOURCE,
-			&params);
+	ret = dwc3_send_gadget_ep_cmd_origin(dep, DWC3_DEPCMD_SETTRANSFRESOURCE,
+					     &params,
+					     observe ? J614S_CMD_ENDPOINT_RESOURCE :
+						       J614S_CMD_UNOBSERVED);
 	if (ret)
 		return ret;
 
 	dep->flags |= DWC3_EP_RESOURCE_ALLOCATED;
+	return 0;
+}
+
+static int dwc3_gadget_start_config_observe(struct dwc3 *dwc,
+					    unsigned int resource_index, bool observe)
+{
+	struct dwc3_gadget_ep_cmd_params params;
+	struct dwc3_ep		*dep;
+	u32			cmd;
+	int			i;
+	int			ret;
+
+	if (resource_index != 0 && resource_index != 2)
+		return -EINVAL;
+
+	memset(&params, 0x00, sizeof(params));
+	cmd = DWC3_DEPCMD_DEPSTARTCFG;
+	cmd |= DWC3_DEPCMD_PARAM(resource_index);
+
+	ret = dwc3_send_gadget_ep_cmd_origin(dwc->eps[0], cmd, &params,
+					     observe ? J614S_CMD_CONFIG_EPOCH :
+						       J614S_CMD_UNOBSERVED);
+	if (ret)
+		return ret;
+
+	/* Reset resource allocation flags */
+	for (i = resource_index; i < dwc->num_eps; i++) {
+		dep = dwc->eps[i];
+		if (!dep)
+			continue;
+
+		dep->flags &= ~DWC3_EP_RESOURCE_ALLOCATED;
+	}
+
 	return 0;
 }
 
@@ -564,36 +700,17 @@ static int dwc3_gadget_set_xfer_resource(struct dwc3_ep *dep)
  */
 int dwc3_gadget_start_config(struct dwc3 *dwc, unsigned int resource_index)
 {
-	struct dwc3_gadget_ep_cmd_params params;
-	struct dwc3_ep		*dep;
-	u32			cmd;
-	int			i;
-	int			ret;
-
-	if (resource_index != 0 && resource_index != 2)
-		return -EINVAL;
-
-	memset(&params, 0x00, sizeof(params));
-	cmd = DWC3_DEPCMD_DEPSTARTCFG;
-	cmd |= DWC3_DEPCMD_PARAM(resource_index);
-
-	ret = dwc3_send_gadget_ep_cmd(dwc->eps[0], cmd, &params);
-	if (ret)
-		return ret;
-
-	/* Reset resource allocation flags */
-	for (i = resource_index; i < dwc->num_eps; i++) {
-		dep = dwc->eps[i];
-		if (!dep)
-			continue;
-
-		dep->flags &= ~DWC3_EP_RESOURCE_ALLOCATED;
-	}
-
-	return 0;
+	return dwc3_gadget_start_config_observe(dwc, resource_index, false);
 }
 
-static int dwc3_gadget_set_ep_config(struct dwc3_ep *dep, unsigned int action)
+int dwc3_gadget_start_config_locked(struct dwc3 *dwc, unsigned int resource_index)
+{
+	lockdep_assert_held(&dwc->lock);
+	return dwc3_gadget_start_config_observe(dwc, resource_index, true);
+}
+
+static int dwc3_gadget_set_ep_config(struct dwc3_ep *dep, unsigned int action,
+				     bool observe)
 {
 	const struct usb_ss_ep_comp_descriptor *comp_desc;
 	const struct usb_endpoint_descriptor *desc;
@@ -672,7 +789,10 @@ static int dwc3_gadget_set_ep_config(struct dwc3_ep *dep, unsigned int action)
 		params.param1 |= DWC3_DEPCFG_BINTERVAL_M1(bInterval_m1);
 	}
 
-	return dwc3_send_gadget_ep_cmd(dep, DWC3_DEPCMD_SETEPCONFIG, &params);
+	return dwc3_send_gadget_ep_cmd_origin(dep, DWC3_DEPCMD_SETEPCONFIG,
+					      &params,
+					      observe ? J614S_CMD_ENDPOINT_CONFIG :
+							J614S_CMD_UNOBSERVED);
 }
 
 /**
@@ -922,11 +1042,13 @@ static int dwc3_gadget_resize_tx_fifos(struct dwc3_ep *dep)
  * __dwc3_gadget_ep_enable - initializes a hw endpoint
  * @dep: endpoint to be initialized
  * @action: one of INIT, MODIFY or RESTORE
+ * @observe: enable diagnostics only from the locked endpoint-enable entry
  *
  * Caller should take care of locking. Execute all necessary commands to
  * initialize a HW endpoint so it can be used by a gadget driver.
  */
-static int __dwc3_gadget_ep_enable(struct dwc3_ep *dep, unsigned int action)
+static int __dwc3_gadget_ep_enable(struct dwc3_ep *dep, unsigned int action,
+				   bool observe)
 {
 	const struct usb_endpoint_descriptor *desc = dep->endpoint.desc;
 	struct dwc3		*dwc = dep->dwc;
@@ -940,11 +1062,11 @@ static int __dwc3_gadget_ep_enable(struct dwc3_ep *dep, unsigned int action)
 			return ret;
 	}
 
-	ret = dwc3_gadget_set_ep_config(dep, action);
+	ret = dwc3_gadget_set_ep_config(dep, action, observe);
 	if (ret)
 		return ret;
 
-	ret = dwc3_gadget_set_xfer_resource(dep);
+	ret = dwc3_gadget_set_xfer_resource(dep, observe);
 	if (ret)
 		return ret;
 
@@ -999,7 +1121,9 @@ static int __dwc3_gadget_ep_enable(struct dwc3_ep *dep, unsigned int action)
 
 		cmd = DWC3_DEPCMD_STARTTRANSFER;
 
-		ret = dwc3_send_gadget_ep_cmd(dep, cmd, &params);
+		ret = dwc3_send_gadget_ep_cmd_origin(dep, cmd, &params,
+						     observe ? J614S_CMD_EMPTY_START :
+						     J614S_CMD_UNOBSERVED);
 		if (ret < 0)
 			return ret;
 
@@ -1161,7 +1285,7 @@ static int dwc3_gadget_ep_enable(struct usb_ep *ep,
 		return 0;
 
 	spin_lock_irqsave(&dwc->lock, flags);
-	ret = __dwc3_gadget_ep_enable(dep, DWC3_DEPCFG_ACTION_INIT);
+	ret = __dwc3_gadget_ep_enable(dep, DWC3_DEPCFG_ACTION_INIT, true);
 	spin_unlock_irqrestore(&dwc->lock, flags);
 
 	return ret;
@@ -1676,7 +1800,7 @@ static int dwc3_prepare_trbs(struct dwc3_ep *dep)
 
 static void dwc3_gadget_ep_cleanup_cancelled_requests(struct dwc3_ep *dep);
 
-static int __dwc3_gadget_kick_transfer(struct dwc3_ep *dep)
+static int __dwc3_gadget_kick_transfer(struct dwc3_ep *dep, bool observe)
 {
 	struct dwc3_gadget_ep_cmd_params params;
 	struct dwc3_request		*req;
@@ -1690,8 +1814,12 @@ static int __dwc3_gadget_kick_transfer(struct dwc3_ep *dep)
 	 * the case of reinitiating a stream or retrying an isoc transfer.
 	 */
 	ret = dwc3_prepare_trbs(dep);
-	if (ret < 0)
+	if (ret < 0) {
+		j614s_record_cmd(dep, 0, NULL, observe ? J614S_CMD_NO_COMMAND :
+					  J614S_CMD_UNOBSERVED, 0, ret,
+				 0, false, J614S_CMD_PREP_ERROR);
 		return ret;
+	}
 
 	starting = !(dep->flags & DWC3_EP_TRANSFER_STARTED);
 
@@ -1699,12 +1827,19 @@ static int __dwc3_gadget_kick_transfer(struct dwc3_ep *dep)
 	 * If there's no new TRB prepared and we don't need to restart a
 	 * transfer, there's no need to update the transfer.
 	 */
-	if (!ret && !starting)
+	if (!ret && !starting) {
+		j614s_record_cmd(dep, 0, NULL, observe ? J614S_CMD_NO_COMMAND :
+					  J614S_CMD_UNOBSERVED, 0, 0,
+				 0, false, J614S_CMD_NO_NEW_TRB);
 		return 0;
+	}
 
 	req = next_request(&dep->started_list);
 	if (!req) {
 		dep->flags |= DWC3_EP_PENDING_REQUEST;
+		j614s_record_cmd(dep, 0, NULL, observe ? J614S_CMD_NO_COMMAND :
+					  J614S_CMD_UNOBSERVED, 0, 0,
+				 0, false, J614S_CMD_NO_STARTED_REQUEST);
 		return 0;
 	}
 
@@ -1725,7 +1860,10 @@ static int __dwc3_gadget_kick_transfer(struct dwc3_ep *dep)
 			DWC3_DEPCMD_PARAM(dep->resource_index);
 	}
 
-	ret = dwc3_send_gadget_ep_cmd(dep, cmd, &params);
+	ret = dwc3_send_gadget_ep_cmd_origin(dep, cmd, &params,
+					     !observe ? J614S_CMD_UNOBSERVED :
+					     starting ? J614S_CMD_REQUEST_START :
+					     J614S_CMD_REQUEST_UPDATE);
 	if (ret < 0) {
 		struct dwc3_request *tmp;
 
@@ -1920,7 +2058,7 @@ static int dwc3_gadget_start_isoc_quirk(struct dwc3_ep *dep)
 	dep->start_cmd_status = 0;
 	dep->combo_num = 0;
 
-	return __dwc3_gadget_kick_transfer(dep);
+	return __dwc3_gadget_kick_transfer(dep, false);
 }
 
 static int __dwc3_gadget_start_isoc(struct dwc3_ep *dep)
@@ -1973,7 +2111,7 @@ static int __dwc3_gadget_start_isoc(struct dwc3_ep *dep)
 
 		dep->frame_number = DWC3_ALIGN_FRAME(dep, future_interval);
 
-		ret = __dwc3_gadget_kick_transfer(dep);
+		ret = __dwc3_gadget_kick_transfer(dep, false);
 		if (ret != -EAGAIN)
 			break;
 	}
@@ -2050,7 +2188,7 @@ static int __dwc3_gadget_ep_queue(struct dwc3_ep *dep, struct dwc3_request *req)
 		}
 	}
 
-	__dwc3_gadget_kick_transfer(dep);
+	__dwc3_gadget_kick_transfer(dep, true);
 
 	return 0;
 }
@@ -2281,7 +2419,7 @@ int __dwc3_gadget_ep_set_halt(struct dwc3_ep *dep, int value, int protocol)
 
 		if ((dep->flags & DWC3_EP_DELAY_START) &&
 		    !usb_endpoint_xfer_isoc(dep->endpoint.desc))
-			__dwc3_gadget_kick_transfer(dep);
+			__dwc3_gadget_kick_transfer(dep, false);
 
 		dep->flags &= ~DWC3_EP_DELAY_START;
 	}
@@ -2986,7 +3124,7 @@ static int __dwc3_gadget_start(struct dwc3 *dwc)
 
 	dep = dwc->eps[0];
 	dep->flags = 0;
-	ret = __dwc3_gadget_ep_enable(dep, DWC3_DEPCFG_ACTION_INIT);
+	ret = __dwc3_gadget_ep_enable(dep, DWC3_DEPCFG_ACTION_INIT, false);
 	if (ret) {
 		dev_err(dwc->dev, "failed to enable %s\n", dep->name);
 		goto err0;
@@ -2994,7 +3132,7 @@ static int __dwc3_gadget_start(struct dwc3 *dwc)
 
 	dep = dwc->eps[1];
 	dep->flags = 0;
-	ret = __dwc3_gadget_ep_enable(dep, DWC3_DEPCFG_ACTION_INIT);
+	ret = __dwc3_gadget_ep_enable(dep, DWC3_DEPCFG_ACTION_INIT, false);
 	if (ret) {
 		dev_err(dwc->dev, "failed to enable %s\n", dep->name);
 		goto err1;
@@ -3728,7 +3866,7 @@ static bool dwc3_gadget_endpoint_trbs_complete(struct dwc3_ep *dep,
 		(list_empty(&dep->pending_list) || status == -EXDEV))
 		dwc3_stop_active_transfer(dep, true, true);
 	else if (dwc3_gadget_ep_should_continue(dep))
-		if (__dwc3_gadget_kick_transfer(dep) == 0)
+		if (__dwc3_gadget_kick_transfer(dep, false) == 0)
 			no_started_trb = false;
 
 out:
@@ -3864,7 +4002,7 @@ static void dwc3_gadget_endpoint_command_complete(struct dwc3_ep *dep,
 
 	if ((dep->flags & DWC3_EP_DELAY_START) &&
 	    !usb_endpoint_xfer_isoc(dep->endpoint.desc))
-		__dwc3_gadget_kick_transfer(dep);
+		__dwc3_gadget_kick_transfer(dep, false);
 
 	dep->flags &= ~DWC3_EP_DELAY_START;
 }
@@ -4344,14 +4482,14 @@ static void dwc3_gadget_conndone_interrupt(struct dwc3 *dwc)
 	}
 
 	dep = dwc->eps[0];
-	ret = __dwc3_gadget_ep_enable(dep, DWC3_DEPCFG_ACTION_MODIFY);
+	ret = __dwc3_gadget_ep_enable(dep, DWC3_DEPCFG_ACTION_MODIFY, false);
 	if (ret) {
 		dev_err(dwc->dev, "failed to enable %s\n", dep->name);
 		return;
 	}
 
 	dep = dwc->eps[1];
-	ret = __dwc3_gadget_ep_enable(dep, DWC3_DEPCFG_ACTION_MODIFY);
+	ret = __dwc3_gadget_ep_enable(dep, DWC3_DEPCFG_ACTION_MODIFY, false);
 	if (ret) {
 		dev_err(dwc->dev, "failed to enable %s\n", dep->name);
 		return;
@@ -4781,6 +4919,35 @@ static const char *j614s_trb_audit(struct dwc3 *dwc, void *cpu, dma_addr_t dma,
 	return "software-match";
 }
 
+static void j614s_dump_cmds(struct dwc3 *dwc, u8 count, u32 dropped)
+{
+	unsigned int i;
+
+	if (count > J614S_USB_CMD_CAP) {
+		dev_info(dwc->dev, "J614S_CMD: skipped invalid count=%u\n", count);
+		return;
+	}
+	dev_info(dwc->dev, "J614S_CMD: count=%u dropped=%u cap=%u scope=locked-only startup=unobserved ep0-status=unobserved\n",
+		 count, dropped, J614S_USB_CMD_CAP);
+	/* Slots below the count captured under lock are immutable. */
+	for (i = 0; i < count; i++) {
+		const struct j614s_usb_cmd_record *r = &dwc->j614s_cmd[i];
+
+		dev_info(dwc->dev,
+			 "J614S_CMD: n=%u epoch=%u ep=%u origin=%u op=%u param=%u issued=%u poll=%u valid=%u status=%d ret=%d res=%u flags=%08x why=%u p2zero=%u\n",
+			 i, r->epoch, r->ep, r->origin, r->op, r->parameter,
+			 r->issued, r->polled, r->status_valid, r->status,
+			 r->result, r->resource, r->flags, r->reason, r->param2_zero);
+		if (r->op == DWC3_DEPCMD_SETEPCONFIG)
+			dev_info(dwc->dev,
+				 "J614S_CMD: cfg n=%u action=%u type=%u mps=%u fifo=%u burst=%u events=%02x im1=%u ep=%u intr=%u streams=%u desc=%u bi=%u interval=%u\n",
+				 i, r->action, r->type, r->maxpacket, r->fifo,
+				 r->burst, r->events, r->binterval, r->encoded_ep,
+				 r->interrupt_number, r->streams, r->desc_valid,
+				 r->desc_interval, r->interval);
+	}
+}
+
 /* Temporary J614s snapshot: no register acknowledgements or power-up. */
 static void j614s_usb_snapshot(struct work_struct *work)
 {
@@ -4797,6 +4964,9 @@ static void j614s_usb_snapshot(struct work_struct *work)
 	const char *audit0 = "skipped-scope", *audit5 = "skipped-scope";
 	u32 config[6] = {};
 	bool config_valid = false;
+	bool command_valid = false;
+	u8 command_count = 0;
+	u32 command_dropped = 0;
 	unsigned long flags;
 	unsigned int i;
 	int active;
@@ -4844,6 +5014,11 @@ static void j614s_usb_snapshot(struct work_struct *work)
 		config[4] = dwc3_readl(dwc, DWC3_GUSB3PIPECTL(0));
 		config[5] = dwc3_readl(dwc, DWC3_DCFG);
 		config_valid = true;
+		if (dwc->gadget && dwc->dr_mode == USB_DR_MODE_PERIPHERAL) {
+			command_valid = true;
+			command_count = dwc->j614s_cmd_count;
+			command_dropped = dwc->j614s_cmd_dropped;
+		}
 		audit0 = j614s_trb_audit(dwc, dwc->ep0_trb, dwc->ep0_trb_addr,
 					 2 * sizeof(struct dwc3_trb));
 		if (!dep || !dep->trb_pool) {
@@ -4884,6 +5059,8 @@ static void j614s_usb_snapshot(struct work_struct *work)
 	spin_unlock_irqrestore(&dwc->lock, flags);
 	pm_runtime_put_noidle(dwc->dev);
 
+	if (command_valid)
+		j614s_dump_cmds(dwc, command_count, command_dropped);
 	if (config_valid) {
 		dev_info(dwc->dev, "J614S_CORE: config cached-ip=%04x cached-revision=%08x\n",
 			 dwc->ip, dwc->revision);

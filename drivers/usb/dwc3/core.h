@@ -1002,9 +1002,26 @@ struct dwc3_glue_ops {
 	void	(*pre_run_stop)(struct dwc3 *dwc, bool is_on);
 };
 
+#define J614S_USB_CMD_CAP 24
+
+/* Temporary append-only scalar diagnostics; no DMA addresses or pointers. */
+struct j614s_usb_cmd_record {
+	u32 flags, interval;
+	int result, status;
+	u16 parameter, maxpacket;
+	u8 epoch, ep, origin, op, resource, issued, polled, status_valid;
+	u8 action, type, fifo, burst, events, binterval, encoded_ep;
+	u8 desc_interval, desc_valid, param2_zero, interrupt_number, streams;
+	u8 reason;
+};
+
 /**
  * struct dwc3 - representation of our controller
  * @j614s_snapshot_work: temporary one-shot USB diagnostics on J614s
+ * @j614s_cmd: append-only scalar command records
+ * @j614s_cmd_dropped: saturated count of records rejected at capacity
+ * @j614s_cmd_count: number of committed records
+ * @j614s_cmd_epoch: successful configuration commands before capacity
  * @drd_work: workqueue used for role swapping
  * @ep0_trb: trb which is used for the ctrl_req
  * @bounce: address of bounce buffer
@@ -1189,6 +1206,9 @@ struct dwc3_glue_ops {
  */
 struct dwc3 {
 	struct delayed_work	j614s_snapshot_work;
+	struct j614s_usb_cmd_record j614s_cmd[J614S_USB_CMD_CAP];
+	u32 j614s_cmd_dropped;
+	u8 j614s_cmd_count, j614s_cmd_epoch;
 	struct work_struct	drd_work;
 	struct dwc3_trb		*ep0_trb;
 	void			*bounce;

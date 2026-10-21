@@ -671,7 +671,7 @@ static int dwc3_ep0_set_config(struct dwc3 *dwc, struct usb_ctrlrequest *ctrl)
 
 	case USB_STATE_ADDRESS:
 		j614s_usb_trace(dwc->dev, "resources.enter", 0);
-		dwc3_gadget_start_config(dwc, 2);
+		dwc3_gadget_start_config_locked(dwc, 2);
 		j614s_usb_trace(dwc->dev, "resources.returned", 0);
 		j614s_usb_trace(dwc->dev, "fifo.enter", 0);
 		dwc3_gadget_clear_tx_fifos(dwc);
