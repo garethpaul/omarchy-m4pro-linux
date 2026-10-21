@@ -642,8 +642,20 @@ static int dwc3_gadget_set_ep_config(struct dwc3_ep *dep, unsigned int action)
 	 * We must use the lower 16 TX FIFOs even though
 	 * HW might have more
 	 */
-	if (dep->direction)
-		params.param0 |= DWC3_DEPCFG_FIFO_NUMBER(dep->number >> 1);
+	if (dep->direction) {
+		u32 fifo = dep->number >> 1;
+
+		/* Single-ACM J614s diagnostic: reuse the resident interrupt FIFO. */
+		if (of_machine_is_compatible("apple,j614s") &&
+		    usb_endpoint_xfer_int(desc) && dep->number == 5) {
+			if (!DWC3_IP_IS(DWC31) || dwc->do_fifo_resize ||
+			    dwc3_readl(dwc, DWC3_GTXFIFOSIZ(3)) != 0x01b180c7)
+				return -ENODEV;
+			fifo = 3;
+			dev_info(dwc->dev, "J614S_USB: notification.fifo %u\n", fifo);
+		}
+		params.param0 |= DWC3_DEPCFG_FIFO_NUMBER(fifo);
+	}
 
 	if (desc->bInterval) {
 		u8 bInterval_m1;
